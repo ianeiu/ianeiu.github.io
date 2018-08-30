@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringMVC的九大组件</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      <description>SpringMVC的九大组件 前言 建议先阅读 SpringMVC的运行流程 组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC的运行流程</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</guid>
+      <description>SpringMVC的运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用Hand</description>
+    </item>
     
     <item>
       <title>Java基础题（Integer）</title>
@@ -40,7 +58,7 @@
     </item>
     
     <item>
-      <title>spring常用注解</title>
+      <title>Spring常用注解</title>
       <link>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
@@ -127,24 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
       <description>Windows环境: 打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79 linux环境: 编辑 setclasspath.sh，在文件的最开始加入如下代码： set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51 set JRE_HOME=/home/jdk/Java\jdk7\jre7</description>
-    </item>
-    
-    <item>
-      <title>下载FTP文件 retrievefilestream返回null</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</guid>
-      <description>下载FTP文件 retrievefilestream返回null 增加 fc.getReply(); 解决 具体使用如下： @Override public void getOutsideFile() throws SocketException, IOException, IllegalAccessException, SQLException, Exception { FTPClient fc = null; InputStream is = null; OutputStream os = null; try { //</description>
-    </item>
-    
-    <item>
-      <title>兼容IE</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</guid>
-      <description>JS 方法/函数：减少使用JS原生方法 indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“</description>
     </item>
     
   </channel>

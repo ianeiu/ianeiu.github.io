@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
 
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
 
 
 
@@ -42,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-08-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-08-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="978">
+<meta itemprop="wordCount" content="973">
 
 
 
@@ -217,123 +219,108 @@
 <p>思路：增加过滤器拦截非白名单的HOST</p>
 
 <p>1.在web.xml中添加过滤器配置</p>
-
-<pre><code>&lt;!-- 修复Http host头攻击 --&gt;
-&lt;filter&gt;
-   &lt;filter-name&gt;SessionFilter&lt;/filter-name&gt;
-   &lt;filter-class&gt;cn.com.do1.component.filter.SessionFilter&lt;/filter-class&gt;
-&lt;/filter&gt;
-&lt;filter-mapping&gt;
- &lt;filter-name&gt;SessionFilter&lt;/filter-name&gt;
-  &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="err">修复</span><span class="n">Http</span> <span class="n">host头攻击</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nb">filter</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">filter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="n">SessionFilter</span><span class="o">&lt;/</span><span class="nb">filter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nb">filter</span><span class="o">-</span><span class="n">class</span><span class="o">&gt;</span><span class="n">cn</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">do1</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="nb">filter</span><span class="o">.</span><span class="n">SessionFilter</span><span class="o">&lt;/</span><span class="nb">filter</span><span class="o">-</span><span class="n">class</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">filter</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">filter</span><span class="o">-</span><span class="n">mapping</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="nb">filter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="n">SessionFilter</span><span class="o">&lt;/</span><span class="nb">filter</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">url</span><span class="o">-</span><span class="n">pattern</span><span class="o">&gt;/*&lt;/</span><span class="n">url</span><span class="o">-</span><span class="n">pattern</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">filter</span><span class="o">-</span><span class="n">mapping</span><span class="o">&gt;</span></code></pre></div>
 <p>2 在resource文件夹中新增文件serverWhiteList.json</p>
-
-<pre><code>[
-  &quot;erp.zh码.com&quot;,
-  &quot;221.1码9.码01.198&quot;,
-  &quot;127.0.0.1:8080&quot;
-]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">[</span>
+  <span class="s2">&#34;erp.zh码.com&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;221.1码9.码01.198&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;127.0.0.1:8080&#34;</span>
+<span class="p">]</span></code></pre></div>
 <p>3.新增过滤器代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
 
-<pre><code>import java.io.IOException;
+<span class="kn">import</span> <span class="nn">javax.servlet.Filter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.FilterChain</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.FilterConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletRequest</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletResponse</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SessionFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
 
-public class SessionFilter implements Filter {
+    <span class="n">public</span> <span class="n">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">res</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span><span class="p">,</span>
+            <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="n">HttpServletRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpServletRequest</span><span class="p">)</span> <span class="n">req</span><span class="p">;</span>
+        <span class="n">HttpServletResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpServletResponse</span><span class="p">)</span> <span class="n">res</span><span class="p">;</span>
 
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
-            ServletException {
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
+        <span class="o">//</span> <span class="err">头攻击检测</span>
+        <span class="n">String</span> <span class="n">requestHost</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHeader</span><span class="p">(</span><span class="s2">&#34;host&#34;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">requestHost</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="err">!</span><span class="n">ServerWhiteListUtil</span><span class="o">.</span><span class="n">isWhite</span><span class="p">(</span><span class="n">requestHost</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">setStatus</span><span class="p">(</span><span class="mi">403</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">chain</span><span class="o">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
+    <span class="p">}</span>
 
-        // 头攻击检测
-        String requestHost = request.getHeader(&quot;host&quot;);
-        if (requestHost != null &amp;&amp; !ServerWhiteListUtil.isWhite(requestHost)) {
-            response.setStatus(403);
-            return;
-        }
-        chain.doFilter(request, response);
-    }
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
+	<span class="nd">@Override</span>
+	<span class="n">public</span> <span class="n">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
+		<span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
 		
-	}
+	<span class="p">}</span>
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
+	<span class="nd">@Override</span>
+	<span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">arg0</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+		<span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
 		
-	}
-}
-</code></pre>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
 
-<pre><code>import java.io.InputStreamReader;
-import java.util.List;
+<span class="kn">import</span> <span class="nn">com.google.gson.Gson</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.reflect.TypeToken</span><span class="p">;</span>
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="err">服务器白名单列表</span>
+ <span class="o">*/</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">ServerWhiteListUtil</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">whiteList</span> <span class="o">=</span> <span class="n">null</span><span class="p">;;</span>
 
-/**
- * 服务器白名单列表
- */
-public class ServerWhiteListUtil {
-    private static List&lt;String&gt; whiteList = null;;
+    <span class="n">static</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="err">读取白名单列表</span>
+            <span class="n">whiteList</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Gson</span><span class="p">()</span><span class="o">.</span><span class="n">fromJson</span><span class="p">(</span>
+                    <span class="n">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="n">ServerWhiteListUtil</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">getResourceAsStream</span><span class="p">(</span><span class="s2">&#34;/serverWhiteList.json&#34;</span><span class="p">)),</span>
+                    <span class="n">new</span> <span class="n">TypeToken</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="p">}</span><span class="o">.</span><span class="n">getType</span><span class="p">());</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    static {
-        try {
-            // 读取白名单列表
-            whiteList = new Gson().fromJson(
-                    new InputStreamReader(ServerWhiteListUtil.class.getResourceAsStream(&quot;/serverWhiteList.json&quot;)),
-                    new TypeToken&lt;List&lt;String&gt;&gt;() {
-                    }.getType());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 判断当前host是否在白名单内
-     * @param host 待查host
-     * @return boolean 是否在白名单内
-     */
-    public static boolean isWhite(String host) {
-        if (whiteList == null || whiteList.size() == 0) {
-            return true;
-        }
-        for (String  	str : whiteList) {
-            if (str != null &amp;&amp; str.equals(host)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-</code></pre>
-
+    <span class="o">/**</span>
+     <span class="o">*</span> <span class="err">判断当前</span><span class="n">host是否在白名单内</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="n">host</span> <span class="err">待查</span><span class="n">host</span>
+     <span class="o">*</span> <span class="nd">@return</span> <span class="n">boolean</span> <span class="err">是否在白名单内</span>
+     <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">boolean</span> <span class="n">isWhite</span><span class="p">(</span><span class="n">String</span> <span class="n">host</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">whiteList</span> <span class="o">==</span> <span class="n">null</span> <span class="o">||</span> <span class="n">whiteList</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span>  	<span class="nb">str</span> <span class="p">:</span> <span class="n">whiteList</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">str</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="nb">str</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">host</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>注: ServerWhiteListUtil需要引入Gson包
 可在pom.xml中添加</p>
-
-<pre><code>&lt;dependency&gt;
-	&lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
-	&lt;artifactId&gt;gson&lt;/artifactId&gt;
-	&lt;version&gt;2.6&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">gson</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">gson</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">2.6</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span></code></pre></div>
 
   
   

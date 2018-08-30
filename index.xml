@@ -42,6 +42,182 @@
     </item>
     
     <item>
+      <title>SpringMVC的九大组件</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;springmvc的九大组件&#34;&gt;SpringMVC的九大组件&lt;/h1&gt;
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;建议先阅读 &lt;a href=&#34;https://ianeiu.github.io/2018/08/30/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/&#34;&gt;SpringMVC的运行流程&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;组件&#34;&gt;组件&lt;/h2&gt;
+
+&lt;h3 id=&#34;handlermapping&#34;&gt;HandlerMapping&lt;/h3&gt;
+
+&lt;p&gt;处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet&lt;/p&gt;
+
+&lt;h3 id=&#34;handleradapter&#34;&gt;HandlerAdapter&lt;/h3&gt;
+
+&lt;p&gt;适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。&lt;/p&gt;
+
+&lt;p&gt;有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。&lt;/p&gt;
+
+&lt;h3 id=&#34;handlerexceptionresolver&#34;&gt;HandlerExceptionResolver&lt;/h3&gt;
+
+&lt;p&gt;异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Component
+public class GlobalExceptionResolver implements HandlerExceptionResolver {
+	...
+	/**
+	 * 针对请求处理异常
+	 */
+	@Override
+	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
+			Exception ex) {
+		boolean isHttpApi = isHttpApi(handler);
+		HandleResult result = handleException(ex);
+		if (isReturnReponseBody(handler) || isHttpApi) {
+			if(isHttpApi){
+				result =  apiHandleException(ex);
+			}
+			
+			ModelAndView modelAndView = new ModelAndView();
+			//处理异常
+			response.setContentType(&amp;quot;application/json;charset=UTF-8&amp;quot;);
+			byte[] bytes = JSON.toJSONBytes(Result.fail(result.getCode(), result.getMessage()), SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
+			try {
+				response.getOutputStream().write(bytes);
+				response.getOutputStream().flush();
+			} catch (IOException e) {
+				log.error(&amp;quot;打印错误信息出错!&amp;quot;, e);
+			}
+			modelAndView.clear();
+			return modelAndView;
+		}else {
+			Map&amp;lt;String, String&amp;gt; model = Maps.newHashMap();
+			model.put(&amp;quot;code&amp;quot;, result.getCode());
+			model.put(&amp;quot;message&amp;quot;, result.getMessage());
+			return new ModelAndView(&amp;quot;500&amp;quot;, model);
+		}
+	}
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;viewresolver&#34;&gt;ViewResolver&lt;/h3&gt;
+
+&lt;p&gt;视图解析器：当Controller将请求处理结果放入到ModelAndView中以后，DispatcherServlet会根据ModelAndView选择合适的视图进行渲染。ViewResolver接口有众多实现类，根据viewName创建合适类型的View实现。配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;bean class=&amp;quot;org.Springframework.web.servlet.view.InternalResourceViewResolve&amp;quot;&amp;gt;
+	&amp;lt;property name=&amp;quot;prefix&amp;quot; value=&amp;quot;/WEB-INF/views/&amp;quot; /&amp;gt;
+	&amp;lt;property name=&amp;quot;suffix&amp;quot; value=&amp;quot;.jsp&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;requesttoviewnametranslator&#34;&gt;RequestToViewNameTranslator&lt;/h3&gt;
+
+&lt;p&gt;当Controller处理器方法没有返回一个View对象或逻辑视图名称，并且在该方法中没有直接往response的输出流里面写数据的时候，Spring就会采用约定好的方式提供一个逻辑视图名称。可通过实现接口org.Springframework.web.servlet.RequestToViewNameTranslator接口的getViewName方法来实现。&lt;/p&gt;
+
+&lt;h3 id=&#34;localeresolver&#34;&gt;LocaleResolver&lt;/h3&gt;
+
+&lt;p&gt;国际化配置&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Spring的国际化配置三种方式
+
+&lt;ul&gt;
+&lt;li&gt;基于URL参数的配置：通过URL参数来控制国际化
+
+&lt;ol&gt;
+&lt;li&gt;页面： &lt;code&gt;&amp;lt;a href=&amp;quot;myTest.jsp?locale=zh_CN&amp;quot;&amp;gt;简体中文&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置文件：&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.AcceptHeaderLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;基于session的配置：通过检验用户会话中预置的属性来解析区域，最常用的是根据用户本次会话过程中的语言设定决定语言种类，如果该会话不存在，它会根据accept-language HTTP头部确定默认区域。配置&lt;br/&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.SessionLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;基于Cookie的国际化配置：用于通过浏览器的cookie设置取得Locale对象，这种策略在应用程序不支持会话或者状态必须保存在客户端时有用。&lt;br/&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.CookieLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;themeresolver&#34;&gt;ThemeResolver&lt;/h3&gt;
+
+&lt;p&gt;解析主题。一个主题就是一组静态资源（比如样式表、图片等），它们可以影响应用程序的视觉效果。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SpringMVC中跟主题相关的类
+
+&lt;ul&gt;
+&lt;li&gt;ThemeResolver:主题解析器&lt;/li&gt;
+&lt;li&gt;ThemeSource:主题资源&lt;/li&gt;
+&lt;li&gt;Theme:主题接口&lt;/li&gt;
+&lt;li&gt;ThemeChangeInterceptor:根据用户请求来改变主题(需要在handlerMapping中配置拦截器&lt;br/&gt;&lt;code&gt;&amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;&amp;lt;list&amp;gt;&amp;lt;ref local=&amp;quot;themeChangeInterceptor&amp;quot; /&amp;gt;&amp;lt;/list&amp;gt;&amp;lt;/property&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ThemeResolver子类
+
+&lt;ul&gt;
+&lt;li&gt;AbstractThemeResolver:SessionThemeResolver和FixedThemeResolver继承的抽象类&lt;/li&gt;
+&lt;li&gt;SessionThemeResolver:用户的主题保存在HTTP session中&lt;/li&gt;
+&lt;li&gt;CookieThemeResolver:用于实现用户所选的主题，以cookie的形式存放在客户端的机器上&lt;/li&gt;
+&lt;li&gt;FixedThemeResolver:用于选择一个固定的主题
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;multipartresolver&#34;&gt;MultipartResolver&lt;/h3&gt;
+
+&lt;p&gt;MultipartResolver 用于处理文件上传，当收到请求时 DispatcherServlet 的 checkMultipart() 方法会调用 MultipartResolver 的 isMultipart() 方法判断请求中是否包含文件。如果请求数据中包含文件，则调用 MultipartResolver 的 resolveMultipart() 方法对请求的数据进行解析，然后将文件数据解析成 MultipartFile 并封装在 MultipartHttpServletRequest (继承了 HttpServletRequest) 对象中，最后传递给 Controller.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MultipartResolver子类
+
+&lt;ul&gt;
+&lt;li&gt;CommonsMultipartResolver：使用 commons Fileupload来处理 multipart请求，所以在使用时，必须要引入相应的jar包。而像SpringBoot是不支持CommonsMultipartResolver&lt;/li&gt;
+&lt;li&gt;StandardServletMultipartResolver：基于Servlet3.0来处理multipart请求的，所以不需要引用其他jar包，从Tomcat7.0.x的版本开始就支持 Servlet 3.0了&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC的运行流程</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;springmvc的运行流程&#34;&gt;SpringMVC的运行流程&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/SpringMVC的运行流程.png&#34;  alt=&#34;SpringMVC的运行流程&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户发送请求至前置控制器DispatcherServlet&lt;/li&gt;
+&lt;li&gt;DispatcherServlet收到请求调用HandlerMapping处理器映射器。&lt;/li&gt;
+&lt;li&gt;处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。&lt;/li&gt;
+&lt;li&gt;DispatcherServlet通过HandlerAdapter处理器适配器调用处理器&lt;/li&gt;
+&lt;li&gt;执行处理器/后端控制器Controller&lt;/li&gt;
+&lt;li&gt;Controller执行完成返回ModelAndView&lt;/li&gt;
+&lt;li&gt;HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet&lt;/li&gt;
+&lt;li&gt;DispatcherServlet将ModelAndView传给视图解析器ViewReslover&lt;/li&gt;
+&lt;li&gt;ViewReslover解析后返回具体View&lt;/li&gt;
+&lt;li&gt;DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。&lt;/li&gt;
+&lt;li&gt;DispatcherServlet响应用户。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Java基础题（Integer）</title>
       <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
@@ -192,7 +368,7 @@ Java就是为了杜绝这种错误，严格要求内部类中方位局部变量�
     </item>
     
     <item>
-      <title>spring常用注解</title>
+      <title>Spring常用注解</title>
       <link>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
@@ -645,125 +821,6 @@ goto execCmd&lt;/p&gt;
      //说明：查看占用8080端口的进程&lt;br /&gt;
       taskkill  /pid  6856  /f&lt;br /&gt;
   //说明，运行windows自带taskkill命令，将上面显示的进程号，结束掉。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>tomcat指定jdk</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
-      
-        <description>&lt;p&gt;Windows环境:&lt;br /&gt;
-打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79&lt;/p&gt;
-
-&lt;p&gt;linux环境:&lt;br /&gt;
-编辑 setclasspath.sh，在文件的最开始加入如下代码：&lt;br /&gt;
-set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51&lt;br /&gt;
-set JRE_HOME=/home/jdk/Java\jdk7\jre7&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>下载FTP文件 retrievefilestream返回null</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</guid>
-      
-        <description>&lt;p&gt;下载FTP文件 retrievefilestream返回null&lt;/p&gt;
-
-&lt;p&gt;增加 fc.getReply(); 解决&lt;br /&gt;
-具体使用如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Override
-public void getOutsideFile() throws SocketException, IOException, IllegalAccessException, SQLException, Exception {
-    FTPClient fc = null;
-    InputStream is = null;
-    OutputStream os = null;
-
-    try {
-        //FTP信息
-        String ftpHost = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;ftpHost&amp;quot;,&amp;quot;10.10.0.118&amp;quot;);//XQ
-        String ftpPassword = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;ftpPassword&amp;quot;,&amp;quot;123456&amp;quot;);//XQ
-        String ftpUserName = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;ftpUserName&amp;quot;,&amp;quot;zsyx&amp;quot;);//XQ
-        int ftpPort = Integer.parseInt(ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;ftpPort&amp;quot;,&amp;quot;21&amp;quot;));//XQ
-        fc = getFTPClient(ftpHost, ftpPassword, ftpUserName, ftpPort);
-
-        String fileContentCharset = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;fileContentCharset&amp;quot;,&amp;quot;UTF-8&amp;quot;);//XQ
-        String fileNameCharset = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;fileNameCharset&amp;quot;,&amp;quot;iso-8859-1&amp;quot;);//XQ
-        String itemPath = ConfigMgr.get(&amp;quot;yxt_readfile&amp;quot;, &amp;quot;getPath&amp;quot;,&amp;quot;&amp;quot;);//XQ
-
-        //创建目录
-        String dateStr = new SimpleDateFormat(&amp;quot;yyyyMMdd&amp;quot;).format(new Date());
-        String savePath =  DqdpAppContext.getAppRootPath()+&amp;quot;uploadfile/childorder_file/outside_ref/outside_file/&amp;quot;+dateStr;
-        File tmpFile = new File(savePath);
-        if (!tmpFile.exists()) {
-            tmpFile.mkdirs(); //创建目录
-        }
-
-        //获取文件
-        List&amp;lt;String&amp;gt; nameList = getNameList(fc,&amp;quot;&amp;quot;,&amp;quot;txt&amp;quot;,fileContentCharset);//得到FTP文件名集合
-
-        List&amp;lt;TbYxtWorkDatasipportAffirmPO&amp;gt; apoList = filereadDAO.getAffirmListPOByStatus(&amp;quot;0&amp;quot;);
-        for (String fileName : nameList) {
-            String fileLocalPath = savePath + &amp;quot;/&amp;quot; + fileName;
-
-            fileName = new String(fileName.getBytes(&amp;quot;GBK&amp;quot;), fileNameCharset);
-            is = getInputStream(fc, itemPath, fileName, fileContentCharset);//得到FTP文件输入流
-            os = new FileOutputStream(fileLocalPath);
-
-            if(is==null){
-                continue;
-            }
-
-            byte[] bs = new byte[1024]; // 1K的数据缓冲
-            int len;// 读取到的数据长度
-            // 开始读取
-            while ((len = is.read(bs)) != -1) {
-                os.write(bs, 0, len);
-            }
-
-            //////////////////////////////////////////////////////////////////////////
-            fc.getReply();// 主动调用一次getReply()把接下来的226消费掉. 这样做是可以解决这个返回null问题
-            //////////////////////////////////////////////////////////////////////////
-
-            for (TbYxtWorkDatasipportAffirmPO tbYxtWorkDatasipportAffirmPO : apoList) {
-                String name = tbYxtWorkDatasipportAffirmPO.getFileName();
-                if(name.equals(fileName)){
-                    tbYxtWorkDatasipportAffirmPO.setStatus(&amp;quot;1&amp;quot;);//1-已获取文件
-                    tbYxtWorkDatasipportAffirmPO.setFilePath(fileLocalPath);
-                    filereadDAO.updateData(tbYxtWorkDatasipportAffirmPO, false);
-                }
-            }
-        }
-
-    } finally {
-         //释放资源
-        try {
-            if (is != null) {
-                is.close();
-            }
-            if (os != null) {
-                os.close();
-            }
-        } catch (IOException e) {
-            logger.error(&amp;quot;FilereadServiceImpl-getOutsideFile-关闭流出现异常&amp;quot;);
-        }
-
-        try {
-            if (fc.isConnected()) { 
-                fc.disconnect();
-            } 
-        } catch (IOException e) {
-            logger.error(&amp;quot;FilereadServiceImpl-pushRecordTxt-断开FTP出现异常&amp;quot;);
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>

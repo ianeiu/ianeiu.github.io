@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>组件 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E7%BB%84%E4%BB%B6/</link>
+    <description>Recent content in 组件 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E7%BB%84%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringMVC的九大组件</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      <description>SpringMVC的九大组件 前言 建议先阅读 SpringMVC的运行流程 组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处</description>
+    </item>
+    
+  </channel>
+</rss>
