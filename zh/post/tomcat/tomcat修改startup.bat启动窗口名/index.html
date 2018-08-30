@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>tomcat修改startup.bat启动窗口名 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="打开 catlina.bat 文件，修改灰色区域 :doStart shift if &amp;ldquo;%TITLE%&amp;rdquo; == &amp;ldquo;&amp;rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;ldquo;%TITLE%&amp;rdquo; %_RUNJAVA% if not &amp;ldquo;&amp;rdquo;%1&amp;rdquo;&amp;rdquo; == &amp;ldquo;&amp;rdquo;-security&amp;rdquo;&amp;rdquo; goto execCmd shift echo Using Security Manager set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo; goto execCmd" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+
+
+
+<meta property="og:title" content="tomcat修改startup.bat启动窗口名" />
+<meta property="og:description" content="打开 catlina.bat 文件，修改灰色区域 :doStart shift if &ldquo;%TITLE%&rdquo; == &ldquo;&rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &ldquo;%TITLE%&rdquo; %_RUNJAVA% if not &ldquo;&rdquo;%1&rdquo;&rdquo; == &ldquo;&rdquo;-security&rdquo;&rdquo; goto execCmd shift echo Using Security Manager set &ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&rdquo; goto execCmd" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/zh/post/tomcat/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/" />
+
+
+
+<meta property="article:published_time" content="2018-08-23T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-23T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="tomcat修改startup.bat启动窗口名">
+<meta itemprop="description" content="打开 catlina.bat 文件，修改灰色区域 :doStart shift if &ldquo;%TITLE%&rdquo; == &ldquo;&rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &ldquo;%TITLE%&rdquo; %_RUNJAVA% if not &ldquo;&rdquo;%1&rdquo;&rdquo; == &ldquo;&rdquo;-security&rdquo;&rdquo; goto execCmd shift echo Using Security Manager set &ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&rdquo; goto execCmd">
+
+
+<meta itemprop="datePublished" content="2018-08-23T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-23T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="40">
+
+
+
+<meta itemprop="keywords" content="tomcat," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="tomcat修改startup.bat启动窗口名"/>
+<meta name="twitter:description" content="打开 catlina.bat 文件，修改灰色区域 :doStart shift if &ldquo;%TITLE%&rdquo; == &ldquo;&rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &ldquo;%TITLE%&rdquo; %_RUNJAVA% if not &ldquo;&rdquo;%1&rdquo;&rdquo; == &ldquo;&rdquo;-security&rdquo;&rdquo; goto execCmd shift echo Using Security Manager set &ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&rdquo; goto execCmd"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/zh/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/zh/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/zh/tag/demo/">Demo</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/zh/about/">About</a>
+            
+          </li>
+        
+        
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://ianeiu.github.io/en/"><i class="fas fa-globe"></i> English</a>
+            </li>
+          
+          
+          
+          
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title text-uppercase">
+          tomcat修改startup.bat启动窗口名
+        </h1>
+        <div class="header-underline"></div>
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  <dl>
+<dt>打开 catlina.bat 文件，修改灰色区域</dt>
+</dl>
+
+<p>:doStart<br />
+shift<br />
+if &ldquo;%TITLE%&rdquo; == &ldquo;&rdquo; set TITLE=<code>zsyx_8232</code><br />
+set _EXECJAVA=start &ldquo;%TITLE%&rdquo; %_RUNJAVA%<br />
+if not &ldquo;&rdquo;%1&rdquo;&rdquo; == &ldquo;&rdquo;-security&rdquo;&rdquo; goto execCmd<br />
+shift<br />
+echo Using Security Manager<br />
+set &ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&rdquo;<br />
+goto execCmd</p>
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/zh/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/zh/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/zh/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

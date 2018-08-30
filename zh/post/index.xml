@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on IanEiU</title>
+    <link>https://ianeiu.github.io/zh/post/</link>
+    <description>Recent content in Posts on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/zh/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java基础题（Integer）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</guid>
+      <description>翻了翻之前收藏的文章，找到一段比较有意思的代码 Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简</description>
+    </item>
+    
+    <item>
+      <title>Java基础题（String）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</guid>
+      <description>翻了翻之前收藏的文章，又找到一段比较有意思的代码 @Test public void testStringDD() { String s1 = &amp;quot;hello&amp;quot;; String s2 = &amp;quot;hello&amp;quot;; String s3 = new String(&amp;quot;hello&amp;quot;); System.out.println(s1==s2); // true System.out.println(s1==s3); // false } 文章解释： 一些基本类型的变量和对象的引用变</description>
+    </item>
+    
+    <item>
+      <title>Java基础题（内部类与final）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>翻了翻之前收藏的文章，又又找到一段比较有意思的代码 public void mRun(final String name){ new Runnable() { public void run() { try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO Auto-generated catch block e.printStackTrace(); } System.out.println(name); } }.start(); } 文章解释： 这种代码相信大家写</description>
+    </item>
+    
+    <item>
+      <title>spring常用注解</title>
+      <link>https://ianeiu.github.io/zh/post/spring/spring%E6%B3%A8%E5%85%A5%E7%9B%B8%E5%85%B3%E7%9A%84%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/spring/spring%E6%B3%A8%E5%85%A5%E7%9B%B8%E5%85%B3%E7%9A%84%E6%B3%A8%E8%A7%A3/</guid>
+      <description>属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property 如果不使用注解自动注入，必须通过代码手动注入,</description>
+    </item>
+    
+    <item>
+      <title>外网无法内网FTP （200 Type set to A）</title>
+      <link>https://ianeiu.github.io/zh/post/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp-200-type-set-to-a/</link>
+      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp-200-type-set-to-a/</guid>
+      <description>FTP 搭建好后在外网访问出想以下错误： 在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误 打开FTP 服务器上的文件夹时发生错误。请检查是</description>
+    </item>
+    
+    <item>
+      <title>常见状态码简介</title>
+      <link>https://ianeiu.github.io/zh/post/%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
+      <description>部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3</description>
+    </item>
+    
+    <item>
+      <title>Eclipse 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
+      <link>https://ianeiu.github.io/zh/post/ide/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/ide/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
+      <description>修改系统配置 Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com windows在C:\Windows\System32\drivers\etc\hos</description>
+    </item>
+    
+    <item>
+      <title>IllegalStateException</title>
+      <link>https://ianeiu.github.io/zh/post/java/illegalstateexception/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/illegalstateexception/</guid>
+      <description>做开发的时候，有时候报错： java.lang.IllegalStateException: Cannot call sendError() after the response has been committed 字面上是参数异常， 在response已经提交之后 不能发送错误请求。 下面看个例子就一目了然了： response.setContentType(&amp;ldquo;text/html;charset=UTF-8&amp;rdquo;);</description>
+    </item>
+    
+    <item>
+      <title>form表单使用注意点</title>
+      <link>https://ianeiu.github.io/zh/post/htmlcssjs/form%E8%A1%A8%E5%8D%95%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/htmlcssjs/form%E8%A1%A8%E5%8D%95%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+      <description>查询页面，有绑定回车事件提交表单的，要在form中加上onsubmit=&amp;ldquo;return false;&amp;ldquo;，不然会出现回车</description>
+    </item>
+    
+    <item>
+      <title>svn 提示不是内部或者外部命令</title>
+      <link>https://ianeiu.github.io/zh/post/svn/svn-%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E8%80%85%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/svn/svn-%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E8%80%85%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>windows安装svn的时候默认是不安装 svn comand line这个东西的， 你重装下svn客户端，注意在选择安装项目那里点上 svn comand line 就好了</description>
+    </item>
+    
+    <item>
+      <title>tomcat修改startup.bat启动窗口名</title>
+      <link>https://ianeiu.github.io/zh/post/tomcat/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/tomcat/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</guid>
+      <description>打开 catlina.bat 文件，修改灰色区域 :doStart shift if &amp;ldquo;%TITLE%&amp;rdquo; == &amp;ldquo;&amp;rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;ldquo;%TITLE%&amp;rdquo; %_RUNJAVA% if not &amp;ldquo;&amp;rdquo;%1&amp;rdquo;&amp;rdquo; == &amp;ldquo;&amp;rdquo;-security&amp;rdquo;&amp;rdquo; goto execCmd shift echo Using Security Manager set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo; goto execCmd</description>
+    </item>
+    
+    <item>
+      <title>tomcat占用8080端口问题</title>
+      <link>https://ianeiu.github.io/zh/post/tomcat/%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/tomcat/%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <description>tomcat死机了，重启eclipse之后，发现 Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or</description>
+    </item>
+    
+    <item>
+      <title>tomcat指定jdk</title>
+      <link>https://ianeiu.github.io/zh/post/tomcat/tomcat%E6%8C%87%E5%AE%9Ajdk/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/tomcat/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
+      <description>Windows环境: 打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79 linux环境: 编辑 setclasspath.sh，在文件的最开始加入如下代码： set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51 set JRE_HOME=/home/jdk/Java\jdk7\jre7</description>
+    </item>
+    
+    <item>
+      <title>下载FTP文件 retrievefilestream返回null</title>
+      <link>https://ianeiu.github.io/zh/post/java/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</guid>
+      <description>下载FTP文件 retrievefilestream返回null 增加 fc.getReply(); 解决 具体使用如下： @Override public void getOutsideFile() throws SocketException, IOException, IllegalAccessException, SQLException, Exception { FTPClient fc = null; InputStream is = null; OutputStream os = null; try { //</description>
+    </item>
+    
+    <item>
+      <title>兼容IE</title>
+      <link>https://ianeiu.github.io/zh/post/htmlcssjs/%E5%85%BC%E5%AE%B9ie/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/htmlcssjs/%E5%85%BC%E5%AE%B9ie/</guid>
+      <description>JS 方法/函数：减少使用JS原生方法 indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“</description>
+    </item>
+    
+  </channel>
+</rss>

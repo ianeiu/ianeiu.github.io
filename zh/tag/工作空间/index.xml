@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工作空间 on IanEiU</title>
+    <link>https://ianeiu.github.io/zh/tag/%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/</link>
+    <description>Recent content in 工作空间 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/zh/tag/%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse 删除某个工作空间</title>
+      <link>https://ianeiu.github.io/zh/post/ide/eclipse-%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/ide/eclipse-%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/</guid>
+      <description>方式1（推荐）： 打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;Gener</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maven on IanEiU</title>
+    <link>https://ianeiu.github.io/zh/tag/maven/</link>
+    <description>Recent content in Maven on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/zh/tag/maven/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决pom.xml提示错误Missing artifact</title>
+      <link>https://ianeiu.github.io/zh/post/maven/%E8%A7%A3%E5%86%B3missing-artifact/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/maven/%E8%A7%A3%E5%86%B3missing-artifact/</guid>
+      <description>看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件。 如果有就把这个文件删掉，再update一下</description>
+    </item>
+    
+    <item>
+      <title>解决“Could not calculate build plan”问题</title>
+      <link>https://ianeiu.github.io/zh/post/maven/%E8%A7%A3%E5%86%B3could-not-calculate-build-plan/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/maven/%E8%A7%A3%E5%86%B3could-not-calculate-build-plan/</guid>
+      <description>将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jdk on IanEiU</title>
+    <link>https://ianeiu.github.io/zh/tag/jdk/</link>
+    <description>Recent content in Jdk on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/zh/tag/jdk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tomcat指定jdk</title>
+      <link>https://ianeiu.github.io/zh/post/tomcat/tomcat%E6%8C%87%E5%AE%9Ajdk/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/tomcat/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
+      <description>Windows环境: 打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79 linux环境: 编辑 setclasspath.sh，在文件的最开始加入如下代码： set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51 set JRE_HOME=/home/jdk/Java\jdk7\jre7</description>
+    </item>
+    
+  </channel>
+</rss>

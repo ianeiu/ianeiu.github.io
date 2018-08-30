@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>修复http host头攻击漏洞 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+
+
+
+<meta property="og:title" content="修复http host头攻击漏洞" />
+<meta property="og:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/zh/post/bug-fix/%E4%BF%AE%E5%A4%8Dhttp-host%E5%A4%B4%E6%94%BB%E5%87%BB%E6%BC%8F%E6%B4%9E/" />
+
+
+
+<meta property="article:published_time" content="2018-08-14T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-14T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="修复http host头攻击漏洞">
+<meta itemprop="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp">
+
+
+<meta itemprop="datePublished" content="2018-08-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="978">
+
+
+
+<meta itemprop="keywords" content="漏洞修复,http host头攻击," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="修复http host头攻击漏洞"/>
+<meta name="twitter:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/zh/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/zh/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/zh/tag/demo/">Demo</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/zh/about/">About</a>
+            
+          </li>
+        
+        
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://ianeiu.github.io/en/"><i class="fas fa-globe"></i> English</a>
+            </li>
+          
+          
+          
+          
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title text-uppercase">
+          修复http host头攻击漏洞
+        </h1>
+        <div class="header-underline"></div>
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<h2 id="前言">前言</h2>
+
+<hr />
+
+<p>今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华</p>
+
+<h2 id="begin">Begin</h2>
+
+<hr />
+
+<h3 id="info">info</h3>
+
+<p>系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp（struts2+spring+封装jdbc），maven构建，升级过jdk到1.8，数据库mysql56
+以下是漏洞信息（忘了用什么工具扫出的，Acunetix Web Vulnerability Scanner？？）</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">漏洞</th>
+<th align="left">检测到目标URL存在http host头攻击漏洞</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">受影响站点</td>
+<td align="left">https://码rp.zh码.com/zh码p2</td>
+</tr>
+
+<tr>
+<td align="left">详细描述</td>
+<td align="left">为了方便的获得网站域名，开发人员一般依赖于HTTP Host header。例如，在php里用_SERVER[&ldquo;HTTP_HOST&rdquo;]。但是这个header是不可信赖的，如果应用程序没有对host header值进行处理，就有可能造成恶意代码的传入。</td>
+</tr>
+
+<tr>
+<td align="left">解决办法</td>
+<td align="left">web应用程序应该使用SERVER_NAME而不是host header。 在Apache和Nginx里可以通过设置一个虚拟机来记录所有的非法host header。在Nginx里还可以通过指定一个SERVER_NAME名单，Apache也可以通过指定一个SERVER_NAME名单并开启UseCanonicalName选项。</td>
+</tr>
+
+<tr>
+<td align="left">威胁分值</td>
+<td align="left">5</td>
+</tr>
+
+<tr>
+<td align="left">危险插件</td>
+<td align="left">否</td>
+</tr>
+
+<tr>
+<td align="left">发现日期</td>
+<td align="left">2008-06-12</td>
+</tr>
+
+<tr>
+<td align="left">CVSS评分</td>
+<td align="left">6.1(CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="deal">deal</h3>
+
+<p>思路：增加过滤器拦截非白名单的HOST</p>
+
+<p>1.在web.xml中添加过滤器配置</p>
+
+<pre><code>&lt;!-- 修复Http host头攻击 --&gt;
+&lt;filter&gt;
+   &lt;filter-name&gt;SessionFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;cn.com.do1.component.filter.SessionFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+ &lt;filter-name&gt;SessionFilter&lt;/filter-name&gt;
+  &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+
+<p>2 在resource文件夹中新增文件serverWhiteList.json</p>
+
+<pre><code>[
+  &quot;erp.zh码.com&quot;,
+  &quot;221.1码9.码01.198&quot;,
+  &quot;127.0.0.1:8080&quot;
+]
+</code></pre>
+
+<p>3.新增过滤器代码</p>
+
+<pre><code>import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SessionFilter implements Filter {
+
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
+            ServletException {
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+
+        // 头攻击检测
+        String requestHost = request.getHeader(&quot;host&quot;);
+        if (requestHost != null &amp;&amp; !ServerWhiteListUtil.isWhite(requestHost)) {
+            response.setStatus(403);
+            return;
+        }
+        chain.doFilter(request, response);
+    }
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+}
+</code></pre>
+
+<pre><code>import java.io.InputStreamReader;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * 服务器白名单列表
+ */
+public class ServerWhiteListUtil {
+    private static List&lt;String&gt; whiteList = null;;
+
+    static {
+        try {
+            // 读取白名单列表
+            whiteList = new Gson().fromJson(
+                    new InputStreamReader(ServerWhiteListUtil.class.getResourceAsStream(&quot;/serverWhiteList.json&quot;)),
+                    new TypeToken&lt;List&lt;String&gt;&gt;() {
+                    }.getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 判断当前host是否在白名单内
+     * @param host 待查host
+     * @return boolean 是否在白名单内
+     */
+    public static boolean isWhite(String host) {
+        if (whiteList == null || whiteList.size() == 0) {
+            return true;
+        }
+        for (String  	str : whiteList) {
+            if (str != null &amp;&amp; str.equals(host)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+
+<p>注: ServerWhiteListUtil需要引入Gson包
+可在pom.xml中添加</p>
+
+<pre><code>&lt;dependency&gt;
+	&lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+	&lt;artifactId&gt;gson&lt;/artifactId&gt;
+	&lt;version&gt;2.6&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/zh/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/zh/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/zh/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

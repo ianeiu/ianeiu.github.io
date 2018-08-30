@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on IanEiU</title>
+    <link>https://ianeiu.github.io/zh/category/java/</link>
+    <description>Recent content in Java on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/zh/category/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java基础题（Integer）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</guid>
+      <description>翻了翻之前收藏的文章，找到一段比较有意思的代码 Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简</description>
+    </item>
+    
+    <item>
+      <title>Java基础题（String）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</guid>
+      <description>翻了翻之前收藏的文章，又找到一段比较有意思的代码 @Test public void testStringDD() { String s1 = &amp;quot;hello&amp;quot;; String s2 = &amp;quot;hello&amp;quot;; String s3 = new String(&amp;quot;hello&amp;quot;); System.out.println(s1==s2); // true System.out.println(s1==s3); // false } 文章解释： 一些基本类型的变量和对象的引用变</description>
+    </item>
+    
+    <item>
+      <title>Java基础题（内部类与final）</title>
+      <link>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>翻了翻之前收藏的文章，又又找到一段比较有意思的代码 public void mRun(final String name){ new Runnable() { public void run() { try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO Auto-generated catch block e.printStackTrace(); } System.out.println(name); } }.start(); } 文章解释： 这种代码相信大家写</description>
+    </item>
+    
+    <item>
+      <title>IllegalStateException</title>
+      <link>https://ianeiu.github.io/zh/post/java/illegalstateexception/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/illegalstateexception/</guid>
+      <description>做开发的时候，有时候报错： java.lang.IllegalStateException: Cannot call sendError() after the response has been committed 字面上是参数异常， 在response已经提交之后 不能发送错误请求。 下面看个例子就一目了然了： response.setContentType(&amp;ldquo;text/html;charset=UTF-8&amp;rdquo;);</description>
+    </item>
+    
+    <item>
+      <title>下载FTP文件 retrievefilestream返回null</title>
+      <link>https://ianeiu.github.io/zh/post/java/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</guid>
+      <description>下载FTP文件 retrievefilestream返回null 增加 fc.getReply(); 解决 具体使用如下： @Override public void getOutsideFile() throws SocketException, IOException, IllegalAccessException, SQLException, Exception { FTPClient fc = null; InputStream is = null; OutputStream os = null; try { //</description>
+    </item>
+    
+    <item>
+      <title>常见的RuntimeException</title>
+      <link>https://ianeiu.github.io/zh/post/java/%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/zh/post/java/%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</guid>
+      <description>RuntimeException 运行时异常。是所有Java虚拟机正常操作期间可以被抛出的异常的父类。 NumberFormatException - 数字格式异常 NullPointerException - 空指针引用异常 ClassCastException - 类型强制转换异常。 IllegalArgumentException - 传递非法参</description>
+    </item>
+    
+  </channel>
+</rss>
