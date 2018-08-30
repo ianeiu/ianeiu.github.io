@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ie兼容 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/ie%E5%85%BC%E5%AE%B9/</link>
+    <description>Recent content in Ie兼容 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/ie%E5%85%BC%E5%AE%B9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>兼容IE</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</guid>
+      <description>JS 方法/函数：减少使用JS原生方法 indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“</description>
+    </item>
+    
+  </channel>
+</rss>

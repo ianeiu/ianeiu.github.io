@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IDEA on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/idea/</link>
+    <description>Recent content in IDEA on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/idea/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
+      <link>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
+      <description>修改系统配置 Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com windows在C:\Windows\System32\drivers\etc\hos</description>
+    </item>
+    
+    <item>
+      <title>IDEA 实用快捷键</title>
+      <link>https://ianeiu.github.io/2018/08/08/idea-%E5%AE%9E%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/08/idea-%E5%AE%9E%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>整理的一些常用的快捷键，后续可能会更新 使用频率极高的快捷键 1.默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的</description>
+    </item>
+    
+  </channel>
+</rss>

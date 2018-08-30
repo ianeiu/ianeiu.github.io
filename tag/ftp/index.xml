@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FTP on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/ftp/</link>
+    <description>Recent content in FTP on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 16:01:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/ftp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>外网无法内网FTP（200 Type set to A）</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp200-type-set-to-a/</link>
+      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp200-type-set-to-a/</guid>
+      <description>FTP 搭建好后在外网访问出想以下错误： 在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误 打开FTP 服务器上的文件夹时发生错误。请检查是</description>
+    </item>
+    
+    <item>
+      <title>下载FTP文件 retrievefilestream返回null</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/%E4%B8%8B%E8%BD%BDftp%E6%96%87%E4%BB%B6-retrievefilestream%E8%BF%94%E5%9B%9Enull/</guid>
+      <description>下载FTP文件 retrievefilestream返回null 增加 fc.getReply(); 解决 具体使用如下： @Override public void getOutsideFile() throws SocketException, IOException, IllegalAccessException, SQLException, Exception { FTPClient fc = null; InputStream is = null; OutputStream os = null; try { //</description>
+    </item>
+    
+  </channel>
+</rss>

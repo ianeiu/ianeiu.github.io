@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Integer on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/integer/</link>
+    <description>Recent content in Integer on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/integer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java基础题（Integer）</title>
+      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</guid>
+      <description>翻了翻之前收藏的文章，找到一段比较有意思的代码 Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简</description>
+    </item>
+    
+  </channel>
+</rss>

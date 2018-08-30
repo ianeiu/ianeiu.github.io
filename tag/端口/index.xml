@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>端口 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E7%AB%AF%E5%8F%A3/</link>
+    <description>Recent content in 端口 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E7%AB%AF%E5%8F%A3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tomcat占用8080端口问题</title>
+      <link>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <description>tomcat死机了，重启eclipse之后，发现 Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or</description>
+    </item>
+    
+  </channel>
+</rss>
