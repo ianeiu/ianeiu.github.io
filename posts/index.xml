@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>侃侃而谈——WebService及框架简介</title>
+      <link>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</guid>
+      <description>WebService简介 webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Intern</description>
+    </item>
     
     <item>
       <title>SpringMVC的九大组件</title>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>tomcat死机了，重启eclipse之后，发现 Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or</description>
-    </item>
-    
-    <item>
-      <title>tomcat指定jdk</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
-      <description>Windows环境: 打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79 linux环境: 编辑 setclasspath.sh，在文件的最开始加入如下代码： set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51 set JRE_HOME=/home/jdk/Java\jdk7\jre7</description>
     </item>
     
   </channel>

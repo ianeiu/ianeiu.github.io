@@ -42,6 +42,94 @@
     </item>
     
     <item>
+      <title>侃侃而谈——WebService及框架简介</title>
+      <link>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;webservice简介&#34;&gt;WebService简介&lt;/h1&gt;
+
+&lt;p&gt;webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术）。&lt;/p&gt;
+
+&lt;h3 id=&#34;webservice平台技术&#34;&gt;WebService平台技术&lt;/h3&gt;
+
+&lt;h4 id=&#34;xml-xsd&#34;&gt;XML+XSD&lt;/h4&gt;
+
+&lt;p&gt;WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么）。XML是WebService平台中表示数据的格式。除了易于建立和易于分析外，XML主要的优点在于它既是平台无关的，又是厂商无关的。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。&lt;/p&gt;
+
+&lt;h4 id=&#34;soap&#34;&gt;SOAP&lt;/h4&gt;
+
+&lt;p&gt;SOAP是&amp;rdquo;简单对象访问协议&amp;rdquo;，是一种简单的、基于HTTP和XML的协议, 用于在WEB上交换结构化的数据。&lt;br /&gt;
+soap消息：请求消息和响应消息&lt;/p&gt;
+
+&lt;h4 id=&#34;wsdl&#34;&gt;WSDL&lt;/h4&gt;
+
+&lt;p&gt;WSDL是webservice定义语言, 对应.wsdl文档, 一个webservice会对应一个唯一的wsdl文档, 定义了客户端与服务端发送请求和响应的数据格式和过程。&lt;/p&gt;
+
+&lt;h3 id=&#34;工作调用原理&#34;&gt;工作调用原理&lt;/h3&gt;
+
+&lt;p&gt;对客户端而言，我们给这各类WebService客户端API传递wsdl文件的url地址，这些API就会创建出底层的代理类，我们调用 这些代理，就可以访问到webservice服务。&lt;/p&gt;
+
+&lt;p&gt;代理类把客户端的方法调用变成soap格式的请求数据再通过HTTP协议发出去，并把接收到的soap 数据变成返回值返回。&lt;/p&gt;
+
+&lt;p&gt;对服务端而言，各类WebService框架的本质就是一个大大的Servlet，当远程调用客户端给它通过http协议发送过来 soap格式的请求数据时，它分析这个数据，就知道要调用哪个java类的哪个方法，于是去查找或创建这个对象，并调用其方法，再把方法返回的结果包装成 soap格式的数据，通过http响应消息回给客户端。&lt;/p&gt;
+
+&lt;h1 id=&#34;框架简介&#34;&gt;框架简介&lt;/h1&gt;
+
+&lt;h3 id=&#34;jws&#34;&gt;JWS&lt;/h3&gt;
+
+&lt;p&gt;JWS是Java语言对WebService服务的一种实现，用来开发和发布服务。而从服务本身的角度来看JWS服务是没有语言界限的。但是Java语言为Java开发者提供便捷发布和调用WebService服务的一种途径。&lt;/p&gt;
+
+&lt;h3 id=&#34;axis2&#34;&gt;Axis2&lt;/h3&gt;
+
+&lt;p&gt;Axis2是从Axis1.x系列发展而来，不过它从底层全部重新实现，使用了新的扩展性更好模块架构。&lt;/p&gt;
+
+&lt;p&gt;Axis2是Apache下的一个重量级WebService框架，准确说它是一个Web Services / SOAP / WSDL 的引擎，是WebService框架的集大成者，它能不但能制作和发布WebService，而且可以生成Java和其他语言版WebService客户端和服务端代码。这是它的优势所在。但是，这也不可避免的导致了Axis2的复杂性，使用过的开发者都知道，它所依赖的包数量和大小都是很惊人的，打包部署发布都比较麻烦，不能很好的与现有应用整合为一体。但是如果你要开发Java之外别的语言客户端，Axis2提供的丰富工具将是你不二的选择。&lt;/p&gt;
+
+&lt;h3 id=&#34;xfire&#34;&gt;XFire&lt;/h3&gt;
+
+&lt;p&gt;XFire是一个高性能的WebService框架，它的响应时间是Axis1.3的1/2到1/5，在Java6之前，它的知名度甚至超过了Apache的Axis2，XFire的优点是开发方便，与现有的Web整合很好，可以融为一体，并且开发也很方便。但是对Java之外的语言，没有提供相关的代码工具。XFire后来被Apache收购了，原因是它太优秀了，收购后，随着Java6 JWS的兴起，开源的WebService引擎已经不再被看好，渐渐的都败落了。现在估计只有老旧项目还在使用。&lt;/p&gt;
+
+&lt;h3 id=&#34;cxf&#34;&gt;CXF&lt;/h3&gt;
+
+&lt;p&gt;CXF是Apache旗下一个重磅的SOA简易框架，它实现了ESB（企业服务总线），支持可集成spring。CXF是XFire和Celtix项目的结合产品，是XFire经过改造后形成的，就像目前的Struts2来自WebWork一样。可以看出XFire的命运会和WebWork的命运一样，最终会淡出人们的视线。CXF不但是一个优秀的Web Services / SOAP / WSDL 引擎，也是一个不错的ESB总线，为SOA的实施提供了一种选择方案，当然他不是最好的，它仅仅实现了SOA架构的一部分。&lt;/p&gt;
+
+&lt;h3 id=&#34;axis2与cxf比较&#34;&gt;Axis2与CXF比较&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;通用结构WS-Policy等，数据并对XMLBeans等，Axis2与CXF后面的几个版本基本都支持了，差别不大。&lt;/li&gt;
+&lt;li&gt;CXF可以很好支持Spring。Axis2不能&lt;/li&gt;
+&lt;li&gt;Axis2支持多语言-除了Java,他还支持C/C++版本。
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;从开发者的角度，两个框架的特性相当的不同。&lt;br /&gt;
+Axis2的开发方式类似一个小型的应用服务器，Axis2的开发包要以WAR的形式部署到Servlet容器中，比如Tomcat，通过这些容器可以对工作中的Web Service进行很好的监控和管理。Axis2的Web administrion模块可以让我们动态的配置Axis2.一个新的服务可以上载，激活，使之失效，修改web服务的参数。管理UI也可以管理一个或者多个处于运行状态的服务。这种界面化管理方式的一个弊端是所有在运行时修改的参数没有办法保存，因为在重启动之后，你所做的修改就会全部失效。Axis2允许自己作为独立的应用来发布Web Service，并提供了大量的功能和一个很好的模型，这个模型可以通过它本身的架构（modular architecture）不断添加新的功能。有些开发人员认为这种方式对于他们的需求太过于繁琐。这些开发人员会更喜欢CXF。&lt;br /&gt;
+CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability）。大多数配置都可以API来完成，替代了比较繁琐的XML配置文件， Spring的集成性经常的被提及，CXF支持Spring2.0和CXF&amp;rsquo;s API和Spring的配置文件可以非常好的对应。CXF强调代码优先的设计方式（code-first design)，使用了简单的API使得从现有的应用开发服务变得方便。&lt;br /&gt;
+不过你选择Axis2还是CXF，你都可以从开源社区得到大量的帮助。这两个框架都有商业公司提供服务，WSO2提供AXIS2的支持，Iona提供CXF的支持。这两公司都有很活跃的开发者社区。&lt;/p&gt;
+
+&lt;h3 id=&#34;如何选择&#34;&gt;如何选择？&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;如果应用程序需要多语言的支持，Axis2 应当是首选了；&lt;/li&gt;
+&lt;li&gt;如果应用程序侧重JAVA并希望和Spring集，Apache CXF 是一种更好的选择，特别对嵌入式的 Web Services 来说；&lt;/li&gt;
+&lt;li&gt;如果应用程序没有新的特性需要的话，就仍用原来项目所用的框架，比如 Axis1，XFire，Celtrix或 BEA 等等厂家自己的 Web Services 实现。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;引用&#34;&gt;引用&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/growup/archive/2011/03/06/1972464.html&#34; target=&#34;blank&#34;&gt;每天进步一点点~&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://www.cnblogs.com/xdp-gacl/p/4048937.html&#34; target=&#34;blank&#34;&gt;孤傲苍狼&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>SpringMVC的九大组件</title>
       <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
@@ -54,7 +142,7 @@
 
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 
-&lt;p&gt;建议先阅读 &lt;a href=&#34;https://ianeiu.github.io/2018/08/30/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/&#34;&gt;SpringMVC的运行流程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;建议先阅读 &lt;a href=&#34;https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/&#34;&gt;SpringMVC的运行流程&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;组件&#34;&gt;组件&lt;/h2&gt;
 
@@ -799,28 +887,6 @@ shift&lt;br /&gt;
 echo Using Security Manager&lt;br /&gt;
 set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo;&lt;br /&gt;
 goto execCmd&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>tomcat占用8080端口问题</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
-      
-        <description>&lt;p&gt;tomcat死机了，重启eclipse之后，发现&lt;br /&gt;
-     Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use.&lt;br /&gt;
-     The server may already be running in another process, or a system process may be using the port.&lt;br /&gt;
-     To start this server you will need to stop the other process or change the port number(s).&lt;/p&gt;
-
-&lt;p&gt;解决办法：&lt;br /&gt;
-方法1.重启电脑&lt;br /&gt;
-方法2.在dos下，输入  netstat   -ano|findstr  8080&lt;br /&gt;
-     //说明：查看占用8080端口的进程&lt;br /&gt;
-      taskkill  /pid  6856  /f&lt;br /&gt;
-  //说明，运行windows自带taskkill命令，将上面显示的进程号，结束掉。&lt;/p&gt;
 </description>
       
     </item>

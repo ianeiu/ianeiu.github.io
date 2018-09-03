@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</loc>
     <lastmod>2018-08-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -213,6 +220,20 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/tag/axis/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/axis2/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -221,6 +242,13 @@
   <url>
     <loc>https://ianeiu.github.io/category/css/</loc>
     <lastmod>2018-08-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/cxf/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -395,7 +423,7 @@
   
   <url>
     <loc>https://ianeiu.github.io/posts/</loc>
-    <lastmod>2018-08-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -465,7 +493,7 @@
   
   <url>
     <loc>https://ianeiu.github.io/tags/</loc>
-    <lastmod>2018-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -487,6 +515,27 @@
   <url>
     <loc>https://ianeiu.github.io/tag/tutorial/</loc>
     <lastmod>2018-03-07T16:01:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/webservice/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/xfire/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
