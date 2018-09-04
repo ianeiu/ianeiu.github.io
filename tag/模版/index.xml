@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>模版 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E6%A8%A1%E7%89%88/</link>
+    <description>Recent content in 模版 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E6%A8%A1%E7%89%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>正则的运用——短信模版配置</title>
+      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</guid>
+      <description>短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年</description>
+    </item>
+    
+  </channel>
+</rss>

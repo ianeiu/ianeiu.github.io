@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>正则的运用——短信模版配置</title>
+      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</guid>
+      <description>短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年</description>
+    </item>
+    
+    <item>
+      <title>正则贪婪模式与懒惰模式(扩展元字符)</title>
+      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</guid>
+      <description>前言 之前做过一个短信模版的配置功能，需要用到大量的正则判断，其中有一个方法涉及到正则贪婪模式与懒惰模式，今天刚好抽时间整理下。 /** * 创建文本预</description>
+    </item>
     
     <item>
       <title>侃侃而谈——WebService及框架简介</title>
@@ -94,11 +112,11 @@
     </item>
     
     <item>
-      <title>Eclipse 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
-      <link>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
+      <title>IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
+      <link>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
       <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
+      <guid>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
       <description>修改系统配置 Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com windows在C:\Windows\System32\drivers\etc\hos</description>
     </item>
     
@@ -127,24 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/23/svn-%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E8%80%85%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>windows安装svn的时候默认是不安装 svn comand line这个东西的， 你重装下svn客户端，注意在选择安装项目那里点上 svn comand line 就好了</description>
-    </item>
-    
-    <item>
-      <title>tomcat修改startup.bat启动窗口名</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</guid>
-      <description>打开 catlina.bat 文件，修改灰色区域 :doStart shift if &amp;ldquo;%TITLE%&amp;rdquo; == &amp;ldquo;&amp;rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;ldquo;%TITLE%&amp;rdquo; %_RUNJAVA% if not &amp;ldquo;&amp;rdquo;%1&amp;rdquo;&amp;rdquo; == &amp;ldquo;&amp;rdquo;-security&amp;rdquo;&amp;rdquo; goto execCmd shift echo Using Security Manager set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo; goto execCmd</description>
-    </item>
-    
-    <item>
-      <title>tomcat占用8080端口问题</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
-      <description>tomcat死机了，重启eclipse之后，发现 Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or</description>
     </item>
     
   </channel>

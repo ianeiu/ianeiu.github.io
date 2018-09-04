@@ -42,6 +42,351 @@
     </item>
     
     <item>
+      <title>正则的运用——短信模版配置</title>
+      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;短信模版的配置功能&#34;&gt;短信模版的配置功能&lt;/h2&gt;
+
+&lt;p&gt;需求功能如下图：&lt;br /&gt;
+&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt1.png&#34;  alt=&#34;短信模版1&#34; /&gt;
+&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt2.png&#34;  alt=&#34;短信模版2&#34; /&gt;
+&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt3.png&#34;  alt=&#34;短信模版3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function toExa(template){
+
+	var now = new Date();
+	var syear = now.getYear();//获取当前年份(2位)
+	var year = now.getFullYear(); //获取完整的年份(4位,1970-????)
+	var month = now.getMonth() &amp;lt;9?&amp;quot;0&amp;quot;+(now.getMonth()+1):(now.getMonth()+1);//获取当前月份(1-12)
+	var day = now.getDate()&amp;lt;10?&amp;quot;0&amp;quot;+now.getDate():now.getDate();//获取当前日(1-31)
+	var hour = now.getHours()&amp;lt;10?&amp;quot;0&amp;quot;+now.getHours():now.getHours(); //获取当前小时数(00-23)
+	var minu = now.getMinutes&amp;lt;10?&amp;quot;0&amp;quot;+now.getMinutes():now.getMinutes(); //获取当前分钟数(00-59)
+	var seco = now.getSeconds()&amp;lt;10?&amp;quot;0&amp;quot;+now.getSeconds():now.getSeconds(); //获取当前秒数(00-59)
+	var pre_syear = syear - 1;
+	var pre_year = year - 1;
+	var pre_month = getLastMonth(now);
+	var pre_day = getYestoday(now);
+	
+	template = template.replace(/{yyyy}/g,year);
+	template = template.replace(/{yy}/g,syear);
+	template = template.replace(/{MM}/g,month);
+	template = template.replace(/{dd}/g,day);
+	template = template.replace(/{HH}/g,hour);
+	template = template.replace(/{mm}/g,minu);
+	template = template.replace(/{ss}/g,seco);
+	template = template.replace(/{MMdd}/g,month+&amp;quot;&amp;quot;+day);
+	template = template.replace(/{yyyyMMdd}/g,year+&amp;quot;&amp;quot;+month+&amp;quot;&amp;quot;+day);
+	template = template.replace(/{yyyyMMddHHmm}/g,year+&amp;quot;&amp;quot;+month+&amp;quot;&amp;quot;+day+&amp;quot;&amp;quot;+hour+&amp;quot;&amp;quot;+minu);
+	
+	template = template.replace(/{pre_yy}/g,pre_year);
+	template = template.replace(/{pre_yyyy}/g,pre_year);
+	template = template.replace(/{pre_MM}/g,pre_month);
+	template = template.replace(/{pre_dd}/g,pre_day);
+	template = template.replace(/{pre_MMdd}/g,pre_month+&amp;quot;&amp;quot;+pre_day);
+	template = template.replace(/{pre_yyyyMMdd}/g,pre_year+&amp;quot;&amp;quot;+pre_month+&amp;quot;&amp;quot;+pre_day);
+	template = template.replace(/{pre_yyyyMMddHHmm}/g,pre_year+&amp;quot;&amp;quot;+pre_month+&amp;quot;&amp;quot;+pre_day+&amp;quot;&amp;quot;+day+&amp;quot;&amp;quot;+hour+&amp;quot;&amp;quot;+minu);
+	
+	//srkVal  -  输入框(值,时间)
+	template = template.replace(/[\{][f]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick(&amp;amp;#39;num&amp;amp;#39;);&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39;/&amp;gt;&amp;quot;);
+	template = template.replace(/[\{][z]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick();&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39; valid=&#39;{must:false, fieldType:&amp;amp;#39;isPositiveInteger&amp;amp;#39;, tip:&amp;amp;#39;整数输入框&amp;amp;#39;}&#39;/&amp;gt;&amp;quot;);
+	template = template.replace(/[\{][x]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick();&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39; valid=&#39;{must:false, fieldType:&amp;amp;#39;isSmallInteger&amp;amp;#39;, tip:&amp;amp;#39;小数输入框&amp;amp;#39;}&#39;/&amp;gt;&amp;quot;);
+	
+	template = template.replace(/[\{][d][i][v][1-9]\d*[\=]([1-9]\d*)[\/]([1-9]\d*)[\/]([1-9]\d*)[\}]/g,
+			&amp;quot;&amp;lt;input type=&#39;text&#39; class=&#39;n_textInp njsk&#39; onclick=&#39;caclChuFaValToJSK(this,&amp;amp;#39;$1&amp;amp;#39;,&amp;amp;#39;$2&amp;amp;#39;,&amp;amp;#39;$3&amp;amp;#39;)&#39; readonly/&amp;gt;&amp;quot;);
+	
+	template = template.replace(/[\{][s][u][b][t][1-9]\d*[\=]([1-9])\d*[\/]([1-9])\d*[\/]([d|h|m])[\}]/g,
+			&amp;quot;&amp;lt;input type=&#39;text&#39; class=&#39;n_textInp sjsk&#39; onclick=&#39;caclTimeValToJSK(this,&amp;amp;#39;$1&amp;amp;#39;,&amp;amp;#39;$2&amp;amp;#39;,&amp;amp;#39;$3&amp;amp;#39;)&#39; readonly/&amp;gt;&amp;quot;);
+	
+	template = template.replace(/[\{][d]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:100px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:160px;&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:mm:ss&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t][\-][s]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:140px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:mm&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t][\-][m][\-][s]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:140px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:00&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	
+	template = template.replace(/[\{][d][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:130px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:220px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时mm分ss秒&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t][\-][s][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:190px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时mm分&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+	template = template.replace(/[\{][d][t][\-][m][\-][s][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:160px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
+
+	$(&amp;quot;#tExaDiv&amp;quot;).html(template);
+}
+
+function checkDate(){
+	caclClick(&#39;date&#39;);
+}
+
+function caclClick(type){
+	if(type==&#39;num&#39;){
+		$(&#39;.njsk&#39;).trigger(&amp;quot;click&amp;quot;);
+	}else if(type==&#39;date&#39;){
+		$(&#39;.sjsk&#39;).trigger(&amp;quot;click&amp;quot;);
+	}
+}
+
+//除法计算并将值放入计算框
+function caclChuFaValToJSK(obj,n1,n2,weiShu){
+	$(obj).val(&amp;quot;&amp;quot;);
+
+	var one =&#39;&#39;;//序号a的值
+	var two =&#39;&#39;;//序号b的值
+	
+	one = $(&#39;#srkVal&#39;+n1).val();
+	two = $(&#39;#srkVal&#39;+n2).val();
+	
+	var finaVal = &#39;&#39;;//计算后的值
+	if(one==&amp;quot;&amp;quot;||two==&amp;quot;&amp;quot;){
+		$(obj).val(&amp;quot;&amp;quot;);
+		return;
+	}else{
+		finaVal=(parseFloat(one)/parseFloat(two)).toFixed(weiShu);
+	}
+	$(obj).val(finaVal);
+}
+
+//计算并将值放入计算框
+function caclTimeValToJSK(obj,d1,d2,oper){
+	var eTime =&#39;&#39;;//序号a的值
+	var sTime =&#39;&#39;;//序号b的值
+	
+	eTime = $(&#39;#srkVal&#39;+d1).val();
+	sTime = $(&#39;#srkVal&#39;+d2).val();
+	
+	var finalVal =&#39;&#39;;
+	if(eTime==&amp;quot;&amp;quot;||sTime==&amp;quot;&amp;quot;){
+		$(obj).val(&amp;quot;&amp;quot;);
+		return;
+	}else{
+		switch (oper) {
+		    case (&amp;quot;d&amp;quot;):  //日
+		    	finalVal = GetDateDiff(sTime,eTime,&#39;day&#39;)+&#39;天&#39;;
+		    	break;
+		    case (&amp;quot;h&amp;quot;):  //时
+		    	finalVal = GetDateDiff(sTime,eTime,&#39;hour&#39;)+&#39;小时&#39;;
+		        break;
+		    case (&amp;quot;m&amp;quot;):  //分
+		    	finalVal = GetDateDiff(sTime,eTime,&#39;minute&#39;)+&#39;分钟&#39;;
+		        break;
+		    default: 
+		       console.log(&amp;quot;caclTimeValToJSK传入无效操作参数&amp;quot;+oper);
+		}
+	}
+	$(obj).val(finalVal);
+}
+
+//获取上个月
+function getLastMonth(date){      
+    var daysInMonth = new Array([0],[31],[28],[31],[30],[31],[30],[31],[31],[30],[31],[30],[31]);      
+    var strYear = date.getFullYear();        
+    //var strDay = date.getDate();        
+    var strMonth = date.getMonth()+1;      
+    if(strYear%4 == 0 &amp;amp;&amp;amp; strYear%100 != 0){      
+       daysInMonth[2] = 29;      
+    }      
+    if(strMonth - 1 == 0)      
+    {      
+       strYear -= 1;      
+       strMonth = 12;      
+    }      
+    else     
+    {      
+       strMonth -= 1;      
+    }      
+    //strDay = daysInMonth[strMonth] &amp;gt;= strDay ? strDay : daysInMonth[strMonth];      
+    if(strMonth&amp;lt;10)        
+    {        
+       strMonth=&amp;quot;0&amp;quot;+strMonth;        
+    }      
+    /* if(strDay&amp;lt;10)        
+    {        
+       strDay=&amp;quot;0&amp;quot;+strDay;        
+    }  */
+    //datastr = strYear+&amp;quot;-&amp;quot;+strMonth+&amp;quot;-&amp;quot;+strDay;      
+    datastr = strMonth;      
+    return datastr;      
+}
+
+//获取昨天
+function getYestoday(date){          
+   var yesterday_milliseconds=date.getTime()-1000*60*60*24;           
+   var yesterday = new Date();           
+   yesterday.setTime(yesterday_milliseconds);           
+           
+  // var strYear = yesterday.getFullYear();        
+   var strDay = yesterday.getDate();        
+  // var strMonth = yesterday.getMonth()+1;      
+  /*  if(strMonth&amp;lt;10) 
+   {        
+       strMonth=&amp;quot;0&amp;quot;+strMonth;        
+   }   */      
+   //datastr = strYear+&amp;quot;-&amp;quot;+strMonth+&amp;quot;-&amp;quot;+strDay;      
+   datastr = strDay;      
+   return datastr;      
+}   
+
+//获取时间差
+function GetDateDiff(startTime, endTime, diffType) {
+    //转换时间格式，如xxxx-xx-xx转换为 xxxx/xx/xx的格式 
+    startTime = startTime.replace(/\-/g, &amp;quot;/&amp;quot;).replace(/[\u5e74|\u6708]/g,&amp;quot;/&amp;quot;).replace(/[\u65e5]/g,&amp;quot;&amp;quot;);
+    endTime = endTime.replace(/\-/g, &amp;quot;/&amp;quot;).replace(/[\u5e74|\u6708]/g,&amp;quot;/&amp;quot;).replace(/[\u65e5]/g,&amp;quot;&amp;quot;);
+    
+    if(startTime.endWith(&#39;时&#39;)){
+    	startTime = startTime.replace(/[\u65f6]/g,&amp;quot;:00&amp;quot;);
+	}else if(startTime.endWith(&#39;分&#39;)){
+		startTime = startTime.replace(/[\u65f6]/g,&amp;quot;:&amp;quot;).replace(/[\u5206]/g,&amp;quot;&amp;quot;);
+	}else if(startTime.endWith(&#39;秒&#39;)){
+		startTime = startTime.replace(/[\u65f6|\u5206]/g,&amp;quot;:&amp;quot;).replace(/[\u79d2]/g,&amp;quot;&amp;quot;);
+	}
+	
+	if(endTime.endWith(&#39;时&#39;)){
+		endTime = endTime.replace(/[\u65f6]/g,&amp;quot;:00&amp;quot;);
+	}else if(endTime.endWith(&#39;分&#39;)){
+		endTime = endTime.replace(/[\u65f6]/g,&amp;quot;:&amp;quot;).replace(/[\u5206]/g,&amp;quot;&amp;quot;);
+	}else if(endTime.endWith(&#39;秒&#39;)){
+		endTime = endTime.replace(/[\u65f6|\u5206]/g,&amp;quot;:&amp;quot;).replace(/[\u79d2]/g,&amp;quot;&amp;quot;);
+	}
+    
+    //将计算间隔类性字符转换为小写
+    diffType = diffType.toLowerCase();
+    var sTime =new Date(startTime); //开始时间
+    var eTime =new Date(endTime); //结束时间
+    //作为除数的数字
+    var timeType =1;
+    switch (diffType) {
+        case&amp;quot;second&amp;quot;:
+            timeType =1000;
+        break;
+        case&amp;quot;minute&amp;quot;:
+            timeType =1000*60;
+        break;
+        case&amp;quot;hour&amp;quot;:
+            timeType =1000*3600;
+        break;
+        case&amp;quot;day&amp;quot;:
+            timeType =1000*3600*24;
+        break;
+        default:
+        break;
+    }
+    return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(timeType));
+}
+
+String.prototype.endWith=function(s){
+  if(s==null||s==&amp;quot;&amp;quot;||this.length==0||s.length&amp;gt;this.length)
+     return false;
+  if(this.substring(this.length-s.length)==s)
+     return true;
+  else
+     return false;
+  return true;
+ }
+
+ String.prototype.startWith=function(s){
+  if(s==null||s==&amp;quot;&amp;quot;||this.length==0||s.length&amp;gt;this.length)
+   return false;
+  if(this.substr(0,s.length)==s)
+     return true;
+  else
+     return false;
+  return true;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>正则贪婪模式与懒惰模式(扩展元字符)</title>
+      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;之前做过一个短信模版的配置功能，需要用到大量的正则判断，其中有一个方法涉及到正则贪婪模式与懒惰模式，今天刚好抽时间整理下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+/**
+ * 创建文本预览（取出input值替换input）
+ */
+function createContentPreview(){
+	var vals=[];
+	$(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){
+		var val=$(this).val();
+		vals.push(val);
+	})
+	
+	var html=$(&amp;quot;#tExaDiv&amp;quot;).html();
+	var reg=/[/&amp;lt;][i][n][p][u][t][^]*?[&amp;gt;]/;
+	for(var i=0;i&amp;lt;vals.length;i++){
+		html=html.replace(reg,vals[i]);
+	}
+	$(&amp;quot;#contentPreview&amp;quot;).html(html);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;懒惰模式&#34;&gt;懒惰模式&lt;/h2&gt;
+
+&lt;p&gt;像上面代码的匹配就是正则表达式的懒惰模式，对字符串进行最小长度匹配。&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;栗子&lt;/kbd&gt;&lt;br /&gt;
+字符串：&lt;code&gt;&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
+正则表达式：&lt;code&gt;&amp;lt;span&amp;gt;.*?&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
+匹配结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;共找到 2 处匹配：  
+	&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt; 
+	&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;贪婪模式&#34;&gt;贪婪模式&lt;/h2&gt;
+
+&lt;p&gt;贪婪模式则是对字符串进行最大长度匹配。&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;栗子&lt;/kbd&gt;&lt;br /&gt;
+字符串：&lt;code&gt;&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
+正则表达式：&lt;code&gt;&amp;lt;span&amp;gt;.*&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
+匹配结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;共找到 1 处匹配：
+&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
+
+&lt;p&gt;正则表达式，表示字符串重复个数元字符，&amp;rsquo;?,+,*,{}&amp;rsquo; 默认都会选择贪婪模式，会最大长度匹配字符串，而要切换到懒惰模式，就只是在该元字符，后面加多一个”?” 即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;元字符&#34;&gt;元字符&lt;/h2&gt;
+
+&lt;p&gt;常见元字符及其含义&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;符号               含义
+————————————————————————————————————————————————————
+.                  匹配除换行符之外的任意字符
+^                  匹配字符的开始位置
+$                  匹配字符的结束位置
+*                  匹配0次，1次或多次前面的原子
+?                  匹配0次或1次前面的原子
++                  匹配1次或多次前面的原子
+{n}                前面的原子恰好出现n次
+{n,}               前面的原子至少出现n次
+{n,m}              前面的原子至少出现n次，至多出现m次
+|                  模式选择符
+()                 模式单元符   
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>侃侃而谈——WebService及框架简介</title>
       <link>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
@@ -793,11 +1138,11 @@ class User{
     </item>
     
     <item>
-      <title>Eclipse 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
-      <link>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
+      <title>IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
+      <link>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
       <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/23/eclipse-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
+      <guid>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
       
         <description>&lt;p&gt;修改系统配置&lt;/p&gt;
 
@@ -850,43 +1195,6 @@ out.close();&lt;/p&gt;
 
 &lt;li&gt;&lt;p&gt;直接在form标签中加入属性accept-charset=&amp;lsquo;UTF-8&amp;rsquo;,防止中文乱码&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>svn 提示不是内部或者外部命令</title>
-      <link>https://ianeiu.github.io/2018/08/23/svn-%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E8%80%85%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/svn-%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E8%80%85%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4/</guid>
-      
-        <description>&lt;p&gt;windows安装svn的时候默认是不安装 svn comand line这个东西的，&lt;br /&gt;
-你重装下svn客户端，注意在选择安装项目那里点上 svn comand line 就好了&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>tomcat修改startup.bat启动窗口名</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</guid>
-      
-        <description>&lt;dl&gt;
-&lt;dt&gt;打开 catlina.bat 文件，修改灰色区域&lt;/dt&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;:doStart&lt;br /&gt;
-shift&lt;br /&gt;
-if &amp;ldquo;%TITLE%&amp;rdquo; == &amp;ldquo;&amp;rdquo; set TITLE=&lt;code&gt;zsyx_8232&lt;/code&gt;&lt;br /&gt;
-set _EXECJAVA=start &amp;ldquo;%TITLE%&amp;rdquo; %_RUNJAVA%&lt;br /&gt;
-if not &amp;ldquo;&amp;rdquo;%1&amp;rdquo;&amp;rdquo; == &amp;ldquo;&amp;rdquo;-security&amp;rdquo;&amp;rdquo; goto execCmd&lt;br /&gt;
-shift&lt;br /&gt;
-echo Using Security Manager&lt;br /&gt;
-set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo;&lt;br /&gt;
-goto execCmd&lt;/p&gt;
 </description>
       
     </item>
