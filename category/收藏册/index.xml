@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>收藏册 on IanEiU</title>
+    <link>https://ianeiu.github.io/category/%E6%94%B6%E8%97%8F%E5%86%8C/</link>
+    <description>Recent content in 收藏册 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/%E6%94%B6%E8%97%8F%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[置顶]收藏册——js、jq</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
+      <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的</description>
+    </item>
+    
+    <item>
+      <title>收藏册——兼容IE</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E6%94%B6%E8%97%8F%E5%86%8C%E5%85%BC%E5%AE%B9ie/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/%E6%94%B6%E8%97%8F%E5%86%8C%E5%85%BC%E5%AE%B9ie/</guid>
+      <description>JS 方法/函数：减少使用JS原生方法 indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“</description>
+    </item>
+    
+  </channel>
+</rss>

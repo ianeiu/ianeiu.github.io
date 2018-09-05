@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>兼容IE</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</link>
+      <title>收藏册——兼容IE</title>
+      <link>https://ianeiu.github.io/2018/08/23/%E6%94%B6%E8%97%8F%E5%86%8C%E5%85%BC%E5%AE%B9ie/</link>
       <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/23/%E5%85%BC%E5%AE%B9ie/</guid>
+      <guid>https://ianeiu.github.io/2018/08/23/%E6%94%B6%E8%97%8F%E5%86%8C%E5%85%BC%E5%AE%B9ie/</guid>
       <description>JS 方法/函数：减少使用JS原生方法 indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“</description>
     </item>
     
