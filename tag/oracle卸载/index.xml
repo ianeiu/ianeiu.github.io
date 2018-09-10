@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle卸载 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/oracle%E5%8D%B8%E8%BD%BD/</link>
+    <description>Recent content in Oracle卸载 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/oracle%E5%8D%B8%E8%BD%BD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle——卸载教程</title>
+      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</guid>
+      <description>Oracle卸载步骤 开始–&amp;gt;设置–&amp;gt;控制面板–&amp;gt;管理工具–&amp;gt;服务–&amp;gt;停止所有oracle服务 开始–&amp;gt;程序</description>
+    </item>
+    
+  </channel>
+</rss>

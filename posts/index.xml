@@ -7,18 +7,45 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[置顶]收藏册——js、jq</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/23/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
+      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
       <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的</description>
+    </item>
+    
+    <item>
+      <title>Oracle——卸载教程</title>
+      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</guid>
+      <description>Oracle卸载步骤 开始–&amp;gt;设置–&amp;gt;控制面板–&amp;gt;管理工具–&amp;gt;服务–&amp;gt;停止所有oracle服务 开始–&amp;gt;程序</description>
+    </item>
+    
+    <item>
+      <title>Oracle安装异常——INS-13001</title>
+      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</guid>
+      <description>问题 win10系统安装oracle11g时遇到INS-13001环境不满足最低要求 解决 打开database-&amp;gt;stage-&amp;gt;cv</description>
+    </item>
+    
+    <item>
+      <title>Oracle异常——ORA-12505</title>
+      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</guid>
+      <description>问题 使用SQL Developer 连接DB报错 ORA-12505，报错信息如下： ORA-12505, TNS:listener does not currently know of SID given in connect descriptor 解决 找到Oracle安装目录（类似D:\app\mia</description>
     </item>
     
     <item>
@@ -118,33 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/23/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp200-type-set-to-a/</guid>
       <description>FTP 搭建好后在外网访问出想以下错误： 在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误 打开FTP 服务器上的文件夹时发生错误。请检查是</description>
-    </item>
-    
-    <item>
-      <title>常见状态码简介</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/</guid>
-      <description>部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3</description>
-    </item>
-    
-    <item>
-      <title>IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</title>
-      <link>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/idea-%E4%BF%AE%E5%A4%8D-%E5%BC%B9%E7%AA%97license-activation%E6%8A%A5this-license-big3clik6f-has-been-cancelled/</guid>
-      <description>修改系统配置 Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com windows在C:\Windows\System32\drivers\etc\hos</description>
-    </item>
-    
-    <item>
-      <title>IllegalStateException</title>
-      <link>https://ianeiu.github.io/2018/08/23/illegalstateexception/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/illegalstateexception/</guid>
-      <description>做开发的时候，有时候报错： java.lang.IllegalStateException: Cannot call sendError() after the response has been committed 字面上是参数异常， 在response已经提交之后 不能发送错误请求。 下面看个例子就一目了然了： response.setContentType(&amp;ldquo;text/html;charset=UTF-8&amp;rdquo;);</description>
     </item>
     
   </channel>
