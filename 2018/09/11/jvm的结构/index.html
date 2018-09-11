@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>JVM的结构 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="JVM的结构" />
+<meta property="og:description" content="JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/" />
+
+
+
+<meta property="article:published_time" content="2018-09-11T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-11T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="JVM的结构">
+<meta itemprop="description" content="JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这">
+
+
+<meta itemprop="datePublished" content="2018-09-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-11T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="834">
+
+
+
+<meta itemprop="keywords" content="JVM,结构," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JVM的结构"/>
+<meta name="twitter:description" content="JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">JVM的结构</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-09-11
+          / 分类：
+          <a href="https://ianeiu.github.io/category/java/">java</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/jvm/">JVM</a>, 
+                <a href="https://ianeiu.github.io/tag/%E7%BB%93%E6%9E%84/">结构</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<h2 id="jvm运行时数据区">JVM运行时数据区</h2>
+
+<p>运行时数据区（分布在操作系统堆中，由程序员管理）</p>
+
+<ul>
+<li>方法区</li>
+<li>虚拟机栈（Java栈）</li>
+<li>堆（Java堆）</li>
+<li>本地方法栈/区</li>
+<li>程序计数器</li>
+</ul>
+
+<p><img style="width:60%" src="/resouce/JVM/JVM结构.jpg"  alt="JVM结构" /></p>
+
+<p>虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。</p>
+
+<h2 id="线程独享的区域">线程独享的区域</h2>
+
+<h4 id="程序计数器">程序计数器</h4>
+
+<p>程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。<br />
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。</p>
+
+<h4 id="虚拟机栈">虚拟机栈</h4>
+
+<p>每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。
+栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。</p>
+
+<h4 id="本地方法区">本地方法区</h4>
+
+<p>本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。</p>
+
+<h2 id="全局共享的区域">全局共享的区域</h2>
+
+<h4 id="方法区">方法区</h4>
+
+<p>方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。</p>
+
+<p><strong>运行时常量池</strong> ：方法区的一部分<em>（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）    </em>，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。</p>
+
+<h4 id="堆">堆</h4>
+
+<p>JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定</p>
+
+
+  
+  
+
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

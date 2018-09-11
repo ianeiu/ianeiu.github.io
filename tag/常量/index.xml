@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>常量 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E5%B8%B8%E9%87%8F/</link>
+    <description>Recent content in 常量 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E5%B8%B8%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[转] Java中定义常量的四种方法</title>
+      <link>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
+    </item>
+    
+  </channel>
+</rss>

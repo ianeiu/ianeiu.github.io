@@ -27,7 +27,7 @@
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</guid>
-      <description>翻了翻之前收藏的文章，又找到一段比较有意思的代码 @Test public void testStringDD() { String s1 = &amp;quot;hello&amp;quot;; String s2 = &amp;quot;hello&amp;quot;; String s3 = new String(&amp;quot;hello&amp;quot;); System.out.println(s1==s2); // true System.out.println(s1==s3); // false } 文章解释： 一些基本类型的变量和对象的引用变</description>
+      <description>阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地</description>
     </item>
     
     <item>

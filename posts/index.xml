@@ -22,6 +22,42 @@
     </item>
     
     <item>
+      <title>[置顶]思维导图</title>
+      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</guid>
+      <description>来源：微信公众号 java思维导图 HTTP超文本协议</description>
+    </item>
+    
+    <item>
+      <title>JVM的结构</title>
+      <link>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</guid>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
+    </item>
+    
+    <item>
+      <title>Java初中级面试题集</title>
+      <link>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
+      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用 只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会</description>
+    </item>
+    
+    <item>
+      <title>[转] Java中定义常量的四种方法</title>
+      <link>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
+    </item>
+    
+    <item>
       <title>Oracle——卸载教程</title>
       <link>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
@@ -109,42 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</guid>
       <description>翻了翻之前收藏的文章，找到一段比较有意思的代码 Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（String）</title>
-      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</guid>
-      <description>翻了翻之前收藏的文章，又找到一段比较有意思的代码 @Test public void testStringDD() { String s1 = &amp;quot;hello&amp;quot;; String s2 = &amp;quot;hello&amp;quot;; String s3 = new String(&amp;quot;hello&amp;quot;); System.out.println(s1==s2); // true System.out.println(s1==s3); // false } 文章解释： 一些基本类型的变量和对象的引用变</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      <description>翻了翻之前收藏的文章，又又找到一段比较有意思的代码 public void mRun(final String name){ new Runnable() { public void run() { try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO Auto-generated catch block e.printStackTrace(); } System.out.println(name); } }.start(); } 文章解释： 这种代码相信大家写</description>
-    </item>
-    
-    <item>
-      <title>Spring常用注解</title>
-      <link>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
-      <description>属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property 如果不使用注解自动注入，必须通过代码手动注入,</description>
-    </item>
-    
-    <item>
-      <title>外网无法内网FTP（200 Type set to A）</title>
-      <link>https://ianeiu.github.io/2018/08/23/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp200-type-set-to-a/</link>
-      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E5%86%85%E7%BD%91ftp200-type-set-to-a/</guid>
-      <description>FTP 搭建好后在外网访问出想以下错误： 在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误 打开FTP 服务器上的文件夹时发生错误。请检查是</description>
     </item>
     
   </channel>
