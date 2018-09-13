@@ -1038,6 +1038,10 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -1164,6 +1168,230 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;h3 id=&#34;cocurrenthashmap与hashtable&#34;&gt;CocurrentHashMap与Hashtable&lt;/h3&gt;
 
 &lt;p&gt;Hashtable是synchronized的，但是ConcurrentHashMap同步性能更好，因为它仅仅根据同步级别对map的一部分进行上锁。ConcurrentHashMap当然可以代替HashTable，但是HashTable提供更强的线程安全性。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Mybatis——参数篇</title>
+      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;参数传递符号&#34;&gt;参数传递符号&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;#{}&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;${}&lt;/p&gt;
+
+&lt;p&gt;select * from tbl_employee where id=${id} and last_name=#{userName}
+Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;区别：&lt;br /&gt;
+#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。&lt;br /&gt;
+大多情况下，取参数的值都应该使用#{}。&lt;/p&gt;
+
+&lt;p&gt;${}:取出的值直接拼装在sql语句中；会有安全问题；&lt;br /&gt;
+原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select * from ${year}_salary where xxx;
+select * from tb_sys_user order by ${f_name} ${order}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;更丰富的用法&#34;&gt;#{}更丰富的用法&lt;/h3&gt;
+
+&lt;p&gt;规定参数的一些规则：
+javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；&lt;/p&gt;
+
+&lt;p&gt;jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）；
+JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;&lt;/p&gt;
+
+&lt;p&gt;由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;#{email,jdbcType=OTHER}&lt;/li&gt;
+&lt;li&gt;jdbcTypeForNull=NULL &lt;setting name=&#34;jdbcTypeForNull&#34; value=&#34;NULL&#34;/&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;参数传递&#34;&gt;参数传递&lt;/h3&gt;
+
+&lt;h4 id=&#34;单个参数&#34;&gt;单个参数&lt;/h4&gt;
+
+&lt;p&gt;#{参数名/任意名}：取出参数值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserById(String id); --&amp;gt;
+&amp;lt;!-- parameterType=&amp;quot;java.lang.String&amp;quot; 可不加 --&amp;gt;
+&amp;lt;select id=&amp;quot;getUserById&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
+    select * from tb_sys_user where user_id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;多个参数&#34;&gt;多个参数&lt;/h4&gt;
+
+&lt;p&gt;mybatis会做特殊处理。多个参数会被封装成一个map。&lt;br /&gt;
+key：param1&amp;hellip;paramN,或者参数的索引也可以&lt;br /&gt;
+value：传入的参数值&lt;br /&gt;
+#{}就是从map中获取指定的key的值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserByIdAndName(String id, String userName); --&amp;gt;
+&amp;lt;select id=&amp;quot;getUserByIdAndName&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
+    select * from tb_sys_user where user_id = #{0} and user_name like #{1}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;map封装多个参数&#34;&gt;Map封装多个参数&lt;/h4&gt;
+
+&lt;p&gt;#{key}：取出map中对应的值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserByMap(Map&amp;lt;String, Object&amp;gt; map); --&amp;gt;
+&amp;lt;select id=&amp;quot;getUserByMap&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
+    select * from tb_sys_user where user_id = #{userId} and user_name like #{userName}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;pojo作为参数&#34;&gt;POJO作为参数&lt;/h4&gt;
+
+&lt;p&gt;#{属性名}：取出传入的pojo的属性值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- boolean updateUser(TbSysUser user); --&amp;gt;
+&amp;lt;update id=&amp;quot;updateUser&amp;quot;&amp;gt;
+    update tb_sys_user 
+    set password=#{password},status=#{status}
+    where user_id=#{userId}
+&amp;lt;/update&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;to作为参数&#34;&gt;TO作为参数&lt;/h4&gt;
+
+&lt;p&gt;如果多个参数不是业务模型中的数据，但是经常要使用，推荐来编写一个TO（Transfer Object）数据传输对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Page{
+    int index;
+    int size;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;注解方式&#34;&gt;注解方式&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserAnnoationByIdAndName(@Param(&amp;quot;id&amp;quot;) String id, @Param(&amp;quot;userName&amp;quot;) String userName); --&amp;gt;
+&amp;lt;select id=&amp;quot;getUserAnnoationByIdAndName&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
+    select * from tb_sys_user where user_id = #{id} and user_name like #{userName}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;list封装数据集合-涉及动态sql&#34;&gt;List封装数据集合（涉及动态SQL）&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- List&amp;lt;TbSysUser&amp;gt; getUsersByConditionForeach(@Param(&amp;quot;ids&amp;quot;)List&amp;lt;String&amp;gt; ids); --&amp;gt;
+&amp;lt;select id=&amp;quot;getUsersByConditionForeach&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
+    select * from tb_sys_user
+    &amp;lt;!--
+        collection：指定要遍历的集合：
+            list类型的参数会特殊处理封装在map中，map的key就叫list
+        item：将当前遍历出的元素赋值给指定的变量
+        separator:每个元素之间的分隔符
+        open：遍历出所有结果拼接一个开始的字符
+        close:遍历出所有结果拼接一个结束的字符
+        index:索引。遍历list的时候是index就是索引，item就是当前值
+                      遍历map的时候index表示的就是map的key，item就是map的值
+
+        #{变量名}就能取出变量的值也就是当前遍历出的元素
+      --&amp;gt;
+    &amp;lt;foreach collection=&amp;quot;ids&amp;quot; item=&amp;quot;user_id&amp;quot; separator=&amp;quot;,&amp;quot; open=&amp;quot;where user_id in(&amp;quot; close=&amp;quot;)&amp;quot;&amp;gt;
+        #{user_id}
+    &amp;lt;/foreach&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;复杂情况&#34;&gt;复杂情况&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;public TbSysUser getUser(@Param(&amp;quot;id&amp;quot;)Integer id,String userName);
+取值：id==&amp;gt;#{id/param1}   userName==&amp;gt;#{param2}
+
+public TbSysUser getUser(Integer id,@Param(&amp;quot;u&amp;quot;)TbSysUser user);
+取值：id==&amp;gt;#{param1}    userName===&amp;gt;#{param2.userName/u.userName}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是Collection（List、Set）类型或者是数组，也会特殊处理。也是把传入的list或者数组封装在map中。&lt;br /&gt;
+key：Collection（collection）,如果是List还可以使用这个key(list) 数组(array)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;TbSysUser&amp;gt; getUsersByConditionForeach(@Param(&amp;quot;ids&amp;quot;)List&amp;lt;String&amp;gt; ids);
+取值：取出第一个id的值：   #{list[0]}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;处理参数源码&#34;&gt;处理参数源码&lt;/h3&gt;
+
+&lt;p&gt;总结：参数多时会封装map，为了不混乱，我们可以使用@Param来指定封装时使用的key；#{key}就可以取出map中的值；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;TbSysUser getUserAnnoationByIdAndName(@Param(&amp;quot;id&amp;quot;) String id, @Param(&amp;quot;userName&amp;quot;) String userName);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ParamNameResolver解析参数封装map的；
+//1、names：{0=id, 1=userName}；构造器的时候就确定好了&lt;/p&gt;
+
+&lt;p&gt;确定流程：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;获取每个标了param注解的参数的@Param的值：id，userName赋值给name;&lt;/li&gt;
+&lt;li&gt;每次解析一个参数给map中保存信息：（key：参数索引，value：name的值）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;name的值：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;标注了param注解：注解的值&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;没有标注：
+
+&lt;ol&gt;
+&lt;li&gt;全局配置：useActualParamName（jdk1.8）：name=参数名&lt;/li&gt;
+&lt;li&gt;name=map.size()；相当于当前元素的索引&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;测试数据：args[ &amp;lsquo;admin&amp;rsquo;，&amp;rdquo;测试%&amp;ldquo;]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public Object getNamedParams(Object[] args) {
+    final int paramCount = names.size();
+    //1、参数为null直接返回
+    if (args == null || paramCount == 0) {
+      return null;
+
+    //2、如果只有一个元素，并且没有Param注解；args[0]：单个参数直接返回
+    } else if (!hasParamAnnotation &amp;amp;&amp;amp; paramCount == 1) {
+      return args[names.firstKey()];
+
+    //3、多个元素或者有Param标注
+    } else {
+      final Map&amp;lt;String, Object&amp;gt; param = new ParamMap&amp;lt;Object&amp;gt;();
+      int i = 0;
+
+      //4、遍历names集合；{0=id, 1=userName}
+      for (Map.Entry&amp;lt;Integer, String&amp;gt; entry : names.entrySet()) {
+
+        //names集合的value作为key;  names集合的key又作为取值的参考args[0]
+        //eg:{id=args[0]:admin,lastName=args[1]:测试%}
+        param.put(entry.getValue(), args[entry.getKey()]);
+
+
+        // add generic param names (param1, param2, ...)param
+        //额外的将每一个参数也保存到map中，使用新的key：param1...paramN
+        //效果：有Param注解可以#{指定的key}，或者#{param1}
+        final String genericParamName = GENERIC_NAME_PREFIX + String.valueOf(i + 1);
+        // ensure not to overwrite parameter named with @Param
+        if (!names.containsValue(genericParamName)) {
+          param.put(genericParamName, args[entry.getKey()]);
+        }
+        i++;
+      }
+      return param;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -2052,94 +2280,6 @@ $                  匹配字符的结束位置
 |                  模式选择符
 ()                 模式单元符   
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>侃侃而谈——WebService及框架简介</title>
-      <link>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/03/%E4%BE%83%E4%BE%83%E8%80%8C%E8%B0%88webservice%E5%8F%8A%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;webservice简介&#34;&gt;WebService简介&lt;/h1&gt;
-
-&lt;p&gt;webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术）。&lt;/p&gt;
-
-&lt;h3 id=&#34;webservice平台技术&#34;&gt;WebService平台技术&lt;/h3&gt;
-
-&lt;h4 id=&#34;xml-xsd&#34;&gt;XML+XSD&lt;/h4&gt;
-
-&lt;p&gt;WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么）。XML是WebService平台中表示数据的格式。除了易于建立和易于分析外，XML主要的优点在于它既是平台无关的，又是厂商无关的。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。&lt;/p&gt;
-
-&lt;h4 id=&#34;soap&#34;&gt;SOAP&lt;/h4&gt;
-
-&lt;p&gt;SOAP是&amp;rdquo;简单对象访问协议&amp;rdquo;，是一种简单的、基于HTTP和XML的协议, 用于在WEB上交换结构化的数据。&lt;br /&gt;
-soap消息：请求消息和响应消息&lt;/p&gt;
-
-&lt;h4 id=&#34;wsdl&#34;&gt;WSDL&lt;/h4&gt;
-
-&lt;p&gt;WSDL是webservice定义语言, 对应.wsdl文档, 一个webservice会对应一个唯一的wsdl文档, 定义了客户端与服务端发送请求和响应的数据格式和过程。&lt;/p&gt;
-
-&lt;h3 id=&#34;工作调用原理&#34;&gt;工作调用原理&lt;/h3&gt;
-
-&lt;p&gt;对客户端而言，我们给这各类WebService客户端API传递wsdl文件的url地址，这些API就会创建出底层的代理类，我们调用 这些代理，就可以访问到webservice服务。&lt;/p&gt;
-
-&lt;p&gt;代理类把客户端的方法调用变成soap格式的请求数据再通过HTTP协议发出去，并把接收到的soap 数据变成返回值返回。&lt;/p&gt;
-
-&lt;p&gt;对服务端而言，各类WebService框架的本质就是一个大大的Servlet，当远程调用客户端给它通过http协议发送过来 soap格式的请求数据时，它分析这个数据，就知道要调用哪个java类的哪个方法，于是去查找或创建这个对象，并调用其方法，再把方法返回的结果包装成 soap格式的数据，通过http响应消息回给客户端。&lt;/p&gt;
-
-&lt;h1 id=&#34;框架简介&#34;&gt;框架简介&lt;/h1&gt;
-
-&lt;h3 id=&#34;jws&#34;&gt;JWS&lt;/h3&gt;
-
-&lt;p&gt;JWS是Java语言对WebService服务的一种实现，用来开发和发布服务。而从服务本身的角度来看JWS服务是没有语言界限的。但是Java语言为Java开发者提供便捷发布和调用WebService服务的一种途径。&lt;/p&gt;
-
-&lt;h3 id=&#34;axis2&#34;&gt;Axis2&lt;/h3&gt;
-
-&lt;p&gt;Axis2是从Axis1.x系列发展而来，不过它从底层全部重新实现，使用了新的扩展性更好模块架构。&lt;/p&gt;
-
-&lt;p&gt;Axis2是Apache下的一个重量级WebService框架，准确说它是一个Web Services / SOAP / WSDL 的引擎，是WebService框架的集大成者，它能不但能制作和发布WebService，而且可以生成Java和其他语言版WebService客户端和服务端代码。这是它的优势所在。但是，这也不可避免的导致了Axis2的复杂性，使用过的开发者都知道，它所依赖的包数量和大小都是很惊人的，打包部署发布都比较麻烦，不能很好的与现有应用整合为一体。但是如果你要开发Java之外别的语言客户端，Axis2提供的丰富工具将是你不二的选择。&lt;/p&gt;
-
-&lt;h3 id=&#34;xfire&#34;&gt;XFire&lt;/h3&gt;
-
-&lt;p&gt;XFire是一个高性能的WebService框架，它的响应时间是Axis1.3的1/2到1/5，在Java6之前，它的知名度甚至超过了Apache的Axis2，XFire的优点是开发方便，与现有的Web整合很好，可以融为一体，并且开发也很方便。但是对Java之外的语言，没有提供相关的代码工具。XFire后来被Apache收购了，原因是它太优秀了，收购后，随着Java6 JWS的兴起，开源的WebService引擎已经不再被看好，渐渐的都败落了。现在估计只有老旧项目还在使用。&lt;/p&gt;
-
-&lt;h3 id=&#34;cxf&#34;&gt;CXF&lt;/h3&gt;
-
-&lt;p&gt;CXF是Apache旗下一个重磅的SOA简易框架，它实现了ESB（企业服务总线），支持可集成spring。CXF是XFire和Celtix项目的结合产品，是XFire经过改造后形成的，就像目前的Struts2来自WebWork一样。可以看出XFire的命运会和WebWork的命运一样，最终会淡出人们的视线。CXF不但是一个优秀的Web Services / SOAP / WSDL 引擎，也是一个不错的ESB总线，为SOA的实施提供了一种选择方案，当然他不是最好的，它仅仅实现了SOA架构的一部分。&lt;/p&gt;
-
-&lt;h3 id=&#34;axis2与cxf比较&#34;&gt;Axis2与CXF比较&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;通用结构WS-Policy等，数据并对XMLBeans等，Axis2与CXF后面的几个版本基本都支持了，差别不大。&lt;/li&gt;
-&lt;li&gt;CXF可以很好支持Spring。Axis2不能&lt;/li&gt;
-&lt;li&gt;Axis2支持多语言-除了Java,他还支持C/C++版本。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;从开发者的角度，两个框架的特性相当的不同。&lt;br /&gt;
-Axis2的开发方式类似一个小型的应用服务器，Axis2的开发包要以WAR的形式部署到Servlet容器中，比如Tomcat，通过这些容器可以对工作中的Web Service进行很好的监控和管理。Axis2的Web administrion模块可以让我们动态的配置Axis2.一个新的服务可以上载，激活，使之失效，修改web服务的参数。管理UI也可以管理一个或者多个处于运行状态的服务。这种界面化管理方式的一个弊端是所有在运行时修改的参数没有办法保存，因为在重启动之后，你所做的修改就会全部失效。Axis2允许自己作为独立的应用来发布Web Service，并提供了大量的功能和一个很好的模型，这个模型可以通过它本身的架构（modular architecture）不断添加新的功能。有些开发人员认为这种方式对于他们的需求太过于繁琐。这些开发人员会更喜欢CXF。&lt;br /&gt;
-CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability）。大多数配置都可以API来完成，替代了比较繁琐的XML配置文件， Spring的集成性经常的被提及，CXF支持Spring2.0和CXF&amp;rsquo;s API和Spring的配置文件可以非常好的对应。CXF强调代码优先的设计方式（code-first design)，使用了简单的API使得从现有的应用开发服务变得方便。&lt;br /&gt;
-不过你选择Axis2还是CXF，你都可以从开源社区得到大量的帮助。这两个框架都有商业公司提供服务，WSO2提供AXIS2的支持，Iona提供CXF的支持。这两公司都有很活跃的开发者社区。&lt;/p&gt;
-
-&lt;h3 id=&#34;如何选择&#34;&gt;如何选择？&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;如果应用程序需要多语言的支持，Axis2 应当是首选了；&lt;/li&gt;
-&lt;li&gt;如果应用程序侧重JAVA并希望和Spring集，Apache CXF 是一种更好的选择，特别对嵌入式的 Web Services 来说；&lt;/li&gt;
-&lt;li&gt;如果应用程序没有新的特性需要的话，就仍用原来项目所用的框架，比如 Axis1，XFire，Celtrix或 BEA 等等厂家自己的 Web Services 实现。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;引用&#34;&gt;引用&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/growup/archive/2011/03/06/1972464.html&#34; target=&#34;blank&#34;&gt;每天进步一点点~&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://www.cnblogs.com/xdp-gacl/p/4048937.html&#34; target=&#34;blank&#34;&gt;孤傲苍狼&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
       
     </item>
