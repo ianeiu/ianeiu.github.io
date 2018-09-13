@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HashMap——工作原理</title>
+      <link>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</guid>
+      <description>建议边看边阅读源码 HashMap（数组+链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能</description>
+    </item>
     
     <item>
       <title>JVM的结构</title>

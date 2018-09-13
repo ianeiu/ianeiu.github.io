@@ -1016,14 +1016,28 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
     </item>
     
     <item>
-      <title>[置顶]思维导图</title>
-      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</link>
+      <title>[置顶]Good knowledge</title>
+      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6good-knowledge/</link>
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</guid>
+      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6good-knowledge/</guid>
       
-        <description>&lt;p&gt;来源：微信公众号 java思维导图&lt;br /&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;&lt;/p&gt;
+        <description>
+
+&lt;h3 id=&#34;http超文本协议&#34;&gt;HTTP超文本协议&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
+来源：微信公众号 java思维导图&lt;/p&gt;
+
+&lt;h3 id=&#34;fail-fast机制&#34;&gt;fail-fast机制&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;swagger&#34;&gt;swagger&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -1053,6 +1067,124 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>HashMap——工作原理</title>
+      <link>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</guid>
+      
+        <description>
+
+&lt;p&gt;&lt;span style=&#34;color:red;font-size:13px&#34;&gt;建议边看边阅读源码&lt;/red&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hashmap-数组-链表&#34;&gt;HashMap（数组+链表）&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;HashMap储存的是键值对&lt;/li&gt;
+&lt;li&gt;HashMap可以接受null键值和值，而Hashtable则不能；&lt;/li&gt;
+&lt;li&gt;HashMap是非synchronized&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;hashmap的工作原理&#34;&gt;HashMap的工作原理&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;当两个对象的hashcode相同&#34;&gt;当两个对象的hashcode相同&lt;/h3&gt;
+
+&lt;p&gt;它们会储存在同一个bucket位置的链表中。因为hashcode相同，所以它们的bucket位置相同，‘碰撞’会发生。因为HashMap使用链表存储对象，这个Entry(包含有键值对的Map.Entry对象)会存储在链表中。&lt;/p&gt;
+
+&lt;h3 id=&#34;两个键的hashcode相同-如何获取值对象&#34;&gt;两个键的hashcode相同,如何获取值对象&lt;/h3&gt;
+
+&lt;p&gt;当我们调用get()方法，HashMap会使用键对象的hashcode找到bucket位置，找到bucket位置之后，会调用keys.equals()方法去找到链表中正确的节点，最终找到要找的值对象。&lt;/p&gt;
+
+&lt;h3 id=&#34;hashmap的大小超过了负载因子-load-factor-定义的容量-会发生什么&#34;&gt;HashMap的大小超过了负载因子(load factor)定义的容量，会发生什么？&lt;/h3&gt;
+
+&lt;p&gt;对象会进行rehashing，调用hash方法找到新的bucket位置。&lt;br /&gt;
+默认的负载因子大小为0.75，也就是说，当一个map填满了75%的bucket时候，和其它集合类(如ArrayList等)一样，将会创建原来HashMap大小的两倍的bucket数组，来重新调整map的大小，并将原来的对象放入新的bucket数组中。&lt;/p&gt;
+
+&lt;h3 id=&#34;调整hashmap大小存在什么问题&#34;&gt;调整HashMap大小存在什么问题&lt;/h3&gt;
+
+&lt;p&gt;多线程的情况下，可能产生条件竞争(race condition)。如果两个线程都发现HashMap需要重新调整大小了，它们会同时试着调整大小。&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么string-interger这样的wrapper类适合作为键&#34;&gt;为什么String, Interger这样的wrapper类适合作为键&lt;/h3&gt;
+
+&lt;p&gt;因为wrapper类如String是不可变的，也是final的，而且重写了equals()和hashCode()方法了，防止计算hashCode()改变键值。&lt;/p&gt;
+
+&lt;p&gt;如果键值在放入时和获取时返回不同的hashcode的话，那么就不能从HashMap中找到你想要的对象。&lt;/p&gt;
+
+&lt;p&gt;也可以使用自定义的对象作为键，条件是遵守equals()和hashCode()方法的定义规则，并且当对象插入到Map中之后将不会再改变了。&lt;/p&gt;
+
+&lt;h3 id=&#34;hashmap与hashset&#34;&gt;HashMap与HashSet&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;HashMap&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;HashSet&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;实现了Map接口&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;实现了Set接口（构造new HashMap）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;put()存键值对&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;add()存储对象&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;使用键对象来计算hashcode值&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;hashmap与hashtable&#34;&gt;HashMap与Hashtable&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;HashMap几乎等于Hashtable，除了HashMap是非synchronized的，并可以接受null(HashMap可以接受为null的键值(key)和值(value)，而Hashtable则不行)。&lt;/li&gt;
+&lt;li&gt;HashMap是非synchronized，而Hashtable是synchronized。Java 5提供了ConcurrentHashMap，可以替代HashTable&lt;/li&gt;
+&lt;li&gt;HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器非fail-fast。所以当有其它线程通过map对象改变了HashMap的结构（增加或者移除元素），会抛出ConcurrentModificationException，但迭代器本身的remove()方法移除元素则不会抛出这个异常。&lt;/li&gt;
+&lt;li&gt;由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。&lt;/li&gt;
+&lt;li&gt;HashMap不能保证随着时间的推移Map中的元素次序是不变的。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;cocurrenthashmap与hashtable&#34;&gt;CocurrentHashMap与Hashtable&lt;/h3&gt;
+
+&lt;p&gt;Hashtable是synchronized的，但是ConcurrentHashMap同步性能更好，因为它仅仅根据同步级别对map的一部分进行上锁。ConcurrentHashMap当然可以代替HashTable，但是HashTable提供更强的线程安全性。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Mybatis——异常Mapped Statements collection does not contain</title>
+      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</guid>
+      
+        <description>&lt;p&gt;初次接触使用Mybatis会出现“Mapped Statements collection does not contain value for &amp;hellip;.“错误提示&lt;/p&gt;
+
+&lt;p&gt;常见的错误原因有几种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;mapper.xml中没有加入namespace&lt;/li&gt;
+&lt;li&gt;mapper.xml中的方法和接口mapper的方法不对应&lt;/li&gt;
+&lt;li&gt;mapper.xml没有加入到mybatis-config.xml中(即总的配置文件)，例外：配置了mapper文件的包路径的除外&lt;/li&gt;
+&lt;li&gt;mapper.xml文件名和所写的mapper名称不相同。&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
@@ -2008,182 +2140,6 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/growup/archive/2011/03/06/1972464.html&#34; target=&#34;blank&#34;&gt;每天进步一点点~&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://www.cnblogs.com/xdp-gacl/p/4048937.html&#34; target=&#34;blank&#34;&gt;孤傲苍狼&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SpringMVC的九大组件</title>
-      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
-      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;springmvc的九大组件&#34;&gt;SpringMVC的九大组件&lt;/h1&gt;
-
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;建议先阅读 &lt;a href=&#34;https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/&#34;&gt;SpringMVC的运行流程&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;组件&#34;&gt;组件&lt;/h2&gt;
-
-&lt;h3 id=&#34;handlermapping&#34;&gt;HandlerMapping&lt;/h3&gt;
-
-&lt;p&gt;处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet&lt;/p&gt;
-
-&lt;h3 id=&#34;handleradapter&#34;&gt;HandlerAdapter&lt;/h3&gt;
-
-&lt;p&gt;适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。&lt;/p&gt;
-
-&lt;p&gt;有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。&lt;/p&gt;
-
-&lt;h3 id=&#34;handlerexceptionresolver&#34;&gt;HandlerExceptionResolver&lt;/h3&gt;
-
-&lt;p&gt;异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Component
-public class GlobalExceptionResolver implements HandlerExceptionResolver {
-	...
-	/**
-	 * 针对请求处理异常
-	 */
-	@Override
-	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex) {
-		boolean isHttpApi = isHttpApi(handler);
-		HandleResult result = handleException(ex);
-		if (isReturnReponseBody(handler) || isHttpApi) {
-			if(isHttpApi){
-				result =  apiHandleException(ex);
-			}
-			
-			ModelAndView modelAndView = new ModelAndView();
-			//处理异常
-			response.setContentType(&amp;quot;application/json;charset=UTF-8&amp;quot;);
-			byte[] bytes = JSON.toJSONBytes(Result.fail(result.getCode(), result.getMessage()), SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
-			try {
-				response.getOutputStream().write(bytes);
-				response.getOutputStream().flush();
-			} catch (IOException e) {
-				log.error(&amp;quot;打印错误信息出错!&amp;quot;, e);
-			}
-			modelAndView.clear();
-			return modelAndView;
-		}else {
-			Map&amp;lt;String, String&amp;gt; model = Maps.newHashMap();
-			model.put(&amp;quot;code&amp;quot;, result.getCode());
-			model.put(&amp;quot;message&amp;quot;, result.getMessage());
-			return new ModelAndView(&amp;quot;500&amp;quot;, model);
-		}
-	}
-	...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;viewresolver&#34;&gt;ViewResolver&lt;/h3&gt;
-
-&lt;p&gt;视图解析器：当Controller将请求处理结果放入到ModelAndView中以后，DispatcherServlet会根据ModelAndView选择合适的视图进行渲染。ViewResolver接口有众多实现类，根据viewName创建合适类型的View实现。配置如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;bean class=&amp;quot;org.Springframework.web.servlet.view.InternalResourceViewResolve&amp;quot;&amp;gt;
-	&amp;lt;property name=&amp;quot;prefix&amp;quot; value=&amp;quot;/WEB-INF/views/&amp;quot; /&amp;gt;
-	&amp;lt;property name=&amp;quot;suffix&amp;quot; value=&amp;quot;.jsp&amp;quot; /&amp;gt;
-&amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;requesttoviewnametranslator&#34;&gt;RequestToViewNameTranslator&lt;/h3&gt;
-
-&lt;p&gt;当Controller处理器方法没有返回一个View对象或逻辑视图名称，并且在该方法中没有直接往response的输出流里面写数据的时候，Spring就会采用约定好的方式提供一个逻辑视图名称。可通过实现接口org.Springframework.web.servlet.RequestToViewNameTranslator接口的getViewName方法来实现。&lt;/p&gt;
-
-&lt;h3 id=&#34;localeresolver&#34;&gt;LocaleResolver&lt;/h3&gt;
-
-&lt;p&gt;国际化配置&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Spring的国际化配置三种方式
-
-&lt;ul&gt;
-&lt;li&gt;基于URL参数的配置：通过URL参数来控制国际化
-
-&lt;ol&gt;
-&lt;li&gt;页面： &lt;code&gt;&amp;lt;a href=&amp;quot;myTest.jsp?locale=zh_CN&amp;quot;&amp;gt;简体中文&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;配置文件：&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.AcceptHeaderLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;基于session的配置：通过检验用户会话中预置的属性来解析区域，最常用的是根据用户本次会话过程中的语言设定决定语言种类，如果该会话不存在，它会根据accept-language HTTP头部确定默认区域。配置&lt;br/&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.SessionLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;基于Cookie的国际化配置：用于通过浏览器的cookie设置取得Locale对象，这种策略在应用程序不支持会话或者状态必须保存在客户端时有用。&lt;br/&gt;&lt;code&gt;&amp;lt;bean id=&amp;quot;localeResolver&amp;quot; class=&amp;quot;org.Springframework.web.servlet.i18n.CookieLocaleResolver&amp;quot;/&amp;gt;&lt;/code&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;themeresolver&#34;&gt;ThemeResolver&lt;/h3&gt;
-
-&lt;p&gt;解析主题。一个主题就是一组静态资源（比如样式表、图片等），它们可以影响应用程序的视觉效果。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SpringMVC中跟主题相关的类
-
-&lt;ul&gt;
-&lt;li&gt;ThemeResolver:主题解析器&lt;/li&gt;
-&lt;li&gt;ThemeSource:主题资源&lt;/li&gt;
-&lt;li&gt;Theme:主题接口&lt;/li&gt;
-&lt;li&gt;ThemeChangeInterceptor:根据用户请求来改变主题(需要在handlerMapping中配置拦截器&lt;br/&gt;&lt;code&gt;&amp;lt;property name=&amp;quot;interceptors&amp;quot;&amp;gt;&amp;lt;list&amp;gt;&amp;lt;ref local=&amp;quot;themeChangeInterceptor&amp;quot; /&amp;gt;&amp;lt;/list&amp;gt;&amp;lt;/property&amp;gt;&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ThemeResolver子类
-
-&lt;ul&gt;
-&lt;li&gt;AbstractThemeResolver:SessionThemeResolver和FixedThemeResolver继承的抽象类&lt;/li&gt;
-&lt;li&gt;SessionThemeResolver:用户的主题保存在HTTP session中&lt;/li&gt;
-&lt;li&gt;CookieThemeResolver:用于实现用户所选的主题，以cookie的形式存放在客户端的机器上&lt;/li&gt;
-&lt;li&gt;FixedThemeResolver:用于选择一个固定的主题
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;multipartresolver&#34;&gt;MultipartResolver&lt;/h3&gt;
-
-&lt;p&gt;MultipartResolver 用于处理文件上传，当收到请求时 DispatcherServlet 的 checkMultipart() 方法会调用 MultipartResolver 的 isMultipart() 方法判断请求中是否包含文件。如果请求数据中包含文件，则调用 MultipartResolver 的 resolveMultipart() 方法对请求的数据进行解析，然后将文件数据解析成 MultipartFile 并封装在 MultipartHttpServletRequest (继承了 HttpServletRequest) 对象中，最后传递给 Controller.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;MultipartResolver子类
-
-&lt;ul&gt;
-&lt;li&gt;CommonsMultipartResolver：使用 commons Fileupload来处理 multipart请求，所以在使用时，必须要引入相应的jar包。而像SpringBoot是不支持CommonsMultipartResolver&lt;/li&gt;
-&lt;li&gt;StandardServletMultipartResolver：基于Servlet3.0来处理multipart请求的，所以不需要引用其他jar包，从Tomcat7.0.x的版本开始就支持 Servlet 3.0了&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SpringMVC的运行流程</title>
-      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</link>
-      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;springmvc的运行流程&#34;&gt;SpringMVC的运行流程&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/SpringMVC的运行流程.png&#34;  alt=&#34;SpringMVC的运行流程&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;用户发送请求至前置控制器DispatcherServlet&lt;/li&gt;
-&lt;li&gt;DispatcherServlet收到请求调用HandlerMapping处理器映射器。&lt;/li&gt;
-&lt;li&gt;处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。&lt;/li&gt;
-&lt;li&gt;DispatcherServlet通过HandlerAdapter处理器适配器调用处理器&lt;/li&gt;
-&lt;li&gt;执行处理器/后端控制器Controller&lt;/li&gt;
-&lt;li&gt;Controller执行完成返回ModelAndView&lt;/li&gt;
-&lt;li&gt;HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet&lt;/li&gt;
-&lt;li&gt;DispatcherServlet将ModelAndView传给视图解析器ViewReslover&lt;/li&gt;
-&lt;li&gt;ViewReslover解析后返回具体View&lt;/li&gt;
-&lt;li&gt;DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。&lt;/li&gt;
-&lt;li&gt;DispatcherServlet响应用户。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。&lt;/p&gt;
 </description>
       
     </item>

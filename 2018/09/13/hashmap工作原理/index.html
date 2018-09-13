@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>HashMap——工作原理 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="建议边看边阅读源码 HashMap（数组&#43;链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="HashMap——工作原理" />
+<meta property="og:description" content="建议边看边阅读源码 HashMap（数组&#43;链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" />
+
+
+
+<meta property="article:published_time" content="2018-09-13T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-13T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="HashMap——工作原理">
+<meta itemprop="description" content="建议边看边阅读源码 HashMap（数组&#43;链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能">
+
+
+<meta itemprop="datePublished" content="2018-09-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-13T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1816">
+
+
+
+<meta itemprop="keywords" content="HashMap," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HashMap——工作原理"/>
+<meta name="twitter:description" content="建议边看边阅读源码 HashMap（数组&#43;链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">HashMap——工作原理</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-09-13
+          / 分类：
+          <a href="https://ianeiu.github.io/category/java/">java</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/hashmap/">HashMap</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<p><span style="color:red;font-size:13px">建议边看边阅读源码</red></p>
+
+<h3 id="hashmap-数组-链表">HashMap（数组+链表）</h3>
+
+<ol>
+<li>HashMap储存的是键值对</li>
+<li>HashMap可以接受null键值和值，而Hashtable则不能；</li>
+<li>HashMap是非synchronized</li>
+</ol>
+
+<h3 id="hashmap的工作原理">HashMap的工作原理</h3>
+
+<ol>
+<li>HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。<br /></li>
+<li>当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。<br /></li>
+<li>当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。</li>
+</ol>
+
+<h3 id="当两个对象的hashcode相同">当两个对象的hashcode相同</h3>
+
+<p>它们会储存在同一个bucket位置的链表中。因为hashcode相同，所以它们的bucket位置相同，‘碰撞’会发生。因为HashMap使用链表存储对象，这个Entry(包含有键值对的Map.Entry对象)会存储在链表中。</p>
+
+<h3 id="两个键的hashcode相同-如何获取值对象">两个键的hashcode相同,如何获取值对象</h3>
+
+<p>当我们调用get()方法，HashMap会使用键对象的hashcode找到bucket位置，找到bucket位置之后，会调用keys.equals()方法去找到链表中正确的节点，最终找到要找的值对象。</p>
+
+<h3 id="hashmap的大小超过了负载因子-load-factor-定义的容量-会发生什么">HashMap的大小超过了负载因子(load factor)定义的容量，会发生什么？</h3>
+
+<p>对象会进行rehashing，调用hash方法找到新的bucket位置。<br />
+默认的负载因子大小为0.75，也就是说，当一个map填满了75%的bucket时候，和其它集合类(如ArrayList等)一样，将会创建原来HashMap大小的两倍的bucket数组，来重新调整map的大小，并将原来的对象放入新的bucket数组中。</p>
+
+<h3 id="调整hashmap大小存在什么问题">调整HashMap大小存在什么问题</h3>
+
+<p>多线程的情况下，可能产生条件竞争(race condition)。如果两个线程都发现HashMap需要重新调整大小了，它们会同时试着调整大小。</p>
+
+<h3 id="为什么string-interger这样的wrapper类适合作为键">为什么String, Interger这样的wrapper类适合作为键</h3>
+
+<p>因为wrapper类如String是不可变的，也是final的，而且重写了equals()和hashCode()方法了，防止计算hashCode()改变键值。</p>
+
+<p>如果键值在放入时和获取时返回不同的hashcode的话，那么就不能从HashMap中找到你想要的对象。</p>
+
+<p>也可以使用自定义的对象作为键，条件是遵守equals()和hashCode()方法的定义规则，并且当对象插入到Map中之后将不会再改变了。</p>
+
+<h3 id="hashmap与hashset">HashMap与HashSet</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">HashMap</th>
+<th align="left">HashSet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">实现了Map接口</td>
+<td align="left">实现了Set接口（构造new HashMap）</td>
+</tr>
+
+<tr>
+<td align="left">put()存键值对</td>
+<td align="left">add()存储对象</td>
+</tr>
+
+<tr>
+<td align="left">使用键对象来计算hashcode值</td>
+<td align="left">使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="hashmap与hashtable">HashMap与Hashtable</h3>
+
+<ol>
+<li>HashMap几乎等于Hashtable，除了HashMap是非synchronized的，并可以接受null(HashMap可以接受为null的键值(key)和值(value)，而Hashtable则不行)。</li>
+<li>HashMap是非synchronized，而Hashtable是synchronized。Java 5提供了ConcurrentHashMap，可以替代HashTable</li>
+<li>HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器非fail-fast。所以当有其它线程通过map对象改变了HashMap的结构（增加或者移除元素），会抛出ConcurrentModificationException，但迭代器本身的remove()方法移除元素则不会抛出这个异常。</li>
+<li>由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。</li>
+<li>HashMap不能保证随着时间的推移Map中的元素次序是不变的。</li>
+</ol>
+
+<h3 id="cocurrenthashmap与hashtable">CocurrentHashMap与Hashtable</h3>
+
+<p>Hashtable是synchronized的，但是ConcurrentHashMap同步性能更好，因为它仅仅根据同步级别对map的一部分进行上锁。ConcurrentHashMap当然可以代替HashTable，但是HashTable提供更强的线程安全性。</p>
+
+
+  
+  
+
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
