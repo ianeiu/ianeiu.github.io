@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Java笔记整理——基础</title>
+      <link>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
+      <description>Java基础笔记整理 关键字 用于定义数据类型 class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】 void 用于定义数据类型值 true false null</description>
+    </item>
+    
+    <item>
       <title>JVM的结构</title>
       <link>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</link>
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>

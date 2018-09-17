@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SpringBoot on IanEiU</title>
+    <link>https://ianeiu.github.io/category/springboot/</link>
+    <description>Recent content in SpringBoot on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Mon, 17 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/springboot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>springbootz整合（项目改造）</title>
+      <link>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
+      <description>本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis</description>
+    </item>
+    
+    <item>
+      <title>web项目改造为springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      <description>现象1：引入layer.js出现undefinedcss目录.txt 原因：layer.js与layui.js冲突 解决：将layui.js 第二</description>
+    </item>
+    
+  </channel>
+</rss>

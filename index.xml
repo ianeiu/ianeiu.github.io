@@ -1042,6 +1042,25 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;eclipse&#34;&gt;Eclipse&lt;/h3&gt;
+
+&lt;h4 id=&#34;与svn&#34;&gt;与SVN&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/v123411739/article/details/22512133&#34; target=&#34;blank&#34;&gt;Eclipse中使用SVN：&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/Eclipse-工具-使用SVN.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;与maven&#34;&gt;与Maven&lt;/h4&gt;
+
+&lt;p&gt;如何在eclipse jee中创建Maven project并且转换为Dynamic web project（原文链接找不到）：
+&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/如何在eclipse jee中创建Maven project并且转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;br /&gt;
+如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
+&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题：&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -1071,6 +1090,889 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>springbootz整合（项目改造）</title>
+      <link>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
+      
+        <description>
+
+&lt;p&gt;本文只进行简单的代码提示，具体内容可自行百度&lt;/p&gt;
+
+&lt;h3 id=&#34;cxf&#34;&gt;CXF&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;@Bean
+public ServletRegistrationBean CXFServlet() {
+    ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);
+    cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);
+    cxfBean.setLoadOnStartup(1);
+    return cxfBean;
+}
+
+@Configuration
+public class CXFConfig {
+    @Autowired
+    private Bus bus;
+    @Autowired
+    private SSOService sSOService;
+
+    @Bean
+    public Endpoint endpointSSO() {
+        EndpointImpl endpoint = new EndpointImpl(bus, sSOService);
+        endpoint.publish(&amp;quot;/sso&amp;quot;);
+        return endpoint;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;redis-jedis&#34;&gt;redis&amp;amp;jedis&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;package cn.com.do1.component.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import redis.clients.jedis.JedisPoolConfig;
+
+/**
+ * redis配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport{
+
+    @Bean
+    public CacheManager cacheManager(RedisTemplate&amp;lt;?, ?&amp;gt; redisTemplate) {
+        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);        
+        //设置缓存过期时间
+        //rcm.setDefaultExpiration(60);//秒
+        return rcm;
+    }
+
+    @Bean
+    public RedisTemplate&amp;lt;String, Object&amp;gt; redisTemplate() {
+        RedisTemplate&amp;lt;String, Object&amp;gt; template = new RedisTemplate&amp;lt;&amp;gt;();
+        template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new JdkSerializationRedisSerializer());
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new JdkSerializationRedisSerializer());
+        return template;
+    }
+
+
+    @Value(&amp;quot;${redis.address}&amp;quot;)
+    private String hostName;
+    @Value(&amp;quot;${redis.port}&amp;quot;)
+    private String port;
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory(){
+        JedisConnectionFactory jcf = new JedisConnectionFactory();
+        jcf.setHostName(hostName);
+        jcf.setPort(Integer.parseInt(port));
+        //jcf.setPassword(&amp;quot;&amp;quot;);
+        return jcf;
+    }
+
+    @Bean
+    public JedisPoolConfig jedisPoolConfig(){
+        JedisPoolConfig jpc = new JedisPoolConfig();
+        jpc.setMaxIdle(1);
+        jpc.setMaxTotal(5);
+        jpc.setBlockWhenExhausted(true);
+        jpc.setMaxWaitMillis(3000);
+        jpc.setTestOnBorrow(true);
+        return jpc;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;错误页面配置&#34;&gt;错误页面配置&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 跳转至错误页面
+ * add 2018.07.11
+ * @author wm
+ * @param code
+ * @return
+ */
+@RequestMapping(&amp;quot;/error/{code}&amp;quot;)
+public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){
+    return code;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增拦截器：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 错误页面拦截器
+ * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+ * @author wm
+ */
+@Component
+public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+    private List&amp;lt;Integer&amp;gt; errorCodeList = Arrays.asList(404,500);
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+        Exception {
+       if (errorCodeList.contains(response.getStatus())) {
+            response.sendRedirect(request.getContextPath()+&amp;quot;/error/&amp;quot; + response.getStatus());
+            return false;
+        }
+        return super.preHandle(request, response, handler);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增拦截配置:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(errorPageInterceptor);//.addPathPatterns(&amp;quot;/action/**&amp;quot;, &amp;quot;/mine/**&amp;quot;);默认所有
+    super.addInterceptors(registry);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;定时任务&#34;&gt;定时任务&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 定时任务配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableScheduling
+public class SchedulerConfig implements SchedulingConfigurer{
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(setTaskExecutors());
+    }
+
+    @Bean(destroyMethod=&amp;quot;shutdown&amp;quot;)
+    public Executor setTaskExecutors(){
+        return Executors.newScheduledThreadPool(10); // 10个线程来处理。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;兼容jsp&#34;&gt;兼容JSP&lt;/h3&gt;
+
+&lt;p&gt;pom新增：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependencies&amp;gt;
+    ...
+    &amp;lt;!--jsp支持 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.apache.tomcat.embed&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;tomcat-embed-jasper&amp;lt;/artifactId&amp;gt;
+        &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;!-- 配置jsp-jstl的支持 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;javax.servlet.jsp.jstl&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;jstl-api&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;1.2&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    ...
+&amp;lt;/dependencies&amp;gt;
+
+&amp;lt;build&amp;gt; 
+    ...
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置类（处理jar包启动无法访问jsp的问题）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.catalina.Context;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
+import org.apache.catalina.LifecycleListener;
+import org.apache.catalina.WebResourceRoot.ResourceSetType;
+import org.springframework.util.ResourceUtils;
+
+/**
+ * Add main class fat jar/exploded directory into tomcat ResourceSet.
+ *
+ * @author hengyunabc 2017-07-29
+ *
+ */
+public class StaticResourceConfigurer implements LifecycleListener {
+
+    private final Context context;
+
+    public StaticResourceConfigurer(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void lifecycleEvent(LifecycleEvent event) {
+        if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+            URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+            if (ResourceUtils.isFileURL(location)) {
+                // when run as exploded directory
+                String rootFile = location.getFile();
+                if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
+                    rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
+                }
+                if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
+                    return;
+                }
+
+                try {
+                    location = new File(rootFile).toURI().toURL();
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                }
+            }
+
+            String locationStr = location.toString();
+            if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
+                // when run as fat jar
+                locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
+                try {
+                    location = new URL(locationStr);
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                }
+            }
+            this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
+                    &amp;quot;/META-INF/resources&amp;quot;);
+
+        }
+    }
+}
+
+import org.apache.catalina.Context;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import cn.com.do1.component.config.assembly.StaticResourceConfigurer;
+
+/**
+ * 处理jar包启动无法访问jsp的问题
+ * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
+ * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
+ * @author wm  
+ * @date 2018年7月24日
+ */
+@Configuration
+@ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
+public class TomcatConfig {
+    @Bean
+    public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                    ((TomcatEmbeddedServletContainerFactory) container)
+                            .addContextCustomizers(new TomcatContextCustomizer() {
+                                @Override
+                                public void customize(Context context) {
+                                    context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                }
+                            });
+                }
+            }
+
+        };
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;静态资源&#34;&gt;静态资源&lt;/h3&gt;
+
+&lt;p&gt;方式一：&lt;br /&gt;
+pom新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;resources&amp;gt;
+    &amp;lt;resource&amp;gt;
+        &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+        &amp;lt;!--注意此次必须要放在此目录下才能被访问到--&amp;gt;
+        &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+        &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+        &amp;lt;includes&amp;gt;
+            &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+        &amp;lt;/includes&amp;gt;
+    &amp;lt;/resource&amp;gt;
+&amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&amp;quot;/js/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/js/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/css/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/css/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/images/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/images/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/common/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/common/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/register/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/register/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/plugin/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/plugin/&amp;quot;);
+    super.addResourceHandlers(registry);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方式二（推荐）：&lt;br /&gt;
+将静态资源文件放到resouce/static目录下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&amp;quot;/js/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/js/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/css/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/css/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/images/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/images/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/register/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/register/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/plugin/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/plugin/&amp;quot;);
+    super.addResourceHandlers(registry);
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;文件上传&#34;&gt;文件上传&lt;/h3&gt;
+
+&lt;p&gt;配置文件新增：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#upload
+spring.http.multipart.enabled=true
+spring.http.multipart.file-size-threshold=0  #0-ALLFILE
+spring.http.multipart.location=D:/fsrzfw/temp
+spring.http.multipart.max-file-size=10Mb
+spring.http.multipart.max-request-size=10Mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 配置上传文件大小的配置
+ * @return
+ */
+@Bean
+public MultipartConfigElement multipartConfigElement() {
+   MultipartConfigFactory factory = new MultipartConfigFactory();
+   //  单个数据大小
+   factory.setMaxFileSize(&amp;quot;102400KB&amp;quot;);
+   /// 总上传数据大小
+   factory.setMaxRequestSize(&amp;quot;102400KB&amp;quot;);
+   return factory.createMultipartConfig();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;打jar包运行&#34;&gt;打JAR包运行&lt;/h3&gt;
+
+&lt;p&gt;pom新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;build&amp;gt;
+    &amp;lt;finalName&amp;gt;fsrzfw&amp;lt;/finalName&amp;gt;
+    &amp;lt;plugins&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;source&amp;gt;1.8&amp;lt;/source&amp;gt;
+                &amp;lt;target&amp;gt;1.8&amp;lt;/target&amp;gt;
+                &amp;lt;encoding&amp;gt;UTF-8&amp;lt;/encoding&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;mainClass&amp;gt;cn.com.do1.component.Application&amp;lt;/mainClass&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;executions&amp;gt;
+                &amp;lt;execution&amp;gt;
+                    &amp;lt;goals&amp;gt;
+                        &amp;lt;goal&amp;gt;repackage&amp;lt;/goal&amp;gt;
+                    &amp;lt;/goals&amp;gt;
+                &amp;lt;/execution&amp;gt;
+            &amp;lt;/executions&amp;gt;
+            &amp;lt;dependencies&amp;gt;
+                &amp;lt;!-- spring热部署 --&amp;gt;
+                &amp;lt;dependency&amp;gt;
+                    &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+                    &amp;lt;artifactId&amp;gt;springloaded&amp;lt;/artifactId&amp;gt;
+                    &amp;lt;version&amp;gt;1.2.6.RELEASE&amp;lt;/version&amp;gt;
+                &amp;lt;/dependency&amp;gt;
+            &amp;lt;/dependencies&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-resources-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;nonFilteredFileExtensions&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;ttf&amp;lt;/nonFilteredFileExtension&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;woff&amp;lt;/nonFilteredFileExtension&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;woff2&amp;lt;/nonFilteredFileExtension&amp;gt;
+                &amp;lt;/nonFilteredFileExtensions&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+    &amp;lt;/plugins&amp;gt;
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/resource&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行mvn install，target目录下（生成fsrzfw.jar）执行 java -jar fsrzfw.jar&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>web项目改造为springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      
+        <description>&lt;p&gt;现象1：引入layer.js出现undefinedcss目录.txt&lt;br /&gt;
+原因：layer.js与layui.js冲突&lt;br /&gt;
+解决：将layui.js 第二个.link 中的n.dir改为(n.dir?n.dir:r)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象2：配置CommonsMultipartResolver，上传文件返回异常HttpMediaTypeNotSupportedException&lt;br /&gt;
+原因：同下&lt;br /&gt;
+解决：FUN1、不配置CommonsMultipartResolver&lt;br /&gt;
+    FUN2、启动类@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) （不建议）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象3：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile&lt;br /&gt;
+原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
+import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：采用输入流方式获取File对象，具体代码自行百度&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象4：Shiro 自定义 filter 匹配异常，无限拦截重定向&lt;br /&gt;
+参考：&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;br /&gt;
+原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。&lt;br /&gt;
+解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ex：
+    @Bean
+    public CasFilter casFilter(){
+        CasFilter cf = new CasFilter();
+        cf.setSuccessUrl(successUrl);
+        cf.setFailureUrl(failureUrl);
+        return cf;
+    }
+
+    /**
+     * 注册casFilter
+     * @param casFilter
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
+        FilterRegistrationBean cas = new FilterRegistrationBean();
+        cas.setFilter(casFilter);
+        cas.setEnabled(false);  //该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
+        return cas;
+    }
+
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @param casFilter
+     * @param logoutFilter
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
+            CasFilter casFilter,LogoutFilter logoutFilter) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,casFilter);
+        filters.put(&amp;quot;logoutFilter&amp;quot;, logoutFilter);
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ex:
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,new CasFilter());
+        filters.put(&amp;quot;logoutFilter&amp;quot;, new LogoutFilter());
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象5：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter&lt;br /&gt;
+原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置&lt;br /&gt;
+解决：使用log4j2或logback&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象6：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合&lt;br /&gt;
+原因：springboot项目打包后获取包资源所在路径与启动main不一样&lt;br /&gt;
+ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl&lt;br /&gt;
+解决：逐一分割路径获取类对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 获得包下面的所有的class
+ * @author FengHuayuan
+ * @date 2018年4月21日 下午12:25:20.
+ * @param pack
+ * @return
+ */
+public static List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getClassesFromPackage(String pack) {
+    List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+    // 是否循环搜索子包
+    boolean recursive = true;
+    // 包名字
+    String packageName = pack;
+    // 包名对应的路径名称
+    String packageDirName = packageName.replace(&#39;.&#39;, &#39;/&#39;);
+    Enumeration&amp;lt;URL&amp;gt; dirs;
+    try {
+        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            String protocol = url.getProtocol();
+            if (&amp;quot;file&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【File类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
+            } else if (&amp;quot;jar&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【Jar类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                getClasssFromJarFile(filePath, clazzs);//wm add
+            }
+        }
+
+    } catch (Exception e) {
+        log.error(e.getMessage(),e);
+    }
+    return clazzs;
+}
+
+/** 
+ * 从jar文件中读取指定目录下面的所有的class文件 
+ * springboot打jar包专用
+ * @author wm
+ * @param jarPaht   jar文件存放的位置 
+ * @param filePaht    指定的文件目录 
+ * @param clazzs 所有的的class的对象 
+ */  
+public static void getClasssFromJarFile(String jarPath,List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs) {  
+
+    log.info(&amp;quot;getClasssFromJarFile - jarPath:&amp;quot;+jarPath);//wm
+    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
+    String[] jarPaths = jarPath.split(&amp;quot;!&amp;quot;);
+    String jarPaht=jarPaths[0].substring(6);//去掉file:/
+    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
+
+    JarFile jarFile = null;  
+    try {  
+        jarFile = new JarFile(jarPaht);  
+    } catch (IOException e1) {  
+        e1.printStackTrace();  
+    }  
+
+    List&amp;lt;JarEntry&amp;gt; jarEntryList = new ArrayList&amp;lt;JarEntry&amp;gt;();  
+
+    Enumeration&amp;lt;JarEntry&amp;gt; ee = jarFile.entries();  
+    while (ee.hasMoreElements()) {  
+        JarEntry entry = (JarEntry) ee.nextElement();  
+        if (entry.getName().startsWith(startDir) &amp;amp;&amp;amp; entry.getName().endsWith(&amp;quot;.class&amp;quot;)) {  
+            log.info(&amp;quot;getClasssFromJarFile - entry:&amp;quot;+entry.getName());//wm
+            jarEntryList.add(entry);  
+        }  
+    }  
+    for (JarEntry entry : jarEntryList) {  
+        String className = entry.getName().replace(&#39;/&#39;, &#39;.&#39;);  
+        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
+        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
+        try {  
+            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
+        } catch (ClassNotFoundException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象7：启动jar包，访问登录，报NoClassDefFoundError RedisCacheManager&lt;br /&gt;
+解决：注释pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;
+    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象8：jar包启动无法访问jsp的问题&lt;br /&gt;
+原因:&lt;a href=&#34;https://www.jb51.net/article/141474.htm&#34; target=&#34;blank&#34;&gt;深入Spring Boot实现对Fat Jar jsp的支持&lt;/a&gt;&lt;br /&gt;
+解决：亲测有效，需两步&lt;br /&gt;
+&amp;emsp;步骤1、新增两个类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import java.io.File;
+    import java.net.MalformedURLException;
+    import java.net.URL;
+
+    import org.apache.catalina.Context;
+    import org.apache.catalina.Lifecycle;
+    import org.apache.catalina.LifecycleEvent;
+    import org.apache.catalina.LifecycleListener;
+    import org.apache.catalina.WebResourceRoot.ResourceSetType;
+    import org.springframework.util.ResourceUtils;
+
+    /**
+     * Add main class fat jar/exploded directory into tomcat ResourceSet.
+     *
+     * @author hengyunabc 2017-07-29
+     *
+     */
+    public class StaticResourceConfigurer implements LifecycleListener {
+
+        private final Context context;
+
+        StaticResourceConfigurer(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void lifecycleEvent(LifecycleEvent event) {
+            if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+                URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+                if (ResourceUtils.isFileURL(location)) {
+                    // when run as exploded directory
+                    String rootFile = location.getFile();
+                    if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
+                        rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
+                    }
+                    if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
+                        return;
+                    }
+
+                    try {
+                        location = new File(rootFile).toURI().toURL();
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+
+                String locationStr = location.toString();
+                if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
+                    // when run as fat jar
+                    locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
+                    try {
+                        location = new URL(locationStr);
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+                this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
+                        &amp;quot;/META-INF/resources&amp;quot;);
+
+            }
+        }
+    }
+
+    import org.apache.catalina.Context;
+    import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+    import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+    import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    /**
+     * 处理1.5版本jar包启动无法访问jsp的问题
+     * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
+     * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
+     * @author wm  
+     * @date 2018年7月24日
+     */
+    @Configuration
+    @ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
+    public class TomcatConfig {
+        @Bean
+        public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+            return new EmbeddedServletContainerCustomizer() {
+                @Override
+                public void customize(ConfigurableEmbeddedServletContainer container) {
+                    if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                        ((TomcatEmbeddedServletContainerFactory) container)
+                                .addContextCustomizers(new TomcatContextCustomizer() {
+                                    @Override
+                                    public void customize(Context context) {
+                                        context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                    }
+                                });
+                    }
+                }
+
+            };
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;emsp;步骤2，pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;resources&amp;gt;
+        ...
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象9：启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType&lt;br /&gt;
+解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象10：整合redis报 NOAUTH Authentication required&lt;br /&gt;
+原因：spring.redis.password=yourpassword 配置在JedisConnectionFactory中没有被加载进去&lt;br /&gt;
+解决：手动获取自定义或原配置密码进行配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Value(&amp;quot;${redis.address}&amp;quot;)
+private String hostName;
+@Value(&amp;quot;${redis.port}&amp;quot;)
+private String port;
+@Value(&amp;quot;${redis.password}&amp;quot;)
+private String password;
+
+@Bean
+public JedisConnectionFactory jedisConnectionFactory(){
+    JedisConnectionFactory jcf = new JedisConnectionFactory();
+    jcf.setHostName(hostName);
+    jcf.setPort(Integer.parseInt(port));
+    jcf.setPassword(password);
+    return jcf;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象11：整合swagger组件，HTTP接口统一处理异常失效&lt;br /&gt;
+原因：GlobalExceptionResolver implements HandlerExceptionResolver&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private boolean isReturnReponseBody(Object handler) {
+    if(((HandlerMethod) handler).hasMethodAnnotation(ResponseBody.class)) {
+        return true;
+    }
+    HandlerMethod hm = (HandlerMethod) handler;
+    if(hm.getBean().getClass().isAnnotationPresent(RestController.class)) {
+        return true;
+    }
+    /*Method method = hm.getMethod();
+    Class&amp;lt;?&amp;gt; returnType = method.getReturnType();
+    if(returnType.isAnnotationPresent(ResponseBody.class)) {
+        return true;
+    }*/ 
+    return false;
+}
+result ： false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：新增判断&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if(((HandlerMethod) handler).hasMethodAnnotation(ApiOperation.class)) {
+    return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -1168,6 +2070,215 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;h3 id=&#34;cocurrenthashmap与hashtable&#34;&gt;CocurrentHashMap与Hashtable&lt;/h3&gt;
 
 &lt;p&gt;Hashtable是synchronized的，但是ConcurrentHashMap同步性能更好，因为它仅仅根据同步级别对map的一部分进行上锁。ConcurrentHashMap当然可以代替HashTable，但是HashTable提供更强的线程安全性。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java笔记整理——基础</title>
+      <link>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
+      
+        <description>
+
+&lt;p&gt;Java基础笔记整理&lt;/p&gt;
+
+&lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于定义数据类型&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;void&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义数据类型值&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;true false null&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义流程控制
+
+&lt;ul&gt;
+&lt;li&gt;if else switch case default【选择】&lt;br /&gt;
+【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;while do for【循环】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;break continue return【流程跳转】&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义访问权限修饰符
+
+&lt;ul&gt;
+&lt;li&gt;private public protected&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义类、函数、变量
+
+&lt;ul&gt;
+&lt;li&gt;abstract final static synchronized&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;类与类之间的关系
+
+&lt;ul&gt;
+&lt;li&gt;extends implements&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;建立实例、引用实例、判断实例
+
+&lt;ul&gt;
+&lt;li&gt;new this super instanceof&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;异常处理
+
+&lt;ul&gt;
+&lt;li&gt;try catch throw throws finally&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;包
+
+&lt;ul&gt;
+&lt;li&gt;package import&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;其它
+
+&lt;ul&gt;
+&lt;li&gt;native strictfp transient volatile assert&lt;/li&gt;
+&lt;li&gt;goto const 【保留字】&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
+
+&lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
+合法字符组成：英文字幕、数字、$、_【不能以数字开头】&lt;/p&gt;
+
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单行 //&lt;/li&gt;
+&lt;li&gt;多行 /**/&lt;/li&gt;
+&lt;li&gt;文档 /**  */&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;字面值 &amp;ldquo;hello&amp;rdquo;,10.true&lt;/li&gt;
+&lt;li&gt;自定义 final int LINK_CODE = 0;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;类变量（静态变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;实例变量（成员变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;局部变量（本地变量）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（代码）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中方法外&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法定义中、方法声明上&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（内存）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法区中静态区&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;堆&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;栈&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;生命周期&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随类加载而加载&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随对象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;this无法存在静态中；&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;静态方法只能访问静态变量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;算术运算符&lt;br /&gt;
+&lt;code&gt;
+% + - * / ++  --
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;赋值运算符&lt;br /&gt;
+&lt;code&gt;
+= += -= *= /= %=
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;比较运算符&lt;br /&gt;
+&lt;code&gt;
+== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= 
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;逻辑运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;amp; | ^(异或) ! &amp;amp;&amp;amp; || 【&amp;amp;&amp;amp; || 有短路效果】
+&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;位运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;lt;&amp;lt; &amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;(无符号右移) &amp;amp; | ^ ~(按位取反)
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;三元运算符&lt;br /&gt;
+&lt;code&gt;
+max = a &amp;gt; b ? a : b
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
+
+&lt;p&gt;代码块加载顺序： 静态代码块（类初始化）&amp;ndash;&amp;gt; 构造代码块（对象初始化） &amp;ndash;&amp;gt; 局部代码块&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Importtant06Code {
+    static { System.out.println(&amp;quot;Importtant06Code静态代码块&amp;quot;);}
+
+    public static void main(String[] args) {
+        System.out.println(&amp;quot;main&amp;quot;);
+        User user = new User();
+        User user2 = new User();
+    }
+}
+
+class User{
+    static { System.out.println(&amp;quot;User静态代码块&amp;quot;);}
+    {System.out.println(&amp;quot;User局部代码块&amp;quot;);}
+    public User() {System.out.println(&amp;quot;User构造代码块&amp;quot;);}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Importtant06Code静态代码块
+main
+User静态代码块
+User局部代码块
+User构造代码块
+User局部代码块
+User构造代码块
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -1898,388 +3009,6 @@ ADR_BASE_LISTENER = D:\app\mian
 &lt;p&gt;注：&lt;br /&gt;
 1. DESKTOP-UKQ7RTS 为计算机名&lt;br /&gt;
 2. 更改文件后需要重启服务&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Spring——@Value注入static属性</title>
-      <link>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;value注入static属性&#34;&gt;@Value注入static属性&lt;/h2&gt;
-
-&lt;p&gt;方式1：&lt;br /&gt;
-通过执行set方法进行参数注入&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private static String userName;
-@Value(&amp;quot;${git.userName}&amp;quot;)
-public void setUserName(String userName) {
-	GitUtils.userName = userName;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-通过中间变量赋值&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private static String userName; 
-@Value(&amp;quot;${git.userName}&amp;quot;)
-private String userNameTmp;
- 
-@PostConstruct
-public void init() {
-	userName = userNameTmp;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>正则的运用——短信模版配置</title>
-      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E7%9A%84%E8%BF%90%E7%94%A8%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;短信模版的配置功能&#34;&gt;短信模版的配置功能&lt;/h2&gt;
-
-&lt;p&gt;需求功能如下图：&lt;br /&gt;
-&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt1.png&#34;  alt=&#34;短信模版1&#34; /&gt;
-&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt2.png&#34;  alt=&#34;短信模版2&#34; /&gt;
-&lt;img src=&#34;https://ianeiu.github.io/resouce/短信模版-正则/dt3.png&#34;  alt=&#34;短信模版3&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function toExa(template){
-
-	var now = new Date();
-	var syear = now.getYear();//获取当前年份(2位)
-	var year = now.getFullYear(); //获取完整的年份(4位,1970-????)
-	var month = now.getMonth() &amp;lt;9?&amp;quot;0&amp;quot;+(now.getMonth()+1):(now.getMonth()+1);//获取当前月份(1-12)
-	var day = now.getDate()&amp;lt;10?&amp;quot;0&amp;quot;+now.getDate():now.getDate();//获取当前日(1-31)
-	var hour = now.getHours()&amp;lt;10?&amp;quot;0&amp;quot;+now.getHours():now.getHours(); //获取当前小时数(00-23)
-	var minu = now.getMinutes&amp;lt;10?&amp;quot;0&amp;quot;+now.getMinutes():now.getMinutes(); //获取当前分钟数(00-59)
-	var seco = now.getSeconds()&amp;lt;10?&amp;quot;0&amp;quot;+now.getSeconds():now.getSeconds(); //获取当前秒数(00-59)
-	var pre_syear = syear - 1;
-	var pre_year = year - 1;
-	var pre_month = getLastMonth(now);
-	var pre_day = getYestoday(now);
-	
-	template = template.replace(/{yyyy}/g,year);
-	template = template.replace(/{yy}/g,syear);
-	template = template.replace(/{MM}/g,month);
-	template = template.replace(/{dd}/g,day);
-	template = template.replace(/{HH}/g,hour);
-	template = template.replace(/{mm}/g,minu);
-	template = template.replace(/{ss}/g,seco);
-	template = template.replace(/{MMdd}/g,month+&amp;quot;&amp;quot;+day);
-	template = template.replace(/{yyyyMMdd}/g,year+&amp;quot;&amp;quot;+month+&amp;quot;&amp;quot;+day);
-	template = template.replace(/{yyyyMMddHHmm}/g,year+&amp;quot;&amp;quot;+month+&amp;quot;&amp;quot;+day+&amp;quot;&amp;quot;+hour+&amp;quot;&amp;quot;+minu);
-	
-	template = template.replace(/{pre_yy}/g,pre_year);
-	template = template.replace(/{pre_yyyy}/g,pre_year);
-	template = template.replace(/{pre_MM}/g,pre_month);
-	template = template.replace(/{pre_dd}/g,pre_day);
-	template = template.replace(/{pre_MMdd}/g,pre_month+&amp;quot;&amp;quot;+pre_day);
-	template = template.replace(/{pre_yyyyMMdd}/g,pre_year+&amp;quot;&amp;quot;+pre_month+&amp;quot;&amp;quot;+pre_day);
-	template = template.replace(/{pre_yyyyMMddHHmm}/g,pre_year+&amp;quot;&amp;quot;+pre_month+&amp;quot;&amp;quot;+pre_day+&amp;quot;&amp;quot;+day+&amp;quot;&amp;quot;+hour+&amp;quot;&amp;quot;+minu);
-	
-	//srkVal  -  输入框(值,时间)
-	template = template.replace(/[\{][f]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick(&amp;amp;#39;num&amp;amp;#39;);&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39;/&amp;gt;&amp;quot;);
-	template = template.replace(/[\{][z]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick();&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39; valid=&#39;{must:false, fieldType:&amp;amp;#39;isPositiveInteger&amp;amp;#39;, tip:&amp;amp;#39;整数输入框&amp;amp;#39;}&#39;/&amp;gt;&amp;quot;);
-	template = template.replace(/[\{][x]([1-9]\d*)[\}]/g,&amp;quot;&amp;lt;input onchange=&#39;caclClick();&#39; id=&#39;srkVal$1&#39; type=&#39;text&#39; class=&#39;n_textInp&#39; valid=&#39;{must:false, fieldType:&amp;amp;#39;isSmallInteger&amp;amp;#39;, tip:&amp;amp;#39;小数输入框&amp;amp;#39;}&#39;/&amp;gt;&amp;quot;);
-	
-	template = template.replace(/[\{][d][i][v][1-9]\d*[\=]([1-9]\d*)[\/]([1-9]\d*)[\/]([1-9]\d*)[\}]/g,
-			&amp;quot;&amp;lt;input type=&#39;text&#39; class=&#39;n_textInp njsk&#39; onclick=&#39;caclChuFaValToJSK(this,&amp;amp;#39;$1&amp;amp;#39;,&amp;amp;#39;$2&amp;amp;#39;,&amp;amp;#39;$3&amp;amp;#39;)&#39; readonly/&amp;gt;&amp;quot;);
-	
-	template = template.replace(/[\{][s][u][b][t][1-9]\d*[\=]([1-9])\d*[\/]([1-9])\d*[\/]([d|h|m])[\}]/g,
-			&amp;quot;&amp;lt;input type=&#39;text&#39; class=&#39;n_textInp sjsk&#39; onclick=&#39;caclTimeValToJSK(this,&amp;amp;#39;$1&amp;amp;#39;,&amp;amp;#39;$2&amp;amp;#39;,&amp;amp;#39;$3&amp;amp;#39;)&#39; readonly/&amp;gt;&amp;quot;);
-	
-	template = template.replace(/[\{][d]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:100px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:160px;&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:mm:ss&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t][\-][s]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:140px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:mm&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t][\-][m][\-][s]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:140px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY-MM-DD hh:00&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	
-	template = template.replace(/[\{][d][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:130px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:220px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时mm分ss秒&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t][\-][s][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:190px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时mm分&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-	template = template.replace(/[\{][d][t][\-][m][\-][s][\-][c][n]([1-9]\d*)[\}]/g,&#39;&amp;lt;input id=&amp;quot;srkVal$1&amp;quot; type=&amp;quot;text&amp;quot; class=&amp;quot;n_textInp&amp;quot; style=&amp;quot;width:160px&amp;quot; onclick=&amp;quot;laydate({istime: true, format: &amp;amp;#39;YYYY年MM月DD日 hh时&amp;amp;#39;,choose:checkDate})&amp;quot;/&amp;gt;&#39;);
-
-	$(&amp;quot;#tExaDiv&amp;quot;).html(template);
-}
-
-function checkDate(){
-	caclClick(&#39;date&#39;);
-}
-
-function caclClick(type){
-	if(type==&#39;num&#39;){
-		$(&#39;.njsk&#39;).trigger(&amp;quot;click&amp;quot;);
-	}else if(type==&#39;date&#39;){
-		$(&#39;.sjsk&#39;).trigger(&amp;quot;click&amp;quot;);
-	}
-}
-
-//除法计算并将值放入计算框
-function caclChuFaValToJSK(obj,n1,n2,weiShu){
-	$(obj).val(&amp;quot;&amp;quot;);
-
-	var one =&#39;&#39;;//序号a的值
-	var two =&#39;&#39;;//序号b的值
-	
-	one = $(&#39;#srkVal&#39;+n1).val();
-	two = $(&#39;#srkVal&#39;+n2).val();
-	
-	var finaVal = &#39;&#39;;//计算后的值
-	if(one==&amp;quot;&amp;quot;||two==&amp;quot;&amp;quot;){
-		$(obj).val(&amp;quot;&amp;quot;);
-		return;
-	}else{
-		finaVal=(parseFloat(one)/parseFloat(two)).toFixed(weiShu);
-	}
-	$(obj).val(finaVal);
-}
-
-//计算并将值放入计算框
-function caclTimeValToJSK(obj,d1,d2,oper){
-	var eTime =&#39;&#39;;//序号a的值
-	var sTime =&#39;&#39;;//序号b的值
-	
-	eTime = $(&#39;#srkVal&#39;+d1).val();
-	sTime = $(&#39;#srkVal&#39;+d2).val();
-	
-	var finalVal =&#39;&#39;;
-	if(eTime==&amp;quot;&amp;quot;||sTime==&amp;quot;&amp;quot;){
-		$(obj).val(&amp;quot;&amp;quot;);
-		return;
-	}else{
-		switch (oper) {
-		    case (&amp;quot;d&amp;quot;):  //日
-		    	finalVal = GetDateDiff(sTime,eTime,&#39;day&#39;)+&#39;天&#39;;
-		    	break;
-		    case (&amp;quot;h&amp;quot;):  //时
-		    	finalVal = GetDateDiff(sTime,eTime,&#39;hour&#39;)+&#39;小时&#39;;
-		        break;
-		    case (&amp;quot;m&amp;quot;):  //分
-		    	finalVal = GetDateDiff(sTime,eTime,&#39;minute&#39;)+&#39;分钟&#39;;
-		        break;
-		    default: 
-		       console.log(&amp;quot;caclTimeValToJSK传入无效操作参数&amp;quot;+oper);
-		}
-	}
-	$(obj).val(finalVal);
-}
-
-//获取上个月
-function getLastMonth(date){      
-    var daysInMonth = new Array([0],[31],[28],[31],[30],[31],[30],[31],[31],[30],[31],[30],[31]);      
-    var strYear = date.getFullYear();        
-    //var strDay = date.getDate();        
-    var strMonth = date.getMonth()+1;      
-    if(strYear%4 == 0 &amp;amp;&amp;amp; strYear%100 != 0){      
-       daysInMonth[2] = 29;      
-    }      
-    if(strMonth - 1 == 0)      
-    {      
-       strYear -= 1;      
-       strMonth = 12;      
-    }      
-    else     
-    {      
-       strMonth -= 1;      
-    }      
-    //strDay = daysInMonth[strMonth] &amp;gt;= strDay ? strDay : daysInMonth[strMonth];      
-    if(strMonth&amp;lt;10)        
-    {        
-       strMonth=&amp;quot;0&amp;quot;+strMonth;        
-    }      
-    /* if(strDay&amp;lt;10)        
-    {        
-       strDay=&amp;quot;0&amp;quot;+strDay;        
-    }  */
-    //datastr = strYear+&amp;quot;-&amp;quot;+strMonth+&amp;quot;-&amp;quot;+strDay;      
-    datastr = strMonth;      
-    return datastr;      
-}
-
-//获取昨天
-function getYestoday(date){          
-   var yesterday_milliseconds=date.getTime()-1000*60*60*24;           
-   var yesterday = new Date();           
-   yesterday.setTime(yesterday_milliseconds);           
-           
-  // var strYear = yesterday.getFullYear();        
-   var strDay = yesterday.getDate();        
-  // var strMonth = yesterday.getMonth()+1;      
-  /*  if(strMonth&amp;lt;10) 
-   {        
-       strMonth=&amp;quot;0&amp;quot;+strMonth;        
-   }   */      
-   //datastr = strYear+&amp;quot;-&amp;quot;+strMonth+&amp;quot;-&amp;quot;+strDay;      
-   datastr = strDay;      
-   return datastr;      
-}   
-
-//获取时间差
-function GetDateDiff(startTime, endTime, diffType) {
-    //转换时间格式，如xxxx-xx-xx转换为 xxxx/xx/xx的格式 
-    startTime = startTime.replace(/\-/g, &amp;quot;/&amp;quot;).replace(/[\u5e74|\u6708]/g,&amp;quot;/&amp;quot;).replace(/[\u65e5]/g,&amp;quot;&amp;quot;);
-    endTime = endTime.replace(/\-/g, &amp;quot;/&amp;quot;).replace(/[\u5e74|\u6708]/g,&amp;quot;/&amp;quot;).replace(/[\u65e5]/g,&amp;quot;&amp;quot;);
-    
-    if(startTime.endWith(&#39;时&#39;)){
-    	startTime = startTime.replace(/[\u65f6]/g,&amp;quot;:00&amp;quot;);
-	}else if(startTime.endWith(&#39;分&#39;)){
-		startTime = startTime.replace(/[\u65f6]/g,&amp;quot;:&amp;quot;).replace(/[\u5206]/g,&amp;quot;&amp;quot;);
-	}else if(startTime.endWith(&#39;秒&#39;)){
-		startTime = startTime.replace(/[\u65f6|\u5206]/g,&amp;quot;:&amp;quot;).replace(/[\u79d2]/g,&amp;quot;&amp;quot;);
-	}
-	
-	if(endTime.endWith(&#39;时&#39;)){
-		endTime = endTime.replace(/[\u65f6]/g,&amp;quot;:00&amp;quot;);
-	}else if(endTime.endWith(&#39;分&#39;)){
-		endTime = endTime.replace(/[\u65f6]/g,&amp;quot;:&amp;quot;).replace(/[\u5206]/g,&amp;quot;&amp;quot;);
-	}else if(endTime.endWith(&#39;秒&#39;)){
-		endTime = endTime.replace(/[\u65f6|\u5206]/g,&amp;quot;:&amp;quot;).replace(/[\u79d2]/g,&amp;quot;&amp;quot;);
-	}
-    
-    //将计算间隔类性字符转换为小写
-    diffType = diffType.toLowerCase();
-    var sTime =new Date(startTime); //开始时间
-    var eTime =new Date(endTime); //结束时间
-    //作为除数的数字
-    var timeType =1;
-    switch (diffType) {
-        case&amp;quot;second&amp;quot;:
-            timeType =1000;
-        break;
-        case&amp;quot;minute&amp;quot;:
-            timeType =1000*60;
-        break;
-        case&amp;quot;hour&amp;quot;:
-            timeType =1000*3600;
-        break;
-        case&amp;quot;day&amp;quot;:
-            timeType =1000*3600*24;
-        break;
-        default:
-        break;
-    }
-    return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(timeType));
-}
-
-String.prototype.endWith=function(s){
-  if(s==null||s==&amp;quot;&amp;quot;||this.length==0||s.length&amp;gt;this.length)
-     return false;
-  if(this.substring(this.length-s.length)==s)
-     return true;
-  else
-     return false;
-  return true;
- }
-
- String.prototype.startWith=function(s){
-  if(s==null||s==&amp;quot;&amp;quot;||this.length==0||s.length&amp;gt;this.length)
-   return false;
-  if(this.substr(0,s.length)==s)
-     return true;
-  else
-     return false;
-  return true;
- }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>正则贪婪模式与懒惰模式(扩展元字符)</title>
-      <link>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;之前做过一个短信模版的配置功能，需要用到大量的正则判断，其中有一个方法涉及到正则贪婪模式与懒惰模式，今天刚好抽时间整理下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-/**
- * 创建文本预览（取出input值替换input）
- */
-function createContentPreview(){
-	var vals=[];
-	$(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){
-		var val=$(this).val();
-		vals.push(val);
-	})
-	
-	var html=$(&amp;quot;#tExaDiv&amp;quot;).html();
-	var reg=/[/&amp;lt;][i][n][p][u][t][^]*?[&amp;gt;]/;
-	for(var i=0;i&amp;lt;vals.length;i++){
-		html=html.replace(reg,vals[i]);
-	}
-	$(&amp;quot;#contentPreview&amp;quot;).html(html);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;懒惰模式&#34;&gt;懒惰模式&lt;/h2&gt;
-
-&lt;p&gt;像上面代码的匹配就是正则表达式的懒惰模式，对字符串进行最小长度匹配。&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;栗子&lt;/kbd&gt;&lt;br /&gt;
-字符串：&lt;code&gt;&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
-正则表达式：&lt;code&gt;&amp;lt;span&amp;gt;.*?&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
-匹配结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;共找到 2 处匹配：  
-	&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt; 
-	&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;贪婪模式&#34;&gt;贪婪模式&lt;/h2&gt;
-
-&lt;p&gt;贪婪模式则是对字符串进行最大长度匹配。&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;栗子&lt;/kbd&gt;&lt;br /&gt;
-字符串：&lt;code&gt;&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
-正则表达式：&lt;code&gt;&amp;lt;span&amp;gt;.*&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;br /&gt;
-匹配结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;共找到 1 处匹配：
-&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
-
-&lt;p&gt;正则表达式，表示字符串重复个数元字符，&amp;rsquo;?,+,*,{}&amp;rsquo; 默认都会选择贪婪模式，会最大长度匹配字符串，而要切换到懒惰模式，就只是在该元字符，后面加多一个”?” 即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;元字符&#34;&gt;元字符&lt;/h2&gt;
-
-&lt;p&gt;常见元字符及其含义&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;符号               含义
-————————————————————————————————————————————————————
-.                  匹配除换行符之外的任意字符
-^                  匹配字符的开始位置
-$                  匹配字符的结束位置
-*                  匹配0次，1次或多次前面的原子
-?                  匹配0次或1次前面的原子
-+                  匹配1次或多次前面的原子
-{n}                前面的原子恰好出现n次
-{n,}               前面的原子至少出现n次
-{n,m}              前面的原子至少出现n次，至多出现m次
-|                  模式选择符
-()                 模式单元符   
-&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
