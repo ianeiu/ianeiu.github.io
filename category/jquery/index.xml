@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>[置顶]收藏册——js、jq</title>
-      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
+      <title>[置顶]js、jq——DEMO集</title>
+      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
+      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的</description>
     </item>
     

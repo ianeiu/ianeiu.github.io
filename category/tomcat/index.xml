@@ -7,36 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/tomcat/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>tomcat修改startup.bat启动窗口名</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Tomcat——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E4%BF%AE%E6%94%B9startup.bat%E5%90%AF%E5%8A%A8%E7%AA%97%E5%8F%A3%E5%90%8D/</guid>
-      <description>打开 catlina.bat 文件，修改灰色区域 :doStart shift if &amp;ldquo;%TITLE%&amp;rdquo; == &amp;ldquo;&amp;rdquo; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;ldquo;%TITLE%&amp;rdquo; %_RUNJAVA% if not &amp;ldquo;&amp;rdquo;%1&amp;rdquo;&amp;rdquo; == &amp;ldquo;&amp;rdquo;-security&amp;rdquo;&amp;rdquo; goto execCmd shift echo Using Security Manager set &amp;ldquo;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;rdquo; goto execCmd</description>
-    </item>
-    
-    <item>
-      <title>tomcat占用8080端口问题</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E5%8D%A0%E7%94%A88080%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
-      <description>tomcat死机了，重启eclipse之后，发现 Several ports (8080, 8009) required by Tomcat v6.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or</description>
-    </item>
-    
-    <item>
-      <title>tomcat指定jdk</title>
-      <link>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/tomcat%E6%8C%87%E5%AE%9Ajdk/</guid>
-      <description>Windows环境: 打开 catlina.bat 文件、增加配置 set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79 linux环境: 编辑 setclasspath.sh，在文件的最开始加入如下代码： set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51 set JRE_HOME=/home/jdk/Java\jdk7\jre7</description>
+      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>修改startup.bat启动窗口名 打开 catlina.bat 文件，修改title :doStart shift if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA% if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd shift echo Using Security Manager set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot; goto execCmd tomcat指定jdk</description>
     </item>
     
   </channel>

@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Eclipse</title>
+      <link>https://ianeiu.github.io/category/eclipse/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/category/eclipse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>FTP</title>
       <link>https://ianeiu.github.io/category/ftp/</link>
       <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
@@ -57,18 +66,18 @@
     </item>
     
     <item>
-      <title>IDE</title>
-      <link>https://ianeiu.github.io/category/ide/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      <title>IDEA</title>
+      <link>https://ianeiu.github.io/category/idea/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/category/ide/</guid>
+      <guid>https://ianeiu.github.io/category/idea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
       <link>https://ianeiu.github.io/category/java/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/category/java/</guid>
       <description></description>
@@ -93,18 +102,9 @@
     </item>
     
     <item>
-      <title>Js</title>
-      <link>https://ianeiu.github.io/category/js/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Maven</title>
       <link>https://ianeiu.github.io/category/maven/</link>
-      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/category/maven/</guid>
       <description></description>
@@ -131,18 +131,18 @@
     <item>
       <title>Oracle</title>
       <link>https://ianeiu.github.io/category/oracle/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/category/oracle/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Spring</title>
-      <link>https://ianeiu.github.io/category/spring/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      <title>SVN</title>
+      <link>https://ianeiu.github.io/category/svn/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/category/spring/</guid>
+      <guid>https://ianeiu.github.io/category/svn/</guid>
       <description></description>
     </item>
     

@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>[置顶]收藏册——js、jq</title>
-      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
+      <title>[置顶]js、jq——DEMO集</title>
+      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
+      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的</description>
     </item>
     
@@ -31,21 +31,93 @@
     </item>
     
     <item>
-      <title>springbootz整合（项目改造）</title>
-      <link>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      <title>Eclipse——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
-      <description>本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis</description>
+      <guid>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>删除某个工作空间 方式1（推荐）： 打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;</description>
     </item>
     
     <item>
-      <title>web项目改造为springboot所见问题简单记录</title>
-      <link>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
+      <title>IDEA——快捷键</title>
+      <link>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>快捷键设置 默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们</description>
+    </item>
+    
+    <item>
+      <title>IDEA——问题集</title>
+      <link>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled 修改系统配置 ： Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com windows在C:</description>
+    </item>
+    
+    <item>
+      <title>Java基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。 Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常</description>
+    </item>
+    
+    <item>
+      <title>Maven——问题集</title>
+      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>Could not calculate build plan 将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plug</description>
+    </item>
+    
+    <item>
+      <title>SVN——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>cmd 提示不是内部或者外部命令 windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装时勾选 svn comand line windows 查看项</description>
+    </item>
+    
+    <item>
+      <title>Tomcat——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>修改startup.bat启动窗口名 打开 catlina.bat 文件，修改title :doStart shift if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA% if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd shift echo Using Security Manager set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot; goto execCmd tomcat指定jdk</description>
+    </item>
+    
+    <item>
+      <title>Oracle——查看及修改编码</title>
+      <link>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</guid>
+      <description>查看 查看oracle数据库的编码 #来源于props$，表示数据库的字符集 select * from nls_database_parameters where parameter =&#39;NLS_CHARACTERSET&#39;; 结果： PARAMETER | VALUE —————————————————————</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot——web项目改造为springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
       <description>现象1：引入layer.js出现undefinedcss目录.txt 原因：layer.js与layui.js冲突 解决：将layui.js 第二</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot——整合（项目改造）</title>
+      <link>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
+      <description>本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis</description>
     </item>
     
     <item>
@@ -73,78 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</guid>
       <description>参数传递符号 #{} ${} select * from tbl_employee where id=${id} and last_name=#{userName} Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=? 区别： #{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatem</description>
-    </item>
-    
-    <item>
-      <title>Mybatis——异常Mapped Statements collection does not contain</title>
-      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</guid>
-      <description>初次接触使用Mybatis会出现“Mapped Statements collection does not contain value for &amp;hellip;.“错误提示 常见的错误原因有几种： mapper.xml中没有加入</description>
-    </item>
-    
-    <item>
-      <title>JVM的结构</title>
-      <link>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</guid>
-      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
-    </item>
-    
-    <item>
-      <title>Java初中级面试题集</title>
-      <link>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
-      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用 只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会</description>
-    </item>
-    
-    <item>
-      <title>[转] Java中定义常量的四种方法</title>
-      <link>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
-      <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
-    </item>
-    
-    <item>
-      <title>Oracle——卸载教程</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</guid>
-      <description>Oracle卸载步骤 开始–&amp;gt;设置–&amp;gt;控制面板–&amp;gt;管理工具–&amp;gt;服务–&amp;gt;停止所有oracle服务 开始–&amp;gt;程序</description>
-    </item>
-    
-    <item>
-      <title>Oracle安装异常——INS-13001</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</guid>
-      <description>问题 win10系统安装oracle11g时遇到INS-13001环境不满足最低要求 解决 打开database-&amp;gt;stage-&amp;gt;cv</description>
-    </item>
-    
-    <item>
-      <title>Oracle异常——ORA-12505</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</guid>
-      <description>问题 使用SQL Developer 连接DB报错 ORA-12505，报错信息如下： ORA-12505, TNS:listener does not currently know of SID given in connect descriptor 解决 找到Oracle安装目录（类似D:\app\mia</description>
-    </item>
-    
-    <item>
-      <title>Spring——@Value注入static属性</title>
-      <link>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</guid>
-      <description>@Value注入static属性 方式1： 通过执行set方法进行参数注入 private static String userName; @Value(&amp;quot;${git.userName}&amp;quot;) public void setUserName(String userName) { GitUtils.userName = userName; } 方式2： 通过中间变量赋值 private static String userName; @Value(&amp;quot;${git.userName}&amp;quot;) private String userNameTmp; @PostConstruct</description>
     </item>
     
   </channel>

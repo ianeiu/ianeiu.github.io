@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>SpringBoot——整合（项目改造） · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="SpringBoot——整合（项目改造）" />
+<meta property="og:description" content="本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &quot;/webservice/*&quot;); cxfBean.setName(&quot;CXFServlet&quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&quot;/sso&quot;); return endpoint; } } redis&amp;jedis" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/" />
+
+
+
+<meta property="article:published_time" content="2018-09-17T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-17T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="SpringBoot——整合（项目改造）">
+<meta itemprop="description" content="本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &quot;/webservice/*&quot;); cxfBean.setName(&quot;CXFServlet&quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&quot;/sso&quot;); return endpoint; } } redis&amp;jedis">
+
+
+<meta itemprop="datePublished" content="2018-09-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1223">
+
+
+
+<meta itemprop="keywords" content="改造," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot——整合（项目改造）"/>
+<meta name="twitter:description" content="本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &quot;/webservice/*&quot;); cxfBean.setName(&quot;CXFServlet&quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&quot;/sso&quot;); return endpoint; } } redis&amp;jedis"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">SpringBoot——整合（项目改造）</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-09-17
+          / 分类：
+          <a href="https://ianeiu.github.io/category/springboot/">SpringBoot</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/%E6%94%B9%E9%80%A0/">改造</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<p>本文只进行简单的代码提示，具体内容可自行百度</p>
+
+<h3 id="cxf">CXF</h3>
+
+<pre><code>@Bean
+public ServletRegistrationBean CXFServlet() {
+    ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &quot;/webservice/*&quot;);
+    cxfBean.setName(&quot;CXFServlet&quot;);
+    cxfBean.setLoadOnStartup(1);
+    return cxfBean;
+}
+
+@Configuration
+public class CXFConfig {
+    @Autowired
+    private Bus bus;
+    @Autowired
+    private SSOService sSOService;
+
+    @Bean
+    public Endpoint endpointSSO() {
+        EndpointImpl endpoint = new EndpointImpl(bus, sSOService);
+        endpoint.publish(&quot;/sso&quot;);
+        return endpoint;
+    }
+
+}
+</code></pre>
+
+<h3 id="redis-jedis">redis&amp;jedis</h3>
+
+<pre><code>package cn.com.do1.component.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import redis.clients.jedis.JedisPoolConfig;
+
+/**
+ * redis配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport{
+
+    @Bean
+    public CacheManager cacheManager(RedisTemplate&lt;?, ?&gt; redisTemplate) {
+        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);        
+        //设置缓存过期时间
+        //rcm.setDefaultExpiration(60);//秒
+        return rcm;
+    }
+
+    @Bean
+    public RedisTemplate&lt;String, Object&gt; redisTemplate() {
+        RedisTemplate&lt;String, Object&gt; template = new RedisTemplate&lt;&gt;();
+        template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new JdkSerializationRedisSerializer());
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new JdkSerializationRedisSerializer());
+        return template;
+    }
+
+
+    @Value(&quot;${redis.address}&quot;)
+    private String hostName;
+    @Value(&quot;${redis.port}&quot;)
+    private String port;
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory(){
+        JedisConnectionFactory jcf = new JedisConnectionFactory();
+        jcf.setHostName(hostName);
+        jcf.setPort(Integer.parseInt(port));
+        //jcf.setPassword(&quot;&quot;);
+        return jcf;
+    }
+
+    @Bean
+    public JedisPoolConfig jedisPoolConfig(){
+        JedisPoolConfig jpc = new JedisPoolConfig();
+        jpc.setMaxIdle(1);
+        jpc.setMaxTotal(5);
+        jpc.setBlockWhenExhausted(true);
+        jpc.setMaxWaitMillis(3000);
+        jpc.setTestOnBorrow(true);
+        return jpc;
+    }
+
+}
+</code></pre>
+
+<h3 id="错误页面配置">错误页面配置</h3>
+
+<pre><code>/**
+ * 跳转至错误页面
+ * add 2018.07.11
+ * @author wm
+ * @param code
+ * @return
+ */
+@RequestMapping(&quot;/error/{code}&quot;)
+public String goToErrorPage(@PathVariable(value=&quot;code&quot;) String code){
+    return code;
+}
+</code></pre>
+
+<p>新增拦截器：</p>
+
+<pre><code>/**
+ * 错误页面拦截器
+ * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+ * @author wm
+ */
+@Component
+public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+    private List&lt;Integer&gt; errorCodeList = Arrays.asList(404,500);
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+        Exception {
+       if (errorCodeList.contains(response.getStatus())) {
+            response.sendRedirect(request.getContextPath()+&quot;/error/&quot; + response.getStatus());
+            return false;
+        }
+        return super.preHandle(request, response, handler);
+    }
+}
+</code></pre>
+
+<p>新增拦截配置:</p>
+
+<pre><code>@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(errorPageInterceptor);//.addPathPatterns(&quot;/action/**&quot;, &quot;/mine/**&quot;);默认所有
+    super.addInterceptors(registry);
+}
+</code></pre>
+
+<h3 id="定时任务">定时任务</h3>
+
+<pre><code>/**
+ * 定时任务配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableScheduling
+public class SchedulerConfig implements SchedulingConfigurer{
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(setTaskExecutors());
+    }
+
+    @Bean(destroyMethod=&quot;shutdown&quot;)
+    public Executor setTaskExecutors(){
+        return Executors.newScheduledThreadPool(10); // 10个线程来处理。
+    }
+}
+</code></pre>
+
+<h3 id="兼容jsp">兼容JSP</h3>
+
+<p>pom新增：</p>
+
+<pre><code>&lt;dependencies&gt;
+    ...
+    &lt;!--jsp支持 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+        &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+        &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!-- 配置jsp-jstl的支持 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet.jsp.jstl&lt;/groupId&gt;
+        &lt;artifactId&gt;jstl-api&lt;/artifactId&gt;
+        &lt;version&gt;1.2&lt;/version&gt;
+    &lt;/dependency&gt;
+    ...
+&lt;/dependencies&gt;
+
+&lt;build&gt; 
+    ...
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+            &lt;!-- 处理jar包启动无法访问jsp的问题 --&gt;
+            &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt; 
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>新增配置类（处理jar包启动无法访问jsp的问题）：</p>
+
+<pre><code>import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.catalina.Context;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
+import org.apache.catalina.LifecycleListener;
+import org.apache.catalina.WebResourceRoot.ResourceSetType;
+import org.springframework.util.ResourceUtils;
+
+/**
+ * Add main class fat jar/exploded directory into tomcat ResourceSet.
+ *
+ * @author hengyunabc 2017-07-29
+ *
+ */
+public class StaticResourceConfigurer implements LifecycleListener {
+
+    private final Context context;
+
+    public StaticResourceConfigurer(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void lifecycleEvent(LifecycleEvent event) {
+        if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+            URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+            if (ResourceUtils.isFileURL(location)) {
+                // when run as exploded directory
+                String rootFile = location.getFile();
+                if (rootFile.endsWith(&quot;/BOOT-INF/classes/&quot;)) {
+                    rootFile = rootFile.substring(0, rootFile.length() - &quot;/BOOT-INF/classes/&quot;.length() + 1);
+                }
+                if (!new File(rootFile, &quot;META-INF&quot; + File.separator + &quot;resources&quot;).isDirectory()) {
+                    return;
+                }
+
+                try {
+                    location = new File(rootFile).toURI().toURL();
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&quot;Can not add tomcat resources&quot;, e);
+                }
+            }
+
+            String locationStr = location.toString();
+            if (locationStr.endsWith(&quot;/BOOT-INF/classes!/&quot;)) {
+                // when run as fat jar
+                locationStr = locationStr.substring(0, locationStr.length() - &quot;/BOOT-INF/classes!/&quot;.length() + 1);
+                try {
+                    location = new URL(locationStr);
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&quot;Can not add tomcat resources&quot;, e);
+                }
+            }
+            this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &quot;/&quot;, location,
+                    &quot;/META-INF/resources&quot;);
+
+        }
+    }
+}
+
+import org.apache.catalina.Context;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import cn.com.do1.component.config.assembly.StaticResourceConfigurer;
+
+/**
+ * 处理jar包启动无法访问jsp的问题
+ * &lt;p&gt;Title: TomcatConfig&lt;/p&gt;  
+ * &lt;p&gt;Description: &lt;/p&gt;  
+ * @author wm  
+ * @date 2018年7月24日
+ */
+@Configuration
+@ConditionalOnProperty(name = &quot;tomcat.staticResourceCustomizer.enabled&quot;, matchIfMissing = true)
+public class TomcatConfig {
+    @Bean
+    public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                    ((TomcatEmbeddedServletContainerFactory) container)
+                            .addContextCustomizers(new TomcatContextCustomizer() {
+                                @Override
+                                public void customize(Context context) {
+                                    context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                }
+                            });
+                }
+            }
+
+        };
+    }
+}
+</code></pre>
+
+<h3 id="静态资源">静态资源</h3>
+
+<p>方式一：<br />
+pom新增配置：</p>
+
+<pre><code>&lt;resources&gt;
+    &lt;resource&gt;
+        &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+        &lt;!--注意此次必须要放在此目录下才能被访问到--&gt;
+        &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+        &lt;filtering&gt;true&lt;/filtering&gt;
+        &lt;includes&gt;
+            &lt;include&gt;**/**&lt;/include&gt;
+        &lt;/includes&gt;
+    &lt;/resource&gt;
+&lt;/resources&gt;
+</code></pre>
+
+<p>新增配置：</p>
+
+<pre><code>@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&quot;/js/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/js/&quot;);
+    registry.addResourceHandler(&quot;/css/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/css/&quot;);
+    registry.addResourceHandler(&quot;/images/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/images/&quot;);
+    registry.addResourceHandler(&quot;/common/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/common/&quot;);
+    registry.addResourceHandler(&quot;/register/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/register/&quot;);
+    registry.addResourceHandler(&quot;/plugin/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/plugin/&quot;);
+    super.addResourceHandlers(registry);
+}
+</code></pre>
+
+<p>方式二（推荐）：<br />
+将静态资源文件放到resouce/static目录下</p>
+
+<pre><code>@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&quot;/js/**&quot;).addResourceLocations(&quot;classpath:/static/js/&quot;);
+    registry.addResourceHandler(&quot;/css/**&quot;).addResourceLocations(&quot;classpath:/static/css/&quot;);
+    registry.addResourceHandler(&quot;/images/**&quot;).addResourceLocations(&quot;classpath:/static/images/&quot;);
+    registry.addResourceHandler(&quot;/register/**&quot;).addResourceLocations(&quot;classpath:/static/register/&quot;);
+    registry.addResourceHandler(&quot;/plugin/**&quot;).addResourceLocations(&quot;classpath:/static/plugin/&quot;);
+    super.addResourceHandlers(registry);
+ }
+</code></pre>
+
+<h3 id="文件上传">文件上传</h3>
+
+<p>配置文件新增：</p>
+
+<pre><code>#upload
+spring.http.multipart.enabled=true
+spring.http.multipart.file-size-threshold=0  #0-ALLFILE
+spring.http.multipart.location=D:/fsrzfw/temp
+spring.http.multipart.max-file-size=10Mb
+spring.http.multipart.max-request-size=10Mb
+</code></pre>
+
+<p>新增配置</p>
+
+<pre><code>/**
+ * 配置上传文件大小的配置
+ * @return
+ */
+@Bean
+public MultipartConfigElement multipartConfigElement() {
+   MultipartConfigFactory factory = new MultipartConfigFactory();
+   //  单个数据大小
+   factory.setMaxFileSize(&quot;102400KB&quot;);
+   /// 总上传数据大小
+   factory.setMaxRequestSize(&quot;102400KB&quot;);
+   return factory.createMultipartConfig();
+}
+</code></pre>
+
+<h3 id="打jar包运行">打JAR包运行</h3>
+
+<p>pom新增配置：</p>
+
+<pre><code>&lt;build&gt;
+    &lt;finalName&gt;fsrzfw&lt;/finalName&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;mainClass&gt;cn.com.do1.component.Application&lt;/mainClass&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;repackage&lt;/goal&gt;
+                    &lt;/goals&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+            &lt;dependencies&gt;
+                &lt;!-- spring热部署 --&gt;
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+                    &lt;artifactId&gt;springloaded&lt;/artifactId&gt;
+                    &lt;version&gt;1.2.6.RELEASE&lt;/version&gt;
+                &lt;/dependency&gt;
+            &lt;/dependencies&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;nonFilteredFileExtensions&gt;
+                    &lt;nonFilteredFileExtension&gt;ttf&lt;/nonFilteredFileExtension&gt;
+                    &lt;nonFilteredFileExtension&gt;woff&lt;/nonFilteredFileExtension&gt;
+                    &lt;nonFilteredFileExtension&gt;woff2&lt;/nonFilteredFileExtension&gt;
+                &lt;/nonFilteredFileExtensions&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/java&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/resource&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+            &lt;!-- 处理jar包启动无法访问jsp的问题 --&gt;
+            &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt; 
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>执行mvn install，target目录下（生成fsrzfw.jar）执行 java -jar fsrzfw.jar</p>
+
+
+  
+  
+
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

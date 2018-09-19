@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/oracle/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle——查看及修改编码</title>
+      <link>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</guid>
+      <description>查看 查看oracle数据库的编码 #来源于props$，表示数据库的字符集 select * from nls_database_parameters where parameter =&#39;NLS_CHARACTERSET&#39;; 结果： PARAMETER | VALUE —————————————————————</description>
+    </item>
     
     <item>
       <title>Oracle——卸载教程</title>
@@ -22,21 +31,12 @@
     </item>
     
     <item>
-      <title>Oracle安装异常——INS-13001</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</link>
+      <title>Oracle——异常集</title>
+      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</guid>
-      <description>问题 win10系统安装oracle11g时遇到INS-13001环境不满足最低要求 解决 打开database-&amp;gt;stage-&amp;gt;cv</description>
-    </item>
-    
-    <item>
-      <title>Oracle异常——ORA-12505</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</guid>
-      <description>问题 使用SQL Developer 连接DB报错 ORA-12505，报错信息如下： ORA-12505, TNS:listener does not currently know of SID given in connect descriptor 解决 找到Oracle安装目录（类似D:\app\mia</description>
+      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      <description>安装异常 INS-13001 win10系统安装oracle11g时遇到INS-13001环境不满足最低要求 打开database-&amp;gt;stage-&amp;gt;c</description>
     </item>
     
   </channel>

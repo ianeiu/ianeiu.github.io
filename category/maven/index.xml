@@ -7,27 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/maven/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>解决pom.xml提示错误Missing artifact</title>
-      <link>https://ianeiu.github.io/2018/08/10/%E8%A7%A3%E5%86%B3pom.xml%E6%8F%90%E7%A4%BA%E9%94%99%E8%AF%AFmissing-artifact/</link>
-      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Maven——问题集</title>
+      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/10/%E8%A7%A3%E5%86%B3pom.xml%E6%8F%90%E7%A4%BA%E9%94%99%E8%AF%AFmissing-artifact/</guid>
-      <description>看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件。 如果有就把这个文件删掉，再update一下</description>
-    </item>
-    
-    <item>
-      <title>解决“Could not calculate build plan”问题</title>
-      <link>https://ianeiu.github.io/2018/08/10/%E8%A7%A3%E5%86%B3could-not-calculate-build-plan%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/10/%E8%A7%A3%E5%86%B3could-not-calculate-build-plan%E9%97%AE%E9%A2%98/</guid>
-      <description>将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下</description>
+      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <description>Could not calculate build plan 将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plug</description>
     </item>
     
   </channel>

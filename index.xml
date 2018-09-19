@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>[置顶]收藏册——js、jq</title>
-      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</link>
+      <title>[置顶]js、jq——DEMO集</title>
+      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6%E6%94%B6%E8%97%8F%E5%86%8Cjsjq/</guid>
+      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       
         <description>
 
@@ -1010,6 +1010,13 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;form表单-注意点&#34;&gt;form表单 注意点&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;查询页面，有绑定回车事件提交表单的，要在form中加上onsubmit=&amp;ldquo;return false;&amp;ldquo;。不然会出现回车查询时页面直接显示JSON数据了。&lt;/li&gt;
+&lt;li&gt;直接在form标签中加入属性accept-charset=&amp;lsquo;UTF-8&amp;rsquo;,防止中文乱码。&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;hr /&gt;
 </description>
       
@@ -1095,11 +1102,897 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
     </item>
     
     <item>
-      <title>springbootz整合（项目改造）</title>
-      <link>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
+      <title>Eclipse——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;删除某个工作空间&#34;&gt;删除某个工作空间&lt;/h2&gt;
+
+&lt;p&gt;方式1（推荐）：&lt;br /&gt;
+   打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;General&amp;ndash;&amp;gt;Startup and Shutdown&amp;ndash;&amp;gt;WorkSpace，
+然后选中你想要删除的工作空间，点击右边的remove按钮即可。&lt;/p&gt;
+
+&lt;p&gt;方式2：&lt;br /&gt;
+   在你的Eclipse目录中找到以下文件configuration.settings\org.eclipse.ui.ide.prefs，这个就是工作空间的配置文件了。
+然后将RECENT_WORKSPACES后面你想删除的工作空间删除即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;tomcat启动报nullpointerexception&#34;&gt;tomcat启动报NullPointerException&lt;/h2&gt;
+
+&lt;p&gt;在自己设置的workspace目录下面，打开目录：.metadata.plugins\org.eclipse.wst.server.core\ ，然后删除“temp0”文件夹即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;server视图加载项目之后项目名后边有带括号的名字&#34;&gt;Server视图加载项目之后项目名后边有带括号的名字&lt;/h2&gt;
+
+&lt;p&gt;复制过来的项目会出现的一种情况：有时即使是项目改了名字在添加到Server上的时候在Server视图中看到项目名后边有一个带括号的名字,还是复制之前的项目名。&lt;/p&gt;
+
+&lt;p&gt;解决：打开文件“你的工程目录.settings\org.eclipse.wst.common.component”看到内容，将里面所有为你原来工程名的字符串替换为新工程名字。&lt;/p&gt;
+
+&lt;h2 id=&#34;修改tomcat设置内存大小&#34;&gt;修改tomcat设置内存大小&lt;/h2&gt;
+
+&lt;p&gt;方式1（推荐）：&lt;br /&gt;
+在Eclipse中下面Servers双击Tomcat Server&amp;hellip; 然后点击General InformAtion 下的Open launch configuration；&lt;br /&gt;
+会弹出Edit Configuration，然后在选中Arguments选项卡；在VM arguments文本框中最后面添加
+-Xms256m -Xmx1024m -XX:MaxPermSize=256m 。&lt;/p&gt;
+
+&lt;p&gt;方式2：&lt;br /&gt;
+在Eclipse菜单栏中Window ——》Preferences ——》Server ———》 Runtime Environment；&lt;br /&gt;
+选择您用的Tomcat 然后点击Edit&amp;hellip;弹出Edit Server Runtime Ecvironment 下面JRE选项后面的Installed JREs&amp;hellip;
+点击弹出Installed JREs；在选中您用的Jre在点击Edit..在Defaul VM Arguments：中填入-Xms256m -Xmx512m&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>IDEA——快捷键</title>
+      <link>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
+&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
+首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
+&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
+&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
+&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
+&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
+&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动处理（异常）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+回车&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shfit + k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;如何跳转到文件中的特定行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;调出搜索文本的视图&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;进行全局搜索和局部搜索&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近打开的所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + d&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;变小写ctrl + shift + u,变大写ctrl +shift + y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-修改名字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>IDEA——问题集</title>
+      <link>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled&#34;&gt;IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled&lt;/h2&gt;
+
+&lt;p&gt;修改系统配置 ：&lt;br /&gt;
+Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com&lt;br /&gt;
+windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
+Integer c = 100,d=100;    
+@Test
+public void testIntegerDD(){
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
+,可看Integer源码valueOf(int i)方法&lt;br /&gt;
+    public static Integer valueOf(int i) {
+        if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+        return new Integer(i);
+    }&lt;/p&gt;
+
+&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testIntegerDD(){
+
+    Integer a = 1000,b=1000;
+    Integer c = 100,d=100;   
+    Integer e = new Integer(100);
+    Integer f = new Integer(100);
+    int g = 1000;
+    Integer h = new Integer(1000);  
+
+
+    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+
+    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
+    System.out.println(e==f);//false
+    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
+    System.out.println(g==h);//true
+
+    //进行自动装箱操作
+    System.out.println(c==e);//false
+    System.out.println(a==h);//false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    System.out.println(s1==s2); // true
+    System.out.println(s1==s3); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
+像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
+当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
+
+&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    //都存储在常量池中,指向同一常量
+    System.out.println(s1==s2); // true
+    //存储在常量池中,存储在堆内存中
+    System.out.println(s1==s3); // false
+
+    String s4 = &amp;quot;helloo&amp;quot;;
+    /**
+     * 会重新在常量池创建常量（String不可变属性）
+     */
+    String s5 = s1+&amp;quot;o&amp;quot;;
+    //都存储在常量池中,指向不同常量
+    System.out.println(s4 == s5); // false
+
+    //hello
+    String s6 = s4.substring(0, s4.length() - 1);
+    //substring返回的也是new出来的String对象
+    System.out.println(s1 == s6); // false
+    System.out.println(s3 == s6); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
+    new Runnable() {
+        public void run() {
+            try {
+              Thread.sleep(1000);
+           } catch (InterruptedException e) {
+             // TODO Auto-generated catch block
+            e.printStackTrace();
+           }  
+           System.out.println(name);
+        }
+    }.start();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
+
+&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
+首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
+主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
+
+&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
+局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Maven——问题集</title>
+      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;could-not-calculate-build-plan&#34;&gt;Could not calculate build plan&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下的文件夹删除;&lt;/li&gt;
+&lt;li&gt;右击项目Maven-&amp;gt;Update Project-&amp;gt;Update Dependencies&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;missing-artifact&#34;&gt;Missing artifact&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件;&lt;/li&gt;
+&lt;li&gt;如果有就把这个文件删掉，再update一下dependency就行了。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SVN——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;cmd-提示不是内部或者外部命令&#34;&gt;cmd 提示不是内部或者外部命令&lt;/h2&gt;
+
+&lt;p&gt;windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装时勾选 svn comand line&lt;/p&gt;
+
+&lt;h2 id=&#34;windows-查看项目svn路径&#34;&gt;windows 查看项目svn路径&lt;/h2&gt;
+
+&lt;p&gt;选择项目根目录&amp;mdash;-&amp;gt;鼠标右键&amp;mdash;-&amp;gt;属性&amp;mdash;-&amp;gt;版本控制（Subversion）&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Tomcat——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;修改startup-bat启动窗口名&#34;&gt;修改startup.bat启动窗口名&lt;/h2&gt;
+
+&lt;p&gt;打开 catlina.bat 文件，修改title&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:doStart  
+shift  
+if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232
+set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA%  
+if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd  
+shift  
+echo Using Security Manager  
+set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot;  
+goto execCmd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;tomcat指定jdk&#34;&gt;tomcat指定jdk&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Windows环境&lt;br /&gt;
+打开 catlina.bat 文件、增加配置&lt;br /&gt;
+&lt;code&gt;set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;linux环境&lt;br /&gt;
+编辑 setclasspath.sh，在文件的最开始加入如下代码&lt;br /&gt;
+&lt;code&gt;
+set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51&lt;br /&gt;
+set JRE_HOME=/home/jdk/Java\jdk7\jre7
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;占用8080端口问题&#34;&gt;占用8080端口问题&lt;/h2&gt;
+
+&lt;p&gt;tomcat死机了，重启eclipse之后，发现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;Several&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ports&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8009&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;required&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tomcat&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;already&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;  
+&lt;span class=&#34;n&#34;&gt;The&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;may&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;already&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;be&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;running&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;another&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;may&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;be&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;   
+&lt;span class=&#34;n&#34;&gt;To&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;you&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;will&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;need&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;change&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;解决办法：&lt;br /&gt;
+方法1.重启电脑&lt;br /&gt;
+方法2.在dos下，输入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;netstat   -ano|findstr  8080   
+//说明：查看占用8080端口的进程  
+taskkill  /pid  6856  /f   
+//说明，运行windows自带taskkill命令，将上面显示的进程号，结束掉。 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Oracle——查看及修改编码</title>
+      <link>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;查看&#34;&gt;查看&lt;/h3&gt;
+
+&lt;h4 id=&#34;查看oracle数据库的编码&#34;&gt;查看oracle数据库的编码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;#来源于props$，表示数据库的字符集
+select * from nls_database_parameters where parameter =&#39;NLS_CHARACTERSET&#39;;
+
+结果：
+PARAMETER        |  VALUE
+————————————————————————————
+NLS_CHARACTERSET |  ZHS16GBK
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;查看oracle数据库的编码-1&#34;&gt;查看oracle数据库的编码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;#来源于v$parameter，表示客户端的字符集的设置，
+#可能是参数文件，环境变量或者是注册表会话字符集环境
+select * from nls_instance_parameters where parameter=&#39;NLS_LANGUAGE&#39;;
+
+结果：
+PARAMETER    |  VALUE
+————————————————————————
+NLS_LANGUAGE |  AMERICAN
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;查看session编码&#34;&gt;查看session编码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;#来源于v$nls_parameters，表示会话自己的设置，
+#可能是会话的环境变量或者是alter session完成，
+#如果会话没有特殊的设置，将与nls_instance_parameters一致。
+select * from nls_session_parameters;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;修改&#34;&gt;修改&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;首先以sysdba的身份登录上去 conn /as sysdba&lt;/li&gt;
+&lt;li&gt;关闭数据库shutdown immediate;&lt;/li&gt;
+&lt;li&gt;以mount打来数据库，startup mount&lt;/li&gt;
+&lt;li&gt;设置session&lt;br /&gt;
+SQL&amp;gt;ALTER SYSTEM ENABLE RESTRICTED SESSION;
+SQL&amp;gt; ALTER SYSTEM SET JOB_QUEUE_PROCESSES=0;
+SQL&amp;gt; ALTER SYSTEM SET AQ_TM_PROCESSES=0;&lt;/li&gt;
+&lt;li&gt;启动数据库  alter database open;&lt;/li&gt;
+&lt;li&gt;修改字符集&lt;br /&gt;
+ALTER DATABASE CHARACTER SET ZHS16GBK;&lt;br /&gt;
+这会可能会报错，提示我们的字符集：新字符集必须为旧字符集的超集，这时我们可以跳过超集的检查做更改。&lt;br /&gt;
+ALTER DATABASE character set INTERNAL_USE ZHS16GBK;&lt;br /&gt;
+这条语句就可以了，TERNAL_USE提供的帮助就会使oracle绕过了子集与超集的验证，这条语句和上面的语句内部操作时完全相同的。&lt;/li&gt;
+&lt;li&gt;关闭，重新启动&lt;br /&gt;
+SQL&amp;gt;shutdown immediate;&lt;br /&gt;
+SQL&amp;gt; startup&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;当然字符集最好不要轻易修改，因为这会对数据库的数据有直接的影响，如果是生产环境的话，可能会造成不可估计得损失。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot——web项目改造为springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/17/springbootz%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
+      <guid>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      
+        <description>&lt;p&gt;现象1：引入layer.js出现undefinedcss目录.txt&lt;br /&gt;
+原因：layer.js与layui.js冲突&lt;br /&gt;
+解决：将layui.js 第二个.link 中的n.dir改为(n.dir?n.dir:r)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象2：配置CommonsMultipartResolver，上传文件返回异常HttpMediaTypeNotSupportedException&lt;br /&gt;
+原因：同下&lt;br /&gt;
+解决：FUN1、不配置CommonsMultipartResolver&lt;br /&gt;
+    FUN2、启动类@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) （不建议）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象3：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile&lt;br /&gt;
+原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
+import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：采用输入流方式获取File对象，具体代码自行百度&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象4：Shiro 自定义 filter 匹配异常，无限拦截重定向&lt;br /&gt;
+参考：&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;br /&gt;
+原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。&lt;br /&gt;
+解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ex：
+    @Bean
+    public CasFilter casFilter(){
+        CasFilter cf = new CasFilter();
+        cf.setSuccessUrl(successUrl);
+        cf.setFailureUrl(failureUrl);
+        return cf;
+    }
+
+    /**
+     * 注册casFilter
+     * @param casFilter
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
+        FilterRegistrationBean cas = new FilterRegistrationBean();
+        cas.setFilter(casFilter);
+        cas.setEnabled(false);  //该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
+        return cas;
+    }
+
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @param casFilter
+     * @param logoutFilter
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
+            CasFilter casFilter,LogoutFilter logoutFilter) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,casFilter);
+        filters.put(&amp;quot;logoutFilter&amp;quot;, logoutFilter);
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ex:
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,new CasFilter());
+        filters.put(&amp;quot;logoutFilter&amp;quot;, new LogoutFilter());
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象5：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter&lt;br /&gt;
+原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置&lt;br /&gt;
+解决：使用log4j2或logback&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象6：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合&lt;br /&gt;
+原因：springboot项目打包后获取包资源所在路径与启动main不一样&lt;br /&gt;
+ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl&lt;br /&gt;
+解决：逐一分割路径获取类对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 获得包下面的所有的class
+ * @author FengHuayuan
+ * @date 2018年4月21日 下午12:25:20.
+ * @param pack
+ * @return
+ */
+public static List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getClassesFromPackage(String pack) {
+    List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+    // 是否循环搜索子包
+    boolean recursive = true;
+    // 包名字
+    String packageName = pack;
+    // 包名对应的路径名称
+    String packageDirName = packageName.replace(&#39;.&#39;, &#39;/&#39;);
+    Enumeration&amp;lt;URL&amp;gt; dirs;
+    try {
+        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            String protocol = url.getProtocol();
+            if (&amp;quot;file&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【File类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
+            } else if (&amp;quot;jar&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【Jar类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                getClasssFromJarFile(filePath, clazzs);//wm add
+            }
+        }
+
+    } catch (Exception e) {
+        log.error(e.getMessage(),e);
+    }
+    return clazzs;
+}
+
+/** 
+ * 从jar文件中读取指定目录下面的所有的class文件 
+ * springboot打jar包专用
+ * @author wm
+ * @param jarPaht   jar文件存放的位置 
+ * @param filePaht    指定的文件目录 
+ * @param clazzs 所有的的class的对象 
+ */  
+public static void getClasssFromJarFile(String jarPath,List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs) {  
+
+    log.info(&amp;quot;getClasssFromJarFile - jarPath:&amp;quot;+jarPath);//wm
+    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
+    String[] jarPaths = jarPath.split(&amp;quot;!&amp;quot;);
+    String jarPaht=jarPaths[0].substring(6);//去掉file:/
+    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
+
+    JarFile jarFile = null;  
+    try {  
+        jarFile = new JarFile(jarPaht);  
+    } catch (IOException e1) {  
+        e1.printStackTrace();  
+    }  
+
+    List&amp;lt;JarEntry&amp;gt; jarEntryList = new ArrayList&amp;lt;JarEntry&amp;gt;();  
+
+    Enumeration&amp;lt;JarEntry&amp;gt; ee = jarFile.entries();  
+    while (ee.hasMoreElements()) {  
+        JarEntry entry = (JarEntry) ee.nextElement();  
+        if (entry.getName().startsWith(startDir) &amp;amp;&amp;amp; entry.getName().endsWith(&amp;quot;.class&amp;quot;)) {  
+            log.info(&amp;quot;getClasssFromJarFile - entry:&amp;quot;+entry.getName());//wm
+            jarEntryList.add(entry);  
+        }  
+    }  
+    for (JarEntry entry : jarEntryList) {  
+        String className = entry.getName().replace(&#39;/&#39;, &#39;.&#39;);  
+        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
+        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
+        try {  
+            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
+        } catch (ClassNotFoundException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象7：启动jar包，访问登录，报NoClassDefFoundError RedisCacheManager&lt;br /&gt;
+解决：注释pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;
+    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象8：jar包启动无法访问jsp的问题&lt;br /&gt;
+原因:&lt;a href=&#34;https://www.jb51.net/article/141474.htm&#34; target=&#34;blank&#34;&gt;深入Spring Boot实现对Fat Jar jsp的支持&lt;/a&gt;&lt;br /&gt;
+解决：亲测有效，需两步&lt;br /&gt;
+&amp;emsp;步骤1、新增两个类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import java.io.File;
+    import java.net.MalformedURLException;
+    import java.net.URL;
+
+    import org.apache.catalina.Context;
+    import org.apache.catalina.Lifecycle;
+    import org.apache.catalina.LifecycleEvent;
+    import org.apache.catalina.LifecycleListener;
+    import org.apache.catalina.WebResourceRoot.ResourceSetType;
+    import org.springframework.util.ResourceUtils;
+
+    /**
+     * Add main class fat jar/exploded directory into tomcat ResourceSet.
+     *
+     * @author hengyunabc 2017-07-29
+     *
+     */
+    public class StaticResourceConfigurer implements LifecycleListener {
+
+        private final Context context;
+
+        StaticResourceConfigurer(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void lifecycleEvent(LifecycleEvent event) {
+            if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+                URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+                if (ResourceUtils.isFileURL(location)) {
+                    // when run as exploded directory
+                    String rootFile = location.getFile();
+                    if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
+                        rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
+                    }
+                    if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
+                        return;
+                    }
+
+                    try {
+                        location = new File(rootFile).toURI().toURL();
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+
+                String locationStr = location.toString();
+                if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
+                    // when run as fat jar
+                    locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
+                    try {
+                        location = new URL(locationStr);
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+                this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
+                        &amp;quot;/META-INF/resources&amp;quot;);
+
+            }
+        }
+    }
+
+    import org.apache.catalina.Context;
+    import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+    import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+    import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    /**
+     * 处理1.5版本jar包启动无法访问jsp的问题
+     * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
+     * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
+     * @author wm  
+     * @date 2018年7月24日
+     */
+    @Configuration
+    @ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
+    public class TomcatConfig {
+        @Bean
+        public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+            return new EmbeddedServletContainerCustomizer() {
+                @Override
+                public void customize(ConfigurableEmbeddedServletContainer container) {
+                    if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                        ((TomcatEmbeddedServletContainerFactory) container)
+                                .addContextCustomizers(new TomcatContextCustomizer() {
+                                    @Override
+                                    public void customize(Context context) {
+                                        context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                    }
+                                });
+                    }
+                }
+
+            };
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;emsp;步骤2，pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;resources&amp;gt;
+        ...
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象9：启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType&lt;br /&gt;
+解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象10：整合redis报 NOAUTH Authentication required&lt;br /&gt;
+原因：spring.redis.password=yourpassword 配置在JedisConnectionFactory中没有被加载进去&lt;br /&gt;
+解决：手动获取自定义或原配置密码进行配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Value(&amp;quot;${redis.address}&amp;quot;)
+private String hostName;
+@Value(&amp;quot;${redis.port}&amp;quot;)
+private String port;
+@Value(&amp;quot;${redis.password}&amp;quot;)
+private String password;
+
+@Bean
+public JedisConnectionFactory jedisConnectionFactory(){
+    JedisConnectionFactory jcf = new JedisConnectionFactory();
+    jcf.setHostName(hostName);
+    jcf.setPort(Integer.parseInt(port));
+    jcf.setPassword(password);
+    return jcf;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象11：整合swagger组件，HTTP接口统一处理异常失效&lt;br /&gt;
+原因：GlobalExceptionResolver implements HandlerExceptionResolver&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private boolean isReturnReponseBody(Object handler) {
+    if(((HandlerMethod) handler).hasMethodAnnotation(ResponseBody.class)) {
+        return true;
+    }
+    HandlerMethod hm = (HandlerMethod) handler;
+    if(hm.getBean().getClass().isAnnotationPresent(RestController.class)) {
+        return true;
+    }
+    /*Method method = hm.getMethod();
+    Class&amp;lt;?&amp;gt; returnType = method.getReturnType();
+    if(returnType.isAnnotationPresent(ResponseBody.class)) {
+        return true;
+    }*/ 
+    return false;
+}
+result ： false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：新增判断&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if(((HandlerMethod) handler).hasMethodAnnotation(ApiOperation.class)) {
+    return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot——整合（项目改造）</title>
+      <link>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
       
         <description>
 
@@ -1582,402 +2475,6 @@ public MultipartConfigElement multipartConfigElement() {
     </item>
     
     <item>
-      <title>web项目改造为springboot所见问题简单记录</title>
-      <link>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/17/web%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
-      
-        <description>&lt;p&gt;现象1：引入layer.js出现undefinedcss目录.txt&lt;br /&gt;
-原因：layer.js与layui.js冲突&lt;br /&gt;
-解决：将layui.js 第二个.link 中的n.dir改为(n.dir?n.dir:r)&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象2：配置CommonsMultipartResolver，上传文件返回异常HttpMediaTypeNotSupportedException&lt;br /&gt;
-原因：同下&lt;br /&gt;
-解决：FUN1、不配置CommonsMultipartResolver&lt;br /&gt;
-    FUN2、启动类@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) （不建议）&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象3：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile&lt;br /&gt;
-原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
-import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解决：采用输入流方式获取File对象，具体代码自行百度&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象4：Shiro 自定义 filter 匹配异常，无限拦截重定向&lt;br /&gt;
-参考：&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;br /&gt;
-原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。&lt;br /&gt;
-解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ex：
-    @Bean
-    public CasFilter casFilter(){
-        CasFilter cf = new CasFilter();
-        cf.setSuccessUrl(successUrl);
-        cf.setFailureUrl(failureUrl);
-        return cf;
-    }
-
-    /**
-     * 注册casFilter
-     * @param casFilter
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
-        FilterRegistrationBean cas = new FilterRegistrationBean();
-        cas.setFilter(casFilter);
-        cas.setEnabled(false);  //该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
-        return cas;
-    }
-
-    /**
-     * 注册shiroFilter
-     * @param securityManager
-     * @param casFilter
-     * @param logoutFilter
-     * @return
-     */
-    @Bean
-    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
-            CasFilter casFilter,LogoutFilter logoutFilter) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        ...
-        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
-        filters.put(&amp;quot;casFilter&amp;quot;,casFilter);
-        filters.put(&amp;quot;logoutFilter&amp;quot;, logoutFilter);
-        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
-        ...
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    ex:
-    /**
-     * 注册shiroFilter
-     * @param securityManager
-     * @return
-     */
-    @Bean
-    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        ...
-        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
-        filters.put(&amp;quot;casFilter&amp;quot;,new CasFilter());
-        filters.put(&amp;quot;logoutFilter&amp;quot;, new LogoutFilter());
-        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
-        ...
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象5：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter&lt;br /&gt;
-原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置&lt;br /&gt;
-解决：使用log4j2或logback&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象6：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合&lt;br /&gt;
-原因：springboot项目打包后获取包资源所在路径与启动main不一样&lt;br /&gt;
-ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl&lt;br /&gt;
-解决：逐一分割路径获取类对象&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/**
- * 获得包下面的所有的class
- * @author FengHuayuan
- * @date 2018年4月21日 下午12:25:20.
- * @param pack
- * @return
- */
-public static List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getClassesFromPackage(String pack) {
-    List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
-    // 是否循环搜索子包
-    boolean recursive = true;
-    // 包名字
-    String packageName = pack;
-    // 包名对应的路径名称
-    String packageDirName = packageName.replace(&#39;.&#39;, &#39;/&#39;);
-    Enumeration&amp;lt;URL&amp;gt; dirs;
-    try {
-        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
-        while (dirs.hasMoreElements()) {
-            URL url = dirs.nextElement();
-            String protocol = url.getProtocol();
-            if (&amp;quot;file&amp;quot;.equals(protocol)) {
-                log.debug(&amp;quot;*****【File类型】的扫描！&amp;quot;);
-                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
-                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
-            } else if (&amp;quot;jar&amp;quot;.equals(protocol)) {
-                log.debug(&amp;quot;*****【Jar类型】的扫描！&amp;quot;);
-                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
-                getClasssFromJarFile(filePath, clazzs);//wm add
-            }
-        }
-
-    } catch (Exception e) {
-        log.error(e.getMessage(),e);
-    }
-    return clazzs;
-}
-
-/** 
- * 从jar文件中读取指定目录下面的所有的class文件 
- * springboot打jar包专用
- * @author wm
- * @param jarPaht   jar文件存放的位置 
- * @param filePaht    指定的文件目录 
- * @param clazzs 所有的的class的对象 
- */  
-public static void getClasssFromJarFile(String jarPath,List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs) {  
-
-    log.info(&amp;quot;getClasssFromJarFile - jarPath:&amp;quot;+jarPath);//wm
-    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
-    String[] jarPaths = jarPath.split(&amp;quot;!&amp;quot;);
-    String jarPaht=jarPaths[0].substring(6);//去掉file:/
-    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
-
-    JarFile jarFile = null;  
-    try {  
-        jarFile = new JarFile(jarPaht);  
-    } catch (IOException e1) {  
-        e1.printStackTrace();  
-    }  
-
-    List&amp;lt;JarEntry&amp;gt; jarEntryList = new ArrayList&amp;lt;JarEntry&amp;gt;();  
-
-    Enumeration&amp;lt;JarEntry&amp;gt; ee = jarFile.entries();  
-    while (ee.hasMoreElements()) {  
-        JarEntry entry = (JarEntry) ee.nextElement();  
-        if (entry.getName().startsWith(startDir) &amp;amp;&amp;amp; entry.getName().endsWith(&amp;quot;.class&amp;quot;)) {  
-            log.info(&amp;quot;getClasssFromJarFile - entry:&amp;quot;+entry.getName());//wm
-            jarEntryList.add(entry);  
-        }  
-    }  
-    for (JarEntry entry : jarEntryList) {  
-        String className = entry.getName().replace(&#39;/&#39;, &#39;.&#39;);  
-        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
-        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
-        try {  
-            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
-        } catch (ClassNotFoundException e) {  
-            e.printStackTrace();  
-        }  
-    }  
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象7：启动jar包，访问登录，报NoClassDefFoundError RedisCacheManager&lt;br /&gt;
-解决：注释pom配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;
-    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象8：jar包启动无法访问jsp的问题&lt;br /&gt;
-原因:&lt;a href=&#34;https://www.jb51.net/article/141474.htm&#34; target=&#34;blank&#34;&gt;深入Spring Boot实现对Fat Jar jsp的支持&lt;/a&gt;&lt;br /&gt;
-解决：亲测有效，需两步&lt;br /&gt;
-&amp;emsp;步骤1、新增两个类&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import java.io.File;
-    import java.net.MalformedURLException;
-    import java.net.URL;
-
-    import org.apache.catalina.Context;
-    import org.apache.catalina.Lifecycle;
-    import org.apache.catalina.LifecycleEvent;
-    import org.apache.catalina.LifecycleListener;
-    import org.apache.catalina.WebResourceRoot.ResourceSetType;
-    import org.springframework.util.ResourceUtils;
-
-    /**
-     * Add main class fat jar/exploded directory into tomcat ResourceSet.
-     *
-     * @author hengyunabc 2017-07-29
-     *
-     */
-    public class StaticResourceConfigurer implements LifecycleListener {
-
-        private final Context context;
-
-        StaticResourceConfigurer(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public void lifecycleEvent(LifecycleEvent event) {
-            if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
-                URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
-
-                if (ResourceUtils.isFileURL(location)) {
-                    // when run as exploded directory
-                    String rootFile = location.getFile();
-                    if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
-                        rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
-                    }
-                    if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
-                        return;
-                    }
-
-                    try {
-                        location = new File(rootFile).toURI().toURL();
-                    } catch (MalformedURLException e) {
-                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
-                    }
-                }
-
-                String locationStr = location.toString();
-                if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
-                    // when run as fat jar
-                    locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
-                    try {
-                        location = new URL(locationStr);
-                    } catch (MalformedURLException e) {
-                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
-                    }
-                }
-                this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
-                        &amp;quot;/META-INF/resources&amp;quot;);
-
-            }
-        }
-    }
-
-    import org.apache.catalina.Context;
-    import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-    import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-    import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-    import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
-    import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.context.annotation.Configuration;
-
-    /**
-     * 处理1.5版本jar包启动无法访问jsp的问题
-     * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
-     * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
-     * @author wm  
-     * @date 2018年7月24日
-     */
-    @Configuration
-    @ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
-    public class TomcatConfig {
-        @Bean
-        public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
-            return new EmbeddedServletContainerCustomizer() {
-                @Override
-                public void customize(ConfigurableEmbeddedServletContainer container) {
-                    if (container instanceof TomcatEmbeddedServletContainerFactory) {
-                        ((TomcatEmbeddedServletContainerFactory) container)
-                                .addContextCustomizers(new TomcatContextCustomizer() {
-                                    @Override
-                                    public void customize(Context context) {
-                                        context.addLifecycleListener(new StaticResourceConfigurer(context));
-                                    }
-                                });
-                    }
-                }
-
-            };
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;步骤2，pom配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;resources&amp;gt;
-        ...
-        &amp;lt;resource&amp;gt;
-            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
-            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
-            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
-            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
-            &amp;lt;includes&amp;gt;
-                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
-            &amp;lt;/includes&amp;gt;
-        &amp;lt;/resource&amp;gt; 
-    &amp;lt;/resources&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象9：启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType&lt;br /&gt;
-解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象10：整合redis报 NOAUTH Authentication required&lt;br /&gt;
-原因：spring.redis.password=yourpassword 配置在JedisConnectionFactory中没有被加载进去&lt;br /&gt;
-解决：手动获取自定义或原配置密码进行配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Value(&amp;quot;${redis.address}&amp;quot;)
-private String hostName;
-@Value(&amp;quot;${redis.port}&amp;quot;)
-private String port;
-@Value(&amp;quot;${redis.password}&amp;quot;)
-private String password;
-
-@Bean
-public JedisConnectionFactory jedisConnectionFactory(){
-    JedisConnectionFactory jcf = new JedisConnectionFactory();
-    jcf.setHostName(hostName);
-    jcf.setPort(Integer.parseInt(port));
-    jcf.setPassword(password);
-    return jcf;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象11：整合swagger组件，HTTP接口统一处理异常失效&lt;br /&gt;
-原因：GlobalExceptionResolver implements HandlerExceptionResolver&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private boolean isReturnReponseBody(Object handler) {
-    if(((HandlerMethod) handler).hasMethodAnnotation(ResponseBody.class)) {
-        return true;
-    }
-    HandlerMethod hm = (HandlerMethod) handler;
-    if(hm.getBean().getClass().isAnnotationPresent(RestController.class)) {
-        return true;
-    }
-    /*Method method = hm.getMethod();
-    Class&amp;lt;?&amp;gt; returnType = method.getReturnType();
-    if(returnType.isAnnotationPresent(ResponseBody.class)) {
-        return true;
-    }*/ 
-    return false;
-}
-result ： false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解决：新增判断&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if(((HandlerMethod) handler).hasMethodAnnotation(ApiOperation.class)) {
-    return true;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>HashMap——工作原理</title>
       <link>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
@@ -2279,736 +2776,6 @@ User构造代码块
 User局部代码块
 User构造代码块
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Mybatis——参数篇</title>
-      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;参数传递符号&#34;&gt;参数传递符号&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;#{}&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;${}&lt;/p&gt;
-
-&lt;p&gt;select * from tbl_employee where id=${id} and last_name=#{userName}
-Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=?&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;区别：&lt;br /&gt;
-#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。&lt;br /&gt;
-大多情况下，取参数的值都应该使用#{}。&lt;/p&gt;
-
-&lt;p&gt;${}:取出的值直接拼装在sql语句中；会有安全问题；&lt;br /&gt;
-原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select * from ${year}_salary where xxx;
-select * from tb_sys_user order by ${f_name} ${order}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;更丰富的用法&#34;&gt;#{}更丰富的用法&lt;/h3&gt;
-
-&lt;p&gt;规定参数的一些规则：
-javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；&lt;/p&gt;
-
-&lt;p&gt;jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）；
-JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;&lt;/p&gt;
-
-&lt;p&gt;由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;#{email,jdbcType=OTHER}&lt;/li&gt;
-&lt;li&gt;jdbcTypeForNull=NULL &lt;setting name=&#34;jdbcTypeForNull&#34; value=&#34;NULL&#34;/&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;参数传递&#34;&gt;参数传递&lt;/h3&gt;
-
-&lt;h4 id=&#34;单个参数&#34;&gt;单个参数&lt;/h4&gt;
-
-&lt;p&gt;#{参数名/任意名}：取出参数值。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserById(String id); --&amp;gt;
-&amp;lt;!-- parameterType=&amp;quot;java.lang.String&amp;quot; 可不加 --&amp;gt;
-&amp;lt;select id=&amp;quot;getUserById&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
-    select * from tb_sys_user where user_id = #{id}
-&amp;lt;/select&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;多个参数&#34;&gt;多个参数&lt;/h4&gt;
-
-&lt;p&gt;mybatis会做特殊处理。多个参数会被封装成一个map。&lt;br /&gt;
-key：param1&amp;hellip;paramN,或者参数的索引也可以&lt;br /&gt;
-value：传入的参数值&lt;br /&gt;
-#{}就是从map中获取指定的key的值。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserByIdAndName(String id, String userName); --&amp;gt;
-&amp;lt;select id=&amp;quot;getUserByIdAndName&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
-    select * from tb_sys_user where user_id = #{0} and user_name like #{1}
-&amp;lt;/select&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;map封装多个参数&#34;&gt;Map封装多个参数&lt;/h4&gt;
-
-&lt;p&gt;#{key}：取出map中对应的值&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserByMap(Map&amp;lt;String, Object&amp;gt; map); --&amp;gt;
-&amp;lt;select id=&amp;quot;getUserByMap&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
-    select * from tb_sys_user where user_id = #{userId} and user_name like #{userName}
-&amp;lt;/select&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;pojo作为参数&#34;&gt;POJO作为参数&lt;/h4&gt;
-
-&lt;p&gt;#{属性名}：取出传入的pojo的属性值&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- boolean updateUser(TbSysUser user); --&amp;gt;
-&amp;lt;update id=&amp;quot;updateUser&amp;quot;&amp;gt;
-    update tb_sys_user 
-    set password=#{password},status=#{status}
-    where user_id=#{userId}
-&amp;lt;/update&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;to作为参数&#34;&gt;TO作为参数&lt;/h4&gt;
-
-&lt;p&gt;如果多个参数不是业务模型中的数据，但是经常要使用，推荐来编写一个TO（Transfer Object）数据传输对象&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Page{
-    int index;
-    int size;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;注解方式&#34;&gt;注解方式&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- TbSysUser getUserAnnoationByIdAndName(@Param(&amp;quot;id&amp;quot;) String id, @Param(&amp;quot;userName&amp;quot;) String userName); --&amp;gt;
-&amp;lt;select id=&amp;quot;getUserAnnoationByIdAndName&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
-    select * from tb_sys_user where user_id = #{id} and user_name like #{userName}
-&amp;lt;/select&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;list封装数据集合-涉及动态sql&#34;&gt;List封装数据集合（涉及动态SQL）&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- List&amp;lt;TbSysUser&amp;gt; getUsersByConditionForeach(@Param(&amp;quot;ids&amp;quot;)List&amp;lt;String&amp;gt; ids); --&amp;gt;
-&amp;lt;select id=&amp;quot;getUsersByConditionForeach&amp;quot; resultType=&amp;quot;com.wm.demo.mybatis.model.TbSysUser&amp;quot;&amp;gt;
-    select * from tb_sys_user
-    &amp;lt;!--
-        collection：指定要遍历的集合：
-            list类型的参数会特殊处理封装在map中，map的key就叫list
-        item：将当前遍历出的元素赋值给指定的变量
-        separator:每个元素之间的分隔符
-        open：遍历出所有结果拼接一个开始的字符
-        close:遍历出所有结果拼接一个结束的字符
-        index:索引。遍历list的时候是index就是索引，item就是当前值
-                      遍历map的时候index表示的就是map的key，item就是map的值
-
-        #{变量名}就能取出变量的值也就是当前遍历出的元素
-      --&amp;gt;
-    &amp;lt;foreach collection=&amp;quot;ids&amp;quot; item=&amp;quot;user_id&amp;quot; separator=&amp;quot;,&amp;quot; open=&amp;quot;where user_id in(&amp;quot; close=&amp;quot;)&amp;quot;&amp;gt;
-        #{user_id}
-    &amp;lt;/foreach&amp;gt;
-&amp;lt;/select&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;复杂情况&#34;&gt;复杂情况&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;public TbSysUser getUser(@Param(&amp;quot;id&amp;quot;)Integer id,String userName);
-取值：id==&amp;gt;#{id/param1}   userName==&amp;gt;#{param2}
-
-public TbSysUser getUser(Integer id,@Param(&amp;quot;u&amp;quot;)TbSysUser user);
-取值：id==&amp;gt;#{param1}    userName===&amp;gt;#{param2.userName/u.userName}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果是Collection（List、Set）类型或者是数组，也会特殊处理。也是把传入的list或者数组封装在map中。&lt;br /&gt;
-key：Collection（collection）,如果是List还可以使用这个key(list) 数组(array)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;List&amp;lt;TbSysUser&amp;gt; getUsersByConditionForeach(@Param(&amp;quot;ids&amp;quot;)List&amp;lt;String&amp;gt; ids);
-取值：取出第一个id的值：   #{list[0]}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;处理参数源码&#34;&gt;处理参数源码&lt;/h3&gt;
-
-&lt;p&gt;总结：参数多时会封装map，为了不混乱，我们可以使用@Param来指定封装时使用的key；#{key}就可以取出map中的值；&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;TbSysUser getUserAnnoationByIdAndName(@Param(&amp;quot;id&amp;quot;) String id, @Param(&amp;quot;userName&amp;quot;) String userName);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ParamNameResolver解析参数封装map的；
-//1、names：{0=id, 1=userName}；构造器的时候就确定好了&lt;/p&gt;
-
-&lt;p&gt;确定流程：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;获取每个标了param注解的参数的@Param的值：id，userName赋值给name;&lt;/li&gt;
-&lt;li&gt;每次解析一个参数给map中保存信息：（key：参数索引，value：name的值）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;name的值：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;标注了param注解：注解的值&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;没有标注：
-
-&lt;ol&gt;
-&lt;li&gt;全局配置：useActualParamName（jdk1.8）：name=参数名&lt;/li&gt;
-&lt;li&gt;name=map.size()；相当于当前元素的索引&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;测试数据：args[ &amp;lsquo;admin&amp;rsquo;，&amp;rdquo;测试%&amp;ldquo;]&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public Object getNamedParams(Object[] args) {
-    final int paramCount = names.size();
-    //1、参数为null直接返回
-    if (args == null || paramCount == 0) {
-      return null;
-
-    //2、如果只有一个元素，并且没有Param注解；args[0]：单个参数直接返回
-    } else if (!hasParamAnnotation &amp;amp;&amp;amp; paramCount == 1) {
-      return args[names.firstKey()];
-
-    //3、多个元素或者有Param标注
-    } else {
-      final Map&amp;lt;String, Object&amp;gt; param = new ParamMap&amp;lt;Object&amp;gt;();
-      int i = 0;
-
-      //4、遍历names集合；{0=id, 1=userName}
-      for (Map.Entry&amp;lt;Integer, String&amp;gt; entry : names.entrySet()) {
-
-        //names集合的value作为key;  names集合的key又作为取值的参考args[0]
-        //eg:{id=args[0]:admin,lastName=args[1]:测试%}
-        param.put(entry.getValue(), args[entry.getKey()]);
-
-
-        // add generic param names (param1, param2, ...)param
-        //额外的将每一个参数也保存到map中，使用新的key：param1...paramN
-        //效果：有Param注解可以#{指定的key}，或者#{param1}
-        final String genericParamName = GENERIC_NAME_PREFIX + String.valueOf(i + 1);
-        // ensure not to overwrite parameter named with @Param
-        if (!names.containsValue(genericParamName)) {
-          param.put(genericParamName, args[entry.getKey()]);
-        }
-        i++;
-      }
-      return param;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Mybatis——异常Mapped Statements collection does not contain</title>
-      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</guid>
-      
-        <description>&lt;p&gt;初次接触使用Mybatis会出现“Mapped Statements collection does not contain value for &amp;hellip;.“错误提示&lt;/p&gt;
-
-&lt;p&gt;常见的错误原因有几种：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;mapper.xml中没有加入namespace&lt;/li&gt;
-&lt;li&gt;mapper.xml中的方法和接口mapper的方法不对应&lt;/li&gt;
-&lt;li&gt;mapper.xml没有加入到mybatis-config.xml中(即总的配置文件)，例外：配置了mapper文件的包路径的除外&lt;/li&gt;
-&lt;li&gt;mapper.xml文件名和所写的mapper名称不相同。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>JVM的结构</title>
-      <link>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%9A%84%E7%BB%93%E6%9E%84/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;jvm运行时数据区&#34;&gt;JVM运行时数据区&lt;/h2&gt;
-
-&lt;p&gt;运行时数据区（分布在操作系统堆中，由程序员管理）&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;方法区&lt;/li&gt;
-&lt;li&gt;虚拟机栈（Java栈）&lt;/li&gt;
-&lt;li&gt;堆（Java堆）&lt;/li&gt;
-&lt;li&gt;本地方法栈/区&lt;/li&gt;
-&lt;li&gt;程序计数器&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img style=&#34;width:60%&#34; src=&#34;https://ianeiu.github.io/resouce/JVM/JVM结构.jpg&#34;  alt=&#34;JVM结构&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。&lt;/p&gt;
-
-&lt;h2 id=&#34;线程独享的区域&#34;&gt;线程独享的区域&lt;/h2&gt;
-
-&lt;h4 id=&#34;程序计数器&#34;&gt;程序计数器&lt;/h4&gt;
-
-&lt;p&gt;程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。&lt;br /&gt;
-如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。&lt;/p&gt;
-
-&lt;h4 id=&#34;虚拟机栈&#34;&gt;虚拟机栈&lt;/h4&gt;
-
-&lt;p&gt;每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。
-栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。&lt;/p&gt;
-
-&lt;h4 id=&#34;本地方法区&#34;&gt;本地方法区&lt;/h4&gt;
-
-&lt;p&gt;本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。&lt;/p&gt;
-
-&lt;h2 id=&#34;全局共享的区域&#34;&gt;全局共享的区域&lt;/h2&gt;
-
-&lt;h4 id=&#34;方法区&#34;&gt;方法区&lt;/h4&gt;
-
-&lt;p&gt;方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;运行时常量池&lt;/strong&gt; ：方法区的一部分&lt;em&gt;（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）    &lt;/em&gt;，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。&lt;/p&gt;
-
-&lt;h4 id=&#34;堆&#34;&gt;堆&lt;/h4&gt;
-
-&lt;p&gt;JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java初中级面试题集</title>
-      <link>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;jvm的内存结构&#34;&gt;JVM的内存结构&lt;/h3&gt;
-
-&lt;p&gt;详见 &lt;a href=&#34;https://ianeiu.github.io/2018/09/11/jvm的结构&#34; target=&#34;blank&#34;&gt;jvm的结构&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;强引用-软引用和弱引用的区别&#34;&gt;强引用，软引用和弱引用的区别&lt;/h3&gt;
-
-&lt;p&gt;&lt;kbd&gt;强引用&lt;/kbd&gt;
-只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会回收，这是最常见的New出来的对象。&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;软引用&lt;/kbd&gt;
-内存溢出之前通过代码回收的引用。软引用主要用户实现类似缓存的功能，在内存足够的情况下直接通过软引用取值，无需从繁忙的真实来源查询数据，提升速度；当内存不足时，自动删除这部分缓存数据，从真正的来源查询这些数据。&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;弱引用&lt;/kbd&gt;
-第二次垃圾回收时回收的引用，短时间内通过弱引用取对应的数据，可以取到，当执行过第二次垃圾回收时，将返回null。弱引用主要用于监控对象是否已经被垃圾回收器标记为即将回收的垃圾，可以通过弱引用的isEnQueued方法返回对象是否被垃圾回收器标记。&lt;/p&gt;
-
-&lt;h3 id=&#34;数组在内存中如何分配&#34;&gt;数组在内存中如何分配&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上）&lt;/li&gt;
-&lt;li&gt;引用类型，类类型的数组，每个数组成员仍是一个引用（指针），引用到堆上的空间（因为类的实例的内存分配在堆上）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;java的多态表现在哪里&#34;&gt;java的多态表现在哪里&lt;/h3&gt;
-
-&lt;p&gt;主要有两种表现形式：重载和重写&lt;/p&gt;
-
-&lt;p&gt;重载：发生在同一类中，具有相同的方法名，主要是看参数的个数，类型，顺序不同实现方法的重载的，返回值的类型可以不同。&lt;/p&gt;
-
-&lt;p&gt;重写：发生在两个类中（父类和子类），具有相同的方法名，主要看方法中参数，个数，类型必须相同，返回值的类型必须相同。&lt;/p&gt;
-
-&lt;h3 id=&#34;string的substring-方法内部是如何实现&#34;&gt;String的substring()方法内部是如何实现&lt;/h3&gt;
-
-&lt;p&gt;substring方法通过原字符串创建了一个新的对象。&lt;br /&gt;
-当为字符串分配内存时，char数组value[]存储字符，offset=0，count=字符串长度。&lt;/p&gt;
-
-&lt;p&gt;在Java6里，由substring(start,end)调用构造函数String(int,in,char[])时，实际上是改变offset和count的位置达到取得子字符串的目的，而子字符串里的value[]数组，因为引用是强引用，仍然指向原字符串。&lt;br /&gt;
-由于String是不可变的(immutable)，基于这种共享同一个字符数组的设计有以下好处：  调用substring()时无需复制数组，可重用value[]数组；且substring()的运行是常数时间，非线性，性能得到提高；而劣势，便是可能会产生内存泄露。&lt;br /&gt;
-假设原字符串s有1GB，且我们需要的是s.substring(1,10)这样一段小的字符串，但由于substring()里的value[]数组仍然指向1GB的原字符串，导致原字符串无法在GC中释放，从而产生了内存泄露。&lt;/p&gt;
-
-&lt;p&gt;在Java7里，String的substring()方法实现已经改变，由原来的共享数组变成了传统的拷贝，原字符串的字符数组已经不再被引用，杜绝了内存泄露的同时也将运行时间由常数变成了线性，这个改变也使得substring()创建字符串的操作更加耗时，以前的开销是O(1)，现在最坏情况是O(n)。&lt;/p&gt;
-
-&lt;h3 id=&#34;什么是不可修改对象-immutable-object&#34;&gt;什么是不可修改对象(Immutable Object)&lt;/h3&gt;
-
-&lt;p&gt;可修改对象是那些一旦被创建就不能修改的对象。对这种对象的任何改动的后果都是会创建一个新的对象，而不是在原对象本身做修改。&lt;/p&gt;
-
-&lt;p&gt;大多数这样的类通常都是final类型的，因为这样可以避免自己被继承继而被覆盖方法。例如Java中的String类。&lt;/p&gt;
-
-&lt;p&gt;也可以通过将类的成员设置成private非final的来获得同样的效果。同时类不能通过方法暴露成员，特别是可修改类型的成员。&lt;br /&gt;
-当类的方法接收客户类传入的可修改对象的话，应该使用一个复制的对象来防止客户代码来修改这个传入的可修改类。比如，传入java.util.Date对象的话，应该使用clone()方法来获得一个副本。&lt;br /&gt;
-当通过类方法返回一个可修改对象时，需要返回的是类对象的副本，防止客户代码通过此引用修改了成员对象的属性。&lt;/p&gt;
-
-&lt;h3 id=&#34;什么时候需要重写hashcode-和equals-方法&#34;&gt;什么时候需要重写hashCode()和equals()方法&lt;/h3&gt;
-
-&lt;p&gt;当你需要根据业务逻辑来进行相等性判断、而不是根据对象相等性来判断的时候你就需要重写这两个函数了。&lt;br /&gt;
-例如，两个Employee对象相等的依据是它们拥有相同的emp_id，尽管它们有可能是两个不同的对象，并且分别在不同的地方被创建。同时，如果你准备把它们当作HashMap中的key来使用的话，你也必须重写这两个方法。现在，作为Java中equals-hashcode的一个约定，当你重写equals的时候必须也重写hashcode，否则你会打破诸如Set, Map等集合赖以正常工作的约定。&lt;/p&gt;
-
-&lt;p&gt;当你向HashMap插入一个key的时候，首先，这个对象的hashCode()方法会被调用，调用结果用来计算将要存储的位置(bucket)。&lt;br /&gt;
-因为某个位置上可能以链表的方式已经包含了多个Map.Entry对象，所以HashMap会使用equals()方法来将此对象与所有这些Map.Entry所包含的key进行对比，以确定此key对象是否已经存在。&lt;/p&gt;
-
-&lt;h3 id=&#34;mybatis如何处理结果集&#34;&gt;mybatis如何处理结果集&lt;/h3&gt;
-
-&lt;p&gt;MyBatis的结果集是通过反射来实现的。并不是通过get/set方法。在实体类中无论是否定义get/set()方法，都是可以接收到的。&lt;/p&gt;
-
-&lt;h3 id=&#34;http-https协议&#34;&gt;http,https协议&lt;/h3&gt;
-
-&lt;p&gt;HTTP：互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。&lt;/p&gt;
-
-&lt;p&gt;HTTPS：以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。&lt;/p&gt;
-
-&lt;p&gt;区别：&lt;br /&gt;
-1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用;&lt;br /&gt;
-2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议;
-3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443;&lt;br /&gt;
-4、http的连接很简单，是无状态的；HTTPS是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。&lt;/p&gt;
-
-&lt;h3 id=&#34;tcp-ip协议&#34;&gt;tcp/ip协议&lt;/h3&gt;
-
-&lt;p&gt;TCP/IP协议族是一个四层协议系统，自底而上分别是数据链路层、网络层、传输层和应用层。每一层完成不同的功能，且通过若干协议来实现，上层协议使用下层协议提供的服务。&lt;br /&gt;
-1、数据链路层负责帧数据的传递;&lt;br /&gt;
-2、网络层责数据怎样传递过去;&lt;br /&gt;
-3、传输层负责传输数据的控制（准确性、安全性）;&lt;br /&gt;
-4、应用层负责数据的展示和获取。&lt;/p&gt;
-
-&lt;h3 id=&#34;tcp五层网络协议&#34;&gt;tcp五层网络协议&lt;/h3&gt;
-
-&lt;p&gt;物理层：&lt;br /&gt;
-为数据端设备提供传送数据的通路，数据通路可以是一个物理媒体，也可以是多个物理媒体连接而成。&lt;/p&gt;
-
-&lt;p&gt;数据链路层：&lt;br /&gt;
-为网络层提供数据传送服务。&lt;/p&gt;
-
-&lt;p&gt;网络层：&lt;br /&gt;
-路由选择和中继、激活,终止网络连接、在一条数据链路上复用多条网络连接,多采取分时复用技术 、差错检测与恢复、排序,流量控制、服务选择、网络管理 。&lt;/p&gt;
-
-&lt;p&gt;传输层：&lt;br /&gt;
-传输层是两台计算机经过网络进行数据通信时,第一个端到端的层次，具有缓冲作用。&lt;/p&gt;
-
-&lt;p&gt;应用层：&lt;br /&gt;
-应用层向应用程序提供服务&lt;/p&gt;
-
-&lt;h3 id=&#34;tcp与udp的区别&#34;&gt;TCP与UDP的区别&lt;/h3&gt;
-
-&lt;p&gt;1、基于连接与无连接;&lt;br /&gt;
-2、TCP要求系统资源较多，UDP较少;&lt;br /&gt;
-3、UDP程序结构较简单;&lt;br /&gt;
-4、流模式（TCP）与数据报模式(UDP);&lt;br /&gt;
-5、TCP保证数据正确性，UDP可能丢包;&lt;br /&gt;
-6、TCP保证数据顺序，UDP不保证。&lt;/p&gt;
-
-&lt;h3 id=&#34;cookie和session的区别-分布式环境怎么保存用户状态&#34;&gt;cookie和session的区别，分布式环境怎么保存用户状态&lt;/h3&gt;
-
-&lt;p&gt;1、cookie数据存放在客户的浏览器上，session数据放在服务器上。&lt;br /&gt;
-2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。&lt;br /&gt;
-3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。&lt;br /&gt;
-4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。&lt;/p&gt;
-
-&lt;p&gt;分布式环境下的session（举例两种）：&lt;/p&gt;
-
-&lt;p&gt;服务器session复制&lt;br /&gt;
-原理：任何一个服务器上的session发生改变（增删改），该节点会把这个 session的所有内容序列化，然后广播给所有其它节点，不管其他服务器需不需要session，以此来保证Session同步。&lt;br /&gt;
-优点：可容错，各个服务器间session能够实时响应。&lt;br /&gt;
-缺点：会对网络负荷造成一定压力，如果session量大的话可能会造成网络堵塞，拖慢服务器性能。&lt;/p&gt;
-
-&lt;p&gt;session共享机制&lt;br /&gt;
-使用分布式缓存方案比如memcached、redis，但是要求Memcached或Redis必须是集群。&lt;/p&gt;
-
-&lt;h3 id=&#34;写一段栈溢出-堆溢出的代码&#34;&gt;写一段栈溢出、堆溢出的代码&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;public class Test {  
-
-    //不断创建对象可以导致堆溢出
-   public void testHeap(){  
-       for(;;){  
-             ArrayList list = new ArrayList (2000);  
-         }  
-   }  
-
-   //递归调用可以导致栈溢出
-   int num=1;  
-   public void testStack(){  
-       num++;  
-       this.testStack();  
-    }  
-
-   public static void main(String[] args){  
-       Test  t  = new Test ();  
-       t.testHeap();  
-       t.testStack();     
-   }  
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>[转] Java中定义常量的四种方法</title>
-      <link>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/%E8%BD%AC-java%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
-      
-        <description>
-
-&lt;p&gt;原文地址 &lt;a href=&#34;https://blog.csdn.net/autofei/article/details/6419460&#34; target=&#34;blank&#34;&gt;如何在Java中定义常量(Constant)&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;java中定义常量的四种方法&#34;&gt;Java中定义常量的四种方法&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;o&#34;&gt;/**&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;One&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;采用接口&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Interface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;的中变量默认为&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final的特性&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;。&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;  
-&lt;span class=&#34;n&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ConstantInterface&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SUNDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SUNDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MONDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;MONDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TUESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;TUESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEDNESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;WEDNESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;THURSDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;THURSDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FRIDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;FRIDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SATURDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-
-&lt;span class=&#34;o&#34;&gt;/**&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Two&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;采用了&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Java&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;中引入的&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Enum类型&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;推荐使用&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;  
-&lt;span class=&#34;n&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ConstantEnum&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;SUNDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MONDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TUESDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEDNESDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;THURSDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FRIDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt;  
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; 
- 
-&lt;span class=&#34;o&#34;&gt;/**&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Three&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;采用了在普通类中使用&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final修饰变量的方法&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;  
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ConstantClassField&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SUNDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SUNDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MONDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;MONDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TUESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;TUESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEDNESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;WEDNESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;THURSDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;THURSDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FRIDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;FRIDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SATURDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-&lt;span class=&#34;o&#34;&gt;/**&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Four&lt;/span&gt; 
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;类似方法三，但是通过函数来获取常量&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;www&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ibm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;developerworks&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interface&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;html&lt;/span&gt;
- &lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;  
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ConstantClassFunction&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SUNDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SUNDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MONDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;MONDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TUESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;TUESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEDNESDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;WEDNESDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;THURSDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;THURSDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FRIDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;FRIDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SATURDAY&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getSunday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SUNDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getMonday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MONDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getTuesday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TUESDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getWednesday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEDNESDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getThursday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;THURSDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getFirday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FRIDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getSaturday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TestConstant&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;saturday&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Is today Saturday?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsIgnoreCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConstantInterface&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;  
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsIgnoreCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConstantEnum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;  
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsIgnoreCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConstantClassField&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SATURDAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;  
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsIgnoreCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConstantClassFunction&lt;/span&gt;  
-				&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getSaturday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;  
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Oracle——卸载教程</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;oracle卸载步骤&#34;&gt;Oracle卸载步骤&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;开始–&amp;gt;设置–&amp;gt;控制面板–&amp;gt;管理工具–&amp;gt;服务–&amp;gt;停止所有oracle服务&lt;/li&gt;
-&lt;li&gt;开始–&amp;gt;程序–&amp;gt;oracle-oraDb11g_home1–&amp;gt;Oracle安装产品–&amp;gt;Universal Installers卸载所有Oracle产品，选中除“OraDb11g_home1”外的全部目录，删除。（如果第二步失败，直接第三步）&lt;/li&gt;
-&lt;li&gt;运行regedit&lt;/li&gt;
-&lt;li&gt;删除HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE&lt;/li&gt;
-&lt;li&gt;删除一下三个位置中所有oracle入口。HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\
-HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services&lt;/li&gt;
-&lt;li&gt;删除HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\下所有Oracle&lt;/li&gt;
-&lt;li&gt;删除HKEY_CLASSES_ROOT目录下所有以Ora、Oracle、Orcl或EnumOra为前缀的键。&lt;/li&gt;
-&lt;li&gt;删除HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs中所有以oracle开头的键。&lt;/li&gt;
-&lt;li&gt;删除HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBCINST.INI中除Microsoft ODBC for Oracle注册表键以外的所有含有Oracle的键。&lt;/li&gt;
-&lt;li&gt;开始–&amp;gt;设置–&amp;gt;控制面板–&amp;gt;系统–&amp;gt;高级–&amp;gt;环境变量， 删除环境变量CLASSPATH和PATH中有关oracle的设定&lt;/li&gt;
-&lt;li&gt;从桌面上、startup（启动）组、程序菜单中，删除所有有关oracle的组合图标&lt;/li&gt;
-&lt;li&gt;重启计算机&lt;/li&gt;
-&lt;li&gt;删除所有与Oracle相关的目录(如果删不掉，重启计算机后再删)包括：
-
-&lt;ol&gt;
-&lt;li&gt;C:\Program file\Oracle目录。&lt;/li&gt;
-&lt;li&gt;ORACLE_BASE目录(oracle的安装目录)。&lt;/li&gt;
-&lt;li&gt;C:\WINDOWS\system32\config\systemprofile\Oracle目录。&lt;/li&gt;
-&lt;li&gt;C:\Users\Administrator\Oracle或C:\Documents and Settings\Administrator\Oracle目录。&lt;/li&gt;
-&lt;li&gt;C:\WINDOWS下删除以下文件ORACLE.INI、oradim73.INI、oradim80.INI、oraodbc.ini等等。&lt;/li&gt;
-&lt;li&gt;C:\WINDOWS下的WIN.INI文件中若有[ORACLE]的标记段，删除该段。&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;在运行框中输入“win.ini”，回车。WIN.INI文件中若有[ORACLE]的标记段，删除该段&lt;/li&gt;
-&lt;li&gt;如有必要，删除所有Oracle相关的ODBC的DSN&lt;/li&gt;
-&lt;li&gt;到事件查看器中，删除Oracle相关的日志&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;说明： 如果有个别DLL文件无法删除的情况，则不用理会，重新启动，开始新的安装，安装时，选择一个新的目录，则，安装完毕并重新启动后，老的目录及文件就可以删除掉了。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Oracle安装异常——INS-13001</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8ins-13001/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
-
-&lt;p&gt;win10系统安装oracle11g时遇到INS-13001环境不满足最低要求&lt;/p&gt;
-
-&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
-
-&lt;p&gt;打开database-&amp;gt;stage-&amp;gt;cvu-&amp;gt;cvu_prereq.xml，编辑内容&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;OPERATING_SYSTEM RELEASE=&amp;quot;6.2&amp;quot;&amp;gt;
-    &amp;lt;VERSION VALUE=&amp;quot;3&amp;quot;/&amp;gt;
-        &amp;lt;ARCHITECTURE VALUE=&amp;quot;32-bit&amp;quot;/&amp;gt;
-        &amp;lt;NAME VALUE=&amp;quot;Windows 10&amp;quot;/&amp;gt;
-        &amp;lt;ENV_VAR_LIST&amp;gt;
-            &amp;lt;ENV_VAR NAME=&amp;quot;PATH&amp;quot; MAX_LENGTH=&amp;quot;1023&amp;quot; /&amp;gt;
-        &amp;lt;/ENV_VAR_LIST&amp;gt;
-&amp;lt;/OPERATING_SYSTEM&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这一段和原先不同就是6.2和window10&lt;/p&gt;
-
-&lt;p&gt;如何你系统安装的是64位的，则将32-bit改成64bit即可，然后重新安装&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Oracle异常——ORA-12505</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8ora-12505/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
-
-&lt;p&gt;使用SQL Developer 连接DB报错 ORA-12505，报错信息如下：&lt;br /&gt;
-ORA-12505, TNS:listener does not currently know of SID given in connect descriptor&lt;/p&gt;
-
-&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
-
-&lt;p&gt;找到Oracle安装目录（类似D:\app\mian\product\11.2.0\dbhome_1\NETWORK\ADMIN  ）下的tnsnames.ora和listener.ora文件，备份下，然后对照下面配置进行修改&lt;/p&gt;
-
-&lt;h4 id=&#34;tnsnames-ora&#34;&gt;tnsnames.ora&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;# tnsnames.ora Network Configuration File: D:\app\mian\product\11.2.0\dbhome_1\network\admin\tnsnames.ora
-# Generated by Oracle configuration tools.
-
-LISTENER_ORCL =
-  (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-
-
-ORACLR_CONNECTION_DATA =
-  (DESCRIPTION =
-    (ADDRESS_LIST =
-      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
-    )
-    (CONNECT_DATA =
-      (SID = CLRExtProc)
-      (PRESENTATION = RO)
-    )
-  )
-
-ORCL =
-  (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-    (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = orcl)
-    )
-  )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;listener-ora&#34;&gt;listener.ora&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;# listener.ora Network Configuration File: D:\app\mian\product\11.2.0\dbhome_1\network\admin\listener.or
-# Generated by Oracle configuration tools.
-
-SID_LIST_LISTENER =
-  (SID_LIST =
-    (SID_DESC =
-      (SID_NAME = CLRExtProc)
-      (ORACLE_HOME = D:\app\mian\product\11.2.0\dbhome_1)
-      (PROGRAM = extproc)
-      (ENVS = &amp;quot;EXTPROC_DLLS=ONLY:D:\app\mian\product\11.2.0\dbhome_1\bin\oraclr11.dll&amp;quot;)
-    )
-    (SID_DESC =
-      (GLOBAL_DBNAME = oracle)
-      (ORACLE_HOME = D:\app\mian\product\11.2.0\dbhome_1)
-      (SID_NAME = oracle)
-    )
-  )
-
-LISTENER =
-  (DESCRIPTION_LIST =
-    (DESCRIPTION =
-        (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-    )
-    (DESCRIPTION =
-      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
-      (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
-    )
-  )
-
-ADR_BASE_LISTENER = D:\app\mian
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注：&lt;br /&gt;
-1. DESKTOP-UKQ7RTS 为计算机名&lt;br /&gt;
-2. 更改文件后需要重启服务&lt;/p&gt;
 </description>
       
     </item>

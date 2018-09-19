@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。 Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常</description>
+    </item>
     
     <item>
       <title>HashMap——工作原理</title>
@@ -28,33 +37,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
       <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用 只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（Integer）</title>
-      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98integer/</guid>
-      <description>翻了翻之前收藏的文章，找到一段比较有意思的代码 Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（String）</title>
-      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98string/</guid>
-      <description>阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/java%E5%9F%BA%E7%A1%80%E9%A2%98%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      <description>翻了翻之前收藏的文章，又又找到一段比较有意思的代码 public void mRun(final String name){ new Runnable() { public void run() { try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO Auto-generated catch block e.printStackTrace(); } System.out.println(name); } }.start(); } 文章解释： 这种代码相信大家写</description>
     </item>
     
   </channel>

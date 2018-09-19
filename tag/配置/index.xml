@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>配置 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E9%85%8D%E7%BD%AE/</link>
+    <description>Recent content in 配置 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>删除某个工作空间 方式1（推荐）： 打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat——记录集</title>
+      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <description>修改startup.bat启动窗口名 打开 catlina.bat 文件，修改title :doStart shift if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA% if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd shift echo Using Security Manager set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot; goto execCmd tomcat指定jdk</description>
+    </item>
+    
+  </channel>
+</rss>
