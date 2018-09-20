@@ -111,6 +111,15 @@
     </item>
     
     <item>
+      <title>MySQL</title>
+      <link>https://ianeiu.github.io/category/mysql/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/category/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Mybatis</title>
       <link>https://ianeiu.github.io/category/mybatis/</link>
       <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
@@ -134,15 +143,6 @@
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/category/oracle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SVN</title>
-      <link>https://ianeiu.github.io/category/svn/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/svn/</guid>
       <description></description>
     </item>
     

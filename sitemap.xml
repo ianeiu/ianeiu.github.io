@@ -24,7 +24,42 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2018/09/20/mysqlbool/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -311,7 +346,21 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/tag/bool/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/connect_timeout/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -506,6 +555,13 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/category/mysql/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/category/mybatis/</loc>
     <lastmod>2018-09-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -564,6 +620,13 @@
   <url>
     <loc>https://ianeiu.github.io/tag/runtimeexception/</loc>
     <lastmod>2018-08-23T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/sql-server/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -681,6 +744,13 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/tag/%E5%A4%96%E9%94%AE/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/tag/%E5%B8%B8%E9%87%8F/</loc>
     <lastmod>2018-09-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -737,6 +807,13 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/tag/%E6%97%B6%E9%97%B4/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/tag/%E6%A8%A1%E7%89%88/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -788,6 +865,13 @@
   <url>
     <loc>https://ianeiu.github.io/tag/%E7%9F%AD%E4%BF%A1/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/%E7%B4%A2%E5%BC%95/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

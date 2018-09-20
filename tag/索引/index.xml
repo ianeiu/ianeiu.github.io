@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>索引 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E7%B4%A2%E5%BC%95/</link>
+    <description>Recent content in 索引 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E7%B4%A2%E5%BC%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[转] MySQL——索引原理与慢查询优化</title>
+      <link>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</guid>
+      <description>问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)</description>
+    </item>
+    
+  </channel>
+</rss>

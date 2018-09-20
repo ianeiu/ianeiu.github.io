@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>[转] MySQL——索引原理与慢查询优化 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="[转] MySQL——索引原理与慢查询优化" />
+<meta property="og:description" content="问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&gt;1371169729 and operate_time&lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/" />
+
+
+
+<meta property="article:published_time" content="2018-09-20T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-20T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="[转] MySQL——索引原理与慢查询优化">
+<meta itemprop="description" content="问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&gt;1371169729 and operate_time&lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)">
+
+
+<meta itemprop="datePublished" content="2018-09-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2612">
+
+
+
+<meta itemprop="keywords" content="索引," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[转] MySQL——索引原理与慢查询优化"/>
+<meta name="twitter:description" content="问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&gt;1371169729 and operate_time&lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">[转] MySQL——索引原理与慢查询优化</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-09-20
+          / 分类：
+          <a href="https://ianeiu.github.io/category/mysql/">MySQL</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/%E7%B4%A2%E5%BC%95/">索引</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<h1 id="问题">问题</h1>
+
+<p>大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句：</p>
+
+<pre><code>select count(*) from task where status=2 and operator_id=20839 and operate_time&gt;1371169729  and operate_time&lt;1371174603 and type=2;
+
+select count(*) from task where from_unixtime(create_time) = ’2014-05-29’;
+
+update test set name='zhangsan'  where sex=1 and age&gt;20;(注意这种情况加索引与不加索引的区别是什么)
+
+select distinct l.emp_id from log l
+inner join 
+(select l2.id as emp_id,l2.id as cert_id from log2 l2 left join log3 l3 on l2.id = l3.emp_id where l2.is_deleted=0 ) l4 
+on ( l.ref_table='Employee' and l.ref_oid= l4.emp_id) or (l.ref_table='EmpCertificate' and l.ref_oid= l2.cert_id) 
+where l.last_upd_date &gt;='2013-11-07 15:03:00' and l.last_upd_date&lt;='2013-11-08 16:00:00'
+</code></pre>
+
+<h1 id="mysql索引原理">MySql索引原理</h1>
+
+<h3 id="索引目的">索引目的</h3>
+
+<p>索引的目的在于提高查询效率，可以类比字典，如果要查“mysql”这个单词，我们肯定需要定位到m字母，然后从下往下找到y字母，再找到剩下的sql。<br />
+如果没有索引，那么你可能需要把所有单词看一遍才能找到你想要的。如果我想找到m开头的单词呢？或者ze开头的单词呢？</p>
+
+<h3 id="索引原理">索引原理</h3>
+
+<p>除了词典，生活中随处可见索引的例子，如火车站的车次表、图书的目录等。它们的原理都是一样的，通过不断的缩小想要获得数据的范围来筛选出最终想要的结果，同时把随机的事件变成顺序的事件，也就是我们总是通过同一种查找方式来锁定数据。</p>
+
+<p>数据库也是一样，但显然要复杂许多，因为不仅面临着等值查询，还有范围查询(&gt;、&lt;、between、in)、模糊查询(like)、并集查询(or)等等。</p>
+
+<p>数据库应该选择怎么样的方式来应对所有的问题呢？我们回想字典的例子，能不能把数据分成段，然后分段查询呢？<br />
+最简单的如果1000条数据，1到100分成第一段，101到200分成第二段，201到300分成第三段……这样查第250条数据，只要找第三段就可以了，一下子去除了90%的无效数据。<br />
+但如果是1千万的记录呢，分成几段比较好？稍有算法基础的同学会想到搜索树，其平均复杂度是lgN，具有不错的查询性能。</p>
+
+<p>但这里我们忽略了一个关键的问题，复杂度模型是基于每次相同的操作成本来考虑的，数据库实现比较复杂，数据保存在磁盘上，而为了提高性能，每次又可以把部分数据读入内存来计算，因为我们知道访问磁盘的成本大概是访问内存的十万倍左右，所以简单的搜索树难以满足复杂的应用场景。</p>
+
+<h3 id="索引的数据结构">索引的数据结构</h3>
+
+<p>前面讲了生活中索引的例子，索引的基本原理，数据库的复杂性，又讲了操作系统的相关知识，目的就是让大家了解，任何一种数据结构都不是凭空产生的，一定会有它的背景和使用场景，我们现在总结一下，我们需要这种数据结构能够做些什么，其实很简单，那就是：每次查找数据时把磁盘IO次数控制在一个很小的数量级，最好是常数数量级。那么我们就想到如果一个高度可控的多路搜索树是否能满足需求呢？就这样，b+树应运而生。</p>
+
+<h3 id="建索引的几大原则">建索引的几大原则</h3>
+
+<ol>
+<li><p>最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配。<br />
+比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p></li>
+
+<li><p>=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式</p></li>
+
+<li><p>尽量选择区分度高的列作为索引,区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录</p></li>
+
+<li><p>索引列不能参与计算，保持列“干净”。<br />
+比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’);</p></li>
+
+<li><p>尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</p></li>
+</ol>
+
+<h1 id="问题解决">问题解决</h1>
+
+<p>回到上面的给出的mysql</p>
+
+<ol>
+<li><p>根据最左匹配原则，第一条sql语句的索引应该是status、operator_id、type、operate_time的联合索引；其中status、operator_id、type的顺序可以颠倒，所以我才会说，把这个表的所有相关查询都找到，会综合分析；</p></li>
+
+<li><p>根据索引列不能参与计算，保持列“干净”，第二条sql语句应该写成create_time = unix_timestamp(’2014-05-29’);</p></li>
+
+<li><p>update 语句不加索引是锁表，加索引是锁行 where后面的条件根据第一条一样优化即可;</p></li>
+
+<li><p>第4条sql语句就复杂了在没有做如何优化之前结果是：53 rows in set (1.87 sec)</p></li>
+</ol>
+
+<p>通过explain简述一下执行计划，首先mysql根据idx_last_upd_date索引扫描log表获得379条记录；
+然后查表扫描了63727条记录，分为两部分，derived表示构造表，也就是不存在的表，可以简单理解成是一个语句形成的结果集，后面的数字表示语句的ID。<br />
+derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条记录。我们再来看看ID = 2的语句究竟做了写什么返回了这么大量的数据，首先全表扫描log2表13317条记录，然后根据索引emp_certificate_empid关联log3表，rows = 1表示，每个关联都只锁定了一条记录，效率比较高。<br />
+得后，再和log的379条记录根据规则关联。从执行过程上可以看出返回了太多的数据，返回的数据绝大部分log都用不到，因为log只锁定了379条记录。</p>
+
+<p>如何优化呢？可以看到我们在运行完后还是要和log做join,那么我们能不能之前和log做join呢？<br />
+仔细分析语句不难发现，其基本思想是如果log的ref_table是EmpCertificate就关联log3表，如果ref_table是Employee就关联log2表，我们完全可以拆成两部分，并用union连接起来，注意这里用union，而不用union all是因为原语句有“distinct”来得到唯一的记录，而union恰好具备了这种功能。<br />
+如果原语句中没有distinct不需要去重，我们就可以直接使用union all了，因为使用union需要去重的动作，会影响SQL性能。</p>
+
+
+  
+  
+
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

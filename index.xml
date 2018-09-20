@@ -1033,7 +1033,7 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;h3 id=&#34;http超文本协议&#34;&gt;HTTP超文本协议&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
 来源：微信公众号 java思维导图&lt;/p&gt;
 
 &lt;h3 id=&#34;fail-fast机制&#34;&gt;fail-fast机制&lt;/h3&gt;
@@ -1055,28 +1055,47 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;h4 id=&#34;与svn&#34;&gt;与SVN&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/v123411739/article/details/22512133&#34; target=&#34;blank&#34;&gt;Eclipse中使用SVN：&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/Eclipse-工具-使用SVN.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/Eclipse-工具-使用SVN.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;与maven&#34;&gt;与Maven&lt;/h4&gt;
 
 &lt;p&gt;如何在eclipse jee中创建Maven project并且转换为Dynamic web project（原文链接找不到）：
-&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/如何在eclipse jee中创建Maven project并且转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;br /&gt;
-如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
-&lt;a href=&#34;https://ianeiu.github.io/resouce/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中创建Maven project并且转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题：&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;navicat&#34;&gt;Navicat&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;oracle&#34;&gt;oracle&lt;/h3&gt;
+&lt;h3 id=&#34;oracle&#34;&gt;Oracle&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/hoobey/p/6010804.html&#34; target=&#34;blank&#34;&gt;Oracle 11g安装步骤详谈&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/Oracle 11g安装图文攻略.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/Oracle 11g安装图文攻略.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;mysql&#34;&gt;MySQL&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/113630.htm&#34; target=&#34;blank&#34;&gt;win10下安装两个MySQL5.6.35数据库&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装-安装俩个MySQL.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jingyan.baidu.com/article/f3ad7d0ffc061a09c3345bf0.html&#34; target=&#34;blank&#34;&gt;MySQL解压版安装&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;杂谈&#34;&gt;杂谈&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/antineutrino/article/details/6763722/&#34; target=&#34;blank&#34;&gt;前缀、中缀、后缀表达式&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/前缀、中缀、后缀表达式.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--
+&lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
+--&gt;
 </description>
       
     </item>
@@ -1106,6 +1125,144 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——时间字段</title>
+      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;mysql&#34;&gt;mysql&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;date ：“yyyy-mm-dd”格式表示的日期值  “1000-01-01”到“9999-12-31” 3字节&lt;/li&gt;
+&lt;li&gt;time ：“hh:mm:ss”格式表示的时间值   “-838:59:59”到“838:59:59” 3字节&lt;/li&gt;
+&lt;li&gt;datetime： “yyyy-mm-dd hh:mm:ss”格式  “-838:59:59”到“838:59:59” 3字节&lt;/li&gt;
+&lt;li&gt;timestamp： “yyyymmddhhmmss”格式表示的时间戳值   19700101000000 到2037 年的某个时刻 4字节&lt;/li&gt;
+&lt;li&gt;year： “yyyy”格式的年份值  1901 到2155 1字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;oracle&#34;&gt;oracle&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DATE类型的内部编码为12，占用7个字节，数据存储的每一位到第七位分别为：世纪，年，月，日，时，分，秒&lt;/li&gt;
+&lt;li&gt;TIMESTAMP是支持小数秒和时区的日期/时间类型。对秒的精确度更高&lt;/li&gt;
+&lt;li&gt;TIMESTAMP WITH TIME ZONE类型是TIMESTAMP的子类型，增加了时区支持，占用13字节的存储空间，最后两位用于保存时区信息&lt;/li&gt;
+&lt;li&gt;INTERVAL YEAR TO MONTH 表示存储年或月指定的一个时间段&lt;/li&gt;
+&lt;li&gt;INTERVAL DATE TO SECOND 表示存储天,小时,分钟,秒指定的时间段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sql-server&#34;&gt;sql server&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;datetime数据类型所占用的存储空间为8个字节，其中前4个字节用于存储1900年1月1日以前或以后的天数，数值分正负，正数表示在此日期之后的日期，负数表示在此日期之前的日期；后4个字节用于存储从此日零时起所指定的时间经过的毫秒数。&lt;/li&gt;
+&lt;li&gt;smalldatetime数据类型使用4个字节存储数据。其中前2个字节存储从基础日期1900年1月1日以来的天数，后两个字节存储此日零时起所指定的时间经过的分钟数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;smalldatetime数据类型与datetime数据类型相似，但其日期时间范围较小，从1900年1月1日到2079年6月6日。此数据类型精度较低，只能精确到分钟，其分钟个位为根据秒数四舍五入的值，即以30秒为界四舍五入。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL——bool</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysqlbool/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysqlbool/</guid>
+      
+        <description>&lt;p&gt;MySQL——bool&lt;/p&gt;
+
+&lt;p&gt;mysql是不支持bool类型的,所以,当把一个数据设置成bool类型的时候,数据库会自动转换成tinyint(1)的数据类型,其实这个就是变相的bool。&lt;br /&gt;
+默认值也就是1,0两种,分别对应了bool的true和false&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL——修改connect_timeout全局变量</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
+      
+        <description>&lt;p&gt;1.查询匹配“timeout”的全局变量&lt;br /&gt;
+&lt;code&gt;show global variables like &#39;%timeout%&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result:
+connect_timeout 10
+delayed_insert_timeout  300
+innodb_flush_log_at_timeout 1
+innodb_lock_wait_timeout    50
+innodb_rollback_on_timeout  OFF
+interactive_timeout 28800
+lock_wait_timeout   31536000
+net_read_timeout    30
+net_write_timeout   60
+rpl_stop_slave_timeout  31536000
+slave_net_timeout   3600
+wait_timeout    28800
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.设置全局变量connect_timeout为100秒&lt;br /&gt;
+&lt;code&gt;SET GLOBAL connect_timeout = 100;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;3.再次查看，确认参数是否修改成功&lt;br /&gt;
+&lt;code&gt;show global variables like &#39;%timeout%&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;result:
+connect_timeout 100
+delayed_insert_timeout  300
+innodb_flush_log_at_timeout 1
+innodb_lock_wait_timeout    50
+innodb_rollback_on_timeout  OFF
+interactive_timeout 28800
+lock_wait_timeout   31536000
+net_read_timeout    30
+net_write_timeout   60
+rpl_stop_slave_timeout  31536000
+slave_net_timeout   3600
+wait_timeout    28800
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL——外键</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;cascade方式&#34;&gt;cascade方式&lt;/h2&gt;
+
+&lt;p&gt;在父表上update/delete记录时，同步update/delete掉子表的匹配记录&lt;/p&gt;
+
+&lt;h2 id=&#34;set-null方式&#34;&gt;set null方式&lt;/h2&gt;
+
+&lt;p&gt;在父表上update/delete记录时，将子表上匹配记录的列设为null
+要注意子表的外键列不能为not null&lt;/p&gt;
+
+&lt;h2 id=&#34;no-action方式&#34;&gt;No action方式&lt;/h2&gt;
+
+&lt;p&gt;如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作&lt;/p&gt;
+
+&lt;h2 id=&#34;restrict方式&#34;&gt;Restrict方式&lt;/h2&gt;
+
+&lt;p&gt;同no action, 都是立即检查外键约束&lt;/p&gt;
+
+&lt;h2 id=&#34;set-default方式&#34;&gt;Set default方式&lt;/h2&gt;
+
+&lt;p&gt;父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别&lt;/p&gt;
 </description>
       
     </item>
@@ -1143,6 +1300,97 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;li&gt;打开D:\app\mian\product\11.2.0\dbhome_1\sqldeveloper\sqldeveloper\bin\sqldeveloper.conf&lt;/li&gt;
 &lt;li&gt;修改 SetJavaHome D:\app\mian\product\11.2.0\dbhome_1\jdk ,jdk为32位jdk目录&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>[转] MySQL——索引原理与慢查询优化</title>
+      <link>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;问题&#34;&gt;问题&lt;/h1&gt;
+
+&lt;p&gt;大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729  and operate_time&amp;lt;1371174603 and type=2;
+
+select count(*) from task where from_unixtime(create_time) = ’2014-05-29’;
+
+update test set name=&#39;zhangsan&#39;  where sex=1 and age&amp;gt;20;(注意这种情况加索引与不加索引的区别是什么)
+
+select distinct l.emp_id from log l
+inner join 
+(select l2.id as emp_id,l2.id as cert_id from log2 l2 left join log3 l3 on l2.id = l3.emp_id where l2.is_deleted=0 ) l4 
+on ( l.ref_table=&#39;Employee&#39; and l.ref_oid= l4.emp_id) or (l.ref_table=&#39;EmpCertificate&#39; and l.ref_oid= l2.cert_id) 
+where l.last_upd_date &amp;gt;=&#39;2013-11-07 15:03:00&#39; and l.last_upd_date&amp;lt;=&#39;2013-11-08 16:00:00&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;mysql索引原理&#34;&gt;MySql索引原理&lt;/h1&gt;
+
+&lt;h3 id=&#34;索引目的&#34;&gt;索引目的&lt;/h3&gt;
+
+&lt;p&gt;索引的目的在于提高查询效率，可以类比字典，如果要查“mysql”这个单词，我们肯定需要定位到m字母，然后从下往下找到y字母，再找到剩下的sql。&lt;br /&gt;
+如果没有索引，那么你可能需要把所有单词看一遍才能找到你想要的。如果我想找到m开头的单词呢？或者ze开头的单词呢？&lt;/p&gt;
+
+&lt;h3 id=&#34;索引原理&#34;&gt;索引原理&lt;/h3&gt;
+
+&lt;p&gt;除了词典，生活中随处可见索引的例子，如火车站的车次表、图书的目录等。它们的原理都是一样的，通过不断的缩小想要获得数据的范围来筛选出最终想要的结果，同时把随机的事件变成顺序的事件，也就是我们总是通过同一种查找方式来锁定数据。&lt;/p&gt;
+
+&lt;p&gt;数据库也是一样，但显然要复杂许多，因为不仅面临着等值查询，还有范围查询(&amp;gt;、&amp;lt;、between、in)、模糊查询(like)、并集查询(or)等等。&lt;/p&gt;
+
+&lt;p&gt;数据库应该选择怎么样的方式来应对所有的问题呢？我们回想字典的例子，能不能把数据分成段，然后分段查询呢？&lt;br /&gt;
+最简单的如果1000条数据，1到100分成第一段，101到200分成第二段，201到300分成第三段……这样查第250条数据，只要找第三段就可以了，一下子去除了90%的无效数据。&lt;br /&gt;
+但如果是1千万的记录呢，分成几段比较好？稍有算法基础的同学会想到搜索树，其平均复杂度是lgN，具有不错的查询性能。&lt;/p&gt;
+
+&lt;p&gt;但这里我们忽略了一个关键的问题，复杂度模型是基于每次相同的操作成本来考虑的，数据库实现比较复杂，数据保存在磁盘上，而为了提高性能，每次又可以把部分数据读入内存来计算，因为我们知道访问磁盘的成本大概是访问内存的十万倍左右，所以简单的搜索树难以满足复杂的应用场景。&lt;/p&gt;
+
+&lt;h3 id=&#34;索引的数据结构&#34;&gt;索引的数据结构&lt;/h3&gt;
+
+&lt;p&gt;前面讲了生活中索引的例子，索引的基本原理，数据库的复杂性，又讲了操作系统的相关知识，目的就是让大家了解，任何一种数据结构都不是凭空产生的，一定会有它的背景和使用场景，我们现在总结一下，我们需要这种数据结构能够做些什么，其实很简单，那就是：每次查找数据时把磁盘IO次数控制在一个很小的数量级，最好是常数数量级。那么我们就想到如果一个高度可控的多路搜索树是否能满足需求呢？就这样，b+树应运而生。&lt;/p&gt;
+
+&lt;h3 id=&#34;建索引的几大原则&#34;&gt;建索引的几大原则&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&amp;gt;、&amp;lt;、between、like)就停止匹配。&lt;br /&gt;
+比如a = 1 and b = 2 and c &amp;gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;尽量选择区分度高的列作为索引,区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;索引列不能参与计算，保持列“干净”。&lt;br /&gt;
+比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;问题解决&#34;&gt;问题解决&lt;/h1&gt;
+
+&lt;p&gt;回到上面的给出的mysql&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;根据最左匹配原则，第一条sql语句的索引应该是status、operator_id、type、operate_time的联合索引；其中status、operator_id、type的顺序可以颠倒，所以我才会说，把这个表的所有相关查询都找到，会综合分析；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;根据索引列不能参与计算，保持列“干净”，第二条sql语句应该写成create_time = unix_timestamp(’2014-05-29’);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;update 语句不加索引是锁表，加索引是锁行 where后面的条件根据第一条一样优化即可;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第4条sql语句就复杂了在没有做如何优化之前结果是：53 rows in set (1.87 sec)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;通过explain简述一下执行计划，首先mysql根据idx_last_upd_date索引扫描log表获得379条记录；
+然后查表扫描了63727条记录，分为两部分，derived表示构造表，也就是不存在的表，可以简单理解成是一个语句形成的结果集，后面的数字表示语句的ID。&lt;br /&gt;
+derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条记录。我们再来看看ID = 2的语句究竟做了写什么返回了这么大量的数据，首先全表扫描log2表13317条记录，然后根据索引emp_certificate_empid关联log3表，rows = 1表示，每个关联都只锁定了一条记录，效率比较高。&lt;br /&gt;
+得后，再和log的379条记录根据规则关联。从执行过程上可以看出返回了太多的数据，返回的数据绝大部分log都用不到，因为log只锁定了379条记录。&lt;/p&gt;
+
+&lt;p&gt;如何优化呢？可以看到我们在运行完后还是要和log做join,那么我们能不能之前和log做join呢？&lt;br /&gt;
+仔细分析语句不难发现，其基本思想是如果log的ref_table是EmpCertificate就关联log3表，如果ref_table是Employee就关联log2表，我们完全可以拆成两部分，并用union连接起来，注意这里用union，而不用union all是因为原语句有“distinct”来得到唯一的记录，而union恰好具备了这种功能。&lt;br /&gt;
+如果原语句中没有distinct不需要去重，我们就可以直接使用union all了，因为使用union需要去重的动作，会影响SQL性能。&lt;/p&gt;
 </description>
       
     </item>
@@ -1599,595 +1847,6 @@ ADR_BASE_LISTENER = D:\app\mian
 &lt;p&gt;注：&lt;br /&gt;
 1. DESKTOP-UKQ7RTS 为计算机名&lt;br /&gt;
 2. 更改文件后需要重启服务&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>PLSQL——使用PLSQL连接远程数据库</title>
-      <link>https://ianeiu.github.io/2018/09/19/plsql%E4%BD%BF%E7%94%A8plsql%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/plsql%E4%BD%BF%E7%94%A8plsql%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-      
-        <description>&lt;p&gt;原文 &lt;a href=&#34;https://user.qzone.qq.com/5951083/blog/1301282377&#34; target=&#34;blank&#34;&gt;本机不安装Oracle客户端，使用PL/SQL Developer连接远程数据库&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;先到Oracle网站下载Instant Client或者点击&lt;a href=&#34;https://ianeiu.github.io/resouce/instantclient_11_2.zip&#34; target=&#34;blank&#34;&gt;instantclient_11_2.zip&lt;/a&gt;
-根据你的操作系统选择不同的Instant Client版本。解压到自定义文件夹。例如:D:\Program Files\PLSQL Developer\instantclient_11_2&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在D:\Program Files\PLSQL Developer\instantclient_11_2目录下新建目录network,在network目录下再新建admin目录,在admin目录下新建文件tnsnames.ora,使用文本编辑器打开写入如下内容:&lt;br /&gt;
-&lt;code&gt;MWDB =
-    (DESCRIPTION =
-        (ADDRESS_LIST =
-            (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.0.58 )(PORT = 1521))  
-        )
-        (CONNECT_DATA =
-            (SERVICE_NAME = MWDB )
-        )
-    )&lt;/code&gt;&lt;br /&gt;
-第一个MWDB：表示定义远程服务器的在本地主机名;&lt;br /&gt;
-192.168.0.58：远程数据库的IP地址;&lt;br /&gt;
-第二个MWDB：远程数据库实例名&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;添加一个环境变量TNS_ADMIN，值为tnsnames.ora文件所在路径。比如:D:\instantclient_11_2\network\admin&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;设置oracle的语言，添加环境变量NLS_LANG ,值为SIMPLIFIED CHINESE_CHINA.ZHS16GBK&lt;br /&gt;
-如果不清楚远程数据库的ORACLE 语言，可以ssh或者telnet到远程机器,在命令界面输入，用命令行连接到数据库。&lt;br /&gt;
-select * from nls_instance_parameters;查看NLS_LANGUAGE 的值&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;下载并安装PLSQL配置应用&lt;br /&gt;
-配置tools-&amp;gt;preferences-&amp;gt;connection&lt;br /&gt;
-Oracle Home : D:\Program Files\PLSQL Developer\instantclient_11_2&lt;br /&gt;
-OCI library : D:\Program Files\PLSQL Developer\instantclient_11_2\oci.dll&lt;br /&gt;
-中文PLSQL 工具&amp;ndash;&amp;gt;首选项&amp;ndash;&amp;gt;连接&lt;br /&gt;
-Oracle主目录 ： D:\Program Files\PLSQL Developer\instantclient_11_2&lt;br /&gt;
-OCI库 ： D:\Program Files\PLSQL Developer\instantclient_11_2\oci.dll&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;重启PLSQL，连接远程库&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SVN——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;cmd-提示不是内部或者外部命令&#34;&gt;cmd 提示不是内部或者外部命令&lt;/h2&gt;
-
-&lt;p&gt;windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装时勾选 svn comand line&lt;/p&gt;
-
-&lt;h2 id=&#34;windows-查看项目svn路径&#34;&gt;windows 查看项目svn路径&lt;/h2&gt;
-
-&lt;p&gt;选择项目根目录&amp;mdash;-&amp;gt;鼠标右键&amp;mdash;-&amp;gt;属性&amp;mdash;-&amp;gt;版本控制（Subversion）&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Tomcat——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;修改startup-bat启动窗口名&#34;&gt;修改startup.bat启动窗口名&lt;/h2&gt;
-
-&lt;p&gt;打开 catlina.bat 文件，修改title&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:doStart  
-shift  
-if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232
-set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA%  
-if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd  
-shift  
-echo Using Security Manager  
-set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot;  
-goto execCmd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;tomcat指定jdk&#34;&gt;tomcat指定jdk&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Windows环境&lt;br /&gt;
-打开 catlina.bat 文件、增加配置&lt;br /&gt;
-&lt;code&gt;set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;linux环境&lt;br /&gt;
-编辑 setclasspath.sh，在文件的最开始加入如下代码&lt;br /&gt;
-&lt;code&gt;
-set JAVA_HOME=/home/jdk/Java\jdk7\jdk1.7.0_51&lt;br /&gt;
-set JRE_HOME=/home/jdk/Java\jdk7\jre7
-&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;占用8080端口问题&#34;&gt;占用8080端口问题&lt;/h2&gt;
-
-&lt;p&gt;tomcat死机了，重启eclipse之后，发现&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;Several&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ports&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8009&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;required&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tomcat&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;already&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;  
-&lt;span class=&#34;n&#34;&gt;The&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;may&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;already&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;be&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;running&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;another&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;may&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;be&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;   
-&lt;span class=&#34;n&#34;&gt;To&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;you&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;will&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;need&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;change&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;解决办法：&lt;br /&gt;
-方法1.重启电脑&lt;br /&gt;
-方法2.在dos下，输入&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;netstat   -ano|findstr  8080   
-//说明：查看占用8080端口的进程  
-taskkill  /pid  6856  /f   
-//说明，运行windows自带taskkill命令，将上面显示的进程号，结束掉。 
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Oracle——查看及修改编码</title>
-      <link>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</link>
-      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;查看&#34;&gt;查看&lt;/h3&gt;
-
-&lt;h4 id=&#34;查看oracle数据库的编码&#34;&gt;查看oracle数据库的编码&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;#来源于props$，表示数据库的字符集
-select * from nls_database_parameters where parameter =&#39;NLS_CHARACTERSET&#39;;
-
-结果：
-PARAMETER        |  VALUE
-————————————————————————————
-NLS_CHARACTERSET |  ZHS16GBK
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;查看oracle数据库的编码-1&#34;&gt;查看oracle数据库的编码&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;#来源于v$parameter，表示客户端的字符集的设置，
-#可能是参数文件，环境变量或者是注册表会话字符集环境
-select * from nls_instance_parameters where parameter=&#39;NLS_LANGUAGE&#39;;
-
-结果：
-PARAMETER    |  VALUE
-————————————————————————
-NLS_LANGUAGE |  AMERICAN
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;查看session编码&#34;&gt;查看session编码&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;#来源于v$nls_parameters，表示会话自己的设置，
-#可能是会话的环境变量或者是alter session完成，
-#如果会话没有特殊的设置，将与nls_instance_parameters一致。
-select * from nls_session_parameters;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;修改&#34;&gt;修改&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;首先以sysdba的身份登录上去 conn /as sysdba&lt;/li&gt;
-&lt;li&gt;关闭数据库shutdown immediate;&lt;/li&gt;
-&lt;li&gt;以mount打来数据库，startup mount&lt;/li&gt;
-&lt;li&gt;设置session&lt;br /&gt;
-SQL&amp;gt;ALTER SYSTEM ENABLE RESTRICTED SESSION;
-SQL&amp;gt; ALTER SYSTEM SET JOB_QUEUE_PROCESSES=0;
-SQL&amp;gt; ALTER SYSTEM SET AQ_TM_PROCESSES=0;&lt;/li&gt;
-&lt;li&gt;启动数据库  alter database open;&lt;/li&gt;
-&lt;li&gt;修改字符集&lt;br /&gt;
-ALTER DATABASE CHARACTER SET ZHS16GBK;&lt;br /&gt;
-这会可能会报错，提示我们的字符集：新字符集必须为旧字符集的超集，这时我们可以跳过超集的检查做更改。&lt;br /&gt;
-ALTER DATABASE character set INTERNAL_USE ZHS16GBK;&lt;br /&gt;
-这条语句就可以了，TERNAL_USE提供的帮助就会使oracle绕过了子集与超集的验证，这条语句和上面的语句内部操作时完全相同的。&lt;/li&gt;
-&lt;li&gt;关闭，重新启动&lt;br /&gt;
-SQL&amp;gt;shutdown immediate;&lt;br /&gt;
-SQL&amp;gt; startup&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;当然字符集最好不要轻易修改，因为这会对数据库的数据有直接的影响，如果是生产环境的话，可能会造成不可估计得损失。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SpringBoot——web项目改造为springboot所见问题简单记录</title>
-      <link>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
-      
-        <description>&lt;p&gt;现象1：引入layer.js出现undefinedcss目录.txt&lt;br /&gt;
-原因：layer.js与layui.js冲突&lt;br /&gt;
-解决：将layui.js 第二个.link 中的n.dir改为(n.dir?n.dir:r)&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象2：配置CommonsMultipartResolver，上传文件返回异常HttpMediaTypeNotSupportedException&lt;br /&gt;
-原因：同下&lt;br /&gt;
-解决：FUN1、不配置CommonsMultipartResolver&lt;br /&gt;
-    FUN2、启动类@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) （不建议）&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象3：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile&lt;br /&gt;
-原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
-import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解决：采用输入流方式获取File对象，具体代码自行百度&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象4：Shiro 自定义 filter 匹配异常，无限拦截重定向&lt;br /&gt;
-参考：&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;br /&gt;
-原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。&lt;br /&gt;
-解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ex：
-    @Bean
-    public CasFilter casFilter(){
-        CasFilter cf = new CasFilter();
-        cf.setSuccessUrl(successUrl);
-        cf.setFailureUrl(failureUrl);
-        return cf;
-    }
-
-    /**
-     * 注册casFilter
-     * @param casFilter
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
-        FilterRegistrationBean cas = new FilterRegistrationBean();
-        cas.setFilter(casFilter);
-        cas.setEnabled(false);  //该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
-        return cas;
-    }
-
-    /**
-     * 注册shiroFilter
-     * @param securityManager
-     * @param casFilter
-     * @param logoutFilter
-     * @return
-     */
-    @Bean
-    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
-            CasFilter casFilter,LogoutFilter logoutFilter) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        ...
-        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
-        filters.put(&amp;quot;casFilter&amp;quot;,casFilter);
-        filters.put(&amp;quot;logoutFilter&amp;quot;, logoutFilter);
-        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
-        ...
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    ex:
-    /**
-     * 注册shiroFilter
-     * @param securityManager
-     * @return
-     */
-    @Bean
-    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        ...
-        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
-        filters.put(&amp;quot;casFilter&amp;quot;,new CasFilter());
-        filters.put(&amp;quot;logoutFilter&amp;quot;, new LogoutFilter());
-        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
-        ...
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象5：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter&lt;br /&gt;
-原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置&lt;br /&gt;
-解决：使用log4j2或logback&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象6：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合&lt;br /&gt;
-原因：springboot项目打包后获取包资源所在路径与启动main不一样&lt;br /&gt;
-ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl&lt;br /&gt;
-解决：逐一分割路径获取类对象&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/**
- * 获得包下面的所有的class
- * @author FengHuayuan
- * @date 2018年4月21日 下午12:25:20.
- * @param pack
- * @return
- */
-public static List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getClassesFromPackage(String pack) {
-    List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
-    // 是否循环搜索子包
-    boolean recursive = true;
-    // 包名字
-    String packageName = pack;
-    // 包名对应的路径名称
-    String packageDirName = packageName.replace(&#39;.&#39;, &#39;/&#39;);
-    Enumeration&amp;lt;URL&amp;gt; dirs;
-    try {
-        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
-        while (dirs.hasMoreElements()) {
-            URL url = dirs.nextElement();
-            String protocol = url.getProtocol();
-            if (&amp;quot;file&amp;quot;.equals(protocol)) {
-                log.debug(&amp;quot;*****【File类型】的扫描！&amp;quot;);
-                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
-                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
-            } else if (&amp;quot;jar&amp;quot;.equals(protocol)) {
-                log.debug(&amp;quot;*****【Jar类型】的扫描！&amp;quot;);
-                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
-                getClasssFromJarFile(filePath, clazzs);//wm add
-            }
-        }
-
-    } catch (Exception e) {
-        log.error(e.getMessage(),e);
-    }
-    return clazzs;
-}
-
-/** 
- * 从jar文件中读取指定目录下面的所有的class文件 
- * springboot打jar包专用
- * @author wm
- * @param jarPaht   jar文件存放的位置 
- * @param filePaht    指定的文件目录 
- * @param clazzs 所有的的class的对象 
- */  
-public static void getClasssFromJarFile(String jarPath,List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs) {  
-
-    log.info(&amp;quot;getClasssFromJarFile - jarPath:&amp;quot;+jarPath);//wm
-    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
-    String[] jarPaths = jarPath.split(&amp;quot;!&amp;quot;);
-    String jarPaht=jarPaths[0].substring(6);//去掉file:/
-    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
-
-    JarFile jarFile = null;  
-    try {  
-        jarFile = new JarFile(jarPaht);  
-    } catch (IOException e1) {  
-        e1.printStackTrace();  
-    }  
-
-    List&amp;lt;JarEntry&amp;gt; jarEntryList = new ArrayList&amp;lt;JarEntry&amp;gt;();  
-
-    Enumeration&amp;lt;JarEntry&amp;gt; ee = jarFile.entries();  
-    while (ee.hasMoreElements()) {  
-        JarEntry entry = (JarEntry) ee.nextElement();  
-        if (entry.getName().startsWith(startDir) &amp;amp;&amp;amp; entry.getName().endsWith(&amp;quot;.class&amp;quot;)) {  
-            log.info(&amp;quot;getClasssFromJarFile - entry:&amp;quot;+entry.getName());//wm
-            jarEntryList.add(entry);  
-        }  
-    }  
-    for (JarEntry entry : jarEntryList) {  
-        String className = entry.getName().replace(&#39;/&#39;, &#39;.&#39;);  
-        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
-        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
-        try {  
-            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
-        } catch (ClassNotFoundException e) {  
-            e.printStackTrace();  
-        }  
-    }  
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象7：启动jar包，访问登录，报NoClassDefFoundError RedisCacheManager&lt;br /&gt;
-解决：注释pom配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;
-    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象8：jar包启动无法访问jsp的问题&lt;br /&gt;
-原因:&lt;a href=&#34;https://www.jb51.net/article/141474.htm&#34; target=&#34;blank&#34;&gt;深入Spring Boot实现对Fat Jar jsp的支持&lt;/a&gt;&lt;br /&gt;
-解决：亲测有效，需两步&lt;br /&gt;
-&amp;emsp;步骤1、新增两个类&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import java.io.File;
-    import java.net.MalformedURLException;
-    import java.net.URL;
-
-    import org.apache.catalina.Context;
-    import org.apache.catalina.Lifecycle;
-    import org.apache.catalina.LifecycleEvent;
-    import org.apache.catalina.LifecycleListener;
-    import org.apache.catalina.WebResourceRoot.ResourceSetType;
-    import org.springframework.util.ResourceUtils;
-
-    /**
-     * Add main class fat jar/exploded directory into tomcat ResourceSet.
-     *
-     * @author hengyunabc 2017-07-29
-     *
-     */
-    public class StaticResourceConfigurer implements LifecycleListener {
-
-        private final Context context;
-
-        StaticResourceConfigurer(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public void lifecycleEvent(LifecycleEvent event) {
-            if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
-                URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
-
-                if (ResourceUtils.isFileURL(location)) {
-                    // when run as exploded directory
-                    String rootFile = location.getFile();
-                    if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
-                        rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
-                    }
-                    if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
-                        return;
-                    }
-
-                    try {
-                        location = new File(rootFile).toURI().toURL();
-                    } catch (MalformedURLException e) {
-                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
-                    }
-                }
-
-                String locationStr = location.toString();
-                if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
-                    // when run as fat jar
-                    locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
-                    try {
-                        location = new URL(locationStr);
-                    } catch (MalformedURLException e) {
-                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
-                    }
-                }
-                this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
-                        &amp;quot;/META-INF/resources&amp;quot;);
-
-            }
-        }
-    }
-
-    import org.apache.catalina.Context;
-    import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-    import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-    import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-    import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
-    import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.context.annotation.Configuration;
-
-    /**
-     * 处理1.5版本jar包启动无法访问jsp的问题
-     * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
-     * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
-     * @author wm  
-     * @date 2018年7月24日
-     */
-    @Configuration
-    @ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
-    public class TomcatConfig {
-        @Bean
-        public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
-            return new EmbeddedServletContainerCustomizer() {
-                @Override
-                public void customize(ConfigurableEmbeddedServletContainer container) {
-                    if (container instanceof TomcatEmbeddedServletContainerFactory) {
-                        ((TomcatEmbeddedServletContainerFactory) container)
-                                .addContextCustomizers(new TomcatContextCustomizer() {
-                                    @Override
-                                    public void customize(Context context) {
-                                        context.addLifecycleListener(new StaticResourceConfigurer(context));
-                                    }
-                                });
-                    }
-                }
-
-            };
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;步骤2，pom配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;resources&amp;gt;
-        ...
-        &amp;lt;resource&amp;gt;
-            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
-            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
-            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
-            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
-            &amp;lt;includes&amp;gt;
-                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
-            &amp;lt;/includes&amp;gt;
-        &amp;lt;/resource&amp;gt; 
-    &amp;lt;/resources&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象9：启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType&lt;br /&gt;
-解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象10：整合redis报 NOAUTH Authentication required&lt;br /&gt;
-原因：spring.redis.password=yourpassword 配置在JedisConnectionFactory中没有被加载进去&lt;br /&gt;
-解决：手动获取自定义或原配置密码进行配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Value(&amp;quot;${redis.address}&amp;quot;)
-private String hostName;
-@Value(&amp;quot;${redis.port}&amp;quot;)
-private String port;
-@Value(&amp;quot;${redis.password}&amp;quot;)
-private String password;
-
-@Bean
-public JedisConnectionFactory jedisConnectionFactory(){
-    JedisConnectionFactory jcf = new JedisConnectionFactory();
-    jcf.setHostName(hostName);
-    jcf.setPort(Integer.parseInt(port));
-    jcf.setPassword(password);
-    return jcf;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;现象11：整合swagger组件，HTTP接口统一处理异常失效&lt;br /&gt;
-原因：GlobalExceptionResolver implements HandlerExceptionResolver&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private boolean isReturnReponseBody(Object handler) {
-    if(((HandlerMethod) handler).hasMethodAnnotation(ResponseBody.class)) {
-        return true;
-    }
-    HandlerMethod hm = (HandlerMethod) handler;
-    if(hm.getBean().getClass().isAnnotationPresent(RestController.class)) {
-        return true;
-    }
-    /*Method method = hm.getMethod();
-    Class&amp;lt;?&amp;gt; returnType = method.getReturnType();
-    if(returnType.isAnnotationPresent(ResponseBody.class)) {
-        return true;
-    }*/ 
-    return false;
-}
-result ： false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;解决：新增判断&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if(((HandlerMethod) handler).hasMethodAnnotation(ApiOperation.class)) {
-    return true;
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bool on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/bool/</link>
+    <description>Recent content in Bool on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/bool/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL——bool</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysqlbool/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysqlbool/</guid>
+      <description>MySQL——bool mysql是不支持bool类型的,所以,当把一个数据设置成bool类型的时候,数据库会自动转换成tinyint(1)的</description>
+    </item>
+    
+  </channel>
+</rss>

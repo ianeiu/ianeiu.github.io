@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL Server on IanEiU</title>
+    <link>https://ianeiu.github.io/category/sql-server/</link>
+    <description>Recent content in SQL Server on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/sql-server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DB——时间字段</title>
+      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
+      <description>mysql date ：“yyyy-mm-dd”格式表示的日期值 “1000-01-01”到“9999-12-31” 3字节 time ：“hh:mm:ss”格式表示的时间</description>
+    </item>
+    
+  </channel>
+</rss>

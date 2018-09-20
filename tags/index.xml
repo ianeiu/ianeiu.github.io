@@ -40,6 +40,24 @@
     </item>
     
     <item>
+      <title>Bool</title>
+      <link>https://ianeiu.github.io/tag/bool/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/tag/bool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Connect_timeout</title>
+      <link>https://ianeiu.github.io/tag/connect_timeout/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/tag/connect_timeout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cxf</title>
       <link>https://ianeiu.github.io/tag/cxf/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
@@ -126,24 +144,6 @@
       <pubDate>Mon, 05 Mar 2018 16:01:23 +0800</pubDate>
       
       <guid>https://ianeiu.github.io/tag/images/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Integer</title>
-      <link>https://ianeiu.github.io/tag/integer/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/tag/integer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JVM</title>
-      <link>https://ianeiu.github.io/tag/jvm/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/tag/jvm/</guid>
       <description></description>
     </item>
     

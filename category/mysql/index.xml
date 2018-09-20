@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on IanEiU</title>
+    <link>https://ianeiu.github.io/category/mysql/</link>
+    <description>Recent content in MySQL on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DB——时间字段</title>
+      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
+      <description>mysql date ：“yyyy-mm-dd”格式表示的日期值 “1000-01-01”到“9999-12-31” 3字节 time ：“hh:mm:ss”格式表示的时间</description>
+    </item>
+    
+    <item>
+      <title>MySQL——bool</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysqlbool/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysqlbool/</guid>
+      <description>MySQL——bool mysql是不支持bool类型的,所以,当把一个数据设置成bool类型的时候,数据库会自动转换成tinyint(1)的</description>
+    </item>
+    
+    <item>
+      <title>MySQL——修改connect_timeout全局变量</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
+      <description>1.查询匹配“timeout”的全局变量 show global variables like &#39;%timeout%&#39;; result: connect_timeout 10 delayed_insert_timeout 300 innodb_flush_log_at_timeout 1 innodb_lock_wait_timeout 50 innodb_rollback_on_timeout OFF interactive_timeout 28800 lock_wait_timeout 31536000 net_read_timeout 30 net_write_timeout 60 rpl_stop_slave_timeout 31536000 slave_net_timeout 3600 wait_timeout 28800 2.设置全局变量connect_time</description>
+    </item>
+    
+    <item>
+      <title>MySQL——外键</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
+      <description>cascade方式 在父表上update/delete记录时，同步update/delete掉子表的匹配记录 set null方式 在父表上update</description>
+    </item>
+    
+    <item>
+      <title>[转] MySQL——索引原理与慢查询优化</title>
+      <link>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</guid>
+      <description>问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)</description>
+    </item>
+    
+  </channel>
+</rss>

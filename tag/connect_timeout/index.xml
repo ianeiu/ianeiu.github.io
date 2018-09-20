@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Connect_timeout on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/connect_timeout/</link>
+    <description>Recent content in Connect_timeout on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/connect_timeout/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL——修改connect_timeout全局变量</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
+      <description>1.查询匹配“timeout”的全局变量 show global variables like &#39;%timeout%&#39;; result: connect_timeout 10 delayed_insert_timeout 300 innodb_flush_log_at_timeout 1 innodb_lock_wait_timeout 50 innodb_rollback_on_timeout OFF interactive_timeout 28800 lock_wait_timeout 31536000 net_read_timeout 30 net_write_timeout 60 rpl_stop_slave_timeout 31536000 slave_net_timeout 3600 wait_timeout 28800 2.设置全局变量connect_time</description>
+    </item>
+    
+  </channel>
+</rss>

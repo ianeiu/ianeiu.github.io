@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>DB——时间字段</title>
+      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
+      <description>mysql date ：“yyyy-mm-dd”格式表示的日期值 “1000-01-01”到“9999-12-31” 3字节 time ：“hh:mm:ss”格式表示的时间</description>
+    </item>
+    
+    <item>
       <title>SQL Developer——Unable to find a Java Virtual Machine</title>
       <link>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>

@@ -31,12 +31,57 @@
     </item>
     
     <item>
+      <title>DB——时间字段</title>
+      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
+      <description>mysql date ：“yyyy-mm-dd”格式表示的日期值 “1000-01-01”到“9999-12-31” 3字节 time ：“hh:mm:ss”格式表示的时间</description>
+    </item>
+    
+    <item>
+      <title>MySQL——bool</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysqlbool/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysqlbool/</guid>
+      <description>MySQL——bool mysql是不支持bool类型的,所以,当把一个数据设置成bool类型的时候,数据库会自动转换成tinyint(1)的</description>
+    </item>
+    
+    <item>
+      <title>MySQL——修改connect_timeout全局变量</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
+      <description>1.查询匹配“timeout”的全局变量 show global variables like &#39;%timeout%&#39;; result: connect_timeout 10 delayed_insert_timeout 300 innodb_flush_log_at_timeout 1 innodb_lock_wait_timeout 50 innodb_rollback_on_timeout OFF interactive_timeout 28800 lock_wait_timeout 31536000 net_read_timeout 30 net_write_timeout 60 rpl_stop_slave_timeout 31536000 slave_net_timeout 3600 wait_timeout 28800 2.设置全局变量connect_time</description>
+    </item>
+    
+    <item>
+      <title>MySQL——外键</title>
+      <link>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
+      <description>cascade方式 在父表上update/delete记录时，同步update/delete掉子表的匹配记录 set null方式 在父表上update</description>
+    </item>
+    
+    <item>
       <title>SQL Developer——Unable to find a Java Virtual Machine</title>
       <link>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</guid>
       <description>现象 安装了64位的Oracle数据库以及32位的Oracle客户端，在开始菜单中第一次打开客户端的SQL Developer时提示输入java</description>
+    </item>
+    
+    <item>
+      <title>[转] MySQL——索引原理与慢查询优化</title>
+      <link>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</guid>
+      <description>问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)</description>
     </item>
     
     <item>
@@ -100,51 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/19/plsql%E4%BD%BF%E7%94%A8plsql%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description>原文 本机不安装Oracle客户端，使用PL/SQL Developer连接远程数据库 先到Oracle网站下载Instant Client或者点击</description>
-    </item>
-    
-    <item>
-      <title>SVN——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      <description>cmd 提示不是内部或者外部命令 windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装时勾选 svn comand line windows 查看项</description>
-    </item>
-    
-    <item>
-      <title>Tomcat——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      <description>修改startup.bat启动窗口名 打开 catlina.bat 文件，修改title :doStart shift if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA% if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd shift echo Using Security Manager set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot; goto execCmd tomcat指定jdk</description>
-    </item>
-    
-    <item>
-      <title>Oracle——查看及修改编码</title>
-      <link>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</link>
-      <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/18/oracle%E6%9F%A5%E7%9C%8B%E5%8F%8A%E4%BF%AE%E6%94%B9%E7%BC%96%E7%A0%81/</guid>
-      <description>查看 查看oracle数据库的编码 #来源于props$，表示数据库的字符集 select * from nls_database_parameters where parameter =&#39;NLS_CHARACTERSET&#39;; 结果： PARAMETER | VALUE —————————————————————</description>
-    </item>
-    
-    <item>
-      <title>SpringBoot——web项目改造为springboot所见问题简单记录</title>
-      <link>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/17/springbootweb%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0%E4%B8%BAspringboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
-      <description>现象1：引入layer.js出现undefinedcss目录.txt 原因：layer.js与layui.js冲突 解决：将layui.js 第二</description>
-    </item>
-    
-    <item>
-      <title>SpringBoot——整合（项目改造）</title>
-      <link>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</link>
-      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
-      <description>本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis</description>
     </item>
     
   </channel>
