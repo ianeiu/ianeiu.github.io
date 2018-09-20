@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/oracle%E5%BC%82%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Oracle——异常集</title>
-      <link>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
-      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/10/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
-      <description>安装异常 INS-13001 win10系统安装oracle11g时遇到INS-13001环境不满足最低要求 打开database-&amp;gt;stage-&amp;gt;c</description>
+      <guid>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      <description>同网段计算机无法访问本地数据库 现象：同网段计算机无法访问本地数据库,telnet 192.168.1.101 1521 不通 解决： 修改本地 F:\oracle\wm\product\11.2.0\dbhome_1\NETWORK\ADMIN 目录下的 listener.ora 及 tnsnames.ora 将 HOST = localhost 改成 HOST = wm-</description>
     </item>
     
   </channel>

@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>SQL Developer——Unable to find a Java Virtual Machine</title>
+      <link>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</guid>
+      <description>现象 安装了64位的Oracle数据库以及32位的Oracle客户端，在开始菜单中第一次打开客户端的SQL Developer时提示输入java</description>
+    </item>
+    
+    <item>
       <title>Eclipse——记录集</title>
       <link>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
@@ -76,6 +85,24 @@
     </item>
     
     <item>
+      <title>Oracle——异常集</title>
+      <link>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      <description>同网段计算机无法访问本地数据库 现象：同网段计算机无法访问本地数据库,telnet 192.168.1.101 1521 不通 解决： 修改本地 F:\oracle\wm\product\11.2.0\dbhome_1\NETWORK\ADMIN 目录下的 listener.ora 及 tnsnames.ora 将 HOST = localhost 改成 HOST = wm-</description>
+    </item>
+    
+    <item>
+      <title>PLSQL——使用PLSQL连接远程数据库</title>
+      <link>https://ianeiu.github.io/2018/09/19/plsql%E4%BD%BF%E7%94%A8plsql%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/19/plsql%E4%BD%BF%E7%94%A8plsql%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description>原文 本机不安装Oracle客户端，使用PL/SQL Developer连接远程数据库 先到Oracle网站下载Instant Client或者点击</description>
+    </item>
+    
+    <item>
       <title>SVN——记录集</title>
       <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
@@ -118,33 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/17/springboot%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE%E6%94%B9%E9%80%A0/</guid>
       <description>本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() { EndpointImpl endpoint = new EndpointImpl(bus, sSOService); endpoint.publish(&amp;quot;/sso&amp;quot;); return endpoint; } } redis&amp;amp;jedis</description>
-    </item>
-    
-    <item>
-      <title>HashMap——工作原理</title>
-      <link>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/hashmap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</guid>
-      <description>建议边看边阅读源码 HashMap（数组+链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能</description>
-    </item>
-    
-    <item>
-      <title>Java笔记整理——基础</title>
-      <link>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
-      <description>Java基础笔记整理 关键字 用于定义数据类型 class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】 void 用于定义数据类型值 true false null</description>
-    </item>
-    
-    <item>
-      <title>Mybatis——参数篇</title>
-      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%8F%82%E6%95%B0%E7%AF%87/</guid>
-      <description>参数传递符号 #{} ${} select * from tbl_employee where id=${id} and last_name=#{userName} Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=? 区别： #{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatem</description>
     </item>
     
   </channel>
