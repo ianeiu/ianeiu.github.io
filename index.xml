@@ -1065,6 +1065,10 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
+&lt;h4 id=&#34;插件&#34;&gt;插件&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dorothy1224/article/details/79280591/&#34; target=&#34;blank&#34;&gt;eclipse安装lombok&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题&lt;/a&gt;
@@ -1091,6 +1095,10 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/antineutrino/article/details/6763722/&#34; target=&#34;blank&#34;&gt;前缀、中缀、后缀表达式&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/前缀、中缀、后缀表达式.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
@@ -1125,6 +1133,384 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——SQL奇技</title>
+      <link>https://ianeiu.github.io/2018/09/25/dbsql%E5%A5%87%E6%8A%80/</link>
+      <pubDate>Tue, 25 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/25/dbsql%E5%A5%87%E6%8A%80/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;start-with-connect-by-prior-递归查询用法-oracle&#34;&gt;start with connect by prior 递归查询用法  [Oracle]&lt;/h3&gt;
+
+&lt;p&gt;初始化表及数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;create table MAS_BAKDEAL_TEMPLATE
+(
+  SEQID    NUMBER(10) not null,
+  TAB_ID   NUMBER default 0,
+  DEALNAME VARCHAR2(100) not null,
+  PARENTID NUMBER not null,
+  ISAUTO   CHAR(1),
+  STATUS   CHAR(1)
+)
+-- Add comments to the table 
+comment on table MAS_BAKDEAL_TEMPLATE
+  is &#39;后续处理&#39;;
+-- Add comments to the columns 
+comment on column MAS_BAKDEAL_TEMPLATE.SEQID
+  is &#39;主键&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.TAB_ID
+  is &#39;对应表 mas_templ_tab - tab_id字段&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.DEALNAME
+  is &#39;名称&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.PARENTID
+  is &#39;父ID&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.ISAUTO
+  is &#39;0代表自动，1代表手工&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.STATUS
+  is &#39;0启用，1作废&#39;;
+
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (466, 5019, &#39;批量附赠送单&#39;, 3, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (4, 0, &#39;(二期)数据业务管理&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (469, 5019, &#39;与酬金系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (93, 0, &#39;业务功能取消&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (1, 0, &#39;赠送话费&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (2, 5021, &#39;小额赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (42, 5022, &#39;充值券赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (94, 5019, &#39;12580取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (95, 5019, &#39;短信套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (0, 886, &#39;后续处理列表&#39;, -1, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (96, 5019, &#39;GPRS套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (97, 5019, &#39;手机证券取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (98, 5019, &#39;校讯通取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (122, 5019, &#39;中华国学开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (282, 5019, &#39;短信群发&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (243, 5019, &#39;一起玩吧用户活跃&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (84, 5019, &#39;12580开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (85, 5019, &#39;短信套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (86, 5019, &#39;GPRS套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (87, 5019, &#39;手机证券开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (91, 5019, &#39;校讯通开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (89, 0, &#39;BOSS办理开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (90, 5019, &#39;套餐办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (262, 5019, &#39;数据核对&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (81, 5197, &#39;缴费卡&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (82, 5019, &#39;WEB赠送(20090111作废）&#39;, 1, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (83, 0, &#39;业务功能开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (92, 5019, &#39;营销案办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (221, 5019, &#39;彩铃歌曲订购&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (301, 5280, &#39;M值赠送&#39;, 1, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (242, 5019, &#39;手机报开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (321, 5470, &#39;营销优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (121, 5019, &#39;飞信开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (141, 5019, &#39;非彩铃套餐用户销户&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (181, 5019, &#39;天气预报&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (182, 5019, &#39;秘书台&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (183, 5019, &#39;清单被查&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (201, 5019, &#39;开通5元彩铃功能&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (342, 5627, &#39;09积分优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (3, 0, &#39;批量业务&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (462, 16128, &#39;话费赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (463, 16129, &#39;积分赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (465, 5019, &#39;批开批销处理&#39;, 3, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (468, 5019, &#39;与CMP系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (484, 5019, &#39;负话单赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (467, 16128, &#39;多营销方案赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (261, 0, &#39;能力平台&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (485, 1739, &#39;目标号码&#39;, 261, &#39;0&#39;, &#39;0&#39;);
+commit;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正常查询结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/normalSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;递归查询&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select t.*,level from mas_bakdeal_template t 
+start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sql字符型字段按数字型字段-排序实现方法&#34;&gt;SQL字符型字段按数字型字段 排序实现方法&lt;/h3&gt;
+
+&lt;p&gt;得分字段为varchar,如果按得分排序结果可能是：&lt;br /&gt;
+1&lt;br /&gt;
+10&lt;br /&gt;
+11&lt;br /&gt;
+123&lt;br /&gt;
+1234&lt;br /&gt;
+2&lt;br /&gt;
+25&lt;br /&gt;
+253&lt;br /&gt;
+3&lt;br /&gt;
+但是我们想要按照数字排序&lt;br /&gt;
+1&lt;br /&gt;
+2&lt;br /&gt;
+3&lt;br /&gt;
+10&lt;br /&gt;
+11&lt;br /&gt;
+25&lt;br /&gt;
+123&lt;br /&gt;
+1234&lt;br /&gt;
+253&lt;/p&gt;
+
+&lt;p&gt;解决方案：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将字段转为int排序: &lt;code&gt;ORDER BY CAST(字段名 AS DECIMAL)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ORDER BY 字段名+0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用绝对值函数ABS处理这个字段： &lt;code&gt;ORDER BY ABS(字段名)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——SQL集锦</title>
+      <link>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;数据定义语言-ddl&#34;&gt;数据定义语言（DDL）&lt;/h3&gt;
+
+&lt;h4 id=&#34;清空表数据&#34;&gt;清空表数据&lt;/h4&gt;
+
+&lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
+
+&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
+
+&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型;&lt;br /&gt;
+ 例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;
+
+&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型);&lt;br /&gt;
+例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;
+
+&lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
+
+&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
+例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;
+
+&lt;p&gt;字段增加备注&lt;br /&gt;
+例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;
+
+&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;
+
+&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
+说明：alter table 表名 drop column 字段名;&lt;br /&gt;
+例：alter table sf_users drop column HeadPIC;&lt;/p&gt;
+
+&lt;p&gt;字段的重命名：&lt;br /&gt;
+说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
+例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;
+
+&lt;p&gt;表的重命名：&lt;br /&gt;
+说明：alter table 表名 rename to  新表名&lt;br /&gt;
+例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;
+
+&lt;h3 id=&#34;数据操作语言-dml-data-manipulation-language&#34;&gt;数据操作语言（DML Data Manipulation Language）&lt;/h3&gt;
+
+&lt;h4 id=&#34;去除带空格数据的空格&#34;&gt;去除带空格数据的空格&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;\\删除左空格  
+update tb_test set product_name=rtrim(product_name,&#39; &#39;);
+\\删除右空格  
+update tb_test set product_name=ltrim(product_name,&#39; &#39;);
+\\删除左右空格
+update tb_test set product_name=trim(product_name);
+\\删除所有空格
+update tb_test set product_name=replace(product_name,&#39; &#39;,&#39;&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据查询语言-dql-data-query-language&#34;&gt;数据查询语言（DQL Data Query Language）&lt;/h3&gt;
+
+&lt;h4 id=&#34;oracle-日期-时间-相关查询&#34;&gt;Oracle 日期-时间 相关查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--获取当前月份的第一天
+SELECT TRUNC (SYSDATE, &#39;MONTH&#39;) FROM DUAL;
+
+--获取当前月份的最后一天
+SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
+
+--获取当前年份的第一天
+SELECT TRUNC (SYSDATE, &#39;YEAR&#39;) FROM DUAL;
+
+--获取当前年份的最后一天
+SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) - 1 FROM DUAL;
+
+--获取当前月份的天数
+SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), &#39;dd&#39;) AS INT) FROM DUAL;
+
+--获取当前月份剩下的天数
+SELECT SYSDATE, LAST_DAY (SYSDATE) &amp;quot;Last&amp;quot;, LAST_DAY (SYSDATE) - SYSDATE &amp;quot;Days left&amp;quot; FROM DUAL;
+
+--计算员工入职的天数
+SELECT TRUNC(sysdate) - TRUNC(e.hire_date) FROM employees e;
+
+--获取直到目前为止今天过去的秒数（从 00：00 开始算）
+SELECT (SYSDATE - TRUNC (SYSDATE)) * 24 * 60 * 60 num_of_sec_since_morning  FROM DUAL;
+
+--获取今天剩下的秒数（直到 23：59：59 结束）
+SELECT (TRUNC (SYSDATE+1) - SYSDATE) * 24 * 60 * 60 num_of_sec_left FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-数学&#34;&gt;Oracle 数学&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--把数值转换成文字
+SELECT TO_CHAR (TO_DATE (1526, &#39;j&#39;), &#39;jsp&#39;) FROM DUAL;
+
+--在包的源代码中查询字符串
+SELECT * FROM dba_source WHERE UPPER (text) LIKE &#39;%FOO_SOMETHING%&#39; AND owner = &#39;TSUSER&#39;;
+
+--查询表中的最后一个记录
+SELECT * FROM TB_DQDP_USER  WHERE ROWID IN (SELECT MAX (ROWID) FROM TB_DQDP_USER);
+SELECT * FROM TB_DQDP_USER MINUS SELECT * FROM TB_DQDP_USER WHERE ROWNUM &amp;lt; (SELECT COUNT (*) FROM TB_DQDP_USER);
+
+--在 Oracle 生成随机数据
+SELECT LEVEL empl_id, MOD (ROWNUM, 50000) dept_id,TRUNC (DBMS_RANDOM.VALUE (1000, 500000), 2) salary
+,DECODE (ROUND (DBMS_RANDOM.VALUE (1, 2)),  1, &#39;M&#39;,  2, &#39;F&#39;) gender
+, TO_DATE ( ROUND (DBMS_RANDOM.VALUE (1, 28))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1, 12))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1900, 2010)),&#39;DD-MM-YYYY&#39;)
+ dob,DBMS_RANDOM.STRING (&#39;x&#39;, DBMS_RANDOM.VALUE (20, 50)) address
+ FROM DUAL CONNECT BY LEVEL &amp;lt; 10000;
+
+--在 Oracle 中生成随机数值
+SELECT ROUND (DBMS_RANDOM.VALUE () * 100) + 1 AS random_num FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-数据库管理查询&#34;&gt;Oracle 数据库管理查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--数据库版本信息
+SELECT * FROM v$version;
+
+--数据库默认信息
+SELECT username,profile,default_tablespace,temporary_tablespace FROM dba_users;
+
+--数据库字符设置信息
+SELECT * FROM nls_database_parameters;
+
+--获取 Oracle 版本
+SELECT VALUE FROM v$system_parameter WHERE name = &#39;compatible&#39;;
+
+--检查表空间的自动扩展开关
+SELECT SUBSTR (file_name, 1, 50), AUTOEXTENSIBLE FROM dba_data_files;
+SELECT tablespace_name, AUTOEXTENSIBLE FROM dba_data_files;
+
+--调整没有添加数据文件的表空间
+ALTER DATABASE DATAFILE &#39;/work/oradata/STARTST/STAR02D.dbf&#39; resize 2000M;
+--在表空间添加数据文件
+ALTER TABLESPACE data01 ADD DATAFILE &#39;/work/oradata/STARTST/data01.dbf&#39; SIZE 1000M AUTOEXTEND OFF;
+--增加数据文件的大小
+ALTER DATABASE DATAFILE &#39;/u01/app/Test_data_01.dbf&#39; RESIZE 2G;
+
+--查询数据库的实际大小
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_data_files;
+--查询数据库中数据占用的大小或者是数据库使用细节
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_segments;
+
+--查询模式或者用户的大小
+SELECT SUM (bytes / 1024 / 1024) &amp;quot;size&amp;quot; FROM dba_segments WHERE owner = &#39;&amp;amp;owner&#39;;
+
+--查询数据库中每个用户最后使用的 SQL 查询
+SELECT S.USERNAME || &#39;(&#39; || s.sid || &#39;)-&#39; || s.osuser UNAME, s.program
+ || &#39;-&#39; || s.terminal || &#39;(&#39; || s.machine || &#39;)&#39; PROG, s.sid || &#39;/&#39; || s.serial# sid, s.status &amp;quot;Status&amp;quot;, p.spid,sql_text sqltext
+  FROM v$sqltext_with_newlines t, V$SESSION s, v$process p WHERE t.address = s.sql_address AND p.addr = s.paddr(+)
+ AND t.hash_value = s.sql_hash_value    ORDER BY s.sid, t.piece;
+
+--查询用户 CPU 的使用率
+SELECT ss.username, se.SID, VALUE / 100 cpu_usage_seconds FROM v$session ss, v$sesstat se, v$statname sn
+  WHERE se.STATISTIC# = sn.STATISTIC# AND NAME LIKE &#39;%CPU used by this session%&#39; AND se.SID = ss.SID
+  AND ss.status = &#39;ACTIVE&#39;AND ss.username IS NOT NULL ORDER BY VALUE DESC;
+
+--查询数据库长查询进展情况
+ SELECT a.sid, a.serial#, b.username, opname OPERATION, target OBJECT, TRUNC (elapsed_seconds, 5) &amp;quot;ET (s)&amp;quot;
+ , TO_CHAR (start_time, &#39;HH24:MI:SS&#39;) start_time, ROUND ( (sofar / totalwork) * 100, 2) &amp;quot;COMPLETE (%)&amp;quot;
+  FROM v$session_longops a, v$session b
+   WHERE a.sid = b.sid AND b.username NOT IN (&#39;SYS&#39;, &#39;SYSTEM&#39;) AND totalwork &amp;gt; 0 ORDER BY elapsed_seconds;
+
+--获取当前会话 ID，进程 ID，客户端 ID 等
+SELECT b.sid, b.serial#,a.spid processid,b.process clientpid FROM v$process a, v$session b
+ WHERE a.addr = b.paddr AND b.audsid = USERENV (&#39;sessionid&#39;);
+--V$SESSION.SID AND V$SESSION.SERIAL# 是数据库进程 ID
+--V$PROCESS.SPID 是数据库服务器后台进程 ID
+--V$SESSION.PROCESS 是客户端 PROCESS ID, ON windows it IS : separated THE FIRST # IS THE PROCESS ID ON THE client AND 2nd one IS THE THREAD id.
+
+--查询特定的模式或者表中执行的最后一个 SQL 语句
+SELECT CREATED, TIMESTAMP, last_ddl_time FROM all_objects WHERE     OWNER = &#39;TSUSER&#39;   AND OBJECT_TYPE = &#39;TABLE&#39; AND OBJECT_NAME = &#39;TB_USER_EXTEND&#39;;
+
+--在视图中查询并显示实际的 Oracle 连接
+SELECT osuser,username,machine, program FROM v$session  ORDER BY osuser;
+
+--查询并显示通过打开连接程序打开连接的组
+SELECT program application, COUNT (program) Numero_Sesiones  FROM v$session GROUP BY program ORDER BY Numero_Sesiones DESC;
+
+--查询并显示连接 Oracle 的用户和用户的会话数量
+SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session GROUP BY username ORDER BY Numero_Sesiones DESC;
+
+--获取拥有者的对象数量
+SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -1166,6 +1552,483 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;/ul&gt;
 
 &lt;p&gt;smalldatetime数据类型与datetime数据类型相似，但其日期时间范围较小，从1900年1月1日到2079年6月6日。此数据类型精度较低，只能精确到分钟，其分钟个位为根据秒数四舍五入的值，即以30秒为界四舍五入。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java笔记整理——基础</title>
+      <link>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
+      
+        <description>
+
+&lt;p&gt;Java基础笔记整理&lt;/p&gt;
+
+&lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于定义数据类型&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;void&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义数据类型值&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;true false null&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义流程控制
+
+&lt;ul&gt;
+&lt;li&gt;if else switch case default【选择】&lt;br /&gt;
+【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;while do for【循环】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;break continue return【流程跳转】&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义访问权限修饰符
+
+&lt;ul&gt;
+&lt;li&gt;private public protected&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义类、函数、变量
+
+&lt;ul&gt;
+&lt;li&gt;abstract final static synchronized&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;类与类之间的关系
+
+&lt;ul&gt;
+&lt;li&gt;extends implements&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;建立实例、引用实例、判断实例
+
+&lt;ul&gt;
+&lt;li&gt;new this super instanceof&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;异常处理
+
+&lt;ul&gt;
+&lt;li&gt;try catch throw throws finally&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;包
+
+&lt;ul&gt;
+&lt;li&gt;package import&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;其它
+
+&lt;ul&gt;
+&lt;li&gt;native strictfp transient volatile assert&lt;/li&gt;
+&lt;li&gt;goto const 【保留字】&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
+
+&lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
+合法字符组成：英文字幕、数字、$、_【不能以数字开头】&lt;/p&gt;
+
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单行 //&lt;/li&gt;
+&lt;li&gt;多行 /**/&lt;/li&gt;
+&lt;li&gt;文档 /**  */&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;字面值 &amp;ldquo;hello&amp;rdquo;,10.true&lt;/li&gt;
+&lt;li&gt;自定义 final int LINK_CODE = 0;
+
+&lt;ul&gt;
+&lt;li&gt;final 修饰变量（基本类型值不变，引用类型地址值不变）（只能在构造方法执行之前赋值一次）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;类变量（静态变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;实例变量（成员变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;局部变量（本地变量）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（代码）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中方法外&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法定义中、方法声明上&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（内存）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法区中静态区&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;堆&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;栈&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;生命周期&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随类加载而加载&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随对象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;this无法存在静态中；&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;静态方法只能访问静态变量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;算术运算符&lt;br /&gt;
+&lt;code&gt;
+% + - * / ++  --
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;赋值运算符&lt;br /&gt;
+&lt;code&gt;
+= += -= *= /= %=
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;比较运算符&lt;br /&gt;
+&lt;code&gt;
+== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= 
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;逻辑运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;amp; | ^(异或) ! &amp;amp;&amp;amp; || 【&amp;amp;&amp;amp; || 有短路效果】
+&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;位运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;lt;&amp;lt; &amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;(无符号右移) &amp;amp; | ^ ~(按位取反)
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;三元运算符&lt;br /&gt;
+&lt;code&gt;
+max = a &amp;gt; b ? a : b
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
+
+&lt;p&gt;代码块加载顺序： 静态代码块（类初始化）&amp;ndash;&amp;gt; 局部代码块 &amp;ndash;&amp;gt; 构造代码块（对象初始化）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Importtant06Code {
+    static { System.out.println(&amp;quot;Importtant06Code静态代码块&amp;quot;);}
+
+    public static void main(String[] args) {
+        System.out.println(&amp;quot;main&amp;quot;);
+        User user = new User();
+        User user2 = new User();
+    }
+}
+
+class User{
+    static { System.out.println(&amp;quot;User静态代码块&amp;quot;);}
+    {System.out.println(&amp;quot;User局部代码块&amp;quot;);}
+    public User() {System.out.println(&amp;quot;User构造代码块&amp;quot;);}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Importtant06Code静态代码块
+main
+User静态代码块
+User局部代码块
+User构造代码块
+User局部代码块
+User构造代码块
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java笔记整理——面向对象</title>
+      <link>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Java面向对象笔记整理&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;java面向对象三大特性&#34;&gt;Java面向对象三大特性&lt;/h2&gt;
+
+&lt;p&gt;封装、继承、多态&lt;/p&gt;
+
+&lt;h2 id=&#34;类与对象&#34;&gt;类与对象&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类：一组相关属性和行为的集合（抽象）&lt;/li&gt;
+&lt;li&gt;对象：改类事物的具体表现形式（具体存在的个体）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;好处：隐藏实现细节,提供公共访问方式，复用性，安全性&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关键字：private、this、static、new&lt;/p&gt;
+
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;wm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对象构造过程：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将User.class文件加载到内存&lt;/li&gt;
+&lt;li&gt;栈内存放置user，堆内存放置对象&lt;/li&gt;
+&lt;li&gt;给成员变量进行初始化
+
+&lt;ul&gt;
+&lt;li&gt;默认初始化 name:null  age:0&lt;/li&gt;
+&lt;li&gt;显示初始化 name:wm    age:18&lt;/li&gt;
+&lt;li&gt;构造初始化 name:sg    age:25&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将地址值赋给变量user&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;好处：复用、维护、多态前提&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关键字：extends、this、super&lt;/p&gt;
+
+&lt;h4 id=&#34;重载与重写&#34;&gt;重载与重写&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重写（Override） 子类重写父类方法&lt;/li&gt;
+&lt;li&gt;重载（Overload） 同一个类中不同参数的方法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;注意&#34;&gt;注意&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;子类初始化之前会先进行父类的初始化&lt;/li&gt;
+&lt;li&gt;父类没有无参构造，编译会报错&lt;/li&gt;
+&lt;li&gt;子类重写父类方法，方法访问权限不能比之更低&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;好处： 维护、扩展&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;父类接口指向子类对象，主要体现在抽象类&lt;/p&gt;
+
+&lt;p&gt;Fu f = new Zi();&lt;br /&gt;
+成员方法：编译看父类，运行看子类。&lt;br /&gt;
+静态方法：编译看父类，运行看子类。&lt;br /&gt;
+成员变量：编译看父类，运行看子类。&lt;br /&gt;
+构造方法：编译看父类，运行看父子。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;learn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d1tod4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Zi&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;method zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo04DuoTai&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;nd&#34;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;static-access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;父类引用指向子类对象&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;父&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		
+		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
+		&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;抽象类与接口&#34;&gt;抽象类与接口&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;抽象类&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;接口&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;特点&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.抽象类与方法需用abstract修饰&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.接口用interface修饰&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.抽象类不一定有抽象方法，有则为抽象类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.类实现接口用implements&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.不能直接实例化（通过多态可实例化）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.不能被实例化&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;实现&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象类、具体类（重写所有方法）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象类，具体类&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;成员特点&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;属性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;变量、常量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;常量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;构造方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;有&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;成员方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象、非抽象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象、【JDK8有 default、static方法】&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关键字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不能与private、final、static(无意义)共存&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;编译报错&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
       
     </item>
@@ -1548,305 +2411,6 @@ derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>IDEA——问题集</title>
-      <link>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled&#34;&gt;IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled&lt;/h2&gt;
-
-&lt;p&gt;修改系统配置 ：&lt;br /&gt;
-Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com&lt;br /&gt;
-windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java基础题（Integer、String、内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      
-        <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
-Integer c = 100,d=100;    
-@Test
-public void testIntegerDD(){
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
-,可看Integer源码valueOf(int i)方法&lt;br /&gt;
-    public static Integer valueOf(int i) {
-        if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
-        return IntegerCache.cache[i + (-IntegerCache.low)];
-        return new Integer(i);
-    }&lt;/p&gt;
-
-&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testIntegerDD(){
-
-    Integer a = 1000,b=1000;
-    Integer c = 100,d=100;   
-    Integer e = new Integer(100);
-    Integer f = new Integer(100);
-    int g = 1000;
-    Integer h = new Integer(1000);  
-
-
-    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
-
-    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
-    System.out.println(e==f);//false
-    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
-    System.out.println(g==h);//true
-
-    //进行自动装箱操作
-    System.out.println(c==e);//false
-    System.out.println(a==h);//false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
-
-    System.out.println(s1==s2); // true
-    System.out.println(s1==s3); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;文章解释：&lt;br /&gt;
-一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
-像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
-当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
-
-&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
-
-    //都存储在常量池中,指向同一常量
-    System.out.println(s1==s2); // true
-    //存储在常量池中,存储在堆内存中
-    System.out.println(s1==s3); // false
-
-    String s4 = &amp;quot;helloo&amp;quot;;
-    /**
-     * 会重新在常量池创建常量（String不可变属性）
-     */
-    String s5 = s1+&amp;quot;o&amp;quot;;
-    //都存储在常量池中,指向不同常量
-    System.out.println(s4 == s5); // false
-
-    //hello
-    String s6 = s4.substring(0, s4.length() - 1);
-    //substring返回的也是new出来的String对象
-    System.out.println(s1 == s6); // false
-    System.out.println(s3 == s6); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
-
-&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
-    new Runnable() {
-        public void run() {
-            try {
-              Thread.sleep(1000);
-           } catch (InterruptedException e) {
-             // TODO Auto-generated catch block
-            e.printStackTrace();
-           }  
-           System.out.println(name);
-        }
-    }.start();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;文章解释：&lt;br /&gt;
-这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
-
-&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
-首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
-主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
-
-&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
-局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Maven——问题集</title>
-      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;could-not-calculate-build-plan&#34;&gt;Could not calculate build plan&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下的文件夹删除;&lt;/li&gt;
-&lt;li&gt;右击项目Maven-&amp;gt;Update Project-&amp;gt;Update Dependencies&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;missing-artifact&#34;&gt;Missing artifact&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件;&lt;/li&gt;
-&lt;li&gt;如果有就把这个文件删掉，再update一下dependency就行了。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Oracle——异常集</title>
-      <link>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/oracle%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;同网段计算机无法访问本地数据库&#34;&gt;同网段计算机无法访问本地数据库&lt;/h2&gt;
-
-&lt;p&gt;现象：同网段计算机无法访问本地数据库,telnet 192.168.1.101 1521 不通&lt;br /&gt;
-解决：&lt;br /&gt;
-修改本地 F:\oracle\wm\product\11.2.0\dbhome_1\NETWORK\ADMIN 目录下的  listener.ora 及 tnsnames.ora 将 HOST = localhost 改成 HOST = wm-PC【计算机名】&lt;br /&gt;
-重启本地oracle的service及listener服务&lt;/p&gt;
-
-&lt;h2 id=&#34;安装异常-ins-13001&#34;&gt;安装异常 INS-13001&lt;/h2&gt;
-
-&lt;p&gt;win10系统安装oracle11g时遇到INS-13001环境不满足最低要求&lt;/p&gt;
-
-&lt;p&gt;打开database-&amp;gt;stage-&amp;gt;cvu-&amp;gt;cvu_prereq.xml，编辑内容&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;OPERATING_SYSTEM RELEASE=&amp;quot;6.2&amp;quot;&amp;gt;
-    &amp;lt;VERSION VALUE=&amp;quot;3&amp;quot;/&amp;gt;
-        &amp;lt;ARCHITECTURE VALUE=&amp;quot;32-bit&amp;quot;/&amp;gt;
-        &amp;lt;NAME VALUE=&amp;quot;Windows 10&amp;quot;/&amp;gt;
-        &amp;lt;ENV_VAR_LIST&amp;gt;
-            &amp;lt;ENV_VAR NAME=&amp;quot;PATH&amp;quot; MAX_LENGTH=&amp;quot;1023&amp;quot; /&amp;gt;
-        &amp;lt;/ENV_VAR_LIST&amp;gt;
-&amp;lt;/OPERATING_SYSTEM&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这一段和原先不同就是6.2和window10。如果你系统安装的是64位的，则将32-bit改成64bit即可，然后重新安装。&lt;/p&gt;
-
-&lt;h2 id=&#34;连接报错-ora-12505&#34;&gt;连接报错 ORA-12505&lt;/h2&gt;
-
-&lt;p&gt;使用SQL Developer 连接DB报错 ORA-12505，报错信息如下：&lt;br /&gt;
-ORA-12505, TNS:listener does not currently know of SID given in connect descriptor&lt;/p&gt;
-
-&lt;p&gt;解决：找到Oracle安装目录（类似D:\app\mian\product\11.2.0\dbhome_1\NETWORK\ADMIN  ）下的tnsnames.ora和listener.ora文件，备份下，然后对照下面配置进行修改&lt;/p&gt;
-
-&lt;h4 id=&#34;tnsnames-ora&#34;&gt;tnsnames.ora&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;# tnsnames.ora Network Configuration File: D:\app\mian\product\11.2.0\dbhome_1\network\admin\tnsnames.ora
-# Generated by Oracle configuration tools.
-
-LISTENER_ORCL =
-  (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-
-
-ORACLR_CONNECTION_DATA =
-  (DESCRIPTION =
-    (ADDRESS_LIST =
-      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
-    )
-    (CONNECT_DATA =
-      (SID = CLRExtProc)
-      (PRESENTATION = RO)
-    )
-  )
-
-ORCL =
-  (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-    (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = orcl)
-    )
-  )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;listener-ora&#34;&gt;listener.ora&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;# listener.ora Network Configuration File: D:\app\mian\product\11.2.0\dbhome_1\network\admin\listener.or
-# Generated by Oracle configuration tools.
-
-SID_LIST_LISTENER =
-  (SID_LIST =
-    (SID_DESC =
-      (SID_NAME = CLRExtProc)
-      (ORACLE_HOME = D:\app\mian\product\11.2.0\dbhome_1)
-      (PROGRAM = extproc)
-      (ENVS = &amp;quot;EXTPROC_DLLS=ONLY:D:\app\mian\product\11.2.0\dbhome_1\bin\oraclr11.dll&amp;quot;)
-    )
-    (SID_DESC =
-      (GLOBAL_DBNAME = oracle)
-      (ORACLE_HOME = D:\app\mian\product\11.2.0\dbhome_1)
-      (SID_NAME = oracle)
-    )
-  )
-
-LISTENER =
-  (DESCRIPTION_LIST =
-    (DESCRIPTION =
-        (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-UKQ7RTS)(PORT = 1521))
-    )
-    (DESCRIPTION =
-      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
-      (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
-    )
-  )
-
-ADR_BASE_LISTENER = D:\app\mian
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注：&lt;br /&gt;
-1. DESKTOP-UKQ7RTS 为计算机名&lt;br /&gt;
-2. 更改文件后需要重启服务&lt;/p&gt;
 </description>
       
     </item>
