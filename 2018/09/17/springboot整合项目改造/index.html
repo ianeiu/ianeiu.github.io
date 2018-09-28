@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-09-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1223">
+<meta itemprop="wordCount" content="1367">
 
 
 
@@ -543,6 +543,31 @@ public MultipartConfigElement multipartConfigElement() {
    factory.setMaxRequestSize(&quot;102400KB&quot;);
    return factory.createMultipartConfig();
 }
+
+/**
+ * MultipartFile 转换成File
+ * update by wm 2018.07.12
+ * @param multfile 原文件类型
+ * @return File
+ * @throws IOException
+ */
+public static File multipartToFile(MultipartFile multfile) throws IOException {
+    //Springboot自带上传不支持CommonsMultipartFile
+    //CommonsMultipartFile cf = (CommonsMultipartFile)multfile;
+    //这个myfile是MultipartFile的
+    //DiskFileItem fi = (DiskFileItem) cf.getFileItem();
+    //return fi.getStoreLocation();
+
+    File f = null;
+    if (&quot;&quot;.equals(multfile) || multfile.getSize() &lt;= 0) {
+        multfile = null;
+    } else {
+        InputStream ins = multfile.getInputStream();
+        f = new File(multfile.getOriginalFilename());
+        StreamUtil.streamSaveAsFile(ins, f);
+    }
+    return f;
+}
 </code></pre>
 
 <h3 id="打jar包运行">打JAR包运行</h3>
@@ -690,7 +715,7 @@ public MultipartConfigElement multipartConfigElement() {
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

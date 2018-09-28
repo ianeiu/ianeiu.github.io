@@ -36,7 +36,7 @@
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
-      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用 只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会</description>
+      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用（Strong Reference） 只有这个引用被释放之后，对象才会被释放掉</description>
     </item>
     
   </channel>

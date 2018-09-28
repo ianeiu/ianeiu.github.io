@@ -7,27 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Java笔记整理——基础</title>
-      <link>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      <title>Java笔记——基础</title>
+      <link>https://ianeiu.github.io/2018/09/28/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://ianeiu.github.io/2018/09/28/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
       <description>Java基础笔记整理 关键字 用于定义数据类型 class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】 void 用于定义数据类型值 true false null</description>
-    </item>
-    
-    <item>
-      <title>Java笔记整理——面向对象</title>
-      <link>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/java%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
-      <description>Java面向对象笔记整理 Java面向对象三大特性 封装、继承、多态 类与对象 类：一组相关属性和行为的集合（抽象） 对象：改类事物的具体表现形式（具</description>
     </item>
     
     <item>
@@ -63,7 +54,7 @@
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/11/java%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/</guid>
-      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用 只有这个引用被释放之后，对象才会被释放掉，只要引用存在，垃圾回收器永远不会</description>
+      <description>JVM的内存结构 详见 jvm的结构 强引用，软引用和弱引用的区别 强引用（Strong Reference） 只有这个引用被释放之后，对象才会被释放掉</description>
     </item>
     
     <item>
