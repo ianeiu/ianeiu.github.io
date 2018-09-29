@@ -1192,11 +1192,196 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     </item>
     
     <item>
-      <title>Java笔记——基础</title>
-      <link>https://ianeiu.github.io/2018/09/28/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
+      <title>Http——笔记</title>
+      <link>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/28/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;HTTP即超文本传输协议（HTTP，Hyper Text Transport Protocol）。HTTP协议默认监听80端口，主要用于描述请求和响应的数据格式。&lt;/p&gt;
+
+&lt;h2 id=&#34;版本&#34;&gt;版本&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0.9　已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。&lt;/li&gt;
+&lt;li&gt;HTTP/1.0　建立连接后只能请求响应一次。&lt;/li&gt;
+&lt;li&gt;HTTP/1.1　持久连接（可以进行多次请求和响应）被默认采用，能很好地配合代理服务器工作。还支持以管道方式同时发送多个请求，以便降低线路负载，提高传输速度。&lt;/li&gt;
+&lt;li&gt;HTTP/2   相比于HTTP 1.x，大幅度提升了web性能。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;消息头&#34;&gt;消息头&lt;/h2&gt;
+
+&lt;p&gt;请求的资源中含有 &lt;code&gt;&amp;lt;img &amp;gt; &amp;lt;link&amp;gt; &amp;lt;script&amp;gt;&lt;/code&gt;浏览器会自动发出请求&lt;/p&gt;
+
+&lt;p&gt;请求消息头：一个请求行，多个消息头， 一个空行&lt;br /&gt;
+请求行：请求类型(GET/POST) 请求资源 HTTP版本  如(GET /app/2.html HTTP/1.1)&lt;/p&gt;
+
+&lt;p&gt;响应消息头：一个响应头（状态行），多个消息头，一个空行，响应内容&lt;/p&gt;
+
+&lt;p&gt;GET与POST方式对比
+1. GET提交数据有长度限制,1K，而POST没有长度限制
+2. GET皎在地址栏可见，所以不安全。POST提交数据在主体内容中不可见，所以安全&lt;/p&gt;
+
+&lt;p&gt;请求消息头&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Accept:告知服务器，浏览器可接受的MIME类型 (Multipurpose Internet Mail Extensation) 多用途互联网邮件扩展类型
+    MIME 类型:文件系统文件类型用文件的扩展名来区分
+    MIME类型由大类型/小类型组成的.比如text/html text/css text/javascript image/bmp image/jpeg (Tomcat conf/web.xml
+Accpept-Charset:支持的字符集
+Accept-Language:浏览器所希望的语言类型
+Accpet-Encoding:gzip,deflate
+*Referer:包含一个URL,该URL表示当前页来源(用于防盗链,统计广告投放效果)
+Content-Type:请求正文内容的MIME类型(适应于Post请求)
+    默认是application/x-www-form-urlencoded(username=sa&amp;amp;age=30)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;响应消息头&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;*Location:http://www.itheima.com/index.jsp 告知浏览器，新的资源的位置(302跳转)
+*Content-Encoding: gzip代表服务器采用什么方式进行数据压缩
+*Content-Length:  服务器发送的数据长度
+Content-Language: zh-cn服务发送的文本的语言
+*Content-Type: text/html; charset=GB2312服务器发送的内容的MIME类型
+Last-Modified:服务器最后修改资源的时间
+*Refresh：指定服务器刷新  Refresh: 1;url=http://www.it315.org指示客户端刷新频率。单位是秒
+*Content-Disposition: attachment; filename=aaa.zip指示客户端下载文件
+
+*Expires: -1清理缓存
+*Cache-Control: no-cache (1.1)  没有缓存
+*Pragma: no-cache   (1.0) 没有缓存
+
+*Set-Cookie:SS=Q0=5Lb_nQ; path=/search服务器端发送的Cookie
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>JavaWeb常用的名词简介</title>
+      <link>https://ianeiu.github.io/2018/09/29/javaweb%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/29/javaweb%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;j2ee中常用的名词简单描述&#34;&gt;J2EE中常用的名词简单描述&lt;/h1&gt;
+
+&lt;h2 id=&#34;web容器&#34;&gt;web容器&lt;/h2&gt;
+
+&lt;p&gt;给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。&lt;/p&gt;
+
+&lt;h2 id=&#34;ejb容器&#34;&gt;EJB容器&lt;/h2&gt;
+
+&lt;p&gt;Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;jndi-java-naming-directory-interface&#34;&gt;JNDI：（Java Naming &amp;amp; Directory Interface）&lt;/h2&gt;
+
+&lt;p&gt;JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。&lt;/p&gt;
+
+&lt;h2 id=&#34;jms-java-message-service&#34;&gt;JMS：（Java Message Service）&lt;/h2&gt;
+
+&lt;p&gt;JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。&lt;/p&gt;
+
+&lt;h2 id=&#34;jta-java-transaction-api&#34;&gt;JTA：（Java Transaction API）&lt;/h2&gt;
+
+&lt;p&gt;JAVA事务服务。提供各种分布式事务服务。应用程序只需调用其提供的接口即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;jaf-java-action-framework&#34;&gt;JAF：（Java Action FrameWork）&lt;/h2&gt;
+
+&lt;p&gt;JAVA安全认证框架。提供一些安全控制方面的框架。让开发者通过各种部署和自定义实现自己的个性安全控制策略。&lt;/p&gt;
+
+&lt;h2 id=&#34;rmi-iiop-remote-method-invocation-internet对象请求中介协议&#34;&gt;RMI/IIOP:（Remote Method Invocation /internet对象请求中介协议）&lt;/h2&gt;
+
+&lt;p&gt;他们主要用于通过远程调用服务。例如，远程有一台计算机上运行一个程序，它提供股票分析服务，我们可以在本地计算机上实现对其直接调用。当然这是要通过一定的规范才能在异构的系统之间进行通信。RMI是JAVA特有的。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;mvc&#34;&gt;MVC&lt;/h2&gt;
+
+&lt;p&gt;标准主流现在的编程方式都是采用MVC综合设计模式，MVC本身不属于设计模式的一种，它描述的是一种结构，最终目的达到解耦，解耦说的意思是你更改某一层代码，不会影响我其他层代码，如果你会像spring这样的框架，你会了解面向接口编程，表示层jsp调用控制层，控制层action调用业务层service，业务层调用数据dao访问层。&lt;/p&gt;
+
+&lt;h2 id=&#34;dao层&#34;&gt;DAO层&lt;/h2&gt;
+
+&lt;p&gt;DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，DAO层的设计首先是设计DAO的接口，然后在Spring的配置文件中定义此接口的实现类，然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。&lt;/p&gt;
+
+&lt;h2 id=&#34;service层&#34;&gt;Service层&lt;/h2&gt;
+
+&lt;p&gt;Service层主要负责业务模块的逻辑应用设计。同样是首先设计接口，再设计其实现的类，接着再Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。Service层的业务实现，具体要调用到已定义的DAO层的接口，封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。&lt;/p&gt;
+
+&lt;h2 id=&#34;controller层&#34;&gt;Controller层&lt;/h2&gt;
+
+&lt;p&gt;Controller层负责具体的业务模块流程的控制，在此层里面要调用Serice层的接口来控制业务流程，控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h2&gt;
+
+&lt;p&gt;Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。&lt;/p&gt;
+
+&lt;h2 id=&#34;ioc容器&#34;&gt;IOC容器&lt;/h2&gt;
+
+&lt;p&gt;IOC容器就是具有依赖注入功能的容器，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。应用程序无需直接在代码中new相关的对象，应用程序由IOC容器进行组装。在Spring中BeanFactory是IOC容器的实际代表者。&lt;/p&gt;
+
+&lt;h2 id=&#34;aop-面向切面&#34;&gt;AOP (面向切面)&lt;/h2&gt;
+
+&lt;p&gt;简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可操作性和可维护性。AOP代表的是一个横向的关系&lt;/p&gt;
+
+&lt;h2 id=&#34;mybatis&#34;&gt;Mybatis&lt;/h2&gt;
+
+&lt;p&gt;MyBatis 是支持普通 SQL查询，存储过程和高级映射的优秀持久层框架。 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。&lt;/p&gt;
+
+&lt;h2 id=&#34;dubbo&#34;&gt;Dubbo&lt;/h2&gt;
+
+&lt;p&gt;Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC（远程过程调用协议）远程服务调用方案，以及SOA服务治理方案。简单的说，dubbo就是个服务框架，如果没有分布式的需求，其实是不需要用的，只有在分布式的时候，才有dubbo这样的分布式服务框架的需求，并且本质上是个服务调用的东东，说白了就是个远程服务调用的分布式框架。&lt;/p&gt;
+
+&lt;h2 id=&#34;maven&#34;&gt;Maven&lt;/h2&gt;
+
+&lt;p&gt;项目管理和构建自动化工具&lt;/p&gt;
+
+&lt;h2 id=&#34;rabbitmq&#34;&gt;RabbitMQ&lt;/h2&gt;
+
+&lt;p&gt;消息队列一般是在项目中，将一些无需即时返回且耗时的操作提取出来，进行了异步处理，而这种异步处理的方式大大的节省了服务器的请求响应时间，从而提高了系统的吞吐量。&lt;/p&gt;
+
+&lt;h2 id=&#34;log4j-log4j2-logback&#34;&gt;Log4j、Log4j2、Logback&lt;/h2&gt;
+
+&lt;p&gt;日志记录框架&lt;/p&gt;
+
+&lt;h2 id=&#34;ehcache&#34;&gt;Ehcache&lt;/h2&gt;
+
+&lt;p&gt;EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认的CacheProvider。Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展，缓存异常处理程序，一个gzip缓存servlet过滤器，支持REST和SOAP api等特点。&lt;/p&gt;
+
+&lt;h2 id=&#34;redis&#34;&gt;Redis&lt;/h2&gt;
+
+&lt;p&gt;redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。Redis数据库完全在内存中，使用磁盘仅用于持久性。Redis可以将数据复制到任意数量的从服务器。&lt;/p&gt;
+
+&lt;h2 id=&#34;shiro&#34;&gt;Shiro&lt;/h2&gt;
+
+&lt;p&gt;Apache Shiro是Java的一个安全框架，旨在简化身份验证和授权。Shiro在JavaSE和JavaEE项目中都可以使用。它主要用来处理身份认证，授权，企业会话管理和加密等。&lt;/p&gt;
+
+&lt;h2 id=&#34;设计模式&#34;&gt;设计模式&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建型模式：简单工厂模式（抽象工厂模式），工厂方法模式，建造者模式，原型模式，单例模式√。(5个)&lt;/li&gt;
+&lt;li&gt;结构型模式：外观模式、适配器模式、代理模式、装饰模式、桥接模式、组合模式、享元模式。(7个)&lt;/li&gt;
+&lt;li&gt;行为型模式：模版方法模式、观察者模式、状态模式、职责链模式、命令模式、访问者模式、策略模式、备忘录模式、迭代器模式、解释器模式、 中介者模式。(11个)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java笔记——基础</title>
+      <link>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
       
         <description>
 
@@ -1205,19 +1390,29 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;用于定义数据类型&lt;br /&gt;
+&lt;li&gt;&lt;p&gt;用于定义数据类型&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;void&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;
+类型转换：&lt;br /&gt;
+byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double&lt;br /&gt;
+char→int&lt;br /&gt;
+int→long&lt;br /&gt;
+int→double&lt;br /&gt;
+float→double&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;void&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;用于定义数据类型值&lt;br /&gt;
+
+&lt;li&gt;&lt;p&gt;用于定义数据类型值&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;true false null&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;用于定义流程控制
+
+&lt;li&gt;&lt;p&gt;用于定义流程控制&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;if else switch case default【选择】&lt;br /&gt;
@@ -1721,9 +1916,7 @@ Java编译器会检查它。 此类异常，要么通过throws进行声明抛出
 
 &lt;p&gt;除了程序计数器外，虚拟机内存的其他几个运行时区域都有发生OutOfMemoryError(OOM)异常的可能，&lt;/p&gt;
 
-&lt;p&gt;Java Heap 溢出&lt;/p&gt;
-
-&lt;p&gt;一般的异常信息：java.lang.OutOfMemoryError:Java heap spacess&lt;/p&gt;
+&lt;p&gt;Java Heap 溢出，一般的异常信息：java.lang.OutOfMemoryError:Java heap spacess&lt;/p&gt;
 
 &lt;p&gt;java堆用于存储对象实例，我们只要不断的创建对象，并且保证GC Roots到对象之间有可达路径来避免垃圾回收机制清除这些对象，就会在对象数量达到最大堆容量限制后产生内存溢出异常。&lt;/p&gt;
 
@@ -1743,9 +1936,8 @@ Java编译器会检查它。 此类异常，要么通过throws进行声明抛出
 
 &lt;li&gt;&lt;p&gt;运行时常量池溢出&lt;/p&gt;
 
-&lt;p&gt;异常信息：java.lang.OutOfMemoryError:PermGen space&lt;/p&gt;
-
-&lt;p&gt;如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果池中已经包含一个等于此String的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池中，并且返回此String对象的引用。由于常量池分配在方法区内，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;异常信息：java.lang.OutOfMemoryError:PermGen space
+如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果池中已经包含一个等于此String的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池中，并且返回此String对象的引用。由于常量池分配在方法区内，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;方法区溢出&lt;/p&gt;
 
@@ -1755,31 +1947,26 @@ Java编译器会检查它。 此类异常，要么通过throws进行声明抛出
 方法区溢出也是一种常见的内存溢出异常，一个类如果要被垃圾收集器回收，判定条件是很苛刻的。在经常动态生成大量Class的应用中，要特别注意这点。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;map-set-list-queue-stack的特点与用法&#34;&gt;Map、Set、List、Queue、Stack的特点与用法&lt;/h2&gt;
+&lt;h2 id=&#34;collection-map概述&#34;&gt;Collection、Map概述&lt;/h2&gt;
 
-&lt;p&gt;Collection 是对象集合， Collection 有两个子接口 List 和 Set&lt;/p&gt;
+&lt;p&gt;Collection 是对象集合，继承了超级接口Iterable，使用Iterator迭代器实现遍历。 Collection 有两个子接口 List 和 Set。&lt;/p&gt;
 
-&lt;p&gt;List 可以通过下标 (1,2..) 来取得值，值可以重复&lt;/p&gt;
+&lt;p&gt;List 可以通过下标 (1,2..) 来取得值，值可以重复，有自己的迭代器ListIterator，可以通过这个迭代器进行逆序的迭代。&lt;/p&gt;
 
-&lt;p&gt;而 Set 只能通过游标来取值，并且值是不能重复的&lt;/p&gt;
-
-&lt;p&gt;ArrayList ， Vector ， LinkedList 是 List 的实现类&lt;/p&gt;
-
-&lt;p&gt;ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的&lt;/p&gt;
-
-&lt;p&gt;LinkedList 是线程不安全的，底层是由链表实现的&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Map 是键值对集合&lt;/p&gt;
-
-&lt;p&gt;HashTable 和 HashMap 是 Map 的实现类&lt;br /&gt;
-HashTable 是线程安全的，不能存储 null 值&lt;br /&gt;
-HashMap 不是线程安全的，可以存储 null 值&lt;/p&gt;
+&lt;p&gt;ArrayList、Vector、LinkedList 是 List 的实现类。ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的。LinkedList 是线程不安全的，底层是由链表实现的。&lt;/p&gt;
 
 &lt;p&gt;Stack类：继承自Vector，实现一个后进先出的栈。提供了几个基本方法，push、pop、peak、empty、search等。&lt;/p&gt;
 
-&lt;p&gt;Queue接口：提供了几个基本方法，offer、poll、peek等。已知实现类有LinkedList、PriorityQueue等。&lt;/p&gt;
+&lt;p&gt;Queue接口：提供了几个基本方法，offer、poll、peek等。已知实现类有LinkedList（实现双端队列Deque）、PriorityQueue等。&lt;/p&gt;
+
+&lt;p&gt;Set 只能通过游标来取值，并且值是不能重复的。Set中的元素的类必须有一个有效的equals方法。&lt;/p&gt;
+
+&lt;p&gt;子接口：NavigableSet、SortedSet&lt;br /&gt;
+子类：EnumSet、HashSet、LinkedHashSet、TreeSet、AbstractSet等&lt;/p&gt;
+
+&lt;p&gt;Map 是键值对集合。&lt;/p&gt;
+
+&lt;p&gt;HashTable 和 HashMap 是 Map 的实现类。HashTable 是线程安全的，不能存储 null 值。HashMap 不是线程安全的，可以存储 null 值。&lt;/p&gt;
 
 &lt;h2 id=&#34;arraylist-linkedlist-vector的底层实现和区别&#34;&gt;ArrayList、LinkedList、Vector的底层实现和区别&lt;/h2&gt;
 
@@ -1788,6 +1975,196 @@ HashMap 不是线程安全的，可以存储 null 值&lt;/p&gt;
 &lt;li&gt;从内部实现机制来讲ArrayList和Vector都是使用Object的数组形式来存储的。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%，所以最后你获得的这个集合所占的空间总是比你实际需要的要大。如果你要在集合中保存大量的数据，那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。&lt;/li&gt;
 &lt;li&gt;ArrayList和Vector中，从指定的位置（用index）检索一个对象，或在集合的末尾插入、删除一个对象的时间是一样的，可表示为O(1)。但是，如果在集合的其他位置增加或者删除元素那么花费的时间会呈线性增长O(n-i)，其中n代表集合中元素的个数，i代表元素增加或移除元素的索引位置，因为在进行上述操作的时候集合中第i和第i个元素之后的所有元素都要执行(n-i)个对象的位移操作。LinkedList底层是由双向循环链表实现的，LinkedList在插入、删除集合中任何位置的元素所花费的时间都是一样的O(1)，但它在索引一个元素的时候比较慢，为O(i)，其中i是索引的位置，如果只是查找特定位置的元素或只在集合的末端增加、移除元素，那么使用Vector或ArrayList都可以。如果是对其它指定位置的插入、删除操作，最好选择LinkedList。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;反射机制&#34;&gt;反射机制&lt;/h2&gt;
+
+&lt;p&gt;反射技术：动态加载一个指定的类，并获取该类中所有的内容。并将字节码文件中的内容都封装成对象，这样便于操作这些成员。简单说：反射技术可以对一个类进行解剖。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;好处：大大增强了程序的扩展性。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;反射的基本步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;获得Class对象，就是获得指定的名称的字节码文件对象&lt;/li&gt;
+&lt;li&gt;实例化对象，获得类的属性、方法或者构造函数&lt;/li&gt;
+&lt;li&gt;访问属性、调用方法、调用构造函数创建对象&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;线程状态&#34;&gt;线程状态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。&lt;/li&gt;
+&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的Running和Ready，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
+&lt;li&gt;无限期等待（Waiting）:处于这种状态的进程不会被分配CPU执行时间，它们要等待被其他线程显示的唤醒。以下方法会让线程陷入无限期的等待状态：
+
+&lt;ul&gt;
+&lt;li&gt;没有设置Timeout参数的Object.wait()方法&lt;/li&gt;
+&lt;li&gt;没有设置Timeout参数的Thread.join()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.park()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;限期等待（Timed Waiting）:处于这种状态的进程不会被分配CPU执行时间，不过无需等待被其他线程显示的唤醒，在一定时间之后它们会由系统自动唤醒。以下方法会让线程进入限期等待状态：
+
+&lt;ul&gt;
+&lt;li&gt;Thread.sleep()方法&lt;/li&gt;
+&lt;li&gt;设置了Timeout参数的Object.wait()方法&lt;/li&gt;
+&lt;li&gt;设置了Timeout参数的Thread.join()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.parkNanos()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.parkUnitil()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;阻塞（Blocked）:进程被阻塞了，阻塞状态和等待状态的区别是：阻塞状态在等待着获取到一个排它锁，这个事件将在另一个线程放弃这个锁的时候发生；而等待状态则是在等待一段时间，或者唤醒动作的发生。在程序等待进入同步区域的时候，线程将进入这种状态。&lt;/li&gt;
+&lt;li&gt;结束（Terminated）:已终止线程的线程状态，线程已经结束执行。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Maven——笔记</title>
+      <link>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;项目构建和管理自动化工具&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;坐标(可由groupId、artifactId、version组成)。&lt;/li&gt;
+&lt;li&gt;构件通过坐标作为其唯一标识。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;仓库：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：&lt;a href=&#34;https://repo.maven.apache.org/maven2&#34;&gt;https://repo.maven.apache.org/maven2&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;镜像仓库：/conf/setting文件:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;mirror&amp;gt;
+    &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt;
+    &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
+    &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt;
+    &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt;
+&amp;lt;/mirror&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;本地仓库：修改本地仓库的位置 &lt;code&gt;&amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指定jdk1.7&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;profile&amp;gt;
+    &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt;
+    &amp;lt;activation&amp;gt;
+        &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt;
+        &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt;
+    &amp;lt;/activation&amp;gt;   
+    &amp;lt;properties&amp;gt;
+        &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt;
+        &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt;
+        &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt;
+    &amp;lt;/properties&amp;gt;
+&amp;lt;/profile&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用构建命令&#34;&gt;常用构建命令&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;mvn compile 编译
+mvn test 测试
+mvn package 打包
+mvn clean 删除target
+mvn install 安装jar包到本地仓库
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;自动创建目录骨架&#34;&gt;自动创建目录骨架&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;archetype:generate 按照提示进行&lt;/li&gt;
+&lt;li&gt;archetype:generate -DgroupId=组织名, 公司网址的反写+项目名&lt;br /&gt;
+                -DartifactId=项目名-模块名&lt;br /&gt;
+                -Dversion=版本号&lt;br /&gt;
+                -Dpackage=代码所存在的包&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;完整的项目构建过程&#34;&gt;完整的项目构建过程&lt;/h2&gt;
+
+&lt;p&gt;清理、编译、测试、打包、集成测试、验证、部署&lt;/p&gt;
+
+&lt;h2 id=&#34;maven生命周期&#34;&gt;maven生命周期&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;clean：清理项目
+	- pre-clean ：执行清理前的工作
+	- clean：清理上一次构建生成的所有文件
+	- post-clean：执行清理后的文件
+default：构建项目
+	- compile test package install
+site：生成项目站点
+	- pre-site 在生成项目站点之前要完成的工作
+	- site 生成项目的站点文档
+	- post-site在生成项目站点后要完成的工作
+	- site-deploy发布生成的站点到服务器上
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pom结构&#34;&gt;pom结构&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;project (根元素，包含约束信息)
+	modelVersion  指定了当前pom版本
+	groupId    反写的公司网址+项目名
+	artifactId  项目名+模块名
+	version     版本号  第一个0表示大版本号，第二个0表示大版本号，第三个0表示大版本号 0.0.1snapshot快照 alpha內部測試 beta公测 Release稳定 GA正式发布
+	packaging   打包方式 默认是jar
+
+	name       项目的描述名
+	url       项目的地址
+	description  项目描述
+	developers   开发人员信息
+	licenses    许可证信息
+	
+	dependencies 
+		-dependency ｛依赖冲突 1.短路优先（优先依赖最近的模块）2.先声明先优先｝
+			-groupId
+			-artifactId
+			-version
+			-type	
+			-scope    依赖范围 [默认compile、provided、runtime、test、system、import]
+			-optional 设置依赖是否可选
+			-exclusions
+				-exclusion
+					-groupId
+					-artifactId
+
+	dependencyManagement   依赖管理  不会被运行(子模块来引用)
+		-dependencies
+			-dependency
+			
+	build
+		-plugins  插件列表（指出坐标）
+			-plugin
+				-groupId
+				-artifactId
+				-version
+				
+	parent    对父模块的继承
+		-groupId	[org..]
+		-artifactId [jetty\tomcat..]
+		-version [...]
+		-executions
+			-execution	在打包成功后使用 jetty\tomcat：run来运行jetty服务
+				-phase [package]
+				-goals [run]
+					-goal
+	modules   定义多个模块  一起进行编译
+		-module [聚合的项目、模块]
+		
+
+
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -2432,181 +2809,6 @@ derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条�
 &lt;p&gt;如何优化呢？可以看到我们在运行完后还是要和log做join,那么我们能不能之前和log做join呢？&lt;br /&gt;
 仔细分析语句不难发现，其基本思想是如果log的ref_table是EmpCertificate就关联log3表，如果ref_table是Employee就关联log2表，我们完全可以拆成两部分，并用union连接起来，注意这里用union，而不用union all是因为原语句有“distinct”来得到唯一的记录，而union恰好具备了这种功能。&lt;br /&gt;
 如果原语句中没有distinct不需要去重，我们就可以直接使用union all了，因为使用union需要去重的动作，会影响SQL性能。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Eclipse——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/eclipse%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;删除某个工作空间&#34;&gt;删除某个工作空间&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-   打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;General&amp;ndash;&amp;gt;Startup and Shutdown&amp;ndash;&amp;gt;WorkSpace，
-然后选中你想要删除的工作空间，点击右边的remove按钮即可。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-   在你的Eclipse目录中找到以下文件configuration.settings\org.eclipse.ui.ide.prefs，这个就是工作空间的配置文件了。
-然后将RECENT_WORKSPACES后面你想删除的工作空间删除即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;tomcat启动报nullpointerexception&#34;&gt;tomcat启动报NullPointerException&lt;/h2&gt;
-
-&lt;p&gt;在自己设置的workspace目录下面，打开目录：.metadata.plugins\org.eclipse.wst.server.core\ ，然后删除“temp0”文件夹即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;server视图加载项目之后项目名后边有带括号的名字&#34;&gt;Server视图加载项目之后项目名后边有带括号的名字&lt;/h2&gt;
-
-&lt;p&gt;复制过来的项目会出现的一种情况：有时即使是项目改了名字在添加到Server上的时候在Server视图中看到项目名后边有一个带括号的名字,还是复制之前的项目名。&lt;/p&gt;
-
-&lt;p&gt;解决：打开文件“你的工程目录.settings\org.eclipse.wst.common.component”看到内容，将里面所有为你原来工程名的字符串替换为新工程名字。&lt;/p&gt;
-
-&lt;h2 id=&#34;修改tomcat设置内存大小&#34;&gt;修改tomcat设置内存大小&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-在Eclipse中下面Servers双击Tomcat Server&amp;hellip; 然后点击General InformAtion 下的Open launch configuration；&lt;br /&gt;
-会弹出Edit Configuration，然后在选中Arguments选项卡；在VM arguments文本框中最后面添加
--Xms256m -Xmx1024m -XX:MaxPermSize=256m 。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-在Eclipse菜单栏中Window ——》Preferences ——》Server ———》 Runtime Environment；&lt;br /&gt;
-选择您用的Tomcat 然后点击Edit&amp;hellip;弹出Edit Server Runtime Ecvironment 下面JRE选项后面的Installed JREs&amp;hellip;
-点击弹出Installed JREs；在选中您用的Jre在点击Edit..在Defaul VM Arguments：中填入-Xms256m -Xmx512m&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>IDEA——快捷键</title>
-      <link>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
-&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
-首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
-&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
-&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
-&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
-&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
-&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动处理（异常）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+回车&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shfit + k&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;如何跳转到文件中的特定行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;调出搜索文本的视图&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;进行全局搜索和局部搜索&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示最近打开的所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + d&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;变小写ctrl + shift + u,变大写ctrl +shift + y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-修改名字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>IDEA——问题集</title>
-      <link>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/idea%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled&#34;&gt;IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled&lt;/h2&gt;
-
-&lt;p&gt;修改系统配置 ：&lt;br /&gt;
-Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com&lt;br /&gt;
-windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中&lt;/p&gt;
 </description>
       
     </item>
