@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>Maven——输出依赖树（处理包冲突）</title>
+      <link>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</link>
+      <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</guid>
+      <description>早上同事反馈有个接口调用报错，最后定位是asm包冲突导致。 解决： 执行maven命令 dependency:tree 获取依赖树； 控制台输出(部分内容)： [INFO] +- org.apache.cxf:cxf-rt-frontend-jaxws:jar:3.1.8:compile [INFO] | +- xml-resolver:xml-resolver:jar:1.2:compile [INFO] | +-</description>
+    </item>
+    
+    <item>
       <title>Http——笔记</title>
       <link>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</guid>
       <description>现象 安装了64位的Oracle数据库以及32位的Oracle客户端，在开始菜单中第一次打开客户端的SQL Developer时提示输入java</description>
-    </item>
-    
-    <item>
-      <title>[转] MySQL——索引原理与慢查询优化</title>
-      <link>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/</guid>
-      <description>问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)</description>
     </item>
     
   </channel>

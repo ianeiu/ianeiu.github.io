@@ -1274,6 +1274,195 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     </item>
     
     <item>
+      <title>Maven——输出依赖树（处理包冲突）</title>
+      <link>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</link>
+      <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</guid>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;早上同事反馈有个接口调用报错，最后定位是asm包冲突导致。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;解决：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;执行maven命令 dependency:tree 获取依赖树；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;控制台输出(部分内容)：
+[INFO] +- org.apache.cxf:cxf-rt-frontend-jaxws:jar:3.1.8:compile
+[INFO] |  +- xml-resolver:xml-resolver:jar:1.2:compile
+[INFO] |  +- org.ow2.asm:asm:jar:5.0.4:compile
+[INFO] |  +- org.apache.cxf:cxf-core:jar:3.1.8:compile
+[INFO] |  |  \- org.codehaus.woodstox:woodstox-core-asl:jar:4.4.1:compile
+[INFO] |  |     \- org.codehaus.woodstox:stax2-api:jar:3.1.4:compile
+[INFO] |  +- org.apache.cxf:cxf-rt-bindings-soap:jar:3.1.8:compile
+[INFO] |  |  +- org.apache.cxf:cxf-rt-wsdl:jar:3.1.8:compile
+[INFO] |  |  |  \- wsdl4j:wsdl4j:jar:1.6.3:compile
+[INFO] |  |  \- org.apache.cxf:cxf-rt-databinding-jaxb:jar:3.1.8:compile
+[INFO] |  |     +- com.sun.xml.bind:jaxb-impl:jar:2.2.11:compile
+[INFO] |  |     \- com.sun.xml.bind:jaxb-core:jar:2.2.11:compile
+[INFO] |  +- org.apache.cxf:cxf-rt-bindings-xml:jar:3.1.8:compile
+[INFO] |  +- org.apache.cxf:cxf-rt-frontend-simple:jar:3.1.8:compile
+[INFO] |  \- org.apache.cxf:cxf-rt-ws-addr:jar:3.1.8:compile
+[INFO] |     \- org.apache.cxf:cxf-rt-ws-policy:jar:3.1.8:compile
+[INFO] +- org.apache.cxf:cxf-rt-transports-http:jar:3.1.8:compile
+[INFO] +- org.apache.cxf:cxf-rt-transports-http-jetty:jar:3.1.8:compile
+[INFO] |  +- org.eclipse.jetty:jetty-server:jar:9.4.8.v20171121:compile
+[INFO] |  |  \- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.eclipse.jetty:jetty-util:jar:9.4.8.v20171121:compile
+[INFO] |  +- org.eclipse.jetty:jetty-io:jar:9.4.8.v20171121:compile
+[INFO] |  +- org.eclipse.jetty:jetty-security:jar:9.4.8.v20171121:compile
+[INFO] |  +- org.eclipse.jetty:jetty-continuation:jar:9.4.8.v20171121:compile
+[INFO] |  \- org.eclipse.jetty:jetty-http:jar:9.4.8.v20171121:compile
+[INFO] +- org.apache.cxf:cxf-rt-ws-security:jar:3.1.8:compile
+[INFO] |  +- org.apache.cxf:cxf-rt-security-saml:jar:3.1.8:compile
+[INFO] |  |  \- org.apache.cxf:cxf-rt-security:jar:3.1.8:compile
+[INFO] |  +- net.sf.ehcache:ehcache:jar:2.10.4:compile
+[INFO] |  +- org.apache.wss4j:wss4j-ws-security-dom:jar:2.1.7:compile
+[INFO] |  |  \- org.apache.wss4j:wss4j-ws-security-common:jar:2.1.7:compile
+[INFO] |  |     +- org.apache.santuario:xmlsec:jar:2.0.7:compile
+[INFO] |  |     +- org.opensaml:opensaml-saml-impl:jar:3.1.1:compile
+[INFO] |  |     |  +- org.opensaml:opensaml-profile-api:jar:3.1.1:compile
+[INFO] |  |     |  |  \- org.opensaml:opensaml-core:jar:3.1.1:compile
+[INFO] |  |     |  +- org.opensaml:opensaml-saml-api:jar:3.1.1:compile
+[INFO] |  |     |  |  +- org.opensaml:opensaml-xmlsec-api:jar:3.1.1:compile
+[INFO] |  |     |  |  \- org.opensaml:opensaml-soap-api:jar:3.1.1:compile
+[INFO] |  |     |  +- org.opensaml:opensaml-security-impl:jar:3.1.1:compile
+[INFO] |  |     |  |  \- org.opensaml:opensaml-security-api:jar:3.1.1:compile
+[INFO] |  |     |  |     +- org.cryptacular:cryptacular:jar:1.0:compile
+[INFO] |  |     |  |     \- org.bouncycastle:bcprov-jdk15on:jar:1.51:compile
+[INFO] |  |     |  +- org.opensaml:opensaml-xmlsec-impl:jar:3.1.1:compile
+[INFO] |  |     |  \- net.shibboleth.utilities:java-support:jar:7.1.1:compile
+[INFO] |  |     +- org.opensaml:opensaml-xacml-impl:jar:3.1.1:compile
+[INFO] |  |     |  \- org.opensaml:opensaml-xacml-api:jar:3.1.1:compile
+[INFO] |  |     +- org.opensaml:opensaml-xacml-saml-impl:jar:3.1.1:compile
+[INFO] |  |     |  \- org.opensaml:opensaml-xacml-saml-api:jar:3.1.1:compile
+[INFO] |  |     +- org.jasypt:jasypt:jar:1.9.2:compile
+[INFO] |  |     \- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.7.1:compile
+[INFO] |  +- org.apache.wss4j:wss4j-policy:jar:2.1.7:compile
+[INFO] |  |  \- org.apache.neethi:neethi:jar:3.0.3:compile
+[INFO] |  +- org.apache.wss4j:wss4j-ws-security-stax:jar:2.1.7:compile
+[INFO] |  |  \- org.apache.wss4j:wss4j-bindings:jar:2.1.7:compile
+[INFO] |  \- org.apache.wss4j:wss4j-ws-security-policy-stax:jar:2.1.7:compile
+[INFO] +- org.apache.ws.xmlschema:xmlschema-core:jar:2.2.1:compile
+[INFO] +- commons-codec:commons-codec:jar:1.5:compile
+[INFO] +- org.jolokia:jolokia-core:jar:1.3.7:compile
+[INFO] |  \- com.googlecode.json-simple:json-simple:jar:1.1.1:compile
+[INFO] +- org.projectlombok:lombok:jar:1.16.20:compile
+[INFO] +- io.springfox:springfox-swagger2:jar:2.8.0:compile
+[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.14:compile
+[INFO] |  +- io.swagger:swagger-models:jar:1.5.14:compile
+[INFO] |  +- io.springfox:springfox-spi:jar:2.8.0:compile
+[INFO] |  |  \- io.springfox:springfox-core:jar:2.8.0:compile
+[INFO] |  |     \- net.bytebuddy:byte-buddy:jar:1.7.9:compile
+[INFO] |  +- io.springfox:springfox-schema:jar:2.8.0:compile
+[INFO] |  +- io.springfox:springfox-swagger-common:jar:2.8.0:compile
+[INFO] |  +- io.springfox:springfox-spring-web:jar:2.8.0:compile
+[INFO] |  |  \- org.reflections:reflections:jar:0.9.11:compile
+[INFO] |  |     \- org.javassist:javassist:jar:3.21.0-GA:compile
+[INFO] |  +- com.fasterxml:classmate:jar:1.3.4:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
+[INFO] |  \- org.mapstruct:mapstruct:jar:1.2.0.Final:compile
+[INFO] +- io.springfox:springfox-swagger-ui:jar:2.8.0:compile
+[INFO] +- org.springframework.data:spring-data-hadoop:jar:2.5.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.14.RELEASE:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:4.3.14.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-hadoop-core:jar:2.5.0.RELEASE:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-streaming:jar:2.7.3:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-common:jar:2.7.3:compile
+[INFO] |  |  |  +- org.apache.hadoop:hadoop-annotations:jar:2.7.3:compile
+[INFO] |  |  |  |  \- jdk.tools:jdk.tools:jar:1.8:system
+[INFO] |  |  |  +- commons-cli:commons-cli:jar:1.2:compile
+[INFO] |  |  |  +- org.apache.commons:commons-math3:jar:3.1.1:compile
+[INFO] |  |  |  +- xmlenc:xmlenc:jar:0.52:compile
+[INFO] |  |  |  +- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] |  |  |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  |  |  +- commons-net:commons-net:jar:3.1:compile
+[INFO] |  |  |  +- javax.servlet:servlet-api:jar:2.5:compile
+[INFO] |  |  |  +- org.mortbay.jetty:jetty:jar:6.1.26:compile
+[INFO] |  |  |  +- org.mortbay.jetty:jetty-util:jar:6.1.26:compile
+[INFO] |  |  |  +- javax.servlet.jsp:jsp-api:jar:2.1:runtime
+[INFO] |  |  |  +- com.sun.jersey:jersey-core:jar:1.9:compile
+[INFO] |  |  |  +- com.sun.jersey:jersey-json:jar:1.9:compile
+[INFO] |  |  |  +- com.sun.jersey:jersey-server:jar:1.9:compile
+[INFO] |  |  |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  |  |  +- net.java.dev.jets3t:jets3t:jar:0.9.0:compile
+[INFO] |  |  |  |  \- com.jamesmurty.utils:java-xmlbuilder:jar:0.4:compile
+[INFO] |  |  |  +- commons-configuration:commons-configuration:jar:1.6:compile
+[INFO] |  |  |  |  +- commons-digester:commons-digester:jar:2.1:compile
+[INFO] |  |  |  |  \- commons-beanutils:commons-beanutils-core:jar:1.8.0:compile
+[INFO] |  |  |  +- org.apache.avro:avro:jar:1.7.4:compile
+[INFO] |  |  |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.3:compile
+[INFO] |  |  |  |  \- org.xerial.snappy:snappy-java:jar:1.0.4.1:compile
+[INFO] |  |  |  +- com.google.protobuf:protobuf-java:jar:2.5.0:compile
+[INFO] |  |  |  +- com.google.code.gson:gson:jar:2.8.2:compile
+[INFO] |  |  |  +- org.apache.hadoop:hadoop-auth:jar:2.7.3:compile
+[INFO] |  |  |  |  +- org.apache.directory.server:apacheds-kerberos-codec:jar:2.0.0-M15:compile
+[INFO] |  |  |  |  |  +- org.apache.directory.server:apacheds-i18n:jar:2.0.0-M15:compile
+[INFO] |  |  |  |  |  +- org.apache.directory.api:api-asn1-api:jar:1.0.0-M20:compile
+[INFO] |  |  |  |  |  \- org.apache.directory.api:api-util:jar:1.0.0-M20:compile
+[INFO] |  |  |  |  \- org.apache.curator:curator-framework:jar:2.7.1:compile
+[INFO] |  |  |  +- org.apache.curator:curator-client:jar:2.7.1:compile
+[INFO] |  |  |  +- org.apache.curator:curator-recipes:jar:2.7.1:compile
+[INFO] |  |  |  +- com.google.code.findbugs:jsr305:jar:3.0.0:compile
+[INFO] |  |  |  +- org.apache.htrace:htrace-core:jar:3.1.0-incubating:compile
+[INFO] |  |  |  +- org.apache.zookeeper:zookeeper:jar:3.4.6:compile
+[INFO] |  |  |  \- org.apache.commons:commons-compress:jar:1.4.1:compile
+[INFO] |  |  |     \- org.tukaani:xz:jar:1.0:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-yarn-common:jar:2.7.3:compile
+[INFO] |  |  |  +- org.apache.hadoop:hadoop-yarn-api:jar:2.7.3:compile
+[INFO] |  |  |  +- javax.xml.bind:jaxb-api:jar:2.2.2:compile
+[INFO] |  |  |  |  \- javax.xml.stream:stax-api:jar:1.0-2:compile
+[INFO] |  |  |  +- com.sun.jersey:jersey-client:jar:1.9:compile
+[INFO] |  |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
+[INFO] |  |  |  +- org.codehaus.jackson:jackson-xc:jar:1.9.13:compile
+[INFO] |  |  |  +- com.google.inject.extensions:guice-servlet:jar:3.0:compile
+[INFO] |  |  |  +- com.google.inject:guice:jar:3.0:compile
+[INFO] |  |  |  |  +- javax.inject:javax.inject:jar:1:compile
+[INFO] |  |  |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  |  \- com.sun.jersey.contribs:jersey-guice:jar:1.9:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-distcp:jar:2.7.3:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-mapreduce-client-core:jar:2.7.3:compile
+[INFO] |  |  |  \- io.netty:netty:jar:3.6.2.Final:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-hdfs:jar:2.7.3:compile
+[INFO] |  |  |  +- commons-daemon:commons-daemon:jar:1.0.13:compile
+[INFO] |  |  |  +- io.netty:netty-all:jar:4.0.23.Final:compile
+[INFO] |  |  |  \- org.fusesource.leveldbjni:leveldbjni-all:jar:1.8:compile
+[INFO] |  |  \- org.apache.hadoop:hadoop-mapreduce-client-jobclient:jar:2.7.3:compile
+[INFO] |  |     +- org.apache.hadoop:hadoop-mapreduce-client-common:jar:2.7.3:compile
+[INFO] |  |     |  +- org.apache.hadoop:hadoop-yarn-client:jar:2.7.3:compile
+[INFO] |  |     |  \- org.apache.hadoop:hadoop-yarn-server-common:jar:2.7.3:compile
+[INFO] |  |     \- org.apache.hadoop:hadoop-mapreduce-client-shuffle:jar:2.7.3:compile
+[INFO] |  |        \- org.apache.hadoop:hadoop-yarn-server-nodemanager:jar:2.7.3:compile
+[INFO] ------------------------------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;搜索 asm，在相应父包增加排除&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.data&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-data-hadoop&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.5.0.RELEASE&amp;lt;/version&amp;gt;
+    &amp;lt;exclusions&amp;gt;
+        &amp;lt;exclusion&amp;gt;
+            &amp;lt;artifactId&amp;gt;asm&amp;lt;/artifactId&amp;gt;
+            &amp;lt;groupId&amp;gt;asm&amp;lt;/groupId&amp;gt;
+        &amp;lt;/exclusion&amp;gt;
+    &amp;lt;/exclusions&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;打包，更新，测试，大功告成&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Http——笔记</title>
       <link>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
@@ -2763,43 +2952,6 @@ wait_timeout    28800
 &lt;h2 id=&#34;set-default方式&#34;&gt;Set default方式&lt;/h2&gt;
 
 &lt;p&gt;父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SQL Developer——Unable to find a Java Virtual Machine</title>
-      <link>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;现象&#34;&gt;现象&lt;/h2&gt;
-
-&lt;p&gt;安装了64位的Oracle数据库以及32位的Oracle客户端，在开始菜单中第一次打开客户端的SQL Developer时提示输入java.exe的路径，选择了Oracle数据库自带的jdk路径，确定之后报错：Unable to find a Java Virtual Machine&lt;/p&gt;
-
-&lt;h2 id=&#34;原因&#34;&gt;原因&lt;/h2&gt;
-
-&lt;p&gt;64位的Oracle数据库中自带的jdk也是64位的，但SQL Developer是32位的，不兼容。&lt;/p&gt;
-
-&lt;h2 id=&#34;解决办法-两种&#34;&gt;解决办法（两种）&lt;/h2&gt;
-
-&lt;h4 id=&#34;方法一&#34;&gt;方法一&lt;/h4&gt;
-
-&lt;p&gt;从官网下载SQL Developer x64 &lt;a href=&#34;http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&#34; target=&#34;blank&#34;&gt;SQL Developer&lt;/a&gt;；&lt;br /&gt;
-替换原目录：D:\app\mian\product\11.2.0\dbhome_1\sqldeveloper下的32位的Oracle SQL Developer；&lt;br /&gt;
-重启Oracle SQL Developer 并配置java.exe的路径就可以了。&lt;/p&gt;
-
-&lt;h4 id=&#34;方法二&#34;&gt;方法二&lt;/h4&gt;
-
-&lt;p&gt;通过修改配置文件来完成：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;打开D:\app\mian\product\11.2.0\dbhome_1\sqldeveloper\sqldeveloper\bin\sqldeveloper.conf&lt;/li&gt;
-&lt;li&gt;修改 SetJavaHome D:\app\mian\product\11.2.0\dbhome_1\jdk ,jdk为32位jdk目录&lt;/li&gt;
-&lt;/ol&gt;
 </description>
       
     </item>
