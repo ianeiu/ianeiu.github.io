@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>回收机制 on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</link>
+    <description>Recent content in 回收机制 on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java笔记——回收机制、内存泄漏及OOM</title>
+      <link>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</guid>
+      <description>Java内存回收机制 不论哪种语言的内存分配方式，都需要返回所分配内存的真实地址，也就是返回一个指针到内存块的首地址。 Java中对象是采用ne</description>
+    </item>
+    
+  </channel>
+</rss>

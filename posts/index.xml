@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>Java笔记——回收机制、内存泄漏及OOM</title>
+      <link>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</guid>
+      <description>Java内存回收机制 不论哪种语言的内存分配方式，都需要返回所分配内存的真实地址，也就是返回一个指针到内存块的首地址。 Java中对象是采用ne</description>
+    </item>
+    
+    <item>
       <title>WebService——异常集</title>
       <link>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</guid>
       <description>1.查询匹配“timeout”的全局变量 show global variables like &#39;%timeout%&#39;; result: connect_timeout 10 delayed_insert_timeout 300 innodb_flush_log_at_timeout 1 innodb_lock_wait_timeout 50 innodb_rollback_on_timeout OFF interactive_timeout 28800 lock_wait_timeout 31536000 net_read_timeout 30 net_write_timeout 60 rpl_stop_slave_timeout 31536000 slave_net_timeout 3600 wait_timeout 28800 2.设置全局变量connect_time</description>
-    </item>
-    
-    <item>
-      <title>MySQL——外键</title>
-      <link>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
-      <description>cascade方式 在父表上update/delete记录时，同步update/delete掉子表的匹配记录 set null方式 在父表上update</description>
     </item>
     
   </channel>

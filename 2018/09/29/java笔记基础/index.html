@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-09-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="7151">
+<meta itemprop="wordCount" content="5965">
 
 
 
@@ -651,6 +651,8 @@ User构造代码块
 
 <p><img src="http://images2015.cnblogs.com/blog/679904/201510/679904-20151025210813989-921927916.jpg" alt="yc" /></p>
 
+<p>Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。</p>
+
 <ol>
 <li><p>Throwable
 Throwable是 Java 语言中所有错误或异常的超类。
@@ -662,57 +664,15 @@ Exception及其子类是 Throwable 的一种形式，它指出了合理的应用
 
 <li><p>RuntimeException
 RuntimeException是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。
-编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既&rdquo;没有通过throws声明抛出ArithmeticException异常&rdquo;，也&rdquo;没有通过try&hellip;catch&hellip;处理该异常&rdquo;，也能通过编译。这就是我们所说的&rdquo;编译器不会检查RuntimeException异常&rdquo;！
-如果代码会产生RuntimeException异常，则需要通过修改代码进行避免。 例如，若会发生除数为零的情况，则需要通过代码避免该情况的发生！</p></li>
+编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既&rdquo;没有通过throws声明抛出ArithmeticException异常&rdquo;，也&rdquo;没有通过try&hellip;catch&hellip;处理该异常&rdquo;，也能通过编译。这就是我们所说的&rdquo;编译器不会检查RuntimeException异常&rdquo;。</p></li>
 
 <li><p>非RuntimeException
 Exception类本身，以及Exception的子类中除了&rdquo;运行时异常&rdquo;之外的其它子类都属于被检查异常。
-Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。例如，CloneNotSupportedException就属于被检查异常。当通过clone()接口去克隆一个对象，而该对象对应的类没有实现Cloneable接口，就会抛出CloneNotSupportedException异常。
-被检查异常通常都是可以恢复的。</p></li>
+Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。</p></li>
 
 <li><p>Error
-和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。
+和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。<br />
 和RuntimeException一样， 编译器也不会检查Error。</p></li>
-</ol>
-
-<p>Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。</p>
-
-<h2 id="oom">OOM</h2>
-
-<ol>
-<li><p>OutOfMemoryError异常</p>
-
-<p>除了程序计数器外，虚拟机内存的其他几个运行时区域都有发生OutOfMemoryError(OOM)异常的可能，</p>
-
-<p>Java Heap 溢出，一般的异常信息：java.lang.OutOfMemoryError:Java heap spacess</p>
-
-<p>java堆用于存储对象实例，我们只要不断的创建对象，并且保证GC Roots到对象之间有可达路径来避免垃圾回收机制清除这些对象，就会在对象数量达到最大堆容量限制后产生内存溢出异常。</p>
-
-<p>出现这种异常，一般手段是先通过内存映像分析工具(如Eclipse Memory Analyzer)对dump出来的堆转存快照进行分析，重点是确认内存中的对象是否是必要的，先分清是因为内存泄漏(Memory Leak)还是内存溢出(Memory Overflow)。</p>
-
-<p>如果是内存泄漏，可进一步通过工具查看泄漏对象到GC Roots的引用链。于是就能找到泄漏对象时通过怎样的路径与GC Roots相关联并导致垃圾收集器无法自动回收。</p>
-
-<p>如果不存在泄漏，那就应该检查虚拟机的参数(-Xmx与-Xms)的设置是否适当。</p></li>
-
-<li><p>虚拟机栈和本地方法栈溢出</p>
-
-<p>如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常。</p>
-
-<p>如果虚拟机在扩展栈时无法申请到足够的内存空间，则抛出OutOfMemoryError异常</p>
-
-<p>这里需要注意当栈的大小越大可分配的线程数就越少。</p></li>
-
-<li><p>运行时常量池溢出</p>
-
-<p>异常信息：java.lang.OutOfMemoryError:PermGen space
-如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果池中已经包含一个等于此String的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池中，并且返回此String对象的引用。由于常量池分配在方法区内，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。</p></li>
-
-<li><p>方法区溢出</p>
-
-<p>方法区用于存放Class的相关信息，如类名、访问修饰符、常量池、字段描述、方法描述等。</p>
-
-<p>异常信息：java.lang.OutOfMemoryError:PermGen space
-方法区溢出也是一种常见的内存溢出异常，一个类如果要被垃圾收集器回收，判定条件是很苛刻的。在经常动态生成大量Class的应用中，要特别注意这点。</p></li>
 </ol>
 
 <h2 id="collection-map概述">Collection、Map概述</h2>
@@ -721,7 +681,11 @@ Java编译器会检查它。 此类异常，要么通过throws进行声明抛出
 
 <p>List 可以通过下标 (1,2..) 来取得值，值可以重复，有自己的迭代器ListIterator，可以通过这个迭代器进行逆序的迭代。</p>
 
-<p>ArrayList、Vector、LinkedList 是 List 的实现类。ArrayList 是线程不安全的， Vector 是线程安全的，这两个类底层都是由数组实现的。LinkedList 是线程不安全的，底层是由链表实现的。</p>
+<p>ArrayList、Vector、LinkedList 是 List 的实现类。</p>
+
+<p>ArrayList 是线程不安全的,底层采用数组实现（并且该数组的类型是Object类型的），默认长度为10。<br />
+Vector 是线程安全的，,底层采用数组实现。<br />
+LinkedList 是线程不安全的，底层是由（双向循环）链表实现的。</p>
 
 <p>Stack类：继承自Vector，实现一个后进先出的栈。提供了几个基本方法，push、pop、peak、empty、search等。</p>
 
