@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>WebService——异常集</title>
+      <link>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      <description>客户端 javax.xml.ws.soap.SOAPFaultException：MustUnderstand headers 异常： javax.xml.ws.soap.SOAPFaultException: MustUnderstand headers: [{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security] are not understood. 解决：新增</description>
+    </item>
+    
+    <item>
       <title>Maven——输出依赖树（处理包冲突）</title>
       <link>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</link>
       <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
       <description>cascade方式 在父表上update/delete记录时，同步update/delete掉子表的匹配记录 set null方式 在父表上update</description>
-    </item>
-    
-    <item>
-      <title>SQL Developer——Unable to find a Java Virtual Machine</title>
-      <link>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/sql-developerunable-to-find-a-java-virtual-machine/</guid>
-      <description>现象 安装了64位的Oracle数据库以及32位的Oracle客户端，在开始菜单中第一次打开客户端的SQL Developer时提示输入java</description>
     </item>
     
   </channel>

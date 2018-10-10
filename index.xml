@@ -1156,6 +1156,10 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/codeemperor/article/details/51351247&#34; target=&#34;blank&#34;&gt;［Java数据结构］从源码分析HashMap&lt;/a&gt;&lt;/p&gt;
 
+&lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
+
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
@@ -1269,6 +1273,46 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>WebService——异常集</title>
+      <link>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;客户端-javax-xml-ws-soap-soapfaultexception-mustunderstand-headers&#34;&gt;客户端 javax.xml.ws.soap.SOAPFaultException：MustUnderstand headers&lt;/h3&gt;
+
+&lt;p&gt;异常：
+&lt;code&gt;javax.xml.ws.soap.SOAPFaultException: MustUnderstand headers: [{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security] are not understood.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;解决：新增 outProps.put(&amp;ldquo;mustUnderstand&amp;rdquo;, &amp;ldquo;0&amp;rdquo;);&lt;/p&gt;
+
+&lt;p&gt;code：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; T getService(String address, String identifier, String token, Class&amp;lt;T&amp;gt; serviceEndpointInterface) {
+    Map&amp;lt;String, Object&amp;gt; outProps = new HashMap();
+    outProps.put(&amp;quot;action&amp;quot;, &amp;quot;UsernameToken&amp;quot;);
+    outProps.put(&amp;quot;user&amp;quot;, identifier);
+    outProps.put(&amp;quot;passwordType&amp;quot;, &amp;quot;PasswordDigest&amp;quot;);
+    outProps.put(&amp;quot;passwordCallbackRef&amp;quot;, new WSCallbackHandler(identifier, token));
+    //新增免验证
+    outProps.put(&amp;quot;mustUnderstand&amp;quot;, &amp;quot;0&amp;quot;);
+    ArrayList&amp;lt;Interceptor&amp;lt;? extends Message&amp;gt;&amp;gt; list = new ArrayList();
+    list.add(new SAAJOutInterceptor());
+    list.add(new WSS4JOutInterceptor(outProps));
+    JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+    factory.setServiceClass(serviceEndpointInterface);
+    factory.setAddress(address);
+    factory.getOutInterceptors().addAll(list);
+    return (T) factory.create();
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -2919,39 +2963,6 @@ rpl_stop_slave_timeout  31536000
 slave_net_timeout   3600
 wait_timeout    28800
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>MySQL——外键</title>
-      <link>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;cascade方式&#34;&gt;cascade方式&lt;/h2&gt;
-
-&lt;p&gt;在父表上update/delete记录时，同步update/delete掉子表的匹配记录&lt;/p&gt;
-
-&lt;h2 id=&#34;set-null方式&#34;&gt;set null方式&lt;/h2&gt;
-
-&lt;p&gt;在父表上update/delete记录时，将子表上匹配记录的列设为null
-要注意子表的外键列不能为not null&lt;/p&gt;
-
-&lt;h2 id=&#34;no-action方式&#34;&gt;No action方式&lt;/h2&gt;
-
-&lt;p&gt;如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作&lt;/p&gt;
-
-&lt;h2 id=&#34;restrict方式&#34;&gt;Restrict方式&lt;/h2&gt;
-
-&lt;p&gt;同no action, 都是立即检查外键约束&lt;/p&gt;
-
-&lt;h2 id=&#34;set-default方式&#34;&gt;Set default方式&lt;/h2&gt;
-
-&lt;p&gt;父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别&lt;/p&gt;
 </description>
       
     </item>

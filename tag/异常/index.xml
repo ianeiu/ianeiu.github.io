@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/%E5%BC%82%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WebService——异常集</title>
+      <link>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
+      <description>客户端 javax.xml.ws.soap.SOAPFaultException：MustUnderstand headers 异常： javax.xml.ws.soap.SOAPFaultException: MustUnderstand headers: [{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security] are not understood. 解决：新增</description>
+    </item>
     
     <item>
       <title>Mybatis——异常Mapped Statements collection does not contain</title>
