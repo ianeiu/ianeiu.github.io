@@ -1474,6 +1474,191 @@ select TO_CHAR(SYSDATE,&#39;yyyymmdd&#39;)||LPAD(TO_CHAR(S_SEQUENCE_ID.NEXTVAL),
     </item>
     
     <item>
+      <title>DB——面试题</title>
+      <link>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;原文地址 &lt;a href=&#34;https://mp.weixin.qq.com/s/QR6MEF1v4QIH-muPyPNg_g&#34; target=&#34;blank&#34;&gt;click&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;触发器的作用&#34;&gt;触发器的作用&lt;/h2&gt;
+
+&lt;p&gt;触发器是一中特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。可以联级运算。如，某表上的触发器上包含对另一个表的数据操作，而该操作又会导致该表触发器被触发。&lt;/p&gt;
+
+&lt;h2 id=&#34;存储过程&#34;&gt;存储过程&lt;/h2&gt;
+
+&lt;p&gt;存储过程是一个预编译的SQL语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中就可以调用多次。如果某次操作需要执行多次SQL，使用存储过程比单纯SQL语句执行要快。&lt;/p&gt;
+
+&lt;p&gt;调用：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;可以用一个命令对象来调用存储过程。&lt;/li&gt;
+&lt;li&gt;可以供外部程序调用，比如：java程序。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;存储过程是预编译过的，执行效率高。&lt;/li&gt;
+&lt;li&gt;存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯。&lt;/li&gt;
+&lt;li&gt;安全性高，执行存储过程需要有一定权限的用户。&lt;/li&gt;
+&lt;li&gt;存储过程可以重复使用，可减少数据库开发人员的工作量。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;缺点：移植性差&lt;/p&gt;
+
+&lt;h2 id=&#34;存储过程与函数的区别&#34;&gt;存储过程与函数的区别&lt;/h2&gt;
+
+&lt;p&gt;存储过程&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用于在数据库中完成特定的操作或者任务（如插入、删除等）&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;程序头部声明用procedure&lt;/li&gt;
+&lt;li&gt;程序头部声明时不需描述返回类型可以使用in/out/in out 三种模式的参数&lt;/li&gt;
+&lt;li&gt;可作为一个独立的PL/SQL语句来执行&lt;/li&gt;
+&lt;li&gt;可以通过out/in out 返回零个或多个值&lt;/li&gt;
+&lt;li&gt;SQL语句(DML 或SELECT)中不可调用存储过程&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;函数&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用于特定的数据（如选择）&lt;/li&gt;
+&lt;li&gt;程序头部声明用function&lt;/li&gt;
+&lt;li&gt;程序头部声明时要描述返回类型，而且PL/SQL块中至少要包括一个有效的return语句&lt;/li&gt;
+&lt;li&gt;可以使用in/out/in out 三种模式的参数&lt;/li&gt;
+&lt;li&gt;不能独立执行，必须作为表达式的一部分调用&lt;/li&gt;
+&lt;li&gt;通过return语句返回一个值，且改值要与声明部分一致，也可以是通过out类型的参数带出的变量&lt;/li&gt;
+&lt;li&gt;SQL语句(DML 或SELECT)中可以调用函数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;索引就一种特殊的查询表，数据库的搜索可以利用它加速对数据的检索。它很类似与现实生活中书的目录，不需要查询整本书内容就可以找到想要的数据。索引可以是唯一的，创建索引允许指定单个列或者是多个列。&lt;/p&gt;
+
+&lt;p&gt;缺点是它减慢了数据录入的速度，同时也增加了数据库的尺寸大小。&lt;/p&gt;
+
+&lt;p&gt;唯一、不为空、经常被查询的字段适合建索引&lt;/p&gt;
+
+&lt;h2 id=&#34;索引类型&#34;&gt;索引类型&lt;/h2&gt;
+
+&lt;p&gt;逻辑上：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Single column 单行索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Concatenated 多行索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Unique 唯一索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;NonUnique 非唯一索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Function-based 函数索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Domain 域索引 物理上&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Partitioned 分区索引&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;NonPartitioned 非分区索引&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;B-tree：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Normal 正常型B树&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Rever Key 反转型B树 Bitmap 位图索引&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
+
+&lt;p&gt;事务就是被绑定在一起作为一个逻辑工作单元的SQL语句分组，如果任何一个语句操作失败那么整个操作就被失败，以后操作就会回滚到操作前状态，或者是上有个节点。为了确保要么执行，要么不执行，就可以使用事务。要将有组语句作为事务考虑，就需要通过ACID测试，即原子性，一致性，隔离性和持久性。&lt;/p&gt;
+
+&lt;h2 id=&#34;锁&#34;&gt;锁&lt;/h2&gt;
+
+&lt;p&gt;在所以的DBMS中，锁是实现事务的关键，锁可以保证事务的完整性和并发性。与现实生活中锁一样，它可以使某些数据的拥有者，在某段时间内不能使用某些数据或数据结构。当然锁还分级别的。&lt;/p&gt;
+
+&lt;h2 id=&#34;视图&#34;&gt;视图&lt;/h2&gt;
+
+&lt;p&gt;一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，试图通常是有一个表或者多个表的行或列的子集。对视图的修改会影响基本表。它使得我们获取数据更容易，相比多表查询。&lt;/p&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对数据库的访问，因为视图可以有选择性的选取数据库里的一部分。&lt;/li&gt;
+&lt;li&gt;用户通过简单的查询可以从复杂查询中得到结果。&lt;/li&gt;
+&lt;li&gt;维护数据的独立性，试图可从多个表检索数据。&lt;/li&gt;
+&lt;li&gt;对于相同的数据可产生不同的视图。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;缺点：&lt;br /&gt;
+性能：查询视图时，必须把视图的查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，那么就无法更改数据&lt;/p&gt;
+
+&lt;h2 id=&#34;游标&#34;&gt;游标&lt;/h2&gt;
+
+&lt;p&gt;对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。&lt;/p&gt;
+
+&lt;h2 id=&#34;表的连接方式&#34;&gt;表的连接方式&lt;/h2&gt;
+
+&lt;p&gt;内连接、自连接、外连接（左、右、全）、交叉连接&lt;/p&gt;
+
+&lt;p&gt;内连接：只有两个元素表相匹配的才能在结果集中显示。&lt;br /&gt;
+外连接： 左外连接:左边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。&lt;br /&gt;
+右外连接: 右边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。&lt;br /&gt;
+全外连接：连接的表中不匹配的数据全部会显示出来。&lt;br /&gt;
+交叉连接： 笛卡尔效应，显示的结果是链接表数的乘积。&lt;/p&gt;
+
+&lt;h2 id=&#34;union和union-all&#34;&gt;union和union all&lt;/h2&gt;
+
+&lt;p&gt;UNION在进行表链接后会筛选掉重复的记录，所以在表链接后会对所产生的结果集进行排序运算，删除重复的记录再返回结果。实际大部分应用中是不会产生重复的记录，最常见的是过程表与历史表UNION。&lt;/p&gt;
+
+&lt;p&gt;UNION  ALL只是简单的将两个结果合并后就返回。这样，如果返回的两个结果集中有重复的数据，那么返回的结果集就会包含重复的数据了。&lt;/p&gt;
+
+&lt;p&gt;从效率上说，UNION ALL 要比UNION快很多，所以，如果可以确认合并的两个结果集中不包含重复的数据的话，那么就使用UNION ALL。&lt;/p&gt;
+
+&lt;h2 id=&#34;数据库中查询语句速度优化&#34;&gt;数据库中查询语句速度优化&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;建索引&lt;/li&gt;
+&lt;li&gt;减少表之间的关联&lt;/li&gt;
+&lt;li&gt;优化sql，尽量让sql很快定位数据，不要让sql做全表查询，应该走索引,把数据 量大的表排在前面&lt;/li&gt;
+&lt;li&gt;简化查询字段，没用的字段不要，已经对返回结果的控制，尽量返回少量数据&lt;/li&gt;
+&lt;li&gt;尽量用PreparedStatement来查询，不要用Statement&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;数据库三范式&#34;&gt;数据库三范式&lt;/h2&gt;
+
+&lt;p&gt;第一范式：列不可再分&lt;br /&gt;
+第二范式：行可以唯一区分，主键约束&lt;br /&gt;
+第三范式：表的非主属性不能依赖与其他表的非主属性 外键约束    且三大范式是一级一级依赖的，第二范式建立在第一范式上，第三范式建立第一第二范式上&lt;/p&gt;
+
+&lt;h2 id=&#34;varchar2和varchar&#34;&gt;varchar2和varchar&lt;/h2&gt;
+
+&lt;p&gt;varchar的长度是固定的，而varchar2的长度是可以变化的，比如，存储字符串“abc”对于char(20)，表示你存储的字符将占20个字节，包含17个空，而同样的varchar2（20）只占了3个字节，20只是最大值，当你存储的字符小于20时，按实际长度存储。 char的效率要被varchar2的效率高。&lt;/p&gt;
+
+&lt;p&gt;目前varchar是varchar2的同义词，工业标准的varchar类型可以存储空字符串，但是oracle不能这样做，尽管它保留以后这样做的权利。Oracle自己开发了一个数据类型varchar2,这个类型不是一个标准的varchar，他将在数据库中varchar列可以存储空字符串的特性改为存储null值，如果你想有向后兼容的能力，oracle建议使用varchar2而不是varchar&lt;/p&gt;
+
+&lt;h2 id=&#34;oracle和mysql&#34;&gt;Oracle和Mysql&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;库函数不同。&lt;/li&gt;
+&lt;li&gt;Oracle是用表空间来管理的，Mysql不是。&lt;/li&gt;
+&lt;li&gt;显示当前所有的表、用户、改变连接用户、显示当前连接用户、执行外部脚本的语句的不同。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分页查询时候时候，mysql用limit oracle用rownum&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt; SELECT * FROM table LIMIT 5,10; // 检索记录行 6-15 
+//为了检索从某一个偏移量到记录集的结束所有的记录行，可以指定第二个参数为 -1：
+mysql&amp;gt; SELECT * FROM table LIMIT 95,-1; // 检索记录行 96-last. 
+//如果只给定一个参数，它表示返回最大的记录行数目： 
+mysql&amp;gt; SELECT * FROM table LIMIT 5; //检索前 5 个记录行 
+//换句话说，LIMIT n 等价于 LIMIT 0,n。 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;sql的语法的不同。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Java笔记——回收机制、内存泄漏及OOM</title>
       <link>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
@@ -3017,21 +3202,6 @@ SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner OR
 &lt;/ul&gt;
 
 &lt;p&gt;smalldatetime数据类型与datetime数据类型相似，但其日期时间范围较小，从1900年1月1日到2079年6月6日。此数据类型精度较低，只能精确到分钟，其分钟个位为根据秒数四舍五入的值，即以30秒为界四舍五入。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>MySQL——bool</title>
-      <link>https://ianeiu.github.io/2018/09/20/mysqlbool/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/mysqlbool/</guid>
-      
-        <description>&lt;p&gt;MySQL——bool&lt;/p&gt;
-
-&lt;p&gt;mysql是不支持bool类型的,所以,当把一个数据设置成bool类型的时候,数据库会自动转换成tinyint(1)的数据类型,其实这个就是变相的bool。&lt;br /&gt;
-默认值也就是1,0两种,分别对应了bool的true和false&lt;/p&gt;
 </description>
       
     </item>

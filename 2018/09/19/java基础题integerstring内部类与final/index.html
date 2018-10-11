@@ -170,12 +170,14 @@ public void testIntegerDD(){
 </code></pre>
 
 <p>运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
-,可看Integer源码valueOf(int i)方法<br />
-    public static Integer valueOf(int i) {
-        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
-        return IntegerCache.cache[i + (-IntegerCache.low)];
-        return new Integer(i);
-    }</p>
+,可看Integer源码valueOf(int i)方法</p>
+
+<pre><code>public static Integer valueOf(int i) {
+	if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+	return IntegerCache.cache[i + (-IntegerCache.low)];
+	return new Integer(i);
+}
+</code></pre>
 
 <p>接下来，简单的扩展几个Integer的关系运算符==的比较。</p>
 
