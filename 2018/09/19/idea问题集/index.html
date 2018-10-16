@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-09-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="148">
+<meta itemprop="wordCount" content="213">
 
 
 
@@ -157,6 +157,12 @@
 <p>修改系统配置 ：<br />
 Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com<br />
 windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中</p>
+
+<h2 id="tomcat启动项目-错误">tomcat启动项目 错误</h2>
+
+<p>Error running &lsquo;Tomcat&rsquo;: Unable to open debugger port (127.0.0.1:53904): java.net.SocketExceptio</p>
+
+<p>socket阻塞导致端口占用。使用netstat -ano | find &ldquo;8081&rdquo; 查看进程，使用 taskkill -f -pid 8152 关闭进程</p>
 
 
   
