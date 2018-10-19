@@ -1036,16 +1036,6 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
 来源：微信公众号 java思维导图&lt;/p&gt;
 
-&lt;h3 id=&#34;fail-fast机制&#34;&gt;fail-fast机制&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;swagger&#34;&gt;swagger&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;
-
 &lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;/p&gt;
@@ -1098,6 +1088,9 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/hcw52592/article/details/69230486&#34; target=&#34;blank&#34;&gt;服务器绑定域名详解&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
@@ -1114,8 +1107,11 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;a href=&#34;https://www.cnblogs.com/xiaojf/p/7231529.html&#34; target=&#34;blank&#34;&gt;springboot1.5.4 集成cxf完整实例&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/catoop/article/details/50534006&#34; target=&#34;blank&#34;&gt;
 Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;
-&lt;a href=&#34;https://blog.csdn.net/saytime/article/details/74937664&#34; target=&#34;blank&#34;&gt;SpringBoot（七）：SpringBoot整合Swagger2&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/saytime/article/details/74937664&#34; target=&#34;blank&#34;&gt;SpringBoot（七）：SpringBoot整合Swagger2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/magicalSam/p/7189476.html&#34; target=&#34;blank&#34;&gt;Spring Boot 系列（四）静态资源处理&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/cszhang570221322/article/details/78129565&#34; target=&#34;blank&#34;&gt;Spring Boot与Jsp&lt;/a&gt;&lt;br/&gt;
@@ -1160,9 +1156,17 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tk55/p/6655349.html&#34; target=&#34;blank&#34;&gt;request获取各种路径&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/1024Community/p/honery.html&#34; target=&#34;blank&#34;&gt;扒一扒JVM的垃圾回收机制，下次面试你准备好了吗&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;版本控制&#34;&gt;版本控制&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/3969558.html&#34; target=&#34;blank&#34;&gt;SVN使用教程总结&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/4050072.html&#34; target=&#34;blank&#34;&gt;Git使用教程&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
@@ -1243,7 +1247,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/category/6931500&#34; target=&#34;blank&#34;&gt;java修行路_涂宗勋&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://blog.csdn.net/briblue&#34; target=&#34;blank&#34;&gt;frank 的专栏&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://blog.csdn.net/column/details/chenssy-javaimpr.html&#34; target=&#34;blank&#34;&gt;chenssy&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://me.csdn.net/u013761665&#34; target=&#34;blank&#34;&gt;Q-WHai&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://me.csdn.net/u013761665&#34; target=&#34;blank&#34;&gt;Q-WHai&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/ns_code&#34; target=&#34;blank&#34;&gt;兰亭风雨&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
@@ -1278,6 +1283,82 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>JVM类加载机制</title>
+      <link>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;虚拟机类加载机制&#34;&gt;虚拟机类加载机制&lt;/h1&gt;
+
+&lt;p&gt;虚拟机把描述类的数据从Class文件&lt;strong&gt;加载&lt;/strong&gt;到内存，并对数据进行&lt;strong&gt;校验&lt;/strong&gt;、&lt;strong&gt;转换（准备）&lt;/strong&gt;、&lt;strong&gt;解析&lt;/strong&gt;和&lt;strong&gt;初始化&lt;/strong&gt;，最终形成可以被Java虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。&lt;/p&gt;
+
+&lt;p&gt;类从被加载到虚拟内存中开始，到卸载内存为止，它的整个生命周期包括了：加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)七个阶段。&lt;br /&gt;
+其中，验证，准备和解析三个部分统称为连接(Linking)。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;类加载的过程&#34;&gt;类加载的过程&lt;/h3&gt;
+
+&lt;p&gt;类加载的全过程，加载，验证，准备，解析和初始化这五个阶段。&lt;/p&gt;
+
+&lt;h4 id=&#34;加载&#34;&gt;加载&lt;/h4&gt;
+
+&lt;p&gt;在加载阶段，虚拟机需要完成以下三件事情：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过一个类的全限定名来获取定义此类的二进制字节流&lt;/li&gt;
+&lt;li&gt;将这个字节流所代表的静态存储结构转换为方法区的运行时数据结构&lt;/li&gt;
+&lt;li&gt;在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区这些数据的访问入口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;验证&#34;&gt;验证&lt;/h4&gt;
+
+&lt;p&gt;这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。不同的虚拟机对类验证的实现可能有所不同，但大致上都会完成下面四个阶段的检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文件格式验证&lt;/strong&gt; 验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;元数据验证&lt;/strong&gt; 对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字节码验证&lt;/strong&gt; 整个验证过程中最复杂的一个阶段，主要工作是数据流和控制流的分析。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析。这阶段的任务是保证被校验类的方法在运行时不会做出危害虚拟机安全的行为。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;符号引用验证&lt;/strong&gt; 发生在虚拟机将符号引用直接转化为直接引用的时候，这个转化动作将在连接的第三个阶段－解析阶段产生。符号引用验证可以看作是对类自身以外（常量池中的各种符号引用）的信息进行匹配性的校验。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;准备&#34;&gt;准备&lt;/h4&gt;
+
+&lt;p&gt;准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区进行分配。&lt;/p&gt;
+
+&lt;h4 id=&#34;解析&#34;&gt;解析&lt;/h4&gt;
+
+&lt;p&gt;解析阶段是虚拟机将常量池的符号引用转换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法四类符号引用进行。&lt;/p&gt;
+
+&lt;h4 id=&#34;初始化&#34;&gt;初始化&lt;/h4&gt;
+
+&lt;p&gt;前面的类加载过程中，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由Java虚拟机主导和控制。到了初始化阶段，才真正开始执行类中定义的Java程序代码（或者说是字节码）。在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者说初始化阶段是执行类构造器&lt;clinit&gt;()方法的过程。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;类加载器&#34;&gt;类加载器&lt;/h3&gt;
+
+&lt;h4 id=&#34;类与类加载器&#34;&gt;类与类加载器&lt;/h4&gt;
+
+&lt;p&gt;虚拟机设计团队把类加载阶段中的&amp;rdquo;通过一个类的全限定名来获取描述此类的二进制字节流&amp;rdquo;这个动作放到Java虚拟机外部去实现，以便让程序自己决定如何去获取所需的类。实现这个动作的代码模块被称为&amp;rdquo;类加载器&amp;rdquo;。&lt;/p&gt;
+
+&lt;h4 id=&#34;双亲委派模型&#34;&gt;双亲委派模型&lt;/h4&gt;
+
+&lt;p&gt;站在Java虚拟机的角度讲，只存在两种不同的类加载器：一种是启动类加载器(Bootstrap ClassLoader)，这个类加载器使用C++语言实现，是虚拟机自身的一部分；另外一种就是所有其他的类加载器，这些类加载器都由Java语言实现，独立于虚拟机外部，并且全部继承自抽象类java.lang.ClassLoader。从Java开发人员的角度来看，类加载器还可以分得更细致一些，绝大部分Java程序都会使用到以下三种系统提供的类加载器：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;启动类加载器&lt;/li&gt;
+&lt;li&gt;扩展类加载器&lt;/li&gt;
+&lt;li&gt;应用程序类加载器&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
@@ -3203,47 +3284,6 @@ SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session 
 --获取拥有者的对象数量
 SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>DB——时间字段</title>
-      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;mysql&#34;&gt;mysql&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;date ：“yyyy-mm-dd”格式表示的日期值  “1000-01-01”到“9999-12-31” 3字节&lt;/li&gt;
-&lt;li&gt;time ：“hh:mm:ss”格式表示的时间值   “-838:59:59”到“838:59:59” 3字节&lt;/li&gt;
-&lt;li&gt;datetime： “yyyy-mm-dd hh:mm:ss”格式  “-838:59:59”到“838:59:59” 3字节&lt;/li&gt;
-&lt;li&gt;timestamp： “yyyymmddhhmmss”格式表示的时间戳值   19700101000000 到2037 年的某个时刻 4字节&lt;/li&gt;
-&lt;li&gt;year： “yyyy”格式的年份值  1901 到2155 1字节&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;oracle&#34;&gt;oracle&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;DATE类型的内部编码为12，占用7个字节，数据存储的每一位到第七位分别为：世纪，年，月，日，时，分，秒&lt;/li&gt;
-&lt;li&gt;TIMESTAMP是支持小数秒和时区的日期/时间类型。对秒的精确度更高&lt;/li&gt;
-&lt;li&gt;TIMESTAMP WITH TIME ZONE类型是TIMESTAMP的子类型，增加了时区支持，占用13字节的存储空间，最后两位用于保存时区信息&lt;/li&gt;
-&lt;li&gt;INTERVAL YEAR TO MONTH 表示存储年或月指定的一个时间段&lt;/li&gt;
-&lt;li&gt;INTERVAL DATE TO SECOND 表示存储天,小时,分钟,秒指定的时间段&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;sql-server&#34;&gt;sql server&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;datetime数据类型所占用的存储空间为8个字节，其中前4个字节用于存储1900年1月1日以前或以后的天数，数值分正负，正数表示在此日期之后的日期，负数表示在此日期之前的日期；后4个字节用于存储从此日零时起所指定的时间经过的毫秒数。&lt;/li&gt;
-&lt;li&gt;smalldatetime数据类型使用4个字节存储数据。其中前2个字节存储从基础日期1900年1月1日以来的天数，后两个字节存储此日零时起所指定的时间经过的分钟数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;smalldatetime数据类型与datetime数据类型相似，但其日期时间范围较小，从1900年1月1日到2079年6月6日。此数据类型精度较低，只能精确到分钟，其分钟个位为根据秒数四舍五入的值，即以30秒为界四舍五入。&lt;/p&gt;
 </description>
       
     </item>
