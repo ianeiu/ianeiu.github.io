@@ -1288,6 +1288,1189 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     </item>
     
     <item>
+      <title>SpringBoot——整合</title>
+      <link>https://ianeiu.github.io/2018/11/01/springboot%E6%95%B4%E5%90%88/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/01/springboot%E6%95%B4%E5%90%88/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;如非说明，皆是使用1.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;本文只进行简单的代码提示，具体内容可自行百度&lt;/p&gt;
+
+&lt;h3 id=&#34;cxf&#34;&gt;CXF&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;@Bean
+public ServletRegistrationBean CXFServlet() {
+    ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);
+    cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);
+    cxfBean.setLoadOnStartup(1);
+    return cxfBean;
+}
+
+@Configuration
+public class CXFConfig {
+    @Autowired
+    private Bus bus;
+    @Autowired
+    private SSOService sSOService;
+
+    @Bean
+    public Endpoint endpointSSO() {
+        EndpointImpl endpoint = new EndpointImpl(bus, sSOService);
+        endpoint.publish(&amp;quot;/sso&amp;quot;);
+        return endpoint;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;redis-jedis&#34;&gt;redis&amp;amp;jedis&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;package cn.com.do1.component.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import redis.clients.jedis.JedisPoolConfig;
+
+/**
+ * redis配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport{
+
+    @Bean
+    public CacheManager cacheManager(RedisTemplate&amp;lt;?, ?&amp;gt; redisTemplate) {
+        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);        
+        //设置缓存过期时间
+        //rcm.setDefaultExpiration(60);//秒
+        return rcm;
+    }
+
+    @Bean
+    public RedisTemplate&amp;lt;String, Object&amp;gt; redisTemplate() {
+        RedisTemplate&amp;lt;String, Object&amp;gt; template = new RedisTemplate&amp;lt;&amp;gt;();
+        template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new JdkSerializationRedisSerializer());
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new JdkSerializationRedisSerializer());
+        return template;
+    }
+
+
+    @Value(&amp;quot;${redis.address}&amp;quot;)
+    private String hostName;
+    @Value(&amp;quot;${redis.port}&amp;quot;)
+    private String port;
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory(){
+        JedisConnectionFactory jcf = new JedisConnectionFactory();
+        jcf.setHostName(hostName);
+        jcf.setPort(Integer.parseInt(port));
+        //jcf.setPassword(&amp;quot;&amp;quot;);
+        return jcf;
+    }
+
+    @Bean
+    public JedisPoolConfig jedisPoolConfig(){
+        JedisPoolConfig jpc = new JedisPoolConfig();
+        jpc.setMaxIdle(1);
+        jpc.setMaxTotal(5);
+        jpc.setBlockWhenExhausted(true);
+        jpc.setMaxWaitMillis(3000);
+        jpc.setTestOnBorrow(true);
+        return jpc;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;错误页面配置&#34;&gt;错误页面配置&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 跳转至错误页面
+ * add 2018.07.11
+ * @author wm
+ * @param code
+ * @return
+ */
+@RequestMapping(&amp;quot;/error/{code}&amp;quot;)
+public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){
+    return code;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增拦截器：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 错误页面拦截器
+ * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+ * @author wm
+ */
+@Component
+public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+    private List&amp;lt;Integer&amp;gt; errorCodeList = Arrays.asList(404,500);
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+        Exception {
+       if (errorCodeList.contains(response.getStatus())) {
+            response.sendRedirect(request.getContextPath()+&amp;quot;/error/&amp;quot; + response.getStatus());
+            return false;
+        }
+        return super.preHandle(request, response, handler);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增拦截配置:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(errorPageInterceptor);//.addPathPatterns(&amp;quot;/action/**&amp;quot;, &amp;quot;/mine/**&amp;quot;);默认所有
+    super.addInterceptors(registry);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;定时任务&#34;&gt;定时任务&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 定时任务配置
+ * @author wm
+ *
+ */
+@Configuration
+@EnableScheduling
+public class SchedulerConfig implements SchedulingConfigurer{
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(setTaskExecutors());
+    }
+
+    @Bean(destroyMethod=&amp;quot;shutdown&amp;quot;)
+    public Executor setTaskExecutors(){
+        return Executors.newScheduledThreadPool(10); // 10个线程来处理。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;兼容jsp&#34;&gt;兼容JSP&lt;/h3&gt;
+
+&lt;p&gt;pom新增：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependencies&amp;gt;
+    ...
+    &amp;lt;!--jsp支持 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.apache.tomcat.embed&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;tomcat-embed-jasper&amp;lt;/artifactId&amp;gt;
+        &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;!-- 配置jsp-jstl的支持 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;javax.servlet.jsp.jstl&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;jstl-api&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;1.2&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    ...
+&amp;lt;/dependencies&amp;gt;
+
+&amp;lt;build&amp;gt; 
+    ...
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置类（处理jar包启动无法访问jsp的问题）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.catalina.Context;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
+import org.apache.catalina.LifecycleListener;
+import org.apache.catalina.WebResourceRoot.ResourceSetType;
+import org.springframework.util.ResourceUtils;
+
+/**
+ * Add main class fat jar/exploded directory into tomcat ResourceSet.
+ *
+ * @author hengyunabc 2017-07-29
+ *
+ */
+public class StaticResourceConfigurer implements LifecycleListener {
+
+    private final Context context;
+
+    public StaticResourceConfigurer(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void lifecycleEvent(LifecycleEvent event) {
+        if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+            URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+            if (ResourceUtils.isFileURL(location)) {
+                // when run as exploded directory
+                String rootFile = location.getFile();
+                if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
+                    rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
+                }
+                if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
+                    return;
+                }
+
+                try {
+                    location = new File(rootFile).toURI().toURL();
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                }
+            }
+
+            String locationStr = location.toString();
+            if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
+                // when run as fat jar
+                locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
+                try {
+                    location = new URL(locationStr);
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                }
+            }
+            this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
+                    &amp;quot;/META-INF/resources&amp;quot;);
+
+        }
+    }
+}
+
+import org.apache.catalina.Context;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import cn.com.do1.component.config.assembly.StaticResourceConfigurer;
+
+/**
+ * 处理jar包启动无法访问jsp的问题
+ * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
+ * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
+ * @author wm  
+ * @date 2018年7月24日
+ */
+@Configuration
+@ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
+public class TomcatConfig {
+    @Bean
+    public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                    ((TomcatEmbeddedServletContainerFactory) container)
+                            .addContextCustomizers(new TomcatContextCustomizer() {
+                                @Override
+                                public void customize(Context context) {
+                                    context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                }
+                            });
+                }
+            }
+
+        };
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;静态资源&#34;&gt;静态资源&lt;/h3&gt;
+
+&lt;p&gt;方式一：&lt;br /&gt;
+pom新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;resources&amp;gt;
+    &amp;lt;resource&amp;gt;
+        &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+        &amp;lt;!--注意此次必须要放在此目录下才能被访问到--&amp;gt;
+        &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+        &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+        &amp;lt;includes&amp;gt;
+            &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+        &amp;lt;/includes&amp;gt;
+    &amp;lt;/resource&amp;gt;
+&amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&amp;quot;/js/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/js/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/css/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/css/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/images/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/images/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/common/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/common/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/register/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/register/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/plugin/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/META-INF/resources/WEB-INF/plugin/&amp;quot;);
+    super.addResourceHandlers(registry);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方式二（推荐）：&lt;br /&gt;
+将静态资源文件放到resouce/static目录下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&amp;quot;/js/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/js/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/css/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/css/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/images/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/images/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/register/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/register/&amp;quot;);
+    registry.addResourceHandler(&amp;quot;/plugin/**&amp;quot;).addResourceLocations(&amp;quot;classpath:/static/plugin/&amp;quot;);
+    super.addResourceHandlers(registry);
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;文件上传&#34;&gt;文件上传&lt;/h3&gt;
+
+&lt;p&gt;配置文件新增：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#upload
+spring.http.multipart.enabled=true
+spring.http.multipart.file-size-threshold=0  #0-ALLFILE
+spring.http.multipart.location=D:/fsrzfw/temp
+spring.http.multipart.max-file-size=10Mb
+spring.http.multipart.max-request-size=10Mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 配置上传文件大小的配置
+ * @return
+ */
+@Bean
+public MultipartConfigElement multipartConfigElement() {
+   MultipartConfigFactory factory = new MultipartConfigFactory();
+   //  单个数据大小
+   factory.setMaxFileSize(&amp;quot;102400KB&amp;quot;);
+   /// 总上传数据大小
+   factory.setMaxRequestSize(&amp;quot;102400KB&amp;quot;);
+   return factory.createMultipartConfig();
+}
+
+/**
+ * MultipartFile 转换成File
+ * update by wm 2018.07.12
+ * @param multfile 原文件类型
+ * @return File
+ * @throws IOException
+ */
+public static File multipartToFile(MultipartFile multfile) throws IOException {
+    //Springboot自带上传不支持CommonsMultipartFile
+    //CommonsMultipartFile cf = (CommonsMultipartFile)multfile;
+    //这个myfile是MultipartFile的
+    //DiskFileItem fi = (DiskFileItem) cf.getFileItem();
+    //return fi.getStoreLocation();
+
+    File f = null;
+    if (&amp;quot;&amp;quot;.equals(multfile) || multfile.getSize() &amp;lt;= 0) {
+        multfile = null;
+    } else {
+        InputStream ins = multfile.getInputStream();
+        f = new File(multfile.getOriginalFilename());
+        StreamUtil.streamSaveAsFile(ins, f);
+    }
+    return f;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;打jar包运行&#34;&gt;打JAR包运行&lt;/h3&gt;
+
+&lt;p&gt;pom新增配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;build&amp;gt;
+    &amp;lt;finalName&amp;gt;fsrzfw&amp;lt;/finalName&amp;gt;
+    &amp;lt;plugins&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;source&amp;gt;1.8&amp;lt;/source&amp;gt;
+                &amp;lt;target&amp;gt;1.8&amp;lt;/target&amp;gt;
+                &amp;lt;encoding&amp;gt;UTF-8&amp;lt;/encoding&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;mainClass&amp;gt;cn.com.do1.component.Application&amp;lt;/mainClass&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;executions&amp;gt;
+                &amp;lt;execution&amp;gt;
+                    &amp;lt;goals&amp;gt;
+                        &amp;lt;goal&amp;gt;repackage&amp;lt;/goal&amp;gt;
+                    &amp;lt;/goals&amp;gt;
+                &amp;lt;/execution&amp;gt;
+            &amp;lt;/executions&amp;gt;
+            &amp;lt;dependencies&amp;gt;
+                &amp;lt;!-- spring热部署 --&amp;gt;
+                &amp;lt;dependency&amp;gt;
+                    &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+                    &amp;lt;artifactId&amp;gt;springloaded&amp;lt;/artifactId&amp;gt;
+                    &amp;lt;version&amp;gt;1.2.6.RELEASE&amp;lt;/version&amp;gt;
+                &amp;lt;/dependency&amp;gt;
+            &amp;lt;/dependencies&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-resources-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;nonFilteredFileExtensions&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;ttf&amp;lt;/nonFilteredFileExtension&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;woff&amp;lt;/nonFilteredFileExtension&amp;gt;
+                    &amp;lt;nonFilteredFileExtension&amp;gt;woff2&amp;lt;/nonFilteredFileExtension&amp;gt;
+                &amp;lt;/nonFilteredFileExtensions&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+    &amp;lt;/plugins&amp;gt;
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/resource&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行mvn install，target目录下（生成fsrzfw.jar）执行 java -jar fsrzfw.jar&lt;/p&gt;
+
+&lt;h3 id=&#34;application配置&#34;&gt;application配置&lt;/h3&gt;
+
+&lt;p&gt;版本一些配置区别&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;springboot1.5&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;springboot2.0&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;server.context-path&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&amp;emsp;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;server.servlet.context-path&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot——使用springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/10/30/springboot%E4%BD%BF%E7%94%A8springboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/springboot%E4%BD%BF%E7%94%A8springboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;如非说明，皆是使用1.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;现象1：引入layer.js出现undefinedcss目录&lt;br /&gt;
+原因：layer.js与layui.js冲突&lt;br /&gt;
+解决：将layui.js 第二个.link 中的n.dir改为(n.dir?n.dir:r)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象2：配置CommonsMultipartResolver，上传文件返回异常HttpMediaTypeNotSupportedException&lt;br /&gt;
+原因：同下&lt;br /&gt;
+解决：FUN1、不配置CommonsMultipartResolver&lt;br /&gt;
+    FUN2、启动类@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) （不建议）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象3：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile&lt;br /&gt;
+原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
+import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解决：采用输入流方式获取File对象，具体代码自行百度&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象4：Shiro 自定义 filter 匹配异常，无限拦截重定向&lt;br /&gt;
+参考：&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;br /&gt;
+原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。&lt;br /&gt;
+解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ex：
+    @Bean
+    public CasFilter casFilter(){
+        CasFilter cf = new CasFilter();
+        cf.setSuccessUrl(successUrl);
+        cf.setFailureUrl(failureUrl);
+        return cf;
+    }
+
+    /**
+     * 注册casFilter
+     * @param casFilter
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
+        FilterRegistrationBean cas = new FilterRegistrationBean();
+        cas.setFilter(casFilter);
+        cas.setEnabled(false);  //该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
+        return cas;
+    }
+
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @param casFilter
+     * @param logoutFilter
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
+            CasFilter casFilter,LogoutFilter logoutFilter) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,casFilter);
+        filters.put(&amp;quot;logoutFilter&amp;quot;, logoutFilter);
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ex:
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&amp;lt;String,Filter&amp;gt; filters = new HashMap&amp;lt;&amp;gt;();
+        filters.put(&amp;quot;casFilter&amp;quot;,new CasFilter());
+        filters.put(&amp;quot;logoutFilter&amp;quot;, new LogoutFilter());
+        shiroFilterFactoryBean.setFilters(filters);     //添加casFilter到shiroFilter
+        ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象5：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter&lt;br /&gt;
+原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置&lt;br /&gt;
+解决：使用log4j2或logback&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象6：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合&lt;br /&gt;
+原因：springboot项目打包后获取包资源所在路径与启动main不一样&lt;br /&gt;
+ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl&lt;br /&gt;
+解决：逐一分割路径获取类对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 获得包下面的所有的class
+ * @author FengHuayuan
+ * @date 2018年4月21日 下午12:25:20.
+ * @param pack
+ * @return
+ */
+public static List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getClassesFromPackage(String pack) {
+    List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+    // 是否循环搜索子包
+    boolean recursive = true;
+    // 包名字
+    String packageName = pack;
+    // 包名对应的路径名称
+    String packageDirName = packageName.replace(&#39;.&#39;, &#39;/&#39;);
+    Enumeration&amp;lt;URL&amp;gt; dirs;
+    try {
+        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            String protocol = url.getProtocol();
+            if (&amp;quot;file&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【File类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
+            } else if (&amp;quot;jar&amp;quot;.equals(protocol)) {
+                log.debug(&amp;quot;*****【Jar类型】的扫描！&amp;quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &amp;quot;UTF-8&amp;quot;);
+                getClasssFromJarFile(filePath, clazzs);//wm add
+            }
+        }
+
+    } catch (Exception e) {
+        log.error(e.getMessage(),e);
+    }
+    return clazzs;
+}
+
+/** 
+ * 从jar文件中读取指定目录下面的所有的class文件 
+ * springboot打jar包专用
+ * @author wm
+ * @param jarPaht   jar文件存放的位置 
+ * @param filePaht    指定的文件目录 
+ * @param clazzs 所有的的class的对象 
+ */  
+public static void getClasssFromJarFile(String jarPath,List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; clazzs) {  
+
+    log.info(&amp;quot;getClasssFromJarFile - jarPath:&amp;quot;+jarPath);//wm
+    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
+    String[] jarPaths = jarPath.split(&amp;quot;!&amp;quot;);
+    String jarPaht=jarPaths[0].substring(6);//去掉file:/
+    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
+
+    JarFile jarFile = null;  
+    try {  
+        jarFile = new JarFile(jarPaht);  
+    } catch (IOException e1) {  
+        e1.printStackTrace();  
+    }  
+
+    List&amp;lt;JarEntry&amp;gt; jarEntryList = new ArrayList&amp;lt;JarEntry&amp;gt;();  
+
+    Enumeration&amp;lt;JarEntry&amp;gt; ee = jarFile.entries();  
+    while (ee.hasMoreElements()) {  
+        JarEntry entry = (JarEntry) ee.nextElement();  
+        if (entry.getName().startsWith(startDir) &amp;amp;&amp;amp; entry.getName().endsWith(&amp;quot;.class&amp;quot;)) {  
+            log.info(&amp;quot;getClasssFromJarFile - entry:&amp;quot;+entry.getName());//wm
+            jarEntryList.add(entry);  
+        }  
+    }  
+    for (JarEntry entry : jarEntryList) {  
+        String className = entry.getName().replace(&#39;/&#39;, &#39;.&#39;);  
+        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
+        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
+        try {  
+            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
+        } catch (ClassNotFoundException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象7：启动jar包，访问登录，报NoClassDefFoundError RedisCacheManager&lt;br /&gt;
+解决：注释pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;
+    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象8：jar包启动无法访问jsp的问题&lt;br /&gt;
+原因:&lt;a href=&#34;https://www.jb51.net/article/141474.htm&#34; target=&#34;blank&#34;&gt;深入Spring Boot实现对Fat Jar jsp的支持&lt;/a&gt;&lt;br /&gt;
+解决：亲测有效，需两步&lt;br /&gt;
+&amp;emsp;步骤1、新增两个类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import java.io.File;
+    import java.net.MalformedURLException;
+    import java.net.URL;
+
+    import org.apache.catalina.Context;
+    import org.apache.catalina.Lifecycle;
+    import org.apache.catalina.LifecycleEvent;
+    import org.apache.catalina.LifecycleListener;
+    import org.apache.catalina.WebResourceRoot.ResourceSetType;
+    import org.springframework.util.ResourceUtils;
+
+    /**
+     * Add main class fat jar/exploded directory into tomcat ResourceSet.
+     *
+     * @author hengyunabc 2017-07-29
+     *
+     */
+    public class StaticResourceConfigurer implements LifecycleListener {
+
+        private final Context context;
+
+        StaticResourceConfigurer(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void lifecycleEvent(LifecycleEvent event) {
+            if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+                URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+                if (ResourceUtils.isFileURL(location)) {
+                    // when run as exploded directory
+                    String rootFile = location.getFile();
+                    if (rootFile.endsWith(&amp;quot;/BOOT-INF/classes/&amp;quot;)) {
+                        rootFile = rootFile.substring(0, rootFile.length() - &amp;quot;/BOOT-INF/classes/&amp;quot;.length() + 1);
+                    }
+                    if (!new File(rootFile, &amp;quot;META-INF&amp;quot; + File.separator + &amp;quot;resources&amp;quot;).isDirectory()) {
+                        return;
+                    }
+
+                    try {
+                        location = new File(rootFile).toURI().toURL();
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+
+                String locationStr = location.toString();
+                if (locationStr.endsWith(&amp;quot;/BOOT-INF/classes!/&amp;quot;)) {
+                    // when run as fat jar
+                    locationStr = locationStr.substring(0, locationStr.length() - &amp;quot;/BOOT-INF/classes!/&amp;quot;.length() + 1);
+                    try {
+                        location = new URL(locationStr);
+                    } catch (MalformedURLException e) {
+                        throw new IllegalStateException(&amp;quot;Can not add tomcat resources&amp;quot;, e);
+                    }
+                }
+                this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &amp;quot;/&amp;quot;, location,
+                        &amp;quot;/META-INF/resources&amp;quot;);
+
+            }
+        }
+    }
+
+    import org.apache.catalina.Context;
+    import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+    import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+    import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+    import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    /**
+     * 处理1.5版本jar包启动无法访问jsp的问题
+     * &amp;lt;p&amp;gt;Title: TomcatConfig&amp;lt;/p&amp;gt;  
+     * &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;  
+     * @author wm  
+     * @date 2018年7月24日
+     */
+    @Configuration
+    @ConditionalOnProperty(name = &amp;quot;tomcat.staticResourceCustomizer.enabled&amp;quot;, matchIfMissing = true)
+    public class TomcatConfig {
+        @Bean
+        public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+            return new EmbeddedServletContainerCustomizer() {
+                @Override
+                public void customize(ConfigurableEmbeddedServletContainer container) {
+                    if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                        ((TomcatEmbeddedServletContainerFactory) container)
+                                .addContextCustomizers(new TomcatContextCustomizer() {
+                                    @Override
+                                    public void customize(Context context) {
+                                        context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                    }
+                                });
+                    }
+                }
+
+            };
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;emsp;步骤2，pom配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;resources&amp;gt;
+        ...
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+            &amp;lt;!-- 处理jar包启动无法访问jsp的问题 --&amp;gt;
+            &amp;lt;targetPath&amp;gt;META-INF/resources&amp;lt;/targetPath&amp;gt;
+            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/**&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt; 
+    &amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象9：启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType&lt;br /&gt;
+解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象10：整合redis报 NOAUTH Authentication required&lt;br /&gt;
+原因：spring.redis.password=yourpassword 配置在JedisConnectionFactory中没有被加载进去&lt;br /&gt;
+解决：手动获取自定义或原配置密码进行配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Value(&amp;quot;${redis.address}&amp;quot;)
+private String hostName;
+@Value(&amp;quot;${redis.port}&amp;quot;)
+private String port;
+@Value(&amp;quot;${redis.password}&amp;quot;)
+private String password;
+
+@Bean
+public JedisConnectionFactory jedisConnectionFactory(){
+    JedisConnectionFactory jcf = new JedisConnectionFactory();
+    jcf.setHostName(hostName);
+    jcf.setPort(Integer.parseInt(port));
+    jcf.setPassword(password);
+    return jcf;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;现象11：使用@Value没有取到值&lt;br /&gt;
+原因：XXX类静态构造TyrzBackSecurityAdaptor 无法直接获取&lt;br /&gt;
+解决：使用注入方式实例化TyrzBackSecurityAdaptor&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Component
+public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
+	@Value(&amp;quot;${qxws.address}&amp;quot;)
+	private String address;
+	
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;XXX原代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class XXX｛
+	/**
+	 * 安全管理器
+	 * @return
+	 */
+	@Bean
+	public SecurityManager getSecurityManager() {
+		SecurityManager securityManager = new SecurityManager();
+		securityManager.setAdaptor(new TyrzBackSecurityAdaptor());
+		securityManager.setContextConfigLocation(&amp;quot;security.xml&amp;quot;);
+		securityManager.setHttpConnectTimeout(1200000);
+		securityManager.setHttpSocketTimeout(1200000);
+		return securityManager;
+	}
+｝
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改后&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class XXX｛
+	@Autowired
+    private TyrzBackSecurityAdaptor tyrzBackSecurityAdaptor;
+
+    /**
+     * 安全管理器
+     * @return
+     */
+	@Bean
+	public SecurityManager getSecurityManager() {
+		SecurityManager securityManager = new SecurityManager();
+		securityManager.setAdaptor(tyrzBackSecurityAdaptor);
+		securityManager.setContextConfigLocation(&amp;quot;security.xml&amp;quot;);
+		securityManager.setHttpConnectTimeout(1200000);
+		securityManager.setHttpSocketTimeout(1200000);
+		return securityManager;
+	}
+｝
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Spring——拦截器</title>
+      <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的显示控制。所以当时想法是新建一个拦截器对这几个请求做统一处理（放入权限代码集合），类似之前项目的错误页面拦截器。&lt;/p&gt;
+
+&lt;h2 id=&#34;拦截器简介&#34;&gt;拦截器简介&lt;/h2&gt;
+
+&lt;p&gt;Spring 框架实现拦截器功能主要有两种方法，第一种是实现&lt;code&gt;HandlerInterceptor&lt;/code&gt;接口，第二种是实现&lt;code&gt;WebRequestInterceptor&lt;/code&gt;接口。&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;HandlerInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;通过实现HandlerInterceptor接口，重写方法&lt;code&gt;preHandle()&lt;/code&gt;、&lt;code&gt;postHandle()&lt;/code&gt;和&lt;code&gt;afterCompletion()&lt;/code&gt;拦截请求。Spring 框架中还提供了另外一个接口和一个抽象类，实现了对HandlerInterceptor接口的功能扩展，分别为：AsyncHandlerInterceptor和HandlerInterceptorAdapter。&lt;/p&gt;
+
+&lt;p&gt;对于AsyncHandlerInterceptor接口，其在继承HandlerInterceptor接口的同时，又声明了一个新的方法&lt;code&gt;afterConcurrentHandlingStarted()&lt;/code&gt;；&lt;br /&gt;
+而HandlerInterceptorAdapter抽象类，在其继承AsyncHandlerInterceptor接口的同时，又复写了preHandle方法。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;preHandle(HttpServletRequest request, HttpServletResponse response, Object handle)&lt;/code&gt;方法，该方法在请求处理之前进行调用。SpringMVC 中的 Interceptor 是链式调用的，在一个应用中或者说是在一个请求中可以同时存在多个 Interceptor 。每个 Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是 Interceptor 中的 preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求做一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值 Boolean 类型的，当它返回为 false 时，表示请求结束，后续的 Interceptor 和 Controller 都不会再执行；当返回值为 true 时，就会继续调用下一个 Interceptor 的 preHandle 方法，如果已经是最后一个 Interceptor 的时候，就会是调用当前请求的 Controller 中的方法。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postHandle(HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)&lt;/code&gt;方法，通过 preHandle 方法的解释咱们知道这个方法包括后面要说到的 afterCompletion 方法都只能在当前所属的 Interceptor 的 preHandle 方法的返回值为 true 的时候，才能被调用。postHandle 方法在当前请求进行处理之后，也就是在 Controller 中的方法调用之后执行，但是它会在 DispatcherServlet 进行视图返回渲染之前被调用，所以咱们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。postHandle 方法被调用的方向跟 preHandle 是相反的，也就是说，先声明的 Interceptor 的 postHandle 方法反而会后执行。这和 Struts2 里面的 Interceptor 的执行过程有点类型，Struts2 里面的 Interceptor 的执行过程也是链式的，只是在 Struts2 里面需要手动调用 ActionInvocation 的 invoke 方法来触发对下一个 Interceptor 或者是 action 的调用，然后每一个 Interceptor 中在 invoke 方法调用之前的内容都是按照声明顺序执行的，而 invoke 方法之后的内容就是反向的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)&lt;/code&gt;方法，也是需要当前对应的 Interceptor 的 preHandle 方法的返回值为 true 时才会执行。因此，该方法将在整个请求结束之后，也就是在 DispatcherServlet 渲染了对应的视图之后执行，这个方法的主要作用是用于进行资源清理的工作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;kbd&gt;WebRequestInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;在WebRequestInterceptor接口中也定义了 3 个方法，方法名同HandlerInterceptor接口相同，3 个方法都传递了同一个参数 WebRequest。WebRequest 是 Spring 中定义的一个接口，它里面的方法定义跟 HttpServletRequest 类似，在WebRequestInterceptor中对 WebRequest 进行的所有操作都将同步到 HttpServletRequest 中，然后在当前请求中依次传递。&lt;/p&gt;
+
+&lt;p&gt;Spring框架中还提供了WebRequestInterceptorAdapter，其实现了AsyncHandlerInterceptor接口，并在内部调用了WebRequestInterceptor接口。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;preHandle(WebRequest request)&lt;/code&gt;方法，该方法在请求处理之前进行调用，也就是说，其会在 Controller 中的方法调用之前被调用。这个方法跟 HandlerInterceptor 中的 preHandle 不同，主要区别在于该方法的返回值是void 类型的，也就是没有返回值，因此我们主要用它来进行资源的准备工作，比如我们在使用 Hibernate 的时候，可以在这个方法中准备一个 Hibernate 的Session 对象，然后利用 WebRequest 的 setAttribute(name, value, scope) 把它放到 WebRequest 的属性中。在这里，进一步说说 setAttribute 方法的第三个参数 scope ，该参数是一个Integer 类型的。在 WebRequest 的父层接口 RequestAttributes 中对它定义了三个常量，分别为：
+
+&lt;ul&gt;
+&lt;li&gt;SCOPE_REQUEST ，它的值是 0，表示只有在 request 中可以访问。&lt;/li&gt;
+&lt;li&gt;SCOPE_SESSION，它的值是1，如果环境允许的话，它表示的是一个局部的隔离的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
+&lt;li&gt;SCOPE_GLOBAL_SESSION，它的值是 2，如果环境允许的话，它表示的是一个全局共享的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postHandle(WebRequest request, ModelMap model)&lt;/code&gt;方法，该方法在请求处理之后，也就是在 Controller 中的方法调用之后被调用，但是会在视图返回被渲染之前被调用，所以可以在这个方法里面通过改变数据模型 ModelMap 来改变数据的展示。该方法有两个参数，WebRequest 对象是用于传递整个请求数据的，比如在 preHandle 中准备的数据都可以通过 WebRequest 来传递和访问；ModelMap 就是 Controller 处理之后返回的 Model 对象，咱们可以通过改变它的属性来改变返回的 Model 模型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;afterCompletion(WebRequest request, Exception ex)&lt;/code&gt;方法，该方法会在整个请求处理完成，也就是在视图返回并被渲染之后执行。因此可以在该方法中进行资源的释放操作。而 WebRequest 参数就可以把咱们在 preHandle 中准备的资源传递到这里进行释放。Exception 参数表示的是当前请求的异常对象，如果在 Controller 中抛出的异常已经被 Spring 的异常处理器给处理了的话，那么这个异常对象就是是 null.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;来源：&lt;a href=&#34;https://blog.csdn.net/qq_35246620/article/details/68487904&#34; target=&#34;blank&#34;&gt;作者：维C果糖 | 文章：述 Spring MVC 框架中拦截器 Interceptor 的使用方法&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;拦截器code&#34;&gt;拦截器CODE&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实现HandlerInterceptor 接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import cn.com.do1.component.core.shirocas.model.UserVO;
+    import cn.com.do1.component.util.HttpPermissionUtil;
+    import org.apache.shiro.SecurityUtils;
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.HandlerInterceptor;
+    import org.springframework.web.servlet.ModelAndView;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.util.List;
+
+    /**
+     * 点击菜单拦截器
+     * @author wm
+     * @date 2018.10.29
+     */
+    @Component
+    public class ClickMenuInterceptor implements HandlerInterceptor {
+
+        @Value(&amp;quot;${qxws.identifier}&amp;quot;)
+        private String systemId;
+
+        @Override
+        public boolean preHandle(HttpServletRequest request,
+                                 HttpServletResponse response, Object handler) throws Exception {
+            return true;
+        }
+
+        @Override
+        public void postHandle(HttpServletRequest request,
+                               HttpServletResponse response, Object handler,
+                               ModelAndView modelAndView) throws Exception {
+            UserVO user = (UserVO) SecurityUtils.getSubject().getSession().getAttribute(&amp;quot;user&amp;quot;);
+            List&amp;lt;String&amp;gt; buttonList = HttpPermissionUtil.getButtonPermission(user.getUserId(), systemId);
+            modelAndView.addObject(&amp;quot;buttonList&amp;quot;,buttonList);
+        }
+
+        @Override
+        public void afterCompletion(HttpServletRequest request,
+                                    HttpServletResponse response, Object handler, Exception ex)
+                throws Exception {
+
+        }
+
+    } 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;实现WebRequestInterceptor接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import org.springframework.ui.ModelMap;
+    import org.springframework.web.context.request.WebRequest;
+    import org.springframework.web.context.request.WebRequestInterceptor;
+
+    /**
+     * @author wm
+     * @Description ClinkMenuInterceptor2
+     * @date 2018/10/30 15:34
+     * @Version 1.0
+     */
+    public class ClinkMenuInterceptor2 implements WebRequestInterceptor {
+            
+        @Override
+        public void preHandle(WebRequest request) throws Exception {
+                
+        }
+
+        @Override
+        public void postHandle(WebRequest request, ModelMap model) throws Exception {
+
+        }
+
+        @Override
+        public void afterCompletion(WebRequest request, Exception ex) throws Exception {
+
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;继承HandlerInterceptorAdapter类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import java.util.Arrays;
+    import java.util.List;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+    /**
+     * 错误页面拦截器
+     * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+     * @author wm
+     */
+    @Component
+    public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+        private List&amp;lt;Integer&amp;gt; errorCodeList = Arrays.asList(404,500);
+        @Override
+        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+            Exception {
+           if (errorCodeList.contains(response.getStatus())) {
+                response.sendRedirect(request.getContextPath()+&amp;quot;/error/&amp;quot; + response.getStatus());
+                return false;
+            }
+            return super.preHandle(request, response, handler);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;SpringMVC&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;!--权限接入：拦截器--&amp;gt;
+    &amp;lt;mvc:interceptors&amp;gt;
+        &amp;lt;mvc:interceptor&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/identitySource/goIdentitySourceList&amp;quot;/&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/userManager/goUserManagerListPage&amp;quot;/&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/schedulemgr/goScheduleListPage&amp;quot;/&amp;gt;
+            &amp;lt;bean class=&amp;quot;cn.com.do1.component.security.interceptor.ClickMenuInterceptor&amp;quot;/&amp;gt;
+        &amp;lt;/mvc:interceptor&amp;gt;
+    &amp;lt;/mvc:interceptors&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;SpringBoot&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    @Bean
+    public ClickMenuInterceptor getClickMenuInterceptor() {
+        return new ClickMenuInterceptor();
+    }
+    /**
+     * 新增security拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getClickMenuInterceptor()).
+                addPathPatterns(&amp;quot;/identitySource/goIdentitySourceList&amp;quot;,
+                        &amp;quot;/userManager/goUserManagerListPage&amp;quot;,
+                        &amp;quot;/schedulemgr/goScheduleListPage&amp;quot;);
+        super.addInterceptors(registry);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;    @Autowired
+    private ErrorPageInterceptor errorPageInterceptor;//错误拦截器（拦截404，500）
+    /**
+     * 新增拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(errorPageInterceptor);//默认拦截所有
+        super.addInterceptors(registry);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>JVM类加载机制</title>
       <link>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
@@ -2824,465 +4007,6 @@ Last-Modified:服务器最后修改资源的时间
 *Pragma: no-cache   (1.0) 没有缓存
 
 *Set-Cookie:SS=Q0=5Lb_nQ; path=/search服务器端发送的Cookie
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>JavaWeb常用的名词简介</title>
-      <link>https://ianeiu.github.io/2018/09/29/javaweb%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/javaweb%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;j2ee中常用的名词简单描述&#34;&gt;J2EE中常用的名词简单描述&lt;/h1&gt;
-
-&lt;h2 id=&#34;web容器&#34;&gt;web容器&lt;/h2&gt;
-
-&lt;p&gt;给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。&lt;/p&gt;
-
-&lt;h2 id=&#34;ejb容器&#34;&gt;EJB容器&lt;/h2&gt;
-
-&lt;p&gt;Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;jndi-java-naming-directory-interface&#34;&gt;JNDI：（Java Naming &amp;amp; Directory Interface）&lt;/h2&gt;
-
-&lt;p&gt;JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。&lt;/p&gt;
-
-&lt;h2 id=&#34;jms-java-message-service&#34;&gt;JMS：（Java Message Service）&lt;/h2&gt;
-
-&lt;p&gt;JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。&lt;/p&gt;
-
-&lt;h2 id=&#34;jta-java-transaction-api&#34;&gt;JTA：（Java Transaction API）&lt;/h2&gt;
-
-&lt;p&gt;JAVA事务服务。提供各种分布式事务服务。应用程序只需调用其提供的接口即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;jaf-java-action-framework&#34;&gt;JAF：（Java Action FrameWork）&lt;/h2&gt;
-
-&lt;p&gt;JAVA安全认证框架。提供一些安全控制方面的框架。让开发者通过各种部署和自定义实现自己的个性安全控制策略。&lt;/p&gt;
-
-&lt;h2 id=&#34;rmi-iiop-remote-method-invocation-internet对象请求中介协议&#34;&gt;RMI/IIOP:（Remote Method Invocation /internet对象请求中介协议）&lt;/h2&gt;
-
-&lt;p&gt;他们主要用于通过远程调用服务。例如，远程有一台计算机上运行一个程序，它提供股票分析服务，我们可以在本地计算机上实现对其直接调用。当然这是要通过一定的规范才能在异构的系统之间进行通信。RMI是JAVA特有的。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;mvc&#34;&gt;MVC&lt;/h2&gt;
-
-&lt;p&gt;标准主流现在的编程方式都是采用MVC综合设计模式，MVC本身不属于设计模式的一种，它描述的是一种结构，最终目的达到解耦，解耦说的意思是你更改某一层代码，不会影响我其他层代码，如果你会像spring这样的框架，你会了解面向接口编程，表示层jsp调用控制层，控制层action调用业务层service，业务层调用数据dao访问层。&lt;/p&gt;
-
-&lt;h2 id=&#34;dao层&#34;&gt;DAO层&lt;/h2&gt;
-
-&lt;p&gt;DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，DAO层的设计首先是设计DAO的接口，然后在Spring的配置文件中定义此接口的实现类，然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。&lt;/p&gt;
-
-&lt;h2 id=&#34;service层&#34;&gt;Service层&lt;/h2&gt;
-
-&lt;p&gt;Service层主要负责业务模块的逻辑应用设计。同样是首先设计接口，再设计其实现的类，接着再Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。Service层的业务实现，具体要调用到已定义的DAO层的接口，封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。&lt;/p&gt;
-
-&lt;h2 id=&#34;controller层&#34;&gt;Controller层&lt;/h2&gt;
-
-&lt;p&gt;Controller层负责具体的业务模块流程的控制，在此层里面要调用Serice层的接口来控制业务流程，控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h2&gt;
-
-&lt;p&gt;Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。&lt;/p&gt;
-
-&lt;h2 id=&#34;ioc容器&#34;&gt;IOC容器&lt;/h2&gt;
-
-&lt;p&gt;IOC容器就是具有依赖注入功能的容器，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。应用程序无需直接在代码中new相关的对象，应用程序由IOC容器进行组装。在Spring中BeanFactory是IOC容器的实际代表者。&lt;/p&gt;
-
-&lt;h2 id=&#34;aop-面向切面&#34;&gt;AOP (面向切面)&lt;/h2&gt;
-
-&lt;p&gt;简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可操作性和可维护性。AOP代表的是一个横向的关系&lt;/p&gt;
-
-&lt;h2 id=&#34;mybatis&#34;&gt;Mybatis&lt;/h2&gt;
-
-&lt;p&gt;MyBatis 是支持普通 SQL查询，存储过程和高级映射的优秀持久层框架。 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。&lt;/p&gt;
-
-&lt;h2 id=&#34;dubbo&#34;&gt;Dubbo&lt;/h2&gt;
-
-&lt;p&gt;Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC（远程过程调用协议）远程服务调用方案，以及SOA服务治理方案。简单的说，dubbo就是个服务框架，如果没有分布式的需求，其实是不需要用的，只有在分布式的时候，才有dubbo这样的分布式服务框架的需求，并且本质上是个服务调用的东东，说白了就是个远程服务调用的分布式框架。&lt;/p&gt;
-
-&lt;h2 id=&#34;maven&#34;&gt;Maven&lt;/h2&gt;
-
-&lt;p&gt;项目管理和构建自动化工具&lt;/p&gt;
-
-&lt;h2 id=&#34;rabbitmq&#34;&gt;RabbitMQ&lt;/h2&gt;
-
-&lt;p&gt;消息队列一般是在项目中，将一些无需即时返回且耗时的操作提取出来，进行了异步处理，而这种异步处理的方式大大的节省了服务器的请求响应时间，从而提高了系统的吞吐量。&lt;/p&gt;
-
-&lt;h2 id=&#34;log4j-log4j2-logback&#34;&gt;Log4j、Log4j2、Logback&lt;/h2&gt;
-
-&lt;p&gt;日志记录框架&lt;/p&gt;
-
-&lt;h2 id=&#34;ehcache&#34;&gt;Ehcache&lt;/h2&gt;
-
-&lt;p&gt;EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认的CacheProvider。Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展，缓存异常处理程序，一个gzip缓存servlet过滤器，支持REST和SOAP api等特点。&lt;/p&gt;
-
-&lt;h2 id=&#34;redis&#34;&gt;Redis&lt;/h2&gt;
-
-&lt;p&gt;redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。Redis数据库完全在内存中，使用磁盘仅用于持久性。Redis可以将数据复制到任意数量的从服务器。&lt;/p&gt;
-
-&lt;h2 id=&#34;shiro&#34;&gt;Shiro&lt;/h2&gt;
-
-&lt;p&gt;Apache Shiro是Java的一个安全框架，旨在简化身份验证和授权。Shiro在JavaSE和JavaEE项目中都可以使用。它主要用来处理身份认证，授权，企业会话管理和加密等。&lt;/p&gt;
-
-&lt;h2 id=&#34;设计模式&#34;&gt;设计模式&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;创建型模式：简单工厂模式（抽象工厂模式），工厂方法模式，建造者模式，原型模式，单例模式√。(5个)&lt;/li&gt;
-&lt;li&gt;结构型模式：外观模式、适配器模式、代理模式、装饰模式、桥接模式、组合模式、享元模式。(7个)&lt;/li&gt;
-&lt;li&gt;行为型模式：模版方法模式、观察者模式、状态模式、职责链模式、命令模式、访问者模式、策略模式、备忘录模式、迭代器模式、解释器模式、 中介者模式。(11个)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Maven——笔记</title>
-      <link>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-
-&lt;p&gt;项目构建和管理自动化工具&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;坐标(可由groupId、artifactId、version组成)。&lt;/li&gt;
-&lt;li&gt;构件通过坐标作为其唯一标识。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;仓库：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：&lt;a href=&#34;https://repo.maven.apache.org/maven2&#34;&gt;https://repo.maven.apache.org/maven2&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;镜像仓库：/conf/setting文件:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;mirror&amp;gt;
-    &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt;
-    &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
-    &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt;
-    &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt;
-&amp;lt;/mirror&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;本地仓库：修改本地仓库的位置 &lt;code&gt;&amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;指定jdk1.7&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;profile&amp;gt;
-    &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt;
-    &amp;lt;activation&amp;gt;
-        &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt;
-        &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt;
-    &amp;lt;/activation&amp;gt;   
-    &amp;lt;properties&amp;gt;
-        &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt;
-        &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt;
-        &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt;
-    &amp;lt;/properties&amp;gt;
-&amp;lt;/profile&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;常用构建命令&#34;&gt;常用构建命令&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;mvn compile 编译
-mvn test 测试
-mvn package 打包
-mvn clean 删除target
-mvn install 安装jar包到本地仓库
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;自动创建目录骨架&#34;&gt;自动创建目录骨架&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;archetype:generate 按照提示进行&lt;/li&gt;
-&lt;li&gt;archetype:generate -DgroupId=组织名, 公司网址的反写+项目名&lt;br /&gt;
-                -DartifactId=项目名-模块名&lt;br /&gt;
-                -Dversion=版本号&lt;br /&gt;
-                -Dpackage=代码所存在的包&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;完整的项目构建过程&#34;&gt;完整的项目构建过程&lt;/h2&gt;
-
-&lt;p&gt;清理、编译、测试、打包、集成测试、验证、部署&lt;/p&gt;
-
-&lt;h2 id=&#34;maven生命周期&#34;&gt;maven生命周期&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;clean：清理项目
-	- pre-clean ：执行清理前的工作
-	- clean：清理上一次构建生成的所有文件
-	- post-clean：执行清理后的文件
-default：构建项目
-	- compile test package install
-site：生成项目站点
-	- pre-site 在生成项目站点之前要完成的工作
-	- site 生成项目的站点文档
-	- post-site在生成项目站点后要完成的工作
-	- site-deploy发布生成的站点到服务器上
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pom结构&#34;&gt;pom结构&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;project (根元素，包含约束信息)
-	modelVersion  指定了当前pom版本
-	groupId    反写的公司网址+项目名
-	artifactId  项目名+模块名
-	version     版本号  第一个0表示大版本号，第二个0表示大版本号，第三个0表示大版本号 0.0.1snapshot快照 alpha內部測試 beta公测 Release稳定 GA正式发布
-	packaging   打包方式 默认是jar
-
-	name       项目的描述名
-	url       项目的地址
-	description  项目描述
-	developers   开发人员信息
-	licenses    许可证信息
-	
-	dependencies 
-		-dependency ｛依赖冲突 1.短路优先（优先依赖最近的模块）2.先声明先优先｝
-			-groupId
-			-artifactId
-			-version
-			-type	
-			-scope    依赖范围 [默认compile、provided、runtime、test、system、import]
-			-optional 设置依赖是否可选
-			-exclusions
-				-exclusion
-					-groupId
-					-artifactId
-
-	dependencyManagement   依赖管理  不会被运行(子模块来引用)
-		-dependencies
-			-dependency
-			
-	build
-		-plugins  插件列表（指出坐标）
-			-plugin
-				-groupId
-				-artifactId
-				-version
-				
-	parent    对父模块的继承
-		-groupId	[org..]
-		-artifactId [jetty\tomcat..]
-		-version [...]
-		-executions
-			-execution	在打包成功后使用 jetty\tomcat：run来运行jetty服务
-				-phase [package]
-				-goals [run]
-					-goal
-	modules   定义多个模块  一起进行编译
-		-module [聚合的项目、模块]
-		
-
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</link>
-      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;数据定义语言-ddl&#34;&gt;数据定义语言（DDL）&lt;/h3&gt;
-
-&lt;h4 id=&#34;清空表数据&#34;&gt;清空表数据&lt;/h4&gt;
-
-&lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
-
-&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
-
-&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型;&lt;br /&gt;
- 例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;
-
-&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型);&lt;br /&gt;
-例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;
-
-&lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
-
-&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
-说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
-例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;
-
-&lt;p&gt;字段增加备注&lt;br /&gt;
-例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;
-
-&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
-说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;
-
-&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
-说明：alter table 表名 drop column 字段名;&lt;br /&gt;
-例：alter table sf_users drop column HeadPIC;&lt;/p&gt;
-
-&lt;p&gt;字段的重命名：&lt;br /&gt;
-说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
-例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;
-
-&lt;p&gt;表的重命名：&lt;br /&gt;
-说明：alter table 表名 rename to  新表名&lt;br /&gt;
-例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;
-
-&lt;h3 id=&#34;数据操作语言-dml-data-manipulation-language&#34;&gt;数据操作语言（DML Data Manipulation Language）&lt;/h3&gt;
-
-&lt;h4 id=&#34;去除带空格数据的空格&#34;&gt;去除带空格数据的空格&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;\\删除左空格  
-update tb_test set product_name=rtrim(product_name,&#39; &#39;);
-\\删除右空格  
-update tb_test set product_name=ltrim(product_name,&#39; &#39;);
-\\删除左右空格
-update tb_test set product_name=trim(product_name);
-\\删除所有空格
-update tb_test set product_name=replace(product_name,&#39; &#39;,&#39;&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;数据查询语言-dql-data-query-language&#34;&gt;数据查询语言（DQL Data Query Language）&lt;/h3&gt;
-
-&lt;h4 id=&#34;oracle-日期-时间-相关查询&#34;&gt;Oracle 日期-时间 相关查询&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--获取当前月份的第一天
-SELECT TRUNC (SYSDATE, &#39;MONTH&#39;) FROM DUAL;
-
---获取当前月份的最后一天
-SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
-
---获取当前年份的第一天
-SELECT TRUNC (SYSDATE, &#39;YEAR&#39;) FROM DUAL;
-
---获取当前年份的最后一天
-SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) - 1 FROM DUAL;
-
---获取当前月份的天数
-SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), &#39;dd&#39;) AS INT) FROM DUAL;
-
---获取当前月份剩下的天数
-SELECT SYSDATE, LAST_DAY (SYSDATE) &amp;quot;Last&amp;quot;, LAST_DAY (SYSDATE) - SYSDATE &amp;quot;Days left&amp;quot; FROM DUAL;
-
---计算员工入职的天数
-SELECT TRUNC(sysdate) - TRUNC(e.hire_date) FROM employees e;
-
---获取直到目前为止今天过去的秒数（从 00：00 开始算）
-SELECT (SYSDATE - TRUNC (SYSDATE)) * 24 * 60 * 60 num_of_sec_since_morning  FROM DUAL;
-
---获取今天剩下的秒数（直到 23：59：59 结束）
-SELECT (TRUNC (SYSDATE+1) - SYSDATE) * 24 * 60 * 60 num_of_sec_left FROM DUAL;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;oracle-数学&#34;&gt;Oracle 数学&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--把数值转换成文字
-SELECT TO_CHAR (TO_DATE (1526, &#39;j&#39;), &#39;jsp&#39;) FROM DUAL;
-
---在包的源代码中查询字符串
-SELECT * FROM dba_source WHERE UPPER (text) LIKE &#39;%FOO_SOMETHING%&#39; AND owner = &#39;TSUSER&#39;;
-
---查询表中的最后一个记录
-SELECT * FROM TB_DQDP_USER  WHERE ROWID IN (SELECT MAX (ROWID) FROM TB_DQDP_USER);
-SELECT * FROM TB_DQDP_USER MINUS SELECT * FROM TB_DQDP_USER WHERE ROWNUM &amp;lt; (SELECT COUNT (*) FROM TB_DQDP_USER);
-
---在 Oracle 生成随机数据
-SELECT LEVEL empl_id, MOD (ROWNUM, 50000) dept_id,TRUNC (DBMS_RANDOM.VALUE (1000, 500000), 2) salary
-,DECODE (ROUND (DBMS_RANDOM.VALUE (1, 2)),  1, &#39;M&#39;,  2, &#39;F&#39;) gender
-, TO_DATE ( ROUND (DBMS_RANDOM.VALUE (1, 28))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1, 12))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1900, 2010)),&#39;DD-MM-YYYY&#39;)
- dob,DBMS_RANDOM.STRING (&#39;x&#39;, DBMS_RANDOM.VALUE (20, 50)) address
- FROM DUAL CONNECT BY LEVEL &amp;lt; 10000;
-
---在 Oracle 中生成随机数值
-SELECT ROUND (DBMS_RANDOM.VALUE () * 100) + 1 AS random_num FROM DUAL;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;oracle-数据库管理查询&#34;&gt;Oracle 数据库管理查询&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--数据库版本信息
-SELECT * FROM v$version;
-
---数据库默认信息
-SELECT username,profile,default_tablespace,temporary_tablespace FROM dba_users;
-
---数据库字符设置信息
-SELECT * FROM nls_database_parameters;
-
---获取 Oracle 版本
-SELECT VALUE FROM v$system_parameter WHERE name = &#39;compatible&#39;;
-
---检查表空间的自动扩展开关
-SELECT SUBSTR (file_name, 1, 50), AUTOEXTENSIBLE FROM dba_data_files;
-SELECT tablespace_name, AUTOEXTENSIBLE FROM dba_data_files;
-
---调整没有添加数据文件的表空间
-ALTER DATABASE DATAFILE &#39;/work/oradata/STARTST/STAR02D.dbf&#39; resize 2000M;
---在表空间添加数据文件
-ALTER TABLESPACE data01 ADD DATAFILE &#39;/work/oradata/STARTST/data01.dbf&#39; SIZE 1000M AUTOEXTEND OFF;
---增加数据文件的大小
-ALTER DATABASE DATAFILE &#39;/u01/app/Test_data_01.dbf&#39; RESIZE 2G;
-
---查询数据库的实际大小
-SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_data_files;
---查询数据库中数据占用的大小或者是数据库使用细节
-SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_segments;
-
---查询模式或者用户的大小
-SELECT SUM (bytes / 1024 / 1024) &amp;quot;size&amp;quot; FROM dba_segments WHERE owner = &#39;&amp;amp;owner&#39;;
-
---查询数据库中每个用户最后使用的 SQL 查询
-SELECT S.USERNAME || &#39;(&#39; || s.sid || &#39;)-&#39; || s.osuser UNAME, s.program
- || &#39;-&#39; || s.terminal || &#39;(&#39; || s.machine || &#39;)&#39; PROG, s.sid || &#39;/&#39; || s.serial# sid, s.status &amp;quot;Status&amp;quot;, p.spid,sql_text sqltext
-  FROM v$sqltext_with_newlines t, V$SESSION s, v$process p WHERE t.address = s.sql_address AND p.addr = s.paddr(+)
- AND t.hash_value = s.sql_hash_value    ORDER BY s.sid, t.piece;
-
---查询用户 CPU 的使用率
-SELECT ss.username, se.SID, VALUE / 100 cpu_usage_seconds FROM v$session ss, v$sesstat se, v$statname sn
-  WHERE se.STATISTIC# = sn.STATISTIC# AND NAME LIKE &#39;%CPU used by this session%&#39; AND se.SID = ss.SID
-  AND ss.status = &#39;ACTIVE&#39;AND ss.username IS NOT NULL ORDER BY VALUE DESC;
-
---查询数据库长查询进展情况
- SELECT a.sid, a.serial#, b.username, opname OPERATION, target OBJECT, TRUNC (elapsed_seconds, 5) &amp;quot;ET (s)&amp;quot;
- , TO_CHAR (start_time, &#39;HH24:MI:SS&#39;) start_time, ROUND ( (sofar / totalwork) * 100, 2) &amp;quot;COMPLETE (%)&amp;quot;
-  FROM v$session_longops a, v$session b
-   WHERE a.sid = b.sid AND b.username NOT IN (&#39;SYS&#39;, &#39;SYSTEM&#39;) AND totalwork &amp;gt; 0 ORDER BY elapsed_seconds;
-
---获取当前会话 ID，进程 ID，客户端 ID 等
-SELECT b.sid, b.serial#,a.spid processid,b.process clientpid FROM v$process a, v$session b
- WHERE a.addr = b.paddr AND b.audsid = USERENV (&#39;sessionid&#39;);
---V$SESSION.SID AND V$SESSION.SERIAL# 是数据库进程 ID
---V$PROCESS.SPID 是数据库服务器后台进程 ID
---V$SESSION.PROCESS 是客户端 PROCESS ID, ON windows it IS : separated THE FIRST # IS THE PROCESS ID ON THE client AND 2nd one IS THE THREAD id.
-
---查询特定的模式或者表中执行的最后一个 SQL 语句
-SELECT CREATED, TIMESTAMP, last_ddl_time FROM all_objects WHERE     OWNER = &#39;TSUSER&#39;   AND OBJECT_TYPE = &#39;TABLE&#39; AND OBJECT_NAME = &#39;TB_USER_EXTEND&#39;;
-
---在视图中查询并显示实际的 Oracle 连接
-SELECT osuser,username,machine, program FROM v$session  ORDER BY osuser;
-
---查询并显示通过打开连接程序打开连接的组
-SELECT program application, COUNT (program) Numero_Sesiones  FROM v$session GROUP BY program ORDER BY Numero_Sesiones DESC;
-
---查询并显示连接 Oracle 的用户和用户的会话数量
-SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session GROUP BY username ORDER BY Numero_Sesiones DESC;
-
---获取拥有者的对象数量
-SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
 &lt;/code&gt;&lt;/pre&gt;
 </description>
       

@@ -40,6 +40,33 @@
     </item>
     
     <item>
+      <title>SpringBoot——整合</title>
+      <link>https://ianeiu.github.io/2018/11/01/springboot%E6%95%B4%E5%90%88/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/01/springboot%E6%95%B4%E5%90%88/</guid>
+      <description>如非说明，皆是使用1.5 本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() {</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot——使用springboot所见问题简单记录</title>
+      <link>https://ianeiu.github.io/2018/10/30/springboot%E4%BD%BF%E7%94%A8springboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/springboot%E4%BD%BF%E7%94%A8springboot%E6%89%80%E8%A7%81%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</guid>
+      <description>如非说明，皆是使用1.5 现象1：引入layer.js出现undefinedcss目录 原因：layer.js与layui.js冲突 解决：将la</description>
+    </item>
+    
+    <item>
+      <title>Spring——拦截器</title>
+      <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <description>前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的</description>
+    </item>
+    
+    <item>
       <title>JVM类加载机制</title>
       <link>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
@@ -118,33 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/29/javaweb%E5%B8%B8%E7%94%A8%E7%9A%84%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
       <description>J2EE中常用的名词简单描述 web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的</description>
-    </item>
-    
-    <item>
-      <title>Maven——笔记</title>
-      <link>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</guid>
-      <description>简介 项目构建和管理自动化工具 坐标(可由groupId、artifactId、version组成)。 构件通过坐标作为其唯一标识。 仓库： 远程仓库</description>
-    </item>
-    
-    <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</link>
-      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/21/dbsql%E9%9B%86%E9%94%A6/</guid>
-      <description>数据定义语言（DDL） 清空表数据 TRUNCATE TABLE TABLENAME; 修改字段类型或长度 标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型; 例如Mysql的修改字段</description>
-    </item>
-    
-    <item>
-      <title>DB——时间字段</title>
-      <link>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/20/db%E6%97%B6%E9%97%B4%E5%AD%97%E6%AE%B5/</guid>
-      <description>mysql date ：“yyyy-mm-dd”格式表示的日期值 “1000-01-01”到“9999-12-31” 3字节 time ：“hh:mm:ss”格式表示的时间</description>
     </item>
     
   </channel>
