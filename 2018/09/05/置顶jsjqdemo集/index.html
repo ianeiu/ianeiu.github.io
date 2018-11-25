@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-09-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="7812">
+<meta itemprop="wordCount" content="7988">
 
 
 
@@ -566,7 +566,9 @@ function(){
 });
 </code></pre>
 
+<blockquote>
 <p>demo鼠标移入出现悬浮框</p>
+</blockquote>
 
 <pre><code>&lt;td class='linkTd'&gt;
     &lt;div style='position:relative;'&gt;
@@ -594,6 +596,54 @@ $('.linkTd').hover(
         $(this).find('.linkHover').hide();
     }   
 );
+</code></pre>
+
+<blockquote>
+<p>进化</p>
+</blockquote>
+
+<pre><code>```
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title class=&quot;lang&quot; langKey=&quot;xxxx&quot;&gt;index&lt;/title&gt;
+            &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf8&quot; /&gt;
+            &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;
+            &lt;style&gt;
+            .linkHover{         
+                position: absolute;  
+                top: 20px;  
+                width: 320px;
+                max-height: 250px;           /* 设置最大高度，当高度达到此值时出现滚动条 */  
+                z-index: 10;  
+                background-color: #E0E5E5;   
+                overflow: auto;              /* 自动添加滚动条 */  
+                box-shadow:0px 0px 10px #000;   /* 外阴影 */  
+                display:none;
+            }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class='linkTd'&gt;
+                123123
+            &lt;/div&gt;
+        &lt;/body&gt;
+        &lt;script&gt;
+            $(function () {
+                var tip =&quot;&lt;div style='position:relative;'&gt; &lt;span class='linkHover'&gt;1111&lt;/span&gt; &lt;/div&gt;&quot;;
+                    $('.linkTd').append(tip);
+            })
+            $('.linkTd').hover( 
+                function(){   
+                    $(this).find('.linkHover').show();
+                } ,  
+                function(){  
+                    $(this).find('.linkHover').hide();
+                }   
+            );
+        &lt;/script
+    &lt;/html&gt;
+```
 </code></pre>
 
 <p>2.ready<br />
@@ -636,6 +686,8 @@ $(document).keyup(function(event){
   }
 });
 </code></pre>
+
+<p>form表单增加<code>&lt;input type=&quot;text&quot; style=&quot;display:none&quot;/&gt;</code>可以防止回车提交自动提交表单</p>
 
 <p>推荐：keyup，防止笔记本键盘不小心触摸到了
 有些文档中有写成这样：</p>

@@ -432,7 +432,9 @@ function(){
 });
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;demo鼠标移入出现悬浮框&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;td class=&#39;linkTd&#39;&amp;gt;
     &amp;lt;div style=&#39;position:relative;&#39;&amp;gt;
@@ -460,6 +462,54 @@ $(&#39;.linkTd&#39;).hover(
         $(this).find(&#39;.linkHover&#39;).hide();
     }   
 );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;进化&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;```
+    &amp;lt;!doctype html&amp;gt;
+    &amp;lt;html&amp;gt;
+        &amp;lt;head&amp;gt;
+            &amp;lt;title class=&amp;quot;lang&amp;quot; langKey=&amp;quot;xxxx&amp;quot;&amp;gt;index&amp;lt;/title&amp;gt;
+            &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf8&amp;quot; /&amp;gt;
+            &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+            &amp;lt;style&amp;gt;
+            .linkHover{         
+                position: absolute;  
+                top: 20px;  
+                width: 320px;
+                max-height: 250px;           /* 设置最大高度，当高度达到此值时出现滚动条 */  
+                z-index: 10;  
+                background-color: #E0E5E5;   
+                overflow: auto;              /* 自动添加滚动条 */  
+                box-shadow:0px 0px 10px #000;   /* 外阴影 */  
+                display:none;
+            }
+            &amp;lt;/style&amp;gt;
+        &amp;lt;/head&amp;gt;
+        &amp;lt;body&amp;gt;
+            &amp;lt;div class=&#39;linkTd&#39;&amp;gt;
+                123123
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/body&amp;gt;
+        &amp;lt;script&amp;gt;
+            $(function () {
+                var tip =&amp;quot;&amp;lt;div style=&#39;position:relative;&#39;&amp;gt; &amp;lt;span class=&#39;linkHover&#39;&amp;gt;1111&amp;lt;/span&amp;gt; &amp;lt;/div&amp;gt;&amp;quot;;
+                    $(&#39;.linkTd&#39;).append(tip);
+            })
+            $(&#39;.linkTd&#39;).hover( 
+                function(){   
+                    $(this).find(&#39;.linkHover&#39;).show();
+                } ,  
+                function(){  
+                    $(this).find(&#39;.linkHover&#39;).hide();
+                }   
+            );
+        &amp;lt;/script
+    &amp;lt;/html&amp;gt;
+```
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;2.ready&lt;br /&gt;
@@ -502,6 +552,8 @@ $(document).keyup(function(event){
   }
 });
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;form表单增加&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; style=&amp;quot;display:none&amp;quot;/&amp;gt;&lt;/code&gt;可以防止回车提交自动提交表单&lt;/p&gt;
 
 &lt;p&gt;推荐：keyup，防止笔记本键盘不小心触摸到了
 有些文档中有写成这样：&lt;/p&gt;
@@ -1158,6 +1210,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/1024Community/p/honery.html&#34; target=&#34;blank&#34;&gt;扒一扒JVM的垃圾回收机制，下次面试你准备好了吗&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xqhys/article/details/81672317&#34; target=&#34;blank&#34;&gt;shiro+cas 单点登出解决（对shiro管理的session有效）&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
@@ -1283,6 +1337,944 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
+Integer c = 100,d=100;    
+@Test
+public void testIntegerDD(){
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
+,可看Integer源码valueOf(int i)方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static Integer valueOf(int i) {
+	if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
+	return IntegerCache.cache[i + (-IntegerCache.low)];
+	return new Integer(i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testIntegerDD(){
+
+    Integer a = 1000,b=1000;
+    Integer c = 100,d=100;   
+    Integer e = new Integer(100);
+    Integer f = new Integer(100);
+    int g = 1000;
+    Integer h = new Integer(1000);  
+
+
+    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+
+    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
+    System.out.println(e==f);//false
+    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
+    System.out.println(g==h);//true
+
+    //进行自动装箱操作
+    System.out.println(c==e);//false
+    System.out.println(a==h);//false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    System.out.println(s1==s2); // true
+    System.out.println(s1==s3); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
+像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
+当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
+
+&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    //都存储在常量池中,指向同一常量
+    System.out.println(s1==s2); // true
+    //存储在常量池中,存储在堆内存中
+    System.out.println(s1==s3); // false
+
+    String s4 = &amp;quot;helloo&amp;quot;;
+    /**
+     * 会重新在常量池创建常量（String不可变属性）
+     */
+    String s5 = s1+&amp;quot;o&amp;quot;;
+    //字符串拼接有变量参与，底层调用StringBuffer处理，相当于在堆内存中开辟了新空间
+    System.out.println(s4 == s5); // false
+    //常量相加，先在常量池找，找到即用
+    System.out.println(s4 == &amp;quot;hello&amp;quot;+&amp;quot;o&amp;quot;);//true
+
+    //hello
+    String s6 = s4.substring(0, s4.length() - 1);
+    //substring返回的也是new出来的String对象
+    System.out.println(s1 == s6); // false
+    //地址值不一样
+    System.out.println(s3 == s6); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
+    new Runnable() {
+        public void run() {
+            try {
+              Thread.sleep(1000);
+           } catch (InterruptedException e) {
+             // TODO Auto-generated catch block
+            e.printStackTrace();
+           }  
+           System.out.println(name);
+        }
+    }.start();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
+
+&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
+首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
+主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
+
+&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
+局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java笔记——基础</title>
+      <link>https://ianeiu.github.io/2018/11/18/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/18/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
+      
+        <description>
+
+&lt;p&gt;Java基础笔记整理&lt;/p&gt;
+
+&lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;用于定义数据类型&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;
+类型转换：&lt;br /&gt;
+byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double&lt;br /&gt;
+char→int&lt;br /&gt;
+int→long&lt;br /&gt;
+int→double&lt;br /&gt;
+float→double&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;void&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用于定义数据类型值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;true false null&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;用于定义流程控制&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if else switch case default【选择】&lt;br /&gt;
+【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;while do for【循环】&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;break continue return【流程跳转】
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style=&#34;border:1px solid red;padding:10px 10px&#34;&gt;
+    直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。&lt;/div&gt;
+    
+
+&lt;pre&gt;&lt;code&gt;```
+public static void testForEach(List list) {  
+    for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
+        Object t = iterator.next();  
+        Object obj = t;  
+    }  
+}  
+```
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于定义访问权限修饰符
+
+&lt;ul&gt;
+&lt;li&gt;private public protected&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;用于定义类、函数、变量
+
+&lt;ul&gt;
+&lt;li&gt;abstract final static synchronized&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;类与类之间的关系
+
+&lt;ul&gt;
+&lt;li&gt;extends implements&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;建立实例、引用实例、判断实例
+
+&lt;ul&gt;
+&lt;li&gt;new this super instanceof&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;异常处理
+
+&lt;ul&gt;
+&lt;li&gt;try catch throw throws finally&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;包
+
+&lt;ul&gt;
+&lt;li&gt;package import&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;其它
+
+&lt;ul&gt;
+&lt;li&gt;native strictfp transient volatile assert&lt;/li&gt;
+&lt;li&gt;goto const 【保留字】&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
+
+&lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
+合法字符组成：英文字幕、数字、$、_【不能以数字开头】&lt;/p&gt;
+
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单行 //&lt;/li&gt;
+&lt;li&gt;多行 /**/&lt;/li&gt;
+&lt;li&gt;文档 /**  */&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;字面值 &amp;ldquo;hello&amp;rdquo;,10.true&lt;/li&gt;
+&lt;li&gt;自定义 final int LINK_CODE = 0;
+
+&lt;ul&gt;
+&lt;li&gt;final 修饰变量（基本类型值不变，引用类型地址值不变）（只能在构造方法执行之前赋值一次）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;类变量（静态变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;实例变量（成员变量）&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;局部变量（本地变量）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（代码）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;类中方法外&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法定义中、方法声明上&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;位置（内存）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;方法区中静态区&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;堆&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;栈&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;生命周期&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随类加载而加载&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随对象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;随方法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;this无法存在静态中；&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;静态方法只能访问静态变量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;算术运算符&lt;br /&gt;
+&lt;code&gt;
+% + - * / ++  --
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;赋值运算符&lt;br /&gt;
+&lt;code&gt;
+= += -= *= /= %=
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;比较运算符&lt;br /&gt;
+&lt;code&gt;
+== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= 
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;逻辑运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;amp; | ^(异或) ! &amp;amp;&amp;amp; || 【&amp;amp;&amp;amp; || 有短路效果】
+&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;位运算符&lt;br /&gt;
+&lt;code&gt;
+&amp;lt;&amp;lt; &amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;(无符号右移) &amp;amp; | ^ ~(按位取反)
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;三元运算符&lt;br /&gt;
+&lt;code&gt;
+max = a &amp;gt; b ? a : b
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
+
+&lt;p&gt;代码块加载顺序： 静态代码块（类初始化）&amp;ndash;&amp;gt; 局部代码块 &amp;ndash;&amp;gt; 构造代码块（对象初始化）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Importtant06Code {
+    static { System.out.println(&amp;quot;Importtant06Code静态代码块&amp;quot;);}
+
+    public static void main(String[] args) {
+        System.out.println(&amp;quot;main&amp;quot;);
+        User user = new User();
+        User user2 = new User();
+    }
+}
+
+class User{
+    static { System.out.println(&amp;quot;User静态代码块&amp;quot;);}
+    {System.out.println(&amp;quot;User局部代码块&amp;quot;);}
+    public User() {System.out.println(&amp;quot;User构造代码块&amp;quot;);}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Importtant06Code静态代码块
+main
+User静态代码块
+User局部代码块
+User构造代码块
+User局部代码块
+User构造代码块
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;java面向对象三大特性&#34;&gt;Java面向对象三大特性&lt;/h2&gt;
+
+&lt;p&gt;封装、继承、多态&lt;/p&gt;
+
+&lt;h2 id=&#34;类与对象&#34;&gt;类与对象&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类：一组相关属性和行为的集合（抽象）&lt;/li&gt;
+&lt;li&gt;对象：改类事物的具体表现形式（具体存在的个体）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口&lt;br /&gt;
+好处：隐藏实现细节,提供公共访问方式，复用性，安全性&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关键字：private、this、static、new&lt;/p&gt;
+
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;wm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对象构造过程：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将User.class文件加载到内存&lt;/li&gt;
+&lt;li&gt;栈内存放置user，堆内存放置对象&lt;/li&gt;
+&lt;li&gt;给成员变量进行初始化
+
+&lt;ul&gt;
+&lt;li&gt;默认初始化 name:null  age:0&lt;/li&gt;
+&lt;li&gt;显示初始化 name:wm    age:18&lt;/li&gt;
+&lt;li&gt;构造初始化 name:sg    age:25&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将地址值赋给变量user&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;从已有类得到继承信息创建新类的过程&lt;br /&gt;
+好处：复用、维护、多态前提&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关键字：extends、this、super&lt;/p&gt;
+
+&lt;h4 id=&#34;重载与重写&#34;&gt;重载与重写&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重写（Override） 子类重写父类方法,多态的条件之一&lt;/li&gt;
+&lt;li&gt;重载（Overload） 同一个类中不同参数的方法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;注意&#34;&gt;注意&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;子类初始化之前会先进行父类的初始化&lt;/li&gt;
+&lt;li&gt;父类没有无参构造，编译会报错&lt;/li&gt;
+&lt;li&gt;子类重写父类方法，方法访问权限不能比之更低&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;允许不同子类型的对象对同一消息作出不同的响应&lt;br /&gt;
+好处： 维护、扩展&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;父类接口指向子类对象，主要体现在抽象类&lt;/p&gt;
+
+&lt;p&gt;Fu f = new Zi();&lt;br /&gt;
+成员方法：编译看父类，运行看子类。&lt;br /&gt;
+静态方法：编译看父类，运行看子类。&lt;br /&gt;
+成员变量：编译看父类，运行看子类。&lt;br /&gt;
+构造方法：编译看父类，运行看父子。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;learn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d1tod4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Zi&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;method zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo04DuoTai&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;nd&#34;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;static-access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;父类引用指向子类对象&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;父&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		
+		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
+		&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;kbd&gt;java多态的实现原理&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;当JVM执行Java字节码时，类型信息会存储在方法区中，为了优化对象的调用方法的速度，方法区的类型信息会增加一个指针，该指针指向一个记录该类方法的方法表，方法表中的每一个项都是对应方法的指针。&lt;/p&gt;
+
+&lt;p&gt;方法区：方法区和JAVA堆一样，是各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
+运行时常量池：它是方法区的一部分，Class文件中除了有类的版本、方法、字段等描述信息外，还有一项信息是常量池，用于存放编译器生成的各种符号引用，这部分信息在类加载时进入方法区的运行时常量池中。
+方法区的内存回收目标是针对常量池的回收及对类型的卸载。&lt;/p&gt;
+
+&lt;p&gt;方法表的构造&lt;/p&gt;
+
+&lt;p&gt;由于java的单继承机制，一个类只能继承一个父类，而所有的类又都继承Object类，方法表中最先存放的是Object的方法，接下来是父类的方法，最后是该类本身的方法。如果子类改写了父类的方法，那么子类和父类的那些同名的方法共享一个方法表项。&lt;/p&gt;
+
+&lt;p&gt;由于这样的特性，使得方法表的偏移量总是固定的，例如，对于任何类来说，其方法表的equals方法的偏移量总是一个定值，所有继承父类的子类的方法表中，其父类所定义的方法的偏移量也总是一个定值。&lt;/p&gt;
+
+&lt;p&gt;实例&lt;/p&gt;
+
+&lt;p&gt;假设Class A是Class B的子类，并且A改写了B的方法的method()，那么B来说，method方法的指针指向B的method方法入口；对于A来说，A的方法表的method项指向自身的method而非父类的。&lt;/p&gt;
+
+&lt;p&gt;流程：调用方法时，虚拟机通过对象引用得到方法区中类型信息的方法表的指针入口，查询类的方法表 ，根据实例方法的符号引用解析出该方法在方法表的偏移量，子类对象声明为父类类型时，形式上调用的是父类的方法，此时虚拟机会从实际的方法表中找到方法地址，从而定位到实际类的方法。&lt;br /&gt;
+注：所有引用为父类，但方法区的类型信息中存放的是子类的信息，所以调用的是子类的方法表。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;抽象类与接口&#34;&gt;抽象类与接口&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;抽象类&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;接口&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;特点&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.抽象类与方法需用abstract修饰&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.接口用interface修饰&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.抽象类不一定有抽象方法，有则为抽象类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.类实现接口用implements&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.不能直接实例化（通过多态可实例化）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.不能被实例化&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;实现&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象类、具体类（重写所有方法）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象类，具体类&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;成员特点-属性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;变量、常量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;常量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;成员特点-构造方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;有&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;成员特点-成员方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象、非抽象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抽象、【JDK8有 default、static方法】&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关键字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;不能与private、final、static(无意义)共存&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;编译报错&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;内部类&#34;&gt;内部类&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;成员内部类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        
+    &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Inner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+            &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;
+                
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Inner&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oi&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Inner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;oi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;局部内部类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Outer{
+    static int num0 = 99;
+    public int num = 10;
+        
+    public void method(){
+        final int num2 = 100;//存放于堆内存
+        int num3 = 101;//随调用产生，随结束消失
+        class Inner{
+            Outer o = new Outer();
+            system.out.println(o.num0);
+            system.out.println(o.num1);
+            system.out.println(o.num2);
+            //system.out.println(o.num3);//无法访问，编译报错
+        }
+    }
+}
+    
+class Test{
+    public static void main(String[] args){
+        Outer o = new Outer();
+        o.method();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;匿名内部类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();}&lt;/span&gt;
+    
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PersonDemo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;PersonDemo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PersonDemo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
+                &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dosomething&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; 
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;静态内部类（访问外部数据必须用static修饰）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Outer{
+    static int num0 = 99;
+    public int num = 10;
+        
+    static class Inner{
+        public int num = 20;
+        public void show(){
+            int num = 30;
+            system.out.println(num);//30
+            system.out.println(this.num);//20
+            system.out.println(Outer.this.num);//10
+                
+        }
+    }
+}
+    
+class Test{
+    public static void main(String[] args){
+        Outer.Inner oi = new Outer().Inner();
+        oi.show();
+            
+        Outer.Inner.show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;异常&#34;&gt;异常&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://images2015.cnblogs.com/blog/679904/201510/679904-20151025210813989-921927916.jpg&#34; alt=&#34;yc&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Throwable
+Throwable是 Java 语言中所有错误或异常的超类。
+Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。
+Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信息。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Exception
+Exception及其子类是 Throwable 的一种形式，它指出了合理的应用程序想要捕获的条件。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;RuntimeException
+RuntimeException是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。
+编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既&amp;rdquo;没有通过throws声明抛出ArithmeticException异常&amp;rdquo;，也&amp;rdquo;没有通过try&amp;hellip;catch&amp;hellip;处理该异常&amp;rdquo;，也能通过编译。这就是我们所说的&amp;rdquo;编译器不会检查RuntimeException异常&amp;rdquo;。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;非RuntimeException
+Exception类本身，以及Exception的子类中除了&amp;rdquo;运行时异常&amp;rdquo;之外的其它子类都属于被检查异常。
+Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Error
+和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。&lt;br /&gt;
+和RuntimeException一样， 编译器也不会检查Error。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;collection概述&#34;&gt;Collection概述&lt;/h2&gt;
+
+&lt;p&gt;Collection 是对象集合，继承了超级接口Iterable，使用Iterator迭代器实现遍历。 Collection 有两个子接口 List 和 Set。&lt;/p&gt;
+
+&lt;p&gt;List 可以通过下标 (1,2..) 来取得值，值是有序重复，有自己的迭代器ListIterator，可以通过这个迭代器进行逆序的迭代。&lt;/p&gt;
+
+&lt;p&gt;ArrayList、Vector、LinkedList 是List的实现类。&lt;/p&gt;
+
+&lt;p&gt;ArrayList 是线程不安全的，底层采用数组实现（并且该数组的类型是Object类型的），默认长度为10。&lt;br /&gt;
+Vector 是线程安全的，底层采用数组实现。&lt;br /&gt;
+LinkedList 是线程不安全的，底层是由（双向循环Deque）链表实现的。&lt;/p&gt;
+
+&lt;p&gt;Stack类：继承自Vector，实现一个后进先出的栈。提供了几个基本方法，push、pop、peak、empty、search等。&lt;br /&gt;
+Queue接口：提供了几个基本方法，offer、poll、peek等。已知实现类有LinkedList（实现双端队列Deque）、PriorityQueue等。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Set 只能通过游标来取值，并且值是不能重复的。Set中的元素类必须有一个有效的equals方法。&lt;/p&gt;
+
+&lt;p&gt;Set子接口有NavigableSet、SortedSet；Set子类有EnumSet、HashSet、LinkedHashSet、TreeSet、AbstractSet等。&lt;/p&gt;
+
+&lt;p&gt;HashSet 底层是哈希表（元素为链表的数组）实现（方法代码使用了HashMap），由hashcode()和equals()方法保证元素唯一。&lt;br /&gt;
+TreeSet 底层是红黑树（自平衡的二叉树）实现，元素是可排序的。&lt;/p&gt;
+
+&lt;p&gt;LinkedHashSet 底层由链表和哈希表实现，保证元素有序且唯一。&lt;/p&gt;
+
+&lt;p&gt;TreeSet有两种排序实现。自然排序(内比较器)，类实现Comparable；比较器排序，使用匿名内部方式实现。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//比较器排序
+TreeSet&amp;lt;User&amp;gt; userSet = new TreeSet&amp;lt;&amp;gt;(
+	new Comparator&amp;lt;User&amp;gt;(){
+		public int compare(User user1, User user2){
+			if (user1.getAge() &amp;gt; user2.getAge()) return 1;
+			else if (user1.getAge() = user2.getAge()) return 0;
+			else  return -1;
+		}
+	}
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用迭代器Iterator遍历集合时修改添加元素会报并发修改异常，而用ListIterator则不会。&lt;/li&gt;
+&lt;li&gt;使用size()获取集合长度&lt;/li&gt;
+&lt;li&gt;toString()实现：AbstractColletion使用iterator()迭代器方法得到迭代器，之后使用StringBuilder拼接遍历的值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;arraylist-linkedlist-vector的底层实现和区别&#34;&gt;ArrayList、LinkedList、Vector的底层实现和区别&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从同步性来看，ArrayList和LinkedList是不同步的，而Vector是的。所以线程安全的话，可以使用ArrayList或LinkedList，可以节省为同步而耗费的开销。但在多线程下，有时候就不得不使用Vector了。当然，也可以通过一些办法包装ArrayList、LinkedList，使我们也达到同步，但效率可能会有所降低。&lt;/li&gt;
+&lt;li&gt;从内部实现机制来讲ArrayList和Vector都是使用Object的数组形式来存储的。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%，所以最后你获得的这个集合所占的空间总是比你实际需要的要大。如果你要在集合中保存大量的数据，那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。&lt;/li&gt;
+&lt;li&gt;ArrayList和Vector中，从指定的位置（用index）检索一个对象，或在集合的末尾插入、删除一个对象的时间是一样的，可表示为O(1)。但是，如果在集合的其他位置增加或者删除元素那么花费的时间会呈线性增长O(n-i)，其中n代表集合中元素的个数，i代表元素增加或移除元素的索引位置，因为在进行上述操作的时候集合中第i和第i个元素之后的所有元素都要执行(n-i)个对象的位移操作。LinkedList底层是由双向循环链表实现的，LinkedList在插入、删除集合中任何位置的元素所花费的时间都是一样的O(1)，但它在索引一个元素的时候比较慢，为O(i)，其中i是索引的位置，如果只是查找特定位置的元素或只在集合的末端增加、移除元素，那么使用Vector或ArrayList都可以。如果是对其它指定位置的插入、删除操作，最好选择LinkedList。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;map概述&#34;&gt;Map概述&lt;/h2&gt;
+
+&lt;p&gt;Map 是键值对集合。HashTable和HashMap是Map的实现类。&lt;/p&gt;
+
+&lt;p&gt;HashMap不是线程安全的，键唯一（哈希表实现），可以存储null值。&lt;br /&gt;
+HashTable是线程安全的，键唯一，不能存储null值。&lt;/p&gt;
+
+&lt;p&gt;LinkedHashMap键是唯一有序的（哈希表和链表实现）&lt;br /&gt;
+TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
+
+&lt;h2 id=&#34;io流&#34;&gt;IO流&lt;/h2&gt;
+
+&lt;p&gt;//TODO&lt;/p&gt;
+
+&lt;h2 id=&#34;多线程相关&#34;&gt;多线程相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;多线程实现方案：
+
+&lt;ul&gt;
+&lt;li&gt;继承Thread类&lt;/li&gt;
+&lt;li&gt;实现Runnable接口&lt;/li&gt;
+&lt;li&gt;实现Callable接口结合线程池&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;线程安全问题产生条件
+
+&lt;ul&gt;
+&lt;li&gt;多线程环境&lt;/li&gt;
+&lt;li&gt;有共享数据&lt;/li&gt;
+&lt;li&gt;有多条语句操作共享数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同步的方式：
+
+&lt;ul&gt;
+&lt;li&gt;同步代码块 &lt;code&gt;synchronized(对象){//doSomething}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;同步方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;run()与start()
+
+&lt;ul&gt;
+&lt;li&gt;run():封装了被线程执行的代码,直接调用仅仅是普通方法的调用&lt;/li&gt;
+&lt;li&gt;start():启动线程，并由JVM自动调用run()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sleep()与wait()
+
+&lt;ul&gt;
+&lt;li&gt;sleep():必须指定时间;不释放锁。&lt;/li&gt;
+&lt;li&gt;wait(): 可不指定时间;释放锁。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;线程状态&#34;&gt;线程状态&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。&lt;/li&gt;
+&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的Running和Ready，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
+&lt;li&gt;无限期等待（Waiting）:处于这种状态的进程不会被分配CPU执行时间，它们要等待被其他线程显示的唤醒。以下方法会让线程陷入无限期的等待状态：
+
+&lt;ul&gt;
+&lt;li&gt;没有设置Timeout参数的Object.wait()方法&lt;/li&gt;
+&lt;li&gt;没有设置Timeout参数的Thread.join()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.park()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;限期等待（Timed Waiting）:处于这种状态的进程不会被分配CPU执行时间，不过无需等待被其他线程显示的唤醒，在一定时间之后它们会由系统自动唤醒。以下方法会让线程进入限期等待状态：
+
+&lt;ul&gt;
+&lt;li&gt;Thread.sleep()方法&lt;/li&gt;
+&lt;li&gt;设置了Timeout参数的Object.wait()方法&lt;/li&gt;
+&lt;li&gt;设置了Timeout参数的Thread.join()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.parkNanos()方法&lt;/li&gt;
+&lt;li&gt;LockSupport.parkUnitil()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;阻塞（Blocked）:进程被阻塞了，阻塞状态和等待状态的区别是：阻塞状态在等待着获取到一个排它锁，这个事件将在另一个线程放弃这个锁的时候发生；而等待状态则是在等待一段时间，或者唤醒动作的发生。在程序等待进入同步区域的时候，线程将进入这种状态。&lt;/li&gt;
+&lt;li&gt;结束（Terminated）:已终止线程的线程状态，线程已经结束执行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;socket编程&#34;&gt;Socket编程&lt;/h2&gt;
+
+&lt;p&gt;//TODO&lt;/p&gt;
+
+&lt;h2 id=&#34;反射机制&#34;&gt;反射机制&lt;/h2&gt;
+
+&lt;p&gt;反射技术：动态加载一个指定的类，并获取该类中所有的内容。并将字节码文件中的内容都封装成对象，这样便于操作这些成员。简单说：反射技术可以对一个类进行解剖。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;好处：大大增强了程序的扩展性。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;反射的基本步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;获得Class对象，就是获得指定的名称的字节码文件对象&lt;/li&gt;
+&lt;li&gt;实例化对象，获得类的属性、方法或者构造函数&lt;/li&gt;
+&lt;li&gt;访问属性、调用方法、调用构造函数创建对象&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
@@ -2547,651 +3539,6 @@ public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
     </item>
     
     <item>
-      <title>Java笔记——基础</title>
-      <link>https://ianeiu.github.io/2018/10/12/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Fri, 12 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/12/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
-      
-        <description>
-
-&lt;p&gt;Java基础笔记整理&lt;/p&gt;
-
-&lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;用于定义数据类型&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;
-类型转换：&lt;br /&gt;
-byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double&lt;br /&gt;
-char→int&lt;br /&gt;
-int→long&lt;br /&gt;
-int→double&lt;br /&gt;
-float→double&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;void&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;用于定义数据类型值&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;true false null&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;用于定义流程控制&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;if else switch case default【选择】&lt;br /&gt;
-【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;while do for【循环】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;break continue return【流程跳转】
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div style=&#34;border:1px solid red;padding:10px 10px&#34;&gt;
-    直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。&lt;/div&gt;
-    
-
-&lt;pre&gt;&lt;code&gt;```
-public static void testForEach(List list) {  
-    for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
-        Object t = iterator.next();  
-        Object obj = t;  
-    }  
-}  
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;用于定义访问权限修饰符
-
-&lt;ul&gt;
-&lt;li&gt;private public protected&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;用于定义类、函数、变量
-
-&lt;ul&gt;
-&lt;li&gt;abstract final static synchronized&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;类与类之间的关系
-
-&lt;ul&gt;
-&lt;li&gt;extends implements&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;建立实例、引用实例、判断实例
-
-&lt;ul&gt;
-&lt;li&gt;new this super instanceof&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;异常处理
-
-&lt;ul&gt;
-&lt;li&gt;try catch throw throws finally&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;包
-
-&lt;ul&gt;
-&lt;li&gt;package import&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;其它
-
-&lt;ul&gt;
-&lt;li&gt;native strictfp transient volatile assert&lt;/li&gt;
-&lt;li&gt;goto const 【保留字】&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
-
-&lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
-合法字符组成：英文字幕、数字、$、_【不能以数字开头】&lt;/p&gt;
-
-&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;单行 //&lt;/li&gt;
-&lt;li&gt;多行 /**/&lt;/li&gt;
-&lt;li&gt;文档 /**  */&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;字面值 &amp;ldquo;hello&amp;rdquo;,10.true&lt;/li&gt;
-&lt;li&gt;自定义 final int LINK_CODE = 0;
-
-&lt;ul&gt;
-&lt;li&gt;final 修饰变量（基本类型值不变，引用类型地址值不变）（只能在构造方法执行之前赋值一次）&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;类变量（静态变量）&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;实例变量（成员变量）&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;局部变量（本地变量）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;位置（代码）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;类中&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;类中方法外&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;方法定义中、方法声明上&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;位置（内存）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;方法区中静态区&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;堆&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;栈&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;生命周期&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随类加载而加载&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随对象&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随方法&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;this无法存在静态中；&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;静态方法只能访问静态变量&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;算术运算符&lt;br /&gt;
-&lt;code&gt;
-% + - * / ++  --
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;赋值运算符&lt;br /&gt;
-&lt;code&gt;
-= += -= *= /= %=
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;比较运算符&lt;br /&gt;
-&lt;code&gt;
-== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= 
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;逻辑运算符&lt;br /&gt;
-&lt;code&gt;
-&amp;amp; | ^(异或) ! &amp;amp;&amp;amp; || 【&amp;amp;&amp;amp; || 有短路效果】
-&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;位运算符&lt;br /&gt;
-&lt;code&gt;
-&amp;lt;&amp;lt; &amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;(无符号右移) &amp;amp; | ^ ~(按位取反)
-&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;三元运算符&lt;br /&gt;
-&lt;code&gt;
-max = a &amp;gt; b ? a : b
-&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
-
-&lt;p&gt;代码块加载顺序： 静态代码块（类初始化）&amp;ndash;&amp;gt; 局部代码块 &amp;ndash;&amp;gt; 构造代码块（对象初始化）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class Importtant06Code {
-    static { System.out.println(&amp;quot;Importtant06Code静态代码块&amp;quot;);}
-
-    public static void main(String[] args) {
-        System.out.println(&amp;quot;main&amp;quot;);
-        User user = new User();
-        User user2 = new User();
-    }
-}
-
-class User{
-    static { System.out.println(&amp;quot;User静态代码块&amp;quot;);}
-    {System.out.println(&amp;quot;User局部代码块&amp;quot;);}
-    public User() {System.out.println(&amp;quot;User构造代码块&amp;quot;);}
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;运行结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Importtant06Code静态代码块
-main
-User静态代码块
-User局部代码块
-User构造代码块
-User局部代码块
-User构造代码块
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;java面向对象三大特性&#34;&gt;Java面向对象三大特性&lt;/h2&gt;
-
-&lt;p&gt;封装、继承、多态&lt;/p&gt;
-
-&lt;h2 id=&#34;类与对象&#34;&gt;类与对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;类：一组相关属性和行为的集合（抽象）&lt;/li&gt;
-&lt;li&gt;对象：改类事物的具体表现形式（具体存在的个体）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口&lt;br /&gt;
-好处：隐藏实现细节,提供公共访问方式，复用性，安全性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;关键字：private、this、static、new&lt;/p&gt;
-
-&lt;p&gt;例子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;wm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;对象构造过程：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将User.class文件加载到内存&lt;/li&gt;
-&lt;li&gt;栈内存放置user，堆内存放置对象&lt;/li&gt;
-&lt;li&gt;给成员变量进行初始化
-
-&lt;ul&gt;
-&lt;li&gt;默认初始化 name:null  age:0&lt;/li&gt;
-&lt;li&gt;显示初始化 name:wm    age:18&lt;/li&gt;
-&lt;li&gt;构造初始化 name:sg    age:25&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;将地址值赋给变量user&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;从已有类得到继承信息创建新类的过程&lt;br /&gt;
-好处：复用、维护、多态前提&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;关键字：extends、this、super&lt;/p&gt;
-
-&lt;h4 id=&#34;重载与重写&#34;&gt;重载与重写&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;重写（Override） 子类重写父类方法,多态的条件之一&lt;/li&gt;
-&lt;li&gt;重载（Overload） 同一个类中不同参数的方法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;注意&#34;&gt;注意&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;子类初始化之前会先进行父类的初始化&lt;/li&gt;
-&lt;li&gt;父类没有无参构造，编译会报错&lt;/li&gt;
-&lt;li&gt;子类重写父类方法，方法访问权限不能比之更低&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;允许不同子类型的对象对同一消息作出不同的响应&lt;br /&gt;
-好处： 维护、扩展&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;父类接口指向子类对象，主要体现在抽象类&lt;/p&gt;
-
-&lt;p&gt;Fu f = new Zi();&lt;br /&gt;
-成员方法：编译看父类，运行看子类。&lt;br /&gt;
-静态方法：编译看父类，运行看子类。&lt;br /&gt;
-成员变量：编译看父类，运行看子类。&lt;br /&gt;
-构造方法：编译看父类，运行看父子。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;learn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d1tod4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Zi&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-	&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;method zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo04DuoTai&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;nd&#34;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;static-access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;父类引用指向子类对象&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;父&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-		
-		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		
-		&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
-		&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;kbd&gt;java多态的实现原理&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p&gt;当JVM执行Java字节码时，类型信息会存储在方法区中，为了优化对象的调用方法的速度，方法区的类型信息会增加一个指针，该指针指向一个记录该类方法的方法表，方法表中的每一个项都是对应方法的指针。&lt;/p&gt;
-
-&lt;p&gt;方法区：方法区和JAVA堆一样，是各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
-运行时常量池：它是方法区的一部分，Class文件中除了有类的版本、方法、字段等描述信息外，还有一项信息是常量池，用于存放编译器生成的各种符号引用，这部分信息在类加载时进入方法区的运行时常量池中。
-方法区的内存回收目标是针对常量池的回收及对类型的卸载。&lt;/p&gt;
-
-&lt;p&gt;方法表的构造&lt;/p&gt;
-
-&lt;p&gt;由于java的单继承机制，一个类只能继承一个父类，而所有的类又都继承Object类，方法表中最先存放的是Object的方法，接下来是父类的方法，最后是该类本身的方法。如果子类改写了父类的方法，那么子类和父类的那些同名的方法共享一个方法表项。&lt;/p&gt;
-
-&lt;p&gt;由于这样的特性，使得方法表的偏移量总是固定的，例如，对于任何类来说，其方法表的equals方法的偏移量总是一个定值，所有继承父类的子类的方法表中，其父类所定义的方法的偏移量也总是一个定值。&lt;/p&gt;
-
-&lt;p&gt;实例&lt;/p&gt;
-
-&lt;p&gt;假设Class A是Class B的子类，并且A改写了B的方法的method()，那么B来说，method方法的指针指向B的method方法入口；对于A来说，A的方法表的method项指向自身的method而非父类的。&lt;/p&gt;
-
-&lt;p&gt;流程：调用方法时，虚拟机通过对象引用得到方法区中类型信息的方法表的指针入口，查询类的方法表 ，根据实例方法的符号引用解析出该方法在方法表的偏移量，子类对象声明为父类类型时，形式上调用的是父类的方法，此时虚拟机会从实际的方法表中找到方法地址，从而定位到实际类的方法。&lt;br /&gt;
-注：所有引用为父类，但方法区的类型信息中存放的是子类的信息，所以调用的是子类的方法表。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;抽象类与接口&#34;&gt;抽象类与接口&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;抽象类&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;接口&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;特点&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.抽象类与方法需用abstract修饰&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.接口用interface修饰&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.抽象类不一定有抽象方法，有则为抽象类&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.类实现接口用implements&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.不能直接实例化（通过多态可实例化）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.不能被实例化&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;实现&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象类、具体类（重写所有方法）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象类，具体类&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-属性&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;变量、常量&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;常量&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-构造方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;有&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;无&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-成员方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象、非抽象&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象、【JDK8有 default、static方法】&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关键字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;不能与private、final、static(无意义)共存&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;编译报错&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;异常&#34;&gt;异常&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://images2015.cnblogs.com/blog/679904/201510/679904-20151025210813989-921927916.jpg&#34; alt=&#34;yc&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Throwable
-Throwable是 Java 语言中所有错误或异常的超类。
-Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。
-Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信息。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Exception
-Exception及其子类是 Throwable 的一种形式，它指出了合理的应用程序想要捕获的条件。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;RuntimeException
-RuntimeException是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。
-编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既&amp;rdquo;没有通过throws声明抛出ArithmeticException异常&amp;rdquo;，也&amp;rdquo;没有通过try&amp;hellip;catch&amp;hellip;处理该异常&amp;rdquo;，也能通过编译。这就是我们所说的&amp;rdquo;编译器不会检查RuntimeException异常&amp;rdquo;。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;非RuntimeException
-Exception类本身，以及Exception的子类中除了&amp;rdquo;运行时异常&amp;rdquo;之外的其它子类都属于被检查异常。
-Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Error
-和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。&lt;br /&gt;
-和RuntimeException一样， 编译器也不会检查Error。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;collection-map概述&#34;&gt;Collection、Map概述&lt;/h2&gt;
-
-&lt;p&gt;Collection 是对象集合，继承了超级接口Iterable，使用Iterator迭代器实现遍历。 Collection 有两个子接口 List 和 Set。&lt;/p&gt;
-
-&lt;p&gt;List 可以通过下标 (1,2..) 来取得值，值可以重复，有自己的迭代器ListIterator，可以通过这个迭代器进行逆序的迭代。&lt;/p&gt;
-
-&lt;p&gt;ArrayList、Vector、LinkedList 是 List 的实现类。&lt;/p&gt;
-
-&lt;p&gt;ArrayList 是线程不安全的,底层采用数组实现（并且该数组的类型是Object类型的），默认长度为10。&lt;br /&gt;
-Vector 是线程安全的，,底层采用数组实现。&lt;br /&gt;
-LinkedList 是线程不安全的，底层是由（双向循环）链表实现的。&lt;/p&gt;
-
-&lt;p&gt;Stack类：继承自Vector，实现一个后进先出的栈。提供了几个基本方法，push、pop、peak、empty、search等。&lt;/p&gt;
-
-&lt;p&gt;Queue接口：提供了几个基本方法，offer、poll、peek等。已知实现类有LinkedList（实现双端队列Deque）、PriorityQueue等。&lt;/p&gt;
-
-&lt;p&gt;Set 只能通过游标来取值，并且值是不能重复的。Set中的元素的类必须有一个有效的equals方法。&lt;/p&gt;
-
-&lt;p&gt;子接口：NavigableSet、SortedSet&lt;br /&gt;
-子类：EnumSet、HashSet、LinkedHashSet、TreeSet、AbstractSet等&lt;/p&gt;
-
-&lt;p&gt;Map 是键值对集合。&lt;/p&gt;
-
-&lt;p&gt;HashTable 和 HashMap 是 Map 的实现类。HashTable 是线程安全的，不能存储 null 值。HashMap 不是线程安全的，可以存储 null 值。&lt;/p&gt;
-
-&lt;h2 id=&#34;arraylist-linkedlist-vector的底层实现和区别&#34;&gt;ArrayList、LinkedList、Vector的底层实现和区别&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;从同步性来看，ArrayList和LinkedList是不同步的，而Vector是的。所以线程安全的话，可以使用ArrayList或LinkedList，可以节省为同步而耗费的开销。但在多线程下，有时候就不得不使用Vector了。当然，也可以通过一些办法包装ArrayList、LinkedList，使我们也达到同步，但效率可能会有所降低。&lt;/li&gt;
-&lt;li&gt;从内部实现机制来讲ArrayList和Vector都是使用Object的数组形式来存储的。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%，所以最后你获得的这个集合所占的空间总是比你实际需要的要大。如果你要在集合中保存大量的数据，那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。&lt;/li&gt;
-&lt;li&gt;ArrayList和Vector中，从指定的位置（用index）检索一个对象，或在集合的末尾插入、删除一个对象的时间是一样的，可表示为O(1)。但是，如果在集合的其他位置增加或者删除元素那么花费的时间会呈线性增长O(n-i)，其中n代表集合中元素的个数，i代表元素增加或移除元素的索引位置，因为在进行上述操作的时候集合中第i和第i个元素之后的所有元素都要执行(n-i)个对象的位移操作。LinkedList底层是由双向循环链表实现的，LinkedList在插入、删除集合中任何位置的元素所花费的时间都是一样的O(1)，但它在索引一个元素的时候比较慢，为O(i)，其中i是索引的位置，如果只是查找特定位置的元素或只在集合的末端增加、移除元素，那么使用Vector或ArrayList都可以。如果是对其它指定位置的插入、删除操作，最好选择LinkedList。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;反射机制&#34;&gt;反射机制&lt;/h2&gt;
-
-&lt;p&gt;反射技术：动态加载一个指定的类，并获取该类中所有的内容。并将字节码文件中的内容都封装成对象，这样便于操作这些成员。简单说：反射技术可以对一个类进行解剖。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;好处：大大增强了程序的扩展性。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;反射的基本步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;获得Class对象，就是获得指定的名称的字节码文件对象&lt;/li&gt;
-&lt;li&gt;实例化对象，获得类的属性、方法或者构造函数&lt;/li&gt;
-&lt;li&gt;访问属性、调用方法、调用构造函数创建对象&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;多线程相关&#34;&gt;多线程相关&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;多线程实现方案：
-
-&lt;ul&gt;
-&lt;li&gt;继承Thread类&lt;/li&gt;
-&lt;li&gt;实现Runnable接口&lt;/li&gt;
-&lt;li&gt;实现Callable接口结合线程池&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;线程安全问题产生条件
-
-&lt;ul&gt;
-&lt;li&gt;多线程环境&lt;/li&gt;
-&lt;li&gt;有共享数据&lt;/li&gt;
-&lt;li&gt;有多条语句操作共享数据&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;同步的方式：
-
-&lt;ul&gt;
-&lt;li&gt;同步代码块 &lt;code&gt;synchronized(对象){//doSomething}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;同步方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;run()与start()
-
-&lt;ul&gt;
-&lt;li&gt;run():封装了被线程执行的代码,直接调用仅仅是普通方法的调用&lt;/li&gt;
-&lt;li&gt;start():启动线程，并由JVM自动调用run()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;sleep()与wait()
-
-&lt;ul&gt;
-&lt;li&gt;sleep():必须指定时间;不释放锁。&lt;/li&gt;
-&lt;li&gt;wait(): 可不指定时间;释放锁。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;线程状态&#34;&gt;线程状态&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。&lt;/li&gt;
-&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的Running和Ready，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
-&lt;li&gt;无限期等待（Waiting）:处于这种状态的进程不会被分配CPU执行时间，它们要等待被其他线程显示的唤醒。以下方法会让线程陷入无限期的等待状态：
-
-&lt;ul&gt;
-&lt;li&gt;没有设置Timeout参数的Object.wait()方法&lt;/li&gt;
-&lt;li&gt;没有设置Timeout参数的Thread.join()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.park()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;限期等待（Timed Waiting）:处于这种状态的进程不会被分配CPU执行时间，不过无需等待被其他线程显示的唤醒，在一定时间之后它们会由系统自动唤醒。以下方法会让线程进入限期等待状态：
-
-&lt;ul&gt;
-&lt;li&gt;Thread.sleep()方法&lt;/li&gt;
-&lt;li&gt;设置了Timeout参数的Object.wait()方法&lt;/li&gt;
-&lt;li&gt;设置了Timeout参数的Thread.join()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.parkNanos()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.parkUnitil()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;阻塞（Blocked）:进程被阻塞了，阻塞状态和等待状态的区别是：阻塞状态在等待着获取到一个排它锁，这个事件将在另一个线程放弃这个锁的时候发生；而等待状态则是在等待一段时间，或者唤醒动作的发生。在程序等待进入同步区域的时候，线程将进入这种状态。&lt;/li&gt;
-&lt;li&gt;结束（Terminated）:已终止线程的线程状态，线程已经结束执行。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>DB——SQL小技巧</title>
       <link>https://ianeiu.github.io/2018/10/11/dbsql%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
@@ -3939,75 +4286,6 @@ class B{
 &lt;blockquote&gt;
 &lt;p&gt;打包，更新，测试，大功告成&lt;/p&gt;
 &lt;/blockquote&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Http——笔记</title>
-      <link>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/http%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-
-&lt;p&gt;HTTP即超文本传输协议（HTTP，Hyper Text Transport Protocol）。HTTP协议默认监听80端口，主要用于描述请求和响应的数据格式。&lt;/p&gt;
-
-&lt;h2 id=&#34;版本&#34;&gt;版本&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;0.9　已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。&lt;/li&gt;
-&lt;li&gt;HTTP/1.0　建立连接后只能请求响应一次。&lt;/li&gt;
-&lt;li&gt;HTTP/1.1　持久连接（可以进行多次请求和响应）被默认采用，能很好地配合代理服务器工作。还支持以管道方式同时发送多个请求，以便降低线路负载，提高传输速度。&lt;/li&gt;
-&lt;li&gt;HTTP/2   相比于HTTP 1.x，大幅度提升了web性能。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;消息头&#34;&gt;消息头&lt;/h2&gt;
-
-&lt;p&gt;请求的资源中含有 &lt;code&gt;&amp;lt;img &amp;gt; &amp;lt;link&amp;gt; &amp;lt;script&amp;gt;&lt;/code&gt;浏览器会自动发出请求&lt;/p&gt;
-
-&lt;p&gt;请求消息头：一个请求行，多个消息头， 一个空行&lt;br /&gt;
-请求行：请求类型(GET/POST) 请求资源 HTTP版本  如(GET /app/2.html HTTP/1.1)&lt;/p&gt;
-
-&lt;p&gt;响应消息头：一个响应头（状态行），多个消息头，一个空行，响应内容&lt;/p&gt;
-
-&lt;p&gt;GET与POST方式对比
-1. GET提交数据有长度限制,1K，而POST没有长度限制
-2. GET皎在地址栏可见，所以不安全。POST提交数据在主体内容中不可见，所以安全&lt;/p&gt;
-
-&lt;p&gt;请求消息头&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Accept:告知服务器，浏览器可接受的MIME类型 (Multipurpose Internet Mail Extensation) 多用途互联网邮件扩展类型
-    MIME 类型:文件系统文件类型用文件的扩展名来区分
-    MIME类型由大类型/小类型组成的.比如text/html text/css text/javascript image/bmp image/jpeg (Tomcat conf/web.xml
-Accpept-Charset:支持的字符集
-Accept-Language:浏览器所希望的语言类型
-Accpet-Encoding:gzip,deflate
-*Referer:包含一个URL,该URL表示当前页来源(用于防盗链,统计广告投放效果)
-Content-Type:请求正文内容的MIME类型(适应于Post请求)
-    默认是application/x-www-form-urlencoded(username=sa&amp;amp;age=30)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;响应消息头&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;*Location:http://www.itheima.com/index.jsp 告知浏览器，新的资源的位置(302跳转)
-*Content-Encoding: gzip代表服务器采用什么方式进行数据压缩
-*Content-Length:  服务器发送的数据长度
-Content-Language: zh-cn服务发送的文本的语言
-*Content-Type: text/html; charset=GB2312服务器发送的内容的MIME类型
-Last-Modified:服务器最后修改资源的时间
-*Refresh：指定服务器刷新  Refresh: 1;url=http://www.it315.org指示客户端刷新频率。单位是秒
-*Content-Disposition: attachment; filename=aaa.zip指示客户端下载文件
-
-*Expires: -1清理缓存
-*Cache-Control: no-cache (1.1)  没有缓存
-*Pragma: no-cache   (1.0) 没有缓存
-
-*Set-Cookie:SS=Q0=5Lb_nQ; path=/search服务器端发送的Cookie
-&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
