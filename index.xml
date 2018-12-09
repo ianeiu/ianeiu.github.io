@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ianeiu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[置顶]js、jq——DEMO集</title>
-      <link>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
-      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/05/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       
         <description>
 
@@ -632,6 +632,27 @@ for (var i=0;i&amp;lt;trList.length;i++) {
 });
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;Map集合遍历&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//{&amp;quot;code&amp;quot;:&amp;quot;1&amp;quot;,&amp;quot;desc&amp;quot;:&amp;quot;操作成功&amp;quot;,&amp;quot;data&amp;quot;:{&amp;quot;shfwxt&amp;quot;:&amp;quot;售后服务系统&amp;quot;,&amp;quot;cs_win&amp;quot;:&amp;quot;测试_win&amp;quot;,&amp;quot;qdglxt&amp;quot;:&amp;quot;渠道管理系统&amp;quot;}}
+success: function(result) {
+    if(result.code == &#39;1&#39;){
+        var data = result.data;
+        var html = &amp;quot;&amp;lt;option selected=&#39;selected&#39; value=&#39;&#39;&amp;gt;请选择权限代码&amp;lt;/option&amp;gt;&amp;quot;;
+        $.each(data, function (key, value) {
+            html += &amp;quot;&amp;lt;option value= &#39;&amp;quot; + key + &amp;quot;&#39;&amp;gt;&amp;quot; + value +&amp;quot;(&amp;quot; + key+&amp;quot;)&amp;lt;/option&amp;gt;&amp;quot;;
+        });
+        $(&amp;quot;#permissionCode&amp;quot;).html(&#39;&#39;).append(html);
+        layui.use(&#39;form&#39;, function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
+    }else{
+        _msgShowToFunc(result.desc);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
 &lt;h3 id=&#34;jquery&#34;&gt;jquery $.&lt;/h3&gt;
@@ -1147,6 +1168,10 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
 
+&lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/LeegooWang/article/details/79117457?utm_source=blogxgwz3&#34; target=&#34;blank&#34;&gt;为什么springmvc请求参数中的点后面的参数没了&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;springboot&#34;&gt;SpringBoot&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012702547/article/details/53740047&#34; target=&#34;blank&#34;&gt;初识Spring Boot框架&lt;/a&gt;&lt;br/&gt;
@@ -1193,6 +1218,10 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/jackhuang17/article/details/74866951&#34; target=&#34;blank&#34;&gt;&lt;strong&gt;查看VMware虚拟机里的Centos7的IP&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_dbbfe02e0101oqdj.html&#34; target=&#34;blank&#34;&gt;Linux文本安装&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/java-class/p/7110266.html&#34; target=&#34;blank&#34;&gt;weblogic 部署问题定位与解决&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
 
@@ -1342,159 +1371,135 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     </item>
     
     <item>
-      <title>Java基础题（Integer、String、内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      <title>Java笔记——web</title>
+      <link>https://ianeiu.github.io/2018/12/09/java%E7%AC%94%E8%AE%B0web/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <guid>https://ianeiu.github.io/2018/12/09/java%E7%AC%94%E8%AE%B0web/</guid>
       
         <description>
 
-&lt;blockquote&gt;
-&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;JavaWeb笔记整理&lt;/p&gt;
 
-&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
+&lt;h2 id=&#34;xml&#34;&gt;XML&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
-Integer c = 100,d=100;    
-@Test
-public void testIntegerDD(){
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换&lt;/p&gt;
 
-&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
-,可看Integer源码valueOf(int i)方法&lt;/p&gt;
+&lt;p&gt;格式：&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;public static Integer valueOf(int i) {
-	if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
-	return IntegerCache.cache[i + (-IntegerCache.low)];
-	return new Integer(i);
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;XML两种文档约束类型： &lt;code&gt;dtd&lt;/code&gt; （file_name.dtd）和&lt;code&gt;schema&lt;/code&gt;（file_name.xsd 可被XML解析器解析）&lt;/p&gt;
 
-&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
+&lt;p&gt;XML存储结构化信息，使用&lt;code&gt;DOM&lt;/code&gt;或&lt;code&gt;SAX&lt;/code&gt;（边读边解析）方式解析&lt;br /&gt;
+Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@Test
-public void testIntegerDD(){
+&lt;p&gt;常见的XML解析器实现：JDOM、DOM4J（首选）、SAX&lt;/p&gt;
 
-    Integer a = 1000,b=1000;
-    Integer c = 100,d=100;   
-    Integer e = new Integer(100);
-    Integer f = new Integer(100);
-    int g = 1000;
-    Integer h = new Integer(1000);  
+&lt;p&gt;XPath:XML路径语言，用来确定XML文档中某部分位置&lt;/p&gt;
 
+&lt;h2 id=&#34;web服务器&#34;&gt;Web服务器&lt;/h2&gt;
 
-    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
+&lt;p&gt;Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等&lt;/p&gt;
 
-    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
-    System.out.println(e==f);//false
-    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
-    System.out.println(g==h);//true
+&lt;h2 id=&#34;jsp九大内置对象&#34;&gt;JSP九大内置对象&lt;/h2&gt;
 
-    //进行自动装箱操作
-    System.out.println(c==e);//false
-    System.out.println(a==h);//false
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;request - HttpServletRequest&lt;/li&gt;
+&lt;li&gt;response - HttpServletResponse&lt;/li&gt;
+&lt;li&gt;session - HttpSession&lt;/li&gt;
+&lt;li&gt;application - ServletContext&lt;/li&gt;
+&lt;li&gt;config - ServletConfig&lt;/li&gt;
+&lt;li&gt;exception - 只有在错误页面才可使用&lt;/li&gt;
+&lt;li&gt;page - 作用本JSP页面中&lt;/li&gt;
+&lt;li&gt;out - JSPWriter&lt;/li&gt;
+&lt;li&gt;pageContext - 页面上下文对象（作用域最小）&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
+&lt;h2 id=&#34;jsp中的&#34;&gt;JSP中的&amp;lt;%%&amp;gt;&lt;/h2&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;脚本
 
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
+&lt;ul&gt;
+&lt;li&gt;&amp;lt;% .. %&amp;gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;%= ..%&amp;gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;%! ..%&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;注释
 
-    System.out.println(s1==s2); // true
-    System.out.println(s1==s3); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;lt;%&amp;ndash; ..  &amp;ndash;%&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;指令
 
-&lt;p&gt;文章解释：&lt;br /&gt;
-一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
-像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
-当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;lt;%@ .. %&amp;gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
+&lt;h2 id=&#34;jsp三大指令&#34;&gt;JSP三大指令&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
+&lt;ul&gt;
+&lt;li&gt;page&lt;/li&gt;
+&lt;li&gt;include&lt;/li&gt;
+&lt;li&gt;taglib&lt;/li&gt;
+&lt;/ul&gt;
 
-    //都存储在常量池中,指向同一常量
-    System.out.println(s1==s2); // true
-    //存储在常量池中,存储在堆内存中
-    System.out.println(s1==s3); // false
+&lt;h2 id=&#34;jsp基本动作&#34;&gt;JSP基本动作&lt;/h2&gt;
 
-    String s4 = &amp;quot;helloo&amp;quot;;
-    /**
-     * 会重新在常量池创建常量（String不可变属性）
-     */
-    String s5 = s1+&amp;quot;o&amp;quot;;
-    //字符串拼接有变量参与，底层调用StringBuffer处理，相当于在堆内存中开辟了新空间
-    System.out.println(s4 == s5); // false
-    //常量相加，先在常量池找，找到即用
-    System.out.println(s4 == &amp;quot;hello&amp;quot;+&amp;quot;o&amp;quot;);//true
+&lt;ul&gt;
+&lt;li&gt;include&lt;/li&gt;
+&lt;li&gt;useBean&lt;/li&gt;
+&lt;li&gt;setProperty&lt;/li&gt;
+&lt;li&gt;getProperty&lt;/li&gt;
+&lt;li&gt;forward&lt;/li&gt;
+&lt;li&gt;plugin&lt;/li&gt;
+&lt;/ul&gt;
 
-    //hello
-    String s6 = s4.substring(0, s4.length() - 1);
-    //substring返回的也是new出来的String对象
-    System.out.println(s1 == s6); // false
-    //地址值不一样
-    System.out.println(s3 == s6); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;el-11个内置对象&#34;&gt;EL 11个内置对象&lt;/h2&gt;
 
-&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pageScope：获取pageContext域属性，相当于pageContext.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;requestScope：获取request域属性，相当于request.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;sessionScope：获取session域属性，相当于session.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;applicationScope：获取application域属性，相当于application.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;param：对应参数，它是一个Map，其中key是参数，value是参数值，适用于单值的参数，相当于request.getParameter(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;paramValues：对应参数，她是一个Map，其中key是参数，value是多个参数值，适用于多值的参数，相当于request.getParameterValues(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;header：对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值的请求头，相当于request.getHeader(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;headerValues：对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值的请求头，相当于request.getHeaders(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;initParam：获取web.xml中&lt;context-param&gt;内的参数，${ initParam.xxx}，xxx就是&lt;param-name&gt;标签内的值，进而得到&lt;param-value&gt;中的值&lt;/li&gt;
+&lt;li&gt;cookie：用于获取cookie，Map&lt;String,Cookie&gt;，其中key是cookie的name，value是cookie对象，例如${cookie.JSESSIONID.value }就是获取sessionId&lt;/li&gt;
+&lt;li&gt;pageContext：可以获取JSP九大内置对象，相当于使用该对象调用getxxx()方法，例如pageContext.getRequest()可以写为${pageContext.request)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
+&lt;p&gt;使用：${initParam.num}与${initParam[&amp;lsquo;num&amp;rsquo;]}。如果Map的键或Bean的属性名中包含&lt;code&gt;_&lt;/code&gt;或&lt;code&gt;-&lt;/code&gt;时，只有${initParam[&amp;lsquo;max_num&amp;rsquo;]}&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
-    new Runnable() {
-        public void run() {
-            try {
-              Thread.sleep(1000);
-           } catch (InterruptedException e) {
-             // TODO Auto-generated catch block
-            e.printStackTrace();
-           }  
-           System.out.println(name);
-        }
-    }.start();
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;javaweb四大域对象&#34;&gt;JavaWeb四大域对象&lt;/h2&gt;
 
-&lt;p&gt;文章解释：&lt;br /&gt;
-这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PageContext - page&lt;/li&gt;
+&lt;li&gt;ServletRequest - request&lt;/li&gt;
+&lt;li&gt;HttpSession - session&lt;/li&gt;
+&lt;li&gt;ServletContext - application&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
-首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
-主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
+&lt;h2 id=&#34;javaweb三大组件&#34;&gt;JavaWeb三大组件&lt;/h2&gt;
 
-&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
-局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Servlet&lt;/li&gt;
+&lt;li&gt;Filter&lt;/li&gt;
+&lt;li&gt;Listener&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
     
     <item>
       <title>Java笔记——基础</title>
-      <link>https://ianeiu.github.io/2018/11/18/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/12/02/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/11/18/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://ianeiu.github.io/2018/12/02/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
       
         <description>
 
@@ -2192,50 +2197,78 @@ TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
 
 &lt;h2 id=&#34;io流&#34;&gt;IO流&lt;/h2&gt;
 
-&lt;p&gt;//TODO&lt;/p&gt;
-
-&lt;h2 id=&#34;多线程相关&#34;&gt;多线程相关&lt;/h2&gt;
-
 &lt;ol&gt;
-&lt;li&gt;多线程实现方案：
+&lt;li&gt;字节流
 
 &lt;ul&gt;
-&lt;li&gt;继承Thread类&lt;/li&gt;
-&lt;li&gt;实现Runnable接口&lt;/li&gt;
-&lt;li&gt;实现Callable接口结合线程池&lt;/li&gt;
+&lt;li&gt;输入
+
+&lt;ul&gt;
+&lt;li&gt;InputSream
+
+&lt;ul&gt;
+&lt;li&gt;FileInputStream&lt;/li&gt;
+&lt;li&gt;BufferedInputStream&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;线程安全问题产生条件
-
-&lt;ul&gt;
-&lt;li&gt;多线程环境&lt;/li&gt;
-&lt;li&gt;有共享数据&lt;/li&gt;
-&lt;li&gt;有多条语句操作共享数据&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;同步的方式：
+&lt;li&gt;输出
 
 &lt;ul&gt;
-&lt;li&gt;同步代码块 &lt;code&gt;synchronized(对象){//doSomething}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;同步方法&lt;/li&gt;
+&lt;li&gt;OutputStream
+
+&lt;ul&gt;
+&lt;li&gt;FileOutputStream&lt;/li&gt;
+&lt;li&gt;BufferedOutputStream&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;run()与start()
-
-&lt;ul&gt;
-&lt;li&gt;run():封装了被线程执行的代码,直接调用仅仅是普通方法的调用&lt;/li&gt;
-&lt;li&gt;start():启动线程，并由JVM自动调用run()方法&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;sleep()与wait()
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;字符流
 
 &lt;ul&gt;
-&lt;li&gt;sleep():必须指定时间;不释放锁。&lt;/li&gt;
-&lt;li&gt;wait(): 可不指定时间;释放锁。&lt;/li&gt;
+&lt;li&gt;输入
+
+&lt;ul&gt;
+&lt;li&gt;Reader
+
+&lt;ul&gt;
+&lt;li&gt;InputStreamReader
+
+&lt;ul&gt;
+&lt;li&gt;FileReader&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;BufferedReader
+
+&lt;ul&gt;
+&lt;li&gt;LineNumberReader&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;输出
+
+&lt;ul&gt;
+&lt;li&gt;Writer
+
+&lt;ul&gt;
+&lt;li&gt;OutputStreamWriter
+
+&lt;ul&gt;
+&lt;li&gt;FileWirter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;BufferedWriter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;close()与flush()：&lt;br /&gt;
+    close() 关闭流对象，但会先刷新一次流缓冲区，关闭之后不可使用。&lt;br /&gt;
+    flush() 仅仅刷新缓冲区，刷新之后，流对象还可以继续使用。&lt;/p&gt;
 
 &lt;h2 id=&#34;线程状态&#34;&gt;线程状态&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。&lt;/li&gt;
-&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的Running和Ready，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
+&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。线程启动start()。&lt;/li&gt;
+&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的 &lt;strong&gt;就绪&lt;/strong&gt; Ready和 &lt;strong&gt;运行&lt;/strong&gt; Running，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
 &lt;li&gt;无限期等待（Waiting）:处于这种状态的进程不会被分配CPU执行时间，它们要等待被其他线程显示的唤醒。以下方法会让线程陷入无限期的等待状态：
 
 &lt;ul&gt;
@@ -2256,9 +2289,217 @@ TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
 &lt;li&gt;结束（Terminated）:已终止线程的线程状态，线程已经结束执行。&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;线程的控制&#34;&gt;线程的控制&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;获取线程的名称 &lt;code&gt;public final String getName()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置线程的名称 &lt;code&gt;public final void setName(String name)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;返回当前正在执行的线程对象(名称) &lt;code&gt;public static Thread currentThread()&lt;/code&gt; -&amp;gt; &lt;code&gt;Thread.currentThread().getName()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;获取线程对象的优先级     &lt;code&gt;public final int getPriority()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置线程对象的优先级     &lt;code&gt;public final void setPriority(int newPriority)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;线程默认优先级是5。&lt;/li&gt;
+&lt;li&gt;线程优先级的范围是：1-10。&lt;/li&gt;
+&lt;li&gt;线程优先级高仅仅表示线程获取的 CPU时间片的几率高&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;将该线程标记为守护线程或用户线程 &lt;code&gt;public final void setDaemon(boolean on)&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当正在运行的线程都是守护线程时，Java 虚拟机退出。 该方法必须在启动线程前调用。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;线程休眠  &lt;code&gt;public static void sleep(long millis)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加入线程  &lt;code&gt;public final void join()&lt;/code&gt;:等待该线程终止。&lt;/li&gt;
+&lt;li&gt;礼让线程  &lt;code&gt;public static void yield()&lt;/code&gt;:暂停当前正在执行的线程对象，并执行其他线程。&lt;/li&gt;
+&lt;li&gt;后台线程&lt;/li&gt;
+&lt;li&gt;终止线程(掌握)&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;public final void stop()&lt;/code&gt;:让线程停止，过时了，但是还可以使用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;public void interrupt()&lt;/code&gt;:中断线程。 把线程的状态终止，并抛出一个InterruptedException。
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;多线程相关&#34;&gt;多线程相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;多线程实现方案：
+
+&lt;ul&gt;
+&lt;li&gt;继承Thread类
+
+&lt;ul&gt;
+&lt;li&gt;自定义线程类继承Thread类，重写run()&lt;/li&gt;
+&lt;li&gt;调用类 创建自定义线程类对象，启动线程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;实现Runnable接口
+
+&lt;ul&gt;
+&lt;li&gt;自定义线程类实现Runable接口，重写run()&lt;/li&gt;
+&lt;li&gt;调用类 创建自定义线程类对象&lt;/li&gt;
+&lt;li&gt;调用类 以自定义线程类对象作为参数构造创建Thread对象，启动线程&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;实现Callable接口结合线程池
+
+&lt;ul&gt;
+&lt;li&gt;自定义线程类实现Callable接口，重写call方法
+
+&lt;ul&gt;
+&lt;li&gt;1
+
+&lt;ul&gt;
+&lt;li&gt;调用类 创建ExecutorService线程池对象,调用submit(Callable&lt;T&gt; task)&lt;/li&gt;
+&lt;li&gt;调用类 创建Future&lt;T&gt;对象，接收上一步返回值&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2
+
+&lt;ul&gt;
+&lt;li&gt;调用类 创建ExecutorService线程池对象,调用 submit(Runnable task)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;pool.shutdown()结束;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;线程安全问题产生条件
+
+&lt;ul&gt;
+&lt;li&gt;多线程环境&lt;/li&gt;
+&lt;li&gt;有共享数据&lt;/li&gt;
+&lt;li&gt;有多条语句操作共享数据&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同步的方式：
+
+&lt;ul&gt;
+&lt;li&gt;同步代码块 &lt;code&gt;synchronized(对象){//doSomething}&lt;/code&gt; 或 同步锁 Lock
+
+&lt;ul&gt;
+&lt;li&gt;当线程访问较多时，每个线程都会去判断同步上的锁，非常消耗资源，降低程序运行效率，而且容易产生死锁。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同步方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;run()与start()
+
+&lt;ul&gt;
+&lt;li&gt;run():封装了被线程执行的代码,直接调用仅仅是普通方法的调用&lt;/li&gt;
+&lt;li&gt;start():启动线程，并由JVM自动调用run()方法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sleep()与wait()
+
+&lt;ul&gt;
+&lt;li&gt;sleep():必须指定时间（时间结束自动恢复）;不释放锁。&lt;/li&gt;
+&lt;li&gt;wait(): 可不指定时间（由notify()唤醒）;释放锁。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;死锁：两个或两个异常的线程争夺资源过程中，发生的一种互相等待的现象。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;osi与-tcp-ip&#34;&gt;OSI与&lt;code&gt;TCP/IP&lt;/code&gt;&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;OSI&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;TCP/IP&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;应用层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;应用层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;表示层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;会话层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;传输层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;传输层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;网络层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;网际层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;数据链路层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;主机至网络层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;物理层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;h2 id=&#34;socket编程&#34;&gt;Socket编程&lt;/h2&gt;
 
-&lt;p&gt;//TODO&lt;/p&gt;
+&lt;p&gt;网络编程三要素： IP、端口、协议&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;UDP
+
+&lt;ul&gt;
+&lt;li&gt;发送数据
+
+&lt;ul&gt;
+&lt;li&gt;创建发送端口DatagramSocket对象&lt;/li&gt;
+&lt;li&gt;创建数据，并打开数据包&lt;/li&gt;
+&lt;li&gt;调用DatagramSocket对象发送方法，发送数据包&lt;/li&gt;
+&lt;li&gt;释放资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接手数据
+
+&lt;ul&gt;
+&lt;li&gt;创建DatagramSocket对象&lt;/li&gt;
+&lt;li&gt;创建一个数据包（接收容器）&lt;/li&gt;
+&lt;li&gt;调用容器接手数据&lt;/li&gt;
+&lt;li&gt;解析数据包&lt;/li&gt;
+&lt;li&gt;释放资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;TCP
+
+&lt;ul&gt;
+&lt;li&gt;发送数据
+
+&lt;ul&gt;
+&lt;li&gt;创建发送端的Socket对象&lt;/li&gt;
+&lt;li&gt;获取输出流，写数据&lt;/li&gt;
+&lt;li&gt;释放资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接手数据
+
+&lt;ul&gt;
+&lt;li&gt;创建接手端的Socket&lt;/li&gt;
+&lt;li&gt;监听客户端连接&lt;/li&gt;
+&lt;li&gt;获取输入流&lt;/li&gt;
+&lt;li&gt;释放资源&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;反射机制&#34;&gt;反射机制&lt;/h2&gt;
 
@@ -2275,6 +2516,604 @@ TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
 &lt;li&gt;实例化对象，获得类的属性、方法或者构造函数&lt;/li&gt;
 &lt;li&gt;访问属性、调用方法、调用构造函数创建对象&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——SQL集锦</title>
+      <link>https://ianeiu.github.io/2018/11/30/dbsql%E9%9B%86%E9%94%A6/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/30/dbsql%E9%9B%86%E9%94%A6/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;数据定义语言-ddl&#34;&gt;数据定义语言（DDL）&lt;/h3&gt;
+
+&lt;h4 id=&#34;清空表数据&#34;&gt;清空表数据&lt;/h4&gt;
+
+&lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
+
+&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型&lt;br /&gt;
+例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型)&lt;br /&gt;
+例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
+例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;字段增加备注&lt;br /&gt;
+例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
+说明：alter table 表名 drop column 字段名;&lt;br /&gt;
+例：alter table sf_users drop column HeadPIC;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;字段的重命名&lt;br /&gt;
+说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
+例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;表的重命名&lt;br /&gt;
+说明：alter table 表名 rename to  新表名&lt;br /&gt;
+例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;oracle复制表结构和表数据&#34;&gt;oracle复制表结构和表数据&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;复制表结构及其数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;create table table_name_new as select * from table_name_old
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;只复制表结构&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--fun1
+create table table_name_new as select * from table_name_old;
+-- fun2
+create table table_name_new like table_name_old
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;只复制表数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--如果两个表结构一样
+insert into table_name_new select * from table_name_old
+--如果两个表结构不一样
+insert into table_name_new(column1,column2...) select column1,column2... from table_name_old
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据操作语言-dml-data-manipulation-language&#34;&gt;数据操作语言（DML Data Manipulation Language）&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;去除带空格数据的空格&#34;&gt;去除带空格数据的空格&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;\\删除左空格  
+update tb_test set product_name=rtrim(product_name,&#39; &#39;);
+\\删除右空格  
+update tb_test set product_name=ltrim(product_name,&#39; &#39;);
+\\删除左右空格
+update tb_test set product_name=trim(product_name);
+\\删除所有空格
+update tb_test set product_name=replace(product_name,&#39; &#39;,&#39;&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据查询语言-dql-data-query-language&#34;&gt;数据查询语言（DQL Data Query Language）&lt;/h3&gt;
+
+&lt;h4 id=&#34;oracle-日期-时间-相关查询&#34;&gt;Oracle 日期-时间 相关查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--获取当前月份的第一天
+SELECT TRUNC (SYSDATE, &#39;MONTH&#39;) FROM DUAL;
+
+--获取当前月份的最后一天
+SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
+
+--获取当前年份的第一天
+SELECT TRUNC (SYSDATE, &#39;YEAR&#39;) FROM DUAL;
+
+--获取当前年份的最后一天
+SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) - 1 FROM DUAL;
+
+--获取当前月份的天数
+SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), &#39;dd&#39;) AS INT) FROM DUAL;
+
+--获取当前月份剩下的天数
+SELECT SYSDATE, LAST_DAY (SYSDATE) &amp;quot;Last&amp;quot;, LAST_DAY (SYSDATE) - SYSDATE &amp;quot;Days left&amp;quot; FROM DUAL;
+
+--计算员工入职的天数
+SELECT TRUNC(sysdate) - TRUNC(e.hire_date) FROM employees e;
+
+--获取直到目前为止今天过去的秒数（从 00：00 开始算）
+SELECT (SYSDATE - TRUNC (SYSDATE)) * 24 * 60 * 60 num_of_sec_since_morning  FROM DUAL;
+
+--获取今天剩下的秒数（直到 23：59：59 结束）
+SELECT (TRUNC (SYSDATE+1) - SYSDATE) * 24 * 60 * 60 num_of_sec_left FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-数学&#34;&gt;Oracle 数学&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--把数值转换成文字
+SELECT TO_CHAR (TO_DATE (1526, &#39;j&#39;), &#39;jsp&#39;) FROM DUAL;
+
+--在包的源代码中查询字符串
+SELECT * FROM dba_source WHERE UPPER (text) LIKE &#39;%FOO_SOMETHING%&#39; AND owner = &#39;TSUSER&#39;;
+
+--查询表中的最后一个记录
+SELECT * FROM TB_DQDP_USER  WHERE ROWID IN (SELECT MAX (ROWID) FROM TB_DQDP_USER);
+SELECT * FROM TB_DQDP_USER MINUS SELECT * FROM TB_DQDP_USER WHERE ROWNUM &amp;lt; (SELECT COUNT (*) FROM TB_DQDP_USER);
+
+--在 Oracle 生成随机数据
+SELECT LEVEL empl_id, MOD (ROWNUM, 50000) dept_id,TRUNC (DBMS_RANDOM.VALUE (1000, 500000), 2) salary
+,DECODE (ROUND (DBMS_RANDOM.VALUE (1, 2)),  1, &#39;M&#39;,  2, &#39;F&#39;) gender
+, TO_DATE ( ROUND (DBMS_RANDOM.VALUE (1, 28))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1, 12))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1900, 2010)),&#39;DD-MM-YYYY&#39;)
+ dob,DBMS_RANDOM.STRING (&#39;x&#39;, DBMS_RANDOM.VALUE (20, 50)) address
+ FROM DUAL CONNECT BY LEVEL &amp;lt; 10000;
+
+--在 Oracle 中生成随机数值
+SELECT ROUND (DBMS_RANDOM.VALUE () * 100) + 1 AS random_num FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-数据库管理查询&#34;&gt;Oracle 数据库管理查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--数据库版本信息
+SELECT * FROM v$version;
+
+--数据库默认信息
+SELECT username,profile,default_tablespace,temporary_tablespace FROM dba_users;
+
+--数据库字符设置信息
+SELECT * FROM nls_database_parameters;
+
+--获取 Oracle 版本
+SELECT VALUE FROM v$system_parameter WHERE name = &#39;compatible&#39;;
+
+--检查表空间的自动扩展开关
+SELECT SUBSTR (file_name, 1, 50), AUTOEXTENSIBLE FROM dba_data_files;
+SELECT tablespace_name, AUTOEXTENSIBLE FROM dba_data_files;
+
+--调整没有添加数据文件的表空间
+ALTER DATABASE DATAFILE &#39;/work/oradata/STARTST/STAR02D.dbf&#39; resize 2000M;
+--在表空间添加数据文件
+ALTER TABLESPACE data01 ADD DATAFILE &#39;/work/oradata/STARTST/data01.dbf&#39; SIZE 1000M AUTOEXTEND OFF;
+--增加数据文件的大小
+ALTER DATABASE DATAFILE &#39;/u01/app/Test_data_01.dbf&#39; RESIZE 2G;
+
+--查询数据库的实际大小
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_data_files;
+--查询数据库中数据占用的大小或者是数据库使用细节
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_segments;
+
+--查询模式或者用户的大小
+SELECT SUM (bytes / 1024 / 1024) &amp;quot;size&amp;quot; FROM dba_segments WHERE owner = &#39;&amp;amp;owner&#39;;
+
+--查询数据库中每个用户最后使用的 SQL 查询
+SELECT S.USERNAME || &#39;(&#39; || s.sid || &#39;)-&#39; || s.osuser UNAME, s.program
+ || &#39;-&#39; || s.terminal || &#39;(&#39; || s.machine || &#39;)&#39; PROG, s.sid || &#39;/&#39; || s.serial# sid, s.status &amp;quot;Status&amp;quot;, p.spid,sql_text sqltext
+  FROM v$sqltext_with_newlines t, V$SESSION s, v$process p WHERE t.address = s.sql_address AND p.addr = s.paddr(+)
+ AND t.hash_value = s.sql_hash_value    ORDER BY s.sid, t.piece;
+
+--查询用户 CPU 的使用率
+SELECT ss.username, se.SID, VALUE / 100 cpu_usage_seconds FROM v$session ss, v$sesstat se, v$statname sn
+  WHERE se.STATISTIC# = sn.STATISTIC# AND NAME LIKE &#39;%CPU used by this session%&#39; AND se.SID = ss.SID
+  AND ss.status = &#39;ACTIVE&#39;AND ss.username IS NOT NULL ORDER BY VALUE DESC;
+
+--查询数据库长查询进展情况
+ SELECT a.sid, a.serial#, b.username, opname OPERATION, target OBJECT, TRUNC (elapsed_seconds, 5) &amp;quot;ET (s)&amp;quot;
+ , TO_CHAR (start_time, &#39;HH24:MI:SS&#39;) start_time, ROUND ( (sofar / totalwork) * 100, 2) &amp;quot;COMPLETE (%)&amp;quot;
+  FROM v$session_longops a, v$session b
+   WHERE a.sid = b.sid AND b.username NOT IN (&#39;SYS&#39;, &#39;SYSTEM&#39;) AND totalwork &amp;gt; 0 ORDER BY elapsed_seconds;
+
+--获取当前会话 ID，进程 ID，客户端 ID 等
+SELECT b.sid, b.serial#,a.spid processid,b.process clientpid FROM v$process a, v$session b
+ WHERE a.addr = b.paddr AND b.audsid = USERENV (&#39;sessionid&#39;);
+--V$SESSION.SID AND V$SESSION.SERIAL# 是数据库进程 ID
+--V$PROCESS.SPID 是数据库服务器后台进程 ID
+--V$SESSION.PROCESS 是客户端 PROCESS ID, ON windows it IS : separated THE FIRST # IS THE PROCESS ID ON THE client AND 2nd one IS THE THREAD id.
+
+--查询特定的模式或者表中执行的最后一个 SQL 语句
+SELECT CREATED, TIMESTAMP, last_ddl_time FROM all_objects WHERE     OWNER = &#39;TSUSER&#39;   AND OBJECT_TYPE = &#39;TABLE&#39; AND OBJECT_NAME = &#39;TB_USER_EXTEND&#39;;
+
+--在视图中查询并显示实际的 Oracle 连接
+SELECT osuser,username,machine, program FROM v$session  ORDER BY osuser;
+
+--查询并显示通过打开连接程序打开连接的组
+SELECT program application, COUNT (program) Numero_Sesiones  FROM v$session GROUP BY program ORDER BY Numero_Sesiones DESC;
+
+--查询并显示连接 Oracle 的用户和用户的会话数量
+SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session GROUP BY username ORDER BY Numero_Sesiones DESC;
+
+--获取拥有者的对象数量
+SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>IDEA——快捷键</title>
+      <link>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
+&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
+首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
+&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
+&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
+&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
+&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
+&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
+
+&lt;h4 id=&#34;辅助&#34;&gt;辅助&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找Intellij的命令&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+A&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;运行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;查询&#34;&gt;查询&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;跳转文件指定行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;搜索文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;全局搜索和局部搜索&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;结合ctrl + f 快捷上下查找文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shift + k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift + shift&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;编辑&#34;&gt;编辑&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动处理&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+Enter&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码联系&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + space&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + d、x&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选中单词&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + ←、→&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + u、y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;驼峰下划线命名切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + c&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-修改类、方法、参数名字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + r&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-可选择&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+Alt+T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码生成&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Template/Postfix +Tab&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近打开的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近修改的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;视图&#34;&gt;视图&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + Tab&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;项目切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + [ 、]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      
+        <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
+Integer c = 100,d=100;    
+@Test
+public void testIntegerDD(){
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
+,可看Integer源码valueOf(int i)方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static Integer valueOf(int i) {
+	if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
+	return IntegerCache.cache[i + (-IntegerCache.low)];
+	return new Integer(i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testIntegerDD(){
+
+    Integer a = 1000,b=1000;
+    Integer c = 100,d=100;   
+    Integer e = new Integer(100);
+    Integer f = new Integer(100);
+    int g = 1000;
+    Integer h = new Integer(1000);  
+
+
+    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+
+    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
+    System.out.println(e==f);//false
+    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
+    System.out.println(g==h);//true
+
+    //进行自动装箱操作
+    System.out.println(c==e);//false
+    System.out.println(a==h);//false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    System.out.println(s1==s2); // true
+    System.out.println(s1==s3); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
+像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
+当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
+
+&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testStringDD() {
+    String s1 = &amp;quot;hello&amp;quot;;
+    String s2 = &amp;quot;hello&amp;quot;;
+    String s3 = new String(&amp;quot;hello&amp;quot;);
+
+    //都存储在常量池中,指向同一常量
+    System.out.println(s1==s2); // true
+    //存储在常量池中,存储在堆内存中
+    System.out.println(s1==s3); // false
+
+    String s4 = &amp;quot;helloo&amp;quot;;
+    /**
+     * 会重新在常量池创建常量（String不可变属性）
+     */
+    String s5 = s1+&amp;quot;o&amp;quot;;
+    //字符串拼接有变量参与，底层调用StringBuffer处理，相当于在堆内存中开辟了新空间
+    System.out.println(s4 == s5); // false
+    //常量相加，先在常量池找，找到即用
+    System.out.println(s4 == &amp;quot;hello&amp;quot;+&amp;quot;o&amp;quot;);//true
+
+    //hello
+    String s6 = s4.substring(0, s4.length() - 1);
+    //substring返回的也是new出来的String对象
+    System.out.println(s1 == s6); // false
+    //地址值不一样
+    System.out.println(s3 == s6); // false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
+
+&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
+    new Runnable() {
+        public void run() {
+            try {
+              Thread.sleep(1000);
+           } catch (InterruptedException e) {
+             // TODO Auto-generated catch block
+            e.printStackTrace();
+           }  
+           System.out.println(name);
+        }
+    }.start();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文章解释：&lt;br /&gt;
+这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
+
+&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
+首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
+主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
+
+&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
+局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
 </description>
       
     </item>
@@ -3915,377 +4754,6 @@ mysql&amp;gt; SELECT * FROM table LIMIT 5; //检索前 5 个记录行
 
 &lt;li&gt;&lt;p&gt;sql的语法的不同。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java笔记——回收机制、内存泄漏及OOM</title>
-      <link>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</link>
-      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/10/java%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%8F%8Aoom/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;java内存回收机制&#34;&gt;Java内存回收机制&lt;/h2&gt;
-
-&lt;p&gt;不论哪种语言的内存分配方式，都需要返回所分配内存的真实地址，也就是返回一个指针到内存块的首地址。&lt;/p&gt;
-
-&lt;p&gt;Java中对象是采用new或者反射的方法创建的，这些对象的创建都是在堆（Heap）中分配的，所有对象的回收都是由Java虚拟机通过垃圾回收机制完成的。GC为了能够正确释放对象，会监控每个对象的运行状况，对他们的申请、引用、被引用、赋值等状况进行监控，Java会使用有向图的方法进行管理内存，实时监控对象是否可以达到，如果不可到达，则就将其回收，这样也可以消除引用循环的问题。&lt;/p&gt;
-
-&lt;p&gt;在Java语言中，判断一个内存空间是否符合垃圾收集标准有两个：一个是给对象赋予了空值null，另一个是给对象赋予了新值，这样重新分配了内存空间。&lt;/p&gt;
-
-&lt;h2 id=&#34;内存泄漏&#34;&gt;内存泄漏&lt;/h2&gt;
-
-&lt;p&gt;内存泄漏是指无用对象（不再使用的对象）持续占有内存或无用对象的内存得不到及时释放，从而造成内存空间的浪费称为内存泄漏。内存泄露有时不严重且不易察觉，这样开发者就不知道存在内存泄露，但有时也会很严重，会提示Out of memory。&lt;/p&gt;
-
-&lt;p&gt;Java内存泄漏的根本原因是什么呢？长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄漏，尽管短生命周期对象已经不再需要，但是因为长生命周期持有它的引用而导致不能被回收，这就是Java中内存泄漏的发生场景。具体主要有如下几大类：&lt;/p&gt;
-
-&lt;p&gt;1、静态集合类引起内存泄漏&lt;/p&gt;
-
-&lt;p&gt;像HashMap、Vector等的使用最容易出现内存泄露，这些静态变量的生命周期和应用程序一致，他们所引用的所有的对象Object也不能被释放，因为他们也将一直被Vector等引用着。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;static Vector v = new Vector(10);
-for (int i = 1; i&amp;lt;100; i++){
-	Object o = new Object();
-	v.add(o);
-	o = null;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在这个例子中，循环申请Object 对象，并将所申请的对象放入一个Vector 中，如果仅仅释放引用本身（o=null），那么Vector 仍然引用该对象，所以这个对象对GC 来说是不可回收的。因此，如果对象加入到Vector 后，还必须从Vector 中删除，最简单的方法就是将Vector对象设置为null。&lt;/p&gt;
-
-&lt;p&gt;2、当集合里面的对象属性被修改后，再调用remove()方法时不起作用。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public static void main(String[] args){
-	Set&amp;lt;Person&amp;gt; set = new HashSet&amp;lt;Person&amp;gt;();
-	Person p1 = new Person(&amp;quot;唐僧&amp;quot;,&amp;quot;pwd1&amp;quot;,25);
-	Person p2 = new Person(&amp;quot;孙悟空&amp;quot;,&amp;quot;pwd2&amp;quot;,26);
-	Person p3 = new Person(&amp;quot;猪八戒&amp;quot;,&amp;quot;pwd3&amp;quot;,27);
-	set.add(p1);
-	set.add(p2);
-	set.add(p3);
-	System.out.println(&amp;quot;总共有:&amp;quot;+set.size()+&amp;quot; 个元素!&amp;quot;); //结果：总共有:3 个元素!
-	p3.setAge(2); //修改p3的年龄,此时p3元素对应的hashcode值发生改变
-
-	set.remove(p3); //此时remove不掉，造成内存泄漏
-
-	set.add(p3); //重新添加，居然添加成功
-	System.out.println(&amp;quot;总共有:&amp;quot;+set.size()+&amp;quot; 个元素!&amp;quot;); //结果：总共有:4 个元素!
-	for (Person person : set){
-		System.out.println(person);
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3、监听器&lt;/p&gt;
-
-&lt;p&gt;在java 编程中，我们都需要和监听器打交道，通常一个应用当中会用到很多监听器，我们会调用一个控件的诸如addXXXListener()等方法来增加监听器，但往往在释放对象的时候却没有记住去删除这些监听器，从而增加了内存泄漏的机会。&lt;/p&gt;
-
-&lt;p&gt;4、各种连接&lt;/p&gt;
-
-&lt;p&gt;比如数据库连接（dataSourse.getConnection()），网络连接(socket)和io连接，除非其显式的调用了其close（）方法将其连接关闭，否则是不会自动被GC 回收的。对于Resultset 和Statement 对象可以不进行显式回收，但Connection 一定要显式回收，因为Connection 在任何时候都无法自动回收，而Connection一旦回收，Resultset 和Statement 对象就会立即为NULL。但是如果使用连接池，情况就不一样了，除了要显式地关闭连接，还必须显式地关闭Resultset Statement 对象（关闭其中一个，另外一个也会关闭），否则就会造成大量的Statement 对象无法释放，从而引起内存泄漏。这种情况下一般都会在try里面去的连接，在finally里面释放连接。&lt;/p&gt;
-
-&lt;p&gt;5、内部类和外部模块的引用&lt;/p&gt;
-
-&lt;p&gt;内部类的引用是比较容易遗忘的一种，而且一旦没释放可能导致一系列的后继类对象没有释放。此外还要小心外部模块不经意的引用，例如程序员A 负责A 模块，调用了B 模块的一个方法如：
-public void registerMsg(Object b);
-这种调用就要小心，传入了一个对象，可能模块B就保持了对该对象的引用，需要注意模块B 是否提供相应的操作去除引用。&lt;/p&gt;
-
-&lt;p&gt;6、单例模式&lt;/p&gt;
-
-&lt;p&gt;不正确使用单例模式是引起内存泄漏的一个常见问题，单例对象在初始化后将在JVM的整个生命周期中存在（以静态变量的方式），如果单例对象持有外部的引用，那么这个对象将不能被JVM正常回收，导致内存泄漏。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class A{
-	public A(){
-		B.getInstance().setA(this);
-	}
-	....
-}
-//B类采用单例模式
-class B{
-	private A a;
-	private static B instance = new B();
-	public B(){}
-	public static B getInstance(){
-		return instance;
-	}
-	public void setA(A a){
-		this.a=a;
-	}
-	//getter...
-} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;显然B采用singleton模式，它持有一个A对象的引用，而这个A类的对象将不能被回收。想象下如果A是个比较复杂的对象或者集合类型会发生什么情况&lt;/p&gt;
-
-&lt;h2 id=&#34;oom&#34;&gt;OOM&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;OutOfMemoryError异常&lt;/p&gt;
-
-&lt;p&gt;除了程序计数器外，虚拟机内存的其他几个运行时区域都有发生OutOfMemoryError(OOM)异常的可能，&lt;/p&gt;
-
-&lt;p&gt;Java Heap 溢出，一般的异常信息：java.lang.OutOfMemoryError:Java heap spacess&lt;/p&gt;
-
-&lt;p&gt;java堆用于存储对象实例，我们只要不断的创建对象，并且保证GC Roots到对象之间有可达路径来避免垃圾回收机制清除这些对象，就会在对象数量达到最大堆容量限制后产生内存溢出异常。&lt;/p&gt;
-
-&lt;p&gt;出现这种异常，一般手段是先通过内存映像分析工具(如Eclipse Memory Analyzer)对dump出来的堆转存快照进行分析，重点是确认内存中的对象是否是必要的，先分清是因为内存泄漏(Memory Leak)还是内存溢出(Memory Overflow)。&lt;/p&gt;
-
-&lt;p&gt;如果是内存泄漏，可进一步通过工具查看泄漏对象到GC Roots的引用链。于是就能找到泄漏对象时通过怎样的路径与GC Roots相关联并导致垃圾收集器无法自动回收。&lt;/p&gt;
-
-&lt;p&gt;如果不存在泄漏，那就应该检查虚拟机的参数(-Xmx与-Xms)的设置是否适当。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;虚拟机栈和本地方法栈溢出&lt;/p&gt;
-
-&lt;p&gt;如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常。&lt;/p&gt;
-
-&lt;p&gt;如果虚拟机在扩展栈时无法申请到足够的内存空间，则抛出OutOfMemoryError异常&lt;/p&gt;
-
-&lt;p&gt;这里需要注意当栈的大小越大可分配的线程数就越少。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;运行时常量池溢出&lt;/p&gt;
-
-&lt;p&gt;异常信息：java.lang.OutOfMemoryError:PermGen space
-如果要向运行时常量池中添加内容，最简单的做法就是使用String.intern()这个Native方法。该方法的作用是：如果池中已经包含一个等于此String的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符串添加到常量池中，并且返回此String对象的引用。由于常量池分配在方法区内，我们可以通过-XX:PermSize和-XX:MaxPermSize限制方法区的大小，从而间接限制其中常量池的容量。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;方法区溢出&lt;/p&gt;
-
-&lt;p&gt;方法区用于存放Class的相关信息，如类名、访问修饰符、常量池、字段描述、方法描述等。&lt;/p&gt;
-
-&lt;p&gt;异常信息：java.lang.OutOfMemoryError:PermGen space
-方法区溢出也是一种常见的内存溢出异常，一个类如果要被垃圾收集器回收，判定条件是很苛刻的。在经常动态生成大量Class的应用中，要特别注意这点。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>WebService——异常集</title>
-      <link>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</link>
-      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/10/webservice%E5%BC%82%E5%B8%B8%E9%9B%86/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;客户端-javax-xml-ws-soap-soapfaultexception-mustunderstand-headers&#34;&gt;客户端 javax.xml.ws.soap.SOAPFaultException：MustUnderstand headers&lt;/h3&gt;
-
-&lt;p&gt;异常：
-&lt;code&gt;javax.xml.ws.soap.SOAPFaultException: MustUnderstand headers: [{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security] are not understood.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;解决：新增 outProps.put(&amp;ldquo;mustUnderstand&amp;rdquo;, &amp;ldquo;0&amp;rdquo;);&lt;/p&gt;
-
-&lt;p&gt;code：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; T getService(String address, String identifier, String token, Class&amp;lt;T&amp;gt; serviceEndpointInterface) {
-    Map&amp;lt;String, Object&amp;gt; outProps = new HashMap();
-    outProps.put(&amp;quot;action&amp;quot;, &amp;quot;UsernameToken&amp;quot;);
-    outProps.put(&amp;quot;user&amp;quot;, identifier);
-    outProps.put(&amp;quot;passwordType&amp;quot;, &amp;quot;PasswordDigest&amp;quot;);
-    outProps.put(&amp;quot;passwordCallbackRef&amp;quot;, new WSCallbackHandler(identifier, token));
-    //新增免验证
-    outProps.put(&amp;quot;mustUnderstand&amp;quot;, &amp;quot;0&amp;quot;);
-    ArrayList&amp;lt;Interceptor&amp;lt;? extends Message&amp;gt;&amp;gt; list = new ArrayList();
-    list.add(new SAAJOutInterceptor());
-    list.add(new WSS4JOutInterceptor(outProps));
-    JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-    factory.setServiceClass(serviceEndpointInterface);
-    factory.setAddress(address);
-    factory.getOutInterceptors().addAll(list);
-    return (T) factory.create();
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Maven——输出依赖树（处理包冲突）</title>
-      <link>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</link>
-      <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</guid>
-      
-        <description>&lt;blockquote&gt;
-&lt;p&gt;早上同事反馈有个接口调用报错，最后定位是asm包冲突导致。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;解决：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;执行maven命令 dependency:tree 获取依赖树；&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;控制台输出(部分内容)：
-[INFO] +- org.apache.cxf:cxf-rt-frontend-jaxws:jar:3.1.8:compile
-[INFO] |  +- xml-resolver:xml-resolver:jar:1.2:compile
-[INFO] |  +- org.ow2.asm:asm:jar:5.0.4:compile
-[INFO] |  +- org.apache.cxf:cxf-core:jar:3.1.8:compile
-[INFO] |  |  \- org.codehaus.woodstox:woodstox-core-asl:jar:4.4.1:compile
-[INFO] |  |     \- org.codehaus.woodstox:stax2-api:jar:3.1.4:compile
-[INFO] |  +- org.apache.cxf:cxf-rt-bindings-soap:jar:3.1.8:compile
-[INFO] |  |  +- org.apache.cxf:cxf-rt-wsdl:jar:3.1.8:compile
-[INFO] |  |  |  \- wsdl4j:wsdl4j:jar:1.6.3:compile
-[INFO] |  |  \- org.apache.cxf:cxf-rt-databinding-jaxb:jar:3.1.8:compile
-[INFO] |  |     +- com.sun.xml.bind:jaxb-impl:jar:2.2.11:compile
-[INFO] |  |     \- com.sun.xml.bind:jaxb-core:jar:2.2.11:compile
-[INFO] |  +- org.apache.cxf:cxf-rt-bindings-xml:jar:3.1.8:compile
-[INFO] |  +- org.apache.cxf:cxf-rt-frontend-simple:jar:3.1.8:compile
-[INFO] |  \- org.apache.cxf:cxf-rt-ws-addr:jar:3.1.8:compile
-[INFO] |     \- org.apache.cxf:cxf-rt-ws-policy:jar:3.1.8:compile
-[INFO] +- org.apache.cxf:cxf-rt-transports-http:jar:3.1.8:compile
-[INFO] +- org.apache.cxf:cxf-rt-transports-http-jetty:jar:3.1.8:compile
-[INFO] |  +- org.eclipse.jetty:jetty-server:jar:9.4.8.v20171121:compile
-[INFO] |  |  \- javax.servlet:javax.servlet-api:jar:3.1.0:compile
-[INFO] |  +- org.eclipse.jetty:jetty-util:jar:9.4.8.v20171121:compile
-[INFO] |  +- org.eclipse.jetty:jetty-io:jar:9.4.8.v20171121:compile
-[INFO] |  +- org.eclipse.jetty:jetty-security:jar:9.4.8.v20171121:compile
-[INFO] |  +- org.eclipse.jetty:jetty-continuation:jar:9.4.8.v20171121:compile
-[INFO] |  \- org.eclipse.jetty:jetty-http:jar:9.4.8.v20171121:compile
-[INFO] +- org.apache.cxf:cxf-rt-ws-security:jar:3.1.8:compile
-[INFO] |  +- org.apache.cxf:cxf-rt-security-saml:jar:3.1.8:compile
-[INFO] |  |  \- org.apache.cxf:cxf-rt-security:jar:3.1.8:compile
-[INFO] |  +- net.sf.ehcache:ehcache:jar:2.10.4:compile
-[INFO] |  +- org.apache.wss4j:wss4j-ws-security-dom:jar:2.1.7:compile
-[INFO] |  |  \- org.apache.wss4j:wss4j-ws-security-common:jar:2.1.7:compile
-[INFO] |  |     +- org.apache.santuario:xmlsec:jar:2.0.7:compile
-[INFO] |  |     +- org.opensaml:opensaml-saml-impl:jar:3.1.1:compile
-[INFO] |  |     |  +- org.opensaml:opensaml-profile-api:jar:3.1.1:compile
-[INFO] |  |     |  |  \- org.opensaml:opensaml-core:jar:3.1.1:compile
-[INFO] |  |     |  +- org.opensaml:opensaml-saml-api:jar:3.1.1:compile
-[INFO] |  |     |  |  +- org.opensaml:opensaml-xmlsec-api:jar:3.1.1:compile
-[INFO] |  |     |  |  \- org.opensaml:opensaml-soap-api:jar:3.1.1:compile
-[INFO] |  |     |  +- org.opensaml:opensaml-security-impl:jar:3.1.1:compile
-[INFO] |  |     |  |  \- org.opensaml:opensaml-security-api:jar:3.1.1:compile
-[INFO] |  |     |  |     +- org.cryptacular:cryptacular:jar:1.0:compile
-[INFO] |  |     |  |     \- org.bouncycastle:bcprov-jdk15on:jar:1.51:compile
-[INFO] |  |     |  +- org.opensaml:opensaml-xmlsec-impl:jar:3.1.1:compile
-[INFO] |  |     |  \- net.shibboleth.utilities:java-support:jar:7.1.1:compile
-[INFO] |  |     +- org.opensaml:opensaml-xacml-impl:jar:3.1.1:compile
-[INFO] |  |     |  \- org.opensaml:opensaml-xacml-api:jar:3.1.1:compile
-[INFO] |  |     +- org.opensaml:opensaml-xacml-saml-impl:jar:3.1.1:compile
-[INFO] |  |     |  \- org.opensaml:opensaml-xacml-saml-api:jar:3.1.1:compile
-[INFO] |  |     +- org.jasypt:jasypt:jar:1.9.2:compile
-[INFO] |  |     \- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.7.1:compile
-[INFO] |  +- org.apache.wss4j:wss4j-policy:jar:2.1.7:compile
-[INFO] |  |  \- org.apache.neethi:neethi:jar:3.0.3:compile
-[INFO] |  +- org.apache.wss4j:wss4j-ws-security-stax:jar:2.1.7:compile
-[INFO] |  |  \- org.apache.wss4j:wss4j-bindings:jar:2.1.7:compile
-[INFO] |  \- org.apache.wss4j:wss4j-ws-security-policy-stax:jar:2.1.7:compile
-[INFO] +- org.apache.ws.xmlschema:xmlschema-core:jar:2.2.1:compile
-[INFO] +- commons-codec:commons-codec:jar:1.5:compile
-[INFO] +- org.jolokia:jolokia-core:jar:1.3.7:compile
-[INFO] |  \- com.googlecode.json-simple:json-simple:jar:1.1.1:compile
-[INFO] +- org.projectlombok:lombok:jar:1.16.20:compile
-[INFO] +- io.springfox:springfox-swagger2:jar:2.8.0:compile
-[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.14:compile
-[INFO] |  +- io.swagger:swagger-models:jar:1.5.14:compile
-[INFO] |  +- io.springfox:springfox-spi:jar:2.8.0:compile
-[INFO] |  |  \- io.springfox:springfox-core:jar:2.8.0:compile
-[INFO] |  |     \- net.bytebuddy:byte-buddy:jar:1.7.9:compile
-[INFO] |  +- io.springfox:springfox-schema:jar:2.8.0:compile
-[INFO] |  +- io.springfox:springfox-swagger-common:jar:2.8.0:compile
-[INFO] |  +- io.springfox:springfox-spring-web:jar:2.8.0:compile
-[INFO] |  |  \- org.reflections:reflections:jar:0.9.11:compile
-[INFO] |  |     \- org.javassist:javassist:jar:3.21.0-GA:compile
-[INFO] |  +- com.fasterxml:classmate:jar:1.3.4:compile
-[INFO] |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
-[INFO] |  +- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
-[INFO] |  \- org.mapstruct:mapstruct:jar:1.2.0.Final:compile
-[INFO] +- io.springfox:springfox-swagger-ui:jar:2.8.0:compile
-[INFO] +- org.springframework.data:spring-data-hadoop:jar:2.5.0.RELEASE:compile
-[INFO] |  +- org.springframework:spring-beans:jar:4.3.14.RELEASE:compile
-[INFO] |  +- org.springframework:spring-messaging:jar:4.3.14.RELEASE:compile
-[INFO] |  +- org.springframework.data:spring-data-hadoop-core:jar:2.5.0.RELEASE:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-streaming:jar:2.7.3:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-common:jar:2.7.3:compile
-[INFO] |  |  |  +- org.apache.hadoop:hadoop-annotations:jar:2.7.3:compile
-[INFO] |  |  |  |  \- jdk.tools:jdk.tools:jar:1.8:system
-[INFO] |  |  |  +- commons-cli:commons-cli:jar:1.2:compile
-[INFO] |  |  |  +- org.apache.commons:commons-math3:jar:3.1.1:compile
-[INFO] |  |  |  +- xmlenc:xmlenc:jar:0.52:compile
-[INFO] |  |  |  +- commons-httpclient:commons-httpclient:jar:3.1:compile
-[INFO] |  |  |  +- commons-io:commons-io:jar:2.4:compile
-[INFO] |  |  |  +- commons-net:commons-net:jar:3.1:compile
-[INFO] |  |  |  +- javax.servlet:servlet-api:jar:2.5:compile
-[INFO] |  |  |  +- org.mortbay.jetty:jetty:jar:6.1.26:compile
-[INFO] |  |  |  +- org.mortbay.jetty:jetty-util:jar:6.1.26:compile
-[INFO] |  |  |  +- javax.servlet.jsp:jsp-api:jar:2.1:runtime
-[INFO] |  |  |  +- com.sun.jersey:jersey-core:jar:1.9:compile
-[INFO] |  |  |  +- com.sun.jersey:jersey-json:jar:1.9:compile
-[INFO] |  |  |  +- com.sun.jersey:jersey-server:jar:1.9:compile
-[INFO] |  |  |  |  \- asm:asm:jar:3.1:compile
-[INFO] |  |  |  +- net.java.dev.jets3t:jets3t:jar:0.9.0:compile
-[INFO] |  |  |  |  \- com.jamesmurty.utils:java-xmlbuilder:jar:0.4:compile
-[INFO] |  |  |  +- commons-configuration:commons-configuration:jar:1.6:compile
-[INFO] |  |  |  |  +- commons-digester:commons-digester:jar:2.1:compile
-[INFO] |  |  |  |  \- commons-beanutils:commons-beanutils-core:jar:1.8.0:compile
-[INFO] |  |  |  +- org.apache.avro:avro:jar:1.7.4:compile
-[INFO] |  |  |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.3:compile
-[INFO] |  |  |  |  \- org.xerial.snappy:snappy-java:jar:1.0.4.1:compile
-[INFO] |  |  |  +- com.google.protobuf:protobuf-java:jar:2.5.0:compile
-[INFO] |  |  |  +- com.google.code.gson:gson:jar:2.8.2:compile
-[INFO] |  |  |  +- org.apache.hadoop:hadoop-auth:jar:2.7.3:compile
-[INFO] |  |  |  |  +- org.apache.directory.server:apacheds-kerberos-codec:jar:2.0.0-M15:compile
-[INFO] |  |  |  |  |  +- org.apache.directory.server:apacheds-i18n:jar:2.0.0-M15:compile
-[INFO] |  |  |  |  |  +- org.apache.directory.api:api-asn1-api:jar:1.0.0-M20:compile
-[INFO] |  |  |  |  |  \- org.apache.directory.api:api-util:jar:1.0.0-M20:compile
-[INFO] |  |  |  |  \- org.apache.curator:curator-framework:jar:2.7.1:compile
-[INFO] |  |  |  +- org.apache.curator:curator-client:jar:2.7.1:compile
-[INFO] |  |  |  +- org.apache.curator:curator-recipes:jar:2.7.1:compile
-[INFO] |  |  |  +- com.google.code.findbugs:jsr305:jar:3.0.0:compile
-[INFO] |  |  |  +- org.apache.htrace:htrace-core:jar:3.1.0-incubating:compile
-[INFO] |  |  |  +- org.apache.zookeeper:zookeeper:jar:3.4.6:compile
-[INFO] |  |  |  \- org.apache.commons:commons-compress:jar:1.4.1:compile
-[INFO] |  |  |     \- org.tukaani:xz:jar:1.0:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-yarn-common:jar:2.7.3:compile
-[INFO] |  |  |  +- org.apache.hadoop:hadoop-yarn-api:jar:2.7.3:compile
-[INFO] |  |  |  +- javax.xml.bind:jaxb-api:jar:2.2.2:compile
-[INFO] |  |  |  |  \- javax.xml.stream:stax-api:jar:1.0-2:compile
-[INFO] |  |  |  +- com.sun.jersey:jersey-client:jar:1.9:compile
-[INFO] |  |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
-[INFO] |  |  |  +- org.codehaus.jackson:jackson-xc:jar:1.9.13:compile
-[INFO] |  |  |  +- com.google.inject.extensions:guice-servlet:jar:3.0:compile
-[INFO] |  |  |  +- com.google.inject:guice:jar:3.0:compile
-[INFO] |  |  |  |  +- javax.inject:javax.inject:jar:1:compile
-[INFO] |  |  |  |  \- aopalliance:aopalliance:jar:1.0:compile
-[INFO] |  |  |  \- com.sun.jersey.contribs:jersey-guice:jar:1.9:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-distcp:jar:2.7.3:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-mapreduce-client-core:jar:2.7.3:compile
-[INFO] |  |  |  \- io.netty:netty:jar:3.6.2.Final:compile
-[INFO] |  |  +- org.apache.hadoop:hadoop-hdfs:jar:2.7.3:compile
-[INFO] |  |  |  +- commons-daemon:commons-daemon:jar:1.0.13:compile
-[INFO] |  |  |  +- io.netty:netty-all:jar:4.0.23.Final:compile
-[INFO] |  |  |  \- org.fusesource.leveldbjni:leveldbjni-all:jar:1.8:compile
-[INFO] |  |  \- org.apache.hadoop:hadoop-mapreduce-client-jobclient:jar:2.7.3:compile
-[INFO] |  |     +- org.apache.hadoop:hadoop-mapreduce-client-common:jar:2.7.3:compile
-[INFO] |  |     |  +- org.apache.hadoop:hadoop-yarn-client:jar:2.7.3:compile
-[INFO] |  |     |  \- org.apache.hadoop:hadoop-yarn-server-common:jar:2.7.3:compile
-[INFO] |  |     \- org.apache.hadoop:hadoop-mapreduce-client-shuffle:jar:2.7.3:compile
-[INFO] |  |        \- org.apache.hadoop:hadoop-yarn-server-nodemanager:jar:2.7.3:compile
-[INFO] ------------------------------------------------------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;搜索 asm，在相应父包增加排除&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.data&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-data-hadoop&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;2.5.0.RELEASE&amp;lt;/version&amp;gt;
-    &amp;lt;exclusions&amp;gt;
-        &amp;lt;exclusion&amp;gt;
-            &amp;lt;artifactId&amp;gt;asm&amp;lt;/artifactId&amp;gt;
-            &amp;lt;groupId&amp;gt;asm&amp;lt;/groupId&amp;gt;
-        &amp;lt;/exclusion&amp;gt;
-    &amp;lt;/exclusions&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;打包，更新，测试，大功告成&lt;/p&gt;
-&lt;/blockquote&gt;
 </description>
       
     </item>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+  <meta charset="utf-8">
+  <title>Java笔记——web · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; XM" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="Java笔记——web" />
+<meta property="og:description" content="JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; XM" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/12/09/java%E7%AC%94%E8%AE%B0web/" />
+
+
+
+<meta property="article:published_time" content="2018-12-09T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-12-09T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Java笔记——web">
+<meta itemprop="description" content="JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; XM">
+
+
+<meta itemprop="datePublished" content="2018-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1528">
+
+
+
+<meta itemprop="keywords" content="web,笔记," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java笔记——web"/>
+<meta name="twitter:description" content="JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; XM"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">Java笔记——web</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-12-09
+          / 分类：
+          <a href="https://ianeiu.github.io/category/java/">java</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/web/">web</a>, 
+                <a href="https://ianeiu.github.io/tag/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="container content">
+  
+
+<p>JavaWeb笔记整理</p>
+
+<h2 id="xml">XML</h2>
+
+<p>XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换</p>
+
+<p>格式：<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code></p>
+
+<p>XML两种文档约束类型： <code>dtd</code> （file_name.dtd）和<code>schema</code>（file_name.xsd 可被XML解析器解析）</p>
+
+<p>XML存储结构化信息，使用<code>DOM</code>或<code>SAX</code>（边读边解析）方式解析<br />
+Properties存储平面信息，使用Properties类解析</p>
+
+<p>常见的XML解析器实现：JDOM、DOM4J（首选）、SAX</p>
+
+<p>XPath:XML路径语言，用来确定XML文档中某部分位置</p>
+
+<h2 id="web服务器">Web服务器</h2>
+
+<p>Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等</p>
+
+<h2 id="jsp九大内置对象">JSP九大内置对象</h2>
+
+<ul>
+<li>request - HttpServletRequest</li>
+<li>response - HttpServletResponse</li>
+<li>session - HttpSession</li>
+<li>application - ServletContext</li>
+<li>config - ServletConfig</li>
+<li>exception - 只有在错误页面才可使用</li>
+<li>page - 作用本JSP页面中</li>
+<li>out - JSPWriter</li>
+<li>pageContext - 页面上下文对象（作用域最小）</li>
+</ul>
+
+<h2 id="jsp中的">JSP中的&lt;%%&gt;</h2>
+
+<ul>
+<li>脚本
+
+<ul>
+<li>&lt;% .. %&gt;</li>
+<li>&lt;%= ..%&gt;</li>
+<li>&lt;%! ..%&gt;</li>
+</ul></li>
+<li>注释
+
+<ul>
+<li>&lt;%&ndash; ..  &ndash;%&gt;</li>
+</ul></li>
+<li>指令
+
+<ul>
+<li>&lt;%@ .. %&gt;
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="jsp三大指令">JSP三大指令</h2>
+
+<ul>
+<li>page</li>
+<li>include</li>
+<li>taglib</li>
+</ul>
+
+<h2 id="jsp基本动作">JSP基本动作</h2>
+
+<ul>
+<li>include</li>
+<li>useBean</li>
+<li>setProperty</li>
+<li>getProperty</li>
+<li>forward</li>
+<li>plugin</li>
+</ul>
+
+<h2 id="el-11个内置对象">EL 11个内置对象</h2>
+
+<ul>
+<li>pageScope：获取pageContext域属性，相当于pageContext.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>requestScope：获取request域属性，相当于request.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>sessionScope：获取session域属性，相当于session.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>applicationScope：获取application域属性，相当于application.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>param：对应参数，它是一个Map，其中key是参数，value是参数值，适用于单值的参数，相当于request.getParameter(&ldquo;xxx&rdquo;)</li>
+<li>paramValues：对应参数，她是一个Map，其中key是参数，value是多个参数值，适用于多值的参数，相当于request.getParameterValues(&ldquo;xxx&rdquo;)</li>
+<li>header：对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值的请求头，相当于request.getHeader(&ldquo;xxx&rdquo;)</li>
+<li>headerValues：对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值的请求头，相当于request.getHeaders(&ldquo;xxx&rdquo;)</li>
+<li>initParam：获取web.xml中<context-param>内的参数，${ initParam.xxx}，xxx就是<param-name>标签内的值，进而得到<param-value>中的值</li>
+<li>cookie：用于获取cookie，Map<String,Cookie>，其中key是cookie的name，value是cookie对象，例如${cookie.JSESSIONID.value }就是获取sessionId</li>
+<li>pageContext：可以获取JSP九大内置对象，相当于使用该对象调用getxxx()方法，例如pageContext.getRequest()可以写为${pageContext.request)</li>
+</ul>
+
+<p>使用：${initParam.num}与${initParam[&lsquo;num&rsquo;]}。如果Map的键或Bean的属性名中包含<code>_</code>或<code>-</code>时，只有${initParam[&lsquo;max_num&rsquo;]}</p>
+
+<h2 id="javaweb四大域对象">JavaWeb四大域对象</h2>
+
+<ul>
+<li>PageContext - page</li>
+<li>ServletRequest - request</li>
+<li>HttpSession - session</li>
+<li>ServletContext - application</li>
+</ul>
+
+<h2 id="javaweb三大组件">JavaWeb三大组件</h2>
+
+<ul>
+<li>Servlet</li>
+<li>Filter</li>
+<li>Listener</li>
+</ul>
+
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+<div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站导航</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2018
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

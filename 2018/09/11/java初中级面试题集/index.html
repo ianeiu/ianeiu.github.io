@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-09-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3782">
+<meta itemprop="wordCount" content="4054">
 
 
 
@@ -307,6 +307,14 @@
    }  
 }
 </code></pre>
+
+<h3 id="char型变量中能不能存储一个中文汉字">char型变量中能不能存储一个中文汉字</h3>
+
+<p>在Java中，char类型占2个字节，而且Java默认采用Unicode编码，以个Unicode码是16位，所以一个Unicode码占两个字节，Java中无论汉子还是英文字母都是用Unicode编码来表示的。所以在Java中char类型变量可以存储一个中文汉字。</p>
+
+<h3 id="java中实现多态的机制是什么">java中实现多态的机制是什么</h3>
+
+<p>靠的是父类或接口定义的引用变量可以指向子类或具体实现类的实例对象，而程序调用的方法在运行期才动态绑定，就是引用变量所指向的具体实例对象的方法，也就是内存里正在运行的那个对象的方法，而不是引用变量的类型中定义的方法。</p>
 
 
   
