@@ -1372,10 +1372,10 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     
     <item>
       <title>Java笔记——web</title>
-      <link>https://ianeiu.github.io/2018/12/09/java%E7%AC%94%E8%AE%B0web/</link>
-      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/12/16/java%E7%AC%94%E8%AE%B0web/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/09/java%E7%AC%94%E8%AE%B0web/</guid>
+      <guid>https://ianeiu.github.io/2018/12/16/java%E7%AC%94%E8%AE%B0web/</guid>
       
         <description>
 
@@ -1400,6 +1400,143 @@ Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 
 &lt;p&gt;Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等&lt;/p&gt;
 
+&lt;h2 id=&#34;javaweb三大组件&#34;&gt;JavaWeb三大组件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Servlet&lt;/li&gt;
+&lt;li&gt;Filter&lt;/li&gt;
+&lt;li&gt;Listener&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;servlet&#34;&gt;Servlet&lt;/h2&gt;
+
+&lt;p&gt;Servlet是多线程、单实例。&lt;br /&gt;
+继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet  &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig&lt;/p&gt;
+
+&lt;h4 id=&#34;servlet生命周期&#34;&gt;Servlet生命周期&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法；&lt;/li&gt;
+&lt;li&gt;提供服务：当服务器每次接收到请求时，会调用service()方法处理请求；&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。&lt;/p&gt;
+
+&lt;h4 id=&#34;在web-xml中配置&#34;&gt;在web.xml中配置&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+&amp;lt;servlet&amp;gt;
+	&amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt;
+	&amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt;
+	&amp;lt;!-- 通过ServletConfig获取 --&amp;gt;
+	&amp;lt;init-param&amp;gt;
+		&amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt;
+		&amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt;
+	&amp;lt;/init-param&amp;gt;
+	&amp;lt;!-- 值越小，优先级越大 --&amp;gt;
+	&amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt;
+&amp;lt;/servlet&amp;gt;
+&amp;lt;servlet-mapping&amp;gt;
+	&amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt;
+	&amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt;
+&amp;lt;/servlet-mapping&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;访问路径可以使用通配符 &lt;code&gt;* /* /myName/* *.do&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;httpservlet&#34;&gt;HttpServlet&lt;/h4&gt;
+
+&lt;p&gt;实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;请求request&#34;&gt;请求request&lt;/h2&gt;
+
+&lt;p&gt;URL相关：&lt;br /&gt;
+&lt;code&gt;http://127.0.0.1:8080/myproject/myServlet?name=admin&lt;/code&gt;&lt;br /&gt;
+ .getRequestURL()+&amp;ldquo;?&amp;rdquo;+ .getQueryString&lt;br /&gt;
+ 或者&lt;br /&gt;
+ .getScheme() +&amp;rdquo;://&amp;ldquo;+ .getServerName() +&amp;rdquo;:&amp;ldquo;+.getServerPort() +&amp;rdquo;/&amp;ldquo;+ .getContextPath +&amp;rdquo;/&amp;ldquo;+ .getServerPath +&amp;rdquo;?&amp;ldquo;+ .getQueryString&lt;br /&gt;
+ /myproject/myServlet 可用 .getRequestURI() 获取&lt;/p&gt;
+
+&lt;h4 id=&#34;get和post&#34;&gt;get和post&lt;/h4&gt;
+
+&lt;p&gt;get：没有请求体，参数在url中显示，长度理论限制1K之内&lt;br /&gt;
+post: 参数在请求体中，长度无限制&lt;/p&gt;
+
+&lt;h4 id=&#34;请求转发和请求包含&#34;&gt;请求转发和请求包含&lt;/h4&gt;
+
+&lt;p&gt;都是一个请求跨多个Servlet（可以共享request的域属性）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class AServlet extends HttpServlet {
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispacter rd = request.getRequestDispacter(&amp;quot;/BServlet&amp;quot;);
+		rd.forward(request,response);//A不能输响应体，可设置响应头，最后由B处理
+		rd.include(request,response);//无限制，共同处理请求
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;响应response&#34;&gt;响应response&lt;/h2&gt;
+
+&lt;p&gt;可设置响应信息、发送状态码、设置响应正文、重定向（response.sendRedirect(&amp;ldquo;/myProject/BServlet&amp;rdquo;)）&lt;/p&gt;
+
+&lt;h4 id=&#34;响应编码&#34;&gt;响应编码&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;response.setCharacterEncoding(&amp;ldquo;utf-8&amp;rdquo;); response.getWriter(&amp;ldquo;..&amp;rdquo;);&lt;/li&gt;
+&lt;li&gt;response.setHeader(&amp;ldquo;content-type&amp;rdquo;,&amp;ldquo;text/html;charset=utf-8&amp;rdquo;);&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;response.setContentType(&amp;ldquo;text/html;charset=utf-8&amp;rdquo;);&lt;/p&gt;
+
+&lt;h4 id=&#34;请求转发和重定向-302&#34;&gt;请求转发和重定向（302）&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;请求转发是一个请求，但是重定向是两个请求。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;请求转发只能是一种请求方式，要么是Get要么是Post ,但是重定向的第二个请求一定是Get。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;请求转发的地址栏并不会发生变化(服务器请求资源)，但是重定向的会变化，因为它是两个请求(浏览器重新请求地址)。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;请求转发只能在本应用下的资源，但是重定向却可以跨应用，比如重定向到百度的主页。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;javaweb四大域对象&#34;&gt;JavaWeb四大域对象&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PageContext - page    （jsp）&lt;/li&gt;
+&lt;li&gt;ServletRequest - request     （servlet、jsp）&lt;/li&gt;
+&lt;li&gt;HttpSession - session     （servlet、jsp）&lt;/li&gt;
+&lt;li&gt;ServletContext - application     （servlet、jsp）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;servletcontext&#34;&gt;ServletContext&lt;/h2&gt;
+
+&lt;p&gt;ServletContext是Servlet域三大对象之一。&lt;br /&gt;
+在服务器启动时创建，关闭时销毁，单实例。&lt;br /&gt;
+用来存取数据、读取web.xml中初始化参数、读取应用资源（文件名、输入流、文件路径集合）&lt;/p&gt;
+
+&lt;h3 id=&#34;响应头&#34;&gt;响应头&lt;/h3&gt;
+
+&lt;p&gt;防盗链：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Referer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;禁用浏览器缓存：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Expies:-1&lt;/li&gt;
+&lt;li&gt;Cache-Control:no-cache&lt;/li&gt;
+&lt;li&gt;Pragma:no-cache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;三秒后跳转至百度&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Refresh&amp;quot; content=&amp;quot;3;url=http://www.baidu.com&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;jsp九大内置对象&#34;&gt;JSP九大内置对象&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -1414,15 +1551,16 @@ Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 &lt;li&gt;pageContext - 页面上下文对象（作用域最小）&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;jsp中的&#34;&gt;JSP中的&amp;lt;%%&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;jsp中的java脚本&#34;&gt;JSP中的Java脚本&amp;lt;%%&amp;gt;&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;脚本
 
 &lt;ul&gt;
-&lt;li&gt;&amp;lt;% .. %&amp;gt;&lt;/li&gt;
-&lt;li&gt;&amp;lt;%= ..%&amp;gt;&lt;/li&gt;
-&lt;li&gt;&amp;lt;%! ..%&amp;gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;% .. %&amp;gt; 脚本片段&lt;/li&gt;
+&lt;li&gt;&amp;lt;%= ..%&amp;gt; 表达式&lt;/li&gt;
+&lt;li&gt;&amp;lt;%! ..%&amp;gt; 声明，定义成员&lt;/li&gt;
+&lt;li&gt;示例：&lt;code&gt;&amp;lt;% int a=10; %&amp;gt; &amp;lt;%= a %&amp;gt; &amp;lt;%! private String hello=&amp;quot;hello&amp;quot;;%&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;注释
 
@@ -1432,18 +1570,81 @@ Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 &lt;li&gt;指令
 
 &lt;ul&gt;
-&lt;li&gt;&amp;lt;%@ .. %&amp;gt;
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;%@ .. %&amp;gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;jsp原理&#34;&gt;JSP原理&lt;/h2&gt;
+
+&lt;p&gt;客户端 访问 index.jsp,服务器将jsp文件编译成java文件，JVM将java文件编译成class文件。&lt;br /&gt;
+服务器初始化jsp实例，创建该类对象，调用service()。&lt;br /&gt;
+客户端再次访问则直接调用service()。&lt;/p&gt;
 
 &lt;h2 id=&#34;jsp三大指令&#34;&gt;JSP三大指令&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;page&lt;/li&gt;
-&lt;li&gt;include&lt;/li&gt;
-&lt;li&gt;taglib&lt;/li&gt;
+&lt;li&gt;page
+
+&lt;ul&gt;
+&lt;li&gt;错误页面配置 &lt;code&gt;&amp;lt;%@ page language=&amp;quot;java&amp;quot; contentType=&amp;quot;text/html; charset=UTF-8&amp;quot;  pageEncoding=&amp;quot;UTF-8&amp;quot; isErrorPage=&amp;quot;true&amp;quot;%&amp;gt;&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;脚本获取错误 &lt;code&gt;&amp;lt;%= exception.getMessage()%&amp;gt;&lt;/code&gt; [exception为jsp内置对象，error页面独有]&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;include
+
+&lt;ul&gt;
+&lt;li&gt;静态包含&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;taglib
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;%@ taglib uri=&amp;quot;&amp;quot; prefix=&amp;quot;c&amp;quot;%&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;在web-xml中配置错误页面&#34;&gt;在web.xml中配置错误页面&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 默认的错误处理页面 --&amp;gt;  
+&amp;lt;error-page&amp;gt;  
+	&amp;lt;error-code&amp;gt;403&amp;lt;/error-code&amp;gt;  
+	&amp;lt;location&amp;gt;/403.html&amp;lt;/location&amp;gt;  
+&amp;lt;/error-page&amp;gt;  
+&amp;lt;error-page&amp;gt;  
+	&amp;lt;error-code&amp;gt;404&amp;lt;/error-code&amp;gt;  
+	&amp;lt;location&amp;gt;/404.html&amp;lt;/location&amp;gt;  
+&amp;lt;/error-page&amp;gt;  
+&amp;lt;!-- 仅仅在调试的时候注视掉,在正式部署的时候不能注释 --&amp;gt;  
+&amp;lt;!-- 这样配置也是可以的，表示发生500错误的时候，转到500.jsp页面处理。 --&amp;gt;  
+&amp;lt;error-page&amp;gt;   
+	&amp;lt;error-code&amp;gt;500&amp;lt;/error-code&amp;gt;   
+	&amp;lt;location&amp;gt;/500.html&amp;lt;/location&amp;gt;   
+&amp;lt;/error-page&amp;gt;
+&amp;lt;!-- 这样的配置表示如果jsp页面或者servlet发生java.lang.Exception类型（当然包含子类）的异常就会转到500.jsp页面处理。 --&amp;gt;  
+&amp;lt;error-page&amp;gt;   
+	&amp;lt;exception-type&amp;gt;java.lang.Exception&amp;lt;/exception-type&amp;gt;   
+	&amp;lt;location&amp;gt;/500.jsp&amp;lt;/location&amp;gt;   
+&amp;lt;/error-page&amp;gt;   
+  
+&amp;lt;error-page&amp;gt;   
+	&amp;lt;exception-type&amp;gt;java.lang.Throwable&amp;lt;/exception-type&amp;gt;   
+	&amp;lt;location&amp;gt;/500.jsp&amp;lt;/location&amp;gt;   
+&amp;lt;/error-page&amp;gt;  
+&amp;lt;!--   
+当error-code和exception-type都配置时，exception-type配置的页面优先级高  
+及出现500错误，发生异常Exception时会跳转到500.jsp  
+ --&amp;gt;   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;在web-xml中配置jstl&#34;&gt;在web.xml中配置jstl&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;...  
+&amp;lt;jsp-config&amp;gt;  
+   &amp;lt;taglib&amp;gt;  
+	   &amp;lt;taglib-uri&amp;gt;myjstl&amp;lt;/taglib-uri&amp;gt;  
+	   &amp;lt;taglib-location&amp;gt;/WEB-INF/tld/c.tld&amp;lt;/taglib-location&amp;gt;  
+   &amp;lt;/taglib&amp;gt;  
+&amp;lt;/jsp-config&amp;gt;  
+...  
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;jsp基本动作&#34;&gt;JSP基本动作&lt;/h2&gt;
 
@@ -1454,6 +1655,47 @@ Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 &lt;li&gt;getProperty&lt;/li&gt;
 &lt;li&gt;forward&lt;/li&gt;
 &lt;li&gt;plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;动态包含和静态包含&#34;&gt;动态包含和静态包含&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;动态包含
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;jsp:include page=”navigation.jsp”/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;请求处理阶段执行&lt;/li&gt;
+&lt;li&gt;会检查所含文件变化，用于动态页面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;静态包含
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;%@ include file=”resource.html”%&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;翻译阶段执行（合并再编译）&lt;/li&gt;
+&lt;li&gt;不检查所含文件变化，用于静态页面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cookie&#34;&gt;Cookie&lt;/h2&gt;
+
+&lt;p&gt;Cookie是Http协议的规范之一，是服务端和客户端之间传输的小数据。
+特点:&lt;br /&gt;
+1. 大小4KB（实际上不止）
+2. 服务器最多在客户端浏览器上保存20个
+3. 浏览器最多保存300个&lt;/p&gt;
+
+&lt;h2 id=&#34;httpsession&#34;&gt;HttpSession&lt;/h2&gt;
+
+&lt;p&gt;用来会话跟踪的类。session是服务端对象，保存在服务端。&lt;br /&gt;
+HttpSession底层依赖Cookie或是URL重写。&lt;/p&gt;
+
+&lt;p&gt;会话的实现依赖于容器，大多数容器采用基于Cookie的实现机制，使用名字为JSESSIONID的cookie作为session的唯一标识。&lt;/p&gt;
+
+&lt;h4 id=&#34;url重写&#34;&gt;URL重写&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;a href =&amp;quot;/myproject/myjsp.jsp;jsessionid=&amp;lt;%=session.getId()%&amp;gt;&amp;quot;&amp;gt;跳转&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;a href =&amp;quot;&amp;lt;response.encodeURL(&#39;/myproject/myjsp.jsp&#39;)&amp;gt;&amp;quot;&amp;gt;跳转&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;el-11个内置对象&#34;&gt;EL 11个内置对象&lt;/h2&gt;
@@ -1473,23 +1715,6 @@ Properties存储平面信息，使用Properties类解析&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;使用：${initParam.num}与${initParam[&amp;lsquo;num&amp;rsquo;]}。如果Map的键或Bean的属性名中包含&lt;code&gt;_&lt;/code&gt;或&lt;code&gt;-&lt;/code&gt;时，只有${initParam[&amp;lsquo;max_num&amp;rsquo;]}&lt;/p&gt;
-
-&lt;h2 id=&#34;javaweb四大域对象&#34;&gt;JavaWeb四大域对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PageContext - page&lt;/li&gt;
-&lt;li&gt;ServletRequest - request&lt;/li&gt;
-&lt;li&gt;HttpSession - session&lt;/li&gt;
-&lt;li&gt;ServletContext - application&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;javaweb三大组件&#34;&gt;JavaWeb三大组件&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Servlet&lt;/li&gt;
-&lt;li&gt;Filter&lt;/li&gt;
-&lt;li&gt;Listener&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>
