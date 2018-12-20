@@ -31,6 +31,20 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/2018/12/16/java%E7%AC%94%E8%AE%B0web/</loc>
     <lastmod>2018-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -814,6 +828,20 @@
   </url>
   
   <url>
+    <loc>https://ianeiu.github.io/tag/tcp/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/tcp/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ianeiu.github.io/tags/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -830,6 +858,20 @@
   <url>
     <loc>https://ianeiu.github.io/tag/tutorial/</loc>
     <lastmod>2018-03-07T16:01:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/udp/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/udp/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1068,6 +1110,20 @@
   <url>
     <loc>https://ianeiu.github.io/tag/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2018-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

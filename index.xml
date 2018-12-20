@@ -1137,22 +1137,18 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;navicat&#34;&gt;Navicat&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;oracle&#34;&gt;Oracle&lt;/h3&gt;
+&lt;h3 id=&#34;db-ref&#34;&gt;DB-REF&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/hoobey/p/6010804.html&#34; target=&#34;blank&#34;&gt;Oracle 11g安装步骤详谈&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/Oracle 11g安装图文攻略.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;mysql&#34;&gt;MySQL&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/113630.htm&#34; target=&#34;blank&#34;&gt;win10下安装两个MySQL5.6.35数据库&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装-安装俩个MySQL.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://jingyan.baidu.com/article/f3ad7d0ffc061a09c3345bf0.html&#34; target=&#34;blank&#34;&gt;MySQL解压版安装&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;杂谈&#34;&gt;杂谈&lt;/h3&gt;
 
@@ -1164,9 +1160,17 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
 &lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/cdf-opensource-007/p/6337448.html&#34; target=&#34;blank&#34;&gt;详解get请求和post请求参数中文乱码的解决办法&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;spring&#34;&gt;Spring&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xiaoyi52/article/details/76686001&#34; target=&#34;blank&#34;&gt;过滤器使用与bean注入&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/a520songhai/article/details/80785072&#34; target=&#34;blank&#34;&gt;怎么在spring里面获取request 非controller层&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
 
@@ -1196,6 +1200,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://blog.51cto.com/ityouknow/2091874&#34; target=&#34;blank&#34;&gt;Spring Boot 2.0(五)：感受 Docker 魅力， 排解决多应用部署之疼&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;Spring Boot项目使用maven-assembly-plugin根据不同环境打包成tar.gz或者zip&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;springcloud&#34;&gt;SpringCloud&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/details/72650100&#34; target=&#34;blank&#34;&gt;springcloud微服务二：Eureka服务治理之服务注册中心&lt;/a&gt;&lt;br/&gt;
@@ -1219,6 +1225,12 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_dbbfe02e0101oqdj.html&#34; target=&#34;blank&#34;&gt;Linux文本安装&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://www.centos.bz/2018/03/centos查看端口占用情况和开启端口命令/&#34; target=&#34;blank&#34;&gt;Centos查看端口占用情况和开启端口命令&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/liuxianan/p/linux_install_svn_server.html&#34; target=&#34;blank&#34;&gt;Linux下安装SVN服务端小白教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_22075041/article/details/78855708&#34; target=&#34;blank&#34;&gt;在linux下安装配置rabbitMQ详细教程&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/java-class/p/7110266.html&#34; target=&#34;blank&#34;&gt;weblogic 部署问题定位与解决&lt;/a&gt;&lt;/p&gt;
@@ -1240,6 +1252,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/1024Community/p/honery.html&#34; target=&#34;blank&#34;&gt;扒一扒JVM的垃圾回收机制，下次面试你准备好了吗&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xqhys/article/details/81672317&#34; target=&#34;blank&#34;&gt;shiro+cas 单点登出解决（对shiro管理的session有效）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/kyunchen/article/details/52187514&#34; target=&#34;blank&#34;&gt;Java过滤器的使用和拦截排除的实现&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
 
@@ -1366,6 +1380,565 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>[转]TCP与UDP——笔记</title>
+      <link>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;tcp与udp&#34;&gt;TCP与UDP&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;面向报文的传输方式&lt;/strong&gt;是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。
+&lt;strong&gt;面向字节流&lt;/strong&gt;的话，虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。如果应用程序一次只发送一个字节，TCP也可以等待积累有足够多的字节后再构成报文段发送出去。&lt;/p&gt;
+
+&lt;h2 id=&#34;tcp协议&#34;&gt;TCP协议&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Transmission Control Protocol，传输控制协议&lt;/li&gt;
+&lt;li&gt;面向连接的协议&lt;/li&gt;
+&lt;li&gt;需要三次握手建立连接&lt;/li&gt;
+&lt;li&gt;需要四次挥手断开连接&lt;/li&gt;
+&lt;li&gt;TCP报头最小长度：20字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;三次握手的过程&#34;&gt;三次握手的过程&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端发送：SYN = 1, SEQ = X, 端口号&lt;/li&gt;
+&lt;li&gt;服务器回复：SYN = 1, ACK = X + 1, SEQ = Y&lt;/li&gt;
+&lt;li&gt;客户端发送：ACK = Y + 1, SEQ = X + 1&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;四次挥手过程&#34;&gt;四次挥手过程&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A向B提出停止连接请求，FIN = 1&lt;/li&gt;
+&lt;li&gt;B收到，ACK = 1&lt;/li&gt;
+&lt;li&gt;B向A提出停止连接请求，FIN = 1&lt;/li&gt;
+&lt;li&gt;A收到，ACK = 1&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;优点:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可靠，稳定
+
+&lt;ol&gt;
+&lt;li&gt;传递数据前，会有三次握手建立连接&lt;/li&gt;
+&lt;li&gt;传递数据时，有确认、窗口、重传、拥塞控制&lt;/li&gt;
+&lt;li&gt;传递数据后，会断开连接节省系统资源&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;传输慢，效率低，占用系统资源高&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;传递数据前，建立连接需要耗时&lt;/li&gt;
+&lt;li&gt;传递数据时，确认、重传、拥塞等会消耗大量时间以及CPU和内存等硬件资源&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;易被攻击
+1、因为有确认机制，三次握手等机制，容易被人利用，实现DOS 、DDOS攻击&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;如何保证接收的顺序性：&lt;/strong&gt;
+TCP协议使用SEQ和ACK机制保证了顺序性
+TCP的每个报文都是有序号的。确认应答信号ACK=收到的SEQ+1&lt;/p&gt;
+
+&lt;h2 id=&#34;udp协议&#34;&gt;UDP协议&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;User Data Protocol，用户数据包协议&lt;/li&gt;
+&lt;li&gt;面向无连接的协议&lt;/li&gt;
+&lt;li&gt;UDP报头只有8字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;简介：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传输数据之前源端和终端不建立连接，当它想传送时就简单地去抓取来自应用程序的数据，并尽可能快的把它扔到网络上&lt;/li&gt;
+&lt;li&gt;在发送端，UDP传送数据的速度仅仅是受应用程序生成数据的速度、计算机的能力和传输带宽的限制&lt;/li&gt;
+&lt;li&gt;在接收端，UDP把每个消息段放在队列中，应用程序每次从队列中读一个消息段&lt;/li&gt;
+&lt;li&gt;由于传输数据不建立连接，因此也就不需要维护连接状态，包括收发状态等，因此一台服务机可同时向多个客户机传输相同的消息&lt;/li&gt;
+&lt;li&gt;UDP信息包的标题很短，只有8个字节，相对于TCP的20个字节信息包的额外开销很小&lt;/li&gt;
+&lt;li&gt;吞吐量不受拥挤控制算法的调节，只受应用软件生成数据的速率、传输带宽、源端和终端主机性能的限制&lt;/li&gt;
+&lt;li&gt;UDP使用尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态表。&lt;/li&gt;
+&lt;li&gt;UDP是面向报文的。发送方的UDP对应用程序交下来的报文，在添加首部后就向下交付给IP层。既不拆分，也不合并，而是保留这些报文的边界，因此，应用程序需要选择合适的报文大小。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;使用“ping”命令来测试两台主机之间TCP/IP通信是否正常，其实“ping”命令的原理就是向对方主机发送UDP数据包，然后对方主机确认收到数据包，如果数据包是否到达的消息及时反馈回来，那么网络就是通的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;传输速率快&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;传输数据前，不需要像TCP一样建立连接&lt;/li&gt;
+&lt;li&gt;传输数据时，没有确认、窗口、重传、拥塞控制等机制&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;较安全&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;由于没有了TCP的一些机制，被攻击者利用的漏洞就少了&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不可靠，不稳定
+1、由于没有了TCP的机制，在数据传输时如果网络不好，很可能丢包&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;用UDP协议通讯时怎样得知目标机是否获得了数据包&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;仿造TCP的做法，每发一个UDP包，都在里面加一个SEQ序号，接收方收到包后，将SEQ序号回复给发送方。如果发送方在指定时间以内没有收到回应，说明丢包了。&lt;/p&gt;
+
+&lt;h2 id=&#34;tcp与udp的区别&#34;&gt;TCP与UDP的区别&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;table class=&#34;table table-bordered table-striped table-condensed&#34;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP面向&lt;strong&gt;有链接&lt;/strong&gt;的通信服务&lt;/td&gt;
+        &lt;td&gt;UDP面向&lt;strong&gt;无连接&lt;/strong&gt;的通信服务&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP提供可靠的通信传输&lt;/td&gt;
+        &lt;td&gt;UDP不可靠,会丢包&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP保证数据顺序&lt;/td&gt;
+        &lt;td&gt;UDP不保证&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP数据无边界&lt;/td&gt;
+        &lt;td&gt;UDP有边界&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP速度快&lt;/td&gt;
+        &lt;td&gt;UDP速度慢&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP面向字节流&lt;/td&gt;
+        &lt;td&gt;UDP面向报文&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP一对一&lt;/td&gt;
+        &lt;td&gt;UDP可以一对一，一对多&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP报头至少20字节&lt;/td&gt;
+        &lt;td&gt;UDP报头8字节&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;TCP有流量控制，拥塞控制&lt;/td&gt;
+        &lt;td&gt;UDP没有&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;为什么UDP比TCP快&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;TCP需要三次握手&lt;/li&gt;
+&lt;li&gt;TCP有拥塞控制，控制流量等机制&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;为什么TCP比UDP可靠&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;TCP是面向有连接的，建立连接之后才发送数据；而UDP则不管对方存不存在都会发送数据。&lt;/li&gt;
+&lt;li&gt;TCP有确认机制，接收端每收到一个正确包都会回应给发送端。超时或者数据包不完整的话发送端会重传。UDP没有。因此可能丢包。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;什么时候使用TCP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;当对网络通讯质量有要求的时候，比如：整个数据要准确无误的传递给对方，这往往用于一些要求可靠的应用，比如HTTP、HTTPS、FTP等传输文件的协议，POP、SMTP等邮件传输的协议。
+在日常生活中，常见使用TCP协议的应用如下：
+浏览器，用的HTTP
+FlashFXP，用的FTP
+Outlook，用的POP、SMTP
+Putty，用的Telnet、SSH
+QQ文件传输&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;什么时候应该使用UDP：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;当对网络通讯质量要求不高的时候，要求网络通讯速度能尽量的快，这时就可以使用UDP。
+比如，日常生活中，常见使用UDP协议的应用如下：
+QQ语音
+QQ视频
+TFTP&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP无边界，UDP有边界&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP无边界&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;客户端分多次发送数据给服务器，若服务器的缓冲区够大，那么服务器端会在客户端发送完之后一次性接收过来，所以是无边界的；&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;UDP有边界&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;客户端每发送一次，服务器端就会接收一次，也就是说发送多少次就会接收多少次，因此是有边界的。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>[转]计算机网络基础汇总</title>
+      <link>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;计算机网络体系分类&#34;&gt;计算机网络体系分类：&lt;/h1&gt;
+
+&lt;p&gt;计算机网络整个体系有两个大的分类：一个是国际组织制定的OSI七层模型，一种是实际使用中的TCP/IP四层模型。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;OSI七层模型&lt;/th&gt;
+&lt;th&gt;TCP/IP四层模型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;表示层&lt;/td&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;会话层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;数据链路层&lt;/td&gt;
+&lt;td&gt;物理接入层&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;物理层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;物理层&#34;&gt;物理层：&lt;/h1&gt;
+
+&lt;p&gt;物理层主要是实现主机和网络之间的物理连接，规定一些与传输媒体接口有关的一些特性。&lt;/p&gt;
+
+&lt;h2 id=&#34;通信方式&#34;&gt;通信方式：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;单工通信：&lt;/strong&gt;只能由A主机向B主机发送消息，通信是单向的。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;半双工通信：&lt;/strong&gt;同一时间只能是由A主机向B主机或者是B主机向A主机发送信息，不能同时发送消息。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;全双工通信：&lt;/strong&gt; A主机和B主机可以实现在同一时间内既接收消息，又发送消息，极大的提升了通信效率。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常见引导型传输媒体&#34;&gt;常见引导型传输媒体：&lt;/h2&gt;
+
+&lt;h3 id=&#34;双绞线&#34;&gt;双绞线：&lt;/h3&gt;
+
+&lt;p&gt;分为屏蔽双绞线（STP）和非屏蔽双绞线（UTP），屏蔽双绞线就是在非屏蔽双绞线外边又加了一层屏蔽层&lt;/p&gt;
+
+&lt;p&gt;tips：为什么双绞线要两根线绞起来，两个线绞起来可以有效的减少相互之间的电磁干扰。&lt;/p&gt;
+
+&lt;h3 id=&#34;同轴电缆&#34;&gt;同轴电缆：&lt;/h3&gt;
+
+&lt;p&gt;由内导体铜制芯线，绝缘层，网状编织的外导体屏蔽层，以及塑料保护外层组成。有良好的抗干扰性，被广泛用于较高速率的传输。&lt;/p&gt;
+
+&lt;h3 id=&#34;光缆&#34;&gt;光缆：&lt;/h3&gt;
+
+&lt;p&gt;由非常透明的石英玻璃拉成细丝，主要由纤芯和包层构成双层通讯柱。可以分为单模光纤和多模光纤。&lt;/p&gt;
+
+&lt;h2 id=&#34;信道复用技术&#34;&gt;信道复用技术：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;频分复用：&lt;/strong&gt;根据传输的波的频率的不同，将不同频段的波用于不同的通信。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;时分复用：&lt;/strong&gt;将时间分割为时间段，规定在某个时间段内发送什么样的信息，根据时间段来进行信息类别的区分。也称为&lt;strong&gt;同步时分复用&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;统计时分复用：&lt;/strong&gt;基于时分复用的一种改进，由于基本的时分复用并没有考虑到每个时间段内是否有信息发出，例如说每个时间段是20，但是发送消息只占用其中的2，那么剩下的18就处于空闲时间。统计时分复用就是基于这种考虑而设计的，他允许用户有数据时就将数据发送到缓存中，然后会依次扫描输入缓存，把缓存中的数据放入到STMD帧中，若没有就跳过，每当一个帧满了就把这个帧发出去。STMD帧不是分配的固定时序，而是根据需要动态的分配时隙，也称之为&lt;strong&gt;异步时分复用&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;光分复用：就是光的频分复用，根据光谱中频率的不同，用不同频率的光来携带不同的信息。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;数据链路层&#34;&gt;数据链路层：&lt;/h1&gt;
+
+&lt;p&gt;数据链路层主要是将上层的数据转化为数据帧发送到链路上，以及把接受到的帧中的数据取出并交给网络层。&lt;/p&gt;
+
+&lt;h2 id=&#34;通信方式-1&#34;&gt;通信方式：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;点对点通信：&lt;/strong&gt;通信方式是点到点的，也就是只能是两个点之间的通信。常见的就是PPP协议&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;广播通信：&lt;/strong&gt;广播通讯，也就是可以同时实现一对多的通信。常见的就是CSMA/CD（载波监听多点访问/冲突检测）&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;核心要解决的问题&#34;&gt;核心要解决的问题：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;封装成帧：&lt;/strong&gt;在一段数据的前后分别添加首部和尾部，这样就构成了一个帧。接收端在接受到后就可以方便准确的确定帧的首尾，也称为帧定界符。同时定义出了最大传输单元（MTU）&amp;ndash;表示一次可以传输的最大长度上限。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;透明传输：&lt;/strong&gt; 由于使用特定的字符来表示帧的开始和结束，所以传输的内容中不能出现和帧定界符相同的字符，但这显然是不可能的，为了解决这个办法，就可以在内容中和帧定界符一样的字符前边加上规定好的转义字符，这种方法称为字符填充或者是字节填充。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;差错检测：&lt;/strong&gt; 比特在传输过程中可能产生差错，差错检测就是用于检测出现的差错，以便及时的重传，最常用的差错检测算法就是&lt;a href=&#34;http://baike.sogou.com/v7730112.htm?fromTitle=CRC%E6%A0%A1%E9%AA%8C&#34;&gt;CRC（循环冗余检验）&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;网络层&#34;&gt;网络层&lt;/h1&gt;
+
+&lt;p&gt;网络层主要是向上只提供简单灵活的，无连接的，尽最大努力交付的数据报服务。&lt;/p&gt;
+
+&lt;h2 id=&#34;ip协议-网际协议&#34;&gt;IP协议（网际协议）：&lt;/h2&gt;
+
+&lt;p&gt;IP协议是TCP/IP体系中最主要的协议之一，一切在IP之下，一切又在IP之上。我们常说的应该是IP协议族，还包含配套的协议：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ARP（地址解析协议）：将网络的IP地址转化为实际的物理地址（MAC地址），并存储在MAC地址表中。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ICMP（网际控制报文协议）：用于进行差错情况和异常情况的反馈，分为询问报文和差错报告报文。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IGMP（网际组管理协议）：用于控制和管理多播和组播的协议。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;网络地址（IP地址）主要分为五类：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A类：前8位为网络位，后24位为主机位，首位为0&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;B类：前16位为网络位，后16位为主机位，前两位为10&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C类：前24位为网络位，后8位位主机位，前三位为110&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;D类：前四位为1110，用于多播地址&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;E类：前四位为1111，保留为以后使用&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;路由选择协议&#34;&gt;路由选择协议：&lt;/h2&gt;
+
+&lt;p&gt;路由选择协议分为&lt;strong&gt;内部网关协议（IGP）&lt;/strong&gt;和&lt;strong&gt;外部网关协议（EGP）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;内部网关协议&#34;&gt;内部网关协议：&lt;/h3&gt;
+
+&lt;p&gt;主要是有RIP协议和OSPF协议&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;RIP协议（路由信息协议）：&lt;/strong&gt;基于距离矢量的协议&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;OSPF（开放最短路径优先协议）：&lt;/strong&gt;基于链路状态的协议&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;外部网关协议&#34;&gt;外部网关协议：&lt;/h3&gt;
+
+&lt;p&gt;主要是&lt;strong&gt;边界网关协议（BGP）&lt;/strong&gt;，将一个大的网络分为多个小的自治域，每个自治域内有一个网关路由负责和其他的自治域的网关进行通讯。&lt;/p&gt;
+
+&lt;h1 id=&#34;传输层&#34;&gt;传输层&lt;/h1&gt;
+
+&lt;p&gt;网络层主要是为主机之间提供逻辑通讯，而传输层为应用程序之间提供端到端的逻辑通讯。主要是两种类型的通讯方式，面向连接的TCP协议和面向无连接的UDP。&lt;/p&gt;
+
+&lt;h2 id=&#34;端口号&#34;&gt;端口号：&lt;/h2&gt;
+
+&lt;p&gt;端口号按照使用地方的不同分为两大类：服务端端口号，客户端端口号。
+按照占用时长又可以分为熟知端口号（0~1023），登记端口号（1024~49151），短暂端口号（49152~65535）&lt;/p&gt;
+
+&lt;h3 id=&#34;常见端口&#34;&gt;常见端口：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;FTP（文件传输协议）：20，21&amp;mdash;&amp;mdash;其中20端口用于传输数据，21端口用于命令控制&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Telnet（远程登录协议）：23&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;DNS（域名解析服务）：53&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;TFTP（简单文件传输协议）：69&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTP（超文本传输协议）：80&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;两种协议&#34;&gt;两种协议：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UDP（用户数据报协议）：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;UDP是无连接的&lt;/li&gt;
+&lt;li&gt;UDP使用尽最大努力交付，但是不保证可靠交付&lt;/li&gt;
+&lt;li&gt;UDP是面向报文的&lt;/li&gt;
+&lt;li&gt;UDP没有拥塞控制&lt;/li&gt;
+&lt;li&gt;UDP支持一对一，一对多，多对一，多对一的交互通讯&lt;/li&gt;
+&lt;li&gt;UDP首部的开销小&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;TCP（传输控制协议）：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TCP是面向连接的&lt;/li&gt;
+&lt;li&gt;每一条TCP连接只能由两个端点，每一条TCP连接只能是点对点的$TCP连接：：= { socket_1,socket_2 } ={ (IP_1:port_1),(IP_2:port_2)}$&lt;/li&gt;
+&lt;li&gt;TCP提供可靠交付的服务&lt;/li&gt;
+&lt;li&gt;TCP提供全双工通信&lt;/li&gt;
+&lt;li&gt;面向字节流&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;可靠传输的实现机制&#34;&gt;可靠传输的实现机制：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;停止等待协议：&lt;/strong&gt; 每发完一个分组就停止发送，直到收到上一个分组的确认信息。若超过规定时间没有接收到确认信息，边认为是分组丢失，开始重传。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;连续ARQ协议：&lt;/strong&gt;  发送方采用滑动窗口的形式，处于滑动窗口的分组可以直接发送出去；接收方一般采用累积确认的方式，也就是说接受方不必对接收到的每一个分组都进行确认，而是对按序到达的最后一个分组进行确认，而发送方每接收到一个确认，窗口就向前滑动一定距离。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;流量控制：&lt;/strong&gt;协调发送方和接收方的收发速率，利用滑动窗口来协调，使用探测报文来探测当前应该发送的速率，采用&lt;a href=&#34;http://baike.sogou.com/v10500918.htm?fromTitle=Nagle%E7%AE%97%E6%B3%95&#34;&gt;Nagle算法&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞控制：&lt;/strong&gt;
+当网络中某一资源的需求超出了该资源所能提供的可用部分，这时网络的性能就要开始变坏，这种情况就叫做拥塞。而拥塞控制就是为了减少或者避免拥塞对网络性能的影响而做出的一种控制手段。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞控制思路：&lt;/strong&gt;发送方维持一个叫做&lt;strong&gt;拥塞窗口&lt;/strong&gt;的状态变量，拥塞窗口的大小取决于网络的拥塞程度，并且在动态的变化。发送方让自己的发送窗口等于拥塞窗口，如果在考虑接收方的接收能力，一般发送窗口还要小于拥塞窗口。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;慢开始：&lt;/strong&gt;当主机开始发送数据的时候，由小到大的增大发送窗口，也就是由小到大的增大拥塞窗口。接收方接收到一个报文之后就回传一个确认报文，发送方每接收到一个确认报文，就将拥塞窗口加1，这样每经过一个传输轮次之后，拥塞窗口就增大一倍。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞避免：&lt;/strong&gt;思路是让拥塞窗口缓慢的增大，即每经过一个往返时间RTT就把发送方的拥塞窗口加1，而不是加倍，这样拥塞窗口就是线性缓慢增加，比慢开始的增长速率缓慢的多。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;慢开始门限：&lt;/strong&gt;为了防止拥塞窗口增长过大引起网络拥塞，还需要设置一个慢开始门限&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;拥塞窗口&amp;lt;慢开始门限时，使用慢开始算法&lt;/li&gt;
+&lt;li&gt;拥塞窗口&amp;gt;慢开始门限时，使用拥塞避免算法&lt;/li&gt;
+&lt;li&gt;拥塞窗口=慢开始门限时，两种算法都可以&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;快重传：&lt;/strong&gt;要求收到方每收到一个时序的报文段之后就立即发出重复确认，而不要等到自己发送数据时才进行捎带确认。而发送方只要一连收到三个重复确认就应当立即重传对方尚未接受到的报文，而不必等待为报文设置的重传计时器到期。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;快回复：&lt;/strong&gt;与快重传配合使用，当发送方连续收到三个重复确认的时候，就执行“乘法减小”算法，将慢开始门限减半。将拥塞窗口设置为慢开始门限减半之后的值，并开始指向拥塞避免算法。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;tcp的连接管理&#34;&gt;TCP的连接管理：&lt;/h3&gt;
+
+&lt;h4 id=&#34;连接三次握手&#34;&gt;连接三次握手：&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端请求建立连接：SYN=1，seq=x；&lt;/li&gt;
+&lt;li&gt;服务器对客户端的请求进行响应：SYN=1，ACK=1，seq=y，ack=x+1&lt;/li&gt;
+&lt;li&gt;客户端对服务器端的响应信息进行回应：ACK=1，seq=x+1，ack=y+1&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt; SYN为同步信息，在建立连接过程中始终为1&lt;/p&gt;
+
+&lt;h4 id=&#34;断开连接四次握手&#34;&gt;断开连接四次握手：&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端请求断开连接： FIN=1，seq = u；&lt;/li&gt;
+&lt;li&gt;服务端对客户端的请求应答：ACK=1，seq=v，ack=u+1；&lt;/li&gt;
+&lt;li&gt;服务端请求断开连接：FIN=1，ACK=1，seq=w，ack=u+1；&lt;/li&gt;
+&lt;li&gt;客户端对服务端的请求应答：ACK=1，seq=u+1，ack=w+1；&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;应用层&#34;&gt;应用层&lt;/h1&gt;
+
+&lt;p&gt;应用层有多种协议，常用到的就是HTTP以及HTTPS。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HTTP协议报文格式&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;请求报文&lt;/th&gt;
+&lt;th&gt;相应报文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;请求行（用于区分是请求报文还是响应报文，在响应报文中为状态行）&lt;/td&gt;
+&lt;td&gt;状态行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;首部行（用来说明浏览器，服务器或者是报文主体的一些信息）&lt;/td&gt;
+&lt;td&gt;首部行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;空行（用于隔开请求实体和首部行）&lt;/td&gt;
+&lt;td&gt;空行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;实体主体（用于一些请求或者是响应的的参数内容等）&lt;/td&gt;
+&lt;td&gt;实体主体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;常见状态码&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;1xx：表示通知信息，例如表示收到或者是正在处理
+2xx：表示成功，例如表示接受或知道了
+3xx：表示重定向，例如表示完成请求还需要采取进一步的行动
+4xx：表示客户端的差错，例如表示请求中有语法错误或不能完成
+5xx：表示服务器端的差错：例如表示服务器失效无法完成请求&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;HTTPS协议就是对HTTP协议的加密，更加安全可靠，采用HTTP+SSL（安全套接字层）来保证数据的安全性。&lt;/p&gt;
 </description>
       
     </item>
@@ -4598,387 +5171,6 @@ public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
 &lt;li&gt;扩展类加载器&lt;/li&gt;
 &lt;li&gt;应用程序类加载器&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>DB——SQL小技巧</title>
-      <link>https://ianeiu.github.io/2018/10/11/dbsql%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/11/dbsql%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;start-with-connect-by-prior-递归查询用法-oracle&#34;&gt;start with connect by prior 递归查询用法  [Oracle]&lt;/h3&gt;
-
-&lt;p&gt;初始化表及数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;create table MAS_BAKDEAL_TEMPLATE
-(
-  SEQID    NUMBER(10) not null,
-  TAB_ID   NUMBER default 0,
-  DEALNAME VARCHAR2(100) not null,
-  PARENTID NUMBER not null,
-  ISAUTO   CHAR(1),
-  STATUS   CHAR(1)
-)
--- Add comments to the table 
-comment on table MAS_BAKDEAL_TEMPLATE
-  is &#39;后续处理&#39;;
--- Add comments to the columns 
-comment on column MAS_BAKDEAL_TEMPLATE.SEQID
-  is &#39;主键&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.TAB_ID
-  is &#39;对应表 mas_templ_tab - tab_id字段&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.DEALNAME
-  is &#39;名称&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.PARENTID
-  is &#39;父ID&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.ISAUTO
-  is &#39;0代表自动，1代表手工&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.STATUS
-  is &#39;0启用，1作废&#39;;
-
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (466, 5019, &#39;批量附赠送单&#39;, 3, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (4, 0, &#39;(二期)数据业务管理&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (469, 5019, &#39;与酬金系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (93, 0, &#39;业务功能取消&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (1, 0, &#39;赠送话费&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (2, 5021, &#39;小额赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (42, 5022, &#39;充值券赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (94, 5019, &#39;12580取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (95, 5019, &#39;短信套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (0, 886, &#39;后续处理列表&#39;, -1, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (96, 5019, &#39;GPRS套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (97, 5019, &#39;手机证券取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (98, 5019, &#39;校讯通取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (122, 5019, &#39;中华国学开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (282, 5019, &#39;短信群发&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (243, 5019, &#39;一起玩吧用户活跃&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (84, 5019, &#39;12580开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (85, 5019, &#39;短信套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (86, 5019, &#39;GPRS套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (87, 5019, &#39;手机证券开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (91, 5019, &#39;校讯通开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (89, 0, &#39;BOSS办理开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (90, 5019, &#39;套餐办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (262, 5019, &#39;数据核对&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (81, 5197, &#39;缴费卡&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (82, 5019, &#39;WEB赠送(20090111作废）&#39;, 1, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (83, 0, &#39;业务功能开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (92, 5019, &#39;营销案办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (221, 5019, &#39;彩铃歌曲订购&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (301, 5280, &#39;M值赠送&#39;, 1, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (242, 5019, &#39;手机报开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (321, 5470, &#39;营销优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (121, 5019, &#39;飞信开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (141, 5019, &#39;非彩铃套餐用户销户&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (181, 5019, &#39;天气预报&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (182, 5019, &#39;秘书台&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (183, 5019, &#39;清单被查&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (201, 5019, &#39;开通5元彩铃功能&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (342, 5627, &#39;09积分优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (3, 0, &#39;批量业务&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (462, 16128, &#39;话费赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (463, 16129, &#39;积分赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (465, 5019, &#39;批开批销处理&#39;, 3, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (468, 5019, &#39;与CMP系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (484, 5019, &#39;负话单赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (467, 16128, &#39;多营销方案赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (261, 0, &#39;能力平台&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (485, 1739, &#39;目标号码&#39;, 261, &#39;0&#39;, &#39;0&#39;);
-commit;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;正常查询结果&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/normalSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;递归查询&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select t.*,level from mas_bakdeal_template t 
-start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;sql字符型字段按数字型字段-排序实现方法&#34;&gt;SQL字符型字段按数字型字段 排序实现方法&lt;/h3&gt;
-
-&lt;p&gt;得分字段为varchar,如果按得分排序结果可能是：&lt;br /&gt;
-1&lt;br /&gt;
-10&lt;br /&gt;
-11&lt;br /&gt;
-123&lt;br /&gt;
-1234&lt;br /&gt;
-2&lt;br /&gt;
-25&lt;br /&gt;
-253&lt;br /&gt;
-3&lt;br /&gt;
-但是我们想要按照数字排序&lt;br /&gt;
-1&lt;br /&gt;
-2&lt;br /&gt;
-3&lt;br /&gt;
-10&lt;br /&gt;
-11&lt;br /&gt;
-25&lt;br /&gt;
-123&lt;br /&gt;
-1234&lt;br /&gt;
-253&lt;/p&gt;
-
-&lt;p&gt;解决方案：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将字段转为int排序: &lt;code&gt;ORDER BY CAST(字段名 AS DECIMAL)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ORDER BY 字段名+0&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;使用绝对值函数ABS处理这个字段： &lt;code&gt;ORDER BY ABS(字段名)&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;oracle-id生成&#34;&gt;Oracle ID生成&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;select sys_guid() from dual;
-
-#序列
-select S_SEQUENCE_ID.NEXTVAL from dual;
-
-select to_char(sysdate,&#39;yyyymmdd&#39;) from dual;
-
-select TO_CHAR(SYSDATE,&#39;yyyymmdd&#39;)||LPAD(TO_CHAR(S_SEQUENCE_ID.NEXTVAL),4,&#39;0&#39;) from dual;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>DB——面试题</title>
-      <link>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      
-        <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;原文地址 &lt;a href=&#34;https://mp.weixin.qq.com/s/QR6MEF1v4QIH-muPyPNg_g&#34; target=&#34;blank&#34;&gt;click&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;触发器的作用&#34;&gt;触发器的作用&lt;/h2&gt;
-
-&lt;p&gt;触发器是一中特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。可以联级运算。如，某表上的触发器上包含对另一个表的数据操作，而该操作又会导致该表触发器被触发。&lt;/p&gt;
-
-&lt;h2 id=&#34;存储过程&#34;&gt;存储过程&lt;/h2&gt;
-
-&lt;p&gt;存储过程是一个预编译的SQL语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中就可以调用多次。如果某次操作需要执行多次SQL，使用存储过程比单纯SQL语句执行要快。&lt;/p&gt;
-
-&lt;p&gt;调用：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;可以用一个命令对象来调用存储过程。&lt;/li&gt;
-&lt;li&gt;可以供外部程序调用，比如：java程序。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;优点：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;存储过程是预编译过的，执行效率高。&lt;/li&gt;
-&lt;li&gt;存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯。&lt;/li&gt;
-&lt;li&gt;安全性高，执行存储过程需要有一定权限的用户。&lt;/li&gt;
-&lt;li&gt;存储过程可以重复使用，可减少数据库开发人员的工作量。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;缺点：移植性差&lt;/p&gt;
-
-&lt;h2 id=&#34;存储过程与函数的区别&#34;&gt;存储过程与函数的区别&lt;/h2&gt;
-
-&lt;p&gt;存储过程&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;用于在数据库中完成特定的操作或者任务（如插入、删除等）&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;程序头部声明用procedure&lt;/li&gt;
-&lt;li&gt;程序头部声明时不需描述返回类型可以使用in/out/in out 三种模式的参数&lt;/li&gt;
-&lt;li&gt;可作为一个独立的PL/SQL语句来执行&lt;/li&gt;
-&lt;li&gt;可以通过out/in out 返回零个或多个值&lt;/li&gt;
-&lt;li&gt;SQL语句(DML 或SELECT)中不可调用存储过程&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;函数&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;用于特定的数据（如选择）&lt;/li&gt;
-&lt;li&gt;程序头部声明用function&lt;/li&gt;
-&lt;li&gt;程序头部声明时要描述返回类型，而且PL/SQL块中至少要包括一个有效的return语句&lt;/li&gt;
-&lt;li&gt;可以使用in/out/in out 三种模式的参数&lt;/li&gt;
-&lt;li&gt;不能独立执行，必须作为表达式的一部分调用&lt;/li&gt;
-&lt;li&gt;通过return语句返回一个值，且改值要与声明部分一致，也可以是通过out类型的参数带出的变量&lt;/li&gt;
-&lt;li&gt;SQL语句(DML 或SELECT)中可以调用函数&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
-
-&lt;p&gt;索引就一种特殊的查询表，数据库的搜索可以利用它加速对数据的检索。它很类似与现实生活中书的目录，不需要查询整本书内容就可以找到想要的数据。索引可以是唯一的，创建索引允许指定单个列或者是多个列。&lt;/p&gt;
-
-&lt;p&gt;缺点是它减慢了数据录入的速度，同时也增加了数据库的尺寸大小。&lt;/p&gt;
-
-&lt;p&gt;唯一、不为空、经常被查询的字段适合建索引&lt;/p&gt;
-
-&lt;h2 id=&#34;索引类型&#34;&gt;索引类型&lt;/h2&gt;
-
-&lt;p&gt;逻辑上：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Single column 单行索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Concatenated 多行索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Unique 唯一索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;NonUnique 非唯一索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Function-based 函数索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Domain 域索引 物理上&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Partitioned 分区索引&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;NonPartitioned 非分区索引&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;B-tree：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Normal 正常型B树&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Rever Key 反转型B树 Bitmap 位图索引&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
-
-&lt;p&gt;事务就是被绑定在一起作为一个逻辑工作单元的SQL语句分组，如果任何一个语句操作失败那么整个操作就被失败，以后操作就会回滚到操作前状态，或者是上有个节点。为了确保要么执行，要么不执行，就可以使用事务。要将有组语句作为事务考虑，就需要通过ACID测试，即原子性，一致性，隔离性和持久性。&lt;/p&gt;
-
-&lt;h2 id=&#34;锁&#34;&gt;锁&lt;/h2&gt;
-
-&lt;p&gt;在所以的DBMS中，锁是实现事务的关键，锁可以保证事务的完整性和并发性。与现实生活中锁一样，它可以使某些数据的拥有者，在某段时间内不能使用某些数据或数据结构。当然锁还分级别的。&lt;/p&gt;
-
-&lt;h2 id=&#34;视图&#34;&gt;视图&lt;/h2&gt;
-
-&lt;p&gt;一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，试图通常是有一个表或者多个表的行或列的子集。对视图的修改会影响基本表。它使得我们获取数据更容易，相比多表查询。&lt;/p&gt;
-
-&lt;p&gt;优点：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;对数据库的访问，因为视图可以有选择性的选取数据库里的一部分。&lt;/li&gt;
-&lt;li&gt;用户通过简单的查询可以从复杂查询中得到结果。&lt;/li&gt;
-&lt;li&gt;维护数据的独立性，试图可从多个表检索数据。&lt;/li&gt;
-&lt;li&gt;对于相同的数据可产生不同的视图。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;缺点：&lt;br /&gt;
-性能：查询视图时，必须把视图的查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，那么就无法更改数据&lt;/p&gt;
-
-&lt;h2 id=&#34;游标&#34;&gt;游标&lt;/h2&gt;
-
-&lt;p&gt;对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。&lt;/p&gt;
-
-&lt;h2 id=&#34;表的连接方式&#34;&gt;表的连接方式&lt;/h2&gt;
-
-&lt;p&gt;内连接、自连接、外连接（左、右、全）、交叉连接&lt;/p&gt;
-
-&lt;p&gt;内连接：只有两个元素表相匹配的才能在结果集中显示。&lt;br /&gt;
-外连接： 左外连接:左边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。&lt;br /&gt;
-右外连接: 右边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。&lt;br /&gt;
-全外连接：连接的表中不匹配的数据全部会显示出来。&lt;br /&gt;
-交叉连接： 笛卡尔效应，显示的结果是链接表数的乘积。&lt;/p&gt;
-
-&lt;h2 id=&#34;union和union-all&#34;&gt;union和union all&lt;/h2&gt;
-
-&lt;p&gt;UNION在进行表链接后会筛选掉重复的记录，所以在表链接后会对所产生的结果集进行排序运算，删除重复的记录再返回结果。实际大部分应用中是不会产生重复的记录，最常见的是过程表与历史表UNION。&lt;/p&gt;
-
-&lt;p&gt;UNION  ALL只是简单的将两个结果合并后就返回。这样，如果返回的两个结果集中有重复的数据，那么返回的结果集就会包含重复的数据了。&lt;/p&gt;
-
-&lt;p&gt;从效率上说，UNION ALL 要比UNION快很多，所以，如果可以确认合并的两个结果集中不包含重复的数据的话，那么就使用UNION ALL。&lt;/p&gt;
-
-&lt;h2 id=&#34;数据库中查询语句速度优化&#34;&gt;数据库中查询语句速度优化&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;建索引&lt;/li&gt;
-&lt;li&gt;减少表之间的关联&lt;/li&gt;
-&lt;li&gt;优化sql，尽量让sql很快定位数据，不要让sql做全表查询，应该走索引,把数据 量大的表排在前面&lt;/li&gt;
-&lt;li&gt;简化查询字段，没用的字段不要，已经对返回结果的控制，尽量返回少量数据&lt;/li&gt;
-&lt;li&gt;尽量用PreparedStatement来查询，不要用Statement&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;数据库三范式&#34;&gt;数据库三范式&lt;/h2&gt;
-
-&lt;p&gt;第一范式：列不可再分&lt;br /&gt;
-第二范式：行可以唯一区分，主键约束&lt;br /&gt;
-第三范式：表的非主属性不能依赖与其他表的非主属性 外键约束    且三大范式是一级一级依赖的，第二范式建立在第一范式上，第三范式建立第一第二范式上&lt;/p&gt;
-
-&lt;h2 id=&#34;varchar2和varchar&#34;&gt;varchar2和varchar&lt;/h2&gt;
-
-&lt;p&gt;varchar的长度是固定的，而varchar2的长度是可以变化的，比如，存储字符串“abc”对于char(20)，表示你存储的字符将占20个字节，包含17个空，而同样的varchar2（20）只占了3个字节，20只是最大值，当你存储的字符小于20时，按实际长度存储。 char的效率要被varchar2的效率高。&lt;/p&gt;
-
-&lt;p&gt;目前varchar是varchar2的同义词，工业标准的varchar类型可以存储空字符串，但是oracle不能这样做，尽管它保留以后这样做的权利。Oracle自己开发了一个数据类型varchar2,这个类型不是一个标准的varchar，他将在数据库中varchar列可以存储空字符串的特性改为存储null值，如果你想有向后兼容的能力，oracle建议使用varchar2而不是varchar&lt;/p&gt;
-
-&lt;h2 id=&#34;oracle和mysql&#34;&gt;Oracle和Mysql&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;库函数不同。&lt;/li&gt;
-&lt;li&gt;Oracle是用表空间来管理的，Mysql不是。&lt;/li&gt;
-&lt;li&gt;显示当前所有的表、用户、改变连接用户、显示当前连接用户、执行外部脚本的语句的不同。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;分页查询时候时候，mysql用limit oracle用rownum&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mysql&amp;gt; SELECT * FROM table LIMIT 5,10; // 检索记录行 6-15 
-//为了检索从某一个偏移量到记录集的结束所有的记录行，可以指定第二个参数为 -1：
-mysql&amp;gt; SELECT * FROM table LIMIT 95,-1; // 检索记录行 96-last. 
-//如果只给定一个参数，它表示返回最大的记录行数目： 
-mysql&amp;gt; SELECT * FROM table LIMIT 5; //检索前 5 个记录行 
-//换句话说，LIMIT n 等价于 LIMIT 0,n。 
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;sql的语法的不同。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
       
     </item>
