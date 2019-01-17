@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-11-30T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-11-30T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1840">
+<meta itemprop="wordCount" content="3373">
 
 
 
@@ -365,6 +365,172 @@ SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session 
 --获取拥有者的对象数量
 SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
 </code></pre>
+
+<h4 id="oracle-随机id">Oracle 随机ID</h4>
+
+<pre><code>select sys_guid() from dual;
+
+#序列
+select S_SEQUENCE_ID.NEXTVAL from dual;
+
+select to_char(sysdate,'yyyymmdd') from dual;
+
+select TO_CHAR(SYSDATE,'yyyymmdd')||LPAD(TO_CHAR(S_SEQUENCE_ID.NEXTVAL),4,'0') from dual;
+</code></pre>
+
+<h4 id="sql字符型字段按数字型字段-排序实现方法">SQL字符型字段按数字型字段 排序实现方法</h4>
+
+<p>得分字段为varchar,如果按得分排序结果可能是   1、10、11、123、1234、2、25、253、3<br />
+但是我们想要按照数字排序是   1、2 、3、10、11、25、123、253、1234</p>
+
+<p>解决方案：</p>
+
+<ol>
+<li>将字段转为int排序: <code>ORDER BY CAST(字段名 AS DECIMAL)</code></li>
+<li><code>ORDER BY 字段名+0</code></li>
+<li>使用绝对值函数ABS处理这个字段： <code>ORDER BY ABS(字段名)</code></li>
+</ol>
+
+<h4 id="oracle-start-with-connect-by-prior-递归查询用法">Oracle start with connect by prior 递归查询用法</h4>
+
+<p>初始化表及数据</p>
+
+<pre><code>create table MAS_BAKDEAL_TEMPLATE
+(
+  SEQID    NUMBER(10) not null,
+  TAB_ID   NUMBER default 0,
+  DEALNAME VARCHAR2(100) not null,
+  PARENTID NUMBER not null,
+  ISAUTO   CHAR(1),
+  STATUS   CHAR(1)
+)
+-- Add comments to the table 
+comment on table MAS_BAKDEAL_TEMPLATE
+  is '后续处理';
+-- Add comments to the columns 
+comment on column MAS_BAKDEAL_TEMPLATE.SEQID
+  is '主键';
+comment on column MAS_BAKDEAL_TEMPLATE.TAB_ID
+  is '对应表 mas_templ_tab - tab_id字段';
+comment on column MAS_BAKDEAL_TEMPLATE.DEALNAME
+  is '名称';
+comment on column MAS_BAKDEAL_TEMPLATE.PARENTID
+  is '父ID';
+comment on column MAS_BAKDEAL_TEMPLATE.ISAUTO
+  is '0代表自动，1代表手工';
+comment on column MAS_BAKDEAL_TEMPLATE.STATUS
+  is '0启用，1作废';
+
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (466, 5019, '批量附赠送单', 3, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (4, 0, '(二期)数据业务管理', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (469, 5019, '与酬金系统自动数据接口', 4, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (93, 0, '业务功能取消', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (1, 0, '赠送话费', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (2, 5021, '小额赠送', 1, '0', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (42, 5022, '充值券赠送', 1, '0', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (94, 5019, '12580取消', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (95, 5019, '短信套餐取消', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (0, 886, '后续处理列表', -1, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (96, 5019, 'GPRS套餐取消', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (97, 5019, '手机证券取消', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (98, 5019, '校讯通取消', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (122, 5019, '中华国学开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (282, 5019, '短信群发', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (243, 5019, '一起玩吧用户活跃', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (84, 5019, '12580开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (85, 5019, '短信套餐开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (86, 5019, 'GPRS套餐开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (87, 5019, '手机证券开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (91, 5019, '校讯通开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (89, 0, 'BOSS办理开通', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (90, 5019, '套餐办理', 89, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (262, 5019, '数据核对', 89, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (81, 5197, '缴费卡', 1, '0', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (82, 5019, 'WEB赠送(20090111作废）', 1, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (83, 0, '业务功能开通', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (92, 5019, '营销案办理', 89, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (221, 5019, '彩铃歌曲订购', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (301, 5280, 'M值赠送', 1, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (242, 5019, '手机报开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (321, 5470, '营销优惠赠送', 1, '0', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (121, 5019, '飞信开通', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (141, 5019, '非彩铃套餐用户销户', 93, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (181, 5019, '天气预报', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (182, 5019, '秘书台', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (183, 5019, '清单被查', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (201, 5019, '开通5元彩铃功能', 83, '1', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (342, 5627, '09积分优惠赠送', 1, '0', '1');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (3, 0, '批量业务', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (462, 16128, '话费赠送', 1, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (463, 16129, '积分赠送', 1, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (465, 5019, '批开批销处理', 3, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (468, 5019, '与CMP系统自动数据接口', 4, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (484, 5019, '负话单赠送', 1, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (467, 16128, '多营销方案赠送', 1, '0', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (261, 0, '能力平台', 0, '', '0');
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (485, 1739, '目标号码', 261, '0', '0');
+commit;
+</code></pre>
+
+<p>正常查询结果</p>
+
+<p><img src="/resouce/DB/normalSel.png" style="width:70%"/></p>
+
+<p>递归查询</p>
+
+<pre><code>select t.*,level from mas_bakdeal_template t 
+start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
+</code></pre>
+
+<p><img src="/resouce/DB/sqlQJSel.png" style="width:70%"/></p>
 
 
   

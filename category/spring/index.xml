@@ -31,21 +31,12 @@
     </item>
     
     <item>
-      <title>SpringMVC的九大组件</title>
-      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <title>SpringMVC的运行流程及九大组件</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
-      <description>SpringMVC的九大组件 前言 建议先阅读 SpringMVC的运行流程 组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处</description>
-    </item>
-    
-    <item>
-      <title>SpringMVC的运行流程</title>
-      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</link>
-      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</guid>
-      <description>SpringMVC的运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用Hand</description>
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      <description>运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping</description>
     </item>
     
     <item>
