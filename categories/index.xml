@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>Eclipse</title>
-      <link>https://ianeiu.github.io/category/eclipse/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/eclipse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>FTP</title>
       <link>https://ianeiu.github.io/category/ftp/</link>
       <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
@@ -75,18 +66,18 @@
     </item>
     
     <item>
-      <title>IDEA</title>
-      <link>https://ianeiu.github.io/category/idea/</link>
+      <title>IDE</title>
+      <link>https://ianeiu.github.io/category/ide/</link>
       <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/category/idea/</guid>
+      <guid>https://ianeiu.github.io/category/ide/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
       <link>https://ianeiu.github.io/category/java/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/category/java/</guid>
       <description></description>
@@ -143,6 +134,15 @@
       <pubDate>Tue, 06 Mar 2018 16:01:23 +0800</pubDate>
       
       <guid>https://ianeiu.github.io/category/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle</title>
+      <link>https://ianeiu.github.io/category/oracle/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/category/oracle/</guid>
       <description></description>
     </item>
     

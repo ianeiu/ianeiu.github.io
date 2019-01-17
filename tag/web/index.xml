@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Sun, 16 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java笔记——web</title>
-      <link>https://ianeiu.github.io/2018/12/16/java%E7%AC%94%E8%AE%B0web/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0web/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/16/java%E7%AC%94%E8%AE%B0web/</guid>
+      <guid>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0web/</guid>
       <description>JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; XM</description>
     </item>
     

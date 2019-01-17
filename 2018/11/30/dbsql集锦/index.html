@@ -44,7 +44,7 @@
 
 <meta itemprop="datePublished" content="2018-11-30T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-11-30T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1822">
+<meta itemprop="wordCount" content="1840">
 
 
 
@@ -248,6 +248,9 @@ SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
 --获取当前年份的第一天
 SELECT TRUNC (SYSDATE, 'YEAR') FROM DUAL;
 
+--获取明年的第一天
+SELECT ADD_MONTHS (TRUNC (SYSDATE, 'YEAR'), 12) FROM DUAL;
+
 --获取当前年份的最后一天
 SELECT ADD_MONTHS (TRUNC (SYSDATE, 'YEAR'), 12) - 1 FROM DUAL;
 
@@ -422,7 +425,9 @@ SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner OR
           <small>
             &copy; 
             WuWeiMian
-            2018
+            
+              2018 -
+            2019
           </small>
           
         </p>
