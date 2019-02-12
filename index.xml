@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ianeiu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[置顶]js、jq——DEMO集</title>
-      <link>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       
         <description>
 
@@ -1091,6 +1091,30 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;/ol&gt;
 
 &lt;hr /&gt;
+
+&lt;h3 id=&#34;js-截取字符串&#34;&gt;js 截取字符串&lt;/h3&gt;
+
+&lt;h4 id=&#34;去除字符串最后一位-进化版&#34;&gt;去除字符串最后一位(进化版)&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;SCRIPT type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+	function delfh(str){
+		str=str.replace(&amp;quot;,,&amp;quot;,&amp;quot;,&amp;quot;);
+		if(str.substring(str.length-1,str.length)==&amp;quot;,&amp;quot;){
+			str2=str.substring(0,str.length-1);
+			delfh(str2);
+		}else{
+			str2=str;
+		}
+		return str2;
+	}
+ 
+	var s2=&amp;quot;1,,,2,,,,3,,,,4,54,454,,,,,,,,,,,,,,,,&amp;quot;;
+	var s=&amp;quot;415929,415930,415931,415932,415933,415934,415935,415936,415937,415938,415939,415940,415941,415942,415943,415944,415945,415946,415947,415948,1,2,3&amp;quot;;
+	alert(delfh(s2));
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
 </description>
       
     </item>
@@ -1111,7 +1135,14 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;
+&lt;a href=&#34;https://blog.csdn.net/zaberyjava/article/details/82111243&#34; target=&#34;blank&#34;&gt;Springboot整合mybatis，配置驼峰命名转换&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/davidgu/p/6270761.html&#34; target=&#34;blank&#34;&gt;MyBatis - (二) 一对一映射和一对多映射&lt;/a&gt;
+&lt;a href=&#34;https://blog.csdn.net/lwpczy1/article/details/79158535&#34; target=&#34;blank&#34;&gt;Mybatis(Oracle)批量插入、批量更新、批量删除&lt;/a&gt;
+&lt;a href=&#34;https://www.cnblogs.com/xunux/p/4882761.html&#34; target=&#34;blank&#34;&gt;mybatis批量插入数据到oracle&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31138523/article/details/64912635&#34; target=&#34;blank&#34;&gt;关于mybatis的xml文件中使用 &amp;gt;= 或者&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;eclipse&#34;&gt;Eclipse&lt;/h3&gt;
 
@@ -1162,6 +1193,8 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/cdf-opensource-007/p/6337448.html&#34; target=&#34;blank&#34;&gt;详解get请求和post请求参数中文乱码的解决办法&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u010416101/article/details/80625862&#34; target=&#34;blank&#34;&gt;cron 表达式0 0/10 * * * 与 0 */10 * * *的区别&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
@@ -1171,6 +1204,10 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xiaoyi52/article/details/76686001&#34; target=&#34;blank&#34;&gt;过滤器使用与bean注入&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/a520songhai/article/details/80785072&#34; target=&#34;blank&#34;&gt;怎么在spring里面获取request 非controller层&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_27680317/article/details/79970590&#34; target=&#34;blank&#34;&gt;参数验证 @Validated 和 @Valid 的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u014175572/article/details/44562393&#34; target=&#34;blank&#34;&gt;SpringMVC读取本地图片(byte[]流方式)显示到前端页面&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
 
@@ -1201,6 +1238,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;&lt;a href=&#34;http://blog.51cto.com/ityouknow/2091874&#34; target=&#34;blank&#34;&gt;Spring Boot 2.0(五)：感受 Docker 魅力， 排解决多应用部署之疼&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;Spring Boot项目使用maven-assembly-plugin根据不同环境打包成tar.gz或者zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Yaphst/article/details/82625159&#34; target=&#34;blank&#34;&gt;基于springboot的ajax异步文件上传&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;springcloud&#34;&gt;SpringCloud&lt;/h3&gt;
 
@@ -1380,6 +1419,290 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>IDEA——小技巧</title>
+      <link>https://ianeiu.github.io/2019/02/12/idea%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/02/12/idea%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
+&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
+首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
+&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
+&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
+&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
+&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
+&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
+
+&lt;h4 id=&#34;辅助&#34;&gt;辅助&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找Intellij的命令&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+A&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;运行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;调整项目窗口宽度&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;查询&#34;&gt;查询&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;跳转文件指定行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;搜索文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;全局搜索和局部搜索&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;结合ctrl + f 快捷上下查找文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shift + k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift + shift&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;方位名查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;目录查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n，输入/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;编辑&#34;&gt;编辑&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动处理&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+Enter&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码联系&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + space&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + d、x&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选中单词&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + ←、→&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + u、y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;收尾补充（;{}等）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + 回车&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;驼峰下划线命名切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + c&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-修改类、方法、参数名字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + r&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-可选择&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+Alt+T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码生成&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Template/Postfix +Tab&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近打开的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近修改的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;视图&#34;&gt;视图&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + Tab&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示类结构&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + o&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示文件位置&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alt+F1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;项目切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + [ 、]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;view&#34;&gt;View&lt;/h2&gt;
+
+&lt;h4 id=&#34;演出模式&#34;&gt;演出模式&lt;/h4&gt;
+
+&lt;p&gt;选择Enter Presentation Mode ，将IDEA弄到最大，让你只关注一个类里面的代码，进行毫无干扰的coding；&lt;br /&gt;
+配合CTRL+E等快捷键定位文件；&lt;br /&gt;
+选择Exit Presentation Mode 即可退出。&lt;/p&gt;
+
+&lt;h4 id=&#34;去掉面包屑-上方导航栏&#34;&gt;去掉面包屑（上方导航栏）&lt;/h4&gt;
+
+&lt;p&gt;使用alt+v，然后取消Navigation bar勾选即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;inject-language&#34;&gt;Inject language&lt;/h2&gt;
+
+&lt;p&gt;选中&amp;rdquo;&amp;ldquo;，使用alt+enter快捷键弹出inject language视图，并选中Inject language or reference；&lt;br /&gt;
+直接按下回车键，在inject language列表选择显示语言（JSON等）；&lt;br /&gt;
+再次使用alt+enter，选中Edit JSON Fragment并回车，就可以看到编辑JSON文件的视图了；&lt;br /&gt;
+使用alt+enter，选中Un-inject language/reference 回车即可取消。&lt;/p&gt;
+
+&lt;h2 id=&#34;常用的expr&#34;&gt;常用的expr&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;.sout&lt;/li&gt;
+&lt;li&gt;.notnull&lt;/li&gt;
+&lt;li&gt;.try&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
@@ -5518,82 +5841,6 @@ public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
         super.addInterceptors(registry);
     }
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>JVM类加载机制</title>
-      <link>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
-      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;虚拟机类加载机制&#34;&gt;虚拟机类加载机制&lt;/h1&gt;
-
-&lt;p&gt;虚拟机把描述类的数据从Class文件&lt;strong&gt;加载&lt;/strong&gt;到内存，并对数据进行&lt;strong&gt;校验&lt;/strong&gt;、&lt;strong&gt;转换（准备）&lt;/strong&gt;、&lt;strong&gt;解析&lt;/strong&gt;和&lt;strong&gt;初始化&lt;/strong&gt;，最终形成可以被Java虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。&lt;/p&gt;
-
-&lt;p&gt;类从被加载到虚拟内存中开始，到卸载内存为止，它的整个生命周期包括了：加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)七个阶段。&lt;br /&gt;
-其中，验证，准备和解析三个部分统称为连接(Linking)。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;类加载的过程&#34;&gt;类加载的过程&lt;/h3&gt;
-
-&lt;p&gt;类加载的全过程，加载，验证，准备，解析和初始化这五个阶段。&lt;/p&gt;
-
-&lt;h4 id=&#34;加载&#34;&gt;加载&lt;/h4&gt;
-
-&lt;p&gt;在加载阶段，虚拟机需要完成以下三件事情：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;通过一个类的全限定名来获取定义此类的二进制字节流&lt;/li&gt;
-&lt;li&gt;将这个字节流所代表的静态存储结构转换为方法区的运行时数据结构&lt;/li&gt;
-&lt;li&gt;在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区这些数据的访问入口&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;验证&#34;&gt;验证&lt;/h4&gt;
-
-&lt;p&gt;这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。不同的虚拟机对类验证的实现可能有所不同，但大致上都会完成下面四个阶段的检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;文件格式验证&lt;/strong&gt; 验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;元数据验证&lt;/strong&gt; 对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;字节码验证&lt;/strong&gt; 整个验证过程中最复杂的一个阶段，主要工作是数据流和控制流的分析。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析。这阶段的任务是保证被校验类的方法在运行时不会做出危害虚拟机安全的行为。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;符号引用验证&lt;/strong&gt; 发生在虚拟机将符号引用直接转化为直接引用的时候，这个转化动作将在连接的第三个阶段－解析阶段产生。符号引用验证可以看作是对类自身以外（常量池中的各种符号引用）的信息进行匹配性的校验。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;准备&#34;&gt;准备&lt;/h4&gt;
-
-&lt;p&gt;准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区进行分配。&lt;/p&gt;
-
-&lt;h4 id=&#34;解析&#34;&gt;解析&lt;/h4&gt;
-
-&lt;p&gt;解析阶段是虚拟机将常量池的符号引用转换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法四类符号引用进行。&lt;/p&gt;
-
-&lt;h4 id=&#34;初始化&#34;&gt;初始化&lt;/h4&gt;
-
-&lt;p&gt;前面的类加载过程中，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由Java虚拟机主导和控制。到了初始化阶段，才真正开始执行类中定义的Java程序代码（或者说是字节码）。在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者说初始化阶段是执行类构造器&lt;clinit&gt;()方法的过程。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;类加载器&#34;&gt;类加载器&lt;/h3&gt;
-
-&lt;h4 id=&#34;类与类加载器&#34;&gt;类与类加载器&lt;/h4&gt;
-
-&lt;p&gt;虚拟机设计团队把类加载阶段中的&amp;rdquo;通过一个类的全限定名来获取描述此类的二进制字节流&amp;rdquo;这个动作放到Java虚拟机外部去实现，以便让程序自己决定如何去获取所需的类。实现这个动作的代码模块被称为&amp;rdquo;类加载器&amp;rdquo;。&lt;/p&gt;
-
-&lt;h4 id=&#34;双亲委派模型&#34;&gt;双亲委派模型&lt;/h4&gt;
-
-&lt;p&gt;站在Java虚拟机的角度讲，只存在两种不同的类加载器：一种是启动类加载器(Bootstrap ClassLoader)，这个类加载器使用C++语言实现，是虚拟机自身的一部分；另外一种就是所有其他的类加载器，这些类加载器都由Java语言实现，独立于虚拟机外部，并且全部继承自抽象类java.lang.ClassLoader。从Java开发人员的角度来看，类加载器还可以分得更细致一些，绝大部分Java程序都会使用到以下三种系统提供的类加载器：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;启动类加载器&lt;/li&gt;
-&lt;li&gt;扩展类加载器&lt;/li&gt;
-&lt;li&gt;应用程序类加载器&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

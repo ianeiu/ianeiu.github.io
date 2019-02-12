@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[置顶]js、jq——DEMO集</title>
-      <link>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/04/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
       <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的</description>
     </item>
     
@@ -37,6 +37,15 @@
       
       <guid>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6good-web/</guid>
       <description>tool md5解密加密 JSON校验、 JSON着色工具 编码转换 IP查询 IDEA注册码 Maven仓库 Tomcat下载 艺术字（框框）、 艺术字（色层） MD</description>
+    </item>
+    
+    <item>
+      <title>IDEA——小技巧</title>
+      <link>https://ianeiu.github.io/2019/02/12/idea%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/02/12/idea%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description>快捷键设置 默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们</description>
     </item>
     
     <item>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
       <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直</description>
-    </item>
-    
-    <item>
-      <title>DB——面试题</title>
-      <link>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>原文地址 click 触发器的作用 触发器是一中特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库</description>
     </item>
     
   </channel>
