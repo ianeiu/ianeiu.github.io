@@ -8,6 +8,9 @@
   <meta name="description" content="做开发的时候，有时候报错： java.lang.IllegalStateException: Cannot call sendError() after the response has been committed 字面上是参数异常， 在response已经提交之后 不能发送错误请求。 下面看个例子就一目了然了： response.setContentType(&amp;ldquo;text/html;charset=UTF-8&amp;rdquo;);" />
 
   <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2018/08/23/illegalstateexception/" />
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
@@ -149,7 +152,9 @@
 </div>
 
   </div>
+  <main>
 <div class="container content">
+  <article>
   <p>做开发的时候，有时候报错：</p>
 
 <p>java.lang.IllegalStateException: Cannot call sendError() after the response has been committed</p>
@@ -171,6 +176,7 @@ out.close();</p>
 
 <p>解决方案： 去掉out.close()  这里不会因为PrintWriter 输出对象没有关闭而占用资源的。</p>
 
+  </article>
 
   
   
@@ -182,11 +188,12 @@ out.close();</p>
 
 
 </div>
-<div class="footer gradient-2">
+
+  </main><div class="footer gradient-2">
   <div class="container footer-container ">
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-        <div class="footer-title">网站导航</div>
+        <div class="footer-title">网站地图</div>
         <ul class="list-unstyled">
             
               
@@ -198,14 +205,15 @@ out.close();</p>
             
             
             
-            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
             
             
         </ul>
       </div>
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
         
-        <div class="footer-title">社交</div>
+        <div class="footer-title">社群</div>
         <ul class="list-unstyled">
           
           <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>

@@ -8,6 +8,9 @@
   <meta name="description" content="问题 大家看一下下面的sql语句（在没有看下面的优化的方法之前）应该如何优化加索引以及优化sql语句： select count(*) from task where status=2 and operator_id=20839 and operate_time&amp;gt;1371169729 and operate_time&amp;lt;1371174603 and type=2; select count(*) from task where from_unixtime(create_time)" />
 
   <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2018/09/20/%E8%BD%AC-mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%85%A2%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/" />
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
@@ -149,7 +152,9 @@
 </div>
 
   </div>
+  <main>
 <div class="container content">
+  <article>
   
 
 <h1 id="问题">问题</h1>
@@ -231,6 +236,7 @@ derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条�
 仔细分析语句不难发现，其基本思想是如果log的ref_table是EmpCertificate就关联log3表，如果ref_table是Employee就关联log2表，我们完全可以拆成两部分，并用union连接起来，注意这里用union，而不用union all是因为原语句有“distinct”来得到唯一的记录，而union恰好具备了这种功能。<br />
 如果原语句中没有distinct不需要去重，我们就可以直接使用union all了，因为使用union需要去重的动作，会影响SQL性能。</p>
 
+  </article>
 
   
   
@@ -242,11 +248,12 @@ derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条�
 
 
 </div>
-<div class="footer gradient-2">
+
+  </main><div class="footer gradient-2">
   <div class="container footer-container ">
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-        <div class="footer-title">网站导航</div>
+        <div class="footer-title">网站地图</div>
         <ul class="list-unstyled">
             
               
@@ -258,14 +265,15 @@ derived2表示的是ID = 2的查询构造了虚拟表，并且返回了63727条�
             
             
             
-            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS 订阅</a></li>
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
             
             
         </ul>
       </div>
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
         
-        <div class="footer-title">社交</div>
+        <div class="footer-title">社群</div>
         <ul class="list-unstyled">
           
           <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
