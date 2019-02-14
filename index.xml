@@ -1185,6 +1185,8 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000006158186#articleHeader6&#34; target=&#34;blank&#34;&gt;MySQL大表优化方案&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;杂谈&#34;&gt;杂谈&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/antineutrino/article/details/6763722/&#34; target=&#34;blank&#34;&gt;前缀、中缀、后缀表达式&lt;/a&gt;
@@ -1246,6 +1248,11 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;Spring Boot项目使用maven-assembly-plugin根据不同环境打包成tar.gz或者zip&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Yaphst/article/details/82625159&#34; target=&#34;blank&#34;&gt;基于springboot的ajax异步文件上传&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012834750/article/details/78734146&#34; target=&#34;blank&#34;&gt;SpringBoot系列(二)指定内置tomcat版本&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5413845.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5415896.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源 （AOP实现）&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;springcloud&#34;&gt;SpringCloud&lt;/h3&gt;
 
@@ -1433,6 +1440,409 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——SQL集锦</title>
+      <link>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;数据定义语言-ddl&#34;&gt;数据定义语言（DDL）&lt;/h3&gt;
+
+&lt;h4 id=&#34;清空表数据&#34;&gt;清空表数据&lt;/h4&gt;
+
+&lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
+
+&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型&lt;br /&gt;
+例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型)&lt;br /&gt;
+例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
+例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;字段增加备注&lt;br /&gt;
+例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
+说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
+说明：alter table 表名 drop column 字段名;&lt;br /&gt;
+例：alter table sf_users drop column HeadPIC;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;字段的重命名&lt;br /&gt;
+说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
+例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;表的重命名&lt;br /&gt;
+说明：alter table 表名 rename to  新表名&lt;br /&gt;
+例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;oracle复制表结构和表数据&#34;&gt;oracle复制表结构和表数据&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;复制表结构及其数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;create table table_name_new as select * from table_name_old
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;只复制表结构&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--fun1
+create table table_name_new as select * from table_name_old;
+-- fun2
+create table table_name_new like table_name_old
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;只复制表数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--如果两个表结构一样
+insert into table_name_new select * from table_name_old
+--如果两个表结构不一样
+insert into table_name_new(column1,column2...) select column1,column2... from table_name_old
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据操作语言-dml-data-manipulation-language&#34;&gt;数据操作语言（DML Data Manipulation Language）&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;去除带空格数据的空格&#34;&gt;去除带空格数据的空格&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;\\删除左空格  
+update tb_test set product_name=rtrim(product_name,&#39; &#39;);
+\\删除右空格  
+update tb_test set product_name=ltrim(product_name,&#39; &#39;);
+\\删除左右空格
+update tb_test set product_name=trim(product_name);
+\\删除所有空格
+update tb_test set product_name=replace(product_name,&#39; &#39;,&#39;&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据查询语言-dql-data-query-language&#34;&gt;数据查询语言（DQL Data Query Language）&lt;/h3&gt;
+
+&lt;h4 id=&#34;oracle-日期-时间-相关查询&#34;&gt;Oracle 日期-时间 相关查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--获取当前月份的第一天
+SELECT TRUNC (SYSDATE, &#39;MONTH&#39;) FROM DUAL;
+
+--获取当前月份的最后一天
+SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
+
+--获取当前年份的第一天
+SELECT TRUNC (SYSDATE, &#39;YEAR&#39;) FROM DUAL;
+
+--获取明年的第一天
+SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) FROM DUAL;
+
+--获取当前年份的最后一天
+SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) - 1 FROM DUAL;
+
+--获取当前月份的天数
+SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), &#39;dd&#39;) AS INT) FROM DUAL;
+
+--获取当前月份剩下的天数
+SELECT SYSDATE, LAST_DAY (SYSDATE) &amp;quot;Last&amp;quot;, LAST_DAY (SYSDATE) - SYSDATE &amp;quot;Days left&amp;quot; FROM DUAL;
+
+--计算员工入职的天数
+SELECT TRUNC(sysdate) - TRUNC(e.hire_date) FROM employees e;
+
+--获取直到目前为止今天过去的秒数（从 00：00 开始算）
+SELECT (SYSDATE - TRUNC (SYSDATE)) * 24 * 60 * 60 num_of_sec_since_morning  FROM DUAL;
+
+--获取今天剩下的秒数（直到 23：59：59 结束）
+SELECT (TRUNC (SYSDATE+1) - SYSDATE) * 24 * 60 * 60 num_of_sec_left FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-if-else功能实现&#34;&gt;Oracle if/else功能实现&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;if a=...  then ......... end if&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if a=... then...... else .... end if&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if a=..  then ...... elsif a=..  then .... end if&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DECODE(value,if1,then1,if2,then2,if3,then3,...,else)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;case when a=&#39;1&#39;then &#39;xxxx&#39; when a=&#39;2&#39; then &#39;ssss&#39; else &#39;zzzzz&#39; end as&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;oracle-数学&#34;&gt;Oracle 数学&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--把数值转换成文字
+SELECT TO_CHAR (TO_DATE (1526, &#39;j&#39;), &#39;jsp&#39;) FROM DUAL;
+
+--在包的源代码中查询字符串
+SELECT * FROM dba_source WHERE UPPER (text) LIKE &#39;%FOO_SOMETHING%&#39; AND owner = &#39;TSUSER&#39;;
+
+--查询表中的最后一个记录
+SELECT * FROM TB_DQDP_USER  WHERE ROWID IN (SELECT MAX (ROWID) FROM TB_DQDP_USER);
+SELECT * FROM TB_DQDP_USER MINUS SELECT * FROM TB_DQDP_USER WHERE ROWNUM &amp;lt; (SELECT COUNT (*) FROM TB_DQDP_USER);
+
+--在 Oracle 生成随机数据
+SELECT LEVEL empl_id, MOD (ROWNUM, 50000) dept_id,TRUNC (DBMS_RANDOM.VALUE (1000, 500000), 2) salary
+,DECODE (ROUND (DBMS_RANDOM.VALUE (1, 2)),  1, &#39;M&#39;,  2, &#39;F&#39;) gender
+, TO_DATE ( ROUND (DBMS_RANDOM.VALUE (1, 28))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1, 12))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1900, 2010)),&#39;DD-MM-YYYY&#39;)
+ dob,DBMS_RANDOM.STRING (&#39;x&#39;, DBMS_RANDOM.VALUE (20, 50)) address
+ FROM DUAL CONNECT BY LEVEL &amp;lt; 10000;
+
+--在 Oracle 中生成随机数值
+SELECT ROUND (DBMS_RANDOM.VALUE () * 100) + 1 AS random_num FROM DUAL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-数据库管理查询&#34;&gt;Oracle 数据库管理查询&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;--数据库版本信息
+SELECT * FROM v$version;
+
+--数据库默认信息
+SELECT username,profile,default_tablespace,temporary_tablespace FROM dba_users;
+
+--数据库字符设置信息
+SELECT * FROM nls_database_parameters;
+
+--获取 Oracle 版本
+SELECT VALUE FROM v$system_parameter WHERE name = &#39;compatible&#39;;
+
+--检查表空间的自动扩展开关
+SELECT SUBSTR (file_name, 1, 50), AUTOEXTENSIBLE FROM dba_data_files;
+SELECT tablespace_name, AUTOEXTENSIBLE FROM dba_data_files;
+
+--调整没有添加数据文件的表空间
+ALTER DATABASE DATAFILE &#39;/work/oradata/STARTST/STAR02D.dbf&#39; resize 2000M;
+--在表空间添加数据文件
+ALTER TABLESPACE data01 ADD DATAFILE &#39;/work/oradata/STARTST/data01.dbf&#39; SIZE 1000M AUTOEXTEND OFF;
+--增加数据文件的大小
+ALTER DATABASE DATAFILE &#39;/u01/app/Test_data_01.dbf&#39; RESIZE 2G;
+
+--查询数据库的实际大小
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_data_files;
+--查询数据库中数据占用的大小或者是数据库使用细节
+SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_segments;
+
+--查询模式或者用户的大小
+SELECT SUM (bytes / 1024 / 1024) &amp;quot;size&amp;quot; FROM dba_segments WHERE owner = &#39;&amp;amp;owner&#39;;
+
+--查询数据库中每个用户最后使用的 SQL 查询
+SELECT S.USERNAME || &#39;(&#39; || s.sid || &#39;)-&#39; || s.osuser UNAME, s.program
+ || &#39;-&#39; || s.terminal || &#39;(&#39; || s.machine || &#39;)&#39; PROG, s.sid || &#39;/&#39; || s.serial# sid, s.status &amp;quot;Status&amp;quot;, p.spid,sql_text sqltext
+  FROM v$sqltext_with_newlines t, V$SESSION s, v$process p WHERE t.address = s.sql_address AND p.addr = s.paddr(+)
+ AND t.hash_value = s.sql_hash_value    ORDER BY s.sid, t.piece;
+
+--查询用户 CPU 的使用率
+SELECT ss.username, se.SID, VALUE / 100 cpu_usage_seconds FROM v$session ss, v$sesstat se, v$statname sn
+  WHERE se.STATISTIC# = sn.STATISTIC# AND NAME LIKE &#39;%CPU used by this session%&#39; AND se.SID = ss.SID
+  AND ss.status = &#39;ACTIVE&#39;AND ss.username IS NOT NULL ORDER BY VALUE DESC;
+
+--查询数据库长查询进展情况
+ SELECT a.sid, a.serial#, b.username, opname OPERATION, target OBJECT, TRUNC (elapsed_seconds, 5) &amp;quot;ET (s)&amp;quot;
+ , TO_CHAR (start_time, &#39;HH24:MI:SS&#39;) start_time, ROUND ( (sofar / totalwork) * 100, 2) &amp;quot;COMPLETE (%)&amp;quot;
+  FROM v$session_longops a, v$session b
+   WHERE a.sid = b.sid AND b.username NOT IN (&#39;SYS&#39;, &#39;SYSTEM&#39;) AND totalwork &amp;gt; 0 ORDER BY elapsed_seconds;
+
+--获取当前会话 ID，进程 ID，客户端 ID 等
+SELECT b.sid, b.serial#,a.spid processid,b.process clientpid FROM v$process a, v$session b
+ WHERE a.addr = b.paddr AND b.audsid = USERENV (&#39;sessionid&#39;);
+--V$SESSION.SID AND V$SESSION.SERIAL# 是数据库进程 ID
+--V$PROCESS.SPID 是数据库服务器后台进程 ID
+--V$SESSION.PROCESS 是客户端 PROCESS ID, ON windows it IS : separated THE FIRST # IS THE PROCESS ID ON THE client AND 2nd one IS THE THREAD id.
+
+--查询特定的模式或者表中执行的最后一个 SQL 语句
+SELECT CREATED, TIMESTAMP, last_ddl_time FROM all_objects WHERE     OWNER = &#39;TSUSER&#39;   AND OBJECT_TYPE = &#39;TABLE&#39; AND OBJECT_NAME = &#39;TB_USER_EXTEND&#39;;
+
+--在视图中查询并显示实际的 Oracle 连接
+SELECT osuser,username,machine, program FROM v$session  ORDER BY osuser;
+
+--查询并显示通过打开连接程序打开连接的组
+SELECT program application, COUNT (program) Numero_Sesiones  FROM v$session GROUP BY program ORDER BY Numero_Sesiones DESC;
+
+--查询并显示连接 Oracle 的用户和用户的会话数量
+SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session GROUP BY username ORDER BY Numero_Sesiones DESC;
+
+--获取拥有者的对象数量
+SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;oracle-随机id&#34;&gt;Oracle 随机ID&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;select sys_guid() from dual;
+
+#序列
+select S_SEQUENCE_ID.NEXTVAL from dual;
+
+select to_char(sysdate,&#39;yyyymmdd&#39;) from dual;
+
+select TO_CHAR(SYSDATE,&#39;yyyymmdd&#39;)||LPAD(TO_CHAR(S_SEQUENCE_ID.NEXTVAL),4,&#39;0&#39;) from dual;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;sql字符型字段按数字型字段-排序实现方法&#34;&gt;SQL字符型字段按数字型字段 排序实现方法&lt;/h4&gt;
+
+&lt;p&gt;得分字段为varchar,如果按得分排序结果可能是   1、10、11、123、1234、2、25、253、3&lt;br /&gt;
+但是我们想要按照数字排序是   1、2 、3、10、11、25、123、253、1234&lt;/p&gt;
+
+&lt;p&gt;解决方案：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将字段转为int排序: &lt;code&gt;ORDER BY CAST(字段名 AS DECIMAL)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ORDER BY 字段名+0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用绝对值函数ABS处理这个字段： &lt;code&gt;ORDER BY ABS(字段名)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;oracle-start-with-connect-by-prior-递归查询用法&#34;&gt;Oracle start with connect by prior 递归查询用法&lt;/h4&gt;
+
+&lt;p&gt;初始化表及数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;create table MAS_BAKDEAL_TEMPLATE
+(
+  SEQID    NUMBER(10) not null,
+  TAB_ID   NUMBER default 0,
+  DEALNAME VARCHAR2(100) not null,
+  PARENTID NUMBER not null,
+  ISAUTO   CHAR(1),
+  STATUS   CHAR(1)
+)
+-- Add comments to the table 
+comment on table MAS_BAKDEAL_TEMPLATE
+  is &#39;后续处理&#39;;
+-- Add comments to the columns 
+comment on column MAS_BAKDEAL_TEMPLATE.SEQID
+  is &#39;主键&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.TAB_ID
+  is &#39;对应表 mas_templ_tab - tab_id字段&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.DEALNAME
+  is &#39;名称&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.PARENTID
+  is &#39;父ID&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.ISAUTO
+  is &#39;0代表自动，1代表手工&#39;;
+comment on column MAS_BAKDEAL_TEMPLATE.STATUS
+  is &#39;0启用，1作废&#39;;
+
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (466, 5019, &#39;批量附赠送单&#39;, 3, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (4, 0, &#39;(二期)数据业务管理&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (469, 5019, &#39;与酬金系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (93, 0, &#39;业务功能取消&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (1, 0, &#39;赠送话费&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (2, 5021, &#39;小额赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (42, 5022, &#39;充值券赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (94, 5019, &#39;12580取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (95, 5019, &#39;短信套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (0, 886, &#39;后续处理列表&#39;, -1, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (96, 5019, &#39;GPRS套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (97, 5019, &#39;手机证券取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (98, 5019, &#39;校讯通取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (122, 5019, &#39;中华国学开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (282, 5019, &#39;短信群发&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (243, 5019, &#39;一起玩吧用户活跃&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (84, 5019, &#39;12580开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (85, 5019, &#39;短信套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (86, 5019, &#39;GPRS套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (87, 5019, &#39;手机证券开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (91, 5019, &#39;校讯通开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (89, 0, &#39;BOSS办理开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (90, 5019, &#39;套餐办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (262, 5019, &#39;数据核对&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (81, 5197, &#39;缴费卡&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (82, 5019, &#39;WEB赠送(20090111作废）&#39;, 1, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (83, 0, &#39;业务功能开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (92, 5019, &#39;营销案办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (221, 5019, &#39;彩铃歌曲订购&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (301, 5280, &#39;M值赠送&#39;, 1, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (242, 5019, &#39;手机报开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (321, 5470, &#39;营销优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (121, 5019, &#39;飞信开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (141, 5019, &#39;非彩铃套餐用户销户&#39;, 93, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (181, 5019, &#39;天气预报&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (182, 5019, &#39;秘书台&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (183, 5019, &#39;清单被查&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (201, 5019, &#39;开通5元彩铃功能&#39;, 83, &#39;1&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (342, 5627, &#39;09积分优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (3, 0, &#39;批量业务&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (462, 16128, &#39;话费赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (463, 16129, &#39;积分赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (465, 5019, &#39;批开批销处理&#39;, 3, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (468, 5019, &#39;与CMP系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (484, 5019, &#39;负话单赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (467, 16128, &#39;多营销方案赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (261, 0, &#39;能力平台&#39;, 0, &#39;&#39;, &#39;0&#39;);
+insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
+values (485, 1739, &#39;目标号码&#39;, 261, &#39;0&#39;, &#39;0&#39;);
+commit;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正常查询结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/normalSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;递归查询&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select t.*,level from mas_bakdeal_template t 
+start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -2754,6 +3164,16 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
 &lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
 &lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;水平分组&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split vertically&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;垂直分组&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split horizontally&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
@@ -2783,6 +3203,64 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
 &lt;li&gt;.notnull&lt;/li&gt;
 &lt;li&gt;.try&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;常用的setting&#34;&gt;常用的Setting&lt;/h2&gt;
+
+&lt;h4 id=&#34;auto-import&#34;&gt;Auto Import&lt;/h4&gt;
+
+&lt;p&gt;add unambiguous imports on the fly 编写时自动导入&lt;br /&gt;
+optimize imports on the fly 编写时自动优化去除没用到的包&lt;/p&gt;
+
+&lt;h4 id=&#34;appearance&#34;&gt;Appearance&lt;/h4&gt;
+
+&lt;p&gt;show memory indicator 右下角显示内存使用情况，点击可回收内存&lt;br /&gt;
+show line number 显示选中代码行数&lt;/p&gt;
+
+&lt;h4 id=&#34;editor-tabs&#34;&gt;editor tabs&lt;/h4&gt;
+
+&lt;p&gt;取消勾选 show tabs in single row 多行显示tab，配合tab limit&lt;/p&gt;
+
+&lt;h4 id=&#34;general&#34;&gt;General&lt;/h4&gt;
+
+&lt;p&gt;change font size(Zoom) with ctrl+Mouse Wheel 滚轮调整字体大小&lt;/p&gt;
+
+&lt;h2 id=&#34;常用插件&#34;&gt;常用插件&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;插件名称&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;插件介绍&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Alibaba Java Coding Guidelines&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;阿里巴巴代码规范检查插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FindBugs-IDEA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;潜在 Bug 检查&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Statistic&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;代码统计插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Maven Helper&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Maven 辅助插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Properties to YAML Converter&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Properties 转 YAML 格式插件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
       
     </item>
@@ -3951,625 +4429,6 @@ TFTP&lt;/p&gt;
     </item>
     
     <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2018/11/30/dbsql%E9%9B%86%E9%94%A6/</link>
-      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/11/30/dbsql%E9%9B%86%E9%94%A6/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;数据定义语言-ddl&#34;&gt;数据定义语言（DDL）&lt;/h3&gt;
-
-&lt;h4 id=&#34;清空表数据&#34;&gt;清空表数据&lt;/h4&gt;
-
-&lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
-
-&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型&lt;br /&gt;
-例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型)&lt;br /&gt;
-例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
-说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
-例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;字段增加备注&lt;br /&gt;
-例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
-说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
-说明：alter table 表名 drop column 字段名;&lt;br /&gt;
-例：alter table sf_users drop column HeadPIC;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;字段的重命名&lt;br /&gt;
-说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
-例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;表的重命名&lt;br /&gt;
-说明：alter table 表名 rename to  新表名&lt;br /&gt;
-例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;oracle复制表结构和表数据&#34;&gt;oracle复制表结构和表数据&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;复制表结构及其数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;create table table_name_new as select * from table_name_old
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;只复制表结构&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--fun1
-create table table_name_new as select * from table_name_old;
--- fun2
-create table table_name_new like table_name_old
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;只复制表数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--如果两个表结构一样
-insert into table_name_new select * from table_name_old
---如果两个表结构不一样
-insert into table_name_new(column1,column2...) select column1,column2... from table_name_old
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;数据操作语言-dml-data-manipulation-language&#34;&gt;数据操作语言（DML Data Manipulation Language）&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;去除带空格数据的空格&#34;&gt;去除带空格数据的空格&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;\\删除左空格  
-update tb_test set product_name=rtrim(product_name,&#39; &#39;);
-\\删除右空格  
-update tb_test set product_name=ltrim(product_name,&#39; &#39;);
-\\删除左右空格
-update tb_test set product_name=trim(product_name);
-\\删除所有空格
-update tb_test set product_name=replace(product_name,&#39; &#39;,&#39;&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;数据查询语言-dql-data-query-language&#34;&gt;数据查询语言（DQL Data Query Language）&lt;/h3&gt;
-
-&lt;h4 id=&#34;oracle-日期-时间-相关查询&#34;&gt;Oracle 日期-时间 相关查询&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--获取当前月份的第一天
-SELECT TRUNC (SYSDATE, &#39;MONTH&#39;) FROM DUAL;
-
---获取当前月份的最后一天
-SELECT TRUNC (LAST_DAY (SYSDATE)) FROM dual;
-
---获取当前年份的第一天
-SELECT TRUNC (SYSDATE, &#39;YEAR&#39;) FROM DUAL;
-
---获取明年的第一天
-SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) FROM DUAL;
-
---获取当前年份的最后一天
-SELECT ADD_MONTHS (TRUNC (SYSDATE, &#39;YEAR&#39;), 12) - 1 FROM DUAL;
-
---获取当前月份的天数
-SELECT CAST (TO_CHAR (LAST_DAY (SYSDATE), &#39;dd&#39;) AS INT) FROM DUAL;
-
---获取当前月份剩下的天数
-SELECT SYSDATE, LAST_DAY (SYSDATE) &amp;quot;Last&amp;quot;, LAST_DAY (SYSDATE) - SYSDATE &amp;quot;Days left&amp;quot; FROM DUAL;
-
---计算员工入职的天数
-SELECT TRUNC(sysdate) - TRUNC(e.hire_date) FROM employees e;
-
---获取直到目前为止今天过去的秒数（从 00：00 开始算）
-SELECT (SYSDATE - TRUNC (SYSDATE)) * 24 * 60 * 60 num_of_sec_since_morning  FROM DUAL;
-
---获取今天剩下的秒数（直到 23：59：59 结束）
-SELECT (TRUNC (SYSDATE+1) - SYSDATE) * 24 * 60 * 60 num_of_sec_left FROM DUAL;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;oracle-数学&#34;&gt;Oracle 数学&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--把数值转换成文字
-SELECT TO_CHAR (TO_DATE (1526, &#39;j&#39;), &#39;jsp&#39;) FROM DUAL;
-
---在包的源代码中查询字符串
-SELECT * FROM dba_source WHERE UPPER (text) LIKE &#39;%FOO_SOMETHING%&#39; AND owner = &#39;TSUSER&#39;;
-
---查询表中的最后一个记录
-SELECT * FROM TB_DQDP_USER  WHERE ROWID IN (SELECT MAX (ROWID) FROM TB_DQDP_USER);
-SELECT * FROM TB_DQDP_USER MINUS SELECT * FROM TB_DQDP_USER WHERE ROWNUM &amp;lt; (SELECT COUNT (*) FROM TB_DQDP_USER);
-
---在 Oracle 生成随机数据
-SELECT LEVEL empl_id, MOD (ROWNUM, 50000) dept_id,TRUNC (DBMS_RANDOM.VALUE (1000, 500000), 2) salary
-,DECODE (ROUND (DBMS_RANDOM.VALUE (1, 2)),  1, &#39;M&#39;,  2, &#39;F&#39;) gender
-, TO_DATE ( ROUND (DBMS_RANDOM.VALUE (1, 28))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1, 12))|| &#39;-&#39;|| ROUND (DBMS_RANDOM.VALUE (1900, 2010)),&#39;DD-MM-YYYY&#39;)
- dob,DBMS_RANDOM.STRING (&#39;x&#39;, DBMS_RANDOM.VALUE (20, 50)) address
- FROM DUAL CONNECT BY LEVEL &amp;lt; 10000;
-
---在 Oracle 中生成随机数值
-SELECT ROUND (DBMS_RANDOM.VALUE () * 100) + 1 AS random_num FROM DUAL;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;oracle-数据库管理查询&#34;&gt;Oracle 数据库管理查询&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;--数据库版本信息
-SELECT * FROM v$version;
-
---数据库默认信息
-SELECT username,profile,default_tablespace,temporary_tablespace FROM dba_users;
-
---数据库字符设置信息
-SELECT * FROM nls_database_parameters;
-
---获取 Oracle 版本
-SELECT VALUE FROM v$system_parameter WHERE name = &#39;compatible&#39;;
-
---检查表空间的自动扩展开关
-SELECT SUBSTR (file_name, 1, 50), AUTOEXTENSIBLE FROM dba_data_files;
-SELECT tablespace_name, AUTOEXTENSIBLE FROM dba_data_files;
-
---调整没有添加数据文件的表空间
-ALTER DATABASE DATAFILE &#39;/work/oradata/STARTST/STAR02D.dbf&#39; resize 2000M;
---在表空间添加数据文件
-ALTER TABLESPACE data01 ADD DATAFILE &#39;/work/oradata/STARTST/data01.dbf&#39; SIZE 1000M AUTOEXTEND OFF;
---增加数据文件的大小
-ALTER DATABASE DATAFILE &#39;/u01/app/Test_data_01.dbf&#39; RESIZE 2G;
-
---查询数据库的实际大小
-SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_data_files;
---查询数据库中数据占用的大小或者是数据库使用细节
-SELECT SUM (bytes) / 1024 / 1024 / 1024 AS GB FROM dba_segments;
-
---查询模式或者用户的大小
-SELECT SUM (bytes / 1024 / 1024) &amp;quot;size&amp;quot; FROM dba_segments WHERE owner = &#39;&amp;amp;owner&#39;;
-
---查询数据库中每个用户最后使用的 SQL 查询
-SELECT S.USERNAME || &#39;(&#39; || s.sid || &#39;)-&#39; || s.osuser UNAME, s.program
- || &#39;-&#39; || s.terminal || &#39;(&#39; || s.machine || &#39;)&#39; PROG, s.sid || &#39;/&#39; || s.serial# sid, s.status &amp;quot;Status&amp;quot;, p.spid,sql_text sqltext
-  FROM v$sqltext_with_newlines t, V$SESSION s, v$process p WHERE t.address = s.sql_address AND p.addr = s.paddr(+)
- AND t.hash_value = s.sql_hash_value    ORDER BY s.sid, t.piece;
-
---查询用户 CPU 的使用率
-SELECT ss.username, se.SID, VALUE / 100 cpu_usage_seconds FROM v$session ss, v$sesstat se, v$statname sn
-  WHERE se.STATISTIC# = sn.STATISTIC# AND NAME LIKE &#39;%CPU used by this session%&#39; AND se.SID = ss.SID
-  AND ss.status = &#39;ACTIVE&#39;AND ss.username IS NOT NULL ORDER BY VALUE DESC;
-
---查询数据库长查询进展情况
- SELECT a.sid, a.serial#, b.username, opname OPERATION, target OBJECT, TRUNC (elapsed_seconds, 5) &amp;quot;ET (s)&amp;quot;
- , TO_CHAR (start_time, &#39;HH24:MI:SS&#39;) start_time, ROUND ( (sofar / totalwork) * 100, 2) &amp;quot;COMPLETE (%)&amp;quot;
-  FROM v$session_longops a, v$session b
-   WHERE a.sid = b.sid AND b.username NOT IN (&#39;SYS&#39;, &#39;SYSTEM&#39;) AND totalwork &amp;gt; 0 ORDER BY elapsed_seconds;
-
---获取当前会话 ID，进程 ID，客户端 ID 等
-SELECT b.sid, b.serial#,a.spid processid,b.process clientpid FROM v$process a, v$session b
- WHERE a.addr = b.paddr AND b.audsid = USERENV (&#39;sessionid&#39;);
---V$SESSION.SID AND V$SESSION.SERIAL# 是数据库进程 ID
---V$PROCESS.SPID 是数据库服务器后台进程 ID
---V$SESSION.PROCESS 是客户端 PROCESS ID, ON windows it IS : separated THE FIRST # IS THE PROCESS ID ON THE client AND 2nd one IS THE THREAD id.
-
---查询特定的模式或者表中执行的最后一个 SQL 语句
-SELECT CREATED, TIMESTAMP, last_ddl_time FROM all_objects WHERE     OWNER = &#39;TSUSER&#39;   AND OBJECT_TYPE = &#39;TABLE&#39; AND OBJECT_NAME = &#39;TB_USER_EXTEND&#39;;
-
---在视图中查询并显示实际的 Oracle 连接
-SELECT osuser,username,machine, program FROM v$session  ORDER BY osuser;
-
---查询并显示通过打开连接程序打开连接的组
-SELECT program application, COUNT (program) Numero_Sesiones  FROM v$session GROUP BY program ORDER BY Numero_Sesiones DESC;
-
---查询并显示连接 Oracle 的用户和用户的会话数量
-SELECT username Usuario_Oracle, COUNT (username) Numero_Sesiones FROM v$session GROUP BY username ORDER BY Numero_Sesiones DESC;
-
---获取拥有者的对象数量
-SELECT owner, COUNT (owner) number_of_objects FROM dba_objects GROUP BY owner ORDER BY number_of_objects DESC;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;oracle-随机id&#34;&gt;Oracle 随机ID&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;select sys_guid() from dual;
-
-#序列
-select S_SEQUENCE_ID.NEXTVAL from dual;
-
-select to_char(sysdate,&#39;yyyymmdd&#39;) from dual;
-
-select TO_CHAR(SYSDATE,&#39;yyyymmdd&#39;)||LPAD(TO_CHAR(S_SEQUENCE_ID.NEXTVAL),4,&#39;0&#39;) from dual;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;sql字符型字段按数字型字段-排序实现方法&#34;&gt;SQL字符型字段按数字型字段 排序实现方法&lt;/h4&gt;
-
-&lt;p&gt;得分字段为varchar,如果按得分排序结果可能是   1、10、11、123、1234、2、25、253、3&lt;br /&gt;
-但是我们想要按照数字排序是   1、2 、3、10、11、25、123、253、1234&lt;/p&gt;
-
-&lt;p&gt;解决方案：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将字段转为int排序: &lt;code&gt;ORDER BY CAST(字段名 AS DECIMAL)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ORDER BY 字段名+0&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;使用绝对值函数ABS处理这个字段： &lt;code&gt;ORDER BY ABS(字段名)&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;oracle-start-with-connect-by-prior-递归查询用法&#34;&gt;Oracle start with connect by prior 递归查询用法&lt;/h4&gt;
-
-&lt;p&gt;初始化表及数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;create table MAS_BAKDEAL_TEMPLATE
-(
-  SEQID    NUMBER(10) not null,
-  TAB_ID   NUMBER default 0,
-  DEALNAME VARCHAR2(100) not null,
-  PARENTID NUMBER not null,
-  ISAUTO   CHAR(1),
-  STATUS   CHAR(1)
-)
--- Add comments to the table 
-comment on table MAS_BAKDEAL_TEMPLATE
-  is &#39;后续处理&#39;;
--- Add comments to the columns 
-comment on column MAS_BAKDEAL_TEMPLATE.SEQID
-  is &#39;主键&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.TAB_ID
-  is &#39;对应表 mas_templ_tab - tab_id字段&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.DEALNAME
-  is &#39;名称&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.PARENTID
-  is &#39;父ID&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.ISAUTO
-  is &#39;0代表自动，1代表手工&#39;;
-comment on column MAS_BAKDEAL_TEMPLATE.STATUS
-  is &#39;0启用，1作废&#39;;
-
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (466, 5019, &#39;批量附赠送单&#39;, 3, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (4, 0, &#39;(二期)数据业务管理&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (469, 5019, &#39;与酬金系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (93, 0, &#39;业务功能取消&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (1, 0, &#39;赠送话费&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (2, 5021, &#39;小额赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (42, 5022, &#39;充值券赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (94, 5019, &#39;12580取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (95, 5019, &#39;短信套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (0, 886, &#39;后续处理列表&#39;, -1, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (96, 5019, &#39;GPRS套餐取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (97, 5019, &#39;手机证券取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (98, 5019, &#39;校讯通取消&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (122, 5019, &#39;中华国学开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (282, 5019, &#39;短信群发&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (243, 5019, &#39;一起玩吧用户活跃&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (84, 5019, &#39;12580开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (85, 5019, &#39;短信套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (86, 5019, &#39;GPRS套餐开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (87, 5019, &#39;手机证券开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (91, 5019, &#39;校讯通开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (89, 0, &#39;BOSS办理开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (90, 5019, &#39;套餐办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (262, 5019, &#39;数据核对&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (81, 5197, &#39;缴费卡&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (82, 5019, &#39;WEB赠送(20090111作废）&#39;, 1, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (83, 0, &#39;业务功能开通&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (92, 5019, &#39;营销案办理&#39;, 89, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (221, 5019, &#39;彩铃歌曲订购&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (301, 5280, &#39;M值赠送&#39;, 1, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (242, 5019, &#39;手机报开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (321, 5470, &#39;营销优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (121, 5019, &#39;飞信开通&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (141, 5019, &#39;非彩铃套餐用户销户&#39;, 93, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (181, 5019, &#39;天气预报&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (182, 5019, &#39;秘书台&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (183, 5019, &#39;清单被查&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (201, 5019, &#39;开通5元彩铃功能&#39;, 83, &#39;1&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (342, 5627, &#39;09积分优惠赠送&#39;, 1, &#39;0&#39;, &#39;1&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (3, 0, &#39;批量业务&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (462, 16128, &#39;话费赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (463, 16129, &#39;积分赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (465, 5019, &#39;批开批销处理&#39;, 3, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (468, 5019, &#39;与CMP系统自动数据接口&#39;, 4, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (484, 5019, &#39;负话单赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (467, 16128, &#39;多营销方案赠送&#39;, 1, &#39;0&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (261, 0, &#39;能力平台&#39;, 0, &#39;&#39;, &#39;0&#39;);
-insert into mas_bakdeal_template (SEQID, TAB_ID, DEALNAME, PARENTID, ISAUTO, STATUS)
-values (485, 1739, &#39;目标号码&#39;, 261, &#39;0&#39;, &#39;0&#39;);
-commit;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;正常查询结果&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/normalSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;递归查询&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select t.*,level from mas_bakdeal_template t 
-start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>IDEA——快捷键</title>
-      <link>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
-&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
-首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
-&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
-&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
-&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
-&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
-&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
-
-&lt;h4 id=&#34;辅助&#34;&gt;辅助&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找Intellij的命令&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+A&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;运行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;查询&#34;&gt;查询&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;跳转文件指定行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;搜索文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;全局搜索和局部搜索&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;结合ctrl + f 快捷上下查找文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shift + k&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查询&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;shift + shift&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;编辑&#34;&gt;编辑&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动处理&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+Enter&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码联系&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + space&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + d、x&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;选中单词&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + ←、→&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + u、y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;驼峰下划线命名切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + c&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-修改类、方法、参数名字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + r&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-可选择&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+Alt+T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码生成&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Template/Postfix +Tab&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示最近打开的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示最近修改的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;视图&#34;&gt;视图&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + Tab&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;项目切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + [ 、]&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>Java基础题（Integer、String、内部类与final）</title>
       <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
@@ -5679,6 +5538,223 @@ public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Spring——拦截器</title>
+      <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的显示控制。所以当时想法是新建一个拦截器对这几个请求做统一处理（放入权限代码集合），类似之前项目的错误页面拦截器。&lt;/p&gt;
+
+&lt;h2 id=&#34;拦截器简介&#34;&gt;拦截器简介&lt;/h2&gt;
+
+&lt;p&gt;Spring 框架实现拦截器功能主要有两种方法，第一种是实现&lt;code&gt;HandlerInterceptor&lt;/code&gt;接口，第二种是实现&lt;code&gt;WebRequestInterceptor&lt;/code&gt;接口。&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;HandlerInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;通过实现HandlerInterceptor接口，重写方法&lt;code&gt;preHandle()&lt;/code&gt;、&lt;code&gt;postHandle()&lt;/code&gt;和&lt;code&gt;afterCompletion()&lt;/code&gt;拦截请求。Spring 框架中还提供了另外一个接口和一个抽象类，实现了对HandlerInterceptor接口的功能扩展，分别为：AsyncHandlerInterceptor和HandlerInterceptorAdapter。&lt;/p&gt;
+
+&lt;p&gt;对于AsyncHandlerInterceptor接口，其在继承HandlerInterceptor接口的同时，又声明了一个新的方法&lt;code&gt;afterConcurrentHandlingStarted()&lt;/code&gt;；&lt;br /&gt;
+而HandlerInterceptorAdapter抽象类，在其继承AsyncHandlerInterceptor接口的同时，又复写了preHandle方法。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;preHandle(HttpServletRequest request, HttpServletResponse response, Object handle)&lt;/code&gt;方法，该方法在请求处理之前进行调用。SpringMVC 中的 Interceptor 是链式调用的，在一个应用中或者说是在一个请求中可以同时存在多个 Interceptor 。每个 Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是 Interceptor 中的 preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求做一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值 Boolean 类型的，当它返回为 false 时，表示请求结束，后续的 Interceptor 和 Controller 都不会再执行；当返回值为 true 时，就会继续调用下一个 Interceptor 的 preHandle 方法，如果已经是最后一个 Interceptor 的时候，就会是调用当前请求的 Controller 中的方法。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postHandle(HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)&lt;/code&gt;方法，通过 preHandle 方法的解释咱们知道这个方法包括后面要说到的 afterCompletion 方法都只能在当前所属的 Interceptor 的 preHandle 方法的返回值为 true 的时候，才能被调用。postHandle 方法在当前请求进行处理之后，也就是在 Controller 中的方法调用之后执行，但是它会在 DispatcherServlet 进行视图返回渲染之前被调用，所以咱们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。postHandle 方法被调用的方向跟 preHandle 是相反的，也就是说，先声明的 Interceptor 的 postHandle 方法反而会后执行。这和 Struts2 里面的 Interceptor 的执行过程有点类型，Struts2 里面的 Interceptor 的执行过程也是链式的，只是在 Struts2 里面需要手动调用 ActionInvocation 的 invoke 方法来触发对下一个 Interceptor 或者是 action 的调用，然后每一个 Interceptor 中在 invoke 方法调用之前的内容都是按照声明顺序执行的，而 invoke 方法之后的内容就是反向的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)&lt;/code&gt;方法，也是需要当前对应的 Interceptor 的 preHandle 方法的返回值为 true 时才会执行。因此，该方法将在整个请求结束之后，也就是在 DispatcherServlet 渲染了对应的视图之后执行，这个方法的主要作用是用于进行资源清理的工作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;kbd&gt;WebRequestInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;在WebRequestInterceptor接口中也定义了 3 个方法，方法名同HandlerInterceptor接口相同，3 个方法都传递了同一个参数 WebRequest。WebRequest 是 Spring 中定义的一个接口，它里面的方法定义跟 HttpServletRequest 类似，在WebRequestInterceptor中对 WebRequest 进行的所有操作都将同步到 HttpServletRequest 中，然后在当前请求中依次传递。&lt;/p&gt;
+
+&lt;p&gt;Spring框架中还提供了WebRequestInterceptorAdapter，其实现了AsyncHandlerInterceptor接口，并在内部调用了WebRequestInterceptor接口。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;preHandle(WebRequest request)&lt;/code&gt;方法，该方法在请求处理之前进行调用，也就是说，其会在 Controller 中的方法调用之前被调用。这个方法跟 HandlerInterceptor 中的 preHandle 不同，主要区别在于该方法的返回值是void 类型的，也就是没有返回值，因此我们主要用它来进行资源的准备工作，比如我们在使用 Hibernate 的时候，可以在这个方法中准备一个 Hibernate 的Session 对象，然后利用 WebRequest 的 setAttribute(name, value, scope) 把它放到 WebRequest 的属性中。在这里，进一步说说 setAttribute 方法的第三个参数 scope ，该参数是一个Integer 类型的。在 WebRequest 的父层接口 RequestAttributes 中对它定义了三个常量，分别为：
+
+&lt;ul&gt;
+&lt;li&gt;SCOPE_REQUEST ，它的值是 0，表示只有在 request 中可以访问。&lt;/li&gt;
+&lt;li&gt;SCOPE_SESSION，它的值是1，如果环境允许的话，它表示的是一个局部的隔离的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
+&lt;li&gt;SCOPE_GLOBAL_SESSION，它的值是 2，如果环境允许的话，它表示的是一个全局共享的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postHandle(WebRequest request, ModelMap model)&lt;/code&gt;方法，该方法在请求处理之后，也就是在 Controller 中的方法调用之后被调用，但是会在视图返回被渲染之前被调用，所以可以在这个方法里面通过改变数据模型 ModelMap 来改变数据的展示。该方法有两个参数，WebRequest 对象是用于传递整个请求数据的，比如在 preHandle 中准备的数据都可以通过 WebRequest 来传递和访问；ModelMap 就是 Controller 处理之后返回的 Model 对象，咱们可以通过改变它的属性来改变返回的 Model 模型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;afterCompletion(WebRequest request, Exception ex)&lt;/code&gt;方法，该方法会在整个请求处理完成，也就是在视图返回并被渲染之后执行。因此可以在该方法中进行资源的释放操作。而 WebRequest 参数就可以把咱们在 preHandle 中准备的资源传递到这里进行释放。Exception 参数表示的是当前请求的异常对象，如果在 Controller 中抛出的异常已经被 Spring 的异常处理器给处理了的话，那么这个异常对象就是是 null.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;来源：&lt;a href=&#34;https://blog.csdn.net/qq_35246620/article/details/68487904&#34; target=&#34;blank&#34;&gt;作者：维C果糖 | 文章：述 Spring MVC 框架中拦截器 Interceptor 的使用方法&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;拦截器code&#34;&gt;拦截器CODE&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实现HandlerInterceptor 接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import cn.com.do1.component.core.shirocas.model.UserVO;
+    import cn.com.do1.component.util.HttpPermissionUtil;
+    import org.apache.shiro.SecurityUtils;
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.HandlerInterceptor;
+    import org.springframework.web.servlet.ModelAndView;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.util.List;
+
+    /**
+     * 点击菜单拦截器
+     * @author wm
+     * @date 2018.10.29
+     */
+    @Component
+    public class ClickMenuInterceptor implements HandlerInterceptor {
+
+        @Value(&amp;quot;${qxws.identifier}&amp;quot;)
+        private String systemId;
+
+        @Override
+        public boolean preHandle(HttpServletRequest request,
+                                 HttpServletResponse response, Object handler) throws Exception {
+            return true;
+        }
+
+        @Override
+        public void postHandle(HttpServletRequest request,
+                               HttpServletResponse response, Object handler,
+                               ModelAndView modelAndView) throws Exception {
+            UserVO user = (UserVO) SecurityUtils.getSubject().getSession().getAttribute(&amp;quot;user&amp;quot;);
+            List&amp;lt;String&amp;gt; buttonList = HttpPermissionUtil.getButtonPermission(user.getUserId(), systemId);
+            modelAndView.addObject(&amp;quot;buttonList&amp;quot;,buttonList);
+        }
+
+        @Override
+        public void afterCompletion(HttpServletRequest request,
+                                    HttpServletResponse response, Object handler, Exception ex)
+                throws Exception {
+
+        }
+
+    } 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;实现WebRequestInterceptor接口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import org.springframework.ui.ModelMap;
+    import org.springframework.web.context.request.WebRequest;
+    import org.springframework.web.context.request.WebRequestInterceptor;
+
+    /**
+     * @author wm
+     * @Description ClinkMenuInterceptor2
+     * @date 2018/10/30 15:34
+     * @Version 1.0
+     */
+    public class ClinkMenuInterceptor2 implements WebRequestInterceptor {
+            
+        @Override
+        public void preHandle(WebRequest request) throws Exception {
+                
+        }
+
+        @Override
+        public void postHandle(WebRequest request, ModelMap model) throws Exception {
+
+        }
+
+        @Override
+        public void afterCompletion(WebRequest request, Exception ex) throws Exception {
+
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;继承HandlerInterceptorAdapter类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    import java.util.Arrays;
+    import java.util.List;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+    /**
+     * 错误页面拦截器
+     * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+     * @author wm
+     */
+    @Component
+    public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+        private List&amp;lt;Integer&amp;gt; errorCodeList = Arrays.asList(404,500);
+        @Override
+        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+            Exception {
+           if (errorCodeList.contains(response.getStatus())) {
+                response.sendRedirect(request.getContextPath()+&amp;quot;/error/&amp;quot; + response.getStatus());
+                return false;
+            }
+            return super.preHandle(request, response, handler);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;SpringMVC&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;!--权限接入：拦截器--&amp;gt;
+    &amp;lt;mvc:interceptors&amp;gt;
+        &amp;lt;mvc:interceptor&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/identitySource/goIdentitySourceList&amp;quot;/&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/userManager/goUserManagerListPage&amp;quot;/&amp;gt;
+            &amp;lt;mvc:mapping path=&amp;quot;/schedulemgr/goScheduleListPage&amp;quot;/&amp;gt;
+            &amp;lt;bean class=&amp;quot;cn.com.do1.component.security.interceptor.ClickMenuInterceptor&amp;quot;/&amp;gt;
+        &amp;lt;/mvc:interceptor&amp;gt;
+    &amp;lt;/mvc:interceptors&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;SpringBoot&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    @Bean
+    public ClickMenuInterceptor getClickMenuInterceptor() {
+        return new ClickMenuInterceptor();
+    }
+    /**
+     * 新增security拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getClickMenuInterceptor()).
+                addPathPatterns(&amp;quot;/identitySource/goIdentitySourceList&amp;quot;,
+                        &amp;quot;/userManager/goUserManagerListPage&amp;quot;,
+                        &amp;quot;/schedulemgr/goScheduleListPage&amp;quot;);
+        super.addInterceptors(registry);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;    @Autowired
+    private ErrorPageInterceptor errorPageInterceptor;//错误拦截器（拦截404，500）
+    /**
+     * 新增拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(errorPageInterceptor);//默认拦截所有
+        super.addInterceptors(registry);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>

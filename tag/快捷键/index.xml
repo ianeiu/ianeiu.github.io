@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/%E5%BF%AB%E6%8D%B7%E9%94%AE/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>IDEA——快捷键</title>
-      <link>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/11/30/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>快捷键设置 默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们</description>
-    </item>
     
     <item>
       <title>Eclipse——实用快捷键及插件</title>
