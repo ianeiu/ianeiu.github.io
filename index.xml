@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 22 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Feb 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ianeiu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[置顶]js、jq——DEMO集</title>
-      <link>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</link>
-      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
+      <title>[置顶]js、css——DEMO集</title>
+      <link>https://ianeiu.github.io/2019/02/22/%E7%BD%AE%E9%A1%B6jscssdemo%E9%9B%86/</link>
+      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/01/22/%E7%BD%AE%E9%A1%B6jsjqdemo%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2019/02/22/%E7%BD%AE%E9%A1%B6jscssdemo%E9%9B%86/</guid>
       
         <description>
 
@@ -126,6 +126,11 @@ $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;&amp;quot;)
 
 &lt;pre&gt;&lt;code&gt;$(&#39;#button&#39;).attr(&#39;disabled&#39;,&amp;quot;true&amp;quot;);//添加disabled属性
 $(&#39;#button&#39;).removeAttr(&amp;quot;disabled&amp;quot;); //移除disabled属性
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;5.css3&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;a style=&amp;quot;pointer-events: none;&amp;quot; onclick=&amp;quot;alert(&#39;ok&#39;);&amp;quot;&amp;gt;无法点击&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
@@ -1115,6 +1120,275 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
+
+&lt;h3 id=&#34;元素上下居中&#34;&gt;元素上下居中&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+.parent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 上下 */
+	align-items: center; /* 水平 */
+}
+&amp;lt;/style&amp;gt;
+
+&amp;lt;div class=&amp;quot;parent&amp;quot; style=&amp;quot;height: 1000px; border: 1px solid #000&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;child&amp;quot; style=&amp;quot;height: 500px; width: 100px; border: 1px solid #00f&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;检查ie&#34;&gt;检查IE&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt; /* 注意：不能使用较新的jquery */
+    /* $.browser.msie在1.9以后的jquery中不存在了 */
+    /* 2.0 版本中，将不再支持 IE 6/7/8 */
+    $(function() {
+    	 checkOne();
+    	 checkTwo();
+    });
+    
+    function checkOne(){
+    	 var userAgent = window.navigator.userAgent.toLowerCase();
+    	  
+         $.browser.msie10 = $.browser.msie &amp;amp;&amp;amp; /msie 10\.0/i.test(userAgent);
+         $.browser.msie9 = $.browser.msie &amp;amp;&amp;amp; /msie 9\.0/i.test(userAgent); 
+         $.browser.msie8 = $.browser.msie &amp;amp;&amp;amp; /msie 8\.0/i.test(userAgent);
+         $.browser.msie7 = $.browser.msie &amp;amp;&amp;amp; /msie 7\.0/i.test(userAgent);
+         $.browser.msie6 = !$.browser.msie8 &amp;amp;&amp;amp; !$.browser.msie7 &amp;amp;&amp;amp; $.browser.msie &amp;amp;&amp;amp; /msie 6\.0/i.test(userAgent);
+   
+         $(&amp;quot;.info&amp;quot;).html(
+             &amp;quot;&amp;lt;h3&amp;gt;userAgent:&amp;lt;/h3&amp;gt;&amp;quot; + userAgent + &amp;quot;&amp;lt;br /&amp;gt;&amp;quot; +
+             &amp;quot;&amp;lt;h3&amp;gt;Is IE 10?&amp;lt;/h3&amp;gt;&amp;quot; + $.browser.msie10 +
+             &amp;quot;&amp;lt;h3&amp;gt;Is IE 9?&amp;lt;/h3&amp;gt;&amp;quot; + $.browser.msie9 +
+             &amp;quot;&amp;lt;h3&amp;gt;Is IE 8?&amp;lt;/h3&amp;gt;&amp;quot; + $.browser.msie8 +
+             &amp;quot;&amp;lt;h3&amp;gt;Is IE 7?&amp;lt;/h3&amp;gt;&amp;quot; + $.browser.msie7 +
+             &amp;quot;&amp;lt;h3&amp;gt;Is IE 6?&amp;lt;/h3&amp;gt;&amp;quot; + $.browser.msie6
+         );
+ 		if($.browser.msie8){
+ 			alert(&#39;IE8真让人头疼！！&#39;);
+ 		}
+    }
+    
+    //new 
+    function checkTwo(){
+    	$.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase());
+    	$.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+    	$.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+    	$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase()); //判断是否是IE
+    	
+   	 	if(/msie/.test(navigator.userAgent.toLowerCase())){
+   	    	console.log(&#39;IE5-10&#39;);
+   	 	}
+    	
+		if (&#39;undefined&#39; == typeof (document.body.style.maxHeight)) {
+			console.log(&#39;IE6&#39;);
+		}
+		
+		if (!$.support.leadingWhitespace) {
+			console.log(&#39;IE5-8&#39;);
+		}
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;文件上传限制&#34;&gt;文件上传限制&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;限制文件类型上传及多文件上传&amp;lt;/h3&amp;gt;
+    &amp;lt;input id=&amp;quot;moreFile&amp;quot; type=&amp;quot;file&amp;quot; accept=&amp;quot;.doc,.docx,.xls,.xlsx&amp;quot;
+        multiple /&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; onclick=&amp;quot;checkFile()&amp;quot; value=&amp;quot;提交&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;限制文件类型上传-显示限制&amp;lt;/h3&amp;gt;
+    &amp;lt;br /&amp;gt;浏览时只显示指定文件类型 xls、xlsx、csv &amp;lt;input id=&amp;quot;fileSelect&amp;quot; type=&amp;quot;file&amp;quot;
+        accept=&amp;quot;.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel&amp;quot; /&amp;gt;
+
+    &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For CSV files (.csv), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;.csv&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Excel Files 2003-2007 (.xls), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;application/vnd.ms-excel&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Excel Files 2010 (.xlsx), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&amp;quot; /&amp;gt;
+    &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Text Files (.txt) use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;text/plain&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Image Files (.png/.jpg/etc), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;image/*&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For HTML Files (.htm,.html), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;text/html&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Video Files (.avi, .mpg, .mpeg, .mp4), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;video/*&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For Audio Files (.mp3, .wav, etc), use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;audio/*&amp;quot; /&amp;gt; &amp;lt;br /&amp;gt;
+    &amp;lt;br /&amp;gt;For PDF Files, use: &amp;lt;br /&amp;gt;
+    &amp;lt;input type=&amp;quot;file&amp;quot; accept=&amp;quot;.pdf&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+	function checkFile(){
+		var fileAccept = $(&amp;quot;#moreFile&amp;quot;).val().split(&amp;quot;.&amp;quot;)[1];//获取上传文件的后缀  
+		if( fileAccept!=&amp;quot;doc&amp;quot; &amp;amp;&amp;amp; fileAccept!=&amp;quot;docx&amp;quot;&amp;amp;&amp;amp; fileAccept!=&amp;quot;xls&amp;quot;&amp;amp;&amp;amp; fileAccept!=&amp;quot;xlsx&amp;quot; ){  
+		    alert(&amp;quot;只能上传.doc,.docx,.xls,.xlsx的文件！&amp;quot;);  
+		}  
+		
+		//获取多文件上传的所有文件名  
+		var filePaths = $(&amp;quot;#moreFile&amp;quot;)[0].files;//或者这样写 document.getElementById(&amp;quot;id&amp;quot;).files;  
+		for( var i=0;i&amp;lt;filePaths.length; i++ ){  
+		    alert(filePaths[i].name);  
+		}
+	}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;输入框input校验&#34;&gt;输入框input校验&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;br /&amp;gt;JS判断只能是数字和小数点 1.文本框只能输入数字代码(小数点也不能输入)
+&amp;lt;br /&amp;gt;
+&amp;lt;input onkeyup=&amp;quot;this.value=this.value.replace(/\D/g,&#39;&#39;)&amp;quot; onafterpaste=&amp;quot;this.value=this.value.replace(/\D/g,&#39;&#39;)&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;2.只能输入数字,能输小数点.
+&amp;lt;br /&amp;gt;
+&amp;lt;input onkeyup=&amp;quot;if(isNaN(value))execCommand(&#39;undo&#39;)&amp;quot; onafterpaste=&amp;quot;if(isNaN(value))execCommand(&#39;undo&#39;)&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;input name=txt1 onchange=&amp;quot;if(/\D/.test(this.value)){alert(&#39;只能输入数字&#39;);this.value=&#39;&#39;;}&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;3.数字和小数点方法二
+&amp;lt;br /&amp;gt;
+&amp;lt;input type=text t_value=&amp;quot;&amp;quot; o_value=&amp;quot;&amp;quot;
+    onkeypress=&amp;quot;if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value&amp;quot;
+    onkeyup=&amp;quot;if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value&amp;quot;
+    onblur=&amp;quot;if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;4.只能输入字母和汉字
+&amp;lt;br /&amp;gt;
+&amp;lt;input onkeyup=&amp;quot;value=value.replace(/[\d]/g,&#39;&#39;)&amp;quot; maxlength=10 name=&amp;quot;Numbers&amp;quot;
+    onbeforepaste=&amp;quot;clipboardData.setData(&#39;text&#39;,clipboardData.getData(&#39;text&#39;).replace(/[\d]/g,&#39;&#39;))&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;5.只能输入英文字母和数字,不能输入中文
+&amp;lt;br /&amp;gt;
+&amp;lt;input onkeyup=&amp;quot;value=value.replace(/[^\w\.\/]/ig,&#39;&#39;)&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;6.只能输入数字和英文
+&amp;lt;font color=&amp;quot;Red&amp;quot;&amp;gt;chun&amp;lt;/font&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;input onKeyUp=&amp;quot;value=value.replace(/[^\d|chun]/g,&#39;&#39;)&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;7.小数点后只能有最多两位(数字,中文都可输入),不能输入字母和运算符号:
+&amp;lt;br /&amp;gt;
+&amp;lt;input onKeyPress=&amp;quot;if((event.keyCode&amp;lt;48 || event.keyCode&amp;gt;57) &amp;amp;&amp;amp; event.keyCode!=46 || /\.\d\d$/.test(value))event.returnValue=false&amp;quot;&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;8.小数点后只能有最多两位(数字,字母,中文都可输入),可以输入运算符号:
+&amp;lt;br /&amp;gt;
+&amp;lt;input onkeyup=&amp;quot;this.value=this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,&#39;$1$2.$3&#39;)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;contenteditable-进行文本输入编辑&#34;&gt;contenteditable 进行文本输入编辑&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p contenteditable=&amp;quot;true&amp;quot;&amp;gt;这是一段可编辑的段落。请试着编辑该文本。&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;table-模版&#34;&gt;table 模版&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;table class=&amp;quot;tableCommon&amp;quot; width=&amp;quot;30%&amp;quot; border=&amp;quot;1&amp;quot; cellspacing=&amp;quot;5&amp;quot; cellpadding=&amp;quot;10&amp;quot;&amp;gt;
+    &amp;lt;thead style=&amp;quot;display: block;&amp;quot;&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;th&amp;gt;1&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;2&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;3&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;4&amp;lt;/th&amp;gt;
+        &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tbody style=&amp;quot;display: block; height: 50px; overflow-y: scroll;&amp;quot;&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;td&amp;gt;10&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;20&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;30&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;40&amp;lt;/td&amp;gt;
+        &amp;lt;/tr&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;td&amp;gt;10&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;20&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;30&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;40&amp;lt;/td&amp;gt;
+        &amp;lt;/tr&amp;gt;
+    &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;append追加元素用法例子&#34;&gt;append追加元素用法例子&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;selectUserList&amp;quot;&amp;gt;&amp;lt;/ul&amp;gt;
+
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+	$(function(){
+		for(var i = 0;i&amp;lt;10;i++){
+			addUser({id: i, userName: i+&#39;a&#39;, name: i+&#39;b&#39;,mobile: i*10});
+		}
+	})
+	function addUser(data) {
+	    var _li = $(&amp;quot;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;);//li
+	    var _em = $(&amp;quot;&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;&amp;quot;);//li-em
+	    var _a = $(&#39;&amp;lt;a class=&amp;quot;closebtn&amp;quot; href=&amp;quot;javascript:void(0);&amp;quot; onclick=&amp;quot;closeBtnFunc(this)&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&#39;);//li-a
+	    var _hiden_username = $(&#39;&amp;lt;input type=&amp;quot;hidden&amp;quot; class=&amp;quot;_hidenUsername&amp;quot;/&amp;gt;&#39;);//li-input name:_hidenUsername
+	    var _hiden_tel = $(&#39;&amp;lt;input type=&amp;quot;hidden&amp;quot; class=&amp;quot;_hidenMobile&amp;quot;/&amp;gt;&#39;);//li-input name:_hiden_tel
+	    
+	    _hiden_username.val(data.userName);
+	    _hiden_tel.val(data.mobile);
+	    _em.text(data.userName + &amp;quot;(&amp;quot; + data.mobile + &amp;quot;)&amp;quot;);
+	    
+	    _li.append(_em);
+	    _li.append(_a);
+	    _li.append(_hiden_username);
+	    _li.append(_hiden_tel);
+	    $(&amp;quot;.selectUserList&amp;quot;).append(_li);
+	}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;a标签-调用方法的正确姿势&#34;&gt;a标签 调用方法的正确姿势&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;javascript:xixi();&amp;quot;&amp;gt;a1&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;br /&gt;
+这是我们平台上常用的方法，但是这种方法在传递this等参数的时候很容易出问题，&lt;br /&gt;
+而且javascript:协议作为a的href属性的时候不仅会导致不必要的触发window.onbeforeunload事件，&lt;br /&gt;
+在IE里面更会使gif动画图片停止播放。&lt;br /&gt;
+W3C标准不推荐在href里面执行javascript语句&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a2&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;br /&gt;
+这种方法是很多网站最常用的方法，也是最周全的方法，onclick方法负责执行js函数，&lt;br /&gt;
+而void是一个操作符，void(0)返回undefined，地址不发生跳转。&lt;br /&gt;
+而且这种方法不会像第一种方法一样直接将js方法暴露在浏览器的状态栏。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;javascript:;&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a3&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;br /&gt;
+这种方法跟跟2种类似，区别只是执行了一条空的js代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;#&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a4&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;br /&gt;
+这种方法也是网上很常见的代码，#是标签内置的一个方法，代表top的作用。&lt;br /&gt;
+所以用这种方法点击后网页后返回到页面的最顶端。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;#&amp;quot; onclick=&amp;quot;xixi();return false&amp;quot;&amp;gt;a5&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;br /&gt;
+这种方法点击执行了js函数后return false，页面不发生跳转，执行后还是在页面的当前位置。&lt;/p&gt;
+
+&lt;p&gt;综合上述，在a中调用js函数最适当的方法推荐使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a2&amp;lt;/a&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;a href=&amp;quot;javascript:;&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a3&amp;lt;/a&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;a href=&amp;quot;#&amp;quot; onclick=&amp;quot;xixi();return false&amp;quot;&amp;gt;a5&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -1162,10 +1436,6 @@ $(&amp;quot;div&amp;quot;).get(2).innerHTML; //调用dom的方法属性
 
 &lt;p&gt;如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;插件&#34;&gt;插件&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dorothy1224/article/details/79280591/&#34; target=&#34;blank&#34;&gt;eclipse安装lombok&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
 
