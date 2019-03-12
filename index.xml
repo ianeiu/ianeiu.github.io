@@ -1696,8 +1696,6 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
 
-&lt;p&gt;一名Java渣渣&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;邮箱：weimianwu@foxmail.com&lt;/li&gt;
 &lt;li&gt;微信：qq747151921&lt;/li&gt;
@@ -2251,7 +2249,7 @@ public static void testForEach(List list) {
 &lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
 
 &lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
-合法字符组成：英文字幕、数字、$、_【不能以数字开头】&lt;/p&gt;
+合法字符组成：英文字母、数字、$、_【不能以数字开头】&lt;/p&gt;
 
 &lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
 
