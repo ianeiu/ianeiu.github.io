@@ -3394,6 +3394,16 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
 &lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
 &lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;bookmarks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + F11&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;bookmarks查看&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift + F11&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
@@ -3441,6 +3451,16 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;垂直分组&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;右键文件tab，选择split horizontally&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;收藏至bookmark&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl+shift+F11&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;打开  bookmark&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift+F11&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
