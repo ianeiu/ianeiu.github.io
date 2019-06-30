@@ -31,11 +31,11 @@
     </item>
     
     <item>
-      <title>Maven——问题集</title>
-      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <title>Maven使用问题记录</title>
+      <link>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>Could not calculate build plan 将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plug</description>
     </item>
     

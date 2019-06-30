@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Maven——输出依赖树（处理包冲突）</title>
+      <title>Maven输出依赖树（处理包冲突）</title>
       <link>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</link>
       <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>Maven——笔记</title>
+      <title>Maven笔记</title>
       <link>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -31,11 +31,11 @@
     </item>
     
     <item>
-      <title>Maven——问题集</title>
-      <link>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</link>
+      <title>Maven使用问题记录</title>
+      <link>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/19/maven%E9%97%AE%E9%A2%98%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>Could not calculate build plan 将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plug</description>
     </item>
     
