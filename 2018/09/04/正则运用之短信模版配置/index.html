@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>正则运用之短信模版配置 · IanEiU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年" />
+
+  <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%BF%90%E7%94%A8%E4%B9%8B%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="正则运用之短信模版配置" />
+<meta property="og:description" content="短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/09/04/%E6%AD%A3%E5%88%99%E8%BF%90%E7%94%A8%E4%B9%8B%E7%9F%AD%E4%BF%A1%E6%A8%A1%E7%89%88%E9%85%8D%E7%BD%AE/" /><meta property="article:published_time" content="2018-09-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-04T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="正则运用之短信模版配置">
+<meta itemprop="description" content="短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年">
+
+
+<meta itemprop="datePublished" content="2018-09-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1667">
+
+
+
+<meta itemprop="keywords" content="短信,模版," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="正则运用之短信模版配置"/>
+<meta name="twitter:description" content="短信模版的配置功能 需求功能如下图： 代码如下： function toExa(template){ var now = new Date(); var syear = now.getYear();//获取当前年份(2位) var year = now.getFullYear(); //获取完整的年"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/bg3.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          IanEiU
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">正则运用之短信模版配置</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-09-04
+          / 分类：
+          <a href="https://ianeiu.github.io/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/%E6%A8%A1%E7%89%88/">模版</a>, 
+                <a href="https://ianeiu.github.io/tag/%E7%9F%AD%E4%BF%A1/">短信</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h2 id="短信模版的配置功能">短信模版的配置功能</h2>
+
+<p>需求功能如下图：<br />
+<img src="/resouce/短信模版-正则/dt1.png"  alt="短信模版1" />
+<img src="/resouce/短信模版-正则/dt2.png"  alt="短信模版2" />
+<img src="/resouce/短信模版-正则/dt3.png"  alt="短信模版3" /></p>
+
+<p>代码如下：</p>
+
+<pre><code>function toExa(template){
+
+	var now = new Date();
+	var syear = now.getYear();//获取当前年份(2位)
+	var year = now.getFullYear(); //获取完整的年份(4位,1970-????)
+	var month = now.getMonth() &lt;9?&quot;0&quot;+(now.getMonth()+1):(now.getMonth()+1);//获取当前月份(1-12)
+	var day = now.getDate()&lt;10?&quot;0&quot;+now.getDate():now.getDate();//获取当前日(1-31)
+	var hour = now.getHours()&lt;10?&quot;0&quot;+now.getHours():now.getHours(); //获取当前小时数(00-23)
+	var minu = now.getMinutes&lt;10?&quot;0&quot;+now.getMinutes():now.getMinutes(); //获取当前分钟数(00-59)
+	var seco = now.getSeconds()&lt;10?&quot;0&quot;+now.getSeconds():now.getSeconds(); //获取当前秒数(00-59)
+	var pre_syear = syear - 1;
+	var pre_year = year - 1;
+	var pre_month = getLastMonth(now);
+	var pre_day = getYestoday(now);
+	
+	template = template.replace(/{yyyy}/g,year);
+	template = template.replace(/{yy}/g,syear);
+	template = template.replace(/{MM}/g,month);
+	template = template.replace(/{dd}/g,day);
+	template = template.replace(/{HH}/g,hour);
+	template = template.replace(/{mm}/g,minu);
+	template = template.replace(/{ss}/g,seco);
+	template = template.replace(/{MMdd}/g,month+&quot;&quot;+day);
+	template = template.replace(/{yyyyMMdd}/g,year+&quot;&quot;+month+&quot;&quot;+day);
+	template = template.replace(/{yyyyMMddHHmm}/g,year+&quot;&quot;+month+&quot;&quot;+day+&quot;&quot;+hour+&quot;&quot;+minu);
+	
+	template = template.replace(/{pre_yy}/g,pre_year);
+	template = template.replace(/{pre_yyyy}/g,pre_year);
+	template = template.replace(/{pre_MM}/g,pre_month);
+	template = template.replace(/{pre_dd}/g,pre_day);
+	template = template.replace(/{pre_MMdd}/g,pre_month+&quot;&quot;+pre_day);
+	template = template.replace(/{pre_yyyyMMdd}/g,pre_year+&quot;&quot;+pre_month+&quot;&quot;+pre_day);
+	template = template.replace(/{pre_yyyyMMddHHmm}/g,pre_year+&quot;&quot;+pre_month+&quot;&quot;+pre_day+&quot;&quot;+day+&quot;&quot;+hour+&quot;&quot;+minu);
+	
+	//srkVal  -  输入框(值,时间)
+	template = template.replace(/[\{][f]([1-9]\d*)[\}]/g,&quot;&lt;input onchange='caclClick(&amp;#39;num&amp;#39;);' id='srkVal$1' type='text' class='n_textInp'/&gt;&quot;);
+	template = template.replace(/[\{][z]([1-9]\d*)[\}]/g,&quot;&lt;input onchange='caclClick();' id='srkVal$1' type='text' class='n_textInp' valid='{must:false, fieldType:&amp;#39;isPositiveInteger&amp;#39;, tip:&amp;#39;整数输入框&amp;#39;}'/&gt;&quot;);
+	template = template.replace(/[\{][x]([1-9]\d*)[\}]/g,&quot;&lt;input onchange='caclClick();' id='srkVal$1' type='text' class='n_textInp' valid='{must:false, fieldType:&amp;#39;isSmallInteger&amp;#39;, tip:&amp;#39;小数输入框&amp;#39;}'/&gt;&quot;);
+	
+	template = template.replace(/[\{][d][i][v][1-9]\d*[\=]([1-9]\d*)[\/]([1-9]\d*)[\/]([1-9]\d*)[\}]/g,
+			&quot;&lt;input type='text' class='n_textInp njsk' onclick='caclChuFaValToJSK(this,&amp;#39;$1&amp;#39;,&amp;#39;$2&amp;#39;,&amp;#39;$3&amp;#39;)' readonly/&gt;&quot;);
+	
+	template = template.replace(/[\{][s][u][b][t][1-9]\d*[\=]([1-9])\d*[\/]([1-9])\d*[\/]([d|h|m])[\}]/g,
+			&quot;&lt;input type='text' class='n_textInp sjsk' onclick='caclTimeValToJSK(this,&amp;#39;$1&amp;#39;,&amp;#39;$2&amp;#39;,&amp;#39;$3&amp;#39;)' readonly/&gt;&quot;);
+	
+	template = template.replace(/[\{][d]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:100px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY-MM-DD&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:160px;&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY-MM-DD hh:mm:ss&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t][\-][s]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:140px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY-MM-DD hh:mm&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t][\-][m][\-][s]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:140px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY-MM-DD hh:00&amp;#39;,choose:checkDate})&quot;/&gt;');
+	
+	template = template.replace(/[\{][d][\-][c][n]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:130px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY年MM月DD日&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t][\-][c][n]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:220px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY年MM月DD日 hh时mm分ss秒&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t][\-][s][\-][c][n]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:190px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY年MM月DD日 hh时mm分&amp;#39;,choose:checkDate})&quot;/&gt;');
+	template = template.replace(/[\{][d][t][\-][m][\-][s][\-][c][n]([1-9]\d*)[\}]/g,'&lt;input id=&quot;srkVal$1&quot; type=&quot;text&quot; class=&quot;n_textInp&quot; style=&quot;width:160px&quot; onclick=&quot;laydate({istime: true, format: &amp;#39;YYYY年MM月DD日 hh时&amp;#39;,choose:checkDate})&quot;/&gt;');
+
+	$(&quot;#tExaDiv&quot;).html(template);
+}
+
+function checkDate(){
+	caclClick('date');
+}
+
+function caclClick(type){
+	if(type=='num'){
+		$('.njsk').trigger(&quot;click&quot;);
+	}else if(type=='date'){
+		$('.sjsk').trigger(&quot;click&quot;);
+	}
+}
+
+//除法计算并将值放入计算框
+function caclChuFaValToJSK(obj,n1,n2,weiShu){
+	$(obj).val(&quot;&quot;);
+
+	var one ='';//序号a的值
+	var two ='';//序号b的值
+	
+	one = $('#srkVal'+n1).val();
+	two = $('#srkVal'+n2).val();
+	
+	var finaVal = '';//计算后的值
+	if(one==&quot;&quot;||two==&quot;&quot;){
+		$(obj).val(&quot;&quot;);
+		return;
+	}else{
+		finaVal=(parseFloat(one)/parseFloat(two)).toFixed(weiShu);
+	}
+	$(obj).val(finaVal);
+}
+
+//计算并将值放入计算框
+function caclTimeValToJSK(obj,d1,d2,oper){
+	var eTime ='';//序号a的值
+	var sTime ='';//序号b的值
+	
+	eTime = $('#srkVal'+d1).val();
+	sTime = $('#srkVal'+d2).val();
+	
+	var finalVal ='';
+	if(eTime==&quot;&quot;||sTime==&quot;&quot;){
+		$(obj).val(&quot;&quot;);
+		return;
+	}else{
+		switch (oper) {
+		    case (&quot;d&quot;):  //日
+		    	finalVal = GetDateDiff(sTime,eTime,'day')+'天';
+		    	break;
+		    case (&quot;h&quot;):  //时
+		    	finalVal = GetDateDiff(sTime,eTime,'hour')+'小时';
+		        break;
+		    case (&quot;m&quot;):  //分
+		    	finalVal = GetDateDiff(sTime,eTime,'minute')+'分钟';
+		        break;
+		    default: 
+		       console.log(&quot;caclTimeValToJSK传入无效操作参数&quot;+oper);
+		}
+	}
+	$(obj).val(finalVal);
+}
+
+//获取上个月
+function getLastMonth(date){      
+    var daysInMonth = new Array([0],[31],[28],[31],[30],[31],[30],[31],[31],[30],[31],[30],[31]);      
+    var strYear = date.getFullYear();        
+    //var strDay = date.getDate();        
+    var strMonth = date.getMonth()+1;      
+    if(strYear%4 == 0 &amp;&amp; strYear%100 != 0){      
+       daysInMonth[2] = 29;      
+    }      
+    if(strMonth - 1 == 0)      
+    {      
+       strYear -= 1;      
+       strMonth = 12;      
+    }      
+    else     
+    {      
+       strMonth -= 1;      
+    }      
+    //strDay = daysInMonth[strMonth] &gt;= strDay ? strDay : daysInMonth[strMonth];      
+    if(strMonth&lt;10)        
+    {        
+       strMonth=&quot;0&quot;+strMonth;        
+    }      
+    /* if(strDay&lt;10)        
+    {        
+       strDay=&quot;0&quot;+strDay;        
+    }  */
+    //datastr = strYear+&quot;-&quot;+strMonth+&quot;-&quot;+strDay;      
+    datastr = strMonth;      
+    return datastr;      
+}
+
+//获取昨天
+function getYestoday(date){          
+   var yesterday_milliseconds=date.getTime()-1000*60*60*24;           
+   var yesterday = new Date();           
+   yesterday.setTime(yesterday_milliseconds);           
+           
+  // var strYear = yesterday.getFullYear();        
+   var strDay = yesterday.getDate();        
+  // var strMonth = yesterday.getMonth()+1;      
+  /*  if(strMonth&lt;10) 
+   {        
+       strMonth=&quot;0&quot;+strMonth;        
+   }   */      
+   //datastr = strYear+&quot;-&quot;+strMonth+&quot;-&quot;+strDay;      
+   datastr = strDay;      
+   return datastr;      
+}   
+
+//获取时间差
+function GetDateDiff(startTime, endTime, diffType) {
+    //转换时间格式，如xxxx-xx-xx转换为 xxxx/xx/xx的格式 
+    startTime = startTime.replace(/\-/g, &quot;/&quot;).replace(/[\u5e74|\u6708]/g,&quot;/&quot;).replace(/[\u65e5]/g,&quot;&quot;);
+    endTime = endTime.replace(/\-/g, &quot;/&quot;).replace(/[\u5e74|\u6708]/g,&quot;/&quot;).replace(/[\u65e5]/g,&quot;&quot;);
+    
+    if(startTime.endWith('时')){
+    	startTime = startTime.replace(/[\u65f6]/g,&quot;:00&quot;);
+	}else if(startTime.endWith('分')){
+		startTime = startTime.replace(/[\u65f6]/g,&quot;:&quot;).replace(/[\u5206]/g,&quot;&quot;);
+	}else if(startTime.endWith('秒')){
+		startTime = startTime.replace(/[\u65f6|\u5206]/g,&quot;:&quot;).replace(/[\u79d2]/g,&quot;&quot;);
+	}
+	
+	if(endTime.endWith('时')){
+		endTime = endTime.replace(/[\u65f6]/g,&quot;:00&quot;);
+	}else if(endTime.endWith('分')){
+		endTime = endTime.replace(/[\u65f6]/g,&quot;:&quot;).replace(/[\u5206]/g,&quot;&quot;);
+	}else if(endTime.endWith('秒')){
+		endTime = endTime.replace(/[\u65f6|\u5206]/g,&quot;:&quot;).replace(/[\u79d2]/g,&quot;&quot;);
+	}
+    
+    //将计算间隔类性字符转换为小写
+    diffType = diffType.toLowerCase();
+    var sTime =new Date(startTime); //开始时间
+    var eTime =new Date(endTime); //结束时间
+    //作为除数的数字
+    var timeType =1;
+    switch (diffType) {
+        case&quot;second&quot;:
+            timeType =1000;
+        break;
+        case&quot;minute&quot;:
+            timeType =1000*60;
+        break;
+        case&quot;hour&quot;:
+            timeType =1000*3600;
+        break;
+        case&quot;day&quot;:
+            timeType =1000*3600*24;
+        break;
+        default:
+        break;
+    }
+    return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(timeType));
+}
+
+String.prototype.endWith=function(s){
+  if(s==null||s==&quot;&quot;||this.length==0||s.length&gt;this.length)
+     return false;
+  if(this.substring(this.length-s.length)==s)
+     return true;
+  else
+     return false;
+  return true;
+ }
+
+ String.prototype.startWith=function(s){
+  if(s==null||s==&quot;&quot;||this.length==0||s.length&gt;this.length)
+   return false;
+  if(this.substr(0,s.length)==s)
+     return true;
+  else
+     return false;
+  return true;
+ }
+</code></pre>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社群</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            
+              2018 -
+            2019
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
