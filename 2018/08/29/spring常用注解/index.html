@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2018-08-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-08-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2148">
+<meta itemprop="wordCount" content="2322">
 
 
 
@@ -235,9 +235,11 @@ class User{
 (1)、@Autowired默认按照byType方式进行bean匹配，@Resource默认按照byName方式进行bean匹配
 (2)、@Autowired是Spring的注解，@Resource是J2EE的注解</p>
 
-<h2 id="获取参数">获取参数</h2>
+<h2 id="接收参数">接收参数</h2>
 
 <h3 id="requestparam">@RequestParam</h3>
+
+<p>处理Content-Type为 application/x-www-form-urlencoded编码的内容</p>
 
 <p><a href="http://localhost:8080/springmvc/hello/101?param1=10&amp;param2=20">http://localhost:8080/springmvc/hello/101?param1=10&amp;param2=20</a><br />
 根据上面的这个URL，你可以用这样的方式来进行获取</p>
@@ -270,7 +272,13 @@ class User{
 }
 </code></pre>
 
-<p>区别很明显了</p>
+<h3 id="requestbody">@RequestBody</h3>
+
+<p>@RequestBody用于post请求，处理 application/json、application/xml等格式的数据</p>
+
+<h3 id="modelattribute">@ModelAttribute</h3>
+
+<p>@ModelAttribute注解类型将参数绑定到Model对象，处理 multipart/form-data 格式的数据</p>
 
 <h2 id="常用注解">常用注解</h2>
 
@@ -390,7 +398,7 @@ class User{
 
 <tr>
 <td align="left">@RequestBody</td>
-<td align="left">一般是post请求的时候才会使用这个请求，把参数丢在requestbody里面</td>
+<td align="left">一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)</td>
 </tr>
 </tbody>
 </table>

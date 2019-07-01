@@ -1473,6 +1473,8 @@ W3C标准不推荐在href里面执行javascript语句&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huhaoshida/p/5412615.html&#34; target=&#34;blank&#34;&gt;Ftp主动模式和被动模式以及java连接ftp模式设置&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yeyublog/p/6438373.html&#34; target=&#34;blank&#34;&gt;web实现负载均衡的几种实现方式&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
@@ -1547,11 +1549,15 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_dbbfe02e0101oqdj.html&#34; target=&#34;blank&#34;&gt;Linux文本安装&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.centos.bz/2018/03/centos查看端口占用情况和开启端口命令/&#34; target=&#34;blank&#34;&gt;Centos查看端口占用情况和开启端口命令&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.centos.bz/2018/03/centos查看端口占用情况和开启端口命令/&#34; target=&#34;blank&#34;&gt;Centos查看端口占用情况和开启端口命令&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/moxiaoan/p/5683743.html&#34; target=&#34;blank&#34;&gt;
+CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/liuxianan/p/linux_install_svn_server.html&#34; target=&#34;blank&#34;&gt;Linux下安装SVN服务端小白教程&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_22075041/article/details/78855708&#34; target=&#34;blank&#34;&gt;在linux下安装配置rabbitMQ详细教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/jing99/p/9684273.html&#34; target=&#34;blank&#34;&gt;Linux下Mysql安装（tar安装）&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
 
@@ -1580,12 +1586,6 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;版本控制&#34;&gt;版本控制&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/3969558.html&#34; target=&#34;blank&#34;&gt;SVN使用教程总结&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/4050072.html&#34; target=&#34;blank&#34;&gt;Git使用教程&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;前端&#34;&gt;前端&lt;/h3&gt;
 
@@ -1713,11 +1713,76 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
     </item>
     
     <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</link>
+      <title>Git——记录</title>
+      <link>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;git使用教程&#34;&gt;Git使用教程&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/4050072.html&#34; target=&#34;blank&#34;&gt;Git使用教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;几条常用命令记录&#34;&gt;几条常用命令记录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git status&lt;/code&gt; 查看本地分支文件信息，确保更新时不产生冲突&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout –- [file name]&lt;/code&gt;  若文件有修改，可以还原到最初状态; 若文件需要更新到服务器上，应该先merge到服务器，再更新到本地&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch&lt;/code&gt; 查看当前分支情况&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout remote branch&lt;/code&gt;  若分支为本地分支，则需切换到服务器的远程分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git pull&lt;/code&gt; 拉取代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout branchA&lt;/code&gt; 切换到分支branchA&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch branchB&lt;/code&gt; 创建分支branchB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-工具本地用户名修改&#34;&gt;git 工具本地用户名修改&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;获取当前的用户名  &lt;code&gt;git config user.name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改用户名 &lt;code&gt;git config --global user.name &amp;quot;用户名&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;reset-revert&#34;&gt;reset revert&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用 reset&lt;/li&gt;
+&lt;li&gt;如果我们想恢复之前的某一版本（该版本不是merge类型），但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用 revert&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;墙裂推荐文章
+&lt;a href=&#34;https://blog.csdn.net/yxlshk/article/details/79944535&#34; target=&#34;blank&#34;&gt;Git恢复之前版本的两种方法reset、revert（图文详解）&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;恢复修改的文件&#34;&gt;恢复修改的文件&lt;/h2&gt;
+
+&lt;p&gt;情况1：&lt;br /&gt;
+修改了文件，没有做过任何git操作，直接 &lt;code&gt;git checkout -- test.txt&lt;/code&gt; 就OK了。&lt;/p&gt;
+
+&lt;p&gt;情况2：&lt;br /&gt;
+修改了文件，只进行了git add，执行 &lt;code&gt;git reset HEAD&lt;/code&gt; 回退到当前版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;情况3：&lt;br /&gt;
+修改了文件，进行了git add 和 git commit，执行 &lt;code&gt;git reset HEAD^&lt;/code&gt; 回退到上一个版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;br /&gt;
+使用IDEA &lt;a href=&#34;https://blog.csdn.net/qq_36033658/article/details/81902589&#34; target=&#34;blank&#34;&gt;git还原commit（push之前）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;情况4：
+修改了文件，进行了git add 、 git commit 、git push，根据版本号从新到旧依次执行&lt;code&gt;git revert [版本号]&lt;/code&gt;、然后 &lt;code&gt;git commit&lt;/code&gt;、&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;分支&#34;&gt;分支&lt;/h2&gt;
+
+&lt;p&gt;建议使用IDEA
+&lt;a href=&#34;https://www.malaoshi.top/show_1EF2E613IFX.html&#34; target=&#34;blank&#34;&gt;idea git的使用（四）git建立分支与合并分支&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>DB——SQL</title>
+      <link>https://ianeiu.github.io/2019/02/14/dbsql/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</guid>
+      <guid>https://ianeiu.github.io/2019/02/14/dbsql/</guid>
       
         <description>
 
@@ -2111,6 +2176,13 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;sql查询某个字段最长的记录&#34;&gt;sql查询某个字段最长的记录&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查询字段最长值 &lt;code&gt;select max(length(site_name)) from tb_zx_site&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查询某个字段最长的记录 &lt;code&gt;select site_name, length(site_name) from tb_zx_site where length(site_name) = ( select max(length(site_name)) from tb_zx_site  )&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
@@ -5826,223 +5898,6 @@ public class TyrzBackSecurityAdaptor extends AbstractSecurityAdaptor{
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Spring——拦截器</title>
-      <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的显示控制。所以当时想法是新建一个拦截器对这几个请求做统一处理（放入权限代码集合），类似之前项目的错误页面拦截器。&lt;/p&gt;
-
-&lt;h2 id=&#34;拦截器简介&#34;&gt;拦截器简介&lt;/h2&gt;
-
-&lt;p&gt;Spring 框架实现拦截器功能主要有两种方法，第一种是实现&lt;code&gt;HandlerInterceptor&lt;/code&gt;接口，第二种是实现&lt;code&gt;WebRequestInterceptor&lt;/code&gt;接口。&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;HandlerInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p&gt;通过实现HandlerInterceptor接口，重写方法&lt;code&gt;preHandle()&lt;/code&gt;、&lt;code&gt;postHandle()&lt;/code&gt;和&lt;code&gt;afterCompletion()&lt;/code&gt;拦截请求。Spring 框架中还提供了另外一个接口和一个抽象类，实现了对HandlerInterceptor接口的功能扩展，分别为：AsyncHandlerInterceptor和HandlerInterceptorAdapter。&lt;/p&gt;
-
-&lt;p&gt;对于AsyncHandlerInterceptor接口，其在继承HandlerInterceptor接口的同时，又声明了一个新的方法&lt;code&gt;afterConcurrentHandlingStarted()&lt;/code&gt;；&lt;br /&gt;
-而HandlerInterceptorAdapter抽象类，在其继承AsyncHandlerInterceptor接口的同时，又复写了preHandle方法。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;preHandle(HttpServletRequest request, HttpServletResponse response, Object handle)&lt;/code&gt;方法，该方法在请求处理之前进行调用。SpringMVC 中的 Interceptor 是链式调用的，在一个应用中或者说是在一个请求中可以同时存在多个 Interceptor 。每个 Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是 Interceptor 中的 preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求做一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值 Boolean 类型的，当它返回为 false 时，表示请求结束，后续的 Interceptor 和 Controller 都不会再执行；当返回值为 true 时，就会继续调用下一个 Interceptor 的 preHandle 方法，如果已经是最后一个 Interceptor 的时候，就会是调用当前请求的 Controller 中的方法。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;postHandle(HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)&lt;/code&gt;方法，通过 preHandle 方法的解释咱们知道这个方法包括后面要说到的 afterCompletion 方法都只能在当前所属的 Interceptor 的 preHandle 方法的返回值为 true 的时候，才能被调用。postHandle 方法在当前请求进行处理之后，也就是在 Controller 中的方法调用之后执行，但是它会在 DispatcherServlet 进行视图返回渲染之前被调用，所以咱们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。postHandle 方法被调用的方向跟 preHandle 是相反的，也就是说，先声明的 Interceptor 的 postHandle 方法反而会后执行。这和 Struts2 里面的 Interceptor 的执行过程有点类型，Struts2 里面的 Interceptor 的执行过程也是链式的，只是在 Struts2 里面需要手动调用 ActionInvocation 的 invoke 方法来触发对下一个 Interceptor 或者是 action 的调用，然后每一个 Interceptor 中在 invoke 方法调用之前的内容都是按照声明顺序执行的，而 invoke 方法之后的内容就是反向的。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)&lt;/code&gt;方法，也是需要当前对应的 Interceptor 的 preHandle 方法的返回值为 true 时才会执行。因此，该方法将在整个请求结束之后，也就是在 DispatcherServlet 渲染了对应的视图之后执行，这个方法的主要作用是用于进行资源清理的工作。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;kbd&gt;WebRequestInterceptor接口&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p&gt;在WebRequestInterceptor接口中也定义了 3 个方法，方法名同HandlerInterceptor接口相同，3 个方法都传递了同一个参数 WebRequest。WebRequest 是 Spring 中定义的一个接口，它里面的方法定义跟 HttpServletRequest 类似，在WebRequestInterceptor中对 WebRequest 进行的所有操作都将同步到 HttpServletRequest 中，然后在当前请求中依次传递。&lt;/p&gt;
-
-&lt;p&gt;Spring框架中还提供了WebRequestInterceptorAdapter，其实现了AsyncHandlerInterceptor接口，并在内部调用了WebRequestInterceptor接口。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;preHandle(WebRequest request)&lt;/code&gt;方法，该方法在请求处理之前进行调用，也就是说，其会在 Controller 中的方法调用之前被调用。这个方法跟 HandlerInterceptor 中的 preHandle 不同，主要区别在于该方法的返回值是void 类型的，也就是没有返回值，因此我们主要用它来进行资源的准备工作，比如我们在使用 Hibernate 的时候，可以在这个方法中准备一个 Hibernate 的Session 对象，然后利用 WebRequest 的 setAttribute(name, value, scope) 把它放到 WebRequest 的属性中。在这里，进一步说说 setAttribute 方法的第三个参数 scope ，该参数是一个Integer 类型的。在 WebRequest 的父层接口 RequestAttributes 中对它定义了三个常量，分别为：
-
-&lt;ul&gt;
-&lt;li&gt;SCOPE_REQUEST ，它的值是 0，表示只有在 request 中可以访问。&lt;/li&gt;
-&lt;li&gt;SCOPE_SESSION，它的值是1，如果环境允许的话，它表示的是一个局部的隔离的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
-&lt;li&gt;SCOPE_GLOBAL_SESSION，它的值是 2，如果环境允许的话，它表示的是一个全局共享的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;postHandle(WebRequest request, ModelMap model)&lt;/code&gt;方法，该方法在请求处理之后，也就是在 Controller 中的方法调用之后被调用，但是会在视图返回被渲染之前被调用，所以可以在这个方法里面通过改变数据模型 ModelMap 来改变数据的展示。该方法有两个参数，WebRequest 对象是用于传递整个请求数据的，比如在 preHandle 中准备的数据都可以通过 WebRequest 来传递和访问；ModelMap 就是 Controller 处理之后返回的 Model 对象，咱们可以通过改变它的属性来改变返回的 Model 模型。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;afterCompletion(WebRequest request, Exception ex)&lt;/code&gt;方法，该方法会在整个请求处理完成，也就是在视图返回并被渲染之后执行。因此可以在该方法中进行资源的释放操作。而 WebRequest 参数就可以把咱们在 preHandle 中准备的资源传递到这里进行释放。Exception 参数表示的是当前请求的异常对象，如果在 Controller 中抛出的异常已经被 Spring 的异常处理器给处理了的话，那么这个异常对象就是是 null.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;来源：&lt;a href=&#34;https://blog.csdn.net/qq_35246620/article/details/68487904&#34; target=&#34;blank&#34;&gt;作者：维C果糖 | 文章：述 Spring MVC 框架中拦截器 Interceptor 的使用方法&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;拦截器code&#34;&gt;拦截器CODE&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;实现HandlerInterceptor 接口&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import cn.com.do1.component.core.shirocas.model.UserVO;
-    import cn.com.do1.component.util.HttpPermissionUtil;
-    import org.apache.shiro.SecurityUtils;
-    import org.springframework.beans.factory.annotation.Value;
-    import org.springframework.stereotype.Component;
-    import org.springframework.web.servlet.HandlerInterceptor;
-    import org.springframework.web.servlet.ModelAndView;
-
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import java.util.List;
-
-    /**
-     * 点击菜单拦截器
-     * @author wm
-     * @date 2018.10.29
-     */
-    @Component
-    public class ClickMenuInterceptor implements HandlerInterceptor {
-
-        @Value(&amp;quot;${qxws.identifier}&amp;quot;)
-        private String systemId;
-
-        @Override
-        public boolean preHandle(HttpServletRequest request,
-                                 HttpServletResponse response, Object handler) throws Exception {
-            return true;
-        }
-
-        @Override
-        public void postHandle(HttpServletRequest request,
-                               HttpServletResponse response, Object handler,
-                               ModelAndView modelAndView) throws Exception {
-            UserVO user = (UserVO) SecurityUtils.getSubject().getSession().getAttribute(&amp;quot;user&amp;quot;);
-            List&amp;lt;String&amp;gt; buttonList = HttpPermissionUtil.getButtonPermission(user.getUserId(), systemId);
-            modelAndView.addObject(&amp;quot;buttonList&amp;quot;,buttonList);
-        }
-
-        @Override
-        public void afterCompletion(HttpServletRequest request,
-                                    HttpServletResponse response, Object handler, Exception ex)
-                throws Exception {
-
-        }
-
-    } 
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;实现WebRequestInterceptor接口&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import org.springframework.ui.ModelMap;
-    import org.springframework.web.context.request.WebRequest;
-    import org.springframework.web.context.request.WebRequestInterceptor;
-
-    /**
-     * @author wm
-     * @Description ClinkMenuInterceptor2
-     * @date 2018/10/30 15:34
-     * @Version 1.0
-     */
-    public class ClinkMenuInterceptor2 implements WebRequestInterceptor {
-            
-        @Override
-        public void preHandle(WebRequest request) throws Exception {
-                
-        }
-
-        @Override
-        public void postHandle(WebRequest request, ModelMap model) throws Exception {
-
-        }
-
-        @Override
-        public void afterCompletion(WebRequest request, Exception ex) throws Exception {
-
-        }
-    }
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;继承HandlerInterceptorAdapter类&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import java.util.Arrays;
-    import java.util.List;
-
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-
-    import org.springframework.stereotype.Component;
-    import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-    /**
-     * 错误页面拦截器
-     * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
-     * @author wm
-     */
-    @Component
-    public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
-        private List&amp;lt;Integer&amp;gt; errorCodeList = Arrays.asList(404,500);
-        @Override
-        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
-            Exception {
-           if (errorCodeList.contains(response.getStatus())) {
-                response.sendRedirect(request.getContextPath()+&amp;quot;/error/&amp;quot; + response.getStatus());
-                return false;
-            }
-            return super.preHandle(request, response, handler);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SpringMVC&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;!--权限接入：拦截器--&amp;gt;
-    &amp;lt;mvc:interceptors&amp;gt;
-        &amp;lt;mvc:interceptor&amp;gt;
-            &amp;lt;mvc:mapping path=&amp;quot;/identitySource/goIdentitySourceList&amp;quot;/&amp;gt;
-            &amp;lt;mvc:mapping path=&amp;quot;/userManager/goUserManagerListPage&amp;quot;/&amp;gt;
-            &amp;lt;mvc:mapping path=&amp;quot;/schedulemgr/goScheduleListPage&amp;quot;/&amp;gt;
-            &amp;lt;bean class=&amp;quot;cn.com.do1.component.security.interceptor.ClickMenuInterceptor&amp;quot;/&amp;gt;
-        &amp;lt;/mvc:interceptor&amp;gt;
-    &amp;lt;/mvc:interceptors&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SpringBoot&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    @Bean
-    public ClickMenuInterceptor getClickMenuInterceptor() {
-        return new ClickMenuInterceptor();
-    }
-    /**
-     * 新增security拦截器
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getClickMenuInterceptor()).
-                addPathPatterns(&amp;quot;/identitySource/goIdentitySourceList&amp;quot;,
-                        &amp;quot;/userManager/goUserManagerListPage&amp;quot;,
-                        &amp;quot;/schedulemgr/goScheduleListPage&amp;quot;);
-        super.addInterceptors(registry);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;    @Autowired
-    private ErrorPageInterceptor errorPageInterceptor;//错误拦截器（拦截404，500）
-    /**
-     * 新增拦截器
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(errorPageInterceptor);//默认拦截所有
-        super.addInterceptors(registry);
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>

@@ -40,11 +40,20 @@
     </item>
     
     <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</link>
+      <title>Git——记录</title>
+      <link>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</guid>
+      <description>Git使用教程 Git使用教程 几条常用命令记录 git status 查看本地分支文件信息，确保更新时不产生冲突 git checkout –- [file name] 若文件有修改，可以还原到最初状态; 若文</description>
+    </item>
+    
+    <item>
+      <title>DB——SQL</title>
+      <link>https://ianeiu.github.io/2019/02/14/dbsql/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</guid>
+      <guid>https://ianeiu.github.io/2019/02/14/dbsql/</guid>
       <description>数据定义语言（DDL） 清空表数据 TRUNCATE TABLE TABLENAME; 修改字段类型或长度 标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型 例如Mysql的修改字段类</description>
     </item>
     
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
       <description>前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的</description>
-    </item>
-    
-    <item>
-      <title>JVM类加载机制</title>
-      <link>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
-      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
-      <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直</description>
     </item>
     
   </channel>

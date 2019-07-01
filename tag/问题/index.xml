@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git——记录</title>
+      <link>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</guid>
+      <description>Git使用教程 Git使用教程 几条常用命令记录 git status 查看本地分支文件信息，确保更新时不产生冲突 git checkout –- [file name] 若文件有修改，可以还原到最初状态; 若文</description>
+    </item>
     
     <item>
       <title>Eclipse——记录集</title>
@@ -40,20 +49,20 @@
     </item>
     
     <item>
-      <title>SVN——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <title>SVN——记录</title>
+      <link>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
-      <description>cmd 提示不是内部或者外部命令 windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装时勾选 svn comand line windows 查看项</description>
+      <guid>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95/</guid>
+      <description>SVN SVN使用教程总结 cmd 提示不是内部或者外部命令 windows安装svn的时候默认是不安装 svn comand line这个东西的，重装下svn客户端安装，安装</description>
     </item>
     
     <item>
-      <title>Tomcat——记录集</title>
-      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</link>
+      <title>Tomcat——记录</title>
+      <link>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</guid>
+      <guid>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95/</guid>
       <description>修改startup.bat启动窗口名 打开 catlina.bat 文件，修改title :doStart shift if &amp;quot;%TITLE%&amp;quot; == &amp;quot;&amp;quot; set TITLE=zsyx_8232 set _EXECJAVA=start &amp;quot;%TITLE%&amp;quot; %_RUNJAVA% if not &amp;quot;&amp;quot;%1&amp;quot;&amp;quot; == &amp;quot;&amp;quot;-security&amp;quot;&amp;quot; goto execCmd shift echo Using Security Manager set &amp;quot;SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy&amp;quot; goto execCmd tomcat指定jdk</description>
     </item>
     

@@ -31,7 +31,14 @@
   </url>
   
   <url>
-    <loc>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</loc>
+    <loc>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2019-07-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/2019/02/14/dbsql/</loc>
     <lastmod>2019-02-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -241,14 +248,14 @@
   </url>
   
   <url>
-    <loc>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95%E9%9B%86/</loc>
+    <loc>https://ianeiu.github.io/2018/09/19/svn%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2018-09-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95%E9%9B%86/</loc>
+    <loc>https://ianeiu.github.io/2018/09/19/tomcat%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2018-09-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -501,6 +508,13 @@
   <url>
     <loc>https://ianeiu.github.io/category/ftp/</loc>
     <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/category/git/</loc>
+    <lastmod>2019-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -990,7 +1004,7 @@
   
   <url>
     <loc>https://ianeiu.github.io/tag/%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2018-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1123,7 +1137,7 @@
   
   <url>
     <loc>https://ianeiu.github.io/tag/%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2018-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

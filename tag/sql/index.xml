@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>DB——SQL集锦</title>
-      <link>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</link>
+      <title>DB——SQL</title>
+      <link>https://ianeiu.github.io/2019/02/14/dbsql/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/14/dbsql%E9%9B%86%E9%94%A6/</guid>
+      <guid>https://ianeiu.github.io/2019/02/14/dbsql/</guid>
       <description>数据定义语言（DDL） 清空表数据 TRUNCATE TABLE TABLENAME; 修改字段类型或长度 标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型 例如Mysql的修改字段类</description>
     </item>
     
