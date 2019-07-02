@@ -1394,11 +1394,11 @@ W3C标准不推荐在href里面执行javascript语句&lt;/p&gt;
     </item>
     
     <item>
-      <title>[置顶]Good knowledge</title>
-      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6good-knowledge/</link>
+      <title>[置顶]GK</title>
+      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6gk/</link>
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6good-knowledge/</guid>
+      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6gk/</guid>
       
         <description>
 
@@ -1473,7 +1473,11 @@ W3C标准不推荐在href里面执行javascript语句&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huhaoshida/p/5412615.html&#34; target=&#34;blank&#34;&gt;Ftp主动模式和被动模式以及java连接ftp模式设置&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yeyublog/p/6438373.html&#34; target=&#34;blank&#34;&gt;web实现负载均衡的几种实现方式&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/46a2fc4a1d00&#34; target=&#34;blank&#34;&gt;你真的了解什么是冒烟测试么？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yeyublog/p/6438373.html&#34; target=&#34;blank&#34;&gt;web实现负载均衡的几种实现方式&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/woaic/p/6060262.html&#34; target=&#34;blank&#34;&gt;使用Fiddler抓取手机请求&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
 
@@ -1522,6 +1526,8 @@ Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Yaphst/article/details/82625159&#34; target=&#34;blank&#34;&gt;基于springboot的ajax异步文件上传&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012834750/article/details/78734146&#34; target=&#34;blank&#34;&gt;SpringBoot系列(二)指定内置tomcat版本&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/134750.htm?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;spring boot启动时加载外部配置文件的方法&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5413845.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5415896.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源 （AOP实现）&lt;/a&gt;&lt;/p&gt;
@@ -1583,6 +1589,8 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/kyunchen/article/details/52187514&#34; target=&#34;blank&#34;&gt;Java过滤器的使用和拦截排除的实现&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://rensanning.iteye.com/blog/1551831&#34; target=&#34;blank&#34;&gt;Java解析HTML之NekoHTML&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
@@ -1595,6 +1603,8 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xiaoliu66007/p/5029909.html&#34; target=&#34;blank&#34;&gt;jQuery 1.9 .live() is not a function&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u011342720/article/details/81267908&#34; target=&#34;blank&#34;&gt;npm 安装详细教程(cnpm)&lt;/a&gt;&lt;/p&gt;
+
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
@@ -1604,11 +1614,11 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
     </item>
     
     <item>
-      <title>[置顶]Good Web</title>
-      <link>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6good-web/</link>
+      <title>[置顶]GW</title>
+      <link>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6gw/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6good-web/</guid>
+      <guid>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6gw/</guid>
       
         <description>
 
@@ -1618,6 +1628,8 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.bejson.com/&#34; target=&#34;blank&#34;&gt;JSON校验&lt;/a&gt;、
 &lt;a href=&#34;https://www.bejson.com/color/&#34; target=&#34;blank&#34;&gt;JSON着色工具&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://java.bejson.com/generator/&#34; target=&#34;blank&#34;&gt;SQL转JPA&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://tool.chinaz.com/tools/unicode.aspx&#34; target=&#34;blank&#34;&gt;编码转换&lt;/a&gt;&lt;/p&gt;
 
