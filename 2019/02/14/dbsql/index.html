@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2019-02-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3471">
+<meta itemprop="wordCount" content="4272">
 
 
 
@@ -532,12 +532,64 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
 
 <p><img src="/resouce/DB/sqlQJSel.png" style="width:70%"/></p>
 
-<h4 id="sql查询某个字段最长的记录">sql查询某个字段最长的记录</h4>
+<h4 id="查询某个字段最长的记录">查询某个字段最长的记录</h4>
 
 <ul>
 <li>查询字段最长值 <code>select max(length(site_name)) from tb_zx_site</code></li>
 <li>查询某个字段最长的记录 <code>select site_name, length(site_name) from tb_zx_site where length(site_name) = ( select max(length(site_name)) from tb_zx_site  )</code></li>
 </ul>
+
+<h4 id="mysql查询时间字段间隔天数">mysql查询时间字段间隔天数</h4>
+
+<ul>
+<li>select TO_DAYS(NOW())-TO_DAYS(i.create_time) as daynum from tb_learn_news_info i;</li>
+</ul>
+
+<h4 id="mysql时间转换">mysql时间转换</h4>
+
+<ul>
+<li>时间转字符串 <code>select date_format(now(), '%Y-%m-%d')</code></li>
+<li>时间转时间戳 <code>select unix_timestamp(now())</code></li>
+<li>字符串转时间 <code>select str_to_date('2016-01-02', '%Y-%m-%d %H')</code></li>
+<li>字符串转时间戳 <code>select unix_timestamp('2016-01-02')</code></li>
+<li>时间戳转时间 <code>select from_unixtime(1451997924);</code></li>
+<li>时间戳转字符串 <code>select from_unixtime(1451997924,'%Y-%d')</code></li>
+</ul>
+
+<p>MySQL日期格式化（format）取值范围<br />
+秒<br />
+        %S、%s   两位数字形式的秒（ 00,01, &hellip;, 59）<br />
+分<br />
+        %I、%i   两位数字形式的分（ 00,01, &hellip;, 59）<br />
+小时<br />
+        %H  24小时制，两位数形式小时（00,01, &hellip;,23）<br />
+        %h  12小时制，两位数形式小时（00,01, &hellip;,12）<br />
+        %k  24小时制，数形式小时（0,1, &hellip;,23）<br />
+        %l  12小时制，数形式小时（0,1, &hellip;,12）<br />
+        %T  24小时制，时间形式（HH:mm:ss）<br />
+        %r   12小时制，时间形式（hh:mm:ss AM 或 PM）<br />
+        %p  AM上午或PM下午<br />
+周<br />
+        %W  一周中每一天的名称（Sunday,Monday, &hellip;,Saturday）<br />
+        %a  一周中每一天名称的缩写（Sun,Mon, &hellip;,Sat）<br />
+        %w  以数字形式标识周（0=Sunday,1=Monday, &hellip;,6=Saturday）<br />
+        %U  数字表示周数，星期天为周中第一天<br />
+        %u  数字表示周数，星期一为周中第一天<br />
+天<br />
+        %d  两位数字表示月中天数（01,02, &hellip;,31）<br />
+        %e   数字表示月中天数（1,2, &hellip;,31）<br />
+        %D  英文后缀表示月中天数（1st,2nd,3rd &hellip;）<br />
+        %j  以三位数字表示年中天数（001,002, &hellip;,366）<br />
+月<br />
+        %M  英文月名（January,February, &hellip;,December）<br />
+        %b  英文缩写月名（Jan,Feb, &hellip;,Dec）<br />
+        %m  两位数字表示月份（01,02, &hellip;,12）<br />
+        %c  数字表示月份（1,2, &hellip;,12）<br />
+年<br />
+        %Y  四位数字表示的年份（2015,2016&hellip;）<br />
+        %y   两位数字表示的年份（15,16&hellip;）<br />
+文字输出<br />
+        %文字     直接输出文字内容</p>
 
   </article>
 

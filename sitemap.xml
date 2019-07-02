@@ -178,21 +178,7 @@
   </url>
   
   <url>
-    <loc>https://ianeiu.github.io/2018/09/20/mysqlbool/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ianeiu.github.io/2018/09/20/mysql%E4%BF%AE%E6%94%B9connect_timeout%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ianeiu.github.io/2018/09/20/mysql%E5%A4%96%E9%94%AE/</loc>
+    <loc>https://ianeiu.github.io/2018/09/20/mysql%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -444,21 +430,7 @@
   </url>
   
   <url>
-    <loc>https://ianeiu.github.io/tag/bool/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://ianeiu.github.io/categories/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ianeiu.github.io/tag/connect_timeout/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -669,6 +641,13 @@
   <url>
     <loc>https://ianeiu.github.io/category/maven/</loc>
     <lastmod>2018-10-08T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ianeiu.github.io/tag/mysql/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -935,13 +914,6 @@
   <url>
     <loc>https://ianeiu.github.io/tag/%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://ianeiu.github.io/tag/%E5%A4%96%E9%94%AE/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

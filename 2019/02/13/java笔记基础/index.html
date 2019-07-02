@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2019-02-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="8344">
+<meta itemprop="wordCount" content="8497">
 
 
 
@@ -833,6 +833,16 @@ HashTable是线程安全的，键唯一，不能存储null值。</p>
 
 <p>LinkedHashMap键是唯一有序的（哈希表和链表实现）<br />
 TreeMap键是可排序的（红黑树实现）</p>
+
+<h2 id="常用容器初始值大小">常用容器初始值大小</h2>
+
+<ol>
+<li>StringBuffer和StringBuilder初始化默认大小为16个字符</li>
+<li>HashMap初始化默认大小16，自增为2n.</li>
+<li>HashTable默认初始值为11，加载因子为0.75，自增为2n+1</li>
+<li>ArrayList初始化默认值为10，自增为1.5n</li>
+<li>Vector初始化默认值为10，自增为2n</li>
+</ol>
 
 <h2 id="io流">IO流</h2>
 

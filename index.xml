@@ -2177,12 +2177,64 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
 
 &lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/DB/sqlQJSel.png&#34; style=&#34;width:70%&#34;/&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;sql查询某个字段最长的记录&#34;&gt;sql查询某个字段最长的记录&lt;/h4&gt;
+&lt;h4 id=&#34;查询某个字段最长的记录&#34;&gt;查询某个字段最长的记录&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;查询字段最长值 &lt;code&gt;select max(length(site_name)) from tb_zx_site&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;查询某个字段最长的记录 &lt;code&gt;select site_name, length(site_name) from tb_zx_site where length(site_name) = ( select max(length(site_name)) from tb_zx_site  )&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4 id=&#34;mysql查询时间字段间隔天数&#34;&gt;mysql查询时间字段间隔天数&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;select TO_DAYS(NOW())-TO_DAYS(i.create_time) as daynum from tb_learn_news_info i;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;mysql时间转换&#34;&gt;mysql时间转换&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时间转字符串 &lt;code&gt;select date_format(now(), &#39;%Y-%m-%d&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;时间转时间戳 &lt;code&gt;select unix_timestamp(now())&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字符串转时间 &lt;code&gt;select str_to_date(&#39;2016-01-02&#39;, &#39;%Y-%m-%d %H&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字符串转时间戳 &lt;code&gt;select unix_timestamp(&#39;2016-01-02&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;时间戳转时间 &lt;code&gt;select from_unixtime(1451997924);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;时间戳转字符串 &lt;code&gt;select from_unixtime(1451997924,&#39;%Y-%d&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MySQL日期格式化（format）取值范围&lt;br /&gt;
+秒&lt;br /&gt;
+        %S、%s   两位数字形式的秒（ 00,01, &amp;hellip;, 59）&lt;br /&gt;
+分&lt;br /&gt;
+        %I、%i   两位数字形式的分（ 00,01, &amp;hellip;, 59）&lt;br /&gt;
+小时&lt;br /&gt;
+        %H  24小时制，两位数形式小时（00,01, &amp;hellip;,23）&lt;br /&gt;
+        %h  12小时制，两位数形式小时（00,01, &amp;hellip;,12）&lt;br /&gt;
+        %k  24小时制，数形式小时（0,1, &amp;hellip;,23）&lt;br /&gt;
+        %l  12小时制，数形式小时（0,1, &amp;hellip;,12）&lt;br /&gt;
+        %T  24小时制，时间形式（HH:mm:ss）&lt;br /&gt;
+        %r   12小时制，时间形式（hh:mm:ss AM 或 PM）&lt;br /&gt;
+        %p  AM上午或PM下午&lt;br /&gt;
+周&lt;br /&gt;
+        %W  一周中每一天的名称（Sunday,Monday, &amp;hellip;,Saturday）&lt;br /&gt;
+        %a  一周中每一天名称的缩写（Sun,Mon, &amp;hellip;,Sat）&lt;br /&gt;
+        %w  以数字形式标识周（0=Sunday,1=Monday, &amp;hellip;,6=Saturday）&lt;br /&gt;
+        %U  数字表示周数，星期天为周中第一天&lt;br /&gt;
+        %u  数字表示周数，星期一为周中第一天&lt;br /&gt;
+天&lt;br /&gt;
+        %d  两位数字表示月中天数（01,02, &amp;hellip;,31）&lt;br /&gt;
+        %e   数字表示月中天数（1,2, &amp;hellip;,31）&lt;br /&gt;
+        %D  英文后缀表示月中天数（1st,2nd,3rd &amp;hellip;）&lt;br /&gt;
+        %j  以三位数字表示年中天数（001,002, &amp;hellip;,366）&lt;br /&gt;
+月&lt;br /&gt;
+        %M  英文月名（January,February, &amp;hellip;,December）&lt;br /&gt;
+        %b  英文缩写月名（Jan,Feb, &amp;hellip;,Dec）&lt;br /&gt;
+        %m  两位数字表示月份（01,02, &amp;hellip;,12）&lt;br /&gt;
+        %c  数字表示月份（1,2, &amp;hellip;,12）&lt;br /&gt;
+年&lt;br /&gt;
+        %Y  四位数字表示的年份（2015,2016&amp;hellip;）&lt;br /&gt;
+        %y   两位数字表示的年份（15,16&amp;hellip;）&lt;br /&gt;
+文字输出&lt;br /&gt;
+        %文字     直接输出文字内容&lt;/p&gt;
 </description>
       
     </item>
@@ -2918,6 +2970,16 @@ HashTable是线程安全的，键唯一，不能存储null值。&lt;/p&gt;
 
 &lt;p&gt;LinkedHashMap键是唯一有序的（哈希表和链表实现）&lt;br /&gt;
 TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
+
+&lt;h2 id=&#34;常用容器初始值大小&#34;&gt;常用容器初始值大小&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;StringBuffer和StringBuilder初始化默认大小为16个字符&lt;/li&gt;
+&lt;li&gt;HashMap初始化默认大小16，自增为2n.&lt;/li&gt;
+&lt;li&gt;HashTable默认初始值为11，加载因子为0.75，自增为2n+1&lt;/li&gt;
+&lt;li&gt;ArrayList初始化默认值为10，自增为1.5n&lt;/li&gt;
+&lt;li&gt;Vector初始化默认值为10，自增为2n&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&#34;io流&#34;&gt;IO流&lt;/h2&gt;
 
