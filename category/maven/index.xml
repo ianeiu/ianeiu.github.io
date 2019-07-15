@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Mon, 08 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/maven/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maven笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</guid>
+      <description>简介 项目构建和管理自动化工具 坐标(可由groupId、artifactId、version组成)。 构件通过坐标作为其唯一标识。 仓库： 远程仓库</description>
+    </item>
     
     <item>
       <title>Maven输出依赖树（处理包冲突）</title>
@@ -19,24 +28,6 @@
       
       <guid>https://ianeiu.github.io/2018/10/08/maven%E8%BE%93%E5%87%BA%E4%BE%9D%E8%B5%96%E6%A0%91%E5%A4%84%E7%90%86%E5%8C%85%E5%86%B2%E7%AA%81/</guid>
       <description>早上同事反馈有个接口调用报错，最后定位是asm包冲突导致。 解决： 执行maven命令 dependency:tree 获取依赖树； 控制台输出(部分内容)： [INFO] +- org.apache.cxf:cxf-rt-frontend-jaxws:jar:3.1.8:compile [INFO] | +- xml-resolver:xml-resolver:jar:1.2:compile [INFO] | +-</description>
-    </item>
-    
-    <item>
-      <title>Maven笔记</title>
-      <link>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/maven%E7%AC%94%E8%AE%B0/</guid>
-      <description>简介 项目构建和管理自动化工具 坐标(可由groupId、artifactId、version组成)。 构件通过坐标作为其唯一标识。 仓库： 远程仓库</description>
-    </item>
-    
-    <item>
-      <title>Maven使用问题记录</title>
-      <link>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/19/maven%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
-      <description>Could not calculate build plan 将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plug</description>
     </item>
     
   </channel>

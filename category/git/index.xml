@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>Git——记录</title>
-      <link>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</link>
+      <title>Git笔记</title>
+      <link>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/07/01/git%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</guid>
       <description>Git使用教程 Git使用教程 几条常用命令记录 git status 查看本地分支文件信息，确保更新时不产生冲突 git checkout –- [file name] 若文件有修改，可以还原到最初状态; 若文</description>
     </item>
     
