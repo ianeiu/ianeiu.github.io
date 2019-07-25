@@ -1670,8 +1670,7 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 &lt;a href=&#34;https://www.imooc.com/course/list?c=java&amp;sort=pop&#34; target=&#34;blank&#34;&gt;慕课-Java高级&lt;/a&gt;、
 &lt;a href=&#34;https://study.163.com/category/Java%20Web#/?pt=0&#34; target=&#34;blank&#34;&gt;网易云课堂&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/cate/java/&#34; target=&#34;blank&#34;&gt;博客园-JAVA&lt;/a&gt;、
-&lt;a href=&#34;http://www.spring4all.com/&#34; target=&#34;blank&#34;&gt;spring社区&lt;/a&gt;、
+&lt;p&gt;&lt;a href=&#34;http://www.spring4all.com/&#34; target=&#34;blank&#34;&gt;spring社区&lt;/a&gt;、
 &lt;a href=&#34;https://www.yiibai.com/&#34; target=&#34;blank&#34;&gt;易百-多方面教程&lt;/a&gt;、
 &lt;a href=&#34;http://www.runoob.com/java/java-examples.html&#34; target=&#34;blank&#34;&gt;菜鸟Java&lt;/a&gt;&lt;/p&gt;
 
@@ -1679,15 +1678,11 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 &lt;a href=&#34;https://blog.csdn.net/hengyunabc&#34; target=&#34;blank&#34;&gt;横云断岭的专栏&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cnblogs.com/goody9807/&#34; target=&#34;blank&#34;&gt;PointNet&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://feelschaotic.github.io/&#34; target=&#34;blank&#34;&gt;fct&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://crossoverjie.top/categories/SSM/&#34; target=&#34;blank&#34;&gt;coj&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.ityouknow.com/&#34; target=&#34;blank&#34;&gt;纯洁的微笑&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cnblogs.com/itdragon/&#34; target=&#34;blank&#34;&gt;ITDragon&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cnblogs.com/ClassNotFoundException/&#34; target=&#34;blank&#34;&gt;limeOracle&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/category/6931500&#34; target=&#34;blank&#34;&gt;java修行路_涂宗勋&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/briblue&#34; target=&#34;blank&#34;&gt;frank 的专栏&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/column/details/chenssy-javaimpr.html&#34; target=&#34;blank&#34;&gt;chenssy&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://me.csdn.net/u013761665&#34; target=&#34;blank&#34;&gt;Q-WHai&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/ns_code&#34; target=&#34;blank&#34;&gt;兰亭风雨&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://www.cnblogs.com/rjzheng&#34; target=&#34;blank&#34;&gt;专注java开发&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
@@ -1720,6 +1715,100 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>redis笔记</title>
+      <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
+
+&lt;p&gt;Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。&lt;br /&gt;
+因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。&lt;/p&gt;
+
+&lt;p&gt;Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。&lt;/p&gt;
+
+&lt;h2 id=&#34;redis的数据类型-以及每种数据类型的使用场景&#34;&gt;redis的数据类型，以及每种数据类型的使用场景&lt;/h2&gt;
+
+&lt;p&gt;(一)String&lt;br /&gt;
+这个其实没啥好说的，最常规的set/get操作，value可以是String也可以是数字。一般做一些复杂的计数功能的缓存。&lt;/p&gt;
+
+&lt;p&gt;(二)hash&lt;br /&gt;
+这里value存放的是结构化的对象，比较方便的就是操作其中的某个字段。博主在做单点登录的时候，就是用这种数据结构存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。&lt;/p&gt;
+
+&lt;p&gt;(三)list&lt;br /&gt;
+使用List的数据结构，可以做简单的消息队列的功能。另外还有一个就是，可以利用lrange命令，做基于redis的分页功能，性能极佳，用户体验好。&lt;/p&gt;
+
+&lt;p&gt;(四)set&lt;br /&gt;
+因为set堆放的是一堆不重复值的集合。所以可以做全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，比较麻烦，难道为了一个做一个全局去重，再起一个公共服务，太麻烦了。
+另外，就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。&lt;/p&gt;
+
+&lt;p&gt;(五)sorted set&lt;br /&gt;
+sorted set多了一个权重参数score,集合中的元素能够按score进行排列。可以做排行榜应用，取TOP N操作。还可以用来做延时任务(&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/8972725.html&#34; target=&#34;_blank&#34;&gt;分布式之延时任务方案解析&lt;/a&gt;)、范围查找。&lt;/p&gt;
+
+&lt;h2 id=&#34;项目中使用redis&#34;&gt;项目中使用redis&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;响应请求获取数据时经过redis查询（如果没有则访问数据库，并将数据存储至redis），达到极速响应；&lt;/li&gt;
+&lt;li&gt;高并发的情况，可能减少数据库压力。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis单线程工作模型优势&#34;&gt;redis单线程工作模型优势&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;纯内存操作&lt;/li&gt;
+&lt;li&gt;单线程操作，避免了频繁的上下文切换&lt;/li&gt;
+&lt;li&gt;采用了非阻塞I/O多路复用机制（单个线程，跟踪每个I/O流的状态，来管理多个I/O流。）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;使用redis存在的问题&#34;&gt;使用redis存在的问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;缓存和数据库双写一致性问题&lt;/li&gt;
+&lt;li&gt;缓存雪崩问题&lt;/li&gt;
+&lt;li&gt;缓存击穿问题&lt;/li&gt;
+&lt;li&gt;缓存的并发竞争问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis的过期策略以及内存淘汰机制&#34;&gt;redis的过期策略以及内存淘汰机制&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;为什么不用定时删除策略?&lt;br /&gt;
+定时删除,用一个定时器来负责监视key,过期则自动删除。虽然内存及时释放，但是十分消耗CPU资源。在大并发请求下，CPU要将时间应用在处理请求，而不是删除key,因此没有采用这一策略.&lt;/li&gt;
+&lt;li&gt;定期删除+惰性删除是如何工作的呢?&lt;br /&gt;
+定期删除，redis默认每个100ms检查，是否有过期的key,有过期key则删除。需要说明的是，redis不是每个100ms将所有的key检查一次，而是随机抽取进行检查(如果每隔100ms,全部key进行检查，redis岂不是卡死)。因此，如果只采用定期删除策略，会导致很多key到时间没有删除。
+于是，惰性删除派上用场。也就是说在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间那么是否过期了？如果过期了此时就会删除。&lt;/li&gt;
+&lt;li&gt;采用定期删除+惰性删除就没其他问题了么?&lt;br /&gt;
+不是的，如果定期删除没删除key。然后你也没即时去请求key，也就是说惰性删除也没生效。这样，redis的内存会越来越高。那么就应该采用内存淘汰机制。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在redis.conf中有一行配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# maxmemory-policy volatile-lru
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;该配置就是配内存淘汰策略的(什么，你没配过？好好反省一下自己)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1）noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。应该没人用吧。
+2）allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。推荐使用，目前项目在用这种。
+3）allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。应该也没人用吧，你不删最少使用Key,去随机删。
+4）volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。这种情况一般是把redis既当缓存，又做持久化存储的时候才用。不推荐
+5）volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。依然不推荐
+6）volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除。不推荐
+ps：如果没有设置 expire 的key, 不满足先决条件(prerequisites); 那么 volatile-lru, volatile-random 和 volatile-ttl 策略的行为, 和 noeviction(不删除) 基本上一致。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;REF&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/9096228.html&#34; target=&#34;_blank&#34;&gt;分布式之redis复习精讲&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/Survivalist/p/10321476.html&#34; target=&#34;_blank&#34;&gt;Redis的那些最常见面试问题&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -2595,11 +2684,11 @@ site：生成项目站点
     </item>
     
     <item>
-      <title>DB——SQL</title>
-      <link>https://ianeiu.github.io/2019/02/14/dbsql/</link>
+      <title>SQL</title>
+      <link>https://ianeiu.github.io/2019/02/14/sql/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/14/dbsql/</guid>
+      <guid>https://ianeiu.github.io/2019/02/14/sql/</guid>
       
         <description>
 
@@ -2609,42 +2698,41 @@ site：生成项目站点
 
 &lt;p&gt;TRUNCATE TABLE TABLENAME;&lt;/p&gt;
 
-&lt;h4 id=&#34;修改字段类型或长度&#34;&gt;修改字段类型或长度&lt;/h4&gt;
+&lt;h4 id=&#34;修改字段类型或长度-新增字段&#34;&gt;修改字段类型或长度、新增字段&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;标准SQL修改字段类型和长度语句：ALTER TABLE tableName modify column columnName 类型&lt;br /&gt;
-例如Mysql的修改字段类型语句：alter table test modify column name varchar(255);&lt;/p&gt;&lt;/li&gt;
+MySQL修改字段类型语句例如：ALTER TABLE test MODIFY COLUMN name VARCHAR(255);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;新增字段
+MySQL新增字段语句例如：ALTER TABLE tb_learn_news_info ADD COLUMN source_time datetime DEFAULT NULL COMMENT &amp;lsquo;新闻来源时间&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Oracle修改字段类型和长度语句：ALTER TABLE tableName modify(columnName 类型)&lt;br /&gt;
-例如 ALTER TABLE TB_YXT_WORK_DATA_LOG modify （FAILURE_LOG_PATH VARCHAR2(200)）;&lt;/p&gt;&lt;/li&gt;
+例如 ALTER TABLE tb_yxt_work_data_log MODIFY （failure_log_path VARCHAR2(200)）;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&#34;oracle表字段的增加-增加备注-删除-修改和重命名&#34;&gt;Oracle表字段的增加、增加备注、删除、修改和重命名&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;增加字段语法：alter table tablename add (column datatype [default value][null/not null],….);&lt;br /&gt;
+&lt;li&gt;&lt;p&gt;增加字段语法：ALTER TABLE tablename ADD (column datatype [default value][null/not null],….);&lt;br /&gt;
 说明：alter table 表名 add (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_users add (HeadPIC blob);&lt;br /&gt;
-例：alter table sf_users add (userName varchar2(30) default &amp;lsquo;空&amp;rsquo; not null);&lt;/p&gt;&lt;/li&gt;
+例：ALTER TABLE sf_users ADD (head_pic blob);&lt;br /&gt;
+例：ALTER TABLE sf_users ADD (user_name varchar2(30) DEFAULT &amp;ldquo; not null);&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;字段增加备注&lt;br /&gt;
-例：comment on column tb_yx_effective_month.ZK_CANCEL_AMOUNT is &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
+例：COMMENT ON COLUMN tb_yx_effective_month.zk_cancel_amount IS &amp;lsquo;折扣投入金额&amp;rsquo;;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);&lt;br /&gt;
-说明：alter table 表名 modify (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
-例：alter table sf_InvoiceApply modify (BILLCODE number(4));&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改字段的语法 ：ALTER TABLE 表名 MODIFY (字段名 字段类型 默认值 是否为空);&lt;br /&gt;
+例：ALTER TABLE sf_invoice_apply MODIFY (bill_code number(4));&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;删除字段的语法：alter table tablename drop (column);&lt;br /&gt;
-说明：alter table 表名 drop column 字段名;&lt;br /&gt;
-例：alter table sf_users drop column HeadPIC;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除字段的语法 ：ALTER TABLE 表名 DROP column 字段名;&lt;br /&gt;
+例：ALTER TABLE sf_users DROP column head_pic;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;字段的重命名&lt;br /&gt;
-说明：alter table 表名 rename  column  列名 to 新列名   （其中：column是关键字）&lt;br /&gt;
-例：alter table sf_InvoiceApply rename column PIC to NEWPIC;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;字段的重命名：ALTER TABLE 表名 RENAME  COLUMN  列名 TO 新列名
+例：ALTER TABLE sf_invoice_apply RENAME COLUMN pic TO new_pic;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;表的重命名&lt;br /&gt;
-说明：alter table 表名 rename to  新表名&lt;br /&gt;
-例：alter table sf_InvoiceApply rename to  sf_New_InvoiceApply;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;表的重命名：alter table 表名 rename to 新表名&lt;br /&gt;
+例：ALTER TABLE sf_invoice_apply RENAME TO sf_new_invoice_apply;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&#34;oracle复制表结构和表数据&#34;&gt;oracle复制表结构和表数据&lt;/h4&gt;
@@ -2657,7 +2745,7 @@ site：生成项目站点
 
 &lt;li&gt;&lt;p&gt;只复制表结构&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;--fun1
+&lt;pre&gt;&lt;code&gt;-- fun1
 create table table_name_new as select * from table_name_old;
 -- fun2
 create table table_name_new like table_name_old
@@ -2665,9 +2753,9 @@ create table table_name_new like table_name_old
 
 &lt;li&gt;&lt;p&gt;只复制表数据&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;--如果两个表结构一样
+&lt;pre&gt;&lt;code&gt;-- 如果两个表结构一样
 insert into table_name_new select * from table_name_old
---如果两个表结构不一样
+-- 如果两个表结构不一样
 insert into table_name_new(column1,column2...) select column1,column2... from table_name_old
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -4737,7 +4825,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
     </item>
     
     <item>
-      <title>[转]TCP与UDP——笔记</title>
+      <title>[转]TCP与UDP笔记</title>
       <link>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
@@ -5291,154 +5379,6 @@ TFTP&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;HTTPS协议就是对HTTP协议的加密，更加安全可靠，采用HTTP+SSL（安全套接字层）来保证数据的安全性。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java基础题（Integer、String、内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      
-        <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;integer&#34;&gt;Integer&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;Integer a = 1000,b=1000;
-Integer c = 100,d=100;    
-@Test
-public void testIntegerDD(){
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
-,可看Integer源码valueOf(int i)方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public static Integer valueOf(int i) {
-	if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
-	return IntegerCache.cache[i + (-IntegerCache.low)];
-	return new Integer(i);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;接下来，简单的扩展几个Integer的关系运算符==的比较。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testIntegerDD(){
-
-    Integer a = 1000,b=1000;
-    Integer c = 100,d=100;   
-    Integer e = new Integer(100);
-    Integer f = new Integer(100);
-    int g = 1000;
-    Integer h = new Integer(1000);  
-
-
-    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
-    System.out.println(a==b);//false  
-    System.out.println(c==d);//true
-
-    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
-    System.out.println(e==f);//false
-    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
-    System.out.println(g==h);//true
-
-    //进行自动装箱操作
-    System.out.println(c==e);//false
-    System.out.println(a==h);//false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;string&#34;&gt;String&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;阅读前先要理解 ==，==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
-
-    System.out.println(s1==s2); // true
-    System.out.println(s1==s3); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;文章解释：&lt;br /&gt;
-一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。&lt;br /&gt;
-像我们通常想String s1 = &amp;ldquo;hello&amp;rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。&lt;br /&gt;
-当我们创建String s1 =&amp;ldquo;hello&amp;rdquo;这样一个对象之后，&amp;rdquo;hello&amp;rdquo;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &amp;ldquo;hello&amp;rdquo; 的时候，Java底层会优先在常量池中查找是否存在&amp;rdquo;hello&amp;rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。&lt;/p&gt;
-
-&lt;p&gt;接下来，还是简单的扩展几个String的关系运算符==的比较。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@Test
-public void testStringDD() {
-    String s1 = &amp;quot;hello&amp;quot;;
-    String s2 = &amp;quot;hello&amp;quot;;
-    String s3 = new String(&amp;quot;hello&amp;quot;);
-
-    //都存储在常量池中,指向同一常量
-    System.out.println(s1==s2); // true
-    //存储在常量池中,存储在堆内存中
-    System.out.println(s1==s3); // false
-
-    String s4 = &amp;quot;helloo&amp;quot;;
-    /**
-     * 会重新在常量池创建常量（String不可变属性）
-     */
-    String s5 = s1+&amp;quot;o&amp;quot;;
-    //字符串拼接有变量参与，底层调用StringBuffer处理，相当于在堆内存中开辟了新空间
-    System.out.println(s4 == s5); // false
-    //常量相加，先在常量池找，找到即用
-    System.out.println(s4 == &amp;quot;hello&amp;quot;+&amp;quot;o&amp;quot;);//true
-
-    //hello
-    String s6 = s4.substring(0, s4.length() - 1);
-    //substring返回的也是new出来的String对象
-    System.out.println(s1 == s6); // false
-    //地址值不一样
-    System.out.println(s3 == s6); // false
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。&lt;/p&gt;
-
-&lt;h2 id=&#34;内部类与final&#34;&gt;内部类与final&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;public void mRun(final String name){
-    new Runnable() {
-        public void run() {
-            try {
-              Thread.sleep(1000);
-           } catch (InterruptedException e) {
-             // TODO Auto-generated catch block
-            e.printStackTrace();
-           }  
-           System.out.println(name);
-        }
-    }.start();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;文章解释：&lt;br /&gt;
-这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。&lt;/p&gt;
-
-&lt;p&gt;为什么要加final修饰符？&lt;br /&gt;
-首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。&lt;br /&gt;
-主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。&lt;/p&gt;
-
-&lt;p&gt;Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。&lt;br /&gt;
-局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。&lt;/p&gt;
 </description>
       
     </item>

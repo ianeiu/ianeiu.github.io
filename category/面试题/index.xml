@@ -22,11 +22,11 @@
     </item>
     
     <item>
-      <title>DB——面试题</title>
-      <link>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <title>数据库面试题</title>
+      <link>https://ianeiu.github.io/2018/10/11/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/10/11/db%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <guid>https://ianeiu.github.io/2018/10/11/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
       <description>原文地址 click 触发器的作用 触发器是一中特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库</description>
     </item>
     
