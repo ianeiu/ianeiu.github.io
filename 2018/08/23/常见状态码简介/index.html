@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>常见状态码简介 · IanEiU</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3" />
+  <meta name="description" content="部分状态码简介 200 200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客" />
 
   <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
 
@@ -21,24 +21,24 @@
 
 
 <meta property="og:title" content="常见状态码简介" />
-<meta property="og:description" content="部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3" />
+<meta property="og:description" content="部分状态码简介 200 200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ianeiu.github.io/2018/08/23/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/" /><meta property="article:published_time" content="2018-08-23T16:01:23&#43;08:00"/>
 <meta property="article:modified_time" content="2018-08-23T16:01:23&#43;08:00"/>
 <meta itemprop="name" content="常见状态码简介">
-<meta itemprop="description" content="部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3">
+<meta itemprop="description" content="部分状态码简介 200 200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客">
 
 
 <meta itemprop="datePublished" content="2018-08-23T16:01:23&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-23T16:01:23&#43;08:00" />
-<meta itemprop="wordCount" content="555">
+<meta itemprop="wordCount" content="722">
 
 
 
 <meta itemprop="keywords" content="状态码," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常见状态码简介"/>
-<meta name="twitter:description" content="部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3"/>
+<meta name="twitter:description" content="部分状态码简介 200 200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客"/>
 </head>
 <body>
   
@@ -147,6 +147,7 @@
 
 <ul>
 <li><b>200<b>—<code>请求成功</code></li>
+<li>202—<code>常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。</code></li>
 </ul>
 
 <h1 id="30x">30X</h1>
@@ -170,7 +171,8 @@
 <li>408—<code>请求超时</code></li>
 <li>409—<code>冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成</code></li>
 <li>410—<code>遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址</code></li>
-<li>413—<code>响应实体太大。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值</code></li>
+<li>413—<code>响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值</code></li>
+<li>414—<code>客户端访问的URI太长，超出了服务器允许限制</code></li>
 <li>417—<code>期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足</code></li>
 <li>418—<code>我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现</code></li>
 <li>420—<code>方法失效</code></li>

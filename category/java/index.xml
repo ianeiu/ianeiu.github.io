@@ -129,5 +129,14 @@
       <description>RuntimeException 运行时异常。是所有Java虚拟机正常操作期间可以被抛出的异常的父类。 NumberFormatException - 数字格式异常 NullPointerException - 空指针引用异常 ClassCastException - 类型强制转换异常。 IllegalArgumentException - 传递非法参</description>
     </item>
     
+    <item>
+      <title>Java之volatile关键字</title>
+      <link>https://ianeiu.github.io/2018/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j</description>
+    </item>
+    
   </channel>
 </rss>

@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2019-07-25T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-25T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1978">
+<meta itemprop="wordCount" content="2926">
 
 
 
@@ -218,10 +218,65 @@ sorted set多了一个权重参数score,集合中的元素能够按score进行�
 ps：如果没有设置 expire 的key, 不满足先决条件(prerequisites); 那么 volatile-lru, volatile-random 和 volatile-ttl 策略的行为, 和 noeviction(不删除) 基本上一致。
 </code></pre>
 
+<h2 id="使用redis实现分布式锁">使用Redis实现分布式锁</h2>
+
+<pre><code>//伪代码
+//当一个线程执行setnx返回1，说明key原本不存在，该线程成功得到了锁；
+//当一个线程执行setnx返回0，说明key已经存在，该线程抢锁失败。
+if（setnx（key，1） == 1）{
+    //设置锁超时
+    expire（key，30）
+    try {
+        do something ......
+    } finally {
+        //解锁
+        del（key）
+    }
+}
+</code></pre>
+
+<p>上面的伪代码中，存在着三个致命问题：
+1. setnx和expire的非原子性<br />
+设想一个极端场景，当线程A执行setnx，成功得到了锁，setnx刚执行成功，还未来得及执行expire指令，节点1（线程A）挂掉了。<br />
+这样一来，这把锁就没有设置过期时间，变得“长生不老”，别的线程再也无法获得锁了。<br />
+解决方法：使用set（key，1，30，NX）取代 setnx</p>
+
+<ol>
+<li>del 导致误删<br />
+又是一个极端场景，假如某线程成功得到了锁，并且设置的超时时间是30秒。<br />
+如果某些原因导致线程A执行的很慢很慢，过了30秒都没执行完，这时候锁过期自动释放，线程B得到了锁。<br />
+随后，线程A执行完了任务，线程A接着执行del指令来释放锁。<br />
+但这时候线程B还没执行完，线程A实际上删除的是线程B加的锁。<br />
+解决方法：可以在加锁的时候把当前的线程ID当做value，并在删除之前验证key对应的value是不是自己线程的ID。<br />
+<code>
+String threadId = Thread.currentThread().getId()
+set（key，threadId ，30，NX）
+//解锁
+if（threadId .equals(redisClient.get(key))）{
+    del(key)
+}
+</code>
+但是，这样做又隐含了一个新的问题，判断和释放锁是两个独立操作，不是原子性。
+使用用Lua脚本来实现：
+<code>
+String luaScript = &quot;if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end&quot;;
+redisClient.eval(luaScript , Collections.singletonList(key), Collections.singletonList(threadId));
+</code></li>
+<li>出现并发的可能性
+还是刚才第二点所描述的场景，虽然我们避免了线程A误删掉key的情况，但是同一时间有A，B两个线程在访问代码块，仍然是不完美的。<br />
+我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁“续航”。<br />
+当过去了29秒，线程A还没执行完，这时候守护线程会执行expire指令，为这把锁“续命”20秒。<br />
+守护线程从第29秒开始执行，每20秒执行一次。<br />
+当线程A执行完任务，会显式关掉守护线程。<br />
+另一种情况，如果节点1 忽然断电，由于线程A和守护线程在同一个进程，守护线程也会停下。<br />
+这把锁到了超时的时候，没人给它续命，也就自动释放了。</li>
+</ol>
+
 <h2 id="ref">REF</h2>
 
 <p><a href="https://www.cnblogs.com/rjzheng/p/9096228.html" target="_blank">分布式之redis复习精讲</a><br />
-<a href="https://www.cnblogs.com/Survivalist/p/10321476.html" target="_blank">Redis的那些最常见面试问题</a></p>
+<a href="https://www.cnblogs.com/Survivalist/p/10321476.html" target="_blank">Redis的那些最常见面试问题</a><br />
+<a href="https://mp.weixin.qq.com/s/8fdBKAyHZrfHmSajXT_dnA" target="_blank">什么是分布式锁？</a></p>
 
   </article>
 

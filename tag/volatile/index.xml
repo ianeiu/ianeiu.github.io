@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Volatile on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/volatile/</link>
+    <description>Recent content in Volatile on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 25 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/volatile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java之volatile关键字</title>
+      <link>https://ianeiu.github.io/2018/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j</description>
+    </item>
+    
+  </channel>
+</rss>

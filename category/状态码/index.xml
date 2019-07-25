@@ -18,7 +18,7 @@
       <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
       
       <guid>https://ianeiu.github.io/2018/08/23/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/</guid>
-      <description>部分状态码简介 200 200—请求成功 30X 301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 3</description>
+      <description>部分状态码简介 200 200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客</description>
     </item>
     
   </channel>
