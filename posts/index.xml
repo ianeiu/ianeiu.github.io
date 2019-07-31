@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>Java之volatile关键字</title>
+      <link>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j</description>
+    </item>
+    
+    <item>
       <title>redis笔记</title>
       <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
@@ -136,15 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</guid>
       <description>计算机网络体系分类： 计算机网络整个体系有两个大的分类：一个是国际组织制定的OSI七层模型，一种是实际使用中的TCP/IP四层模型。 OSI七层</description>
-    </item>
-    
-    <item>
-      <title>Java基础题（Integer、String、内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/11/18/java%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      <description>翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。 Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常</description>
     </item>
     
   </channel>

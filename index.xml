@@ -1720,6 +1720,163 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
     </item>
     
     <item>
+      <title>Java之volatile关键字</title>
+      <link>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;引入&#34;&gt;引入&lt;/h2&gt;
+
+&lt;p&gt;Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范，
+用来屏蔽不同硬件和操作系统的内存访问差异，让java程序在各种平台下都能达到一致的内存访问效果。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;主内存（Main Memory）&lt;br /&gt;
+主内存可以简单理解为计算机当中的内存，但又不完全等同。&lt;br /&gt;
+主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工作内存（Working Memory）&lt;br /&gt;
+工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。&lt;br /&gt;
+每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。&lt;br /&gt;
+线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。&lt;br /&gt;
+不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于一个静态变量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;static int s = 0；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;线程A执行如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;s = 3；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过一系列内存读写的操作指令，线程A把静态变量 s=0 从主内存读到工作内存，再把 s=3 的更新结果同步到主内存当中。&lt;/p&gt;
+
+&lt;p&gt;从单线程的角度来看，这个过程没有任何问题。这时候我们引入线程B，执行如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;System.out.println(&amp;quot;s=&amp;quot; + s);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有可能输出 0 或 3&lt;/p&gt;
+
+&lt;p&gt;可以使用synchronized同步锁（影响性能）或者使用volatile关键字修饰（轻量）&lt;/p&gt;
+
+&lt;h2 id=&#34;volatile-之-可见性&#34;&gt;volatile 之 可见性&lt;/h2&gt;
+
+&lt;p&gt;volatile关键字具有许多特性，其中最重要的特性就是保证了用volatile修饰的变量对所有线程的可见性[当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值]。&lt;/p&gt;
+
+&lt;p&gt;但volatile不能保证变量的原子性即无法保证线程安全。&lt;/p&gt;
+
+&lt;h4 id=&#34;什么时候适合用&#34;&gt;什么时候适合用&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class VolatileTest {
+    public volatile static int count = 0;
+    
+    public static void main(String[] args) {
+        //开启 10个线程
+        for (int i = 0; i &amp;lt; 10; i++) {
+            new Thread(
+                    new Runnable() {
+                        public void run() {
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            //每个线程当中让count值自增 100次
+                            for (int j = 0; j &amp;lt; 100; j++) {
+                                count++;
+                            }
+                        }
+                    }
+            ).start();
+        }
+        try {
+            Thread.Weep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System, out.print(&amp;quot;count&amp;quot; + count);
+        //最终count的结果值未必是1000，有可能小于1000。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;变量不需要与其他的状态变量共同参与不变约束。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;volatile static int start = 3;
+volatile static int end = 6;
+    
+线程A执行如下代码：
+while (start &amp;lt; end){
+  //do something
+}
+    
+线程B执行如下代码：
+start+=3;
+end+=3;
+    
+//这种情况下，一旦在线程A的循环中执行了线程B，start有可能先更新成6，
+//造成了一瞬间 start == end，从而跳出while循环的可能性。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;volatile-之-阻止指令重排&#34;&gt;volatile 之  阻止指令重排&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Singleton2 {
+    private static Singleton2 instance;
+
+    public static Singleton2 getInstance() {
+    	//双重检测机制
+        if (instance == null) {
+        	//同步锁
+            synchronized (Singleton2.class) {
+            	//双重检测机制
+                if (instance == null) {
+                    instance = new Singleton2();
+                }
+            }
+        }
+        return instance;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;已上代码存在问题，可能会得到一个没有初始化完成的对象&lt;/p&gt;
+
+&lt;p&gt;JVM编译器的指令重排，可能会得到一个没有初始化的对象&lt;/p&gt;
+
+&lt;p&gt;java中简单的一句 &lt;code&gt;instance = new Singleton&lt;/code&gt;，会被编译器编译成如下JVM指令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
+ctorInstance(memory);  //2：初始化对象 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是这些指令顺序并非一成不变，有可能会经过JVM和CPU的优化，指令重排成下面的顺序：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+ctorInstance(memory);  //2：初始化对象 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当线程A执行完1,3,时，instance对象还未完成初始化，但已经不再指向null。&lt;br /&gt;
+此时如果线程B抢占到CPU资源，执行  if（instance == null）的结果会是false，从而返回一个没有初始化完成的instance对象。&lt;/p&gt;
+
+&lt;p&gt;如何避免这一情况呢？我们需要在instance对象前面增加一个修饰符volatile。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>redis笔记</title>
       <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
@@ -5109,331 +5266,6 @@ TFTP&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;UDP有边界&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;客户端每发送一次，服务器端就会接收一次，也就是说发送多少次就会接收多少次，因此是有边界的。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>[转]计算机网络基础汇总</title>
-      <link>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</link>
-      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%AC%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</guid>
-      
-        <description>
-
-&lt;h1 id=&#34;计算机网络体系分类&#34;&gt;计算机网络体系分类：&lt;/h1&gt;
-
-&lt;p&gt;计算机网络整个体系有两个大的分类：一个是国际组织制定的OSI七层模型，一种是实际使用中的TCP/IP四层模型。&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;OSI七层模型&lt;/th&gt;
-&lt;th&gt;TCP/IP四层模型&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;应用层&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;表示层&lt;/td&gt;
-&lt;td&gt;应用层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;会话层&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;传输层&lt;/td&gt;
-&lt;td&gt;传输层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;网络层&lt;/td&gt;
-&lt;td&gt;网络层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;数据链路层&lt;/td&gt;
-&lt;td&gt;物理接入层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;物理层&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&#34;物理层&#34;&gt;物理层：&lt;/h1&gt;
-
-&lt;p&gt;物理层主要是实现主机和网络之间的物理连接，规定一些与传输媒体接口有关的一些特性。&lt;/p&gt;
-
-&lt;h2 id=&#34;通信方式&#34;&gt;通信方式：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;单工通信：&lt;/strong&gt;只能由A主机向B主机发送消息，通信是单向的。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;半双工通信：&lt;/strong&gt;同一时间只能是由A主机向B主机或者是B主机向A主机发送信息，不能同时发送消息。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;全双工通信：&lt;/strong&gt; A主机和B主机可以实现在同一时间内既接收消息，又发送消息，极大的提升了通信效率。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;常见引导型传输媒体&#34;&gt;常见引导型传输媒体：&lt;/h2&gt;
-
-&lt;h3 id=&#34;双绞线&#34;&gt;双绞线：&lt;/h3&gt;
-
-&lt;p&gt;分为屏蔽双绞线（STP）和非屏蔽双绞线（UTP），屏蔽双绞线就是在非屏蔽双绞线外边又加了一层屏蔽层&lt;/p&gt;
-
-&lt;p&gt;tips：为什么双绞线要两根线绞起来，两个线绞起来可以有效的减少相互之间的电磁干扰。&lt;/p&gt;
-
-&lt;h3 id=&#34;同轴电缆&#34;&gt;同轴电缆：&lt;/h3&gt;
-
-&lt;p&gt;由内导体铜制芯线，绝缘层，网状编织的外导体屏蔽层，以及塑料保护外层组成。有良好的抗干扰性，被广泛用于较高速率的传输。&lt;/p&gt;
-
-&lt;h3 id=&#34;光缆&#34;&gt;光缆：&lt;/h3&gt;
-
-&lt;p&gt;由非常透明的石英玻璃拉成细丝，主要由纤芯和包层构成双层通讯柱。可以分为单模光纤和多模光纤。&lt;/p&gt;
-
-&lt;h2 id=&#34;信道复用技术&#34;&gt;信道复用技术：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;频分复用：&lt;/strong&gt;根据传输的波的频率的不同，将不同频段的波用于不同的通信。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;时分复用：&lt;/strong&gt;将时间分割为时间段，规定在某个时间段内发送什么样的信息，根据时间段来进行信息类别的区分。也称为&lt;strong&gt;同步时分复用&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;统计时分复用：&lt;/strong&gt;基于时分复用的一种改进，由于基本的时分复用并没有考虑到每个时间段内是否有信息发出，例如说每个时间段是20，但是发送消息只占用其中的2，那么剩下的18就处于空闲时间。统计时分复用就是基于这种考虑而设计的，他允许用户有数据时就将数据发送到缓存中，然后会依次扫描输入缓存，把缓存中的数据放入到STMD帧中，若没有就跳过，每当一个帧满了就把这个帧发出去。STMD帧不是分配的固定时序，而是根据需要动态的分配时隙，也称之为&lt;strong&gt;异步时分复用&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;光分复用：就是光的频分复用，根据光谱中频率的不同，用不同频率的光来携带不同的信息。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;数据链路层&#34;&gt;数据链路层：&lt;/h1&gt;
-
-&lt;p&gt;数据链路层主要是将上层的数据转化为数据帧发送到链路上，以及把接受到的帧中的数据取出并交给网络层。&lt;/p&gt;
-
-&lt;h2 id=&#34;通信方式-1&#34;&gt;通信方式：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;点对点通信：&lt;/strong&gt;通信方式是点到点的，也就是只能是两个点之间的通信。常见的就是PPP协议&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;广播通信：&lt;/strong&gt;广播通讯，也就是可以同时实现一对多的通信。常见的就是CSMA/CD（载波监听多点访问/冲突检测）&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;核心要解决的问题&#34;&gt;核心要解决的问题：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;封装成帧：&lt;/strong&gt;在一段数据的前后分别添加首部和尾部，这样就构成了一个帧。接收端在接受到后就可以方便准确的确定帧的首尾，也称为帧定界符。同时定义出了最大传输单元（MTU）&amp;ndash;表示一次可以传输的最大长度上限。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;透明传输：&lt;/strong&gt; 由于使用特定的字符来表示帧的开始和结束，所以传输的内容中不能出现和帧定界符相同的字符，但这显然是不可能的，为了解决这个办法，就可以在内容中和帧定界符一样的字符前边加上规定好的转义字符，这种方法称为字符填充或者是字节填充。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;差错检测：&lt;/strong&gt; 比特在传输过程中可能产生差错，差错检测就是用于检测出现的差错，以便及时的重传，最常用的差错检测算法就是&lt;a href=&#34;http://baike.sogou.com/v7730112.htm?fromTitle=CRC%E6%A0%A1%E9%AA%8C&#34;&gt;CRC（循环冗余检验）&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;网络层&#34;&gt;网络层&lt;/h1&gt;
-
-&lt;p&gt;网络层主要是向上只提供简单灵活的，无连接的，尽最大努力交付的数据报服务。&lt;/p&gt;
-
-&lt;h2 id=&#34;ip协议-网际协议&#34;&gt;IP协议（网际协议）：&lt;/h2&gt;
-
-&lt;p&gt;IP协议是TCP/IP体系中最主要的协议之一，一切在IP之下，一切又在IP之上。我们常说的应该是IP协议族，还包含配套的协议：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;ARP（地址解析协议）：将网络的IP地址转化为实际的物理地址（MAC地址），并存储在MAC地址表中。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ICMP（网际控制报文协议）：用于进行差错情况和异常情况的反馈，分为询问报文和差错报告报文。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;IGMP（网际组管理协议）：用于控制和管理多播和组播的协议。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;网络地址（IP地址）主要分为五类：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;A类：前8位为网络位，后24位为主机位，首位为0&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;B类：前16位为网络位，后16位为主机位，前两位为10&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;C类：前24位为网络位，后8位位主机位，前三位为110&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;D类：前四位为1110，用于多播地址&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;E类：前四位为1111，保留为以后使用&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;路由选择协议&#34;&gt;路由选择协议：&lt;/h2&gt;
-
-&lt;p&gt;路由选择协议分为&lt;strong&gt;内部网关协议（IGP）&lt;/strong&gt;和&lt;strong&gt;外部网关协议（EGP）&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;内部网关协议&#34;&gt;内部网关协议：&lt;/h3&gt;
-
-&lt;p&gt;主要是有RIP协议和OSPF协议&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;RIP协议（路由信息协议）：&lt;/strong&gt;基于距离矢量的协议&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;OSPF（开放最短路径优先协议）：&lt;/strong&gt;基于链路状态的协议&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;外部网关协议&#34;&gt;外部网关协议：&lt;/h3&gt;
-
-&lt;p&gt;主要是&lt;strong&gt;边界网关协议（BGP）&lt;/strong&gt;，将一个大的网络分为多个小的自治域，每个自治域内有一个网关路由负责和其他的自治域的网关进行通讯。&lt;/p&gt;
-
-&lt;h1 id=&#34;传输层&#34;&gt;传输层&lt;/h1&gt;
-
-&lt;p&gt;网络层主要是为主机之间提供逻辑通讯，而传输层为应用程序之间提供端到端的逻辑通讯。主要是两种类型的通讯方式，面向连接的TCP协议和面向无连接的UDP。&lt;/p&gt;
-
-&lt;h2 id=&#34;端口号&#34;&gt;端口号：&lt;/h2&gt;
-
-&lt;p&gt;端口号按照使用地方的不同分为两大类：服务端端口号，客户端端口号。
-按照占用时长又可以分为熟知端口号（0~1023），登记端口号（1024~49151），短暂端口号（49152~65535）&lt;/p&gt;
-
-&lt;h3 id=&#34;常见端口&#34;&gt;常见端口：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;FTP（文件传输协议）：20，21&amp;mdash;&amp;mdash;其中20端口用于传输数据，21端口用于命令控制&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Telnet（远程登录协议）：23&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;DNS（域名解析服务）：53&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;TFTP（简单文件传输协议）：69&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;HTTP（超文本传输协议）：80&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;两种协议&#34;&gt;两种协议：&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;UDP（用户数据报协议）：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;UDP是无连接的&lt;/li&gt;
-&lt;li&gt;UDP使用尽最大努力交付，但是不保证可靠交付&lt;/li&gt;
-&lt;li&gt;UDP是面向报文的&lt;/li&gt;
-&lt;li&gt;UDP没有拥塞控制&lt;/li&gt;
-&lt;li&gt;UDP支持一对一，一对多，多对一，多对一的交互通讯&lt;/li&gt;
-&lt;li&gt;UDP首部的开销小&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;TCP（传输控制协议）：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;TCP是面向连接的&lt;/li&gt;
-&lt;li&gt;每一条TCP连接只能由两个端点，每一条TCP连接只能是点对点的$TCP连接：：= { socket_1,socket_2 } ={ (IP_1:port_1),(IP_2:port_2)}$&lt;/li&gt;
-&lt;li&gt;TCP提供可靠交付的服务&lt;/li&gt;
-&lt;li&gt;TCP提供全双工通信&lt;/li&gt;
-&lt;li&gt;面向字节流&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;可靠传输的实现机制&#34;&gt;可靠传输的实现机制：&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;停止等待协议：&lt;/strong&gt; 每发完一个分组就停止发送，直到收到上一个分组的确认信息。若超过规定时间没有接收到确认信息，边认为是分组丢失，开始重传。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;连续ARQ协议：&lt;/strong&gt;  发送方采用滑动窗口的形式，处于滑动窗口的分组可以直接发送出去；接收方一般采用累积确认的方式，也就是说接受方不必对接收到的每一个分组都进行确认，而是对按序到达的最后一个分组进行确认，而发送方每接收到一个确认，窗口就向前滑动一定距离。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;流量控制：&lt;/strong&gt;协调发送方和接收方的收发速率，利用滑动窗口来协调，使用探测报文来探测当前应该发送的速率，采用&lt;a href=&#34;http://baike.sogou.com/v10500918.htm?fromTitle=Nagle%E7%AE%97%E6%B3%95&#34;&gt;Nagle算法&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞控制：&lt;/strong&gt;
-当网络中某一资源的需求超出了该资源所能提供的可用部分，这时网络的性能就要开始变坏，这种情况就叫做拥塞。而拥塞控制就是为了减少或者避免拥塞对网络性能的影响而做出的一种控制手段。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞控制思路：&lt;/strong&gt;发送方维持一个叫做&lt;strong&gt;拥塞窗口&lt;/strong&gt;的状态变量，拥塞窗口的大小取决于网络的拥塞程度，并且在动态的变化。发送方让自己的发送窗口等于拥塞窗口，如果在考虑接收方的接收能力，一般发送窗口还要小于拥塞窗口。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;慢开始：&lt;/strong&gt;当主机开始发送数据的时候，由小到大的增大发送窗口，也就是由小到大的增大拥塞窗口。接收方接收到一个报文之后就回传一个确认报文，发送方每接收到一个确认报文，就将拥塞窗口加1，这样每经过一个传输轮次之后，拥塞窗口就增大一倍。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;拥塞避免：&lt;/strong&gt;思路是让拥塞窗口缓慢的增大，即每经过一个往返时间RTT就把发送方的拥塞窗口加1，而不是加倍，这样拥塞窗口就是线性缓慢增加，比慢开始的增长速率缓慢的多。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;慢开始门限：&lt;/strong&gt;为了防止拥塞窗口增长过大引起网络拥塞，还需要设置一个慢开始门限&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;拥塞窗口&amp;lt;慢开始门限时，使用慢开始算法&lt;/li&gt;
-&lt;li&gt;拥塞窗口&amp;gt;慢开始门限时，使用拥塞避免算法&lt;/li&gt;
-&lt;li&gt;拥塞窗口=慢开始门限时，两种算法都可以&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;快重传：&lt;/strong&gt;要求收到方每收到一个时序的报文段之后就立即发出重复确认，而不要等到自己发送数据时才进行捎带确认。而发送方只要一连收到三个重复确认就应当立即重传对方尚未接受到的报文，而不必等待为报文设置的重传计时器到期。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;快回复：&lt;/strong&gt;与快重传配合使用，当发送方连续收到三个重复确认的时候，就执行“乘法减小”算法，将慢开始门限减半。将拥塞窗口设置为慢开始门限减半之后的值，并开始指向拥塞避免算法。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;tcp的连接管理&#34;&gt;TCP的连接管理：&lt;/h3&gt;
-
-&lt;h4 id=&#34;连接三次握手&#34;&gt;连接三次握手：&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;客户端请求建立连接：SYN=1，seq=x；&lt;/li&gt;
-&lt;li&gt;服务器对客户端的请求进行响应：SYN=1，ACK=1，seq=y，ack=x+1&lt;/li&gt;
-&lt;li&gt;客户端对服务器端的响应信息进行回应：ACK=1，seq=x+1，ack=y+1&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt; SYN为同步信息，在建立连接过程中始终为1&lt;/p&gt;
-
-&lt;h4 id=&#34;断开连接四次握手&#34;&gt;断开连接四次握手：&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;客户端请求断开连接： FIN=1，seq = u；&lt;/li&gt;
-&lt;li&gt;服务端对客户端的请求应答：ACK=1，seq=v，ack=u+1；&lt;/li&gt;
-&lt;li&gt;服务端请求断开连接：FIN=1，ACK=1，seq=w，ack=u+1；&lt;/li&gt;
-&lt;li&gt;客户端对服务端的请求应答：ACK=1，seq=u+1，ack=w+1；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;应用层&#34;&gt;应用层&lt;/h1&gt;
-
-&lt;p&gt;应用层有多种协议，常用到的就是HTTP以及HTTPS。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HTTP协议报文格式&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;请求报文&lt;/th&gt;
-&lt;th&gt;相应报文&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;请求行（用于区分是请求报文还是响应报文，在响应报文中为状态行）&lt;/td&gt;
-&lt;td&gt;状态行&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;首部行（用来说明浏览器，服务器或者是报文主体的一些信息）&lt;/td&gt;
-&lt;td&gt;首部行&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;空行（用于隔开请求实体和首部行）&lt;/td&gt;
-&lt;td&gt;空行&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;实体主体（用于一些请求或者是响应的的参数内容等）&lt;/td&gt;
-&lt;td&gt;实体主体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;strong&gt;常见状态码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;1xx：表示通知信息，例如表示收到或者是正在处理
-2xx：表示成功，例如表示接受或知道了
-3xx：表示重定向，例如表示完成请求还需要采取进一步的行动
-4xx：表示客户端的差错，例如表示请求中有语法错误或不能完成
-5xx：表示服务器端的差错：例如表示服务器失效无法完成请求&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;HTTPS协议就是对HTTP协议的加密，更加安全可靠，采用HTTP+SSL（安全套接字层）来保证数据的安全性。&lt;/p&gt;
 </description>
       
     </item>
