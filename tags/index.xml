@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>@Value</title>
-      <link>https://ianeiu.github.io/tag/value/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/tag/value/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Axis</title>
@@ -40,6 +31,24 @@
     </item>
     
     <item>
+      <title>Collection</title>
+      <link>https://ianeiu.github.io/tag/collection/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/tag/collection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Css</title>
+      <link>https://ianeiu.github.io/tag/css/</link>
+      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/tag/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cxf</title>
       <link>https://ianeiu.github.io/tag/cxf/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
@@ -49,18 +58,9 @@
     </item>
     
     <item>
-      <title>DEMO</title>
-      <link>https://ianeiu.github.io/tag/demo/</link>
-      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/tag/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Demo</title>
       <link>https://ianeiu.github.io/tag/demo/</link>
-      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/tag/demo/</guid>
       <description></description>
@@ -90,15 +90,6 @@
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/tag/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTTP</title>
-      <link>https://ianeiu.github.io/tag/http/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/tag/http/</guid>
       <description></description>
     </item>
     
@@ -139,11 +130,20 @@
     </item>
     
     <item>
-      <title>IE</title>
+      <title>Ie</title>
       <link>https://ianeiu.github.io/tag/ie/</link>
       <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/tag/ie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integer</title>
+      <link>https://ianeiu.github.io/tag/integer/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/tag/integer/</guid>
       <description></description>
     </item>
     

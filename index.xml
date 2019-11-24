@@ -7,17 +7,1819 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Fri, 22 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ianeiu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[置顶]js&amp;css的代码片段</title>
-      <link>https://ianeiu.github.io/2019/02/22/%E7%BD%AE%E9%A1%B6jscss%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+      <title>GK</title>
+      <link>https://ianeiu.github.io/2018/09/11/gk/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/gk/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;http&#34;&gt;HTTP&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
+来源：微信公众号 java思维导图&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/haif_city/article/details/78333213&#34; target=&#34;blank&#34;&gt;浅谈HTTP中Get、Post、Put与Delete的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/zaberyjava/article/details/82111243&#34; target=&#34;blank&#34;&gt;Springboot整合mybatis，配置驼峰命名转换&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/davidgu/p/6270761.html&#34; target=&#34;blank&#34;&gt;MyBatis - (二) 一对一映射和一对多映射&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/lwpczy1/article/details/79158535&#34; target=&#34;blank&#34;&gt;Mybatis(Oracle)批量插入、批量更新、批量删除&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/xunux/p/4882761.html&#34; target=&#34;blank&#34;&gt;mybatis批量插入数据到oracle&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sou_liu/article/details/47755635&#34; target=&#34;blank&#34;&gt;Mybatis select返回值为map时,选取表字段的两列作为key,value&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31138523/article/details/64912635&#34; target=&#34;blank&#34;&gt;关于mybatis的xml文件中使用 &amp;gt;= 或者&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;eclipse&#34;&gt;Eclipse&lt;/h3&gt;
+
+&lt;h4 id=&#34;与svn&#34;&gt;与SVN&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/v123411739/article/details/22512133&#34; target=&#34;blank&#34;&gt;Eclipse中使用SVN：&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/Eclipse-工具-使用SVN.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;与maven&#34;&gt;与Maven&lt;/h4&gt;
+
+&lt;p&gt;如何在eclipse jee中创建Maven project并且转换为Dynamic web project（原文链接找不到）：
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中创建Maven project并且转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;db-ref&#34;&gt;DB-REF&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/hoobey/p/6010804.html&#34; target=&#34;blank&#34;&gt;Oracle 11g安装步骤详谈&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/Oracle 11g安装图文攻略.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/113630.htm&#34; target=&#34;blank&#34;&gt;win10下安装两个MySQL5.6.35数据库&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装-安装俩个MySQL.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jingyan.baidu.com/article/f3ad7d0ffc061a09c3345bf0.html&#34; target=&#34;blank&#34;&gt;MySQL解压版安装&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000006158186#articleHeader6&#34; target=&#34;blank&#34;&gt;MySQL大表优化方案&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;杂谈&#34;&gt;杂谈&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/antineutrino/article/details/6763722/&#34; target=&#34;blank&#34;&gt;前缀、中缀、后缀表达式&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/前缀、中缀、后缀表达式.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/hcw52592/article/details/69230486&#34; target=&#34;blank&#34;&gt;服务器绑定域名详解&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/cdf-opensource-007/p/6337448.html&#34; target=&#34;blank&#34;&gt;详解get请求和post请求参数中文乱码的解决办法&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u010416101/article/details/80625862&#34; target=&#34;blank&#34;&gt;cron 表达式0 0/10 * * * 与 0 */10 * * *的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huhaoshida/p/5412615.html&#34; target=&#34;blank&#34;&gt;Ftp主动模式和被动模式以及java连接ftp模式设置&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/46a2fc4a1d00&#34; target=&#34;blank&#34;&gt;你真的了解什么是冒烟测试么？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yeyublog/p/6438373.html&#34; target=&#34;blank&#34;&gt;web实现负载均衡的几种实现方式&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/woaic/p/6060262.html&#34; target=&#34;blank&#34;&gt;使用Fiddler抓取手机请求&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;spring&#34;&gt;Spring&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xiaoyi52/article/details/76686001&#34; target=&#34;blank&#34;&gt;过滤器使用与bean注入&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/a520songhai/article/details/80785072&#34; target=&#34;blank&#34;&gt;怎么在spring里面获取request 非controller层&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_27680317/article/details/79970590&#34; target=&#34;blank&#34;&gt;参数验证 @Validated 和 @Valid 的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u014175572/article/details/44562393&#34; target=&#34;blank&#34;&gt;SpringMVC读取本地图片(byte[]流方式)显示到前端页面&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/LeegooWang/article/details/79117457?utm_source=blogxgwz3&#34; target=&#34;blank&#34;&gt;为什么springmvc请求参数中的点后面的参数没了&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;springboot&#34;&gt;SpringBoot&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012702547/article/details/53740047&#34; target=&#34;blank&#34;&gt;初识Spring Boot框架&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/my__Sun_/article/details/72866329&#34; target=&#34;blank&#34;&gt;springboot的三种启动方式&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/winner-0715/p/6754994.html?utm_source=itdadao&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt;Spring Boot配置文件-多环境配置&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://www.cnblogs.com/austinspark-jessylu/p/8065215.html&#34; target=&#34;blank&#34;&gt;SpringBoot配置属性之Server&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/fuxin41/p/6289162.html&#34; target=&#34;blank&#34;&gt;Spring boot+CXF开发WebService Demo&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://www.cnblogs.com/xiaojf/p/7231529.html&#34; target=&#34;blank&#34;&gt;springboot1.5.4 集成cxf完整实例&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/catoop/article/details/50534006&#34; target=&#34;blank&#34;&gt;
+Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/saytime/article/details/74937664&#34; target=&#34;blank&#34;&gt;SpringBoot（七）：SpringBoot整合Swagger2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/magicalSam/p/7189476.html&#34; target=&#34;blank&#34;&gt;Spring Boot 系列（四）静态资源处理&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/cszhang570221322/article/details/78129565&#34; target=&#34;blank&#34;&gt;Spring Boot与Jsp&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/qq_34665539/article/details/74783910&#34; target=&#34;blank&#34;&gt;springboot中集成jsp，打成jar包可用jsp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.51cto.com/ityouknow/2091874&#34; target=&#34;blank&#34;&gt;Spring Boot 2.0(五)：感受 Docker 魅力， 排解决多应用部署之疼&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;Spring Boot项目使用maven-assembly-plugin根据不同环境打包成tar.gz或者zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Yaphst/article/details/82625159&#34; target=&#34;blank&#34;&gt;基于springboot的ajax异步文件上传&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012834750/article/details/78734146&#34; target=&#34;blank&#34;&gt;SpringBoot系列(二)指定内置tomcat版本&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/134750.htm?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;spring boot启动时加载外部配置文件的方法&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5413845.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5415896.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源 （AOP实现）&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;springcloud&#34;&gt;SpringCloud&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/details/72650100&#34; target=&#34;blank&#34;&gt;springcloud微服务二：Eureka服务治理之服务注册中心&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/kangkanglou/article/details/76407623&#34; target=&#34;blank&#34;&gt;Spring @FeignClient&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;logback&#34;&gt;logback&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Cloud_July/article/details/77644401&#34; target=&#34;blank&#34;&gt;logback 根据不同业务打印日志到不同的文件&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;redis&#34;&gt;Redis&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/edisonyuan/article/details/52205272&#34; target=&#34;blank&#34;&gt;redis java客户端connection refused问题    &lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;http://www.mamicode.com/info-detail-2238112.html&#34; target=&#34;blank&#34;&gt;redis通过6379端口无法连接服务器&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012498149/article/details/78772058&#34; target=&#34;blank&#34;&gt;CentOS7为firewalld添加开放端口及相关操作&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/Joe68227597/article/details/75207859&#34; target=&#34;blank&#34;&gt;Failed to start firewalld.service: Unit firewalld.service is masked&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/u014175572/article/details/53375049?utm_source=itdadao&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt;centos没有/sbin/service命令的恢复方法(-bash: service: command not found)&lt;/a&gt;&lt;br/&gt;
+&lt;a href=&#34;https://blog.csdn.net/jackhuang17/article/details/74866951&#34; target=&#34;blank&#34;&gt;&lt;strong&gt;查看VMware虚拟机里的Centos7的IP&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_dbbfe02e0101oqdj.html&#34; target=&#34;blank&#34;&gt;Linux文本安装&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.centos.bz/2018/03/centos查看端口占用情况和开启端口命令/&#34; target=&#34;blank&#34;&gt;Centos查看端口占用情况和开启端口命令&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/moxiaoan/p/5683743.html&#34; target=&#34;blank&#34;&gt;
+CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/liuxianan/p/linux_install_svn_server.html&#34; target=&#34;blank&#34;&gt;Linux下安装SVN服务端小白教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_22075041/article/details/78855708&#34; target=&#34;blank&#34;&gt;在linux下安装配置rabbitMQ详细教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/jing99/p/9684273.html&#34; target=&#34;blank&#34;&gt;Linux下Mysql安装（tar安装）&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/java-class/p/7110266.html&#34; target=&#34;blank&#34;&gt;weblogic 部署问题定位与解决&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://developer.51cto.com/art/201309/410205_all.htm&#34; target=&#34;blank&#34;&gt;浅谈Java中的Set、List、Map的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/HaroldTihan/p/4316397.html&#34; target=&#34;blank&#34;&gt;Java sax、dom、pull解析xml&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lolashe/article/details/20806319&#34; target=&#34;blank&#34;&gt;HashMap,LinkedHashMap,TreeMap的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/codeemperor/article/details/51351247&#34; target=&#34;blank&#34;&gt;［Java数据结构］从源码分析HashMap&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.ibm.com/developerworks/cn/java/j-jtp06197.html&#34; target=&#34;blank&#34;&gt;正确使用 Volatile 变量&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tk55/p/6655349.html&#34; target=&#34;blank&#34;&gt;request获取各种路径&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/1024Community/p/honery.html&#34; target=&#34;blank&#34;&gt;扒一扒JVM的垃圾回收机制，下次面试你准备好了吗&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xqhys/article/details/81672317&#34; target=&#34;blank&#34;&gt;shiro+cas 单点登出解决（对shiro管理的session有效）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/kyunchen/article/details/52187514&#34; target=&#34;blank&#34;&gt;Java过滤器的使用和拦截排除的实现&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://rensanning.iteye.com/blog/1551831&#34; target=&#34;blank&#34;&gt;Java解析HTML之NekoHTML&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;前端&#34;&gt;前端&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/happyhaibei/p/6875469.html&#34; target=&#34;blank&#34;&gt;vue checkbox 双向绑定及初始化渲染&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/lfhy/p/6796653.html&#34; target=&#34;blank&#34;&gt;CSS3自定义滚动条样式 -webkit-scrollbar&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xiaoliu66007/p/5029909.html&#34; target=&#34;blank&#34;&gt;jQuery 1.9 .live() is not a function&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u011342720/article/details/81267908&#34; target=&#34;blank&#34;&gt;npm 安装详细教程(cnpm)&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--
+&lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
+--&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>GW</title>
+      <link>https://ianeiu.github.io/2018/09/29/gw/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/29/gw/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;tool&#34;&gt;tool&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cmd5.com/&#34; target=&#34;blank&#34;&gt;md5解密加密&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.bejson.com/&#34; target=&#34;blank&#34;&gt;JSON校验&lt;/a&gt;、
+&lt;a href=&#34;https://www.bejson.com/color/&#34; target=&#34;blank&#34;&gt;JSON着色工具&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://java.bejson.com/generator/&#34; target=&#34;blank&#34;&gt;SQL转JPA&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://tool.chinaz.com/tools/unicode.aspx&#34; target=&#34;blank&#34;&gt;编码转换&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ip138.com/&#34; target=&#34;blank&#34;&gt;IP查询&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://idea.lanyus.com/&#34; target=&#34;blank&#34;&gt;IDEA注册码&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mvnrepository.com/&#34; target=&#34;blank&#34;&gt;Maven仓库&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://archive.apache.org/dist/tomcat/&#34; target=&#34;blank&#34;&gt;Tomcat下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://patorjk.com/software/taag/#p=display&amp;h=0&amp;v=0&amp;f=3D%20Diagonal&amp;t=wm&#34; target=&#34;blank&#34;&gt;艺术字（框框）&lt;/a&gt;、
+&lt;a href=&#34;http://patorjk.com/text-color-fader/&#34; target=&#34;blank&#34;&gt;艺术字（色层）&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.tablesgenerator.com/&#34; target=&#34;blank&#34;&gt;MD建表&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.jq22.com/&#34; target=&#34;blank&#34;&gt;jq插件库&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.oracle.com/technetwork/java/archive-139210.html&#34; target=&#34;blank&#34;&gt;Oracle-Java下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.chinaz.com/&#34; target=&#34;blank&#34;&gt;站长之家&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.html5tricks.com/&#34; target=&#34;blank&#34;&gt;HTML5-DEMO&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://doc.redisfans.com/&#34; target=&#34;blank&#34;&gt;redis命令参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ftp.osuosl.org/&#34; target=&#34;blank&#34;&gt;一个FTP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.draw.io/&#34; target=&#34;blank&#34;&gt;画图网站&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msdn.itellyou.cn/&#34; target=&#34;blank&#34;&gt;微软工具&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;learn&#34;&gt;learn&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://yun.itheima.com/&#34; target=&#34;blank&#34;&gt;传智播客黑马&lt;/a&gt;、
+&lt;a href=&#34;https://www.imooc.com/&#34; target=&#34;blank&#34;&gt;慕课网&lt;/a&gt;、
+&lt;a href=&#34;https://www.imooc.com/course/list?c=java&amp;sort=pop&#34; target=&#34;blank&#34;&gt;慕课-Java高级&lt;/a&gt;、
+&lt;a href=&#34;https://study.163.com/category/Java%20Web#/?pt=0&#34; target=&#34;blank&#34;&gt;网易云课堂&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.spring4all.com/&#34; target=&#34;blank&#34;&gt;spring社区&lt;/a&gt;、
+&lt;a href=&#34;https://www.yiibai.com/&#34; target=&#34;blank&#34;&gt;易百-多方面教程&lt;/a&gt;、
+&lt;a href=&#34;http://www.runoob.com/java/java-examples.html&#34; target=&#34;blank&#34;&gt;菜鸟Java&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://yjmyzz.cnblogs.com/&#34; target=&#34;blank&#34;&gt;菩提树下的杨过&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/hengyunabc&#34; target=&#34;blank&#34;&gt;横云断岭的专栏&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cnblogs.com/goody9807/&#34; target=&#34;blank&#34;&gt;PointNet&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://feelschaotic.github.io/&#34; target=&#34;blank&#34;&gt;fct&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.ityouknow.com/&#34; target=&#34;blank&#34;&gt;纯洁的微笑&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cnblogs.com/itdragon/&#34; target=&#34;blank&#34;&gt;ITDragon&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cnblogs.com/ClassNotFoundException/&#34; target=&#34;blank&#34;&gt;limeOracle&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/category/6931500&#34; target=&#34;blank&#34;&gt;java修行路_涂宗勋&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/rjzheng&#34; target=&#34;blank&#34;&gt;专注java开发&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--
+&lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
+--&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ianeiu.github.io/about/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/about/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;邮箱：weimianwu@foxmail.com&lt;/li&gt;
+&lt;li&gt;微信：qq747151921&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;友链&#34;&gt;友链&lt;/h3&gt;
+
+&lt;p&gt;木有&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;常用注解&#34;&gt;常用注解&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;注解&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Component&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;泛指组件，类似在xml中配置bean &lt;bean id=&#34;beanId&#34; class=&#34;包名.类名&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Configuration&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Repository&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;用于标注数据访问组件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Service&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;用于标注业务层组件,默认bean的id为类名且首字母小写&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Controller&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;用于标注控制层组件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@RestController&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;spring4.0之后，@controller和@responsebody的结合&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Scope&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;rdquo;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;rdquo;可以保证当有请求的时候都创建一个Action对象。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Lazy(true)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;延迟初始化&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@RequestMapping&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@ResponseBody&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;ldquo;/login&amp;rdquo;)   public void login(User user, HttpServletResponse response){  response.getWriter.write(JSONObject.fromObject(user).toString());  }&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@PostConstruct&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;初始化注解,用于指定初始化方法（用在方法上）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@PreDestory&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;用于指定销毁方法（用在方法上）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@DependsOn&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;定义Bean初始化及销毁时的顺序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Primary&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Autowired&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Resource&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;默认按名称装配,当找不到与名称匹配的bean才会按类型装配&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@Async&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;异步方法调用&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@RequestParam&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;接收参数,从request里面拿取值&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@PathVariable&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;接收参数,从一个URI模板里面来填充&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@PathParam&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@QueryParam&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;JAX-RS 提供的，和Spring的RequestParam作用一致&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;@RequestBody&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;属性注入&#34;&gt;属性注入&lt;/h2&gt;
+
+&lt;h3 id=&#34;autowired&#34;&gt;@Autowired&lt;/h3&gt;
+
+&lt;p&gt;自动装配，可消除代码里的getter/setter与bean属性中的property&lt;/p&gt;
+
+&lt;p&gt;如果不使用注解自动注入，必须通过代码手动注入,如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;xxx.User&amp;quot; /&amp;gt;
+    &amp;lt;property name=&amp;quot;student&amp;quot; ref=&amp;quot;student&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;xxx.Student&amp;quot; /&amp;gt;
+...
+
+@Test
+public void test(){
+    //读取配置文件
+    ApplicationContext ctx=new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);
+    User user=(User) ctx.getBean(&amp;quot;user&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而使用注解@Autowired大大减少了代码量，提高可读性。&lt;br /&gt;
+使用前配置文件要添加扫描器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+&amp;lt;context:component-scan base-package=&amp;quot;xxx.vo&amp;quot; /&amp;gt;
+&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;xxx.User&amp;quot; /&amp;gt;
+&amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;xxx.Student&amp;quot; /&amp;gt;
+...
+
+class User{
+    @Autowired
+    private Student student;
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：当xml配置了user的属性时，Spring会按照xml优先的原则去User.java中寻找这两个属性的getter/setter，导致的结果就是初始化bean报错&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;context:component-scan base-package=&amp;quot;xxx.vo&amp;quot; /&amp;gt;
+&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;xxx.User&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;student&amp;quot; ref=&amp;quot;student&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;xxx.Student&amp;quot; /&amp;gt;
+
+class User{
+    @Autowired
+    private Student student;
+    //无getter/setter
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：当xml未配置了student的bean时会抛出找不到bean的异常，可将@Autowired注解的required设置为false，默认student为null&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;context:component-scan base-package=&amp;quot;xxx.vo&amp;quot; /&amp;gt;
+&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;xxx.User&amp;quot; /&amp;gt;
+
+class User{
+    @Autowired(required=false)
+    private Student student;
+    //无getter/setter
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;qualifier&#34;&gt;Qualifier&lt;/h3&gt;
+
+&lt;p&gt;指定注入Bean的名称&lt;/p&gt;
+
+&lt;h3 id=&#34;resource&#34;&gt;@Resource&lt;/h3&gt;
+
+&lt;p&gt;@Resource注解与@Autowired注解作用相似&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class User{
+    @Resource(name=&amp;quot;student&amp;quot;)
+    private Student student;
+
+    //@Resource(type=&amp;quot;Student.class&amp;quot;)
+    //private Student student;
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;@Resource的装配顺序：
+(1)、@Resource后面没有任何内容，默认通过name属性去匹配bean，找不到再按type去匹配
+(2)、指定了name或者type则根据指定的类型去匹配bean，任何一个不匹配都将报错&lt;/p&gt;
+
+&lt;p&gt;@Autowired和@Resource两个注解的区别：
+(1)、@Autowired默认按照byType方式进行bean匹配，@Resource默认按照byName方式进行bean匹配
+(2)、@Autowired是Spring的注解，@Resource是J2EE的注解&lt;/p&gt;
+
+&lt;h3 id=&#34;value&#34;&gt;@Value&lt;/h3&gt;
+
+&lt;p&gt;基本数值的填充 :@Value(&amp;ldquo;&amp;rdquo;)&lt;br /&gt;
+常用于获取配置文件参数值 ${配置文件中参数名}&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;直接new对象是无法获取参数值的，必须通过springIOC&lt;/p&gt;
+
+&lt;p&gt;@Value注入static属性的两种方式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//1.通过执行set方法进行参数注入
+private static String userName;
+@Value(&amp;quot;${git.userName}&amp;quot;)
+public void setUserName(String userName) {
+    GitUtils.userName = userName;
+}
+
+//2.通过中间变量赋值
+private static String userName; 
+@Value(&amp;quot;${git.userName}&amp;quot;)
+private String userNameTmp;
+@PostConstruct
+public void init() {
+    userName = userNameTmp;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;接收参数&#34;&gt;接收参数&lt;/h2&gt;
+
+&lt;h3 id=&#34;requestparam&#34;&gt;@RequestParam&lt;/h3&gt;
+
+&lt;p&gt;处理Content-Type为 application/x-www-form-urlencoded编码的内容&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/springmvc/hello/101?param1=10&amp;amp;param2=20&#34;&gt;http://localhost:8080/springmvc/hello/101?param1=10&amp;amp;param2=20&lt;/a&gt;&lt;br /&gt;
+根据上面的这个URL，你可以用这样的方式来进行获取&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public String getDetails(
+    @RequestParam(value=&amp;quot;param1&amp;quot;, required=true) String param1,
+    @RequestParam(value=&amp;quot;param2&amp;quot;, required=false) String param2){
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;@RequestParam 支持下面四种参数
+    defaultValue 如果本次请求没有携带这个参数，或者参数为空，那么就会启用默认值
+    name 绑定本次参数的名称，要跟URL上面的一样
+    required 这个参数是不是必须的
+    value 跟name一样的作用，是name属性的一个别名&lt;/p&gt;
+
+&lt;h3 id=&#34;pathvariable&#34;&gt;@PathVariable&lt;/h3&gt;
+
+&lt;p&gt;这个注解能够识别URL里面的一个模板，我们看下面的一个URL
+&lt;a href=&#34;http://localhost:8080/springmvc/hello/101?param1=10&amp;amp;param2=20&#34;&gt;http://localhost:8080/springmvc/hello/101?param1=10&amp;amp;param2=20&lt;/a&gt;
+上面的一个url你可以这样写：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public String getDetails(
+    @RequestMapping(&amp;quot;/hello/{id}&amp;quot;)
+    public String getDetails(@PathVariable(value=&amp;quot;id&amp;quot;) String id,
+    @RequestParam(value=&amp;quot;param1&amp;quot;, required=true) String param1,
+    @RequestParam(value=&amp;quot;param2&amp;quot;, required=false) String param2){
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;requestbody&#34;&gt;@RequestBody&lt;/h3&gt;
+
+&lt;p&gt;@RequestBody用于post请求，处理 application/json、application/xml等格式的数据&lt;/p&gt;
+
+&lt;h3 id=&#34;modelattribute&#34;&gt;@ModelAttribute&lt;/h3&gt;
+
+&lt;p&gt;@ModelAttribute注解类型将参数绑定到Model对象，处理 multipart/form-data 格式的数据&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java之volatile关键字</title>
+      <link>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;引入&#34;&gt;引入&lt;/h2&gt;
+
+&lt;p&gt;Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范，
+用来屏蔽不同硬件和操作系统的内存访问差异，让java程序在各种平台下都能达到一致的内存访问效果。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;主内存（Main Memory）&lt;br /&gt;
+主内存可以简单理解为计算机当中的内存，但又不完全等同。&lt;br /&gt;
+主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工作内存（Working Memory）&lt;br /&gt;
+工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。&lt;br /&gt;
+每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。&lt;br /&gt;
+线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。&lt;br /&gt;
+不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于一个静态变量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;static int s = 0；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;线程A执行如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;s = 3；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过一系列内存读写的操作指令，线程A把静态变量 s=0 从主内存读到工作内存，再把 s=3 的更新结果同步到主内存当中。&lt;/p&gt;
+
+&lt;p&gt;从单线程的角度来看，这个过程没有任何问题。这时候我们引入线程B，执行如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;System.out.println(&amp;quot;s=&amp;quot; + s);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有可能输出 0 或 3&lt;/p&gt;
+
+&lt;p&gt;可以使用synchronized同步锁（影响性能）或者使用volatile关键字修饰（轻量）&lt;/p&gt;
+
+&lt;h2 id=&#34;volatile-之-可见性&#34;&gt;volatile 之 可见性&lt;/h2&gt;
+
+&lt;p&gt;volatile关键字具有许多特性，其中最重要的特性就是保证了用volatile修饰的变量对所有线程的可见性[当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值]。&lt;/p&gt;
+
+&lt;p&gt;但volatile不能保证变量的原子性即无法保证线程安全。&lt;/p&gt;
+
+&lt;h4 id=&#34;什么时候适合用&#34;&gt;什么时候适合用&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class VolatileTest {
+    public volatile static int count = 0;
+    
+    public static void main(String[] args) {
+        //开启 10个线程
+        for (int i = 0; i &amp;lt; 10; i++) {
+            new Thread(
+                    new Runnable() {
+                        public void run() {
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            //每个线程当中让count值自增 100次
+                            for (int j = 0; j &amp;lt; 100; j++) {
+                                count++;
+                            }
+                        }
+                    }
+            ).start();
+        }
+        try {
+            Thread.Weep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System, out.print(&amp;quot;count&amp;quot; + count);
+        //最终count的结果值未必是1000，有可能小于1000。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;变量不需要与其他的状态变量共同参与不变约束。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;volatile static int start = 3;
+volatile static int end = 6;
+    
+线程A执行如下代码：
+while (start &amp;lt; end){
+  //do something
+}
+    
+线程B执行如下代码：
+start+=3;
+end+=3;
+    
+//这种情况下，一旦在线程A的循环中执行了线程B，start有可能先更新成6，
+//造成了一瞬间 start == end，从而跳出while循环的可能性。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;volatile-之-阻止指令重排&#34;&gt;volatile 之  阻止指令重排&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Singleton2 {
+    private static Singleton2 instance;
+
+    public static Singleton2 getInstance() {
+    	//双重检测机制
+        if (instance == null) {
+        	//同步锁
+            synchronized (Singleton2.class) {
+            	//双重检测机制
+                if (instance == null) {
+                    instance = new Singleton2();
+                }
+            }
+        }
+        return instance;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;已上代码存在问题，可能会得到一个没有初始化完成的对象&lt;/p&gt;
+
+&lt;p&gt;JVM编译器的指令重排，可能会得到一个没有初始化的对象&lt;/p&gt;
+
+&lt;p&gt;java中简单的一句 &lt;code&gt;instance = new Singleton&lt;/code&gt;，会被编译器编译成如下JVM指令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
+ctorInstance(memory);  //2：初始化对象 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是这些指令顺序并非一成不变，有可能会经过JVM和CPU的优化，指令重排成下面的顺序：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+ctorInstance(memory);  //2：初始化对象 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当线程A执行完1,3,时，instance对象还未完成初始化，但已经不再指向null。&lt;br /&gt;
+此时如果线程B抢占到CPU资源，执行  if（instance == null）的结果会是false，从而返回一个没有初始化完成的instance对象。&lt;/p&gt;
+
+&lt;p&gt;如何避免这一情况呢？我们需要在instance对象前面增加一个修饰符volatile。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>redis笔记</title>
+      <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
+
+&lt;p&gt;Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。&lt;br /&gt;
+因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。&lt;/p&gt;
+
+&lt;p&gt;Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。&lt;/p&gt;
+
+&lt;h2 id=&#34;redis的数据类型-以及每种数据类型的使用场景&#34;&gt;redis的数据类型，以及每种数据类型的使用场景&lt;/h2&gt;
+
+&lt;p&gt;(一)String&lt;br /&gt;
+这个其实没啥好说的，最常规的set/get操作，value可以是String也可以是数字。一般做一些复杂的计数功能的缓存。&lt;/p&gt;
+
+&lt;p&gt;(二)hash&lt;br /&gt;
+这里value存放的是结构化的对象，比较方便的就是操作其中的某个字段。博主在做单点登录的时候，就是用这种数据结构存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。&lt;/p&gt;
+
+&lt;p&gt;(三)list&lt;br /&gt;
+使用List的数据结构，可以做简单的消息队列的功能。另外还有一个就是，可以利用lrange命令，做基于redis的分页功能，性能极佳，用户体验好。&lt;/p&gt;
+
+&lt;p&gt;(四)set&lt;br /&gt;
+因为set堆放的是一堆不重复值的集合。所以可以做全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，比较麻烦，难道为了一个做一个全局去重，再起一个公共服务，太麻烦了。
+另外，就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。&lt;/p&gt;
+
+&lt;p&gt;(五)sorted set&lt;br /&gt;
+sorted set多了一个权重参数score,集合中的元素能够按score进行排列。可以做排行榜应用，取TOP N操作。还可以用来做延时任务(&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/8972725.html&#34; target=&#34;_blank&#34;&gt;分布式之延时任务方案解析&lt;/a&gt;)、范围查找。&lt;/p&gt;
+
+&lt;h2 id=&#34;项目中使用redis&#34;&gt;项目中使用redis&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;响应请求获取数据时经过redis查询（如果没有则访问数据库，并将数据存储至redis），达到极速响应；&lt;/li&gt;
+&lt;li&gt;高并发的情况，可能减少数据库压力。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis单线程工作模型优势&#34;&gt;redis单线程工作模型优势&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;纯内存操作&lt;/li&gt;
+&lt;li&gt;单线程操作，避免了频繁的上下文切换&lt;/li&gt;
+&lt;li&gt;采用了非阻塞I/O多路复用机制（单个线程，跟踪每个I/O流的状态，来管理多个I/O流。）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;使用redis存在的问题&#34;&gt;使用redis存在的问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;缓存和数据库双写一致性问题&lt;/li&gt;
+&lt;li&gt;缓存雪崩问题&lt;/li&gt;
+&lt;li&gt;缓存击穿问题&lt;/li&gt;
+&lt;li&gt;缓存的并发竞争问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis的过期策略以及内存淘汰机制&#34;&gt;redis的过期策略以及内存淘汰机制&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;为什么不用定时删除策略?&lt;br /&gt;
+定时删除,用一个定时器来负责监视key,过期则自动删除。虽然内存及时释放，但是十分消耗CPU资源。在大并发请求下，CPU要将时间应用在处理请求，而不是删除key,因此没有采用这一策略.&lt;/li&gt;
+&lt;li&gt;定期删除+惰性删除是如何工作的呢?&lt;br /&gt;
+定期删除，redis默认每个100ms检查，是否有过期的key,有过期key则删除。需要说明的是，redis不是每个100ms将所有的key检查一次，而是随机抽取进行检查(如果每隔100ms,全部key进行检查，redis岂不是卡死)。因此，如果只采用定期删除策略，会导致很多key到时间没有删除。
+于是，惰性删除派上用场。也就是说在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间那么是否过期了？如果过期了此时就会删除。&lt;/li&gt;
+&lt;li&gt;采用定期删除+惰性删除就没其他问题了么?&lt;br /&gt;
+不是的，如果定期删除没删除key。然后你也没即时去请求key，也就是说惰性删除也没生效。这样，redis的内存会越来越高。那么就应该采用内存淘汰机制。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在redis.conf中有一行配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# maxmemory-policy volatile-lru
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;该配置就是配内存淘汰策略的(什么，你没配过？好好反省一下自己)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1）noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。应该没人用吧。
+2）allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。推荐使用，目前项目在用这种。
+3）allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。应该也没人用吧，你不删最少使用Key,去随机删。
+4）volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。这种情况一般是把redis既当缓存，又做持久化存储的时候才用。不推荐
+5）volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。依然不推荐
+6）volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除。不推荐
+ps：如果没有设置 expire 的key, 不满足先决条件(prerequisites); 那么 volatile-lru, volatile-random 和 volatile-ttl 策略的行为, 和 noeviction(不删除) 基本上一致。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;使用redis实现分布式锁&#34;&gt;使用Redis实现分布式锁&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;//伪代码
+//当一个线程执行setnx返回1，说明key原本不存在，该线程成功得到了锁；
+//当一个线程执行setnx返回0，说明key已经存在，该线程抢锁失败。
+if（setnx（key，1） == 1）{
+    //设置锁超时
+    expire（key，30）
+    try {
+        do something ......
+    } finally {
+        //解锁
+        del（key）
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的伪代码中，存在着三个致命问题：
+1. setnx和expire的非原子性&lt;br /&gt;
+设想一个极端场景，当线程A执行setnx，成功得到了锁，setnx刚执行成功，还未来得及执行expire指令，节点1（线程A）挂掉了。&lt;br /&gt;
+这样一来，这把锁就没有设置过期时间，变得“长生不老”，别的线程再也无法获得锁了。&lt;br /&gt;
+解决方法：使用set（key，1，30，NX）取代 setnx&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;del 导致误删&lt;br /&gt;
+又是一个极端场景，假如某线程成功得到了锁，并且设置的超时时间是30秒。&lt;br /&gt;
+如果某些原因导致线程A执行的很慢很慢，过了30秒都没执行完，这时候锁过期自动释放，线程B得到了锁。&lt;br /&gt;
+随后，线程A执行完了任务，线程A接着执行del指令来释放锁。&lt;br /&gt;
+但这时候线程B还没执行完，线程A实际上删除的是线程B加的锁。&lt;br /&gt;
+解决方法：可以在加锁的时候把当前的线程ID当做value，并在删除之前验证key对应的value是不是自己线程的ID。&lt;br /&gt;
+&lt;code&gt;
+String threadId = Thread.currentThread().getId()
+set（key，threadId ，30，NX）
+//解锁
+if（threadId .equals(redisClient.get(key))）{
+    del(key)
+}
+&lt;/code&gt;
+但是，这样做又隐含了一个新的问题，判断和释放锁是两个独立操作，不是原子性。
+使用用Lua脚本来实现：
+&lt;code&gt;
+String luaScript = &amp;quot;if redis.call(&#39;get&#39;, KEYS[1]) == ARGV[1] then return redis.call(&#39;del&#39;, KEYS[1]) else return 0 end&amp;quot;;
+redisClient.eval(luaScript , Collections.singletonList(key), Collections.singletonList(threadId));
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;出现并发的可能性
+还是刚才第二点所描述的场景，虽然我们避免了线程A误删掉key的情况，但是同一时间有A，B两个线程在访问代码块，仍然是不完美的。&lt;br /&gt;
+我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁“续航”。&lt;br /&gt;
+当过去了29秒，线程A还没执行完，这时候守护线程会执行expire指令，为这把锁“续命”20秒。&lt;br /&gt;
+守护线程从第29秒开始执行，每20秒执行一次。&lt;br /&gt;
+当线程A执行完任务，会显式关掉守护线程。&lt;br /&gt;
+另一种情况，如果节点1 忽然断电，由于线程A和守护线程在同一个进程，守护线程也会停下。&lt;br /&gt;
+这把锁到了超时的时候，没人给它续命，也就自动释放了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;REF&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/9096228.html&#34; target=&#34;_blank&#34;&gt;分布式之redis复习精讲&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/Survivalist/p/10321476.html&#34; target=&#34;_blank&#34;&gt;Redis的那些最常见面试问题&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://mp.weixin.qq.com/s/8fdBKAyHZrfHmSajXT_dnA&#34; target=&#34;_blank&#34;&gt;什么是分布式锁？&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Eclipse笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;快捷键&#34;&gt;快捷键&lt;/h2&gt;
+
+&lt;h4 id=&#34;使用频率极高的快捷键&#34;&gt;使用频率极高的快捷键&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码提示&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+/&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动生成object方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + s，然后根据提示继续&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shfit + k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;如何跳转到文件中的特定行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;调出搜索文本的视图&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;进行全局搜索和局部搜索&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;创建各种类型的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + n&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭当前文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;打开文件所在目录&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + w，选择system explorer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;类&#34;&gt;类&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示出当前打开的所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + pg、up ,ctrl + pg、dn&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f7  跳转到代码编辑器视图 f12&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;经典的quick access&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + 3  搜maven、server&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;eclipse的面包屑功能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + b （右键面包屑有关闭按钮）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;文本&#34;&gt;文本&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + d&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查看字符串出现的地方&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + u&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示html和xml元素的所有属性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + ,&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;变小写ctrl + shift + y,变大写ctrl +shift + x&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-修改名字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;eclipse-插件&#34;&gt;Eclipse-插件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Team
+
+&lt;ul&gt;
+&lt;li&gt;Subclipse&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Theme
+
+&lt;ul&gt;
+&lt;li&gt;Eclipse Color Theme&lt;/li&gt;
+&lt;li&gt;Darkest Dark Theme with DevStyle&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;反编译
+
+&lt;ul&gt;
+&lt;li&gt;Enhanced Class Decompiler&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;UML
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/AmaterasUML_1.3.4.zip&#34; target=&#34;blank&#34;&gt;AmaterasUML_1.3.4.zip&lt;/a&gt;解压放入plugins目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;lombok&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方式1&lt;br /&gt;
+将&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/lombok.jar&#34; target=&#34;blank&#34;&gt;lombok.jar&lt;/a&gt;文件，放到eclipse安装路径，该jar包也就是lombok插件的jar文件了&lt;br /&gt;
+打开eclipse.ini文件，添加如下内容：&lt;br /&gt;
+-javaagent:lombok.jar&lt;br /&gt;
+-Xbootclasspath/a:lombok.jar&lt;/li&gt;
+&lt;li&gt;方式2(推荐)&lt;br /&gt;
+&lt;a href=&#34;https://blog.csdn.net/dorothy1224/article/details/79280591/&#34; target=&#34;blank&#34;&gt;eclipse安装lombok&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;修改tomcat设置内存大小&#34;&gt;修改tomcat设置内存大小&lt;/h2&gt;
+
+&lt;p&gt;方式1（推荐）：&lt;br /&gt;
+在Eclipse中下面Servers双击Tomcat Server&amp;hellip; 然后点击General InformAtion 下的Open launch configuration；&lt;br /&gt;
+会弹出Edit Configuration，然后在选中Arguments选项卡；在VM arguments文本框中最后面添加
+-Xms256m -Xmx1024m -XX:MaxPermSize=256m 。&lt;/p&gt;
+
+&lt;p&gt;方式2：&lt;br /&gt;
+在Eclipse菜单栏中Window ——》Preferences ——》Server ———》 Runtime Environment；&lt;br /&gt;
+选择您用的Tomcat 然后点击Edit&amp;hellip;弹出Edit Server Runtime Ecvironment 下面JRE选项后面的Installed JREs&amp;hellip;
+点击弹出Installed JREs；在选中您用的Jre在点击Edit..在Defaul VM Arguments：中填入-Xms256m -Xmx512m&lt;/p&gt;
+
+&lt;h2 id=&#34;删除某个工作空间&#34;&gt;删除某个工作空间&lt;/h2&gt;
+
+&lt;p&gt;方式1（推荐）：&lt;br /&gt;
+   打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;General&amp;ndash;&amp;gt;Startup and Shutdown&amp;ndash;&amp;gt;WorkSpace，
+然后选中你想要删除的工作空间，点击右边的remove按钮即可。&lt;/p&gt;
+
+&lt;p&gt;方式2：&lt;br /&gt;
+   在你的Eclipse目录中找到以下文件configuration.settings\org.eclipse.ui.ide.prefs，这个就是工作空间的配置文件了。
+然后将RECENT_WORKSPACES后面你想删除的工作空间删除即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
+
+&lt;h2 id=&#34;tomcat启动报nullpointerexception&#34;&gt;tomcat启动报NullPointerException&lt;/h2&gt;
+
+&lt;p&gt;在自己设置的workspace目录下面，打开目录：.metadata.plugins\org.eclipse.wst.server.core\ ，然后删除“temp0”文件夹即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;server视图加载项目之后项目名后边有带括号的名字&#34;&gt;Server视图加载项目之后项目名后边有带括号的名字&lt;/h2&gt;
+
+&lt;p&gt;复制过来的项目会出现的一种情况：有时即使是项目改了名字在添加到Server上的时候在Server视图中看到项目名后边有一个带括号的名字,还是复制之前的项目名。&lt;/p&gt;
+
+&lt;p&gt;解决：打开文件“你的工程目录.settings\org.eclipse.wst.common.component”看到内容，将里面所有为你原来工程名的字符串替换为新工程名字。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>IDEA笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
+&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
+首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
+&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
+&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
+&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
+&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
+&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
+
+&lt;h4 id=&#34;辅助&#34;&gt;辅助&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找Intellij的命令&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+A&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;运行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;调整项目窗口宽度&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;查询&#34;&gt;查询&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;跳转文件指定行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;搜索文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;全局搜索和局部搜索&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;结合ctrl + f 快捷上下查找文本&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shift + k&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift + shift&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;方位名查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;目录查询&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n，输入/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;编辑&#34;&gt;编辑&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动处理&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+Enter&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码联系&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + space&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + d、x&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选中单词&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + ←、→&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + u、y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;收尾补充（;{}等）&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + 回车&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;驼峰下划线命名切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + c&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-修改类、方法、参数名字&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + shift + r&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;重构-可选择&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+Alt+T&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;代码生成&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Template/Postfix +Tab&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近打开的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示最近修改的文件&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + e&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;bookmarks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + shift + F11&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;bookmarks查看&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift + F11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;视图&#34;&gt;视图&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + Tab&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示类结构&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + o&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;显示文件位置&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alt+F1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;项目切换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl + alt + [ 、]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;水平分组&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split vertically&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;垂直分组&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split horizontally&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;收藏至bookmark&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ctrl+shift+F11&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;打开  bookmark&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shift+F11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;view&#34;&gt;View&lt;/h2&gt;
+
+&lt;h4 id=&#34;演出模式&#34;&gt;演出模式&lt;/h4&gt;
+
+&lt;p&gt;选择Enter Presentation Mode ，将IDEA弄到最大，让你只关注一个类里面的代码，进行毫无干扰的coding；&lt;br /&gt;
+配合CTRL+E等快捷键定位文件；&lt;br /&gt;
+选择Exit Presentation Mode 即可退出。&lt;/p&gt;
+
+&lt;h4 id=&#34;去掉面包屑-上方导航栏&#34;&gt;去掉面包屑（上方导航栏）&lt;/h4&gt;
+
+&lt;p&gt;使用alt+v，然后取消Navigation bar勾选即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;inject-language&#34;&gt;Inject language&lt;/h2&gt;
+
+&lt;p&gt;选中&amp;rdquo;&amp;ldquo;，使用alt+enter快捷键弹出inject language视图，并选中Inject language or reference；&lt;br /&gt;
+直接按下回车键，在inject language列表选择显示语言（JSON等）；&lt;br /&gt;
+再次使用alt+enter，选中Edit JSON Fragment并回车，就可以看到编辑JSON文件的视图了；&lt;br /&gt;
+使用alt+enter，选中Un-inject language/reference 回车即可取消。&lt;/p&gt;
+
+&lt;h2 id=&#34;常用的expr&#34;&gt;常用的expr&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;.sout&lt;/li&gt;
+&lt;li&gt;.notnull&lt;/li&gt;
+&lt;li&gt;.try&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;常用的setting&#34;&gt;常用的Setting&lt;/h2&gt;
+
+&lt;h4 id=&#34;auto-import&#34;&gt;Auto Import&lt;/h4&gt;
+
+&lt;p&gt;add unambiguous imports on the fly 编写时自动导入&lt;br /&gt;
+optimize imports on the fly 编写时自动优化去除没用到的包&lt;/p&gt;
+
+&lt;h4 id=&#34;appearance&#34;&gt;Appearance&lt;/h4&gt;
+
+&lt;p&gt;show memory indicator 右下角显示内存使用情况，点击可回收内存&lt;br /&gt;
+show line number 显示选中代码行数&lt;/p&gt;
+
+&lt;h4 id=&#34;editor-tabs&#34;&gt;editor tabs&lt;/h4&gt;
+
+&lt;p&gt;取消勾选 show tabs in single row 多行显示tab，配合tab limit&lt;/p&gt;
+
+&lt;h4 id=&#34;general&#34;&gt;General&lt;/h4&gt;
+
+&lt;p&gt;change font size(Zoom) with ctrl+Mouse Wheel 滚轮调整字体大小&lt;/p&gt;
+
+&lt;h4 id=&#34;不使用import&#34;&gt;不使用import *&lt;/h4&gt;
+
+&lt;p&gt;Settings -&amp;gt; Editor -&amp;gt; Code Style -&amp;gt; Java -&amp;gt; Imports  两个count to use import with &amp;lsquo;*&amp;rsquo; 设置成999。&lt;/p&gt;
+
+&lt;h2 id=&#34;常用插件&#34;&gt;常用插件&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;插件名称&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;插件介绍&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Alibaba Java Coding Guidelines&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;阿里巴巴代码规范检查插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FindBugs-IDEA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;潜在 Bug 检查&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Statistic&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;代码统计插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Maven Helper&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Maven 辅助插件&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Properties to YAML Converter&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Properties 转 YAML 格式插件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
+
+&lt;h4 id=&#34;idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled&#34;&gt;IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled&lt;/h4&gt;
+
+&lt;p&gt;修改系统配置 ：&lt;br /&gt;
+Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com&lt;br /&gt;
+windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中&lt;/p&gt;
+
+&lt;h4 id=&#34;tomcat启动项目-错误&#34;&gt;tomcat启动项目 错误&lt;/h4&gt;
+
+&lt;p&gt;Error running &amp;lsquo;Tomcat&amp;rsquo;: Unable to open debugger port (127.0.0.1:53904): java.net.SocketExceptio&lt;br /&gt;
+socket阻塞导致端口占用。
+解决步骤：&lt;br /&gt;
+1. 使用 &lt;code&gt;netstat -ano | find &amp;quot;8081&amp;quot;&lt;/code&gt;  查看进程
+2. 使用 &lt;code&gt;taskkill -f -pid 8152&lt;/code&gt; 关闭进程&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Maven笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;项目构建和管理自动化工具&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;坐标(可由groupId、artifactId、version组成)。&lt;/li&gt;
+&lt;li&gt;构件通过坐标作为其唯一标识。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;仓库：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：&lt;a href=&#34;https://repo.maven.apache.org/maven2&#34;&gt;https://repo.maven.apache.org/maven2&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;镜像仓库：/conf/setting文件:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;mirror&amp;gt;
+    &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt;
+    &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
+    &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt;
+    &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt;
+&amp;lt;/mirror&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;本地仓库：修改本地仓库的位置 &lt;code&gt;&amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;指定jdk1.7&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;profile&amp;gt;
+    &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt;
+    &amp;lt;activation&amp;gt;
+        &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt;
+        &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt;
+    &amp;lt;/activation&amp;gt;   
+    &amp;lt;properties&amp;gt;
+        &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt;
+        &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt;
+        &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt;
+    &amp;lt;/properties&amp;gt;
+&amp;lt;/profile&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;常用构建命令&#34;&gt;常用构建命令&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;mvn compile 编译
+mvn test 测试
+mvn package 打包
+mvn clean 删除target
+mvn install 安装jar包到本地仓库
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;自动创建目录骨架&#34;&gt;自动创建目录骨架&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;archetype:generate 按照提示进行&lt;/li&gt;
+&lt;li&gt;archetype:generate -DgroupId=组织名, 公司网址的反写+项目名&lt;br /&gt;
+                -DartifactId=项目名-模块名&lt;br /&gt;
+                -Dversion=版本号&lt;br /&gt;
+                -Dpackage=代码所存在的包&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;完整的项目构建过程&#34;&gt;完整的项目构建过程&lt;/h2&gt;
+
+&lt;p&gt;清理、编译、测试、打包、集成测试、验证、部署&lt;/p&gt;
+
+&lt;h2 id=&#34;maven生命周期&#34;&gt;maven生命周期&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;clean：清理项目
+	- pre-clean ：执行清理前的工作
+	- clean：清理上一次构建生成的所有文件
+	- post-clean：执行清理后的文件
+default：构建项目
+	- compile test package install
+site：生成项目站点
+	- pre-site 在生成项目站点之前要完成的工作
+	- site 生成项目的站点文档
+	- post-site在生成项目站点后要完成的工作
+	- site-deploy发布生成的站点到服务器上
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pom结构&#34;&gt;pom结构&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;project (根元素，包含约束信息)
+	modelVersion  指定了当前pom版本
+	groupId    反写的公司网址+项目名
+	artifactId  项目名+模块名
+	version     版本号  第一个0表示大版本号，第二个0表示大版本号，第三个0表示大版本号 0.0.1snapshot快照 alpha內部測試 beta公测 Release稳定 GA正式发布
+	packaging   打包方式 默认是jar
+
+	name       项目的描述名
+	url       项目的地址
+	description  项目描述
+	developers   开发人员信息
+	licenses    许可证信息
+	
+	dependencies 
+		-dependency ｛依赖冲突 1.短路优先（优先依赖最近的模块）2.先声明先优先｝
+			-groupId
+			-artifactId
+			-version
+			-type	
+			-scope    依赖范围 [默认compile、provided、runtime、test、system、import]
+			-optional 设置依赖是否可选
+			-exclusions
+				-exclusion
+					-groupId
+					-artifactId
+
+	dependencyManagement   依赖管理  不会被运行(子模块来引用)
+		-dependencies
+			-dependency
+			
+	build
+		-plugins  插件列表（指出坐标）
+			-plugin
+				-groupId
+				-artifactId
+				-version
+				
+	parent    对父模块的继承
+		-groupId	[org..]
+		-artifactId [jetty\tomcat..]
+		-version [...]
+		-executions
+			-execution	在打包成功后使用 jetty\tomcat：run来运行jetty服务
+				-phase [package]
+				-goals [run]
+					-goal
+	modules   定义多个模块  一起进行编译
+		-module [聚合的项目、模块]
+		
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
+
+&lt;h4 id=&#34;could-not-calculate-build-plan&#34;&gt;Could not calculate build plan&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下的文件夹删除;&lt;/li&gt;
+&lt;li&gt;右击项目Maven-&amp;gt;Update Project-&amp;gt;Update Dependencies&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;missing-artifact&#34;&gt;Missing artifact&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件;&lt;/li&gt;
+&lt;li&gt;如果有就把这个文件删掉，再update一下dependency就行了。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Git笔记</title>
+      <link>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;git使用教程&#34;&gt;Git使用教程&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/4050072.html&#34; target=&#34;blank&#34;&gt;Git使用教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;几条常用命令记录&#34;&gt;几条常用命令记录&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git status&lt;/code&gt; 查看本地分支文件信息，确保更新时不产生冲突&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout –- [file name]&lt;/code&gt;  若文件有修改，可以还原到最初状态; 若文件需要更新到服务器上，应该先merge到服务器，再更新到本地&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch&lt;/code&gt; 查看当前分支情况&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout remote branch&lt;/code&gt;  若分支为本地分支，则需切换到服务器的远程分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git pull&lt;/code&gt; 拉取代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout branchA&lt;/code&gt; 切换到分支branchA&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch branchB&lt;/code&gt; 创建分支branchB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-工具本地用户名修改&#34;&gt;git 工具本地用户名修改&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;获取当前的用户名  &lt;code&gt;git config user.name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改用户名 &lt;code&gt;git config --global user.name &amp;quot;用户名&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;reset-revert&#34;&gt;reset revert&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用 reset&lt;/li&gt;
+&lt;li&gt;如果我们想恢复之前的某一版本（该版本不是merge类型），但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用 revert&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;墙裂推荐文章
+&lt;a href=&#34;https://blog.csdn.net/yxlshk/article/details/79944535&#34; target=&#34;blank&#34;&gt;Git恢复之前版本的两种方法reset、revert（图文详解）&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;恢复修改的文件&#34;&gt;恢复修改的文件&lt;/h2&gt;
+
+&lt;p&gt;情况1：&lt;br /&gt;
+修改了文件，没有做过任何git操作，直接 &lt;code&gt;git checkout -- test.txt&lt;/code&gt; 就OK了。&lt;/p&gt;
+
+&lt;p&gt;情况2：&lt;br /&gt;
+修改了文件，只进行了git add，执行 &lt;code&gt;git reset HEAD&lt;/code&gt; 回退到当前版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;情况3：&lt;br /&gt;
+修改了文件，进行了git add 和 git commit，执行 &lt;code&gt;git reset HEAD^&lt;/code&gt; 回退到上一个版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;br /&gt;
+使用IDEA &lt;a href=&#34;https://blog.csdn.net/qq_36033658/article/details/81902589&#34; target=&#34;blank&#34;&gt;git还原commit（push之前）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;情况4：
+修改了文件，进行了git add 、 git commit 、git push，根据版本号从新到旧依次执行&lt;code&gt;git revert [版本号]&lt;/code&gt;、然后 &lt;code&gt;git commit&lt;/code&gt;、&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;分支&#34;&gt;分支&lt;/h2&gt;
+
+&lt;p&gt;建议使用IDEA
+&lt;a href=&#34;https://www.malaoshi.top/show_1EF2E613IFX.html&#34; target=&#34;blank&#34;&gt;idea git的使用（四）git建立分支与合并分支&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>常用代码片段</title>
+      <link>https://ianeiu.github.io/2019/02/22/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
       <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/22/%E7%BD%AE%E9%A1%B6jscss%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
+      <guid>https://ianeiu.github.io/2019/02/22/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
       
         <description>
 
@@ -1389,1508 +3191,6 @@ W3C标准不推荐在href里面执行javascript语句&lt;/p&gt;
 &amp;lt;a href=&amp;quot;javascript:;&amp;quot; onclick=&amp;quot;xixi()&amp;quot;&amp;gt;a3&amp;lt;/a&amp;gt;&amp;lt;br /&amp;gt;
 &amp;lt;a href=&amp;quot;#&amp;quot; onclick=&amp;quot;xixi();return false&amp;quot;&amp;gt;a5&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>[置顶]GK</title>
-      <link>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6gk/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/%E7%BD%AE%E9%A1%B6gk/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;http&#34;&gt;HTTP&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/思维导图/HTTP超文本协议.png&#34; target=&#34;blank&#34;&gt;HTTP超文本协议&lt;/a&gt;
-来源：微信公众号 java思维导图&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/haif_city/article/details/78333213&#34; target=&#34;blank&#34;&gt;浅谈HTTP中Get、Post、Put与Delete的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;mybatis&#34;&gt;mybatis&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/ClassNotFoundException/p/6425558.html&#34; target=&#34;blank&#34;&gt;Spring-Mybatis &amp;mdash; 配置SqlSessionFactoryBean，整合Spring-Mybatis&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/zaberyjava/article/details/82111243&#34; target=&#34;blank&#34;&gt;Springboot整合mybatis，配置驼峰命名转换&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/davidgu/p/6270761.html&#34; target=&#34;blank&#34;&gt;MyBatis - (二) 一对一映射和一对多映射&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/lwpczy1/article/details/79158535&#34; target=&#34;blank&#34;&gt;Mybatis(Oracle)批量插入、批量更新、批量删除&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.cnblogs.com/xunux/p/4882761.html&#34; target=&#34;blank&#34;&gt;mybatis批量插入数据到oracle&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sou_liu/article/details/47755635&#34; target=&#34;blank&#34;&gt;Mybatis select返回值为map时,选取表字段的两列作为key,value&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_31138523/article/details/64912635&#34; target=&#34;blank&#34;&gt;关于mybatis的xml文件中使用 &amp;gt;= 或者&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;eclipse&#34;&gt;Eclipse&lt;/h3&gt;
-
-&lt;h4 id=&#34;与svn&#34;&gt;与SVN&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/v123411739/article/details/22512133&#34; target=&#34;blank&#34;&gt;Eclipse中使用SVN：&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/Eclipse-工具-使用SVN.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;与maven&#34;&gt;与Maven&lt;/h4&gt;
-
-&lt;p&gt;如何在eclipse jee中创建Maven project并且转换为Dynamic web project（原文链接找不到）：
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中创建Maven project并且转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project（原文链接找不到）：
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/eclipse/如何在eclipse jee中检出项目并转换为Maven project,最后转换为Dynamic web project.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;项目跨域&#34;&gt;项目跨域&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/teach/p/5888958.html&#34; target=&#34;blank&#34;&gt;解决项目中的跨域操作问题&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/项目跨域问题.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;db-ref&#34;&gt;DB-REF&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/hoobey/p/6010804.html&#34; target=&#34;blank&#34;&gt;Oracle 11g安装步骤详谈&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/Oracle 11g安装图文攻略.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/113630.htm&#34; target=&#34;blank&#34;&gt;win10下安装两个MySQL5.6.35数据库&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装-安装俩个MySQL.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jingyan.baidu.com/article/f3ad7d0ffc061a09c3345bf0.html&#34; target=&#34;blank&#34;&gt;MySQL解压版安装&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/MySQL解压版安装.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/dreamcatchergo/article/details/27688601?utm_source=tuicool&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt; 连接oracle提示Cannot create oci environment 解决方案&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000006158186#articleHeader6&#34; target=&#34;blank&#34;&gt;MySQL大表优化方案&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;杂谈&#34;&gt;杂谈&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/antineutrino/article/details/6763722/&#34; target=&#34;blank&#34;&gt;前缀、中缀、后缀表达式&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/前缀、中缀、后缀表达式.docx&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/hcw52592/article/details/69230486&#34; target=&#34;blank&#34;&gt;服务器绑定域名详解&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cmsblogs.com/?p=1220&#34; target=&#34;blank&#34;&gt;fail-fast机制&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/biglxl/article/details/77462266&#34; target=&#34;blank&#34;&gt;fail-fast和fail-safe详解&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/cdf-opensource-007/p/6337448.html&#34; target=&#34;blank&#34;&gt;详解get请求和post请求参数中文乱码的解决办法&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u010416101/article/details/80625862&#34; target=&#34;blank&#34;&gt;cron 表达式0 0/10 * * * 与 0 */10 * * *的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/huhaoshida/p/5412615.html&#34; target=&#34;blank&#34;&gt;Ftp主动模式和被动模式以及java连接ftp模式设置&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/46a2fc4a1d00&#34; target=&#34;blank&#34;&gt;你真的了解什么是冒烟测试么？&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yeyublog/p/6438373.html&#34; target=&#34;blank&#34;&gt;web实现负载均衡的几种实现方式&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/woaic/p/6060262.html&#34; target=&#34;blank&#34;&gt;使用Fiddler抓取手机请求&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/benbenduo/p/4588612.html&#34; target=&#34;blank&#34;&gt;start with connect by prior 递归查询用法&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;spring&#34;&gt;Spring&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xiaoyi52/article/details/76686001&#34; target=&#34;blank&#34;&gt;过滤器使用与bean注入&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/a520songhai/article/details/80785072&#34; target=&#34;blank&#34;&gt;怎么在spring里面获取request 非controller层&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_27680317/article/details/79970590&#34; target=&#34;blank&#34;&gt;参数验证 @Validated 和 @Valid 的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u014175572/article/details/44562393&#34; target=&#34;blank&#34;&gt;SpringMVC读取本地图片(byte[]流方式)显示到前端页面&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/LeegooWang/article/details/79117457?utm_source=blogxgwz3&#34; target=&#34;blank&#34;&gt;为什么springmvc请求参数中的点后面的参数没了&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;springboot&#34;&gt;SpringBoot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012702547/article/details/53740047&#34; target=&#34;blank&#34;&gt;初识Spring Boot框架&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/my__Sun_/article/details/72866329&#34; target=&#34;blank&#34;&gt;springboot的三种启动方式&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/winner-0715/p/6754994.html?utm_source=itdadao&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt;Spring Boot配置文件-多环境配置&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://www.cnblogs.com/austinspark-jessylu/p/8065215.html&#34; target=&#34;blank&#34;&gt;SpringBoot配置属性之Server&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/fuxin41/p/6289162.html&#34; target=&#34;blank&#34;&gt;Spring boot+CXF开发WebService Demo&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://www.cnblogs.com/xiaojf/p/7231529.html&#34; target=&#34;blank&#34;&gt;springboot1.5.4 集成cxf完整实例&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/catoop/article/details/50534006&#34; target=&#34;blank&#34;&gt;
-Spring Boot 集成Shiro和CAS&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;http://www.hillfly.com/2017/179.html&#34; target=&#34;blank&#34;&gt;Shiro 自定义 filter 匹配异常&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/saytime/article/details/74937664&#34; target=&#34;blank&#34;&gt;SpringBoot（七）：SpringBoot整合Swagger2&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/xupeng874395012/article/details/68946676&#34; target=&#34;blank&#34;&gt;swagger注释API详细说明&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/hellopeng1/article/details/82227942&#34; target=&#34;blank&#34;&gt;Swagger2 关于Map参数在API文档中展示详细参数以及参数说明&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/magicalSam/p/7189476.html&#34; target=&#34;blank&#34;&gt;Spring Boot 系列（四）静态资源处理&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/cszhang570221322/article/details/78129565&#34; target=&#34;blank&#34;&gt;Spring Boot与Jsp&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/qq_34665539/article/details/74783910&#34; target=&#34;blank&#34;&gt;springboot中集成jsp，打成jar包可用jsp&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.51cto.com/ityouknow/2091874&#34; target=&#34;blank&#34;&gt;Spring Boot 2.0(五)：感受 Docker 魅力， 排解决多应用部署之疼&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;Spring Boot项目使用maven-assembly-plugin根据不同环境打包成tar.gz或者zip&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Yaphst/article/details/82625159&#34; target=&#34;blank&#34;&gt;基于springboot的ajax异步文件上传&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012834750/article/details/78734146&#34; target=&#34;blank&#34;&gt;SpringBoot系列(二)指定内置tomcat版本&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.jb51.net/article/134750.htm?tdsourcetag=s_pctim_aiomsg&#34; target=&#34;blank&#34;&gt;spring boot启动时加载外部配置文件的方法&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5413845.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.cnblogs.com/java-zhao/p/5415896.html&#34; target=&#34;blank&#34;&gt;springboot + mybatis + 多数据源 （AOP实现）&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;springcloud&#34;&gt;SpringCloud&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/details/72650100&#34; target=&#34;blank&#34;&gt;springcloud微服务二：Eureka服务治理之服务注册中心&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/kangkanglou/article/details/76407623&#34; target=&#34;blank&#34;&gt;Spring @FeignClient&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;logback&#34;&gt;logback&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Cloud_July/article/details/77644401&#34; target=&#34;blank&#34;&gt;logback 根据不同业务打印日志到不同的文件&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;redis&#34;&gt;Redis&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/edisonyuan/article/details/52205272&#34; target=&#34;blank&#34;&gt;redis java客户端connection refused问题    &lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;http://www.mamicode.com/info-detail-2238112.html&#34; target=&#34;blank&#34;&gt;redis通过6379端口无法连接服务器&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012498149/article/details/78772058&#34; target=&#34;blank&#34;&gt;CentOS7为firewalld添加开放端口及相关操作&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/Joe68227597/article/details/75207859&#34; target=&#34;blank&#34;&gt;Failed to start firewalld.service: Unit firewalld.service is masked&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/u014175572/article/details/53375049?utm_source=itdadao&amp;utm_medium=referral&#34; target=&#34;blank&#34;&gt;centos没有/sbin/service命令的恢复方法(-bash: service: command not found)&lt;/a&gt;&lt;br/&gt;
-&lt;a href=&#34;https://blog.csdn.net/jackhuang17/article/details/74866951&#34; target=&#34;blank&#34;&gt;&lt;strong&gt;查看VMware虚拟机里的Centos7的IP&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_dbbfe02e0101oqdj.html&#34; target=&#34;blank&#34;&gt;Linux文本安装&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.centos.bz/2018/03/centos查看端口占用情况和开启端口命令/&#34; target=&#34;blank&#34;&gt;Centos查看端口占用情况和开启端口命令&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.cnblogs.com/moxiaoan/p/5683743.html&#34; target=&#34;blank&#34;&gt;
-CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/liuxianan/p/linux_install_svn_server.html&#34; target=&#34;blank&#34;&gt;Linux下安装SVN服务端小白教程&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_22075041/article/details/78855708&#34; target=&#34;blank&#34;&gt;在linux下安装配置rabbitMQ详细教程&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/jing99/p/9684273.html&#34; target=&#34;blank&#34;&gt;Linux下Mysql安装（tar安装）&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/java-class/p/7110266.html&#34; target=&#34;blank&#34;&gt;weblogic 部署问题定位与解决&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://developer.51cto.com/art/201309/410205_all.htm&#34; target=&#34;blank&#34;&gt;浅谈Java中的Set、List、Map的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/HaroldTihan/p/4316397.html&#34; target=&#34;blank&#34;&gt;Java sax、dom、pull解析xml&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lolashe/article/details/20806319&#34; target=&#34;blank&#34;&gt;HashMap,LinkedHashMap,TreeMap的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/codeemperor/article/details/51351247&#34; target=&#34;blank&#34;&gt;［Java数据结构］从源码分析HashMap&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.ibm.com/developerworks/cn/java/j-jtp06197.html&#34; target=&#34;blank&#34;&gt;正确使用 Volatile 变量&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tk55/p/6655349.html&#34; target=&#34;blank&#34;&gt;request获取各种路径&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/1024Community/p/honery.html&#34; target=&#34;blank&#34;&gt;扒一扒JVM的垃圾回收机制，下次面试你准备好了吗&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xqhys/article/details/81672317&#34; target=&#34;blank&#34;&gt;shiro+cas 单点登出解决（对shiro管理的session有效）&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/kyunchen/article/details/52187514&#34; target=&#34;blank&#34;&gt;Java过滤器的使用和拦截排除的实现&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://rensanning.iteye.com/blog/1551831&#34; target=&#34;blank&#34;&gt;Java解析HTML之NekoHTML&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;设计模式&#34;&gt;设计模式&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/zhangchenliang/p/3700820.html&#34; target=&#34;blank&#34;&gt;简单工厂、工厂方法、抽象工厂、策略模式、策略与工厂的区别&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;前端&#34;&gt;前端&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/happyhaibei/p/6875469.html&#34; target=&#34;blank&#34;&gt;vue checkbox 双向绑定及初始化渲染&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/lfhy/p/6796653.html&#34; target=&#34;blank&#34;&gt;CSS3自定义滚动条样式 -webkit-scrollbar&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xiaoliu66007/p/5029909.html&#34; target=&#34;blank&#34;&gt;jQuery 1.9 .live() is not a function&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u011342720/article/details/81267908&#34; target=&#34;blank&#34;&gt;npm 安装详细教程(cnpm)&lt;/a&gt;&lt;/p&gt;
-
-&lt;!--
-&lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
---&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>[置顶]GW</title>
-      <link>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6gw/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/%E7%BD%AE%E9%A1%B6gw/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;tool&#34;&gt;tool&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.cmd5.com/&#34; target=&#34;blank&#34;&gt;md5解密加密&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.bejson.com/&#34; target=&#34;blank&#34;&gt;JSON校验&lt;/a&gt;、
-&lt;a href=&#34;https://www.bejson.com/color/&#34; target=&#34;blank&#34;&gt;JSON着色工具&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://java.bejson.com/generator/&#34; target=&#34;blank&#34;&gt;SQL转JPA&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://tool.chinaz.com/tools/unicode.aspx&#34; target=&#34;blank&#34;&gt;编码转换&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ip138.com/&#34; target=&#34;blank&#34;&gt;IP查询&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://idea.lanyus.com/&#34; target=&#34;blank&#34;&gt;IDEA注册码&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.mvnrepository.com/&#34; target=&#34;blank&#34;&gt;Maven仓库&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://archive.apache.org/dist/tomcat/&#34; target=&#34;blank&#34;&gt;Tomcat下载&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://patorjk.com/software/taag/#p=display&amp;h=0&amp;v=0&amp;f=3D%20Diagonal&amp;t=wm&#34; target=&#34;blank&#34;&gt;艺术字（框框）&lt;/a&gt;、
-&lt;a href=&#34;http://patorjk.com/text-color-fader/&#34; target=&#34;blank&#34;&gt;艺术字（色层）&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.tablesgenerator.com/&#34; target=&#34;blank&#34;&gt;MD建表&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.jq22.com/&#34; target=&#34;blank&#34;&gt;jq插件库&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.oracle.com/technetwork/java/archive-139210.html&#34; target=&#34;blank&#34;&gt;Oracle-Java下载&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.chinaz.com/&#34; target=&#34;blank&#34;&gt;站长之家&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.html5tricks.com/&#34; target=&#34;blank&#34;&gt;HTML5-DEMO&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.redisfans.com/&#34; target=&#34;blank&#34;&gt;redis命令参考&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ftp.osuosl.org/&#34; target=&#34;blank&#34;&gt;一个FTP&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.draw.io/&#34; target=&#34;blank&#34;&gt;画图网站&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://msdn.itellyou.cn/&#34; target=&#34;blank&#34;&gt;微软工具&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;learn&#34;&gt;learn&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://yun.itheima.com/&#34; target=&#34;blank&#34;&gt;传智播客黑马&lt;/a&gt;、
-&lt;a href=&#34;https://www.imooc.com/&#34; target=&#34;blank&#34;&gt;慕课网&lt;/a&gt;、
-&lt;a href=&#34;https://www.imooc.com/course/list?c=java&amp;sort=pop&#34; target=&#34;blank&#34;&gt;慕课-Java高级&lt;/a&gt;、
-&lt;a href=&#34;https://study.163.com/category/Java%20Web#/?pt=0&#34; target=&#34;blank&#34;&gt;网易云课堂&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.spring4all.com/&#34; target=&#34;blank&#34;&gt;spring社区&lt;/a&gt;、
-&lt;a href=&#34;https://www.yiibai.com/&#34; target=&#34;blank&#34;&gt;易百-多方面教程&lt;/a&gt;、
-&lt;a href=&#34;http://www.runoob.com/java/java-examples.html&#34; target=&#34;blank&#34;&gt;菜鸟Java&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://yjmyzz.cnblogs.com/&#34; target=&#34;blank&#34;&gt;菩提树下的杨过&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/hengyunabc&#34; target=&#34;blank&#34;&gt;横云断岭的专栏&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.cnblogs.com/goody9807/&#34; target=&#34;blank&#34;&gt;PointNet&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://feelschaotic.github.io/&#34; target=&#34;blank&#34;&gt;fct&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.ityouknow.com/&#34; target=&#34;blank&#34;&gt;纯洁的微笑&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.cnblogs.com/itdragon/&#34; target=&#34;blank&#34;&gt;ITDragon&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;http://www.cnblogs.com/ClassNotFoundException/&#34; target=&#34;blank&#34;&gt;limeOracle&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/category/6931500&#34; target=&#34;blank&#34;&gt;java修行路_涂宗勋&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.cnblogs.com/rjzheng&#34; target=&#34;blank&#34;&gt;专注java开发&lt;/a&gt;&lt;/p&gt;
-
-&lt;!--
-&lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
-&lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
---&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://ianeiu.github.io/about/</link>
-      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
-      
-      <guid>https://ianeiu.github.io/about/</guid>
-      
-        <description>
-
-&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;邮箱：weimianwu@foxmail.com&lt;/li&gt;
-&lt;li&gt;微信：qq747151921&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;友链&#34;&gt;友链&lt;/h3&gt;
-
-&lt;p&gt;木有&lt;/p&gt;
-
-&lt;hr /&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java之volatile关键字</title>
-      <link>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
-      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/25/java%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;引入&#34;&gt;引入&lt;/h2&gt;
-
-&lt;p&gt;Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范，
-用来屏蔽不同硬件和操作系统的内存访问差异，让java程序在各种平台下都能达到一致的内存访问效果。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;主内存（Main Memory）&lt;br /&gt;
-主内存可以简单理解为计算机当中的内存，但又不完全等同。&lt;br /&gt;
-主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;工作内存（Working Memory）&lt;br /&gt;
-工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。&lt;br /&gt;
-每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。&lt;br /&gt;
-线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。&lt;br /&gt;
-不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;对于一个静态变量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;static int s = 0；
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;线程A执行如下代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;s = 3；
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通过一系列内存读写的操作指令，线程A把静态变量 s=0 从主内存读到工作内存，再把 s=3 的更新结果同步到主内存当中。&lt;/p&gt;
-
-&lt;p&gt;从单线程的角度来看，这个过程没有任何问题。这时候我们引入线程B，执行如下代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;System.out.println(&amp;quot;s=&amp;quot; + s);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;有可能输出 0 或 3&lt;/p&gt;
-
-&lt;p&gt;可以使用synchronized同步锁（影响性能）或者使用volatile关键字修饰（轻量）&lt;/p&gt;
-
-&lt;h2 id=&#34;volatile-之-可见性&#34;&gt;volatile 之 可见性&lt;/h2&gt;
-
-&lt;p&gt;volatile关键字具有许多特性，其中最重要的特性就是保证了用volatile修饰的变量对所有线程的可见性[当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值]。&lt;/p&gt;
-
-&lt;p&gt;但volatile不能保证变量的原子性即无法保证线程安全。&lt;/p&gt;
-
-&lt;h4 id=&#34;什么时候适合用&#34;&gt;什么时候适合用&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class VolatileTest {
-    public volatile static int count = 0;
-    
-    public static void main(String[] args) {
-        //开启 10个线程
-        for (int i = 0; i &amp;lt; 10; i++) {
-            new Thread(
-                    new Runnable() {
-                        public void run() {
-                            try {
-                                Thread.sleep(1);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            //每个线程当中让count值自增 100次
-                            for (int j = 0; j &amp;lt; 100; j++) {
-                                count++;
-                            }
-                        }
-                    }
-            ).start();
-        }
-        try {
-            Thread.Weep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System, out.print(&amp;quot;count&amp;quot; + count);
-        //最终count的结果值未必是1000，有可能小于1000。
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;变量不需要与其他的状态变量共同参与不变约束。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;volatile static int start = 3;
-volatile static int end = 6;
-    
-线程A执行如下代码：
-while (start &amp;lt; end){
-  //do something
-}
-    
-线程B执行如下代码：
-start+=3;
-end+=3;
-    
-//这种情况下，一旦在线程A的循环中执行了线程B，start有可能先更新成6，
-//造成了一瞬间 start == end，从而跳出while循环的可能性。
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;volatile-之-阻止指令重排&#34;&gt;volatile 之  阻止指令重排&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;public class Singleton2 {
-    private static Singleton2 instance;
-
-    public static Singleton2 getInstance() {
-    	//双重检测机制
-        if (instance == null) {
-        	//同步锁
-            synchronized (Singleton2.class) {
-            	//双重检测机制
-                if (instance == null) {
-                    instance = new Singleton2();
-                }
-            }
-        }
-        return instance;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;已上代码存在问题，可能会得到一个没有初始化完成的对象&lt;/p&gt;
-
-&lt;p&gt;JVM编译器的指令重排，可能会得到一个没有初始化的对象&lt;/p&gt;
-
-&lt;p&gt;java中简单的一句 &lt;code&gt;instance = new Singleton&lt;/code&gt;，会被编译器编译成如下JVM指令：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
-ctorInstance(memory);  //2：初始化对象 
-instance =memory;     //3：设置instance指向刚分配的内存地址 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;但是这些指令顺序并非一成不变，有可能会经过JVM和CPU的优化，指令重排成下面的顺序：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;memory =allocate();    //1：分配对象的内存空间 
-instance =memory;     //3：设置instance指向刚分配的内存地址 
-ctorInstance(memory);  //2：初始化对象 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;当线程A执行完1,3,时，instance对象还未完成初始化，但已经不再指向null。&lt;br /&gt;
-此时如果线程B抢占到CPU资源，执行  if（instance == null）的结果会是false，从而返回一个没有初始化完成的instance对象。&lt;/p&gt;
-
-&lt;p&gt;如何避免这一情况呢？我们需要在instance对象前面增加一个修饰符volatile。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>redis笔记</title>
-      <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
-
-&lt;p&gt;Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。&lt;br /&gt;
-因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。&lt;/p&gt;
-
-&lt;p&gt;Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。&lt;/p&gt;
-
-&lt;h2 id=&#34;redis的数据类型-以及每种数据类型的使用场景&#34;&gt;redis的数据类型，以及每种数据类型的使用场景&lt;/h2&gt;
-
-&lt;p&gt;(一)String&lt;br /&gt;
-这个其实没啥好说的，最常规的set/get操作，value可以是String也可以是数字。一般做一些复杂的计数功能的缓存。&lt;/p&gt;
-
-&lt;p&gt;(二)hash&lt;br /&gt;
-这里value存放的是结构化的对象，比较方便的就是操作其中的某个字段。博主在做单点登录的时候，就是用这种数据结构存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。&lt;/p&gt;
-
-&lt;p&gt;(三)list&lt;br /&gt;
-使用List的数据结构，可以做简单的消息队列的功能。另外还有一个就是，可以利用lrange命令，做基于redis的分页功能，性能极佳，用户体验好。&lt;/p&gt;
-
-&lt;p&gt;(四)set&lt;br /&gt;
-因为set堆放的是一堆不重复值的集合。所以可以做全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，比较麻烦，难道为了一个做一个全局去重，再起一个公共服务，太麻烦了。
-另外，就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。&lt;/p&gt;
-
-&lt;p&gt;(五)sorted set&lt;br /&gt;
-sorted set多了一个权重参数score,集合中的元素能够按score进行排列。可以做排行榜应用，取TOP N操作。还可以用来做延时任务(&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/8972725.html&#34; target=&#34;_blank&#34;&gt;分布式之延时任务方案解析&lt;/a&gt;)、范围查找。&lt;/p&gt;
-
-&lt;h2 id=&#34;项目中使用redis&#34;&gt;项目中使用redis&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;响应请求获取数据时经过redis查询（如果没有则访问数据库，并将数据存储至redis），达到极速响应；&lt;/li&gt;
-&lt;li&gt;高并发的情况，可能减少数据库压力。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;redis单线程工作模型优势&#34;&gt;redis单线程工作模型优势&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;纯内存操作&lt;/li&gt;
-&lt;li&gt;单线程操作，避免了频繁的上下文切换&lt;/li&gt;
-&lt;li&gt;采用了非阻塞I/O多路复用机制（单个线程，跟踪每个I/O流的状态，来管理多个I/O流。）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;使用redis存在的问题&#34;&gt;使用redis存在的问题&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;缓存和数据库双写一致性问题&lt;/li&gt;
-&lt;li&gt;缓存雪崩问题&lt;/li&gt;
-&lt;li&gt;缓存击穿问题&lt;/li&gt;
-&lt;li&gt;缓存的并发竞争问题&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;redis的过期策略以及内存淘汰机制&#34;&gt;redis的过期策略以及内存淘汰机制&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;为什么不用定时删除策略?&lt;br /&gt;
-定时删除,用一个定时器来负责监视key,过期则自动删除。虽然内存及时释放，但是十分消耗CPU资源。在大并发请求下，CPU要将时间应用在处理请求，而不是删除key,因此没有采用这一策略.&lt;/li&gt;
-&lt;li&gt;定期删除+惰性删除是如何工作的呢?&lt;br /&gt;
-定期删除，redis默认每个100ms检查，是否有过期的key,有过期key则删除。需要说明的是，redis不是每个100ms将所有的key检查一次，而是随机抽取进行检查(如果每隔100ms,全部key进行检查，redis岂不是卡死)。因此，如果只采用定期删除策略，会导致很多key到时间没有删除。
-于是，惰性删除派上用场。也就是说在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间那么是否过期了？如果过期了此时就会删除。&lt;/li&gt;
-&lt;li&gt;采用定期删除+惰性删除就没其他问题了么?&lt;br /&gt;
-不是的，如果定期删除没删除key。然后你也没即时去请求key，也就是说惰性删除也没生效。这样，redis的内存会越来越高。那么就应该采用内存淘汰机制。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在redis.conf中有一行配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# maxmemory-policy volatile-lru
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;该配置就是配内存淘汰策略的(什么，你没配过？好好反省一下自己)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1）noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。应该没人用吧。
-2）allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。推荐使用，目前项目在用这种。
-3）allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。应该也没人用吧，你不删最少使用Key,去随机删。
-4）volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。这种情况一般是把redis既当缓存，又做持久化存储的时候才用。不推荐
-5）volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。依然不推荐
-6）volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除。不推荐
-ps：如果没有设置 expire 的key, 不满足先决条件(prerequisites); 那么 volatile-lru, volatile-random 和 volatile-ttl 策略的行为, 和 noeviction(不删除) 基本上一致。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;使用redis实现分布式锁&#34;&gt;使用Redis实现分布式锁&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;//伪代码
-//当一个线程执行setnx返回1，说明key原本不存在，该线程成功得到了锁；
-//当一个线程执行setnx返回0，说明key已经存在，该线程抢锁失败。
-if（setnx（key，1） == 1）{
-    //设置锁超时
-    expire（key，30）
-    try {
-        do something ......
-    } finally {
-        //解锁
-        del（key）
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面的伪代码中，存在着三个致命问题：
-1. setnx和expire的非原子性&lt;br /&gt;
-设想一个极端场景，当线程A执行setnx，成功得到了锁，setnx刚执行成功，还未来得及执行expire指令，节点1（线程A）挂掉了。&lt;br /&gt;
-这样一来，这把锁就没有设置过期时间，变得“长生不老”，别的线程再也无法获得锁了。&lt;br /&gt;
-解决方法：使用set（key，1，30，NX）取代 setnx&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;del 导致误删&lt;br /&gt;
-又是一个极端场景，假如某线程成功得到了锁，并且设置的超时时间是30秒。&lt;br /&gt;
-如果某些原因导致线程A执行的很慢很慢，过了30秒都没执行完，这时候锁过期自动释放，线程B得到了锁。&lt;br /&gt;
-随后，线程A执行完了任务，线程A接着执行del指令来释放锁。&lt;br /&gt;
-但这时候线程B还没执行完，线程A实际上删除的是线程B加的锁。&lt;br /&gt;
-解决方法：可以在加锁的时候把当前的线程ID当做value，并在删除之前验证key对应的value是不是自己线程的ID。&lt;br /&gt;
-&lt;code&gt;
-String threadId = Thread.currentThread().getId()
-set（key，threadId ，30，NX）
-//解锁
-if（threadId .equals(redisClient.get(key))）{
-    del(key)
-}
-&lt;/code&gt;
-但是，这样做又隐含了一个新的问题，判断和释放锁是两个独立操作，不是原子性。
-使用用Lua脚本来实现：
-&lt;code&gt;
-String luaScript = &amp;quot;if redis.call(&#39;get&#39;, KEYS[1]) == ARGV[1] then return redis.call(&#39;del&#39;, KEYS[1]) else return 0 end&amp;quot;;
-redisClient.eval(luaScript , Collections.singletonList(key), Collections.singletonList(threadId));
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;出现并发的可能性
-还是刚才第二点所描述的场景，虽然我们避免了线程A误删掉key的情况，但是同一时间有A，B两个线程在访问代码块，仍然是不完美的。&lt;br /&gt;
-我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁“续航”。&lt;br /&gt;
-当过去了29秒，线程A还没执行完，这时候守护线程会执行expire指令，为这把锁“续命”20秒。&lt;br /&gt;
-守护线程从第29秒开始执行，每20秒执行一次。&lt;br /&gt;
-当线程A执行完任务，会显式关掉守护线程。&lt;br /&gt;
-另一种情况，如果节点1 忽然断电，由于线程A和守护线程在同一个进程，守护线程也会停下。&lt;br /&gt;
-这把锁到了超时的时候，没人给它续命，也就自动释放了。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;ref&#34;&gt;REF&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/9096228.html&#34; target=&#34;_blank&#34;&gt;分布式之redis复习精讲&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.cnblogs.com/Survivalist/p/10321476.html&#34; target=&#34;_blank&#34;&gt;Redis的那些最常见面试问题&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://mp.weixin.qq.com/s/8fdBKAyHZrfHmSajXT_dnA&#34; target=&#34;_blank&#34;&gt;什么是分布式锁？&lt;/a&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Eclipse笔记</title>
-      <link>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;快捷键&#34;&gt;快捷键&lt;/h2&gt;
-
-&lt;h4 id=&#34;使用频率极高的快捷键&#34;&gt;使用频率极高的快捷键&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码提示&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+/&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动生成object方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + s，然后根据提示继续&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shfit + k&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;如何跳转到文件中的特定行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;调出搜索文本的视图&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;进行全局搜索和局部搜索&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;创建各种类型的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + n&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭当前文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;打开文件所在目录&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + w，选择system explorer&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;类&#34;&gt;类&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示出当前打开的所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + pg、up ,ctrl + pg、dn&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f7  跳转到代码编辑器视图 f12&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;经典的quick access&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + 3  搜maven、server&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;eclipse的面包屑功能&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + b （右键面包屑有关闭按钮）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文本&#34;&gt;文本&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + d&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查看字符串出现的地方&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + u&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示html和xml元素的所有属性&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + ,&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;变小写ctrl + shift + y,变大写ctrl +shift + x&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-修改名字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;eclipse-插件&#34;&gt;Eclipse-插件&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Team
-
-&lt;ul&gt;
-&lt;li&gt;Subclipse&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Theme
-
-&lt;ul&gt;
-&lt;li&gt;Eclipse Color Theme&lt;/li&gt;
-&lt;li&gt;Darkest Dark Theme with DevStyle&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;反编译
-
-&lt;ul&gt;
-&lt;li&gt;Enhanced Class Decompiler&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;UML
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/AmaterasUML_1.3.4.zip&#34; target=&#34;blank&#34;&gt;AmaterasUML_1.3.4.zip&lt;/a&gt;解压放入plugins目录&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;lombok&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;方式1&lt;br /&gt;
-将&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/lombok.jar&#34; target=&#34;blank&#34;&gt;lombok.jar&lt;/a&gt;文件，放到eclipse安装路径，该jar包也就是lombok插件的jar文件了&lt;br /&gt;
-打开eclipse.ini文件，添加如下内容：&lt;br /&gt;
--javaagent:lombok.jar&lt;br /&gt;
--Xbootclasspath/a:lombok.jar&lt;/li&gt;
-&lt;li&gt;方式2(推荐)&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/dorothy1224/article/details/79280591/&#34; target=&#34;blank&#34;&gt;eclipse安装lombok&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;修改tomcat设置内存大小&#34;&gt;修改tomcat设置内存大小&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-在Eclipse中下面Servers双击Tomcat Server&amp;hellip; 然后点击General InformAtion 下的Open launch configuration；&lt;br /&gt;
-会弹出Edit Configuration，然后在选中Arguments选项卡；在VM arguments文本框中最后面添加
--Xms256m -Xmx1024m -XX:MaxPermSize=256m 。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-在Eclipse菜单栏中Window ——》Preferences ——》Server ———》 Runtime Environment；&lt;br /&gt;
-选择您用的Tomcat 然后点击Edit&amp;hellip;弹出Edit Server Runtime Ecvironment 下面JRE选项后面的Installed JREs&amp;hellip;
-点击弹出Installed JREs；在选中您用的Jre在点击Edit..在Defaul VM Arguments：中填入-Xms256m -Xmx512m&lt;/p&gt;
-
-&lt;h2 id=&#34;删除某个工作空间&#34;&gt;删除某个工作空间&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-   打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;General&amp;ndash;&amp;gt;Startup and Shutdown&amp;ndash;&amp;gt;WorkSpace，
-然后选中你想要删除的工作空间，点击右边的remove按钮即可。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-   在你的Eclipse目录中找到以下文件configuration.settings\org.eclipse.ui.ide.prefs，这个就是工作空间的配置文件了。
-然后将RECENT_WORKSPACES后面你想删除的工作空间删除即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
-
-&lt;h2 id=&#34;tomcat启动报nullpointerexception&#34;&gt;tomcat启动报NullPointerException&lt;/h2&gt;
-
-&lt;p&gt;在自己设置的workspace目录下面，打开目录：.metadata.plugins\org.eclipse.wst.server.core\ ，然后删除“temp0”文件夹即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;server视图加载项目之后项目名后边有带括号的名字&#34;&gt;Server视图加载项目之后项目名后边有带括号的名字&lt;/h2&gt;
-
-&lt;p&gt;复制过来的项目会出现的一种情况：有时即使是项目改了名字在添加到Server上的时候在Server视图中看到项目名后边有一个带括号的名字,还是复制之前的项目名。&lt;/p&gt;
-
-&lt;p&gt;解决：打开文件“你的工程目录.settings\org.eclipse.wst.common.component”看到内容，将里面所有为你原来工程名的字符串替换为新工程名字。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>IDEA笔记</title>
-      <link>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;快捷键设置&#34;&gt;快捷键设置&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。&lt;/li&gt;
-&lt;li&gt;如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
-首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。&lt;/li&gt;
-&lt;li&gt;我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。&lt;/li&gt;
-&lt;li&gt;在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。&lt;/li&gt;
-&lt;li&gt;Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。&lt;/li&gt;
-&lt;li&gt;在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。&lt;/li&gt;
-&lt;li&gt;添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;
-
-&lt;h4 id=&#34;辅助&#34;&gt;辅助&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找Intellij的命令&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+A&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;运行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;调整项目窗口宽度&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;查询&#34;&gt;查询&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;跳转文件指定行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;搜索文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;全局搜索和局部搜索&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;结合ctrl + f 快捷上下查找文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shift + k&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找接口实现类&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt +B ，ctrl + T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查询&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;shift + shift&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;方位名查询&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;目录查询&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + alt + n，输入/&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;编辑&#34;&gt;编辑&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动处理&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+Enter&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码联系&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + space&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动生成方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+insert，然后根据提示继续&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + d、x&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;选中单词&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + ←、→&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + u、y&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;收尾补充（;{}等）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + 回车&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;驼峰下划线命名切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + c&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-修改类、方法、参数名字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + r&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-可选择&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Ctrl+Shift+Alt+T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码生成&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Template/Postfix +Tab&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示最近打开的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示最近修改的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + pg、up&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;bookmarks&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + F11&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;bookmarks查看&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;shift + F11&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;视图&#34;&gt;视图&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + Tab&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示类结构&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + o&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示文件位置&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Alt+F1&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;项目切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + alt + [ 、]&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;选择窗口&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + 窗口代码（1、2、3 ..）&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;水平分组&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split vertically&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;垂直分组&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;右键文件tab，选择split horizontally&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;收藏至bookmark&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl+shift+F11&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;打开  bookmark&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;shift+F11&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;view&#34;&gt;View&lt;/h2&gt;
-
-&lt;h4 id=&#34;演出模式&#34;&gt;演出模式&lt;/h4&gt;
-
-&lt;p&gt;选择Enter Presentation Mode ，将IDEA弄到最大，让你只关注一个类里面的代码，进行毫无干扰的coding；&lt;br /&gt;
-配合CTRL+E等快捷键定位文件；&lt;br /&gt;
-选择Exit Presentation Mode 即可退出。&lt;/p&gt;
-
-&lt;h4 id=&#34;去掉面包屑-上方导航栏&#34;&gt;去掉面包屑（上方导航栏）&lt;/h4&gt;
-
-&lt;p&gt;使用alt+v，然后取消Navigation bar勾选即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;inject-language&#34;&gt;Inject language&lt;/h2&gt;
-
-&lt;p&gt;选中&amp;rdquo;&amp;ldquo;，使用alt+enter快捷键弹出inject language视图，并选中Inject language or reference；&lt;br /&gt;
-直接按下回车键，在inject language列表选择显示语言（JSON等）；&lt;br /&gt;
-再次使用alt+enter，选中Edit JSON Fragment并回车，就可以看到编辑JSON文件的视图了；&lt;br /&gt;
-使用alt+enter，选中Un-inject language/reference 回车即可取消。&lt;/p&gt;
-
-&lt;h2 id=&#34;常用的expr&#34;&gt;常用的expr&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;.sout&lt;/li&gt;
-&lt;li&gt;.notnull&lt;/li&gt;
-&lt;li&gt;.try&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;常用的setting&#34;&gt;常用的Setting&lt;/h2&gt;
-
-&lt;h4 id=&#34;auto-import&#34;&gt;Auto Import&lt;/h4&gt;
-
-&lt;p&gt;add unambiguous imports on the fly 编写时自动导入&lt;br /&gt;
-optimize imports on the fly 编写时自动优化去除没用到的包&lt;/p&gt;
-
-&lt;h4 id=&#34;appearance&#34;&gt;Appearance&lt;/h4&gt;
-
-&lt;p&gt;show memory indicator 右下角显示内存使用情况，点击可回收内存&lt;br /&gt;
-show line number 显示选中代码行数&lt;/p&gt;
-
-&lt;h4 id=&#34;editor-tabs&#34;&gt;editor tabs&lt;/h4&gt;
-
-&lt;p&gt;取消勾选 show tabs in single row 多行显示tab，配合tab limit&lt;/p&gt;
-
-&lt;h4 id=&#34;general&#34;&gt;General&lt;/h4&gt;
-
-&lt;p&gt;change font size(Zoom) with ctrl+Mouse Wheel 滚轮调整字体大小&lt;/p&gt;
-
-&lt;h4 id=&#34;不使用import&#34;&gt;不使用import *&lt;/h4&gt;
-
-&lt;p&gt;Settings -&amp;gt; Editor -&amp;gt; Code Style -&amp;gt; Java -&amp;gt; Imports  两个count to use import with &amp;lsquo;*&amp;rsquo; 设置成999。&lt;/p&gt;
-
-&lt;h2 id=&#34;常用插件&#34;&gt;常用插件&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;插件名称&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;插件介绍&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Alibaba Java Coding Guidelines&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;阿里巴巴代码规范检查插件&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;FindBugs-IDEA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;潜在 Bug 检查&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Statistic&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;代码统计插件&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Maven Helper&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Maven 辅助插件&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Properties to YAML Converter&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Properties 转 YAML 格式插件&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
-
-&lt;h4 id=&#34;idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled&#34;&gt;IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled&lt;/h4&gt;
-
-&lt;p&gt;修改系统配置 ：&lt;br /&gt;
-Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com&lt;br /&gt;
-windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中&lt;/p&gt;
-
-&lt;h4 id=&#34;tomcat启动项目-错误&#34;&gt;tomcat启动项目 错误&lt;/h4&gt;
-
-&lt;p&gt;Error running &amp;lsquo;Tomcat&amp;rsquo;: Unable to open debugger port (127.0.0.1:53904): java.net.SocketExceptio&lt;br /&gt;
-socket阻塞导致端口占用。
-解决步骤：&lt;br /&gt;
-1. 使用 &lt;code&gt;netstat -ano | find &amp;quot;8081&amp;quot;&lt;/code&gt;  查看进程
-2. 使用 &lt;code&gt;taskkill -f -pid 8152&lt;/code&gt; 关闭进程&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Maven笔记</title>
-      <link>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/15/maven%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-
-&lt;p&gt;项目构建和管理自动化工具&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;坐标(可由groupId、artifactId、version组成)。&lt;/li&gt;
-&lt;li&gt;构件通过坐标作为其唯一标识。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;仓库：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：&lt;a href=&#34;https://repo.maven.apache.org/maven2&#34;&gt;https://repo.maven.apache.org/maven2&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;镜像仓库：/conf/setting文件:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;mirror&amp;gt;
-    &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt;
-    &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt;
-    &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt;
-    &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt;
-&amp;lt;/mirror&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;本地仓库：修改本地仓库的位置 &lt;code&gt;&amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;指定jdk1.7&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;profile&amp;gt;
-    &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt;
-    &amp;lt;activation&amp;gt;
-        &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt;
-        &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt;
-    &amp;lt;/activation&amp;gt;   
-    &amp;lt;properties&amp;gt;
-        &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt;
-        &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt;
-        &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt;
-    &amp;lt;/properties&amp;gt;
-&amp;lt;/profile&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;常用构建命令&#34;&gt;常用构建命令&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;mvn compile 编译
-mvn test 测试
-mvn package 打包
-mvn clean 删除target
-mvn install 安装jar包到本地仓库
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;自动创建目录骨架&#34;&gt;自动创建目录骨架&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;archetype:generate 按照提示进行&lt;/li&gt;
-&lt;li&gt;archetype:generate -DgroupId=组织名, 公司网址的反写+项目名&lt;br /&gt;
-                -DartifactId=项目名-模块名&lt;br /&gt;
-                -Dversion=版本号&lt;br /&gt;
-                -Dpackage=代码所存在的包&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;完整的项目构建过程&#34;&gt;完整的项目构建过程&lt;/h2&gt;
-
-&lt;p&gt;清理、编译、测试、打包、集成测试、验证、部署&lt;/p&gt;
-
-&lt;h2 id=&#34;maven生命周期&#34;&gt;maven生命周期&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;clean：清理项目
-	- pre-clean ：执行清理前的工作
-	- clean：清理上一次构建生成的所有文件
-	- post-clean：执行清理后的文件
-default：构建项目
-	- compile test package install
-site：生成项目站点
-	- pre-site 在生成项目站点之前要完成的工作
-	- site 生成项目的站点文档
-	- post-site在生成项目站点后要完成的工作
-	- site-deploy发布生成的站点到服务器上
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pom结构&#34;&gt;pom结构&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;project (根元素，包含约束信息)
-	modelVersion  指定了当前pom版本
-	groupId    反写的公司网址+项目名
-	artifactId  项目名+模块名
-	version     版本号  第一个0表示大版本号，第二个0表示大版本号，第三个0表示大版本号 0.0.1snapshot快照 alpha內部測試 beta公测 Release稳定 GA正式发布
-	packaging   打包方式 默认是jar
-
-	name       项目的描述名
-	url       项目的地址
-	description  项目描述
-	developers   开发人员信息
-	licenses    许可证信息
-	
-	dependencies 
-		-dependency ｛依赖冲突 1.短路优先（优先依赖最近的模块）2.先声明先优先｝
-			-groupId
-			-artifactId
-			-version
-			-type	
-			-scope    依赖范围 [默认compile、provided、runtime、test、system、import]
-			-optional 设置依赖是否可选
-			-exclusions
-				-exclusion
-					-groupId
-					-artifactId
-
-	dependencyManagement   依赖管理  不会被运行(子模块来引用)
-		-dependencies
-			-dependency
-			
-	build
-		-plugins  插件列表（指出坐标）
-			-plugin
-				-groupId
-				-artifactId
-				-version
-				
-	parent    对父模块的继承
-		-groupId	[org..]
-		-artifactId [jetty\tomcat..]
-		-version [...]
-		-executions
-			-execution	在打包成功后使用 jetty\tomcat：run来运行jetty服务
-				-phase [package]
-				-goals [run]
-					-goal
-	modules   定义多个模块  一起进行编译
-		-module [聚合的项目、模块]
-		
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
-
-&lt;h4 id=&#34;could-not-calculate-build-plan&#34;&gt;Could not calculate build plan&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下的文件夹删除;&lt;/li&gt;
-&lt;li&gt;右击项目Maven-&amp;gt;Update Project-&amp;gt;Update Dependencies&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;missing-artifact&#34;&gt;Missing artifact&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件;&lt;/li&gt;
-&lt;li&gt;如果有就把这个文件删掉，再update一下dependency就行了。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Git笔记</title>
-      <link>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/01/git%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;git使用教程&#34;&gt;Git使用教程&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tugenhua0707/p/4050072.html&#34; target=&#34;blank&#34;&gt;Git使用教程&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;几条常用命令记录&#34;&gt;几条常用命令记录&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git status&lt;/code&gt; 查看本地分支文件信息，确保更新时不产生冲突&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git checkout –- [file name]&lt;/code&gt;  若文件有修改，可以还原到最初状态; 若文件需要更新到服务器上，应该先merge到服务器，再更新到本地&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git branch&lt;/code&gt; 查看当前分支情况&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git checkout remote branch&lt;/code&gt;  若分支为本地分支，则需切换到服务器的远程分支&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git pull&lt;/code&gt; 拉取代码&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git checkout branchA&lt;/code&gt; 切换到分支branchA&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git branch branchB&lt;/code&gt; 创建分支branchB&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;git-工具本地用户名修改&#34;&gt;git 工具本地用户名修改&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;获取当前的用户名  &lt;code&gt;git config user.name&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;修改用户名 &lt;code&gt;git config --global user.name &amp;quot;用户名&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;reset-revert&#34;&gt;reset revert&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用 reset&lt;/li&gt;
-&lt;li&gt;如果我们想恢复之前的某一版本（该版本不是merge类型），但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用 revert&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;墙裂推荐文章
-&lt;a href=&#34;https://blog.csdn.net/yxlshk/article/details/79944535&#34; target=&#34;blank&#34;&gt;Git恢复之前版本的两种方法reset、revert（图文详解）&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;恢复修改的文件&#34;&gt;恢复修改的文件&lt;/h2&gt;
-
-&lt;p&gt;情况1：&lt;br /&gt;
-修改了文件，没有做过任何git操作，直接 &lt;code&gt;git checkout -- test.txt&lt;/code&gt; 就OK了。&lt;/p&gt;
-
-&lt;p&gt;情况2：&lt;br /&gt;
-修改了文件，只进行了git add，执行 &lt;code&gt;git reset HEAD&lt;/code&gt; 回退到当前版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;情况3：&lt;br /&gt;
-修改了文件，进行了git add 和 git commit，执行 &lt;code&gt;git reset HEAD^&lt;/code&gt; 回退到上一个版本, 然后&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;br /&gt;
-使用IDEA &lt;a href=&#34;https://blog.csdn.net/qq_36033658/article/details/81902589&#34; target=&#34;blank&#34;&gt;git还原commit（push之前）&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;情况4：
-修改了文件，进行了git add 、 git commit 、git push，根据版本号从新到旧依次执行&lt;code&gt;git revert [版本号]&lt;/code&gt;、然后 &lt;code&gt;git commit&lt;/code&gt;、&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;分支&#34;&gt;分支&lt;/h2&gt;
-
-&lt;p&gt;建议使用IDEA
-&lt;a href=&#34;https://www.malaoshi.top/show_1EF2E613IFX.html&#34; target=&#34;blank&#34;&gt;idea git的使用（四）git建立分支与合并分支&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -5032,240 +5332,6 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
 &lt;p&gt;DBCP（hibernate3不再支持）&lt;/p&gt;
 
 &lt;p&gt;C3P0&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>[转]TCP与UDP笔记</title>
-      <link>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;tcp与udp&#34;&gt;TCP与UDP&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;面向报文的传输方式&lt;/strong&gt;是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。
-&lt;strong&gt;面向字节流&lt;/strong&gt;的话，虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。如果应用程序一次只发送一个字节，TCP也可以等待积累有足够多的字节后再构成报文段发送出去。&lt;/p&gt;
-
-&lt;h2 id=&#34;tcp协议&#34;&gt;TCP协议&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Transmission Control Protocol，传输控制协议&lt;/li&gt;
-&lt;li&gt;面向连接的协议&lt;/li&gt;
-&lt;li&gt;需要三次握手建立连接&lt;/li&gt;
-&lt;li&gt;需要四次挥手断开连接&lt;/li&gt;
-&lt;li&gt;TCP报头最小长度：20字节&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;三次握手的过程&#34;&gt;三次握手的过程&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;客户端发送：SYN = 1, SEQ = X, 端口号&lt;/li&gt;
-&lt;li&gt;服务器回复：SYN = 1, ACK = X + 1, SEQ = Y&lt;/li&gt;
-&lt;li&gt;客户端发送：ACK = Y + 1, SEQ = X + 1&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;四次挥手过程&#34;&gt;四次挥手过程&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;A向B提出停止连接请求，FIN = 1&lt;/li&gt;
-&lt;li&gt;B收到，ACK = 1&lt;/li&gt;
-&lt;li&gt;B向A提出停止连接请求，FIN = 1&lt;/li&gt;
-&lt;li&gt;A收到，ACK = 1&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;优点:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;可靠，稳定
-
-&lt;ol&gt;
-&lt;li&gt;传递数据前，会有三次握手建立连接&lt;/li&gt;
-&lt;li&gt;传递数据时，有确认、窗口、重传、拥塞控制&lt;/li&gt;
-&lt;li&gt;传递数据后，会断开连接节省系统资源&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;传输慢，效率低，占用系统资源高&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;传递数据前，建立连接需要耗时&lt;/li&gt;
-&lt;li&gt;传递数据时，确认、重传、拥塞等会消耗大量时间以及CPU和内存等硬件资源&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;易被攻击
-1、因为有确认机制，三次握手等机制，容易被人利用，实现DOS 、DDOS攻击&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;如何保证接收的顺序性：&lt;/strong&gt;
-TCP协议使用SEQ和ACK机制保证了顺序性
-TCP的每个报文都是有序号的。确认应答信号ACK=收到的SEQ+1&lt;/p&gt;
-
-&lt;h2 id=&#34;udp协议&#34;&gt;UDP协议&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;User Data Protocol，用户数据包协议&lt;/li&gt;
-&lt;li&gt;面向无连接的协议&lt;/li&gt;
-&lt;li&gt;UDP报头只有8字节&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;简介：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;传输数据之前源端和终端不建立连接，当它想传送时就简单地去抓取来自应用程序的数据，并尽可能快的把它扔到网络上&lt;/li&gt;
-&lt;li&gt;在发送端，UDP传送数据的速度仅仅是受应用程序生成数据的速度、计算机的能力和传输带宽的限制&lt;/li&gt;
-&lt;li&gt;在接收端，UDP把每个消息段放在队列中，应用程序每次从队列中读一个消息段&lt;/li&gt;
-&lt;li&gt;由于传输数据不建立连接，因此也就不需要维护连接状态，包括收发状态等，因此一台服务机可同时向多个客户机传输相同的消息&lt;/li&gt;
-&lt;li&gt;UDP信息包的标题很短，只有8个字节，相对于TCP的20个字节信息包的额外开销很小&lt;/li&gt;
-&lt;li&gt;吞吐量不受拥挤控制算法的调节，只受应用软件生成数据的速率、传输带宽、源端和终端主机性能的限制&lt;/li&gt;
-&lt;li&gt;UDP使用尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态表。&lt;/li&gt;
-&lt;li&gt;UDP是面向报文的。发送方的UDP对应用程序交下来的报文，在添加首部后就向下交付给IP层。既不拆分，也不合并，而是保留这些报文的边界，因此，应用程序需要选择合适的报文大小。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;使用“ping”命令来测试两台主机之间TCP/IP通信是否正常，其实“ping”命令的原理就是向对方主机发送UDP数据包，然后对方主机确认收到数据包，如果数据包是否到达的消息及时反馈回来，那么网络就是通的。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;传输速率快&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;传输数据前，不需要像TCP一样建立连接&lt;/li&gt;
-&lt;li&gt;传输数据时，没有确认、窗口、重传、拥塞控制等机制&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;较安全&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;由于没有了TCP的一些机制，被攻击者利用的漏洞就少了&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不可靠，不稳定
-1、由于没有了TCP的机制，在数据传输时如果网络不好，很可能丢包&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;用UDP协议通讯时怎样得知目标机是否获得了数据包&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;仿造TCP的做法，每发一个UDP包，都在里面加一个SEQ序号，接收方收到包后，将SEQ序号回复给发送方。如果发送方在指定时间以内没有收到回应，说明丢包了。&lt;/p&gt;
-
-&lt;h2 id=&#34;tcp与udp的区别&#34;&gt;TCP与UDP的区别&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;table class=&#34;table table-bordered table-striped table-condensed&#34;&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP面向&lt;strong&gt;有链接&lt;/strong&gt;的通信服务&lt;/td&gt;
-        &lt;td&gt;UDP面向&lt;strong&gt;无连接&lt;/strong&gt;的通信服务&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP提供可靠的通信传输&lt;/td&gt;
-        &lt;td&gt;UDP不可靠,会丢包&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP保证数据顺序&lt;/td&gt;
-        &lt;td&gt;UDP不保证&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP数据无边界&lt;/td&gt;
-        &lt;td&gt;UDP有边界&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP速度快&lt;/td&gt;
-        &lt;td&gt;UDP速度慢&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP面向字节流&lt;/td&gt;
-        &lt;td&gt;UDP面向报文&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP一对一&lt;/td&gt;
-        &lt;td&gt;UDP可以一对一，一对多&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP报头至少20字节&lt;/td&gt;
-        &lt;td&gt;UDP报头8字节&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;TCP有流量控制，拥塞控制&lt;/td&gt;
-        &lt;td&gt;UDP没有&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;strong&gt;为什么UDP比TCP快&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li&gt;TCP需要三次握手&lt;/li&gt;
-&lt;li&gt;TCP有拥塞控制，控制流量等机制&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;为什么TCP比UDP可靠&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li&gt;TCP是面向有连接的，建立连接之后才发送数据；而UDP则不管对方存不存在都会发送数据。&lt;/li&gt;
-&lt;li&gt;TCP有确认机制，接收端每收到一个正确包都会回应给发送端。超时或者数据包不完整的话发送端会重传。UDP没有。因此可能丢包。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;什么时候使用TCP&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;当对网络通讯质量有要求的时候，比如：整个数据要准确无误的传递给对方，这往往用于一些要求可靠的应用，比如HTTP、HTTPS、FTP等传输文件的协议，POP、SMTP等邮件传输的协议。
-在日常生活中，常见使用TCP协议的应用如下：
-浏览器，用的HTTP
-FlashFXP，用的FTP
-Outlook，用的POP、SMTP
-Putty，用的Telnet、SSH
-QQ文件传输&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;什么时候应该使用UDP：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;当对网络通讯质量要求不高的时候，要求网络通讯速度能尽量的快，这时就可以使用UDP。
-比如，日常生活中，常见使用UDP协议的应用如下：
-QQ语音
-QQ视频
-TFTP&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TCP无边界，UDP有边界&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;TCP无边界&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;客户端分多次发送数据给服务器，若服务器的缓冲区够大，那么服务器端会在客户端发送完之后一次性接收过来，所以是无边界的；&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;UDP有边界&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;客户端每发送一次，服务器端就会接收一次，也就是说发送多少次就会接收多少次，因此是有边界的。&lt;/p&gt;
 </description>
       
     </item>

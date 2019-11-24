@@ -7,27 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Spring——拦截器</title>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解 注解 描述 @Component 泛指组件，类似在xml中配置bean @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Sprin</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot初体验</title>
+      <link>https://ianeiu.github.io/2018/11/01/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/01/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <description>如非说明，皆是使用1.5 本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() {</description>
+    </item>
+    
+    <item>
+      <title>Spring拦截器</title>
       <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
       <description>前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的</description>
-    </item>
-    
-    <item>
-      <title>Spring——@Value注入static属性</title>
-      <link>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</link>
-      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/04/springvalue%E6%B3%A8%E5%85%A5static%E5%B1%9E%E6%80%A7/</guid>
-      <description>@Value注入static属性 方式1： 通过执行set方法进行参数注入 private static String userName; @Value(&amp;quot;${git.userName}&amp;quot;) public void setUserName(String userName) { GitUtils.userName = userName; } 方式2： 通过中间变量赋值 private static String userName; @Value(&amp;quot;${git.userName}&amp;quot;) private String userNameTmp; @PostConstruct</description>
     </item>
     
     <item>
@@ -37,15 +46,6 @@
       
       <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
       <description>运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping</description>
-    </item>
-    
-    <item>
-      <title>Spring常用注解</title>
-      <link>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
-      <description>属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property 如果不使用注解自动注入，必须通过代码手动注入,</description>
     </item>
     
   </channel>

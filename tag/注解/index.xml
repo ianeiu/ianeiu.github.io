@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/%E6%B3%A8%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring常用注解</title>
-      <link>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
-      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/08/29/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
-      <description>属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property 如果不使用注解自动注入，必须通过代码手动注入,</description>
+      <guid>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解 注解 描述 @Component 泛指组件，类似在xml中配置bean @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Sprin</description>
     </item>
     
   </channel>

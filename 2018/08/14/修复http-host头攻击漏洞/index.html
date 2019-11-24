@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>修复http host头攻击漏洞 · IanEiU</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp" />
+  <meta name="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 使用框架 （struts2&#43;spring&#43;封装jdbc）开发的maven项目，升级" />
 
   <meta name="keywords" content="Hugo, theme, ianeiu, 吴炜棉" />
 
@@ -21,24 +21,24 @@
 
 
 <meta property="og:title" content="修复http host头攻击漏洞" />
-<meta property="og:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp" />
+<meta property="og:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 使用框架 （struts2&#43;spring&#43;封装jdbc）开发的maven项目，升级" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ianeiu.github.io/2018/08/14/%E4%BF%AE%E5%A4%8Dhttp-host%E5%A4%B4%E6%94%BB%E5%87%BB%E6%BC%8F%E6%B4%9E/" /><meta property="article:published_time" content="2018-08-14T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2018-08-14T00:00:00&#43;00:00"/>
 <meta itemprop="name" content="修复http host头攻击漏洞">
-<meta itemprop="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp">
+<meta itemprop="description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 使用框架 （struts2&#43;spring&#43;封装jdbc）开发的maven项目，升级">
 
 
 <meta itemprop="datePublished" content="2018-08-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-08-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="973">
+<meta itemprop="wordCount" content="851">
 
 
 
 <meta itemprop="keywords" content="漏洞修复,http host头攻击," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="修复http host头攻击漏洞"/>
-<meta name="twitter:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp"/>
+<meta name="twitter:description" content="前言 今天码代码比较顺利，抽点时间整理下之前修复漏洞的精华 Begin info 使用框架 （struts2&#43;spring&#43;封装jdbc）开发的maven项目，升级"/>
 </head>
 <body>
   
@@ -125,7 +125,7 @@
           <div class="clearfix"></div>
           <p class="float-right header-tags">
               <i class="fas fa-tags" aria-hidden="true"></i>
-              <a href="https://ianeiu.github.io/tag/http-host%E5%A4%B4%E6%94%BB%E5%87%BB/">http host头攻击</a>, 
+              <a href="https://ianeiu.github.io/tag/http-host%E5%A4%B4%E6%94%BB%E5%87%BB/">http host头攻击</a>,
                 <a href="https://ianeiu.github.io/tag/%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D/">漏洞修复</a>
           </p>
         
@@ -154,8 +154,9 @@
 
 <h3 id="info">info</h3>
 
-<p>系统是16年（那时我还是大四实习，好怀念青涩的自己）开始开发的，使用框架 dqdp（struts2+spring+封装jdbc），maven构建，升级过jdk到1.8，数据库mysql56
-以下是漏洞信息（忘了用什么工具扫出的，Acunetix Web Vulnerability Scanner？？）</p>
+<p>使用框架 （struts2+spring+封装jdbc）开发的maven项目，升级过jdk到1.8，数据库mysql56</p>
+
+<p>漏洞信息：</p>
 
 <table>
 <thead>
@@ -168,7 +169,7 @@
 <tbody>
 <tr>
 <td align="left">受影响站点</td>
-<td align="left">https://码rp.zh码.com/zh码p2</td>
+<td align="left"><a href="https://xxxrp.zhxxx.com/zxxp2">https://xxxrp.zhxxx.com/zxxp2</a></td>
 </tr>
 
 <tr>
@@ -203,7 +204,7 @@
 </tbody>
 </table>
 
-<h3 id="deal">deal</h3>
+<h3 id="解决">解决</h3>
 
 <p>思路：增加过滤器拦截非白名单的HOST</p>
 
@@ -251,17 +252,17 @@
         <span class="n">chain</span><span class="o">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
     <span class="p">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="n">public</span> <span class="n">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
-		<span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
-		
-	<span class="p">}</span>
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
+        
+    <span class="p">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">arg0</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
-		<span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
-		
-	<span class="p">}</span>
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">arg0</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
+        
+    <span class="p">}</span>
 <span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
 
@@ -277,6 +278,7 @@
     <span class="n">static</span> <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="o">//</span> <span class="err">读取白名单列表</span>
+            <span class="o">//</span> <span class="err">注</span><span class="p">:</span><span class="err">需要引入</span><span class="n">gson或改下实现</span>
             <span class="n">whiteList</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Gson</span><span class="p">()</span><span class="o">.</span><span class="n">fromJson</span><span class="p">(</span>
                     <span class="n">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="n">ServerWhiteListUtil</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">getResourceAsStream</span><span class="p">(</span><span class="s2">&#34;/serverWhiteList.json&#34;</span><span class="p">)),</span>
                     <span class="n">new</span> <span class="n">TypeToken</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="p">()</span> <span class="p">{</span>
@@ -295,7 +297,7 @@
         <span class="k">if</span> <span class="p">(</span><span class="n">whiteList</span> <span class="o">==</span> <span class="n">null</span> <span class="o">||</span> <span class="n">whiteList</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">String</span>  	<span class="nb">str</span> <span class="p">:</span> <span class="n">whiteList</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span>     <span class="nb">str</span> <span class="p">:</span> <span class="n">whiteList</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">str</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="nb">str</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">host</span><span class="p">))</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
             <span class="p">}</span>
@@ -303,13 +305,6 @@
         <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
-<p>注: ServerWhiteListUtil需要引入Gson包
-可在pom.xml中添加</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
-	<span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">gson</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
-	<span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">gson</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
-	<span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">2.6</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span></code></pre></div>
   </article>
 
   
@@ -347,7 +342,7 @@
       </div>
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
         
-        <div class="footer-title">社群</div>
+        <div class="footer-title">社交</div>
         <ul class="list-unstyled">
           
           <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
