@@ -224,6 +224,8 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u011342720/article/details/81267908&#34; target=&#34;blank&#34;&gt;npm 安装详细教程(cnpm)&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000007829080&#34; target=&#34;blank&#34;&gt;npm install 国内镜像&lt;/a&gt;&lt;/p&gt;
+
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://ianeiu.github.io/resouce/GK/&#34; target=&#34;blank&#34;&gt;下载DOC&lt;/a&gt;
@@ -301,7 +303,8 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 &lt;a href=&#34;http://www.cnblogs.com/itdragon/&#34; target=&#34;blank&#34;&gt;ITDragon&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cnblogs.com/ClassNotFoundException/&#34; target=&#34;blank&#34;&gt;limeOracle&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://blog.csdn.net/tuzongxun/article/category/6931500&#34; target=&#34;blank&#34;&gt;java修行路_涂宗勋&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://www.cnblogs.com/rjzheng&#34; target=&#34;blank&#34;&gt;专注java开发&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://www.cnblogs.com/rjzheng&#34; target=&#34;blank&#34;&gt;专注java开发&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.battcn.com/&#34; target=&#34;blank&#34;&gt;唐亚峰 | Battcn&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--
 &lt;a href=&#34;&#34; target=&#34;blank&#34;&gt;&lt;/a&gt;
@@ -1580,6 +1583,10 @@ socket阻塞导致端口占用。
 解决步骤：&lt;br /&gt;
 1. 使用 &lt;code&gt;netstat -ano | find &amp;quot;8081&amp;quot;&lt;/code&gt;  查看进程
 2. 使用 &lt;code&gt;taskkill -f -pid 8152&lt;/code&gt; 关闭进程&lt;/p&gt;
+
+&lt;h4 id=&#34;使用-lombok-后编译不通过&#34;&gt;使用 Lombok 后编译不通过&lt;/h4&gt;
+
+&lt;p&gt;在 Intellij 中 Settings &amp;gt; Build, Execution, Deployment &amp;gt; Compiler &amp;gt; Annotation Processor 选项打钩&lt;/p&gt;
 </description>
       
     </item>
@@ -1810,6 +1817,17 @@ site：生成项目站点
 
 &lt;p&gt;建议使用IDEA
 &lt;a href=&#34;https://www.malaoshi.top/show_1EF2E613IFX.html&#34; target=&#34;blank&#34;&gt;idea git的使用（四）git建立分支与合并分支&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;tag&#34;&gt;tag&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git tag&lt;/code&gt;                          列出所有标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag -a v1.0.0 -m &amp;quot;1.0.0版本&amp;quot;&lt;/code&gt;  创建标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin v1.0.0&lt;/code&gt;            将v1.0.0标签提交到git服务器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin –tags&lt;/code&gt;            将本地所有标签一次性提交到git服务器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag -d v1.0.0&lt;/code&gt;                 删除标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin :refs/tags/v1.0.0&lt;/code&gt; 删除git服务器的v1.0.0标签&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
@@ -3652,6 +3670,25 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
         %y   两位数字表示的年份（15,16&amp;hellip;）&lt;br /&gt;
 文字输出&lt;br /&gt;
         %文字     直接输出文字内容&lt;/p&gt;
+
+&lt;h2 id=&#34;mysql存储ip地址&#34;&gt;mysql存储ip地址&lt;/h2&gt;
+
+&lt;p&gt;mysql提供了两个方法来处理ip地址：
+- inet_aton 把ip转为无符号整型(4-8位)
+- inet_ntoa 把整型的ip转为电地址&lt;/p&gt;
+
+&lt;p&gt;ip字段在类型选择可以使用整形字段&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE `ip_test` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ip` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新增数据 &lt;code&gt;INSERT INTO ip_test (ip) VALUES(inet_aton(&#39;127.0.0.1&#39;))&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查询数据 &lt;code&gt;select t.id,INET_NTOA(t.ip) as ip from ip_test t&lt;/code&gt;&lt;/p&gt;
 </description>
       
     </item>

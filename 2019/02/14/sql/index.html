@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2019-02-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="4258">
+<meta itemprop="wordCount" content="4378">
 
 
 
@@ -589,6 +589,25 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
         %y   两位数字表示的年份（15,16&hellip;）<br />
 文字输出<br />
         %文字     直接输出文字内容</p>
+
+<h2 id="mysql存储ip地址">mysql存储ip地址</h2>
+
+<p>mysql提供了两个方法来处理ip地址：
+- inet_aton 把ip转为无符号整型(4-8位)
+- inet_ntoa 把整型的ip转为电地址</p>
+
+<p>ip字段在类型选择可以使用整形字段</p>
+
+<pre><code>CREATE TABLE `ip_test` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ip` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+</code></pre>
+
+<p>新增数据 <code>INSERT INTO ip_test (ip) VALUES(inet_aton('127.0.0.1'))</code></p>
+
+<p>查询数据 <code>select t.id,INET_NTOA(t.ip) as ip from ip_test t</code></p>
 
   </article>
 
