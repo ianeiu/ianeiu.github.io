@@ -18,7 +18,7 @@
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/20/mysql%E8%AE%B0%E5%BD%95/</guid>
-      <description>外键 cascade方式 在父表上update/delete记录时，同步update/delete掉子表的匹配记录 set null方式 在父表上upda</description>
+      <description>字符编码使用utf8mb4 MySQL数据库的 “utf8”并不是真正概念里的 UTF-8。MySQL中的“utf8”编码只支持最大3字节每字符。</description>
     </item>
     
   </channel>

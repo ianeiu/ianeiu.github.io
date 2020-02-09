@@ -21,14 +21,5 @@
       <description>外网无法内网FTP（200 Type set to A） FTP 搭建好后在外网访问出想以下错误： 在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误 打开FTP</description>
     </item>
     
-    <item>
-      <title>Mybatis——异常Mapped Statements collection does not contain</title>
-      <link>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/mybatis%E5%BC%82%E5%B8%B8mapped-statements-collection-does-not-contain/</guid>
-      <description>初次接触使用Mybatis会出现“Mapped Statements collection does not contain value for &amp;hellip;.“错误提示 常见的错误原因有几种： mapper.xml中没有加入</description>
-    </item>
-    
   </channel>
 </rss>

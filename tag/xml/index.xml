@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XML on IanEiU</title>
+    <link>https://ianeiu.github.io/tag/xml/</link>
+    <description>Recent content in XML on IanEiU</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Tue, 31 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/xml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis——XML篇</title>
+      <link>https://ianeiu.github.io/2019/12/31/mybatisxml%E7%AF%87/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/12/31/mybatisxml%E7%AF%87/</guid>
+      <description>Mybatis xml映射文件中，除了常见的select、insert、updae、delete标签之外 还有动态sql标签 trim、 where、set、f</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -104,6 +104,8 @@
 
 &lt;h3 id=&#34;spring&#34;&gt;Spring&lt;/h3&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://github.com/wuyouzhuguli/SpringAll&#34; target=&#34;blank&#34;&gt;SpringAll&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/xiaoyi52/article/details/76686001&#34; target=&#34;blank&#34;&gt;过滤器使用与bean注入&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/a520songhai/article/details/80785072&#34; target=&#34;blank&#34;&gt;怎么在spring里面获取request 非controller层&lt;/a&gt;&lt;/p&gt;
@@ -337,6 +339,1270 @@ CentOS7使用firewalld打开关闭防火墙与端口&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;木有&lt;/p&gt;
 
 &lt;hr /&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Mybatis之问题篇</title>
+      <link>https://ianeiu.github.io/2020/02/09/mybatis%E4%B9%8B%E9%97%AE%E9%A2%98%E7%AF%87/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/02/09/mybatis%E4%B9%8B%E9%97%AE%E9%A2%98%E7%AF%87/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;和-的区别&#34;&gt;#{}和${}的区别？&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;${}&lt;/code&gt;是Properties文件中的变量占位符，它可以用于标签属性值和sql内部，属于静态文本替换。&lt;br /&gt;
+&lt;code&gt;#{}&lt;/code&gt;是sql的参数占位符，Mybatis会将sql中的#{}替换为?号，在sql执行前会使用PreparedStatement的参数设置方法，按序给sql的?号占位符设置参数值&lt;/p&gt;
+
+&lt;h2 id=&#34;最佳实践中-通常一个xml映射文件-都会写一个dao接口与之对应-请问-这个dao接口的工作原理是什么-dao接口里的方法-参数不同时-方法能重载吗&#34;&gt;最佳实践中，通常一个Xml映射文件，都会写一个Dao接口与之对应，请问，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？&lt;/h2&gt;
+
+&lt;p&gt;Dao接口的全限定名，就是映射文件中的namespace的值；接口的方法名，就是映射文件中MappedStatement的id值；接口方法内的参数，就是传递给sql的参数。&lt;/p&gt;
+
+&lt;p&gt;Mapper接口是没有实现类的，当调用接口方法时，全限定名+方法名作为key值，可唯一定位一个MappedStatement。&lt;/p&gt;
+
+&lt;p&gt;Dao接口里的方法，是不能重载的，因为是全限名+方法名的保存和寻找策略。&lt;/p&gt;
+
+&lt;p&gt;Dao接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Dao接口生成代理proxy对象，代理对象proxy会拦截接口方法，转而执行MappedStatement所代表的sql，然后将sql执行结果返回。&lt;/p&gt;
+
+&lt;h2 id=&#34;mybatis是如何分页的&#34;&gt;mybatis是如何分页的&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;SQL带参直接分页&lt;/li&gt;
+&lt;li&gt;使用拦截器分页&lt;br /&gt;
+分页插件的基本原理是使用Mybatis提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的sql，然后重写sql，根据dialect方言，添加对应的物理分页语句和物理分页参数。&lt;/li&gt;
+&lt;li&gt;RowBounds分页&lt;br /&gt;
+Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内存分页，而非物理分页。数据量小时，RowBounds不失为一种好办法。但是数据量大时，实现拦截器就很有必要了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;mybatis是如何将sql执行结果封装为目标对象并返回的-都有哪些映射形式&#34;&gt;Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用标签，逐一定义列名和对象属性名之间的映射关系。&lt;/li&gt;
+&lt;li&gt;使用sql列的别名功能，将列别名书（不区分大小写）写为对象属性名，比如TNAME AS NAME&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;mybatis是否支持延迟加载-如果支持-它的实现原理是什么&#34;&gt;Mybatis是否支持延迟加载？如果支持，它的实现原理是什么？&lt;/h2&gt;
+
+&lt;p&gt;Mybatis仅支持association关联对象和collection关联集合对象的延迟加载，association指的就是一对一，collection指的就是一对多查询。在Mybatis配置文件中，可以配置是否启用延迟加载lazyLoadingEnabled=true|false。&lt;/p&gt;
+
+&lt;p&gt;原理：使用CGLIB创建目标对象的代理对象，当调用目标方法时，进入拦截器方法，比如调用a.getB().getName()，拦截器invoke()方法发现a.getB()是null值，那么就会单独发送事先保存好的查询关联B对象的sql，把B查询上来，然后调用a.setB(b)，于是a的对象b属性就有值了，接着完成a.getB().getName()方法的调用。这就是延迟加载的基本原理。&lt;/p&gt;
+
+&lt;h2 id=&#34;mybatis都有哪些executor执行器-它们之间的区别是什么&#34;&gt;Mybatis都有哪些Executor执行器？它们之间的区别是什么？&lt;/h2&gt;
+
+&lt;p&gt;Mybatis有三种基本的Executor执行器，SimpleExecutor、ReuseExecutor、BatchExecutor。&lt;/p&gt;
+
+&lt;p&gt;SimpleExecutor：每执行一次update或select，就开启一个Statement对象，用完立刻关闭Statement对象。&lt;/p&gt;
+
+&lt;p&gt;ReuseExecutor：执行update或select，以sql作为key查找Statement对象，存在就使用，不存在就创建，用完后，不关闭Statement对象，而是放置于Map内，供下一次使用。简言之，就是重复使用Statement对象。&lt;/p&gt;
+
+&lt;p&gt;BatchExecutor：执行update（没有select，JDBC批处理不支持select），将所有sql都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个Statement对象，每个Statement对象都是addBatch()完毕后，等待逐一执行executeBatch()批处理。与JDBC批处理相同。&lt;/p&gt;
+
+&lt;p&gt;作用范围：Executor的这些特点，都严格限制在SqlSession生命周期范围内。&lt;/p&gt;
+
+&lt;h2 id=&#34;mybatis是否可以映射enum枚举类&#34;&gt;Mybatis是否可以映射Enum枚举类&lt;/h2&gt;
+
+&lt;p&gt;Mybatis可以映射枚举类，不单可以映射枚举类，Mybatis可以映射任何对象到表的一列上。映射方式为自定义一个TypeHandler，实现TypeHandler的setParameter()和getResult()接口方法。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java之命名规范</title>
+      <link>https://ianeiu.github.io/2020/01/15/java%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/01/15/java%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      
+        <description>
+
+&lt;p&gt;原文： &lt;a href = &#34;https://mp.weixin.qq.com/s/q_C9daCZTq1SR0zwkrwyag&#34; target =&#34;_blank&#34;&gt;编码5分钟，命名2小时？史上最全的Java命名规范参考！&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;一-java中的命名规范&#34;&gt;一、Java中的命名规范&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;类型(名)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;约束&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;项目&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;全部小写&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;多个单词用中划线分隔‘-’  spring-cloud&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;包&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;全部小写&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;com.alibaba.fastjson&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;类&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;单词首字母大写&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Feature,FieldDeserializer&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;变量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;首字母小写多个单词组成时，除首个单词其他单词首字母都要大写&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;password, userName&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;常量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;全部大写，多个单词，用&amp;rsquo;_&amp;lsquo;分隔&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CACHEEXPIREDTIME&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同变量&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;read(), getById(Long id)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;二-包命名&#34;&gt;二、包命名&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;前缀&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;indi或onem&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;indi.发起者名.项目名.模块名.……&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;个体项目&lt;br/&gt;个人发起，但非自己独自完成&lt;br/&gt;可公开或私有项目，copyright主要属于发起者。&lt;br/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pers&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;pers.个人名.项目名.模块名.……&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;个人项目&lt;br/&gt;指个人发起，独自完成，&lt;br/&gt;可分享的项目,copyright主要属于个人&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;priv&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;priv.个人名.项目名.模块名.……&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;私有项目，指个人发起，独自完成&lt;br/&gt;非公开的私人使用的项目，copyright属于个人。&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;team&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;team.团队名.项目名.模块名.……&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;团队项目，指由团队发起&lt;br/&gt;并由该团队开发的项目,copyright属于该团队所有&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;顶级域名&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;com.公司名.项目名.模块名.……&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;公司项目，copyright由项目发起的公司所有&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;三-类命名&#34;&gt;三、类命名&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;属性&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;约束&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;抽象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Abstract 或 Base 开头&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;BaseUserService&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;枚举&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enum 作为后缀&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OSType&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;工具&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Utils作为后缀&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StringUtils&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;异常&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Exception结尾&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;RuntimeException&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;接口实现&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;接口名+ Impl&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;UserServiceImpl&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;领域模型相&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;/DO/DTO/VO/DAO&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;正例：UserDAO 反例：UserDao&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;设计模式相关&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Builder，Factory等&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;当使用到设计模式时要使用对应的设计模式作为后缀，如ThreadFactory&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;处理特定功能&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Handler，Predicate，Validator&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;表示处理器，校验器，断言&lt;br/&gt;这些类工厂还有配套的方法名，如handle，predicate，validate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;测试&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Test后缀&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;UserServiceTest，表示用来测试UserService类的&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;MVC分层&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Controller，Service，ServiceImpl，DAO后缀&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;UserManageController，UserManageDAO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;四-方法&#34;&gt;四、方法&lt;/h2&gt;
+
+&lt;p&gt;注：pre- prefix前缀，suf- suffix后缀，alo-alone 单独使用&lt;/p&gt;
+
+&lt;h4 id=&#34;4-1-返回真伪值的方法-pre&#34;&gt;4.1 返回真伪值的方法（pre）&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;is&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对象是否符合期待的状态&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;isValid&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;can&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对象能否执行所期待的动作&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;canRemove&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;should&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;调用方执行某个命令或方法是好还是不好、应不应该，&lt;br/&gt;或者说推荐还是不推荐&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shouldMigrate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;has&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对象是否持有所期待的数据和属性&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;hasObservers&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;needs&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;调用方是否需要执行某个命令或方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;needsMigrate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-2-用来检查的方法&#34;&gt;4.2 用来检查的方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ensure&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;检查是否为期待的状态，不是则抛出异常或返回error code&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ensureCapacity&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;validate&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;检查是否为正确的状态，不是则抛出异常或返回error code&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;validateInputs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-3-按需求才执行的方法&#34;&gt;4.3 按需求才执行的方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;位置&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;IfNeeded&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;需要的时候执行，不需要则什么都不做&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;drawIfNeeded&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;might&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;mightCreate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;try&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;尝试执行，失败时抛出异常，或是返回errorcode&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;tryCreate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OrDefault&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;尝试执行，失败时返回默认值&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;getOrDefault&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OrElse&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;尝试执行，失败时返回，实际参数中指定的值&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;getOrElse&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;force&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;强制尝试执行，error抛出异常或是返回值&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;forceCreate, forceStop&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-4-异步相关方法&#34;&gt;4.4 异步相关方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;位置&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;blocking&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;线程阻塞方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;blockingGetUser&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;InBackground&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;执行在后台线程&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;doInBackground&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Async&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;异步方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;sendAsync&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;suf&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sync&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同步方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;sendSync&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;schedule&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Job和Task放入队列&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;schedule, scheduleJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;post&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;postJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;execute&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;执行异步或同步方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;execute,executeTask&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;start&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;star,startJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;cancel&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;停止异步方法&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;cancel,cancelJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre/alo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;stop&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;stop,stopJob&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-5-回调方法&#34;&gt;4.5 回调方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;位置&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;on&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;事件发生时执行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;onCompleted&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;before&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;事件发生前执行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;beforeUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;preUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;will&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;willUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;after&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;事件发生后执行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;afterUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;post&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;postUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;did&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;didUpdate&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pre&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;should&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;确认事件是否可以执行&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;shouldUpdate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-6-操作对象生命周期的方法&#34;&gt;4.6 操作对象生命周期的方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;initialize&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;初始化或延迟初始化使用&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;initialize&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pause&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;暂停&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;onPause,pause&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;stop&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;停止&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;onStop,stop&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;abandon&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;销毁的替代&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;abandon&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;destroy&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;destroy&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;dispose&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;同上&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;dispose&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-7-与集合操作相关的方法&#34;&gt;4.7 与集合操作相关的方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;contains&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;是包含指定对象相同的对象&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;contains&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;add&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;添加&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;addJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;append&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;添加&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;appendJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;insert&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;插入到下标n&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;insertJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;put&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;添加与key对应的元素&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;putJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;remove&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;移除元素&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;removeJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;enqueue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;添加到队列的最末位&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;enqueueJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;dequeue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;从队列中头部取出并移除&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;dequeueJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;push&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;添加到栈头&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;pushJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pop&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;从栈头取出并移除&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;popJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;peek&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;从栈头取出但不移除&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;peekJob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;find&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;寻找符合条件的某物&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;findById&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-8-与数据相关的方法&#34;&gt;4.8 与数据相关的方法&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;create&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;新创建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;createAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;new&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;新创建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;newAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;from&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;从既有的某物新建或是从其他的数据新建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;fromConfig&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;to&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;转换&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;toString&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;update&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;更新既有某物&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;updateAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;load&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;读取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;loadAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;fetch&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;远程读取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;fetchAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;delete&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;删除&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;deleteAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;remove&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;删除&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;removeAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;save&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;保存&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;saveAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;store&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;保存&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;storeAccount&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;commit&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;保存&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;commitChange&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;apply&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;保存或应用&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;applyChange&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;clear&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;清除或是恢复到初始状态&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;clearAll&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;reset&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;清除或是恢复到初始状态&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;resetAll&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;4-9-成对出现的动词&#34;&gt;4.9 成对出现的动词&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;单词/意义&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;单词/意义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;get获取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;set 设置&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;add 增加&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;remove 删除&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;create 创建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;destory 移除&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;start 启动&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;stop 停止&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;open 打开&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;close 关闭&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;read 读取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;write 写入&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;load 载入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;save 保存&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;create 创建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;destroy 销毁&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;begin 开始&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;end 结束&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;backup 备份&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;restore 恢复&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;import 导入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;export 导出&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;split 分割&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;merge 合并&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;inject 注入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;extract 提取&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;attach 附着&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;detach 脱离&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;bind 绑定&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;separate 分离&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;view 查看&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;browse 浏览&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;edit 编辑&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;modify 修改&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;select 选取&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;mark 标记&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;copy 复制&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;paste 粘贴&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;undo 撤销&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;redo 重做&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;insert 插入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;delete 移除&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;add 加入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;append 添加&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;clean 清理&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;clear 清除&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;index 索引&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;sort 排序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;find 查找&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;search 搜索&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;increase 增加&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;decrease 减少&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;play 播放&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;pause 暂停&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;launch 启动&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;run 运行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;compile 编译&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;execute 执行&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;debug 调试&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;trace 跟踪&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;observe 观察&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;listen 监听&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;build 构建&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;publish 发布&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;input 输入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;output 输出&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;encode 编码&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;decode 解码&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;encrypt 加密&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;decrypt 解密&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;compress 压缩&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;decompress 解压缩&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;pack 打包&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;unpack 解包&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;parse 解析&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;emit 生成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;connect 连接&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;disconnect 断开&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;send 发送&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;receive 接收&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;download 下载&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;upload 上传&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;refresh 刷新&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;synchronize 同步&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;update 更新&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;revert 复原&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;lock 锁定&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;unlock 解锁&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;check out 签出&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;check in 签入&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;submit 提交&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;commit 交付&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;push 推&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;pull 拉&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;expand 展开&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;collapse 折叠&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;begin 起始&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;end 结束&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;start 开始&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;finish 完成&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;enter 进入&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;exit 退出&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;abort 放弃&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;quit 离开&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;obsolete 废弃&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;depreciate 废旧&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;collect 收集&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;aggregate 聚集&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;五-变量-常量命名&#34;&gt;五，变量&amp;amp;常量命名&lt;/h2&gt;
+
+&lt;h4 id=&#34;5-1-变量命名&#34;&gt;5.1 变量命名&lt;/h4&gt;
+
+&lt;p&gt;变量是指在程序运行中可以改变其值的量，包括成员变量和局部变量。变量名由多单词组成时，第一个单词的首字母小写，其后单词的首字母大写，俗称骆驼式命名法（也称驼峰命名法），如 computedValues，index、变量命名时，尽量简短且能清楚的表达变量的作用，命名体现具体的业务含义即可。&lt;/p&gt;
+
+&lt;p&gt;变量名不应以下划线或美元符号开头，尽管这在语法上是允许的。变量名应简短且富于描述。变量名的选用应该易于记忆，即，能够指出其用途。尽量避免单个字符的变量名，除非是一次性的临时变量。pojo中的布尔变量，都不要加is(数据库中的布尔字段全都要加 is_ 前缀)。&lt;/p&gt;
+
+&lt;h4 id=&#34;5-2-常量命名&#34;&gt;5.2 常量命名&lt;/h4&gt;
+
+&lt;p&gt;常量命名CONSTANT_CASE，一般采用全部大写（作为方法参数时除外），单词间用下划线分割。那么什么是常量呢？&lt;/p&gt;
+
+&lt;p&gt;常量是在作用域内保持不变的值，一般使用final进行修饰。一般分为三种，全局常量（public static final修饰），类内常量（private static final 修饰）以及局部常量（方法内，或者参数中的常量），局部常量比较特殊，通常采用小驼峰命名即可。&lt;/p&gt;
+
+&lt;p&gt;常量一般都有自己的业务含义,不要害怕长度过长而进行省略或者缩写。如，用户消息缓存过期时间的表示，那种方式更佳清晰，交给你来评判。&lt;/p&gt;
+
+&lt;h4 id=&#34;通用命名规则&#34;&gt;通用命名规则&lt;/h4&gt;
+
+&lt;p&gt;尽量不要使用拼音；杜绝拼音和英文混用。对于一些通用的表示或者难以用英文描述的可以采用拼音，一旦采用拼音就坚决不能和英文混用。正例：BeiJing， HangZhou 反例：validateCanShu&lt;/p&gt;
+
+&lt;p&gt;命名过程中尽量不要出现特殊的字符，常量除外。&lt;/p&gt;
+
+&lt;p&gt;尽量不要和jdk或者框架中已存在的类重名，也不能使用java中的关键字命名。&lt;/p&gt;
+
+&lt;p&gt;妙用介词，如for(可以用同音的4代替), to(可用同音的2代替), from, with，of等。如类名采用User4RedisDO，方法名getUserInfoFromRedis，convertJson2Map等。&lt;/p&gt;
+
+&lt;h4 id=&#34;六-代码注解&#34;&gt;六，代码注解&lt;/h4&gt;
+
+&lt;h4 id=&#34;6-1-注解的原则&#34;&gt;6.1 注解的原则&lt;/h4&gt;
+
+&lt;p&gt;好的命名增加代码阅读性，代码的命名往往有严格的限制。而注解不同，程序员往往可以自由发挥，单并不意味着可以为所欲为之胡作非为。&lt;/p&gt;
+
+&lt;p&gt;优雅的注解通常要满足三要素。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Nothing is strange 没有注解的代码对于阅读者非常不友好，哪怕代码写的在清除，阅读者至少从心理上会有抵触，更何况代码中往往有许多复杂的逻辑，所以一定要写注解，不仅要记录代码的逻辑，还有说清楚修改的逻辑。&lt;/li&gt;
+&lt;li&gt;Less is more 从代码维护角度来讲，代码中的注解一定是精华中的精华。合理清晰的命名能让代码易于理解，对于逻辑简单且命名规范，能够清楚表达代码功能的代码不需要注解。滥用注解会增加额外的负担，更何况大部分都是废话。
+&lt;code&gt;
+// 根据id获取信息【废话注解】
+getMessageById(id)
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Advance with the time 注解应该随着代码的变动而改变，注解表达的信息要与代码中完全一致。通常情况下修改代码后一定要修改注解。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;6-2-注解格式&#34;&gt;6.2 注解格式&lt;/h4&gt;
+
+&lt;p&gt;注解大体上可以分为两种，一种是javadoc注解，另一种是简单注解。&lt;/p&gt;
+
+&lt;p&gt;javadoc注解可以生成JavaAPI为外部用户提供有效的支持javadoc注解通常在使用IDEA或者Eclipse等开发工具时都可以自动生成，也支持自定义的注解模板，仅需要对对应的字段进行解释。参与同一项目开发的同学，尽量设置成相同的注解模板。&lt;/p&gt;
+
+&lt;p&gt;a. 包注解&lt;br /&gt;
+包注解在工作中往往比较特殊，通过包注解可以快速知悉当前包下代码是用来实现哪些功能，强烈建议工作中加上，尤其是对于一些比较复杂的包，包注解一般在包的根目录下，名称统一为package-info.java。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * 落地也质量检测
+ * 1. 用来解决什么问题
+ * 对广告主投放的广告落地页进行性能检测，模拟不同的系统，如Android，IOS等; 模拟不同的网络：2G，3G，4G，wifi等
+ *
+ * 2. 如何实现
+ * 基于chrome浏览器，用chromedriver驱动浏览器，设置对应的网络，OS参数，获取到浏览器返回结果。
+ *
+ * 注意：网络环境配置信息{@link cn.mycookies.landingpagecheck.meta.NetWorkSpeedEnum}目前使用是常规速度，可以根据实际情况进行调整
+ *
+ * @author cruder
+ * @time 2019/12/7 20:3 下午
+ */
+package.cn.mycookies.landingpagecheck;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;b. 类注接&lt;br /&gt;
+javadoc注解中，每个类都必须有注解。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+* Copyright (C), 2019-2020, Jann  balabala...
+*
+* 类的介绍：这是一个用来做什么事情的类，有哪些功能，用到的技术.....
+*
+* @author   类创建者姓名 保持对齐
+* @date     创建日期 保持对齐
+* @version  版本号 保持对齐
+*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;c. 属性注解&lt;br /&gt;
+在每个属性前面必须加上属性注释，通常有一下两种形式，至于怎么选择，你高兴就好，不过一个项目中要保持统一。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/** 提示信息 */
+private String userName;
+/**
+ * 密码
+ */
+private String password;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;d. 方法注释&lt;br /&gt;
+在每个方法前面必须加上方法注释，对于方法中的每个参数，以及返回值都要有说明。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+  * 方法的详细说明，能干嘛，怎么实现的，注意事项...
+  *
+  * @param xxx      参数1的使用说明， 能否为null
+  * @return 返回结果的说明， 不同情况下会返回怎样的结果
+  * @throws 异常类型   注明从此类方法中抛出异常的说明
+  */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;e. 构造方法注释&lt;br /&gt;
+在每个构造方法前面必须加上注释&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+  * 构造方法的详细说明
+  *
+  * @param xxx      参数1的使用说明， 能否为null
+  * @throws 异常类型   注明从此类方法中抛出异常的说明
+  */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而简单注解往往是需要工程师字节定义，在使用注解时应该注意一下几点：&lt;/p&gt;
+
+&lt;p&gt;枚举类的各个属性值都要使用注解，枚举可以理解为是常量，通常不会发生改变，通常会被在多个地方引用，对枚举的修改和添加属性通常会带来很大的影响。&lt;/p&gt;
+
+&lt;p&gt;保持排版整洁，不要使用行尾注释；双斜杠和星号之后要用1个空格分隔。&lt;/p&gt;
+
+&lt;p&gt;对于不同的逻辑说明，可以用空行分隔&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;无论是命名和注解，他们的目的都是为了让代码和工程师进行对话，增强代码的可读性，可维护性。优秀的代码往往能够见名知意，注解往往是对命名的补充和完善。命名太南了！&lt;/p&gt;
+
+&lt;p&gt;参考文献：&lt;br /&gt;
+《码出高效》&lt;br /&gt;
+&lt;code&gt;https://www.cnblogs.com/wangcp-2014/p/10215620.html&lt;/code&gt;
+&lt;code&gt;https://qiita.com/KeithYokoma/items/2193cf79ba76563e3db6&lt;/code&gt;
+&lt;code&gt;https://google.github.io/styleguide/javaguide.html#s2.1-file-name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;原文： &lt;a href = &#34;https://mp.weixin.qq.com/s/q_C9daCZTq1SR0zwkrwyag&#34; target =&#34;_blank&#34;&gt;编码5分钟，命名2小时？史上最全的Java命名规范参考！&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Mybatis——XML篇</title>
+      <link>https://ianeiu.github.io/2019/12/31/mybatisxml%E7%AF%87/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/12/31/mybatisxml%E7%AF%87/</guid>
+      
+        <description>
+
+&lt;p&gt;Mybatis xml映射文件中，除了常见的select、insert、updae、delete标签之外
+还有动态sql标签 trim、 where、set、foreach、if、choose、when、otherwise、bind等&lt;/p&gt;
+
+&lt;h3 id=&#34;where标签&#34;&gt;where标签&lt;/h3&gt;
+
+&lt;p&gt;反例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+module_code, oper_type, oper_content, data_id, oper_by, oper_name, oper_dt, INET_NTOA(oper_ip) as oper_ip
+FROM tb_operation_log l WHERE 1=1
+&amp;lt;if test=&amp;quot;param.moduleCode != null&amp;quot;&amp;gt;
+    AND l.module_code = #{param.moduleCode}
+&amp;lt;/if&amp;gt;
+&amp;lt;if test=&amp;quot;param.operBy != null and param.operBy !=&#39;&#39;&amp;quot;&amp;gt;
+    AND l.oper_by = #{param.operBy}
+&amp;lt;/if&amp;gt;
+&amp;lt;if test=&amp;quot;param.operName != null and param.operName !=&#39;&#39;&amp;quot;&amp;gt;
+    AND l.oper_name LIKE CONCAT(&amp;quot;%&amp;quot;,#{param.operName},&amp;quot;%&amp;quot;)
+&amp;lt;/if&amp;gt;
+&amp;lt;if test=&amp;quot;param.operDtStart != null and param.operDtEnd != null&amp;quot;&amp;gt;
+    AND l.oper_dt BETWEEN #{param.operDtStart} AND #{param.operDtEnd}
+&amp;lt;/if&amp;gt;
+order by l.oper_dt desc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+module_code, oper_type, oper_content, data_id, oper_by, oper_name, oper_dt, INET_NTOA(oper_ip) as oper_ip
+FROM tb_operation_log l
+&amp;lt;where&amp;gt;
+    &amp;lt;if test=&amp;quot;param.moduleCode != null&amp;quot;&amp;gt;
+        AND l.module_code = #{param.moduleCode}
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;param.operBy != null and param.operBy !=&#39;&#39;&amp;quot;&amp;gt;
+        AND l.oper_by = #{param.operBy}
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;param.operName != null and param.operName !=&#39;&#39;&amp;quot;&amp;gt;
+        AND l.oper_name LIKE CONCAT(&amp;quot;%&amp;quot;,#{param.operName},&amp;quot;%&amp;quot;)
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;param.operDtStart != null and param.operDtEnd != null&amp;quot;&amp;gt;
+        AND l.oper_dt BETWEEN #{param.operDtStart} AND #{param.operDtEnd}
+    &amp;lt;/if&amp;gt;
+&amp;lt;/where&amp;gt;
+order by l.oper_dt desc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;foreach标签&#34;&gt;foreach标签&lt;/h3&gt;
+
+&lt;p&gt;参数未加@Param命名，默认是list&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select p.* from tb_process_btn_param p where p.param_type = 0 and p.btn_id in
+&amp;lt;foreach collection=&amp;quot;list&amp;quot; item=&amp;quot;btnId&amp;quot; index=&amp;quot;index&amp;quot; open=&amp;quot;(&amp;quot; close=&amp;quot;)&amp;quot; separator=&amp;quot;,&amp;quot;&amp;gt;
+    #{btnId}
+&amp;lt;/foreach&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>
@@ -1498,7 +2764,7 @@ redisClient.eval(luaScript , Collections.singletonList(key), Collections.singlet
 再次使用alt+enter，选中Edit JSON Fragment并回车，就可以看到编辑JSON文件的视图了；&lt;br /&gt;
 使用alt+enter，选中Un-inject language/reference 回车即可取消。&lt;/p&gt;
 
-&lt;h2 id=&#34;常用的expr&#34;&gt;常用的expr&lt;/h2&gt;
+&lt;h2 id=&#34;常用的expr-java&#34;&gt;常用的expr（Java）&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;.sout&lt;/li&gt;
@@ -1530,6 +2796,12 @@ show line number 显示选中代码行数&lt;/p&gt;
 
 &lt;p&gt;Settings -&amp;gt; Editor -&amp;gt; Code Style -&amp;gt; Java -&amp;gt; Imports  两个count to use import with &amp;lsquo;*&amp;rsquo; 设置成999。&lt;/p&gt;
 
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+
+&lt;h4 id=&#34;idea-rest-client&#34;&gt;IDEA REST Client&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://my.oschina.net/keking/blog/3104972&#34; target=&#34;_blank&#34;&gt;学会IDEA REST Client后就可以丢掉postman了&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;常用插件&#34;&gt;常用插件&lt;/h2&gt;
 
 &lt;table&gt;
@@ -1549,6 +2821,11 @@ show line number 显示选中代码行数&lt;/p&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;FindBugs-IDEA&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;潜在 Bug 检查&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SonarLint&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sonar代码检查&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -3689,1686 +4966,6 @@ start with t.seqid=0 connect by prior t.seqid=t.parentid and t.status=0
 &lt;p&gt;新增数据 &lt;code&gt;INSERT INTO ip_test (ip) VALUES(inet_aton(&#39;127.0.0.1&#39;))&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;查询数据 &lt;code&gt;select t.id,INET_NTOA(t.ip) as ip from ip_test t&lt;/code&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>FTP的异常记录</title>
-      <link>https://ianeiu.github.io/2019/02/13/ftp%E7%9A%84%E5%BC%82%E5%B8%B8%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/02/13/ftp%E7%9A%84%E5%BC%82%E5%B8%B8%E8%AE%B0%E5%BD%95/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;外网无法内网ftp-200-type-set-to-a&#34;&gt;外网无法内网FTP（200 Type set to A）&lt;/h2&gt;
-
-&lt;p&gt;FTP 搭建好后在外网访问出想以下错误：&lt;br /&gt;
-在Windows 资源管理器访问FTP站点弹出 FTP文件夹错误&lt;br /&gt;
-            打开FTP 服务器上的文件夹时发生错误。请检查是否有权限范围该文件夹。&lt;br /&gt;
-            详细信息：&lt;br /&gt;
-    200 Type set to A.&lt;br /&gt;
-    227 Entering Passive Mode (192,168,1,100,192,81)&lt;br /&gt;
-解决方法：&lt;br /&gt;
-      打开IE 浏览器 &amp;ndash; 工具 &amp;ndash; Internet 选项 &amp;ndash; 高级 &amp;ndash; 设置 &amp;ndash; 浏览 &amp;ndash; 把 使用被动FTP （用于防火墙和 DSL 调制解调器的兼容） 前面的勾去掉&lt;/p&gt;
-
-&lt;h2 id=&#34;425-can-t-open-data-connection&#34;&gt;425 Can&amp;rsquo;t open data connection&lt;/h2&gt;
-
-&lt;p&gt;解决：&lt;/p&gt;
-
-&lt;p&gt;1、允许Passive Mode：在FTP服务端设置指定端口地址范围，比如21220-21260;&lt;br /&gt;
-2、设置外网IP；&lt;br /&gt;
-3、开通服务器指定端口&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java笔记——基础</title>
-      <link>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80/</guid>
-      
-        <description>
-
-&lt;p&gt;Java基础笔记整理&lt;/p&gt;
-
-&lt;h2 id=&#34;关键字&#34;&gt;关键字&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;用于定义数据类型&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;class interface  【引用数据类型：类、接口、数组】&lt;br /&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】&lt;br /&gt;
-类型转换：&lt;br /&gt;
-byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double&lt;br /&gt;
-char→int&lt;br /&gt;
-int→long&lt;br /&gt;
-int→double&lt;br /&gt;
-float→double&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;void&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;用于定义数据类型值&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;true false null&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;用于定义流程控制&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;if else switch case default【选择】&lt;br /&gt;
-【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;while do for【循环】&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;break continue return【流程跳转】
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div style=&#34;border:1px solid red;padding:10px 10px&#34;&gt;
-    直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。&lt;/div&gt;
-    
-
-&lt;pre&gt;&lt;code&gt;```
-public static void testForEach(List list) {  
-    for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
-        Object t = iterator.next();  
-        Object obj = t;  
-    }  
-}  
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;用于定义访问权限修饰符
-
-&lt;ul&gt;
-&lt;li&gt;private public protected&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;用于定义类、函数、变量
-
-&lt;ul&gt;
-&lt;li&gt;abstract final static synchronized&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;类与类之间的关系
-
-&lt;ul&gt;
-&lt;li&gt;extends implements&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;建立实例、引用实例、判断实例
-
-&lt;ul&gt;
-&lt;li&gt;new this super instanceof&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;异常处理
-
-&lt;ul&gt;
-&lt;li&gt;try catch throw throws finally&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;包
-
-&lt;ul&gt;
-&lt;li&gt;package import&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;其它
-
-&lt;ul&gt;
-&lt;li&gt;native strictfp transient volatile assert&lt;/li&gt;
-&lt;li&gt;goto const 【保留字】&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;标识符&#34;&gt;标识符&lt;/h2&gt;
-
-&lt;p&gt;类、接口、方法、变量的名字&lt;br /&gt;
-合法字符组成：英文字母、数字、$、_【不能以数字开头】&lt;/p&gt;
-
-&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;单行 //&lt;/li&gt;
-&lt;li&gt;多行 /**/&lt;/li&gt;
-&lt;li&gt;文档 /**  */&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;常量&#34;&gt;常量&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;字面值 &amp;ldquo;hello&amp;rdquo;,10.true&lt;/li&gt;
-&lt;li&gt;自定义 final int LINK_CODE = 0;
-
-&lt;ul&gt;
-&lt;li&gt;final 修饰变量（基本类型值不变，引用类型地址值不变）（只能在构造方法执行之前赋值一次）&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;类变量（静态变量）&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;实例变量（成员变量）&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;局部变量（本地变量）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;位置（代码）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;类中&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;类中方法外&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;方法定义中、方法声明上&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;位置（内存）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;方法区中静态区&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;堆&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;栈&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;生命周期&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随类加载而加载&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随对象&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;随方法&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;this无法存在静态中；&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;静态方法只能访问静态变量&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;算术运算符&lt;br /&gt;
-&lt;code&gt;
-% + - * / ++  --
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;赋值运算符&lt;br /&gt;
-&lt;code&gt;
-= += -= *= /= %=
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;比较运算符&lt;br /&gt;
-&lt;code&gt;
-== != &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= 
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;逻辑运算符&lt;br /&gt;
-&lt;code&gt;
-&amp;amp; | ^(异或) ! &amp;amp;&amp;amp; || 【&amp;amp;&amp;amp; || 有短路效果】
-&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;位运算符&lt;br /&gt;
-&lt;code&gt;
-&amp;lt;&amp;lt; &amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;(无符号右移) &amp;amp; | ^ ~(按位取反)
-&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;三元运算符&lt;br /&gt;
-&lt;code&gt;
-max = a &amp;gt; b ? a : b
-&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
-
-&lt;p&gt;代码块加载顺序： 静态代码块（类初始化）&amp;ndash;&amp;gt; 局部代码块 &amp;ndash;&amp;gt; 构造代码块（对象初始化）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class Importtant06Code {
-    static { System.out.println(&amp;quot;Importtant06Code静态代码块&amp;quot;);}
-
-    public static void main(String[] args) {
-        System.out.println(&amp;quot;main&amp;quot;);
-        User user = new User();
-        User user2 = new User();
-    }
-}
-
-class User{
-    static { System.out.println(&amp;quot;User静态代码块&amp;quot;);}
-    {System.out.println(&amp;quot;User局部代码块&amp;quot;);}
-    public User() {System.out.println(&amp;quot;User构造代码块&amp;quot;);}
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;运行结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Importtant06Code静态代码块
-main
-User静态代码块
-User局部代码块
-User构造代码块
-User局部代码块
-User构造代码块
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;java面向对象三大特性&#34;&gt;Java面向对象三大特性&lt;/h2&gt;
-
-&lt;p&gt;封装、继承、多态&lt;/p&gt;
-
-&lt;h2 id=&#34;类与对象&#34;&gt;类与对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;类：一组相关属性和行为的集合（抽象）&lt;/li&gt;
-&lt;li&gt;对象：改类事物的具体表现形式（具体存在的个体）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口&lt;br /&gt;
-好处：隐藏实现细节,提供公共访问方式，复用性，安全性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;关键字：private、this、static、new&lt;/p&gt;
-
-&lt;p&gt;例子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userName&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;wm&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Integer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;对象构造过程：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将User.class文件加载到内存&lt;/li&gt;
-&lt;li&gt;栈内存放置user，堆内存放置对象&lt;/li&gt;
-&lt;li&gt;给成员变量进行初始化
-
-&lt;ul&gt;
-&lt;li&gt;默认初始化 name:null  age:0&lt;/li&gt;
-&lt;li&gt;显示初始化 name:wm    age:18&lt;/li&gt;
-&lt;li&gt;构造初始化 name:sg    age:25&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;将地址值赋给变量user&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;从已有类得到继承信息创建新类的过程&lt;br /&gt;
-好处：复用、维护、多态前提&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;关键字：extends、this、super&lt;/p&gt;
-
-&lt;h4 id=&#34;重载与重写&#34;&gt;重载与重写&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;重写（Override） 子类重写父类方法,多态的条件之一&lt;/li&gt;
-&lt;li&gt;重载（Overload） 同一个类中不同参数的方法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;注意&#34;&gt;注意&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;子类初始化之前会先进行父类的初始化&lt;/li&gt;
-&lt;li&gt;父类没有无参构造，编译会报错&lt;/li&gt;
-&lt;li&gt;子类重写父类方法，方法访问权限不能比之更低&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;允许不同子类型的对象对同一消息作出不同的响应&lt;br /&gt;
-好处： 维护、扩展&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;父类接口指向子类对象，主要体现在抽象类&lt;/p&gt;
-
-&lt;p&gt;Fu f = new Zi();&lt;br /&gt;
-成员方法：编译看父类，运行看子类。&lt;br /&gt;
-静态方法：编译看父类，运行看子类。&lt;br /&gt;
-成员变量：编译看父类，运行看子类。&lt;br /&gt;
-构造方法：编译看父类，运行看父子。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;demo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;learn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d1tod4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Fu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Zi&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;nb&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;new Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-	&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;show Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;method zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;function Zi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Demo04DuoTai&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-	&lt;span class=&#34;nd&#34;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;static-access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;父类引用指向子类对象&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;父&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;子&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-		
-		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;找不到符号&lt;/span&gt;
-		&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-		
-		&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
-		&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Zi&lt;/span&gt;
-		&lt;span class=&#34;n&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Fu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*/&lt;/span&gt;
-	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;kbd&gt;java多态的实现原理&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p&gt;当JVM执行Java字节码时，类型信息会存储在方法区中，为了优化对象的调用方法的速度，方法区的类型信息会增加一个指针，该指针指向一个记录该类方法的方法表，方法表中的每一个项都是对应方法的指针。&lt;/p&gt;
-
-&lt;p&gt;方法区：方法区和JAVA堆一样，是各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
-运行时常量池：它是方法区的一部分，Class文件中除了有类的版本、方法、字段等描述信息外，还有一项信息是常量池，用于存放编译器生成的各种符号引用，这部分信息在类加载时进入方法区的运行时常量池中。
-方法区的内存回收目标是针对常量池的回收及对类型的卸载。&lt;/p&gt;
-
-&lt;p&gt;方法表的构造&lt;/p&gt;
-
-&lt;p&gt;由于java的单继承机制，一个类只能继承一个父类，而所有的类又都继承Object类，方法表中最先存放的是Object的方法，接下来是父类的方法，最后是该类本身的方法。如果子类改写了父类的方法，那么子类和父类的那些同名的方法共享一个方法表项。&lt;/p&gt;
-
-&lt;p&gt;由于这样的特性，使得方法表的偏移量总是固定的，例如，对于任何类来说，其方法表的equals方法的偏移量总是一个定值，所有继承父类的子类的方法表中，其父类所定义的方法的偏移量也总是一个定值。&lt;/p&gt;
-
-&lt;p&gt;实例&lt;/p&gt;
-
-&lt;p&gt;假设Class A是Class B的子类，并且A改写了B的方法的method()，那么B来说，method方法的指针指向B的method方法入口；对于A来说，A的方法表的method项指向自身的method而非父类的。&lt;/p&gt;
-
-&lt;p&gt;流程：调用方法时，虚拟机通过对象引用得到方法区中类型信息的方法表的指针入口，查询类的方法表 ，根据实例方法的符号引用解析出该方法在方法表的偏移量，子类对象声明为父类类型时，形式上调用的是父类的方法，此时虚拟机会从实际的方法表中找到方法地址，从而定位到实际类的方法。&lt;br /&gt;
-注：所有引用为父类，但方法区的类型信息中存放的是子类的信息，所以调用的是子类的方法表。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;抽象类与接口&#34;&gt;抽象类与接口&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;抽象类&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;接口&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;特点&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.抽象类与方法需用abstract修饰&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.接口用interface修饰&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.抽象类不一定有抽象方法，有则为抽象类&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.类实现接口用implements&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.不能直接实例化（通过多态可实例化）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.不能被实例化&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;实现&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象类、具体类（重写所有方法）&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象类，具体类&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-属性&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;变量、常量&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;常量&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-构造方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;有&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;无&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;成员特点-成员方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象、非抽象&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抽象、【JDK8有 default、static方法】&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关键字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;不能与private、final、static(无意义)共存&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;编译报错&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;内部类&#34;&gt;内部类&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;成员内部类&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        
-    &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Inner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-            &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;
-                
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Inner&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oi&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Outer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Inner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;oi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;局部内部类&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class Outer{
-    static int num0 = 99;
-    public int num = 10;
-        
-    public void method(){
-        final int num2 = 100;//存放于堆内存
-        int num3 = 101;//随调用产生，随结束消失
-        class Inner{
-            Outer o = new Outer();
-            system.out.println(o.num0);
-            system.out.println(o.num1);
-            system.out.println(o.num2);
-            //system.out.println(o.num3);//无法访问，编译报错
-        }
-    }
-}
-    
-class Test{
-    public static void main(String[] args){
-        Outer o = new Outer();
-        o.method();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;匿名内部类&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();}&lt;/span&gt;
-    
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PersonDemo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    
-&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;PersonDemo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PersonDemo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;study&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-                &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dosomething&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; 
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;静态内部类（访问外部数据必须用static修饰）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class Outer{
-    static int num0 = 99;
-    public int num = 10;
-        
-    static class Inner{
-        public int num = 20;
-        public void show(){
-            int num = 30;
-            system.out.println(num);//30
-            system.out.println(this.num);//20
-            system.out.println(Outer.this.num);//10
-                
-        }
-    }
-}
-    
-class Test{
-    public static void main(String[] args){
-        Outer.Inner oi = new Outer().Inner();
-        oi.show();
-            
-        Outer.Inner.show();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;异常&#34;&gt;异常&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://images2015.cnblogs.com/blog/679904/201510/679904-20151025210813989-921927916.jpg&#34; alt=&#34;yc&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Throwable
-Throwable是 Java 语言中所有错误或异常的超类。
-Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。
-Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信息。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Exception
-Exception及其子类是 Throwable 的一种形式，它指出了合理的应用程序想要捕获的条件。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;RuntimeException
-RuntimeException是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。
-编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既&amp;rdquo;没有通过throws声明抛出ArithmeticException异常&amp;rdquo;，也&amp;rdquo;没有通过try&amp;hellip;catch&amp;hellip;处理该异常&amp;rdquo;，也能通过编译。这就是我们所说的&amp;rdquo;编译器不会检查RuntimeException异常&amp;rdquo;。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;非RuntimeException
-Exception类本身，以及Exception的子类中除了&amp;rdquo;运行时异常&amp;rdquo;之外的其它子类都属于被检查异常。
-Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Error
-和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。&lt;br /&gt;
-和RuntimeException一样， 编译器也不会检查Error。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;collection概述&#34;&gt;Collection概述&lt;/h2&gt;
-
-&lt;p&gt;Collection 是对象集合，继承了超级接口Iterable，使用Iterator迭代器实现遍历。 Collection 有两个子接口 List 和 Set。&lt;/p&gt;
-
-&lt;p&gt;List 可以通过下标 (1,2..) 来取得值，值是有序重复，有自己的迭代器ListIterator，可以通过这个迭代器进行逆序的迭代。&lt;/p&gt;
-
-&lt;p&gt;ArrayList、Vector、LinkedList 是List的实现类。&lt;/p&gt;
-
-&lt;p&gt;ArrayList 是线程不安全的，底层采用数组实现（并且该数组的类型是Object类型的），默认长度为10。&lt;br /&gt;
-Vector 是线程安全的，底层采用数组实现。&lt;br /&gt;
-LinkedList 是线程不安全的，底层是由（双向循环Deque）链表实现的。&lt;/p&gt;
-
-&lt;p&gt;Stack类：继承自Vector，实现一个后进先出的栈。提供了几个基本方法，push、pop、peak、empty、search等。&lt;br /&gt;
-Queue接口：提供了几个基本方法，offer、poll、peek等。已知实现类有LinkedList（实现双端队列Deque）、PriorityQueue等。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Set 只能通过游标来取值，并且值是不能重复的。Set中的元素类必须有一个有效的equals方法。&lt;/p&gt;
-
-&lt;p&gt;Set子接口有NavigableSet、SortedSet；Set子类有EnumSet、HashSet、LinkedHashSet、TreeSet、AbstractSet等。&lt;/p&gt;
-
-&lt;p&gt;HashSet 底层是哈希表（元素为链表的数组）实现（方法代码使用了HashMap），由hashcode()和equals()方法保证元素唯一。&lt;br /&gt;
-TreeSet 底层是红黑树（自平衡的二叉树）实现，元素是可排序的。&lt;/p&gt;
-
-&lt;p&gt;LinkedHashSet 底层由链表和哈希表实现，保证元素有序且唯一。&lt;/p&gt;
-
-&lt;p&gt;TreeSet有两种排序实现。自然排序(内比较器)，类实现Comparable；比较器排序，使用匿名内部方式实现。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;//比较器排序
-TreeSet&amp;lt;User&amp;gt; userSet = new TreeSet&amp;lt;&amp;gt;(
-	new Comparator&amp;lt;User&amp;gt;(){
-		public int compare(User user1, User user2){
-			if (user1.getAge() &amp;gt; user2.getAge()) return 1;
-			else if (user1.getAge() = user2.getAge()) return 0;
-			else  return -1;
-		}
-	}
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;使用迭代器Iterator遍历集合时修改添加元素会报并发修改异常，而用ListIterator则不会。&lt;/li&gt;
-&lt;li&gt;使用size()获取集合长度&lt;/li&gt;
-&lt;li&gt;toString()实现：AbstractColletion使用iterator()迭代器方法得到迭代器，之后使用StringBuilder拼接遍历的值。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;arraylist-linkedlist-vector的底层实现和区别&#34;&gt;ArrayList、LinkedList、Vector的底层实现和区别&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;从同步性来看，ArrayList和LinkedList是不同步的，而Vector是的。所以线程安全的话，可以使用ArrayList或LinkedList，可以节省为同步而耗费的开销。但在多线程下，有时候就不得不使用Vector了。当然，也可以通过一些办法包装ArrayList、LinkedList，使我们也达到同步，但效率可能会有所降低。&lt;/li&gt;
-&lt;li&gt;从内部实现机制来讲ArrayList和Vector都是使用Object的数组形式来存储的。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%，所以最后你获得的这个集合所占的空间总是比你实际需要的要大。如果你要在集合中保存大量的数据，那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。&lt;/li&gt;
-&lt;li&gt;ArrayList和Vector中，从指定的位置（用index）检索一个对象，或在集合的末尾插入、删除一个对象的时间是一样的，可表示为O(1)。但是，如果在集合的其他位置增加或者删除元素那么花费的时间会呈线性增长O(n-i)，其中n代表集合中元素的个数，i代表元素增加或移除元素的索引位置，因为在进行上述操作的时候集合中第i和第i个元素之后的所有元素都要执行(n-i)个对象的位移操作。LinkedList底层是由双向循环链表实现的，LinkedList在插入、删除集合中任何位置的元素所花费的时间都是一样的O(1)，但它在索引一个元素的时候比较慢，为O(i)，其中i是索引的位置，如果只是查找特定位置的元素或只在集合的末端增加、移除元素，那么使用Vector或ArrayList都可以。如果是对其它指定位置的插入、删除操作，最好选择LinkedList。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;map概述&#34;&gt;Map概述&lt;/h2&gt;
-
-&lt;p&gt;Map 是键值对集合。HashTable和HashMap是Map的实现类。&lt;/p&gt;
-
-&lt;p&gt;HashMap不是线程安全的，键唯一（哈希表实现），可以存储null值。&lt;br /&gt;
-HashTable是线程安全的，键唯一，不能存储null值。&lt;/p&gt;
-
-&lt;p&gt;LinkedHashMap键是唯一有序的（哈希表和链表实现）&lt;br /&gt;
-TreeMap键是可排序的（红黑树实现）&lt;/p&gt;
-
-&lt;h2 id=&#34;常用容器初始值大小&#34;&gt;常用容器初始值大小&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;StringBuffer和StringBuilder初始化默认大小为16个字符&lt;/li&gt;
-&lt;li&gt;HashMap初始化默认大小16，自增为2n.&lt;/li&gt;
-&lt;li&gt;HashTable默认初始值为11，加载因子为0.75，自增为2n+1&lt;/li&gt;
-&lt;li&gt;ArrayList初始化默认值为10，自增为1.5n&lt;/li&gt;
-&lt;li&gt;Vector初始化默认值为10，自增为2n&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;io流&#34;&gt;IO流&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;字节流
-
-&lt;ul&gt;
-&lt;li&gt;输入
-
-&lt;ul&gt;
-&lt;li&gt;InputSream
-
-&lt;ul&gt;
-&lt;li&gt;FileInputStream&lt;/li&gt;
-&lt;li&gt;BufferedInputStream&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;输出
-
-&lt;ul&gt;
-&lt;li&gt;OutputStream
-
-&lt;ul&gt;
-&lt;li&gt;FileOutputStream&lt;/li&gt;
-&lt;li&gt;BufferedOutputStream&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;字符流
-
-&lt;ul&gt;
-&lt;li&gt;输入
-
-&lt;ul&gt;
-&lt;li&gt;Reader
-
-&lt;ul&gt;
-&lt;li&gt;InputStreamReader
-
-&lt;ul&gt;
-&lt;li&gt;FileReader&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;BufferedReader
-
-&lt;ul&gt;
-&lt;li&gt;LineNumberReader&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;输出
-
-&lt;ul&gt;
-&lt;li&gt;Writer
-
-&lt;ul&gt;
-&lt;li&gt;OutputStreamWriter
-
-&lt;ul&gt;
-&lt;li&gt;FileWirter&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;BufferedWriter&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;close()与flush()：&lt;br /&gt;
-    close() 关闭流对象，但会先刷新一次流缓冲区，关闭之后不可使用。&lt;br /&gt;
-    flush() 仅仅刷新缓冲区，刷新之后，流对象还可以继续使用。&lt;/p&gt;
-
-&lt;h2 id=&#34;线程状态&#34;&gt;线程状态&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;新建（New）:创建后尚未启动的线程处于这种状态。线程启动start()。&lt;/li&gt;
-&lt;li&gt;运行(Runnable)：Runnable包括了操作系统状态中的 &lt;strong&gt;就绪&lt;/strong&gt; Ready和 &lt;strong&gt;运行&lt;/strong&gt; Running，也就是处于此状态的线程有可能正在执行，也有可能正在等待CPU为它分配执行时间。&lt;/li&gt;
-&lt;li&gt;无限期等待（Waiting）:处于这种状态的进程不会被分配CPU执行时间，它们要等待被其他线程显示的唤醒。以下方法会让线程陷入无限期的等待状态：
-
-&lt;ul&gt;
-&lt;li&gt;没有设置Timeout参数的Object.wait()方法&lt;/li&gt;
-&lt;li&gt;没有设置Timeout参数的Thread.join()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.park()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;限期等待（Timed Waiting）:处于这种状态的进程不会被分配CPU执行时间，不过无需等待被其他线程显示的唤醒，在一定时间之后它们会由系统自动唤醒。以下方法会让线程进入限期等待状态：
-
-&lt;ul&gt;
-&lt;li&gt;Thread.sleep()方法&lt;/li&gt;
-&lt;li&gt;设置了Timeout参数的Object.wait()方法&lt;/li&gt;
-&lt;li&gt;设置了Timeout参数的Thread.join()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.parkNanos()方法&lt;/li&gt;
-&lt;li&gt;LockSupport.parkUnitil()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;阻塞（Blocked）:进程被阻塞了，阻塞状态和等待状态的区别是：阻塞状态在等待着获取到一个排它锁，这个事件将在另一个线程放弃这个锁的时候发生；而等待状态则是在等待一段时间，或者唤醒动作的发生。在程序等待进入同步区域的时候，线程将进入这种状态。&lt;/li&gt;
-&lt;li&gt;结束（Terminated）:已终止线程的线程状态，线程已经结束执行。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;线程的控制&#34;&gt;线程的控制&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;获取线程的名称 &lt;code&gt;public final String getName()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;设置线程的名称 &lt;code&gt;public final void setName(String name)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;返回当前正在执行的线程对象(名称) &lt;code&gt;public static Thread currentThread()&lt;/code&gt; -&amp;gt; &lt;code&gt;Thread.currentThread().getName()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;获取线程对象的优先级     &lt;code&gt;public final int getPriority()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;设置线程对象的优先级     &lt;code&gt;public final void setPriority(int newPriority)&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;线程默认优先级是5。&lt;/li&gt;
-&lt;li&gt;线程优先级的范围是：1-10。&lt;/li&gt;
-&lt;li&gt;线程优先级高仅仅表示线程获取的 CPU时间片的几率高&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;将该线程标记为守护线程或用户线程 &lt;code&gt;public final void setDaemon(boolean on)&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;当正在运行的线程都是守护线程时，Java 虚拟机退出。 该方法必须在启动线程前调用。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;线程休眠  &lt;code&gt;public static void sleep(long millis)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;加入线程  &lt;code&gt;public final void join()&lt;/code&gt;:等待该线程终止。&lt;/li&gt;
-&lt;li&gt;礼让线程  &lt;code&gt;public static void yield()&lt;/code&gt;:暂停当前正在执行的线程对象，并执行其他线程。&lt;/li&gt;
-&lt;li&gt;后台线程&lt;/li&gt;
-&lt;li&gt;终止线程(掌握)&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;public final void stop()&lt;/code&gt;:让线程停止，过时了，但是还可以使用。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public void interrupt()&lt;/code&gt;:中断线程。 把线程的状态终止，并抛出一个InterruptedException。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;多线程相关&#34;&gt;多线程相关&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;多线程实现方案：
-
-&lt;ul&gt;
-&lt;li&gt;继承Thread类
-
-&lt;ul&gt;
-&lt;li&gt;自定义线程类继承Thread类，重写run()&lt;/li&gt;
-&lt;li&gt;调用类 创建自定义线程类对象，启动线程&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;实现Runnable接口
-
-&lt;ul&gt;
-&lt;li&gt;自定义线程类实现Runable接口，重写run()&lt;/li&gt;
-&lt;li&gt;调用类 创建自定义线程类对象&lt;/li&gt;
-&lt;li&gt;调用类 以自定义线程类对象作为参数构造创建Thread对象，启动线程&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;实现Callable接口结合线程池
-
-&lt;ul&gt;
-&lt;li&gt;自定义线程类实现Callable接口，重写call方法
-
-&lt;ul&gt;
-&lt;li&gt;1
-
-&lt;ul&gt;
-&lt;li&gt;调用类 创建ExecutorService线程池对象,调用submit(Callable&lt;T&gt; task)&lt;/li&gt;
-&lt;li&gt;调用类 创建Future&lt;T&gt;对象，接收上一步返回值&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;2
-
-&lt;ul&gt;
-&lt;li&gt;调用类 创建ExecutorService线程池对象,调用 submit(Runnable task)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;pool.shutdown()结束;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;线程安全问题产生条件
-
-&lt;ul&gt;
-&lt;li&gt;多线程环境&lt;/li&gt;
-&lt;li&gt;有共享数据&lt;/li&gt;
-&lt;li&gt;有多条语句操作共享数据&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;同步的方式：
-
-&lt;ul&gt;
-&lt;li&gt;同步代码块 &lt;code&gt;synchronized(对象){//doSomething}&lt;/code&gt; 或 同步锁 Lock
-
-&lt;ul&gt;
-&lt;li&gt;当线程访问较多时，每个线程都会去判断同步上的锁，非常消耗资源，降低程序运行效率，而且容易产生死锁。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;同步方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;run()与start()
-
-&lt;ul&gt;
-&lt;li&gt;run():封装了被线程执行的代码,直接调用仅仅是普通方法的调用&lt;/li&gt;
-&lt;li&gt;start():启动线程，并由JVM自动调用run()方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;sleep()与wait()&lt;br /&gt;
-sleep()是线程类（Thread）的静态方法，导致此线程暂停执行指定时间，将执行机会给其他线程，但是监控状态依然保持，到时会自动恢复（线程回到就绪（ready）状态），调用sleep 不会释放对象锁。&lt;br/&gt;&lt;br/&gt;
-wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对象锁(线程暂停执行)，进入等待此对象的等待锁定池，只有针对此对象发出notify 方法（或notifyAll）后本线程才进入对象锁定池准备获得对象锁进入就绪状态。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;死锁：两个或两个异常的线程争夺资源过程中，发生的一种互相等待的现象。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;锁的等级：方法锁、对象锁、类锁。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;实现Runnable接口相比继承Thread类有如下优势：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;可以避免由于Java的单继承特性而带来的局限&lt;/li&gt;
-&lt;li&gt;增强程序的健壮性，代码能够被多个程序共享，代码与数据是独立的&lt;/li&gt;
-&lt;li&gt;适合多个相同程序代码的线程区处理同一资源的情况&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;osi与-tcp-ip&#34;&gt;OSI与&lt;code&gt;TCP/IP&lt;/code&gt;&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;OSI&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;TCP/IP&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;应用层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;应用层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;表示层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;会话层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;传输层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;传输层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;网络层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;网际层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;数据链路层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;主机至网络层&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;物理层&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;socket编程&#34;&gt;Socket编程&lt;/h2&gt;
-
-&lt;p&gt;网络编程三要素： IP、端口、协议&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;UDP
-
-&lt;ul&gt;
-&lt;li&gt;发送数据
-
-&lt;ul&gt;
-&lt;li&gt;创建发送端口DatagramSocket对象&lt;/li&gt;
-&lt;li&gt;创建数据，并打开数据包&lt;/li&gt;
-&lt;li&gt;调用DatagramSocket对象发送方法，发送数据包&lt;/li&gt;
-&lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;接手数据
-
-&lt;ul&gt;
-&lt;li&gt;创建DatagramSocket对象&lt;/li&gt;
-&lt;li&gt;创建一个数据包（接收容器）&lt;/li&gt;
-&lt;li&gt;调用容器接手数据&lt;/li&gt;
-&lt;li&gt;解析数据包&lt;/li&gt;
-&lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;TCP
-
-&lt;ul&gt;
-&lt;li&gt;发送数据
-
-&lt;ul&gt;
-&lt;li&gt;创建发送端的Socket对象&lt;/li&gt;
-&lt;li&gt;获取输出流，写数据&lt;/li&gt;
-&lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;接手数据
-
-&lt;ul&gt;
-&lt;li&gt;创建接手端的Socket&lt;/li&gt;
-&lt;li&gt;监听客户端连接&lt;/li&gt;
-&lt;li&gt;获取输入流&lt;/li&gt;
-&lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;反射机制&#34;&gt;反射机制&lt;/h2&gt;
-
-&lt;p&gt;反射技术：动态加载一个指定的类，并获取该类中所有的内容。并将字节码文件中的内容都封装成对象，这样便于操作这些成员。简单说：反射技术可以对一个类进行解剖。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;好处：大大增强了程序的扩展性。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;反射的基本步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;获得Class对象，就是获得指定的名称的字节码文件对象&lt;/li&gt;
-&lt;li&gt;实例化对象，获得类的属性、方法或者构造函数&lt;/li&gt;
-&lt;li&gt;访问属性、调用方法、调用构造函数创建对象&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java笔记——web</title>
-      <link>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0web/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0web/</guid>
-      
-        <description>
-
-&lt;p&gt;JavaWeb笔记整理&lt;/p&gt;
-
-&lt;h2 id=&#34;xml&#34;&gt;XML&lt;/h2&gt;
-
-&lt;p&gt;XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换&lt;/p&gt;
-
-&lt;p&gt;格式：&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;XML两种文档约束类型： &lt;code&gt;dtd&lt;/code&gt; （file_name.dtd）和&lt;code&gt;schema&lt;/code&gt;（file_name.xsd 可被XML解析器解析）&lt;/p&gt;
-
-&lt;p&gt;XML存储结构化信息，使用&lt;code&gt;DOM&lt;/code&gt;或&lt;code&gt;SAX&lt;/code&gt;（边读边解析）方式解析&lt;br /&gt;
-Properties存储平面信息，使用Properties类解析&lt;/p&gt;
-
-&lt;p&gt;常见的XML解析器实现：JDOM、DOM4J（首选）、SAX&lt;/p&gt;
-
-&lt;p&gt;XPath:XML路径语言，用来确定XML文档中某部分位置&lt;/p&gt;
-
-&lt;h2 id=&#34;web服务器&#34;&gt;Web服务器&lt;/h2&gt;
-
-&lt;p&gt;Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等&lt;/p&gt;
-
-&lt;h2 id=&#34;javaweb三大组件&#34;&gt;JavaWeb三大组件&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Servlet&lt;/li&gt;
-&lt;li&gt;Filter&lt;/li&gt;
-&lt;li&gt;Listener&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;servlet&#34;&gt;Servlet&lt;/h2&gt;
-
-&lt;p&gt;Servlet是多线程、单实例。&lt;br /&gt;
-继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet  &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig&lt;/p&gt;
-
-&lt;h4 id=&#34;servlet生命周期&#34;&gt;Servlet生命周期&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法；&lt;/li&gt;
-&lt;li&gt;提供服务：当服务器每次接收到请求时，会调用service()方法处理请求；&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。&lt;/p&gt;
-
-&lt;h4 id=&#34;在web-xml中配置&#34;&gt;在web.xml中配置&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;...
-&amp;lt;servlet&amp;gt;
-	&amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt;
-	&amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt;
-	&amp;lt;!-- 通过ServletConfig获取 --&amp;gt;
-	&amp;lt;init-param&amp;gt;
-		&amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt;
-		&amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt;
-	&amp;lt;/init-param&amp;gt;
-	&amp;lt;!-- 值越小，优先级越大 --&amp;gt;
-	&amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt;
-&amp;lt;/servlet&amp;gt;
-&amp;lt;servlet-mapping&amp;gt;
-	&amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt;
-	&amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt;
-&amp;lt;/servlet-mapping&amp;gt;
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;访问路径可以使用通配符 &lt;code&gt;* /* /myName/* *.do&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;httpservlet&#34;&gt;HttpServlet&lt;/h4&gt;
-
-&lt;p&gt;实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;请求request&#34;&gt;请求request&lt;/h2&gt;
-
-&lt;p&gt;URL相关：&lt;br /&gt;
-&lt;code&gt;http://127.0.0.1:8080/myproject/myServlet?name=admin&lt;/code&gt;&lt;br /&gt;
- .getRequestURL()+&amp;ldquo;?&amp;rdquo;+ .getQueryString&lt;br /&gt;
- 或者&lt;br /&gt;
- .getScheme() +&amp;rdquo;://&amp;ldquo;+ .getServerName() +&amp;rdquo;:&amp;ldquo;+.getServerPort() +&amp;rdquo;/&amp;ldquo;+ .getContextPath +&amp;rdquo;/&amp;ldquo;+ .getServerPath +&amp;rdquo;?&amp;ldquo;+ .getQueryString&lt;br /&gt;
- /myproject/myServlet 可用 .getRequestURI() 获取&lt;/p&gt;
-
-&lt;h4 id=&#34;get和post&#34;&gt;get和post&lt;/h4&gt;
-
-&lt;p&gt;get：没有请求体，参数在url中显示，长度理论限制1K之内&lt;br /&gt;
-post: 参数在请求体中，长度无限制&lt;/p&gt;
-
-&lt;h4 id=&#34;请求转发和请求包含&#34;&gt;请求转发和请求包含&lt;/h4&gt;
-
-&lt;p&gt;都是一个请求跨多个Servlet（可以共享request的域属性）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class AServlet extends HttpServlet {
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispacter rd = request.getRequestDispacter(&amp;quot;/BServlet&amp;quot;);
-		rd.forward(request,response);//A不能输响应体，可设置响应头，最后由B处理
-		rd.include(request,response);//无限制，共同处理请求
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;响应response&#34;&gt;响应response&lt;/h2&gt;
-
-&lt;p&gt;可设置响应信息、发送状态码、设置响应正文、重定向（response.sendRedirect(&amp;ldquo;/myProject/BServlet&amp;rdquo;)）&lt;/p&gt;
-
-&lt;h4 id=&#34;响应编码&#34;&gt;响应编码&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;response.setCharacterEncoding(&amp;ldquo;utf-8&amp;rdquo;); response.getWriter(&amp;ldquo;..&amp;rdquo;);&lt;/li&gt;
-&lt;li&gt;response.setHeader(&amp;ldquo;content-type&amp;rdquo;,&amp;ldquo;text/html;charset=utf-8&amp;rdquo;);&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;response.setContentType(&amp;ldquo;text/html;charset=utf-8&amp;rdquo;);&lt;/p&gt;
-
-&lt;h4 id=&#34;请求转发和重定向-302&#34;&gt;请求转发和重定向（302）&lt;/h4&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;请求转发是一个请求，但是重定向是两个请求。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;请求转发只能是一种请求方式，要么是Get要么是Post ,但是重定向的第二个请求一定是Get。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;请求转发的地址栏并不会发生变化(服务器请求资源)，但是重定向的会变化，因为它是两个请求(浏览器重新请求地址)。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;请求转发只能在本应用下的资源，但是重定向却可以跨应用，比如重定向到百度的主页。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;javaweb四大域对象&#34;&gt;JavaWeb四大域对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PageContext - page    （jsp）&lt;/li&gt;
-&lt;li&gt;ServletRequest - request     （servlet、jsp）&lt;/li&gt;
-&lt;li&gt;HttpSession - session     （servlet、jsp）&lt;/li&gt;
-&lt;li&gt;ServletContext - application     （servlet、jsp）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;servletcontext&#34;&gt;ServletContext&lt;/h2&gt;
-
-&lt;p&gt;ServletContext是Servlet域三大对象之一。&lt;br /&gt;
-在服务器启动时创建，关闭时销毁，单实例。&lt;br /&gt;
-用来存取数据、读取web.xml中初始化参数、读取应用资源（文件名、输入流、文件路径集合）&lt;/p&gt;
-
-&lt;h3 id=&#34;响应头&#34;&gt;响应头&lt;/h3&gt;
-
-&lt;p&gt;防盗链：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Referer&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;禁用浏览器缓存：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Expies:-1&lt;/li&gt;
-&lt;li&gt;Cache-Control:no-cache&lt;/li&gt;
-&lt;li&gt;Pragma:no-cache&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;三秒后跳转至百度&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;meta http-equiv=&amp;quot;Refresh&amp;quot; content=&amp;quot;3;url=http://www.baidu.com&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;jsp九大内置对象&#34;&gt;JSP九大内置对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;request - HttpServletRequest&lt;/li&gt;
-&lt;li&gt;response - HttpServletResponse&lt;/li&gt;
-&lt;li&gt;session - HttpSession&lt;/li&gt;
-&lt;li&gt;application - ServletContext&lt;/li&gt;
-&lt;li&gt;config - ServletConfig&lt;/li&gt;
-&lt;li&gt;exception - 只有在错误页面才可使用&lt;/li&gt;
-&lt;li&gt;page - 作用本JSP页面中&lt;/li&gt;
-&lt;li&gt;out - JSPWriter&lt;/li&gt;
-&lt;li&gt;pageContext - 页面上下文对象（作用域最小）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;jsp中的java脚本&#34;&gt;JSP中的Java脚本&amp;lt;%%&amp;gt;&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;脚本
-
-&lt;ul&gt;
-&lt;li&gt;&amp;lt;% .. %&amp;gt; 脚本片段&lt;/li&gt;
-&lt;li&gt;&amp;lt;%= ..%&amp;gt; 表达式&lt;/li&gt;
-&lt;li&gt;&amp;lt;%! ..%&amp;gt; 声明，定义成员&lt;/li&gt;
-&lt;li&gt;示例：&lt;code&gt;&amp;lt;% int a=10; %&amp;gt; &amp;lt;%= a %&amp;gt; &amp;lt;%! private String hello=&amp;quot;hello&amp;quot;;%&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;注释
-
-&lt;ul&gt;
-&lt;li&gt;&amp;lt;%&amp;ndash; ..  &amp;ndash;%&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;指令
-
-&lt;ul&gt;
-&lt;li&gt;&amp;lt;%@ .. %&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;jsp原理&#34;&gt;JSP原理&lt;/h2&gt;
-
-&lt;p&gt;客户端 访问 index.jsp,服务器将jsp文件编译成java文件，JVM将java文件编译成class文件。&lt;br /&gt;
-服务器初始化jsp实例，创建该类对象，调用service()。&lt;br /&gt;
-客户端再次访问则直接调用service()。&lt;/p&gt;
-
-&lt;h2 id=&#34;jsp三大指令&#34;&gt;JSP三大指令&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;page
-
-&lt;ul&gt;
-&lt;li&gt;错误页面配置 &lt;code&gt;&amp;lt;%@ page language=&amp;quot;java&amp;quot; contentType=&amp;quot;text/html; charset=UTF-8&amp;quot;  pageEncoding=&amp;quot;UTF-8&amp;quot; isErrorPage=&amp;quot;true&amp;quot;%&amp;gt;&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;脚本获取错误 &lt;code&gt;&amp;lt;%= exception.getMessage()%&amp;gt;&lt;/code&gt; [exception为jsp内置对象，error页面独有]&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;include
-
-&lt;ul&gt;
-&lt;li&gt;静态包含&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;taglib
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;%@ taglib uri=&amp;quot;&amp;quot; prefix=&amp;quot;c&amp;quot;%&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;在web-xml中配置错误页面&#34;&gt;在web.xml中配置错误页面&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 默认的错误处理页面 --&amp;gt;  
-&amp;lt;error-page&amp;gt;  
-	&amp;lt;error-code&amp;gt;403&amp;lt;/error-code&amp;gt;  
-	&amp;lt;location&amp;gt;/403.html&amp;lt;/location&amp;gt;  
-&amp;lt;/error-page&amp;gt;  
-&amp;lt;error-page&amp;gt;  
-	&amp;lt;error-code&amp;gt;404&amp;lt;/error-code&amp;gt;  
-	&amp;lt;location&amp;gt;/404.html&amp;lt;/location&amp;gt;  
-&amp;lt;/error-page&amp;gt;  
-&amp;lt;!-- 仅仅在调试的时候注视掉,在正式部署的时候不能注释 --&amp;gt;  
-&amp;lt;!-- 这样配置也是可以的，表示发生500错误的时候，转到500.jsp页面处理。 --&amp;gt;  
-&amp;lt;error-page&amp;gt;   
-	&amp;lt;error-code&amp;gt;500&amp;lt;/error-code&amp;gt;   
-	&amp;lt;location&amp;gt;/500.html&amp;lt;/location&amp;gt;   
-&amp;lt;/error-page&amp;gt;
-&amp;lt;!-- 这样的配置表示如果jsp页面或者servlet发生java.lang.Exception类型（当然包含子类）的异常就会转到500.jsp页面处理。 --&amp;gt;  
-&amp;lt;error-page&amp;gt;   
-	&amp;lt;exception-type&amp;gt;java.lang.Exception&amp;lt;/exception-type&amp;gt;   
-	&amp;lt;location&amp;gt;/500.jsp&amp;lt;/location&amp;gt;   
-&amp;lt;/error-page&amp;gt;   
-  
-&amp;lt;error-page&amp;gt;   
-	&amp;lt;exception-type&amp;gt;java.lang.Throwable&amp;lt;/exception-type&amp;gt;   
-	&amp;lt;location&amp;gt;/500.jsp&amp;lt;/location&amp;gt;   
-&amp;lt;/error-page&amp;gt;  
-&amp;lt;!--   
-当error-code和exception-type都配置时，exception-type配置的页面优先级高  
-及出现500错误，发生异常Exception时会跳转到500.jsp  
- --&amp;gt;   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;在web-xml中配置jstl&#34;&gt;在web.xml中配置jstl&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;...  
-&amp;lt;jsp-config&amp;gt;  
-   &amp;lt;taglib&amp;gt;  
-	   &amp;lt;taglib-uri&amp;gt;myjstl&amp;lt;/taglib-uri&amp;gt;  
-	   &amp;lt;taglib-location&amp;gt;/WEB-INF/tld/c.tld&amp;lt;/taglib-location&amp;gt;  
-   &amp;lt;/taglib&amp;gt;  
-&amp;lt;/jsp-config&amp;gt;  
-...  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;jsp基本动作&#34;&gt;JSP基本动作&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;include&lt;/li&gt;
-&lt;li&gt;useBean&lt;/li&gt;
-&lt;li&gt;setProperty&lt;/li&gt;
-&lt;li&gt;getProperty&lt;/li&gt;
-&lt;li&gt;forward&lt;/li&gt;
-&lt;li&gt;plugin&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;动态包含和静态包含&#34;&gt;动态包含和静态包含&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;动态包含
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;jsp:include page=&amp;quot;navigation.jsp&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;请求处理阶段执行&lt;/li&gt;
-&lt;li&gt;会检查所含文件变化，用于动态页面&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;静态包含
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;%@ include file=&amp;quot;resource.html&amp;quot;%&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;翻译阶段执行（合并再编译）&lt;/li&gt;
-&lt;li&gt;不检查所含文件变化，用于静态页面&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;cookie&#34;&gt;Cookie&lt;/h2&gt;
-
-&lt;p&gt;Cookie是Http协议的规范之一，是服务端和客户端之间传输的小数据。
-特点:&lt;br /&gt;
-1. 大小4KB（实际上不止）
-2. 服务器最多在客户端浏览器上保存20个
-3. 浏览器最多保存300个&lt;/p&gt;
-
-&lt;h2 id=&#34;httpsession&#34;&gt;HttpSession&lt;/h2&gt;
-
-&lt;p&gt;用来会话跟踪的类。session是服务端对象，保存在服务端。&lt;br /&gt;
-HttpSession底层依赖Cookie或是URL重写。&lt;/p&gt;
-
-&lt;p&gt;会话的实现依赖于容器，大多数容器采用基于Cookie的实现机制，使用名字为JSESSIONID的cookie作为session的唯一标识。&lt;/p&gt;
-
-&lt;h4 id=&#34;url重写&#34;&gt;URL重写&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;a href =&amp;quot;/myproject/myjsp.jsp;jsessionid=&amp;lt;%=session.getId()%&amp;gt;&amp;quot;&amp;gt;跳转&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;a href =&amp;quot;&amp;lt;response.encodeURL(&#39;/myproject/myjsp.jsp&#39;)&amp;gt;&amp;quot;&amp;gt;跳转&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;el表达式&#34;&gt;EL表达式&lt;/h2&gt;
-
-&lt;p&gt;EL表达式主要是用来替代JSP页面中的脚本表达式，获取JavaBean、Map、List、数组及域内置对象属性。也可以在JSP页面中执行一些基本的关系运算、逻辑运算和算术运算。&lt;/p&gt;
-
-&lt;p&gt;语法：&lt;code&gt;${标识符}&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;获取数据
-
-&lt;ul&gt;
-&lt;li&gt;List/数组 &lt;code&gt;${userList[0]}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Bean &lt;code&gt;${user.userName}&lt;/code&gt;或&lt;code&gt;${user[&#39;userName&#39;]}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Map &lt;code&gt;${paramMap.key}&lt;/code&gt;或&lt;code&gt;${paramMap[&#39;key&#39;]}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;内置对象 &lt;code&gt;${sessionScope.userName}&lt;/code&gt;、&lt;code&gt;${initParam[&#39;maxNum&#39;]}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果Map的键或Bean的属性名中包含&lt;code&gt;_&lt;/code&gt;或&lt;code&gt;-&lt;/code&gt;时，只有${initParam[&amp;lsquo;max_num&amp;rsquo;]}&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;运算
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;${1+2}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;${3&amp;gt;5}&lt;/code&gt;或&lt;code&gt;${3 gt 5}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;${isSuccess &amp;amp;&amp;amp; length&amp;gt;0}&lt;/code&gt; 或&lt;code&gt;${isSuccess and length&amp;gt;0}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;${!isSuccess}&lt;/code&gt; 或&lt;code&gt;${not isSuccess}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;empty判断字符串、数组、集合的长度是否为0(可与not或!连用)   &lt;code&gt;${empty &amp;quot;&amp;quot;}&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;el-11个内置对象&#34;&gt;EL 11个内置对象&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;pageScope：获取pageContext域属性，相当于pageContext.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;requestScope：获取request域属性，相当于request.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;sessionScope：获取session域属性，相当于session.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;applicationScope：获取application域属性，相当于application.getAttribute(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;param：对应参数，它是一个Map，其中key是参数，value是参数值，适用于单值的参数，相当于request.getParameter(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;paramValues：对应参数，她是一个Map，其中key是参数，value是多个参数值，适用于多值的参数，相当于request.getParameterValues(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;header：对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值的请求头，相当于request.getHeader(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;headerValues：对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值的请求头，相当于request.getHeaders(&amp;ldquo;xxx&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;initParam：获取web.xml中&lt;context-param&gt;内的参数，${ initParam.xxx}，xxx就是&lt;param-name&gt;标签内的值，进而得到&lt;param-value&gt;中的值&lt;/li&gt;
-&lt;li&gt;cookie：用于获取cookie，Map&lt;String,Cookie&gt;，其中key是cookie的name，value是cookie对象，例如${cookie.JSESSIONID.value }就是获取sessionId&lt;/li&gt;
-&lt;li&gt;pageContext：可以获取JSP九大内置对象，相当于使用该对象调用getxxx()方法，例如pageContext.getRequest()可以写为${pageContext.request)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;jstl&#34;&gt;JSTL&lt;/h2&gt;
-
-&lt;p&gt;JSTL是一个不断完善的开放源代码的JSP标签库，依赖于EL，使用需要导入jstl.jar。&lt;/p&gt;
-
-&lt;p&gt;JSTL标签库可分为四种：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;core&lt;/li&gt;
-&lt;li&gt;fmt&lt;/li&gt;
-&lt;li&gt;sql&lt;/li&gt;
-&lt;li&gt;xml&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其中sql标签库和xml标签库已过时。使用标签的JSP页面中使用taglib指令导入标签库，如下：&lt;br /&gt;
-&lt;code&gt;&amp;lt;%@ taglib prefix=&amp;quot;c&amp;quot;uri=&amp;quot;http://java.sun.com/jstl/core&amp;quot; %&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;prefix=&amp;quot;c&amp;quot;&lt;/code&gt;：指定标签库的前缀，这个前缀可以随便给值，但大家都会在使用core标签库时指定前缀为c；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;uri=&amp;quot;http://java.sun.com/jstl/core&amp;quot;&lt;/code&gt;：指定标签库的uri，它不一定是真实存在的网址，但它可以让JSP找到标签库的描述文件；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;core标签库常用标签&#34;&gt;core标签库常用标签&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;out
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:out value=&amp;quot;aaa&amp;quot;/&amp;gt;&lt;/code&gt; 输出aaa字符串常量&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:out value=&amp;quot;${aaa}&amp;quot;/&amp;gt;&lt;/code&gt;    与${aaa}相同&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:out value=&amp;quot;${aaa}&amp;quot; default=&amp;quot;xxx&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;set
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:set var=&amp;quot;a&amp;quot; value=&amp;quot;hello&amp;quot;/&amp;gt;&lt;/code&gt; 在pageContext中添加name为a，value为hello的数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:set var=&amp;quot;a&amp;quot; value=&amp;quot;hello&amp;quot; scope=&amp;quot;session&amp;quot;/&amp;gt;&lt;/code&gt; 在session中添加name为a，value为hello的数据。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;remove
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c: remove var=&amp;quot;a&amp;quot;/&amp;gt;&lt;/code&gt; 删除所有域中name为a的数据&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:remove var=&amp;quot;a&amp;quot; scope=&amp;quot;page&amp;quot;/&amp;gt;&lt;/code&gt; 删除pageContext中name为a的数据&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;url
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:url value=&amp;quot;/&amp;quot;/&amp;gt;&lt;/code&gt; 输出上下文路径：/项目名/&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:url value=&amp;quot;/&amp;quot; var=&amp;quot;a&amp;quot; scope=&amp;quot;request&amp;quot;/&amp;gt;&lt;/code&gt; 把本该输出的结果赋给变量a。范围为request&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:url value=&amp;quot;/AServlet&amp;quot;/&amp;gt;&lt;/code&gt;   输出：/项目名/AServlet&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:url value=&amp;quot;/AServlet&amp;quot;&amp;gt;
-&amp;lt;c:param name=&amp;quot;username&amp;quot; value=&amp;quot;abc&amp;quot;/&amp;gt;
-&amp;lt;c:param name=&amp;quot;password&amp;quot; value=&amp;quot;123&amp;quot;/&amp;gt;&lt;/code&gt; 输出：/项目名/AServlet?username=abc&amp;amp;password=123。如果参数中包含中文，那么会自动使用URL编码！&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;if&lt;/strong&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:if test=&amp;quot;条件&amp;quot;&amp;gt;满足条件执行的JSP代码&amp;lt;/c:if&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;choose&lt;/strong&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:choose&amp;gt;
-&amp;lt;c:when test=&amp;quot;条件&amp;quot;&amp;gt;处理&amp;lt;/c:when&amp;gt;
-&amp;lt;c:when test=&amp;quot;条件&amp;quot;&amp;gt;处理&amp;lt;/c:when&amp;gt;
-&amp;lt;c:otherwise&amp;gt;处理&amp;lt;/c:otherwise&amp;gt;
-&amp;lt;/c:choose&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;forEach&lt;/strong&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:forEach var=&amp;quot;名字(i)&amp;quot; begin=&amp;quot;开始数字(1)&amp;quot; end=&amp;quot;结束数字(5)&amp;quot;&amp;gt;
-${i}
-&amp;lt;/c:forEach&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:forEach var=&amp;quot;item&amp;quot; items=&amp;quot;数组/集合&amp;quot;&amp;gt;
-${item}
-&amp;lt;/c:forEach&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;:forTokens&lt;/strong&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;c:forTokens items=&amp;quot;google,runoob,taobao&amp;quot; delims=&amp;quot;,&amp;quot; var=&amp;quot;name&amp;quot;&amp;gt;
-&amp;lt;c:out value=&amp;quot;${name}&amp;quot;/&amp;gt;&amp;lt;p&amp;gt;
-&amp;lt;/c:forTokens&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;fmt标签库&#34;&gt;fmt标签库&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;fmt:formatNumber value=”被格式化的数据”[type=”number|currency|percent”]
-
-                                               [pattern=”pattern”]
-
-                                               [currencyCode=”code”]
-
-                                               [currencySymbol=”symbol”]
-
-                                               [groupingUsed=”true|false”]
-
-                                               [maxIntergerDigits=”maxDigits”]
-
-                                               [minIntergerDigits=”minDigits”]
-
-                                               [maxFractionDigits=”maxDigits”]
-
-                                               [minFractionDigits=”minDigits”]
-
-                                               [var=”name”]
-
-                                               [scope=page|request|session|application]
-
-/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;详见 &lt;a href=&#34;http://www.runoob.com/jsp/jstl-format-formatdate-tag.html&#34; target=&#34;blank&#34;&gt;fmt&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;jstl自定义标签&#34;&gt;JSTL自定义标签&lt;/h2&gt;
-
-&lt;p&gt;JSP中使用自定义标签移除只需要完成以下两个步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;编写一个实现Tag接口的java类（标签处理类）；&lt;/li&gt;
-&lt;li&gt;编写标签库描述符（tld）文件，在tld文件中对标签处理类进行描述。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;详见 &lt;a href=&#34;https://www.cnblogs.com/shanheyongmu/p/5940945.html&#34; target=&#34;blank&#34;&gt;JSTL自定义标签&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;jdbc&#34;&gt;JDBC&lt;/h2&gt;
-
-&lt;p&gt;JDBC核心类:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;DriverManager
-
-&lt;ul&gt;
-&lt;li&gt;注册驱动&lt;/li&gt;
-&lt;li&gt;获取Connection&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Connection
-
-&lt;ul&gt;
-&lt;li&gt;与数据库通讯&lt;/li&gt;
-&lt;li&gt;获取Statement&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Statement
-
-&lt;ul&gt;
-&lt;li&gt;向数据库发送SQL语句&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;ResultSet
-
-&lt;ul&gt;
-&lt;li&gt;结果集&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;JDBC编写顺序：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;注册驱动层序&lt;/li&gt;
-&lt;li&gt;获取数据库连接&lt;/li&gt;
-&lt;li&gt;创建Statement/PreparedStatement&lt;/li&gt;
-&lt;li&gt;发送执行sql语句&lt;/li&gt;
-&lt;li&gt;处理结果集（如果有）&lt;/li&gt;
-&lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;statement&#34;&gt;Statement&lt;/h4&gt;
-
-&lt;p&gt;con.createStatement()（结果集不滚动、不敏感、不可更新）&lt;br /&gt;
-con.createStatement(int,int)&lt;/p&gt;
-
-&lt;h2 id=&#34;jdbc之statement-preparedstatement-callablestatement&#34;&gt;JDBC之Statement,PreparedStatement,CallableStatement&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Statement、PreparedStatement和CallableStatement都是接口(interface)。&lt;/li&gt;
-&lt;li&gt;Statement继承自Wrapper、PreparedStatement继承自Statement、CallableStatement继承自PreparedStatement。&lt;/li&gt;
-&lt;li&gt;Statement接口提供了执行语句和获取结果的基本方法；&lt;br /&gt;
-PreparedStatement接口添加了处理 IN 参数的方法；&lt;br /&gt;
-CallableStatement接口添加了处理 OUT 参数的方法。&lt;/li&gt;
-&lt;li&gt;特性
-
-&lt;ul&gt;
-&lt;li&gt;Statement
-
-&lt;ul&gt;
-&lt;li&gt;普通的不带参的查询SQL；&lt;/li&gt;
-&lt;li&gt;支持批量更新,批量删除;&lt;/li&gt;
-&lt;li&gt;Statement每次执行sql语句，数据库都要执行sql语句的编译;用于仅执行一次查询并返回结果的情形时，效率高于PreparedStatement。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;PreparedStatement
-
-&lt;ul&gt;
-&lt;li&gt;可变参数的SQL,编译一次,执行多次,效率高;安全性好，有效防止Sql注入等问题&lt;/li&gt;
-&lt;li&gt;支持批量更新,批量删除;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;CallableStatement
-
-&lt;ul&gt;
-&lt;li&gt;继承自PreparedStatement,支持带参数的SQL操作;&lt;/li&gt;
-&lt;li&gt;支持调用存储过程,提供了对输出和输入/输出参数(INOUT)的支持;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;使用PreparedStatement有几个好处&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;在执行可变参数的一条SQL时，PreparedStatement比Statement的效率高，因为DBMS预编译一条SQL当然会比多次编译一条SQL的效率要高。&lt;/li&gt;
-&lt;li&gt;安全性好，有效防止Sql注入等问题。&lt;/li&gt;
-&lt;li&gt;对于多次重复执行的语句，使用PreparedStament效率会更高一点，并且在这种情况下也比较适合使用batch；&lt;/li&gt;
-&lt;li&gt;代码的可读性和可维护性。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;execute&#34;&gt;execute&amp;hellip;&lt;/h4&gt;
-
-&lt;p&gt;executeQuery：返回结果集(ResultSet)。&lt;br /&gt;
-executeUpdate: 执行给定SQL语句,该语句可能为 INSERT、UPDATE 或 DELETE 语句，或者不返回任何内容的SQL语句（如 SQL DDL 语句）。&lt;br /&gt;
-execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行该SQL语句是否返回了ResultSet。如果执行后第一个结果是ResultSet，则返回true，否则返回false。&lt;/p&gt;
-
-&lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/fjdingsd/p/5273008.html&#34; target=&#34;blank&#34;&gt;事务的四大特性及隔离级别&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;数据库连接池&#34;&gt;数据库连接池&lt;/h2&gt;
-
-&lt;p&gt;DBCP（hibernate3不再支持）&lt;/p&gt;
-
-&lt;p&gt;C3P0&lt;/p&gt;
 </description>
       
     </item>
