@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
+  <channel>
+    <title>ianeiu</title>
+    <link>https://ianeiu.github.io/</link>
+    <description>Recent content on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
+    
+        <atom:link href="https://ianeiu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>https://ianeiu.github.io/about/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/about/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;吴炜棉&lt;/li&gt;
+&lt;li&gt;weimianwu@foxmail.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;span style=&#34;display:none&#34;&gt;### 友链&lt;/span&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+  </channel>
+</rss>
