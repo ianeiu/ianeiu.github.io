@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>JVM之volatile关键字 · ianeiu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j" />
+
+  <meta name="keywords" content="ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2019/07/25/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="JVM之volatile关键字" />
+<meta property="og:description" content="引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2019/07/25/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/" /><meta property="article:published_time" content="2019-07-25T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-25T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="JVM之volatile关键字">
+<meta itemprop="description" content="引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j">
+
+
+<meta itemprop="datePublished" content="2019-07-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1459">
+
+
+
+<meta itemprop="keywords" content="volatile," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JVM之volatile关键字"/>
+<meta name="twitter:description" content="引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          ianeiu
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">JVM之volatile关键字</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2019-07-25
+          / 分类：
+          <a href="https://ianeiu.github.io/category/java/">java</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/volatile/">volatile</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h2 id="引入">引入</h2>
+
+<p>Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范，
+用来屏蔽不同硬件和操作系统的内存访问差异，让java程序在各种平台下都能达到一致的内存访问效果。</p>
+
+<ol>
+<li><p>主内存（Main Memory）<br />
+主内存可以简单理解为计算机当中的内存，但又不完全等同。<br />
+主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。</p></li>
+
+<li><p>工作内存（Working Memory）<br />
+工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。<br />
+每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。<br />
+线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。<br />
+不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。</p></li>
+</ol>
+
+<p>对于一个静态变量</p>
+
+<pre><code>static int s = 0；
+</code></pre>
+
+<p>线程A执行如下代码：</p>
+
+<pre><code>s = 3；
+</code></pre>
+
+<p>通过一系列内存读写的操作指令，线程A把静态变量 s=0 从主内存读到工作内存，再把 s=3 的更新结果同步到主内存当中。</p>
+
+<p>从单线程的角度来看，这个过程没有任何问题。这时候我们引入线程B，执行如下代码：</p>
+
+<pre><code>System.out.println(&quot;s=&quot; + s);
+</code></pre>
+
+<p>有可能输出 0 或 3</p>
+
+<p>可以使用synchronized同步锁（影响性能）或者使用volatile关键字修饰（轻量）</p>
+
+<h2 id="volatile-之-可见性">volatile 之 可见性</h2>
+
+<p>volatile关键字具有许多特性，其中最重要的特性就是保证了用volatile修饰的变量对所有线程的可见性[当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值]。</p>
+
+<p>但volatile不能保证变量的原子性即无法保证线程安全。</p>
+
+<h4 id="什么时候适合用">什么时候适合用</h4>
+
+<ol>
+<li><p>运行结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值。</p>
+
+<pre><code>public class VolatileTest {
+    public volatile static int count = 0;
+    
+    public static void main(String[] args) {
+        //开启 10个线程
+        for (int i = 0; i &lt; 10; i++) {
+            new Thread(
+                    new Runnable() {
+                        public void run() {
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            //每个线程当中让count值自增 100次
+                            for (int j = 0; j &lt; 100; j++) {
+                                count++;
+                            }
+                        }
+                    }
+            ).start();
+        }
+        try {
+            Thread.Weep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System, out.print(&quot;count&quot; + count);
+        //最终count的结果值未必是1000，有可能小于1000。
+    }
+}
+</code></pre></li>
+
+<li><p>变量不需要与其他的状态变量共同参与不变约束。</p>
+
+<pre><code>volatile static int start = 3;
+volatile static int end = 6;
+    
+线程A执行如下代码：
+while (start &lt; end){
+  //do something
+}
+    
+线程B执行如下代码：
+start+=3;
+end+=3;
+    
+//这种情况下，一旦在线程A的循环中执行了线程B，start有可能先更新成6，
+//造成了一瞬间 start == end，从而跳出while循环的可能性。
+</code></pre></li>
+</ol>
+
+<h2 id="volatile-之-阻止指令重排">volatile 之  阻止指令重排</h2>
+
+<pre><code>public class Singleton2 {
+    private static Singleton2 instance;
+
+    public static Singleton2 getInstance() {
+    	//双重检测机制
+        if (instance == null) {
+        	//同步锁
+            synchronized (Singleton2.class) {
+            	//双重检测机制
+                if (instance == null) {
+                    instance = new Singleton2();
+                }
+            }
+        }
+        return instance;
+    }
+}
+</code></pre>
+
+<p>已上代码存在问题，可能会得到一个没有初始化完成的对象</p>
+
+<p>JVM编译器的指令重排，可能会得到一个没有初始化的对象</p>
+
+<p>java中简单的一句 <code>instance = new Singleton</code>，会被编译器编译成如下JVM指令：</p>
+
+<pre><code>memory =allocate();    //1：分配对象的内存空间 
+ctorInstance(memory);  //2：初始化对象 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+</code></pre>
+
+<p>但是这些指令顺序并非一成不变，有可能会经过JVM和CPU的优化，指令重排成下面的顺序：</p>
+
+<pre><code>memory =allocate();    //1：分配对象的内存空间 
+instance =memory;     //3：设置instance指向刚分配的内存地址 
+ctorInstance(memory);  //2：初始化对象 
+</code></pre>
+
+<p>当线程A执行完1,3,时，instance对象还未完成初始化，但已经不再指向null。<br />
+此时如果线程B抢占到CPU资源，执行  if（instance == null）的结果会是false，从而返回一个没有初始化完成的instance对象。</p>
+
+<p>如何避免这一情况呢？我们需要在instance对象前面增加一个修饰符volatile。</p>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2020
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

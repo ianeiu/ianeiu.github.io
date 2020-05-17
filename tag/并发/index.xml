@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>并发 on ianeiu</title>
+    <link>https://ianeiu.github.io/tag/%E5%B9%B6%E5%8F%91/</link>
+    <description>Recent content in 并发 on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 05 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E5%B9%B6%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java面试之并发</title>
+      <link>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</guid>
+      <description>synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全</description>
+    </item>
+    
+  </channel>
+</rss>

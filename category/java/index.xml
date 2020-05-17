@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on ianeiu</title>
+    <link>https://ianeiu.github.io/category/java/</link>
+    <description>Recent content in Java on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Thu, 05 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java面试之并发</title>
+      <link>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</guid>
+      <description>synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全</description>
+    </item>
+    
+    <item>
+      <title>Java面试题</title>
+      <link>https://ianeiu.github.io/2020/02/15/java%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 15 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/02/15/java%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>Java平台理解及Java是解释执行吗？ 首先Java是一种面向对象的语言，本身具有两个特性：一个是跨平台能力（一次编写，到处运行），屏蔽了操</description>
+    </item>
+    
+    <item>
+      <title>Java开发之命名规范</title>
+      <link>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文： 编码5分钟，命名2小时？史上最全的Java命名规范参考！ 一、Java中的命名规范 类型(名) 约束 例 项目 全部小写 多个单词用中划线分隔‘-’</description>
+    </item>
+    
+    <item>
+      <title>JVM之volatile关键字</title>
+      <link>https://ianeiu.github.io/2019/07/25/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/25/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让j</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之基础篇</title>
+      <link>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <description>Java基础笔记整理 关键字 用于定义数据类型 class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】 类型转换： byte→sho</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之web篇</title>
+      <link>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</guid>
+      <description>JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; XM</description>
+    </item>
+    
+    <item>
+      <title>Java面试之基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/2018/11/18/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/18/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。 Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM类加载机制</title>
+      <link>https://ianeiu.github.io/2018/10/19/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
+      <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之引用、GC及OOM</title>
+      <link>https://ianeiu.github.io/2018/10/10/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/10/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</guid>
+      <description>强引用、软引用、弱引用和虚引用 强引用（Strong Reference） 只有这个引用被释放之后，对象才会被释放掉。只要引用存在，垃圾回收器永远</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之名词简介</title>
+      <link>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
+      <description>web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其</description>
+    </item>
+    
+    <item>
+      <title>Java面试之HashMap</title>
+      <link>https://ianeiu.github.io/2018/09/13/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/13/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</guid>
+      <description>HashMap（数组+链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能； HashMap是</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM结构</title>
+      <link>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
+    </item>
+    
+    <item>
+      <title>Java开发之常量定义</title>
+      <link>https://ianeiu.github.io/2018/09/11/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</guid>
+      <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
+    </item>
+    
+    <item>
+      <title>Java面试之初中级题集</title>
+      <link>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</guid>
+      <description>数组在内存中如何分配 简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之常见的RuntimeException</title>
+      <link>https://ianeiu.github.io/2018/08/23/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/23/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</guid>
+      <description>RuntimeException 运行时异常。是所有Java虚拟机正常操作期间可以被抛出的异常的父类。 NumberFormatException - 数字格式异常 NullPointerException - 空指针引用异常 ClassCastException - 类型强制转换异常。 IllegalArgumentException - 传递非法参</description>
+    </item>
+    
+  </channel>
+</rss>

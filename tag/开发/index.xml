@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>开发 on ianeiu</title>
+    <link>https://ianeiu.github.io/tag/%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 开发 on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java开发之命名规范</title>
+      <link>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文： 编码5分钟，命名2小时？史上最全的Java命名规范参考！ 一、Java中的命名规范 类型(名) 约束 例 项目 全部小写 多个单词用中划线分隔‘-’</description>
+    </item>
+    
+  </channel>
+</rss>
