@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>Java笔记之NIO · ianeiu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实" />
+
+  <meta name="keywords" content="ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="Java笔记之NIO" />
+<meta property="og:description" content="Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/" /><meta property="article:published_time" content="2020-05-20T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-05-20T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="Java笔记之NIO">
+<meta itemprop="description" content="Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实">
+
+
+<meta itemprop="datePublished" content="2020-05-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-05-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1786">
+
+
+
+<meta itemprop="keywords" content="NIO," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java笔记之NIO"/>
+<meta name="twitter:description" content="Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          ianeiu
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">Java笔记之NIO</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2020-05-20
+          / 分类：
+          <a href="https://ianeiu.github.io/category/java/">java</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/nio/">NIO</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h2 id="java-提供了哪些-io-方式-nio-如何实现多路复用">Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？</h2>
+
+<p>Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。
+首先，传统的 java.io 包，它基于流模型实现，提供了我们最熟知的一些 IO 功能，比如 File 抽象、输入输出流等。 交互方式是同步、阻塞的方式，也就是说，在读取输入流或者写入输出流时， 在读、写动作完成之前，线程会一直阻塞在那里，它们之间的调用是可靠的线性顺序。
+java.io 包的好处是代码比较简单、直观，缺点则是 IO 效率和扩展性存在局限性，容易成为应用性能的瓶颈。</p>
+
+<p>很多时候，人们也把 java.net 下面提供的部分网络 API，比如 Socket、ServerSocket、 HttpURLConnection 也归类到同步阻塞 IO 类库，因为网络通信同样是 IO 行为。</p>
+
+<p>第二，在 Java 1.4 中引入了 NIO 框架（java.nio 包），提供了 Channel、Selector、Buffer 等新的抽象， 可以构建多路复用的、同步非阻塞 IO 程序，同时提供了更接近操作系统底层的高性能数据操作方式。</p>
+
+<p>第三，在 Java 7 中，NIO 有了进一步的改进，也就是 NIO 2，引入了异步非阻塞 IO 方式，也有很多人叫它 AIO（Asynchronous IO）。
+异步 IO 操作基于事件和回调机制，可以简单理解为，应用操作直接返回，而不会阻塞在那里， 当后台处理完成，操作系统会通知相应线程进行后续工作。</p>
+
+<p>NIO 则是利用了单线程轮询事件的机制，通过高效地定位就绪的 Channel，来决定做什么，
+仅仅 select 阶段是阻塞的，可以有效避免大量客户端连接时，频繁线程切换带来的问题，应用的扩展能力有了非常大的提高。</p>
+
+<p>NIO是一种非阻塞式I/O；采用了双向通道进行数据传输，NIO基于Channel和Buffer(缓冲区)进⾏行行操作，数据总是从通道读取到缓冲区中，或者从缓冲区
+写⼊入到通道中。Selector(选择区)用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个线程可以监听多个数据通道。</p>
+
+<h2 id="io-nio">IO、NIO</h2>
+
+<p>IO 概览:<br />
+* IO 不仅仅是对文件的操作，网络编程中，比如 Socket 通信，都是典型的 IO 操作目标。
+* 输入流、输出流（InputStream/OutputStream）是用于读取或写入字节的，例如操作图片文件。
+* 而 Reader/Writer 则是用于操作字符，增加了字符编解码等功能，适用于类似从文件中读取或者写入文本信息。本质上计算机操作的都是字节，不管是网络通信还是文件读取，Reader/Writer 相当于构建了应用逻辑和原始数据之间的桥梁。
+* BufferedOutputStream 等带缓冲区的实现，可以避免频繁的磁盘读写，进而提高 IO 处理效率。这种设计利用了缓冲区，将批量数据进行一次操作，但在使用中千万别忘了 flush。
+* 很多 IO 工具类都实现了 Closeable 接口，因为需要进行资源的释放。</p>
+
+<p>NIO 概览：<br />
+* Buffer，高效的数据容器，除了布尔类型，所有原始数据类型都有相应的 Buffer 实现。
+* Channel，类似在 Linux 之类操作系统上看到的文件描述符，是 NIO 中被用来支持批量式IO 操作的一种抽象。
+* File 或者 Socket，通常被认为是比较高层次的抽象，而 Channel 则是更加操作系统底层的一种抽象，这也使得 NIO 得以充分利用现代操作系统底层机制，获得特定场景的性能优化，例如，DMA（Direct Memory Access）等。不同层次的抽象是相互关联的，我们可以通过Socket 获取 Channel，反之亦然。
+* Selector，是 NIO 实现多路复用的基础，它提供了一种高效的机制，可以检测到注册在Selector 上的多个 Channel 中，是否有 Channel 处于就绪状态，进而实现了单线程对多Channel 的高效管理。
+* Chartset，提供 Unicode 字符串定义，NIO 也提供了相应的编解码器等，例如，Charset.defaultCharset().encode(&ldquo;Hello world!&rdquo;))进行字符串到 ByteBuffer 的转换</p>
+
+<p>IO 适用场景<br />
+如果只有少量量的连接，⽽而这些连接每次要发送⼤大量量的数据，这时候传统的IO更更合适。使⽤用哪种处理理数据，需要在数据的响应等待时间和检查缓冲区数据的时间上作⽐比较来权衡选择。</p>
+
+<p>NIO 适用场景<br />
+如果需要管理理同时打开的成千上万个连接，这些连接每次只是发送少量量的数据，例例如聊天服务器器，这时候⽤用NIO处理理数据可能是个很好的选择。(适⽤用于⼩小数据多连接)</p>
+
+<p>原理：
+1.  由一个专⻔门的线程来处理所有的 IO 事件，并负责分发。
+2.  事件驱动机制：事件到的时候触发，而不是同步的去监视事件。
+3.  线程通讯：线程之间通过 wait,notify 等方式通讯。保证每次上下文切换都是有意义的。减少⽆无谓的线程切换。</p>
+
+<p><img src="/resouce/java/nio.png"  alt="nio" /></p>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2020
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

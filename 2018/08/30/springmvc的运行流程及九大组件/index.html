@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>SpringMVC的运行流程及九大组件 · ianeiu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping" />
+
+  <meta name="keywords" content="ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="SpringMVC的运行流程及九大组件" />
+<meta property="og:description" content="运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/" /><meta property="article:published_time" content="2018-08-30T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-08-30T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="SpringMVC的运行流程及九大组件">
+<meta itemprop="description" content="运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping">
+
+
+<meta itemprop="datePublished" content="2018-08-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2364">
+
+
+
+<meta itemprop="keywords" content="SpringMVC," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringMVC的运行流程及九大组件"/>
+<meta name="twitter:description" content="运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          ianeiu
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">SpringMVC的运行流程及九大组件</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-08-30
+          / 分类：
+          <a href="https://ianeiu.github.io/category/spring/">Spring</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/springmvc/">SpringMVC</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h1 id="运行流程">运行流程</h1>
+
+<p><img src="/resouce/spring/SpringMVC的运行流程.png"  alt="SpringMVC的运行流程" /></p>
+
+<ul>
+<li>用户发送请求至前置控制器DispatcherServlet</li>
+<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
+<li>处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</li>
+<li>DispatcherServlet通过HandlerAdapter处理器适配器调用处理器</li>
+<li>执行处理器/后端控制器Controller</li>
+<li>Controller执行完成返回ModelAndView</li>
+<li>HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet</li>
+<li>DispatcherServlet将ModelAndView传给视图解析器ViewReslover</li>
+<li>ViewReslover解析后返回具体View</li>
+<li>DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。</li>
+<li>DispatcherServlet响应用户。</li>
+</ul>
+
+<p>从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。</p>
+
+<h1 id="九大组件">九大组件</h1>
+
+<h3 id="handlermapping">HandlerMapping</h3>
+
+<p>处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet</p>
+
+<h3 id="handleradapter">HandlerAdapter</h3>
+
+<p>适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。</p>
+
+<p>有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。</p>
+
+<h3 id="handlerexceptionresolver">HandlerExceptionResolver</h3>
+
+<p>异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：</p>
+
+<pre><code>@Component
+public class GlobalExceptionResolver implements HandlerExceptionResolver {
+	...
+	/**
+	 * 针对请求处理异常
+	 */
+	@Override
+	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
+			Exception ex) {
+		boolean isHttpApi = isHttpApi(handler);
+		HandleResult result = handleException(ex);
+		if (isReturnReponseBody(handler) || isHttpApi) {
+			if(isHttpApi){
+				result =  apiHandleException(ex);
+			}
+			
+			ModelAndView modelAndView = new ModelAndView();
+			//处理异常
+			response.setContentType(&quot;application/json;charset=UTF-8&quot;);
+			byte[] bytes = JSON.toJSONBytes(Result.fail(result.getCode(), result.getMessage()), SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
+			try {
+				response.getOutputStream().write(bytes);
+				response.getOutputStream().flush();
+			} catch (IOException e) {
+				log.error(&quot;打印错误信息出错!&quot;, e);
+			}
+			modelAndView.clear();
+			return modelAndView;
+		}else {
+			Map&lt;String, String&gt; model = Maps.newHashMap();
+			model.put(&quot;code&quot;, result.getCode());
+			model.put(&quot;message&quot;, result.getMessage());
+			return new ModelAndView(&quot;500&quot;, model);
+		}
+	}
+	...
+}
+</code></pre>
+
+<h3 id="viewresolver">ViewResolver</h3>
+
+<p>视图解析器：当Controller将请求处理结果放入到ModelAndView中以后，DispatcherServlet会根据ModelAndView选择合适的视图进行渲染。ViewResolver接口有众多实现类，根据viewName创建合适类型的View实现。配置如下：</p>
+
+<pre><code>&lt;bean class=&quot;org.Springframework.web.servlet.view.InternalResourceViewResolve&quot;&gt;
+	&lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot; /&gt;
+	&lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<h3 id="requesttoviewnametranslator">RequestToViewNameTranslator</h3>
+
+<p>当Controller处理器方法没有返回一个View对象或逻辑视图名称，并且在该方法中没有直接往response的输出流里面写数据的时候，Spring就会采用约定好的方式提供一个逻辑视图名称。可通过实现接口org.Springframework.web.servlet.RequestToViewNameTranslator接口的getViewName方法来实现。</p>
+
+<h3 id="localeresolver">LocaleResolver</h3>
+
+<p>国际化配置</p>
+
+<ul>
+<li>Spring的国际化配置三种方式
+
+<ul>
+<li>基于URL参数的配置：通过URL参数来控制国际化
+
+<ol>
+<li>页面： <code>&lt;a href=&quot;myTest.jsp?locale=zh_CN&quot;&gt;简体中文&lt;/a&gt;</code></li>
+<li>配置文件：<code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.AcceptHeaderLocaleResolver&quot;/&gt;</code></li>
+</ol></li>
+<li>基于session的配置：通过检验用户会话中预置的属性来解析区域，最常用的是根据用户本次会话过程中的语言设定决定语言种类，如果该会话不存在，它会根据accept-language HTTP头部确定默认区域。配置<br/><code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.SessionLocaleResolver&quot;/&gt;</code></li>
+<li>基于Cookie的国际化配置：用于通过浏览器的cookie设置取得Locale对象，这种策略在应用程序不支持会话或者状态必须保存在客户端时有用。<br/><code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.CookieLocaleResolver&quot;/&gt;</code>
+<br /></li>
+</ul></li>
+</ul>
+
+<h3 id="themeresolver">ThemeResolver</h3>
+
+<p>解析主题。一个主题就是一组静态资源（比如样式表、图片等），它们可以影响应用程序的视觉效果。</p>
+
+<ul>
+<li>SpringMVC中跟主题相关的类
+
+<ul>
+<li>ThemeResolver:主题解析器</li>
+<li>ThemeSource:主题资源</li>
+<li>Theme:主题接口</li>
+<li>ThemeChangeInterceptor:根据用户请求来改变主题(需要在handlerMapping中配置拦截器<br/><code>&lt;property name=&quot;interceptors&quot;&gt;&lt;list&gt;&lt;ref local=&quot;themeChangeInterceptor&quot; /&gt;&lt;/list&gt;&lt;/property&gt;</code>)</li>
+</ul></li>
+<li>ThemeResolver子类
+
+<ul>
+<li>AbstractThemeResolver:SessionThemeResolver和FixedThemeResolver继承的抽象类</li>
+<li>SessionThemeResolver:用户的主题保存在HTTP session中</li>
+<li>CookieThemeResolver:用于实现用户所选的主题，以cookie的形式存放在客户端的机器上</li>
+<li>FixedThemeResolver:用于选择一个固定的主题
+<br /></li>
+</ul></li>
+</ul>
+
+<h3 id="multipartresolver">MultipartResolver</h3>
+
+<p>MultipartResolver 用于处理文件上传，当收到请求时 DispatcherServlet 的 checkMultipart() 方法会调用 MultipartResolver 的 isMultipart() 方法判断请求中是否包含文件。如果请求数据中包含文件，则调用 MultipartResolver 的 resolveMultipart() 方法对请求的数据进行解析，然后将文件数据解析成 MultipartFile 并封装在 MultipartHttpServletRequest (继承了 HttpServletRequest) 对象中，最后传递给 Controller.</p>
+
+<ul>
+<li>MultipartResolver子类
+
+<ul>
+<li>CommonsMultipartResolver：使用 commons Fileupload来处理 multipart请求，所以在使用时，必须要引入相应的jar包。而像SpringBoot是不支持CommonsMultipartResolver</li>
+<li>StandardServletMultipartResolver：基于Servlet3.0来处理multipart请求的，所以不需要引用其他jar包，从Tomcat7.0.x的版本开始就支持 Servlet 3.0了</li>
+</ul></li>
+</ul>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2020
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

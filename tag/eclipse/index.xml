@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eclipse on ianeiu</title>
+    <link>https://ianeiu.github.io/tag/eclipse/</link>
+    <description>Recent content in Eclipse on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/eclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eclipse笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键 使用频率极高的快捷键 DESC KEY 代码提示 alt+/ 自动生成object方法 alt + shift + s，然后根据提示继续 复制当前行 ctrl +alt + ↓ 查找文本 ctrl + k ,ctrl + shfit + k 如何跳</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>Spring拦截器 · ianeiu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的" />
+
+  <meta name="keywords" content="ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="Spring拦截器" />
+<meta property="og:description" content="前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/" /><meta property="article:published_time" content="2018-10-30T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-10-30T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="Spring拦截器">
+<meta itemprop="description" content="前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的">
+
+
+<meta itemprop="datePublished" content="2018-10-30T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-10-30T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2908">
+
+
+
+<meta itemprop="keywords" content="拦截器,SpringBoot," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring拦截器"/>
+<meta name="twitter:description" content="前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          ianeiu
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">Spring拦截器</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2018-10-30
+          / 分类：
+          <a href="https://ianeiu.github.io/category/spring/">Spring</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/springboot/">SpringBoot</a>,
+                <a href="https://ianeiu.github.io/tag/%E6%8B%A6%E6%88%AA%E5%99%A8/">拦截器</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h2 id="前言">前言</h2>
+
+<p>接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的显示控制。所以当时想法是新建一个拦截器对这几个请求做统一处理（放入权限代码集合），类似之前项目的错误页面拦截器。</p>
+
+<h2 id="拦截器简介">拦截器简介</h2>
+
+<p>Spring 框架实现拦截器功能主要有两种方法，第一种是实现<code>HandlerInterceptor</code>接口，第二种是实现<code>WebRequestInterceptor</code>接口。</p>
+
+<p><kbd>HandlerInterceptor接口</kbd></p>
+
+<p>通过实现HandlerInterceptor接口，重写方法<code>preHandle()</code>、<code>postHandle()</code>和<code>afterCompletion()</code>拦截请求。Spring 框架中还提供了另外一个接口和一个抽象类，实现了对HandlerInterceptor接口的功能扩展，分别为：AsyncHandlerInterceptor和HandlerInterceptorAdapter。</p>
+
+<p>对于AsyncHandlerInterceptor接口，其在继承HandlerInterceptor接口的同时，又声明了一个新的方法<code>afterConcurrentHandlingStarted()</code>；<br />
+而HandlerInterceptorAdapter抽象类，在其继承AsyncHandlerInterceptor接口的同时，又复写了preHandle方法。</p>
+
+<ul>
+<li><code>preHandle(HttpServletRequest request, HttpServletResponse response, Object handle)</code>方法，该方法在请求处理之前进行调用。SpringMVC 中的 Interceptor 是链式调用的，在一个应用中或者说是在一个请求中可以同时存在多个 Interceptor 。每个 Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是 Interceptor 中的 preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求做一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值 Boolean 类型的，当它返回为 false 时，表示请求结束，后续的 Interceptor 和 Controller 都不会再执行；当返回值为 true 时，就会继续调用下一个 Interceptor 的 preHandle 方法，如果已经是最后一个 Interceptor 的时候，就会是调用当前请求的 Controller 中的方法。</li>
+<li><code>postHandle(HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)</code>方法，通过 preHandle 方法的解释咱们知道这个方法包括后面要说到的 afterCompletion 方法都只能在当前所属的 Interceptor 的 preHandle 方法的返回值为 true 的时候，才能被调用。postHandle 方法在当前请求进行处理之后，也就是在 Controller 中的方法调用之后执行，但是它会在 DispatcherServlet 进行视图返回渲染之前被调用，所以咱们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。postHandle 方法被调用的方向跟 preHandle 是相反的，也就是说，先声明的 Interceptor 的 postHandle 方法反而会后执行。这和 Struts2 里面的 Interceptor 的执行过程有点类型，Struts2 里面的 Interceptor 的执行过程也是链式的，只是在 Struts2 里面需要手动调用 ActionInvocation 的 invoke 方法来触发对下一个 Interceptor 或者是 action 的调用，然后每一个 Interceptor 中在 invoke 方法调用之前的内容都是按照声明顺序执行的，而 invoke 方法之后的内容就是反向的。</li>
+<li><code>afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)</code>方法，也是需要当前对应的 Interceptor 的 preHandle 方法的返回值为 true 时才会执行。因此，该方法将在整个请求结束之后，也就是在 DispatcherServlet 渲染了对应的视图之后执行，这个方法的主要作用是用于进行资源清理的工作。</li>
+</ul>
+
+<p><kbd>WebRequestInterceptor接口</kbd></p>
+
+<p>在WebRequestInterceptor接口中也定义了 3 个方法，方法名同HandlerInterceptor接口相同，3 个方法都传递了同一个参数 WebRequest。WebRequest 是 Spring 中定义的一个接口，它里面的方法定义跟 HttpServletRequest 类似，在WebRequestInterceptor中对 WebRequest 进行的所有操作都将同步到 HttpServletRequest 中，然后在当前请求中依次传递。</p>
+
+<p>Spring框架中还提供了WebRequestInterceptorAdapter，其实现了AsyncHandlerInterceptor接口，并在内部调用了WebRequestInterceptor接口。</p>
+
+<ul>
+<li><code>preHandle(WebRequest request)</code>方法，该方法在请求处理之前进行调用，也就是说，其会在 Controller 中的方法调用之前被调用。这个方法跟 HandlerInterceptor 中的 preHandle 不同，主要区别在于该方法的返回值是void 类型的，也就是没有返回值，因此我们主要用它来进行资源的准备工作，比如我们在使用 Hibernate 的时候，可以在这个方法中准备一个 Hibernate 的Session 对象，然后利用 WebRequest 的 setAttribute(name, value, scope) 把它放到 WebRequest 的属性中。在这里，进一步说说 setAttribute 方法的第三个参数 scope ，该参数是一个Integer 类型的。在 WebRequest 的父层接口 RequestAttributes 中对它定义了三个常量，分别为：
+
+<ul>
+<li>SCOPE_REQUEST ，它的值是 0，表示只有在 request 中可以访问。</li>
+<li>SCOPE_SESSION，它的值是1，如果环境允许的话，它表示的是一个局部的隔离的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。</li>
+<li>SCOPE_GLOBAL_SESSION，它的值是 2，如果环境允许的话，它表示的是一个全局共享的 session，否则就代表普通的 session，并且在该 session 范围内可以访问。</li>
+</ul></li>
+<li><code>postHandle(WebRequest request, ModelMap model)</code>方法，该方法在请求处理之后，也就是在 Controller 中的方法调用之后被调用，但是会在视图返回被渲染之前被调用，所以可以在这个方法里面通过改变数据模型 ModelMap 来改变数据的展示。该方法有两个参数，WebRequest 对象是用于传递整个请求数据的，比如在 preHandle 中准备的数据都可以通过 WebRequest 来传递和访问；ModelMap 就是 Controller 处理之后返回的 Model 对象，咱们可以通过改变它的属性来改变返回的 Model 模型。</li>
+<li><code>afterCompletion(WebRequest request, Exception ex)</code>方法，该方法会在整个请求处理完成，也就是在视图返回并被渲染之后执行。因此可以在该方法中进行资源的释放操作。而 WebRequest 参数就可以把咱们在 preHandle 中准备的资源传递到这里进行释放。Exception 参数表示的是当前请求的异常对象，如果在 Controller 中抛出的异常已经被 Spring 的异常处理器给处理了的话，那么这个异常对象就是是 null.</li>
+</ul>
+
+<p><strong>来源：<a href="https://blog.csdn.net/qq_35246620/article/details/68487904" target="blank">作者：维C果糖 | 文章：述 Spring MVC 框架中拦截器 Interceptor 的使用方法</a></strong></p>
+
+<h2 id="拦截器code">拦截器CODE</h2>
+
+<ol>
+<li><p>实现HandlerInterceptor 接口</p>
+
+<pre><code>    import cn.com.do1.component.core.shirocas.model.UserVO;
+    import cn.com.do1.component.util.HttpPermissionUtil;
+    import org.apache.shiro.SecurityUtils;
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.HandlerInterceptor;
+    import org.springframework.web.servlet.ModelAndView;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.util.List;
+
+    /**
+     * 点击菜单拦截器
+     * @author wm
+     * @date 2018.10.29
+     */
+    @Component
+    public class ClickMenuInterceptor implements HandlerInterceptor {
+
+        @Value(&quot;${qxws.identifier}&quot;)
+        private String systemId;
+
+        @Override
+        public boolean preHandle(HttpServletRequest request,
+                                 HttpServletResponse response, Object handler) throws Exception {
+            return true;
+        }
+
+        @Override
+        public void postHandle(HttpServletRequest request,
+                               HttpServletResponse response, Object handler,
+                               ModelAndView modelAndView) throws Exception {
+            UserVO user = (UserVO) SecurityUtils.getSubject().getSession().getAttribute(&quot;user&quot;);
+            List&lt;String&gt; buttonList = HttpPermissionUtil.getButtonPermission(user.getUserId(), systemId);
+            modelAndView.addObject(&quot;buttonList&quot;,buttonList);
+        }
+
+        @Override
+        public void afterCompletion(HttpServletRequest request,
+                                    HttpServletResponse response, Object handler, Exception ex)
+                throws Exception {
+
+        }
+
+    } 
+</code></pre></li>
+
+<li><p>实现WebRequestInterceptor接口</p>
+
+<pre><code>    import org.springframework.ui.ModelMap;
+    import org.springframework.web.context.request.WebRequest;
+    import org.springframework.web.context.request.WebRequestInterceptor;
+
+    /**
+     * @author wm
+     * @Description ClinkMenuInterceptor2
+     * @date 2018/10/30 15:34
+     * @Version 1.0
+     */
+    public class ClinkMenuInterceptor2 implements WebRequestInterceptor {
+            
+        @Override
+        public void preHandle(WebRequest request) throws Exception {
+                
+        }
+
+        @Override
+        public void postHandle(WebRequest request, ModelMap model) throws Exception {
+
+        }
+
+        @Override
+        public void afterCompletion(WebRequest request, Exception ex) throws Exception {
+
+        }
+    }
+
+</code></pre></li>
+
+<li><p>继承HandlerInterceptorAdapter类</p>
+
+<pre><code>    import java.util.Arrays;
+    import java.util.List;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+    /**
+     * 错误页面拦截器
+     * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+     * @author wm
+     */
+    @Component
+    public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+        private List&lt;Integer&gt; errorCodeList = Arrays.asList(404,500);
+        @Override
+        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+            Exception {
+           if (errorCodeList.contains(response.getStatus())) {
+                response.sendRedirect(request.getContextPath()+&quot;/error/&quot; + response.getStatus());
+                return false;
+            }
+            return super.preHandle(request, response, handler);
+        }
+    }
+</code></pre></li>
+</ol>
+
+<h2 id="配置">配置</h2>
+
+<ul>
+<li><p>SpringMVC</p>
+
+<pre><code>    &lt;!--权限接入：拦截器--&gt;
+    &lt;mvc:interceptors&gt;
+        &lt;mvc:interceptor&gt;
+            &lt;mvc:mapping path=&quot;/identitySource/goIdentitySourceList&quot;/&gt;
+            &lt;mvc:mapping path=&quot;/userManager/goUserManagerListPage&quot;/&gt;
+            &lt;mvc:mapping path=&quot;/schedulemgr/goScheduleListPage&quot;/&gt;
+            &lt;bean class=&quot;cn.com.do1.component.security.interceptor.ClickMenuInterceptor&quot;/&gt;
+        &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
+</code></pre></li>
+
+<li><p>SpringBoot</p>
+
+<pre><code>    @Bean
+    public ClickMenuInterceptor getClickMenuInterceptor() {
+        return new ClickMenuInterceptor();
+    }
+    /**
+     * 新增security拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getClickMenuInterceptor()).
+                addPathPatterns(&quot;/identitySource/goIdentitySourceList&quot;,
+                        &quot;/userManager/goUserManagerListPage&quot;,
+                        &quot;/schedulemgr/goScheduleListPage&quot;);
+        super.addInterceptors(registry);
+    }
+</code></pre>
+
+<pre><code>    @Autowired
+    private ErrorPageInterceptor errorPageInterceptor;//错误拦截器（拦截404，500）
+    /**
+     * 新增拦截器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(errorPageInterceptor);//默认拦截所有
+        super.addInterceptors(registry);
+    }
+</code></pre></li>
+</ul>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2020
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

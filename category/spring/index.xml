@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on ianeiu</title>
+    <link>https://ianeiu.github.io/category/spring/</link>
+    <description>Recent content in Spring on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring面试题</title>
+      <link>https://ianeiu.github.io/2020/05/31/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/31/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>Spring装配Bean的过程 实例化; 设置属性值; 如果实现了BeanNameAware接口,调用setBeanName设置Bean的ID或者</description>
+    </item>
+    
+    <item>
+      <title>Spring中的设计模式</title>
+      <link>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建</description>
+    </item>
+    
+    <item>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解 注解 描述 @Component 泛指组件，类似在xml中配置bean @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Sprin</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot初体验</title>
+      <link>https://ianeiu.github.io/2018/11/01/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/11/01/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <description>如非说明，皆是使用1.5 本文只进行简单的代码提示，具体内容可自行百度 CXF @Bean public ServletRegistrationBean CXFServlet() { ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;); cxfBean.setName(&amp;quot;CXFServlet&amp;quot;); cxfBean.setLoadOnStartup(1); return cxfBean; } @Configuration public class CXFConfig { @Autowired private Bus bus; @Autowired private SSOService sSOService; @Bean public Endpoint endpointSSO() {</description>
+    </item>
+    
+    <item>
+      <title>Spring拦截器</title>
+      <link>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/10/30/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <description>前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC的运行流程及九大组件</title>
+      <link>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2018/08/30/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      <description>运行流程 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping</description>
+    </item>
+    
+  </channel>
+</rss>

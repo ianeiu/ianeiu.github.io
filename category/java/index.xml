@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Thu, 05 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/category/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java笔记之NIO</title>
+      <link>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</guid>
+      <description>Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之调优及参数</title>
+      <link>https://ianeiu.github.io/2020/05/18/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/18/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</guid>
+      <description>调优 调优时机 内存（⽼年代）持续上涨达到设置的最大内存值； Full GC 次数频繁； GC 停顿时间过长（超过1秒）； 应用出现OutOfMemory 等内存异常；</description>
+    </item>
     
     <item>
       <title>Java面试之并发</title>
@@ -18,7 +36,7 @@
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</guid>
-      <description>synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全</description>
+      <description>什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对</description>
     </item>
     
     <item>
@@ -117,7 +135,7 @@
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
-      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 &amp;lt;img style=&amp;quot;width:60%&amp;quot; s</description>
     </item>
     
     <item>
@@ -127,24 +145,6 @@
       
       <guid>https://ianeiu.github.io/2018/09/11/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</guid>
       <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
-    </item>
-    
-    <item>
-      <title>Java面试之初中级题集</title>
-      <link>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</guid>
-      <description>数组在内存中如何分配 简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的</description>
-    </item>
-    
-    <item>
-      <title>Java笔记之常见的RuntimeException</title>
-      <link>https://ianeiu.github.io/2018/08/23/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/08/23/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</guid>
-      <description>RuntimeException 运行时异常。是所有Java虚拟机正常操作期间可以被抛出的异常的父类。 NumberFormatException - 数字格式异常 NullPointerException - 空指针引用异常 ClassCastException - 类型强制转换异常。 IllegalArgumentException - 传递非法参</description>
     </item>
     
   </channel>

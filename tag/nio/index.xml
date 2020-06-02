@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NIO on ianeiu</title>
+    <link>https://ianeiu.github.io/tag/nio/</link>
+    <description>Recent content in NIO on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/tag/nio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java笔记之NIO</title>
+      <link>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</guid>
+      <description>Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实</description>
+    </item>
+    
+  </channel>
+</rss>

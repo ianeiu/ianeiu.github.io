@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2020-02-15T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-15T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="6170">
+<meta itemprop="wordCount" content="5992">
 
 
 
@@ -179,15 +179,6 @@ C2 对应 server 模式，它的优化是为长时间运行的服务器端应用
 <li>使用(反)序列化机制创建对象</li>
 </ol>
 
-<h2 id="java的多态表现在哪里">java的多态表现在哪里</h2>
-
-<p>主要有两种表现形式：重载和重写</p>
-
-<ul>
-<li>重载：发生在同一类中，具有相同的方法名，主要是看参数的个数，类型，顺序不同实现方法的重载的，返回值的类型可以不同。</li>
-<li>重写：发生在两个类中（父类和子类），具有相同的方法名，主要看方法中参数，个数，类型必须相同，返回值的类型必须相同。</li>
-</ul>
-
 <h2 id="exception和error有什么区别">Exception和Error有什么区别</h2>
 
 <p>Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。</p>
@@ -201,20 +192,22 @@ C2 对应 server 模式，它的优化是为长时间运行的服务器端应用
 可检查异常在源代码里必须显式地进行捕获处理，这是编译期检查的一部分。
 不检查异常就是所谓的运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException 之类，通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</p>
 
-<p>扩展:<br />
-1. NoClassDefFoundError 和 ClassNotFoundException 有什么区别，这也是个经典的入门题目。
-2. 理解 Java 语言中操作 Throwable 的元素和实践。掌握最基本的语法是必须的，如 trycatch-finally 块，throw、throws 关键字等。
-3. 与此同时，也要懂得如何处理典型场景。</p>
+<p>扩展</p>
 
-<p>异常处理原则
-1. 尽量不要捕获类似 Exception 这样的通用异常，而是应该捕获特定异常。
-进一步讲，除非深思熟虑了，否则不要捕获 Throwable 或者 Error，这样很难保证我们能够正确程序处理 OutOfMemoryError。
-2. 不要生吞（swallow）异常</p>
+<ol>
+<li>NoClassDefFoundError 和 ClassNotFoundException 有什么区别，这也是个经典的入门题目。</li>
+<li>理解 Java 语言中操作 Throwable 的元素和实践。掌握最基本的语法是必须的，如 trycatch-finally 块，throw、throws 关键字等。</li>
+<li>与此同时，也要懂得如何处理典型场景。</li>
+</ol>
 
-<p>try-catch 代码段会产生额外的性能开销，或者换个角度说，它往往会影响 JVM 对代码进行优化，
-所以建议仅捕获有必要的代码段，尽量不要一个大的 try 包住整段的代码。</p>
+<p>异常处理原则</p>
 
-<p>请勿在try代码块中调用return、break或continue语句。万一无法避免，一定要确保finally的存在不会改变函数的返回值（不要在finally代码块中处理返回值）。</p>
+<ol>
+<li>尽量不要捕获类似 Exception 这样的通用异常，而是应该捕获特定异常。进一步讲，除非深思熟虑了，否则不要捕获 Throwable 或者 Error，这样很难保证我们能够正确程序处理 OutOfMemoryError。</li>
+<li>不要生吞（swallow）异常</li>
+<li>try-catch 代码段会产生额外的性能开销，或者换个角度说，它往往会影响 JVM 对代码进行优化，所以建议仅捕获有必要的代码段，尽量不要一个大的 try 包住整段的代码。</li>
+<li>请勿在try代码块中调用return、break或continue语句。万一无法避免，一定要确保finally的存在不会改变函数的返回值（不要在finally代码块中处理返回值）。</li>
+</ol>
 
 <h2 id="noclassdeffounderror-和-classnotfoundexception-有什么区别">NoClassDefFoundError 和 ClassNotFoundException 有什么区别</h2>
 
@@ -258,11 +251,14 @@ Java 平台目前在逐步使用 java.lang.ref.Cleaner 来替换掉原有的 fin
 
 <p>Immutable 在很多场景是非常棒的选择，某种意义上说，Java 语言目前并没有原生的不可变支持，</p>
 
-<p>如果要实现 immutable 的类，我们需要做到：
-1. 将 class 自身声明为 final，这样别人就不能扩展来绕过限制了。
-2. 将所有成员变量定义为 private 和 final，并且不要实现 setter 方法。
-3. 通常构造对象时，成员变量使用深度拷贝来初始化，而不是直接赋值，这是一种防御措施，因为你无法确定输入对象不被其他人修改。
-4. 如果确实需要实现 getter 方法，或者其他可能会返回内部状态的方法，使用 copy-on-write原则，创建私有的 copy。</p>
+<p>实现 immutable 的类</p>
+
+<ol>
+<li>将 class 自身声明为 final，这样别人就不能扩展来绕过限制了。</li>
+<li>将所有成员变量定义为 private 和 final，并且不要实现 setter 方法。</li>
+<li>通常构造对象时，成员变量使用深度拷贝来初始化，而不是直接赋值，这是一种防御措施，因为你无法确定输入对象不被其他人修改。</li>
+<li>如果确实需要实现 getter 方法，或者其他可能会返回内部状态的方法，使用 copy-on-write原则，创建私有的 copy。</li>
+</ol>
 
 <h2 id="string-stringbuffer-stringbuilder-有什么区别">String、StringBuffer、StringBuilder 有什么区别？</h2>
 
@@ -319,15 +315,21 @@ Java 平台目前在逐步使用 java.lang.ref.Cleaner 来替换掉原有的 fin
 <p>JDK动态代理：基于Java反射机制实现，必须要实现了接口的业务类才能用这种办法生成代理对象。新版本也开始结合ASM机制。
 cglib动态代理：基于ASM机制实现，通过生成业务类的子类作为代理类。</p>
 
-<p>JDK Proxy 的优势：
-* 最小化依赖关系，减少依赖意味着简化开发和维护，JDK 本身的支持，可能比 cglib 更加可靠。
-* 平滑进行 JDK 版本升级，而字节码类库通常需要进行更新以保证在新版 Java 上能够使用。
-* 代码实现简单。</p>
+<p>JDK Proxy 的优势</p>
 
-<p>基于类似 cglib 框架的优势：
-*  有的时候调用目标可能不便实现额外接口，从某种角度看，限定调用者实现接口是有些侵入性的实践，类似 cglib 动态代理就没有这种限制。
-*  只操作我们关心的类，而不必为其他相关类增加工作量。
-*  高性能。</p>
+<ul>
+<li>最小化依赖关系，减少依赖意味着简化开发和维护，JDK 本身的支持，可能比 cglib 更加可靠。</li>
+<li>平滑进行 JDK 版本升级，而字节码类库通常需要进行更新以保证在新版 Java 上能够使用。</li>
+<li>代码实现简单。</li>
+</ul>
+
+<p>基于类似 cglib 框架的优势</p>
+
+<ul>
+<li>有的时候调用目标可能不便实现额外接口，从某种角度看，限定调用者实现接口是有些侵入性的实践，类似 cglib 动态代理就没有这种限制。</li>
+<li>只操作我们关心的类，而不必为其他相关类增加工作量。</li>
+<li>高性能。</li>
+</ul>
 
 <h2 id="有哪些方法可以在运行时动态生成一个-java-类">有哪些方法可以在运行时动态生成一个 Java 类</h2>
 
@@ -394,15 +396,18 @@ try {
 
 <h2 id="如何利用字节码操纵技术-实现基本的动态代理逻辑">如何利用字节码操纵技术，实现基本的动态代理逻辑？</h2>
 
-<p>对于一个普通的 Java 动态代理，其实现过程可以简化成为：
-* 提供一个基础的接口，作为被调用类型（com.mycorp.HelloImpl）和代理类之间的统一入口，如 com.mycorp.Hello。
-* 实现InvocationHandler，对代理对象方法的调用，会被分派到其 invoke 方法来真正实现动作。
-* 通过 Proxy 类，调用其 newProxyInstance 方法，生成一个实现了相应基础接口的代理类实例，可以看下面的方法签名。
-    <code>
-    public static Object newProxyInstance(ClassLoader loader,
-    Class&lt;?&gt;[] interfaces,
-    InvocationHandler h)
-</code></p>
+<p>对于一个普通的 Java 动态代理，其实现过程可以简化成为：</p>
+
+<ul>
+<li>提供一个基础的接口，作为被调用类型（com.mycorp.HelloImpl）和代理类之间的统一入口，如 com.mycorp.Hello。</li>
+<li>实现InvocationHandler，对代理对象方法的调用，会被分派到其 invoke 方法来真正实现动作。</li>
+<li>通过 Proxy 类，调用其 newProxyInstance 方法，生成一个实现了相应基础接口的代理类实例，可以看下面的方法签名。
+<code>
+public static Object newProxyInstance(ClassLoader loader,
+Class&lt;?&gt;[] interfaces,
+InvocationHandler h)
+</code></li>
+</ul>
 
 <p>用 ASM 实现的简要过程:</p>
 
@@ -460,12 +465,15 @@ cw.visitEnd(); // 结束类字节码生成
                         .build();
 </code></pre>
 
-<p>Spring<br />
-* BeanFactory和ApplicationContext应用了工厂模式。
-* 在 Bean 的创建中，Spring 也为不同 scope 定义的对象，提供了单例和原型等模式实现。
-* AOP 领域则是使用了代理模式、装饰器模式、适配器模式等。
-* 各种事件监听器，是观察者模式的典型应用。
-* 类似 JdbcTemplate 等则是应用了模板模式。</p>
+<p>Spring</p>
+
+<ul>
+<li>BeanFactory和ApplicationContext应用了工厂模式。</li>
+<li>在 Bean 的创建中，Spring 也为不同 scope 定义的对象，提供了单例和原型等模式实现。</li>
+<li>AOP 领域则是使用了代理模式、装饰器模式、适配器模式等。</li>
+<li>各种事件监听器，是观察者模式的典型应用。</li>
+<li>类似 JdbcTemplate 等则是应用了模板模式。</li>
+</ul>
 
   </article>
 

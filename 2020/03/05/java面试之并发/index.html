@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Java面试之并发 · ianeiu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全" />
+  <meta name="description" content="什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对" />
 
   <meta name="keywords" content="ianeiu, 吴炜棉" />
 
@@ -21,24 +21,24 @@
 
 
 <meta property="og:title" content="Java面试之并发" />
-<meta property="og:description" content="synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全" />
+<meta property="og:description" content="什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/" /><meta property="article:published_time" content="2020-03-05T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2020-03-05T00:00:00&#43;00:00"/>
 <meta itemprop="name" content="Java面试之并发">
-<meta itemprop="description" content="synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全">
+<meta itemprop="description" content="什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对">
 
 
 <meta itemprop="datePublished" content="2020-03-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="9830">
+<meta itemprop="wordCount" content="10574">
 
 
 
 <meta itemprop="keywords" content="并发," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试之并发"/>
-<meta name="twitter:description" content="synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全"/>
+<meta name="twitter:description" content="什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对"/>
 </head>
 <body>
   
@@ -141,6 +141,40 @@
 <div class="container content">
   <article>
   
+
+<h2 id="什么是乐观锁和悲观锁">什么是乐观锁和悲观锁？</h2>
+
+<p>1、悲观锁<br />
+Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对共享状态的访问，可以确保无论哪个线程持有共享变量的锁，都采用独占的方式来访问这些变量。独占锁其实就是一种悲观锁，所以可以说synchronized是悲观锁。</p>
+
+<p>2、乐观锁<br />
+乐观锁（Optimstic Locking）其实是一种思想。相对悲观锁而言，乐观锁假定认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式地对数据的冲突与否进行检测，如果发现冲突了，则返回错误信息。</p>
+
+<h2 id="什么是aqs">什么是AQS</h2>
+
+<p>AbstractQueuedSynchronizer，是一个用于构建锁和同步容器的框架。事实上concurrent包内许多类都是基于AQS构建，例如ReentrantLock、Semaphore、CountDownLatch、ReentrantReadWriteLock、FutureTask等。</p>
+
+<p>AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称作 哨兵节点或这哑节点，它不与任何线程关联。其他节点与等待线程关联，每个节点维护一个等待状态waitStatus。</p>
+
+<h2 id="同步容器与并发容器">同步容器与并发容器</h2>
+
+<ul>
+<li>同步容器
+
+<ol>
+<li>同步容器主要代表用Vector和Hashtable，及Collections.synchronizedXXX等</li>
+<li>锁粒度为整体对象</li>
+<li>迭代器是及时失败的，迭代过程修改会抛出ConcurrentModificationException</li>
+</ol></li>
+<li>并发容器
+
+<ol>
+<li>主要代表有ConcurrentHashMap、CopyOnWriteArrayList、ConcurrentSkipListMap、ConcurrentSkipListSet</li>
+<li>锁粒度是分散的、细粒度，即读写使用不同锁</li>
+<li>迭代器具有弱一致性，能够迭代时修改。
+<br /></li>
+</ol></li>
+</ul>
 
 <h2 id="synchronized-底层如何实现-什么是锁的升级-降级">synchronized 底层如何实现？什么是锁的升级、降级？</h2>
 
@@ -362,10 +396,13 @@ final void setArray (Object[]a){
 <li>LinkedBlockingQueue 内部则是基于锁，并提供了 BlockingQueue 的等待性方法。</li>
 </ul>
 
-<p>java.util.concurrent 包提供的容器（Queue、List、Set）、Map，从命名上可以大概区分为 Concurrent、CopyOnWrite和 Blocking* 等三类，同样是线程安全容，可以简单认为：
-* Concurrent 类型没有类似 CopyOnWrite 之类容器相对较重的修改开销。
-* Concurrent 往往提供了较低的遍历一致性（弱一致性）。例如，当利用迭代器遍历时，如果容器发生修改，迭代器仍然可以继续进行遍历。size 等操作准确性是有限的。读取的性能具有一定的不确定性。
-* 与弱一致性对应的，就是我介绍过的同步容器常见的行为“fast-fail”，也就是检测到容器在遍历过程中发生了修改，则抛出 ConcurrentModificationException，不再继续遍历。</p>
+<p>java.util.concurrent 包提供的容器（Queue、List、Set）、Map，从命名上可以大概区分为 Concurrent、CopyOnWrite和 Blocking* 等三类，同样是线程安全容，可以简单认为：</p>
+
+<ul>
+<li>Concurrent 类型没有类似 CopyOnWrite 之类容器相对较重的修改开销。</li>
+<li>Concurrent 往往提供了较低的遍历一致性（弱一致性）。例如，当利用迭代器遍历时，如果容器发生修改，迭代器仍然可以继续进行遍历。size 等操作准确性是有限的。读取的性能具有一定的不确定性。</li>
+<li>与弱一致性对应的，就是我介绍过的同步容器常见的行为“fast-fail”，也就是检测到容器在遍历过程中发生了修改，则抛出 ConcurrentModificationException，不再继续遍历。</li>
+</ul>
 
 <h2 id="哪些队列是有界的-哪些是无界的">哪些队列是有界的，哪些是无界的？</h2>
 
@@ -452,12 +489,15 @@ private final Condition notFull = putLock.newCondition();
 
 <p>通常开发者都是利用 Executors 提供的通用线程池创建方法，去创建不同配置的线程池，主要区别在于不同的 ExecutorService 类型或者不同的初始参数。</p>
 
-<p>Executors 目前提供了 5 种不同的线程池创建配置：
-* newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。
-* newFixedThreadPool(int nThreads)，重用指定数目（nThreads）的线程，其背后使用的是无界的工作队列，任何时候最多有 nThreads 个工作线程是活动的。这意味着，如果任务数量超过了活动队列数目，将在工作队列中等待空闲线程出现；如果有工作线程退出，将会有新的工作线程被创建，以补足指定的数目 nThreads。
-* newSingleThreadExecutor()，它创建的是个 ScheduledExecutorService，也就是可以进行定时或周期性的工作调度。工作线程数目被限制为 1，所以它保证了所有任务的都是被顺序执行，最多会有一个任务处于活动状态，并且不允许使用者改动线程池实例，因此可以避免其改变线程数目。
-* newScheduledThreadPool(int corePoolSize)，同样是 ScheduledExecutorService，区别在于它会保持 corePoolSize 个工作线程。
-* newWorkStealingPool(int parallelism)，这是一个经常被人忽略的线程池，Java 8 才加入这个创建方法，其内部会构建ForkJoinPool，利用Work-Stealing算法，并行地处理任务，不保证处理顺序。</p>
+<p>Executors 目前提供了 5 种不同的线程池创建配置：</p>
+
+<ul>
+<li>newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。</li>
+<li>newFixedThreadPool(int nThreads)，重用指定数目（nThreads）的线程，其背后使用的是无界的工作队列，任何时候最多有 nThreads 个工作线程是活动的。这意味着，如果任务数量超过了活动队列数目，将在工作队列中等待空闲线程出现；如果有工作线程退出，将会有新的工作线程被创建，以补足指定的数目 nThreads。</li>
+<li>newSingleThreadExecutor()，它创建的是个 ScheduledExecutorService，也就是可以进行定时或周期性的工作调度。工作线程数目被限制为 1，所以它保证了所有任务的都是被顺序执行，最多会有一个任务处于活动状态，并且不允许使用者改动线程池实例，因此可以避免其改变线程数目。</li>
+<li>newScheduledThreadPool(int corePoolSize)，同样是 ScheduledExecutorService，区别在于它会保持 corePoolSize 个工作线程。</li>
+<li>newWorkStealingPool(int parallelism)，这是一个经常被人忽略的线程池，Java 8 才加入这个创建方法，其内部会构建ForkJoinPool，利用Work-Stealing算法，并行地处理任务，不保证处理顺序。</li>
+</ul>
 
 <p><img src="/resouce/java/mianshi/Executor.png"  alt="Executor" /></p>
 
@@ -496,11 +536,14 @@ private final HashSet&lt;Worker&gt; workers = new HashSet&lt;&gt;();
 <li>如果任务提交时被拒绝，比如线程池已经处于 SHUTDOWN 状态，需要为其提供处理逻辑，Java 标准库提供了类似ThreadPoolExecutor.AbortPolicy等默认实现，也可以按照实际需求自定义。</li>
 </ul>
 
-<p>线程池的几个基本组成部分，一起都体现在线程池的构造函数中：
-* corePoolSize，所谓的核心线程数，可以大致理解为长期驻留的线程数目（除非设置了allowCoreThreadTimeOut）。对于不同的线程池，这个值可能会有很大区别，比如newFixedThreadPool 会将其设置为 nThreads，而对于 newCachedThreadPool 则是为0。
-* maximumPoolSize，顾名思义，就是线程不够时能够创建的最大线程数。同样进行对比，对于 newFixedThreadPool，当然就是 nThreads，因为其要求是固定大小，而newCachedThreadPool 则是 Integer.MAX_VALUE。
-* keepAliveTime 和 TimeUnit，这两个参数指定了额外的线程能够闲置多久，显然有些线程池不需要它。
-* workQueue，工作队列，必须是 BlockingQueue。</p>
+<p>线程池的几个基本组成部分，一起都体现在线程池的构造函数中：</p>
+
+<ul>
+<li>corePoolSize，所谓的核心线程数，可以大致理解为长期驻留的线程数目（除非设置了allowCoreThreadTimeOut）。对于不同的线程池，这个值可能会有很大区别，比如newFixedThreadPool 会将其设置为 nThreads，而对于 newCachedThreadPool 则是为0。</li>
+<li>maximumPoolSize，顾名思义，就是线程不够时能够创建的最大线程数。同样进行对比，对于 newFixedThreadPool，当然就是 nThreads，因为其要求是固定大小，而newCachedThreadPool 则是 Integer.MAX_VALUE。</li>
+<li>keepAliveTime 和 TimeUnit，这两个参数指定了额外的线程能够闲置多久，显然有些线程池不需要它。</li>
+<li>workQueue，工作队列，必须是 BlockingQueue。</li>
+</ul>
 
 <p>通过配置不同的参数，我们就可以创建出行为大相径庭的线程池，这就是线程池高度灵活性的基础。</p>
 

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.48" />
+  <meta charset="utf-8">
+  <title>redis笔记 · ianeiu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数" />
+
+  <meta name="keywords" content="ianeiu, 吴炜棉" />
+
+<link rel="canonical" href="https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ianeiu.github.io/css/den.css">
+
+<link rel="stylesheet" href="https://ianeiu.github.io/css/custom.css">
+
+
+
+
+<meta property="og:title" content="redis笔记" />
+<meta property="og:description" content="redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/" /><meta property="article:published_time" content="2019-07-25T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-25T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="redis笔记">
+<meta itemprop="description" content="redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数">
+
+
+<meta itemprop="datePublished" content="2019-07-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2926">
+
+
+
+<meta itemprop="keywords" content="redis,分布式," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="redis笔记"/>
+<meta name="twitter:description" content="redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ianeiu.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://ianeiu.github.io/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://ianeiu.github.io/images/avatar.ico" alt="logo">
+        
+        
+          ianeiu
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/">All</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/categories">分类</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/tags">标签</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://ianeiu.github.io/category/java/">Java</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              <a class="nav-link" href="https://ianeiu.github.io/about/">About</a>
+            
+          </li>
+        
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">redis笔记</h1>
+        <p class="header-date">作者：
+          吴炜棉 /
+        
+        2019-07-25
+          / 分类：
+          <a href="https://ianeiu.github.io/category/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/">分布式架构</a>
+        </p>
+        
+        <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ianeiu.github.io/tag/redis/">redis</a>,
+                <a href="https://ianeiu.github.io/tag/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
+          </p>
+        
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  
+
+<h2 id="redis">redis</h2>
+
+<p>Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。<br />
+因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。</p>
+
+<p>Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。</p>
+
+<h2 id="redis的数据类型-以及每种数据类型的使用场景">redis的数据类型，以及每种数据类型的使用场景</h2>
+
+<p>(一)String<br />
+这个其实没啥好说的，最常规的set/get操作，value可以是String也可以是数字。一般做一些复杂的计数功能的缓存。</p>
+
+<p>(二)hash<br />
+这里value存放的是结构化的对象，比较方便的就是操作其中的某个字段。博主在做单点登录的时候，就是用这种数据结构存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。</p>
+
+<p>(三)list<br />
+使用List的数据结构，可以做简单的消息队列的功能。另外还有一个就是，可以利用lrange命令，做基于redis的分页功能，性能极佳，用户体验好。</p>
+
+<p>(四)set<br />
+因为set堆放的是一堆不重复值的集合。所以可以做全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，比较麻烦，难道为了一个做一个全局去重，再起一个公共服务，太麻烦了。
+另外，就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。</p>
+
+<p>(五)sorted set<br />
+sorted set多了一个权重参数score,集合中的元素能够按score进行排列。可以做排行榜应用，取TOP N操作。还可以用来做延时任务(<a href="https://www.cnblogs.com/rjzheng/p/8972725.html" target="_blank">分布式之延时任务方案解析</a>)、范围查找。</p>
+
+<h2 id="项目中使用redis">项目中使用redis</h2>
+
+<ul>
+<li>响应请求获取数据时经过redis查询（如果没有则访问数据库，并将数据存储至redis），达到极速响应；</li>
+<li>高并发的情况，可能减少数据库压力。</li>
+</ul>
+
+<h2 id="redis单线程工作模型优势">redis单线程工作模型优势</h2>
+
+<ol>
+<li>纯内存操作</li>
+<li>单线程操作，避免了频繁的上下文切换</li>
+<li>采用了非阻塞I/O多路复用机制（单个线程，跟踪每个I/O流的状态，来管理多个I/O流。）</li>
+</ol>
+
+<h2 id="使用redis存在的问题">使用redis存在的问题</h2>
+
+<ul>
+<li>缓存和数据库双写一致性问题</li>
+<li>缓存雪崩问题</li>
+<li>缓存击穿问题</li>
+<li>缓存的并发竞争问题</li>
+</ul>
+
+<h2 id="redis的过期策略以及内存淘汰机制">redis的过期策略以及内存淘汰机制</h2>
+
+<ol>
+<li>为什么不用定时删除策略?<br />
+定时删除,用一个定时器来负责监视key,过期则自动删除。虽然内存及时释放，但是十分消耗CPU资源。在大并发请求下，CPU要将时间应用在处理请求，而不是删除key,因此没有采用这一策略.</li>
+<li>定期删除+惰性删除是如何工作的呢?<br />
+定期删除，redis默认每个100ms检查，是否有过期的key,有过期key则删除。需要说明的是，redis不是每个100ms将所有的key检查一次，而是随机抽取进行检查(如果每隔100ms,全部key进行检查，redis岂不是卡死)。因此，如果只采用定期删除策略，会导致很多key到时间没有删除。
+于是，惰性删除派上用场。也就是说在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间那么是否过期了？如果过期了此时就会删除。</li>
+<li>采用定期删除+惰性删除就没其他问题了么?<br />
+不是的，如果定期删除没删除key。然后你也没即时去请求key，也就是说惰性删除也没生效。这样，redis的内存会越来越高。那么就应该采用内存淘汰机制。</li>
+</ol>
+
+<p>在redis.conf中有一行配置</p>
+
+<pre><code># maxmemory-policy volatile-lru
+</code></pre>
+
+<p>该配置就是配内存淘汰策略的(什么，你没配过？好好反省一下自己)</p>
+
+<pre><code>1）noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。应该没人用吧。
+2）allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。推荐使用，目前项目在用这种。
+3）allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。应该也没人用吧，你不删最少使用Key,去随机删。
+4）volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用的key。这种情况一般是把redis既当缓存，又做持久化存储的时候才用。不推荐
+5）volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某个key。依然不推荐
+6）volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的key优先移除。不推荐
+ps：如果没有设置 expire 的key, 不满足先决条件(prerequisites); 那么 volatile-lru, volatile-random 和 volatile-ttl 策略的行为, 和 noeviction(不删除) 基本上一致。
+</code></pre>
+
+<h2 id="使用redis实现分布式锁">使用Redis实现分布式锁</h2>
+
+<pre><code>//伪代码
+//当一个线程执行setnx返回1，说明key原本不存在，该线程成功得到了锁；
+//当一个线程执行setnx返回0，说明key已经存在，该线程抢锁失败。
+if（setnx（key，1） == 1）{
+    //设置锁超时
+    expire（key，30）
+    try {
+        do something ......
+    } finally {
+        //解锁
+        del（key）
+    }
+}
+</code></pre>
+
+<p>上面的伪代码中，存在着三个致命问题：
+1. setnx和expire的非原子性<br />
+设想一个极端场景，当线程A执行setnx，成功得到了锁，setnx刚执行成功，还未来得及执行expire指令，节点1（线程A）挂掉了。<br />
+这样一来，这把锁就没有设置过期时间，变得“长生不老”，别的线程再也无法获得锁了。<br />
+解决方法：使用set（key，1，30，NX）取代 setnx</p>
+
+<ol>
+<li>del 导致误删<br />
+又是一个极端场景，假如某线程成功得到了锁，并且设置的超时时间是30秒。<br />
+如果某些原因导致线程A执行的很慢很慢，过了30秒都没执行完，这时候锁过期自动释放，线程B得到了锁。<br />
+随后，线程A执行完了任务，线程A接着执行del指令来释放锁。<br />
+但这时候线程B还没执行完，线程A实际上删除的是线程B加的锁。<br />
+解决方法：可以在加锁的时候把当前的线程ID当做value，并在删除之前验证key对应的value是不是自己线程的ID。<br />
+<code>
+String threadId = Thread.currentThread().getId()
+set（key，threadId ，30，NX）
+//解锁
+if（threadId .equals(redisClient.get(key))）{
+    del(key)
+}
+</code>
+但是，这样做又隐含了一个新的问题，判断和释放锁是两个独立操作，不是原子性。
+使用用Lua脚本来实现：
+<code>
+String luaScript = &quot;if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end&quot;;
+redisClient.eval(luaScript , Collections.singletonList(key), Collections.singletonList(threadId));
+</code></li>
+<li>出现并发的可能性
+还是刚才第二点所描述的场景，虽然我们避免了线程A误删掉key的情况，但是同一时间有A，B两个线程在访问代码块，仍然是不完美的。<br />
+我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁“续航”。<br />
+当过去了29秒，线程A还没执行完，这时候守护线程会执行expire指令，为这把锁“续命”20秒。<br />
+守护线程从第29秒开始执行，每20秒执行一次。<br />
+当线程A执行完任务，会显式关掉守护线程。<br />
+另一种情况，如果节点1 忽然断电，由于线程A和守护线程在同一个进程，守护线程也会停下。<br />
+这把锁到了超时的时候，没人给它续命，也就自动释放了。</li>
+</ol>
+
+<h2 id="ref">REF</h2>
+
+<p><a href="https://www.cnblogs.com/rjzheng/p/9096228.html" target="_blank">分布式之redis复习精讲</a><br />
+<a href="https://www.cnblogs.com/Survivalist/p/10321476.html" target="_blank">Redis的那些最常见面试问题</a><br />
+<a href="https://mp.weixin.qq.com/s/8fdBKAyHZrfHmSajXT_dnA" target="_blank">什么是分布式锁？</a></p>
+
+  </article>
+
+  
+  
+    
+    
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">网站地图</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://ianeiu.github.io/tags/">标签</a></li>
+              
+              
+                <li><a href="https://ianeiu.github.io/categories/">分类</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"><i class="fas fa-rss-square"></i> RSS订阅</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社交</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">链接</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/ianeiu" rel="noopener" target="_blank">关于我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            WuWeiMian
+            2020
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

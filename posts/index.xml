@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring面试题</title>
+      <link>https://ianeiu.github.io/2020/05/31/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/31/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>Spring装配Bean的过程 实例化; 设置属性值; 如果实现了BeanNameAware接口,调用setBeanName设置Bean的ID或者</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之NIO</title>
+      <link>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/20/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</guid>
+      <description>Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之调优及参数</title>
+      <link>https://ianeiu.github.io/2020/05/18/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/18/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</guid>
+      <description>调优 调优时机 内存（⽼年代）持续上涨达到设置的最大内存值； Full GC 次数频繁； GC 停顿时间过长（超过1秒）； 应用出现OutOfMemory 等内存异常；</description>
+    </item>
+    
+    <item>
+      <title>Spring中的设计模式</title>
+      <link>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建</description>
+    </item>
     
     <item>
       <title>贪婪模式与懒惰模式</title>
@@ -27,7 +63,7 @@
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2020/03/05/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</guid>
-      <description>synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。 在 Java 6 之前，Monitor 的实现完全</description>
+      <description>什么是乐观锁和悲观锁？ 1、悲观锁 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对</description>
     </item>
     
     <item>
@@ -40,12 +76,39 @@
     </item>
     
     <item>
+      <title>Mybatis之面试篇</title>
+      <link>https://ianeiu.github.io/2020/02/09/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/02/09/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/</guid>
+      <description>#{}和${}的区别？ ${}是Properties文件中的变量占位符，它可以用于标签属性值和sql内部，属于静态文本替换。 #{}是sql的参</description>
+    </item>
+    
+    <item>
       <title>Java开发之命名规范</title>
       <link>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2020/01/15/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
       <description>原文： 编码5分钟，命名2小时？史上最全的Java命名规范参考！ 一、Java中的命名规范 类型(名) 约束 例 项目 全部小写 多个单词用中划线分隔‘-’</description>
+    </item>
+    
+    <item>
+      <title>Mybatis之XML篇</title>
+      <link>https://ianeiu.github.io/2019/12/31/mybatis%E4%B9%8Bxml%E7%AF%87/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/12/31/mybatis%E4%B9%8Bxml%E7%AF%87/</guid>
+      <description>Mybatis xml映射文件中，除了常见的select、insert、updae、delete标签之外 还有动态sql标签 trim、 where、set、f</description>
+    </item>
+    
+    <item>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解 注解 描述 @Component 泛指组件，类似在xml中配置bean @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Sprin</description>
     </item>
     
     <item>
@@ -58,93 +121,30 @@
     </item>
     
     <item>
-      <title>Java笔记之基础篇</title>
-      <link>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
-      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
+      <title>redis笔记</title>
+      <link>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2019/02/13/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
-      <description>Java基础笔记整理 关键字 用于定义数据类型 class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】 类型转换： byte→sho</description>
+      <guid>https://ianeiu.github.io/2019/07/25/redis%E7%AC%94%E8%AE%B0/</guid>
+      <description>redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数</description>
     </item>
     
     <item>
-      <title>Java笔记之web篇</title>
-      <link>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      <title>Eclipse笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/22/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</guid>
-      <description>JavaWeb笔记整理 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换 格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; XM</description>
+      <guid>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键 使用频率极高的快捷键 DESC KEY 代码提示 alt+/ 自动生成object方法 alt + shift + s，然后根据提示继续 复制当前行 ctrl +alt + ↓ 查找文本 ctrl + k ,ctrl + shfit + k 如何跳</description>
     </item>
     
     <item>
-      <title>Java面试之基础题（Integer、String、内部类与final）</title>
-      <link>https://ianeiu.github.io/2018/11/18/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      <title>IDEA笔记</title>
+      <link>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/11/18/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
-      <description>翻了翻之前收藏的文章，找到几道有意思的题，这里整理汇总一下。 Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true } 运行代码，我们会得到 false true。这道题笔试用经常</description>
-    </item>
-    
-    <item>
-      <title>JVM笔记之JVM类加载机制</title>
-      <link>https://ianeiu.github.io/2018/10/19/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
-      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/19/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
-      <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直</description>
-    </item>
-    
-    <item>
-      <title>JVM笔记之引用、GC及OOM</title>
-      <link>https://ianeiu.github.io/2018/10/10/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</link>
-      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/10/10/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</guid>
-      <description>强引用、软引用、弱引用和虚引用 强引用（Strong Reference） 只有这个引用被释放之后，对象才会被释放掉。只要引用存在，垃圾回收器永远</description>
-    </item>
-    
-    <item>
-      <title>Java笔记之名词简介</title>
-      <link>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/29/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
-      <description>web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其</description>
-    </item>
-    
-    <item>
-      <title>Java面试之HashMap</title>
-      <link>https://ianeiu.github.io/2018/09/13/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</link>
-      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/13/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</guid>
-      <description>HashMap（数组+链表） HashMap储存的是键值对 HashMap可以接受null键值和值，而Hashtable则不能； HashMap是</description>
-    </item>
-    
-    <item>
-      <title>JVM笔记之JVM结构</title>
-      <link>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
-      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
-    </item>
-    
-    <item>
-      <title>Java开发之常量定义</title>
-      <link>https://ianeiu.github.io/2018/09/11/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</guid>
-      <description>原文地址 如何在Java中定义常量(Constant) Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为sta</description>
-    </item>
-    
-    <item>
-      <title>Java面试之初中级题集</title>
-      <link>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</link>
-      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2018/09/11/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</guid>
-      <description>数组在内存中如何分配 简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的</description>
+      <guid>https://ianeiu.github.io/2019/07/15/idea%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键设置 默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们</description>
     </item>
     
   </channel>
