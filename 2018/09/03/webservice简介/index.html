@@ -31,7 +31,7 @@
 
 <meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2658">
+<meta itemprop="wordCount" content="2714">
 
 
 
@@ -152,7 +152,8 @@
 
 <h4 id="xml-xsd">XML+XSD</h4>
 
-<p>WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么）。XML是WebService平台中表示数据的格式。除了易于建立和易于分析外，XML主要的优点在于它既是平台无关的，又是厂商无关的。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。</p>
+<p>WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么）。<br />
+XML是WebService平台中表示数据的格式。除了易于建立和易于分析外，XML主要的优点在于它既是平台无关的，又是厂商无关的。</p>
 
 <h4 id="soap">SOAP</h4>
 
@@ -170,6 +171,16 @@ soap消息：请求消息和响应消息</p>
 <p>代理类把客户端的方法调用变成soap格式的请求数据再通过HTTP协议发出去，并把接收到的soap 数据变成返回值返回。</p>
 
 <p>对服务端而言，各类WebService框架的本质就是一个大大的Servlet，当远程调用客户端给它通过http协议发送过来 soap格式的请求数据时，它分析这个数据，就知道要调用哪个java类的哪个方法，于是去查找或创建这个对象，并调用其方法，再把方法返回的结果包装成 soap格式的数据，通过http响应消息回给客户端。</p>
+
+<h3 id="相比http-post-get-的优势">相比HTTP（post/get）的优势</h3>
+
+<ol>
+<li>接口中实现的方法和要求参数一目了然</li>
+<li>不用担心大小写问题</li>
+<li>不用担心中文urlencode问题</li>
+<li>代码中不用多次声明认证(账号,密码)参数</li>
+<li>传递参数可以为数组，对象等</li>
+</ol>
 
 <h1 id="框架简介">框架简介</h1>
 

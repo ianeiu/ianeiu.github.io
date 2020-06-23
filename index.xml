@@ -3020,6 +3020,67 @@ ctorInstance(memory);  //2：初始化对象
 
 &lt;p&gt;Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。&lt;/p&gt;
 
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;daemonize：是否以后台进程运行，默认为no。Windows下不支持修改 。Linux平台下可以改为yes，这样就不用为了启动Redis而单独保留一个shell窗口。&lt;/li&gt;
+&lt;li&gt;pidfile：如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid。Windows下不支持修改。&lt;/li&gt;
+&lt;li&gt;bind：绑定主机IP，默认值为127.0.0.1（注释）&lt;/li&gt;
+&lt;li&gt;protected-mode：以保护模式运行，默认yes&lt;/li&gt;
+&lt;li&gt;port： 监听端口，默认为6379&lt;/li&gt;
+&lt;li&gt;timeout： 超时时间，默认为300（秒）&lt;/li&gt;
+&lt;li&gt;loglevel： 日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning&lt;/li&gt;
+&lt;li&gt;logfile： 日志记录方式，默认值为stdout&lt;/li&gt;
+&lt;li&gt;databases： 可用数据库数，默认值为16，默认数据库为0&lt;/li&gt;
+&lt;li&gt;save &lt;seconds&gt; &lt;changes&gt;： 指出在多长时间内，有多少次更新操作，就将数据同步到数据文件。这个可以多个条件配合，比如默认配置文件中的设置，就设置了三个条件。
+
+&lt;ul&gt;
+&lt;li&gt;save 900 1 900秒（15分钟）内至少有1个key被改变&lt;/li&gt;
+&lt;li&gt;save 300 10 300秒（5分钟）内至少有10个key被改变&lt;/li&gt;
+&lt;li&gt;save 60 10000 60秒内至少有10000个key被改变&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;rdbcompression： 存储至本地数据库时是否压缩数据，默认为yes&lt;/li&gt;
+&lt;li&gt;dbfilename： 本地数据库文件名，默认值为dump.rdb&lt;/li&gt;
+&lt;li&gt;dir： 本地数据库存放路径，默认值为 ./&lt;/li&gt;
+&lt;li&gt;slaveof： &lt;masterip&gt; &lt;masterport&gt; 当本机为从服务时，设置主服务的IP及端口（注释）&lt;/li&gt;
+&lt;li&gt;masterauth： &lt;master-password&gt; 当本机为从服务时，设置主服务的连接密码（注释）&lt;/li&gt;
+&lt;li&gt;requirepass 连接密码（注释）&lt;/li&gt;
+&lt;li&gt;maxclients： 最大客户端连接数，默认不限制（注释）&lt;/li&gt;
+&lt;li&gt;maxmemory &lt;bytes&gt;： 设置最大内存，达到最大内存设置后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理后，任到达最大内存设置，将无法再进行写入操作。（注释）&lt;/li&gt;
+&lt;li&gt;appendonly： 是否在每次更新操作后进行日志记录，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认值为no&lt;/li&gt;
+&lt;li&gt;appendfilename： 更新日志文件名，默认值为appendonly.aof（注释）&lt;/li&gt;
+&lt;li&gt;appendfsync： 更新日志条件，共有3个可选值。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次（默认值）。&lt;/li&gt;
+&lt;li&gt;vm-enabled： 是否使用虚拟内存，默认值为no&lt;/li&gt;
+&lt;li&gt;vm-swap-file： 虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享&lt;/li&gt;
+&lt;li&gt;vm-max-memory： 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;info replication 查看信息，本机角色（master、slave）、ip、端口、状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;哨兵配置&#34;&gt;哨兵配置&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;# 这个是Redis6379配置内容，其他文件同理新增然后改一下端口即可，26380 26381
+#当前Sentinel服务运行的端口
+port 26381
+bind 127.0.0.1
+# 哨兵监听的主服务器 
+sentinel monitor mymaster 127.0.0.1 6379 2
+# 3s内mymaster无响应，则认为mymaster宕机了
+sentinel down-after-milliseconds mymaster 3000
+#如果10秒后,mysater仍没启动过来，则启动failover  
+sentinel failover-timeout mymaster 10000  
+# 执行故障转移时， 最多有1个从服务器同时对新的主服务器进行同步
+sentinel parallel-syncs mymaster 1
+# 设置哨兵sentinel 连接主从的密码 注意必须为主从设置一样的验证密码，没有的话不用设置
+sentinel auth-pass mymaster 123456
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动哨兵命令：redis-server.exe sentinel.conf &amp;ndash;sentinel&lt;/p&gt;
+
 &lt;h2 id=&#34;redis的数据类型-以及每种数据类型的使用场景&#34;&gt;redis的数据类型，以及每种数据类型的使用场景&lt;/h2&gt;
 
 &lt;p&gt;(一)String&lt;br /&gt;
