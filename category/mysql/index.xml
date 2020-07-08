@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on ianeiu</title>
+    <link>https://ianeiu.github.io/category/mysql/</link>
+    <description>Recent content in Mysql on ianeiu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>WuWeiMian</copyright>
+    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ianeiu.github.io/category/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql面试题</title>
+      <link>https://ianeiu.github.io/2020/07/08/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/07/08/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>MySQL InnoDB、Mysaim的特点 InnoDB 支持事务处理、外键、行锁 不保存表的具体行数，扫描表来计算多少行 对于AUTO_INCREMENT类型的字段</description>
+    </item>
+    
+  </channel>
+</rss>

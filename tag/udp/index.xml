@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>[转]TCP与UDP笔记</title>
-      <link>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</link>
+      <title>TCP与UDP笔记</title>
+      <link>https://ianeiu.github.io/2018/12/19/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/2018/12/19/%E8%BD%ACtcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://ianeiu.github.io/2018/12/19/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/</guid>
       <description>tcp/ip协议 TCP/IP协议族是一个四层协议系统，自底而上分别是数据链路层、网络层、传输层和应用层。每一层完成不同的功能，且通过若干协议</description>
     </item>
     

@@ -36,6 +36,125 @@
     </item>
     
     <item>
+      <title>mysql面试题</title>
+      <link>https://ianeiu.github.io/2020/07/08/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/07/08/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;mysql-innodb-mysaim的特点&#34;&gt;MySQL InnoDB、Mysaim的特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;InnoDB
+
+&lt;ol&gt;
+&lt;li&gt;支持事务处理、外键、行锁&lt;/li&gt;
+&lt;li&gt;不保存表的具体行数，扫描表来计算多少行&lt;/li&gt;
+&lt;li&gt;对于AUTO_INCREMENT类型的字段，必须包含只有该字段的索引&lt;/li&gt;
+&lt;li&gt;DELETE表时，是一行一行的删除&lt;/li&gt;
+&lt;li&gt;把数据和索引存放在表空间里面&lt;/li&gt;
+&lt;li&gt;跨平台直接拷贝使用&lt;/li&gt;
+&lt;li&gt;表格很难被压缩&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Mysaim （适合读多写少的场景）
+
+&lt;ol&gt;
+&lt;li&gt;不支持事务、外键&lt;/li&gt;
+&lt;li&gt;保存表具体行数&lt;/li&gt;
+&lt;li&gt;AUTO_INCREMENT可以与其他字段一起建联合索引&lt;/li&gt;
+&lt;li&gt;DELETE表时先drop表，然后重建&lt;/li&gt;
+&lt;li&gt;表将存放三个文件。frm文件存在表格定义，myds数据文件，myi存在索引&lt;/li&gt;
+&lt;li&gt;跨平台很难卡片被&lt;/li&gt;
+&lt;li&gt;表格可压缩&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;mysql主备同步的基本原理&#34;&gt;Mysql主备同步的基本原理&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;master将该表记录到二进制日志 binary log中&lt;/li&gt;
+&lt;li&gt;salve将master的binary log events 拷贝到它的中继日志relay log&lt;/li&gt;
+&lt;li&gt;salve重做中继日志中的事件，改变数据&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;如何优化数据库性能-索引-分库分表-批置操作-分页算法-升级硬盘ssd-业务优化-主从部署&#34;&gt;如何优化数据库性能（索引、分库分表、批置操作、分页算法、升级硬盘SSD、业务优化、主从部署）&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;选择合适的数据库引擎，合理使用索引&lt;/li&gt;
+&lt;li&gt;分页获取数据，按需取字段&lt;/li&gt;
+&lt;li&gt;优化业务代码，减少数据库IO&lt;/li&gt;
+&lt;li&gt;分库分表&lt;/li&gt;
+&lt;li&gt;部署主从数据库&lt;/li&gt;
+&lt;li&gt;升级硬件&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;sql什么情况下不会使用索引-不包含-不等于-函数&#34;&gt;SQL什么情况下不会使用索引（不包含，不等于，函数）&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;select * 可能导致不走索引&lt;/li&gt;
+&lt;li&gt;空值会导致不走索引&lt;/li&gt;
+&lt;li&gt;索引列有函数运算&lt;/li&gt;
+&lt;li&gt;隐式转换可能导致不走索引&lt;/li&gt;
+&lt;li&gt;表的数据库小或者需要选择大部分数据，不走索引&lt;/li&gt;
+&lt;li&gt;!= 或者 &amp;lt;&amp;gt;&lt;/li&gt;
+&lt;li&gt;like &amp;lsquo;%ex&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;not in 、 not exist&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;一般在什么字段上建索引-过滤数据最多的字段&#34;&gt;一般在什么字段上建索引（过滤数据最多的字段）&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;表的主键、外键&lt;/li&gt;
+&lt;li&gt;数据量超过300的表&lt;/li&gt;
+&lt;li&gt;经常与其他表进行连接的表的连接字段&lt;/li&gt;
+&lt;li&gt;经常出现在where语句上的字段&lt;/li&gt;
+&lt;li&gt;应该建在选择性高的字段、小字段&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;mysql调优&#34;&gt;mysql调优&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;explain select 语句&lt;/li&gt;
+&lt;li&gt;当只要一条数据时使用limit 1&lt;/li&gt;
+&lt;li&gt;为查询字段建索引&lt;/li&gt;
+&lt;li&gt;避免select *&lt;/li&gt;
+&lt;li&gt;字段尽量使用not null&lt;/li&gt;
+&lt;li&gt;垂直分割&lt;/li&gt;
+&lt;li&gt;拆分大的delete和insert，这俩会锁表&lt;/li&gt;
+&lt;li&gt;分库分表分区&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>struts工作流程</title>
+      <link>https://ianeiu.github.io/2020/07/08/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/2020/07/08/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;struts工作流程&#34;&gt;struts工作流程&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端浏览器发出HTTP请求。&lt;/li&gt;
+&lt;li&gt;根据web.xml配置，该请求被FilterDispatcher接收。&lt;/li&gt;
+&lt;li&gt;根据struts.xml配置，找到需要调用的Action类和方法， 并通过IoC方式，将值注入给Aciton。&lt;/li&gt;
+&lt;li&gt;Action调用业务逻辑组件处理业务逻辑，这一步包含表单验证。&lt;/li&gt;
+&lt;li&gt;Action执行完毕，根据struts.xml中的配置找到对应的返回结果result，并跳转到相应页面。&lt;/li&gt;
+&lt;li&gt;返回HTTP响应到客户端浏览器。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://ianeiu.github.io/resouce/struts/struts工作流程.png&#34;  alt=&#34;struts&#34; /&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Spring面试题</title>
       <link>https://ianeiu.github.io/2020/05/31/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
@@ -87,9 +206,19 @@
 &lt;li&gt;ContextStartedEvent：ApplicationContext启动后触发的事件&lt;/li&gt;
 &lt;li&gt;ContextStoppedEvent：ApplicationContext停止后触发的事件&lt;/li&gt;
 &lt;li&gt;ContextRefreshedEvent：ApplicationContext初始化或刷新完成后触发的事件&lt;/li&gt;
-&lt;li&gt;ContextClosedEvent：ApplicationContext关闭后触发的事件&lt;/li&gt;
+&lt;li&gt;ContextClosedEvent：ApplicationContext关闭后触发的事件
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;spring中的设计模式&#34;&gt;spring中的设计模式&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建还是传入参数前创建这个要根据具体情况来定。&lt;/li&gt;
+&lt;li&gt;单例模式：Spring下默认的bean均为singleton。&lt;/li&gt;
+&lt;li&gt;代理模式：为其他对象提供⼀种代理以控制对这个对象的访问。从结构上来看和Decorator模式类似，但Proxy是控制，更更像是一种对功能的限制，而Decorator是增加职责。 spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。&lt;/li&gt;
+&lt;li&gt;观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更更新。spring中Observer模式常用的地方是listener的实现。如ApplicationListener。&lt;/li&gt;
+&lt;/ol&gt;
 </description>
       
     </item>
@@ -318,23 +447,6 @@ java.io 包的好处是代码比较简单、直观，缺点则是 IO 效率和�
 &lt;p&gt;-XX:+PrintTLAB　&lt;/p&gt;
 
 &lt;p&gt;查看TLAB信息&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Spring中的设计模式</title>
-      <link>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      
-        <description>&lt;ol&gt;
-&lt;li&gt;简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建还是传入参数前创建这个要根据具体情况来定。&lt;/li&gt;
-&lt;li&gt;单例模式：Spring下默认的bean均为singleton。&lt;/li&gt;
-&lt;li&gt;代理模式：为其他对象提供⼀种代理以控制对这个对象的访问。从结构上来看和Decorator模式类似，但Proxy是控制，更更像是一种对功能的限制，而Decorator是增加职责。 spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。&lt;/li&gt;
-&lt;li&gt;观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更更新。spring中Observer模式常用的地方是listener的实现。如ApplicationListener。&lt;/li&gt;
-&lt;/ol&gt;
 </description>
       
     </item>
@@ -3210,254 +3322,6 @@ redisClient.eval(luaScript , Collections.singletonList(key), Collections.singlet
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/rjzheng/p/9096228.html&#34; target=&#34;_blank&#34;&gt;分布式之redis复习精讲&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://www.cnblogs.com/Survivalist/p/10321476.html&#34; target=&#34;_blank&#34;&gt;Redis的那些最常见面试问题&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://mp.weixin.qq.com/s/8fdBKAyHZrfHmSajXT_dnA&#34; target=&#34;_blank&#34;&gt;什么是分布式锁？&lt;/a&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Eclipse笔记</title>
-      <link>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2019/07/15/eclipse%E7%AC%94%E8%AE%B0/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;快捷键&#34;&gt;快捷键&lt;/h2&gt;
-
-&lt;h4 id=&#34;使用频率极高的快捷键&#34;&gt;使用频率极高的快捷键&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;代码提示&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt+/&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;自动生成object方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + s，然后根据提示继续&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;复制当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl +alt + ↓&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查找文本&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + k ,ctrl + shfit + k&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;如何跳转到文件中的特定行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + l&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;调出搜索文本的视图&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;进行全局搜索和局部搜索&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + h&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文件&#34;&gt;文件&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;创建各种类型的文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + n&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭当前文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;关闭所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + w&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;打开文件所在目录&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + w，选择system explorer&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;类&#34;&gt;类&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示出当前打开的所有文件&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + e&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;文件切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + pg、up ,ctrl + pg、dn&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;视图切换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + f7  跳转到代码编辑器视图 f12&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;经典的quick access&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + 3  搜maven、server&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;eclipse的面包屑功能&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + b （右键面包屑有关闭按钮）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;文本&#34;&gt;文本&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;DESC&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;KEY&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;删除当前行&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + d&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;查看字符串出现的地方&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + u&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;显示html和xml元素的所有属性&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ctrl + shift + ,&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;大小写转换&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;变小写ctrl + shift + y,变大写ctrl +shift + x&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-修改名字&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;重构-抽取类方法&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;选中代码，然后使用alt + shift + m,就会弹出抽取视图&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;eclipse-插件&#34;&gt;Eclipse-插件&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Team
-
-&lt;ul&gt;
-&lt;li&gt;Subclipse&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Theme
-
-&lt;ul&gt;
-&lt;li&gt;Eclipse Color Theme&lt;/li&gt;
-&lt;li&gt;Darkest Dark Theme with DevStyle&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;反编译
-
-&lt;ul&gt;
-&lt;li&gt;Enhanced Class Decompiler&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;UML
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/AmaterasUML_1.3.4.zip&#34; target=&#34;blank&#34;&gt;AmaterasUML_1.3.4.zip&lt;/a&gt;解压放入plugins目录&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;lombok&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;方式1&lt;br /&gt;
-将&lt;a href=&#34;https://ianeiu.github.io/resouce/IDE-PLUGN/lombok.jar&#34; target=&#34;blank&#34;&gt;lombok.jar&lt;/a&gt;文件，放到eclipse安装路径，该jar包也就是lombok插件的jar文件了&lt;br /&gt;
-打开eclipse.ini文件，添加如下内容：&lt;br /&gt;
--javaagent:lombok.jar&lt;br /&gt;
--Xbootclasspath/a:lombok.jar&lt;/li&gt;
-&lt;li&gt;方式2(推荐)&lt;br /&gt;
-&lt;a href=&#34;https://blog.csdn.net/dorothy1224/article/details/79280591/&#34; target=&#34;blank&#34;&gt;eclipse安装lombok&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;修改tomcat设置内存大小&#34;&gt;修改tomcat设置内存大小&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-在Eclipse中下面Servers双击Tomcat Server&amp;hellip; 然后点击General InformAtion 下的Open launch configuration；&lt;br /&gt;
-会弹出Edit Configuration，然后在选中Arguments选项卡；在VM arguments文本框中最后面添加
--Xms256m -Xmx1024m -XX:MaxPermSize=256m 。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-在Eclipse菜单栏中Window ——》Preferences ——》Server ———》 Runtime Environment；&lt;br /&gt;
-选择您用的Tomcat 然后点击Edit&amp;hellip;弹出Edit Server Runtime Ecvironment 下面JRE选项后面的Installed JREs&amp;hellip;
-点击弹出Installed JREs；在选中您用的Jre在点击Edit..在Defaul VM Arguments：中填入-Xms256m -Xmx512m&lt;/p&gt;
-
-&lt;h2 id=&#34;删除某个工作空间&#34;&gt;删除某个工作空间&lt;/h2&gt;
-
-&lt;p&gt;方式1（推荐）：&lt;br /&gt;
-   打开你的Eclipse，菜单中找到：Window&amp;ndash;&amp;gt;Preferences&amp;ndash;&amp;gt;General&amp;ndash;&amp;gt;Startup and Shutdown&amp;ndash;&amp;gt;WorkSpace，
-然后选中你想要删除的工作空间，点击右边的remove按钮即可。&lt;/p&gt;
-
-&lt;p&gt;方式2：&lt;br /&gt;
-   在你的Eclipse目录中找到以下文件configuration.settings\org.eclipse.ui.ide.prefs，这个就是工作空间的配置文件了。
-然后将RECENT_WORKSPACES后面你想删除的工作空间删除即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;问题记录&#34;&gt;问题记录&lt;/h2&gt;
-
-&lt;h2 id=&#34;tomcat启动报nullpointerexception&#34;&gt;tomcat启动报NullPointerException&lt;/h2&gt;
-
-&lt;p&gt;在自己设置的workspace目录下面，打开目录：.metadata.plugins\org.eclipse.wst.server.core\ ，然后删除“temp0”文件夹即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;server视图加载项目之后项目名后边有带括号的名字&#34;&gt;Server视图加载项目之后项目名后边有带括号的名字&lt;/h2&gt;
-
-&lt;p&gt;复制过来的项目会出现的一种情况：有时即使是项目改了名字在添加到Server上的时候在Server视图中看到项目名后边有一个带括号的名字,还是复制之前的项目名。&lt;/p&gt;
-
-&lt;p&gt;解决：打开文件“你的工程目录.settings\org.eclipse.wst.common.component”看到内容，将里面所有为你原来工程名的字符串替换为新工程名字。&lt;/p&gt;
 </description>
       
     </item>

@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Spring中的设计模式</title>
-      <link>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description>简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建</description>
-    </item>
-    
-    <item>
       <title>Spring常用注解</title>
       <link>https://ianeiu.github.io/2019/11/01/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>

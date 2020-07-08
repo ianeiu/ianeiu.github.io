@@ -27,7 +27,7 @@
       <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/2018/09/11/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
-      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 &amp;lt;img style=&amp;quot;width:60%&amp;quot; s</description>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理） 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器 虽然这</description>
     </item>
     
   </channel>

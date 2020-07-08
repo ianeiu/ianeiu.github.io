@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>WuWeiMian</copyright>
-    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ianeiu.github.io/tag/springmvc/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Spring中的设计模式</title>
-      <link>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/2020/05/17/spring%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description>简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建</description>
-    </item>
     
     <item>
       <title>SpringMVC的运行流程及九大组件</title>
