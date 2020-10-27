@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on 吴炜棉</title>
+    <link>https://ianeiu.github.io/page/</link>
+    <description>Recent content in Pages on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://ianeiu.github.io/about/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/about/</guid>
+      <description>简介  吴炜棉 weimianwu@foxmail.com  </description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://ianeiu.github.io/archives/</link>
+      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/archives/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JavaWeb笔记整理
+XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换
+格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+XML两种文档约束类型： dtd （file_name.dtd）和schema（file_name.xsd 可被XML解析器解析）
+XML存储结构化信息，使用DOM或SAX（边读边解析）方式解析
+Properties存储平面信息，使用Properties类解析
+常见的XML解析器实现：JDOM、DOM4J（首选）、SAX
+XPath:XML路径语言，用来确定XML文档中某部分位置
+Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等
+JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
+继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
+Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。'><title>Java笔记之web篇</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java笔记之web篇'>
+<meta property='og:description' content='JavaWeb笔记整理
+XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换
+格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+XML两种文档约束类型： dtd （file_name.dtd）和schema（file_name.xsd 可被XML解析器解析）
+XML存储结构化信息，使用DOM或SAX（边读边解析）方式解析
+Properties存储平面信息，使用Properties类解析
+常见的XML解析器实现：JDOM、DOM4J（首选）、SAX
+XPath:XML路径语言，用来确定XML文档中某部分位置
+Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等
+JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
+继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
+Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。'>
+<meta property='og:url' content='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2018-12-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-12-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Java笔记之web篇">
+<meta name="twitter:description" content="JavaWeb笔记整理
+XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换
+格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+XML两种文档约束类型： dtd （file_name.dtd）和schema（file_name.xsd 可被XML解析器解析）
+XML存储结构化信息，使用DOM或SAX（边读边解析）方式解析
+Properties存储平面信息，使用Properties类解析
+常见的XML解析器实现：JDOM、DOM4J（首选）、SAX
+XPath:XML路径语言，用来确定XML文档中某部分位置
+Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等
+JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
+继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
+Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/java/">Java</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/">Java笔记之web篇</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Dec 22, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>JavaWeb笔记整理</p>
+<h2 id="xml">XML</h2>
+<p>XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换</p>
+<p>格式：<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code></p>
+<p>XML两种文档约束类型： <code>dtd</code> （file_name.dtd）和<code>schema</code>（file_name.xsd 可被XML解析器解析）</p>
+<p>XML存储结构化信息，使用<code>DOM</code>或<code>SAX</code>（边读边解析）方式解析<br>
+Properties存储平面信息，使用Properties类解析</p>
+<p>常见的XML解析器实现：JDOM、DOM4J（首选）、SAX</p>
+<p>XPath:XML路径语言，用来确定XML文档中某部分位置</p>
+<h2 id="web服务器">Web服务器</h2>
+<p>Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等</p>
+<h2 id="javaweb三大组件">JavaWeb三大组件</h2>
+<ul>
+<li>Servlet</li>
+<li>Filter</li>
+<li>Listener</li>
+</ul>
+<h2 id="servlet">Servlet</h2>
+<p>Servlet是多线程、单实例。<br>
+继承关系：MyServlet &ndash;extends&ndash;&gt; HttpServlet &ndash;extends&ndash;&gt; QenericServlet  &ndash;implements&ndash;&gt; Servlet、ServletConfig</p>
+<h4 id="servlet生命周期">Servlet生命周期</h4>
+<ol>
+<li>初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法；</li>
+<li>提供服务：当服务器每次接收到请求时，会调用service()方法处理请求；</li>
+<li>销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。</li>
+</ol>
+<h4 id="在webxml中配置">在web.xml中配置</h4>
+<pre><code>...
+&lt;servlet&gt;
+	&lt;servlet-name&gt;myServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;com.ianeiu.web.MyServlet&lt;/servlet-class&gt;
+	&lt;!-- 通过ServletConfig获取 --&gt;
+	&lt;init-param&gt;
+		&lt;param-name&gt;key&lt;/param-name&gt;
+		&lt;param-value&gt;value&lt;/param-value&gt;
+	&lt;/init-param&gt;
+	&lt;!-- 值越小，优先级越大 --&gt;
+	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;myServlet&lt;/servlet-name&gt;
+	&lt;url-pattren&gt;/my/*&lt;/url-pattren&gt;
+&lt;/servlet-mapping&gt;
+...
+</code></pre><p>访问路径可以使用通配符 <!-- raw HTML omitted -->* /* /myName/* *.do<!-- raw HTML omitted --></p>
+<h4 id="httpservlet">HttpServlet</h4>
+<p>实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &hellip;),子类只需调用doGet() doPost()。</p>
+<h2 id="请求request">请求request</h2>
+<p>URL相关：<br>
+<code>http://127.0.0.1:8080/myproject/myServlet?name=admin  </code><br>
+.getRequestURL()+&quot;?&quot;+ .getQueryString<br>
+或者<br>
+.getScheme() +&quot;://&quot;+ .getServerName() +&quot;:&quot;+.getServerPort() +&quot;/&quot;+ .getContextPath +&quot;/&quot;+ .getServerPath +&quot;?&quot;+ .getQueryString<br>
+/myproject/myServlet 可用 .getRequestURI() 获取</p>
+<h4 id="get和post">get和post</h4>
+<p>get：没有请求体，参数在url中显示，长度理论限制1K之内<br>
+post: 参数在请求体中，长度无限制</p>
+<h4 id="请求转发和请求包含">请求转发和请求包含</h4>
+<p>都是一个请求跨多个Servlet（可以共享request的域属性）</p>
+<pre><code>class AServlet extends HttpServlet {
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispacter rd = request.getRequestDispacter(&quot;/BServlet&quot;);
+		rd.forward(request,response);//A不能输响应体，可设置响应头，最后由B处理
+		rd.include(request,response);//无限制，共同处理请求
+	}
+}
+</code></pre><h2 id="响应response">响应response</h2>
+<p>可设置响应信息、发送状态码、设置响应正文、重定向（response.sendRedirect(&quot;/myProject/BServlet&quot;)）</p>
+<h4 id="响应编码">响应编码</h4>
+<ol>
+<li>response.setCharacterEncoding(&ldquo;utf-8&rdquo;); response.getWriter(&quot;..&quot;);</li>
+<li>response.setHeader(&ldquo;content-type&rdquo;,&ldquo;text/html;charset=utf-8&rdquo;);</li>
+<li>response.setContentType(&ldquo;text/html;charset=utf-8&rdquo;);</li>
+</ol>
+<h4 id="请求转发和重定向302">请求转发和重定向（302）</h4>
+<ol>
+<li>请求转发是一个请求，但是重定向是两个请求。</li>
+<li>请求转发只能是一种请求方式，要么是Get要么是Post ,但是重定向的第二个请求一定是Get。</li>
+<li>请求转发的地址栏并不会发生变化(服务器请求资源)，但是重定向的会变化，因为它是两个请求(浏览器重新请求地址)。</li>
+<li>请求转发只能在本应用下的资源，但是重定向却可以跨应用，比如重定向到百度的主页。</li>
+</ol>
+<h2 id="javaweb四大域对象">JavaWeb四大域对象</h2>
+<ul>
+<li>PageContext - page    （jsp）</li>
+<li>ServletRequest - request     （servlet、jsp）</li>
+<li>HttpSession - session     （servlet、jsp）</li>
+<li>ServletContext - application     （servlet、jsp）</li>
+</ul>
+<h2 id="servletcontext">ServletContext</h2>
+<p>ServletContext是Servlet域三大对象之一。<br>
+在服务器启动时创建，关闭时销毁，单实例。<br>
+用来存取数据、读取web.xml中初始化参数、读取应用资源（文件名、输入流、文件路径集合）</p>
+<h3 id="响应头">响应头</h3>
+<p>防盗链：</p>
+<ul>
+<li>Referer</li>
+</ul>
+<p>禁用浏览器缓存：</p>
+<ul>
+<li>Expies:-1</li>
+<li>Cache-Control:no-cache</li>
+<li>Pragma:no-cache</li>
+</ul>
+<p>三秒后跳转至百度</p>
+<ul>
+<li><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;3;url=http://www.baidu.com&quot;&gt;</code></li>
+</ul>
+<h2 id="jsp九大内置对象">JSP九大内置对象</h2>
+<ul>
+<li>request - HttpServletRequest</li>
+<li>response - HttpServletResponse</li>
+<li>session - HttpSession</li>
+<li>application - ServletContext</li>
+<li>config - ServletConfig</li>
+<li>exception - 只有在错误页面才可使用</li>
+<li>page - 作用本JSP页面中</li>
+<li>out - JSPWriter</li>
+<li>pageContext - 页面上下文对象（作用域最小）</li>
+</ul>
+<h2 id="jsp中的java脚本">JSP中的Java脚本&lt;%%&gt;</h2>
+<ul>
+<li>脚本
+<ul>
+<li>&lt;% .. %&gt; 脚本片段</li>
+<li>&lt;%= ..%&gt; 表达式</li>
+<li>&lt;%! ..%&gt; 声明，定义成员</li>
+<li>示例：<code>&lt;% int a=10; %&gt; &lt;%= a %&gt; &lt;%! private String hello=&quot;hello&quot;;%&gt;</code></li>
+</ul>
+</li>
+<li>注释
+<ul>
+<li>&lt;%&ndash; ..  &ndash;%&gt;</li>
+</ul>
+</li>
+<li>指令
+<ul>
+<li>&lt;%@ .. %&gt;</li>
+</ul>
+</li>
+</ul>
+<h2 id="jsp原理">JSP原理</h2>
+<p>客户端 访问 index.jsp,服务器将jsp文件编译成java文件，JVM将java文件编译成class文件。<br>
+服务器初始化jsp实例，创建该类对象，调用service()。<br>
+客户端再次访问则直接调用service()。</p>
+<h2 id="jsp三大指令">JSP三大指令</h2>
+<ul>
+<li>page</li>
+</ul>
+<ul>
+<li>错误页面配置 <code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;  pageEncoding=&quot;UTF-8&quot; isErrorPage=&quot;true&quot;%&gt;</code></li>
+<li>脚本获取错误 <code>&lt;%= exception.getMessage()%&gt;</code> [exception为jsp内置对象，error页面独有]</li>
+</ul>
+<ul>
+<li>include</li>
+</ul>
+<ul>
+<li>静态包含</li>
+</ul>
+<ul>
+<li>taglib</li>
+</ul>
+<ul>
+<li><code>&lt;%@ taglib uri=&quot;&quot; prefix=&quot;c&quot;%&gt;</code></li>
+</ul>
+<h2 id="在webxml中配置错误页面">在web.xml中配置错误页面</h2>
+<pre><code>&lt;!-- 默认的错误处理页面 --&gt;  
+&lt;error-page&gt;  
+	&lt;error-code&gt;403&lt;/error-code&gt;  
+	&lt;location&gt;/403.html&lt;/location&gt;  
+&lt;/error-page&gt;  
+&lt;error-page&gt;  
+	&lt;error-code&gt;404&lt;/error-code&gt;  
+	&lt;location&gt;/404.html&lt;/location&gt;  
+&lt;/error-page&gt;  
+&lt;!-- 仅仅在调试的时候注视掉,在正式部署的时候不能注释 --&gt;  
+&lt;!-- 这样配置也是可以的，表示发生500错误的时候，转到500.jsp页面处理。 --&gt;  
+&lt;error-page&gt;   
+	&lt;error-code&gt;500&lt;/error-code&gt;   
+	&lt;location&gt;/500.html&lt;/location&gt;   
+&lt;/error-page&gt;
+&lt;!-- 这样的配置表示如果jsp页面或者servlet发生java.lang.Exception类型（当然包含子类）的异常就会转到500.jsp页面处理。 --&gt;  
+&lt;error-page&gt;   
+	&lt;exception-type&gt;java.lang.Exception&lt;/exception-type&gt;   
+	&lt;location&gt;/500.jsp&lt;/location&gt;   
+&lt;/error-page&gt;   
+  
+&lt;error-page&gt;   
+	&lt;exception-type&gt;java.lang.Throwable&lt;/exception-type&gt;   
+	&lt;location&gt;/500.jsp&lt;/location&gt;   
+&lt;/error-page&gt;  
+&lt;!--   
+当error-code和exception-type都配置时，exception-type配置的页面优先级高  
+及出现500错误，发生异常Exception时会跳转到500.jsp  
+ --&gt;   
+</code></pre><h2 id="在webxml中配置jstl">在web.xml中配置jstl</h2>
+<pre><code>...  
+&lt;jsp-config&gt;  
+   &lt;taglib&gt;  
+	   &lt;taglib-uri&gt;myjstl&lt;/taglib-uri&gt;  
+	   &lt;taglib-location&gt;/WEB-INF/tld/c.tld&lt;/taglib-location&gt;  
+   &lt;/taglib&gt;  
+&lt;/jsp-config&gt;  
+...  
+</code></pre><h2 id="jsp基本动作">JSP基本动作</h2>
+<ul>
+<li>include</li>
+<li>useBean</li>
+<li>setProperty</li>
+<li>getProperty</li>
+<li>forward</li>
+<li>plugin</li>
+</ul>
+<h2 id="动态包含和静态包含">动态包含和静态包含</h2>
+<ul>
+<li>动态包含</li>
+</ul>
+<ul>
+<li><code>&lt;jsp:include page=&quot;navigation.jsp&quot;/&gt;</code></li>
+<li>请求处理阶段执行</li>
+<li>会检查所含文件变化，用于动态页面</li>
+</ul>
+<ul>
+<li>静态包含</li>
+</ul>
+<ul>
+<li><code>&lt;%@ include file=&quot;resource.html&quot;%&gt;</code></li>
+<li>翻译阶段执行（合并再编译）</li>
+<li>不检查所含文件变化，用于静态页面</li>
+</ul>
+<h2 id="cookie">Cookie</h2>
+<p>Cookie是Http协议的规范之一，是服务端和客户端之间传输的小数据。
+特点:</p>
+<ol>
+<li>大小4KB（实际上不止）</li>
+<li>服务器最多在客户端浏览器上保存20个</li>
+<li>浏览器最多保存300个</li>
+</ol>
+<h2 id="httpsession">HttpSession</h2>
+<p>用来会话跟踪的类。session是服务端对象，保存在服务端。<br>
+HttpSession底层依赖Cookie或是URL重写。</p>
+<p>会话的实现依赖于容器，大多数容器采用基于Cookie的实现机制，使用名字为JSESSIONID的cookie作为session的唯一标识。</p>
+<h4 id="url重写">URL重写</h4>
+<ul>
+<li><code>&lt;a href =&quot;/myproject/myjsp.jsp;jsessionid=&lt;%=session.getId()%&gt;&quot;&gt;跳转&lt;/a&gt;</code></li>
+<li><code>&lt;a href =&quot;&lt;response.encodeURL('/myproject/myjsp.jsp')&gt;&quot;&gt;跳转&lt;/a&gt;</code></li>
+</ul>
+<h2 id="el表达式">EL表达式</h2>
+<p>EL表达式主要是用来替代JSP页面中的脚本表达式，获取JavaBean、Map、List、数组及域内置对象属性。也可以在JSP页面中执行一些基本的关系运算、逻辑运算和算术运算。</p>
+<p>语法：<code>${标识符}</code></p>
+<ul>
+<li>获取数据</li>
+</ul>
+<ul>
+<li>List/数组 <code>${userList[0]}</code></li>
+<li>Bean <code>${user.userName}</code>或<code>${user['userName']}</code></li>
+<li>Map <code>${paramMap.key}</code>或<code>${paramMap['key']}</code></li>
+<li>内置对象 <code>${sessionScope.userName}</code>、<code>${initParam['maxNum']}</code></li>
+<li>如果Map的键或Bean的属性名中包含<code>_</code>或<code>-</code>时，只有${initParam[&lsquo;max_num&rsquo;]}</li>
+</ul>
+<ul>
+<li>运算</li>
+</ul>
+<ul>
+<li><code>${1+2}</code></li>
+<li><code>${3&gt;5}</code>或<code>${3 gt 5}</code></li>
+<li><code>${isSuccess &amp;&amp; length&gt;0}</code> 或<code>${isSuccess and length&gt;0}</code></li>
+<li><code>${!isSuccess}</code> 或<code>${not isSuccess}</code></li>
+<li>empty判断字符串、数组、集合的长度是否为0(可与not或!连用)	<code>${empty &quot;&quot;}</code></li>
+</ul>
+<h2 id="el-11个内置对象">EL 11个内置对象</h2>
+<ul>
+<li>pageScope：获取pageContext域属性，相当于pageContext.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>requestScope：获取request域属性，相当于request.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>sessionScope：获取session域属性，相当于session.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>applicationScope：获取application域属性，相当于application.getAttribute(&ldquo;xxx&rdquo;)</li>
+<li>param：对应参数，它是一个Map，其中key是参数，value是参数值，适用于单值的参数，相当于request.getParameter(&ldquo;xxx&rdquo;)</li>
+<li>paramValues：对应参数，她是一个Map，其中key是参数，value是多个参数值，适用于多值的参数，相当于request.getParameterValues(&ldquo;xxx&rdquo;)</li>
+<li>header：对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值的请求头，相当于request.getHeader(&ldquo;xxx&rdquo;)</li>
+<li>headerValues：对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值的请求头，相当于request.getHeaders(&ldquo;xxx&rdquo;)</li>
+<li>initParam：获取web.xml中<!-- raw HTML omitted -->内的参数，${ initParam.xxx}，xxx就是<!-- raw HTML omitted -->标签内的值，进而得到<!-- raw HTML omitted -->中的值</li>
+<li>cookie：用于获取cookie，Map&lt;String,Cookie&gt;，其中key是cookie的name，value是cookie对象，例如${cookie.JSESSIONID.value }就是获取sessionId</li>
+<li>pageContext：可以获取JSP九大内置对象，相当于使用该对象调用getxxx()方法，例如pageContext.getRequest()可以写为${pageContext.request)</li>
+</ul>
+<h2 id="jstl">JSTL</h2>
+<p>JSTL是一个不断完善的开放源代码的JSP标签库，依赖于EL，使用需要导入jstl.jar。</p>
+<p>JSTL标签库可分为四种：</p>
+<ol>
+<li>core</li>
+<li>fmt</li>
+<li>sql</li>
+<li>xml</li>
+</ol>
+<p>其中sql标签库和xml标签库已过时。使用标签的JSP页面中使用taglib指令导入标签库，如下：<br>
+<code>&lt;%@ taglib prefix=&quot;c&quot;uri=&quot;http://java.sun.com/jstl/core&quot; %&gt;</code></p>
+<ul>
+<li><code>prefix=&quot;c&quot;</code>：指定标签库的前缀，这个前缀可以随便给值，但大家都会在使用core标签库时指定前缀为c；</li>
+<li><code>uri=&quot;http://java.sun.com/jstl/core&quot;</code>：指定标签库的uri，它不一定是真实存在的网址，但它可以让JSP找到标签库的描述文件；</li>
+</ul>
+<h4 id="core标签库常用标签">core标签库常用标签</h4>
+<ul>
+<li>out</li>
+</ul>
+<ul>
+<li><code>&lt;c:out value=&quot;aaa&quot;/&gt;</code> 输出aaa字符串常量</li>
+<li><code>&lt;c:out value=&quot;${aaa}&quot;/&gt;</code> 	与${aaa}相同</li>
+<li><code>&lt;c:out value=&quot;${aaa}&quot; default=&quot;xxx&quot;/&gt;</code></li>
+</ul>
+<ul>
+<li>set</li>
+</ul>
+<ul>
+<li><code>&lt;c:set var=&quot;a&quot; value=&quot;hello&quot;/&gt;</code> 在pageContext中添加name为a，value为hello的数据。</li>
+<li><code>&lt;c:set var=&quot;a&quot; value=&quot;hello&quot; scope=&quot;session&quot;/&gt;</code> 在session中添加name为a，value为hello的数据。</li>
+</ul>
+<ul>
+<li>remove</li>
+</ul>
+<ul>
+<li><code> &lt;c: remove var=&quot;a&quot;/&gt;</code> 删除所有域中name为a的数据</li>
+<li><code>&lt;c:remove var=&quot;a&quot; scope=&quot;page&quot;/&gt;</code> 删除pageContext中name为a的数据</li>
+</ul>
+<ul>
+<li>url</li>
+</ul>
+<ul>
+<li><code>&lt;c:url value=&quot;/&quot;/&gt;</code> 输出上下文路径：/项目名/</li>
+<li><code>&lt;c:url value=&quot;/&quot; var=&quot;a&quot; scope=&quot;request&quot;/&gt;</code> 把本该输出的结果赋给变量a。范围为request</li>
+<li><code>&lt;c:url value=&quot;/AServlet&quot;/&gt;</code>   输出：/项目名/AServlet</li>
+<li><code>&lt;c:url value=&quot;/AServlet&quot;&gt; &lt;c:param name=&quot;username&quot; value=&quot;abc&quot;/&gt; &lt;c:param name=&quot;password&quot; value=&quot;123&quot;/&gt; </code> 输出：/项目名/AServlet?username=abc&amp;password=123。如果参数中包含中文，那么会自动使用URL编码！</li>
+</ul>
+<ul>
+<li><strong>if</strong></li>
+</ul>
+<ul>
+<li><code>&lt;c:if test=&quot;条件&quot;&gt;满足条件执行的JSP代码&lt;/c:if&gt;</code></li>
+</ul>
+<ul>
+<li><strong>choose</strong></li>
+</ul>
+<ul>
+<li><code>&lt;c:choose&gt; &lt;c:when test=&quot;条件&quot;&gt;处理&lt;/c:when&gt; &lt;c:when test=&quot;条件&quot;&gt;处理&lt;/c:when&gt; &lt;c:otherwise&gt;处理&lt;/c:otherwise&gt; &lt;/c:choose&gt;</code></li>
+</ul>
+<ul>
+<li><strong>forEach</strong></li>
+</ul>
+<ul>
+<li><code>&lt;c:forEach var=&quot;名字(i)&quot; begin=&quot;开始数字(1)&quot; end=&quot;结束数字(5)&quot;&gt; ${i} &lt;/c:forEach&gt;</code></li>
+<li><code>&lt;c:forEach var=&quot;item&quot; items=&quot;数组/集合&quot;&gt; ${item} &lt;/c:forEach&gt;</code></li>
+</ul>
+<ul>
+<li><strong>:forTokens</strong></li>
+</ul>
+<ul>
+<li><code>&lt;c:forTokens items=&quot;google,runoob,taobao&quot; delims=&quot;,&quot; var=&quot;name&quot;&gt; &lt;c:out value=&quot;${name}&quot;/&gt;&lt;p&gt; &lt;/c:forTokens&gt;</code></li>
+</ul>
+<h4 id="fmt标签库">fmt标签库</h4>
+<pre><code>&lt;fmt:formatNumber value=”被格式化的数据”[type=”number|currency|percent”]
+
+                                               [pattern=”pattern”]
+
+                                               [currencyCode=”code”]
+
+                                               [currencySymbol=”symbol”]
+
+                                               [groupingUsed=”true|false”]
+
+                                               [maxIntergerDigits=”maxDigits”]
+
+                                               [minIntergerDigits=”minDigits”]
+
+                                               [maxFractionDigits=”maxDigits”]
+
+                                               [minFractionDigits=”minDigits”]
+
+                                               [var=”name”]
+
+                                               [scope=page|request|session|application]
+
+/&gt;
+</code></pre><p>详见 <!-- raw HTML omitted -->fmt<!-- raw HTML omitted --></p>
+<h2 id="jstl自定义标签">JSTL自定义标签</h2>
+<p>JSP中使用自定义标签移除只需要完成以下两个步骤：</p>
+<ol>
+<li>编写一个实现Tag接口的java类（标签处理类）；</li>
+<li>编写标签库描述符（tld）文件，在tld文件中对标签处理类进行描述。</li>
+</ol>
+<p>详见 <!-- raw HTML omitted -->JSTL自定义标签<!-- raw HTML omitted --></p>
+<h2 id="jdbc">JDBC</h2>
+<p>JDBC核心类:</p>
+<ul>
+<li>DriverManager</li>
+</ul>
+<ul>
+<li>注册驱动</li>
+<li>获取Connection</li>
+</ul>
+<ul>
+<li>Connection</li>
+</ul>
+<ul>
+<li>与数据库通讯</li>
+<li>获取Statement</li>
+</ul>
+<ul>
+<li>Statement</li>
+</ul>
+<ul>
+<li>向数据库发送SQL语句</li>
+</ul>
+<ul>
+<li>ResultSet</li>
+</ul>
+<ul>
+<li>结果集</li>
+</ul>
+<p>JDBC编写顺序：</p>
+<ol>
+<li>注册驱动层序</li>
+<li>获取数据库连接</li>
+<li>创建Statement/PreparedStatement</li>
+<li>发送执行sql语句</li>
+<li>处理结果集（如果有）</li>
+<li>释放资源</li>
+</ol>
+<h4 id="statement">Statement</h4>
+<p>con.createStatement()（结果集不滚动、不敏感、不可更新）<br>
+con.createStatement(int,int)</p>
+<h2 id="jdbc之statementpreparedstatementcallablestatement">JDBC之Statement,PreparedStatement,CallableStatement</h2>
+<ol>
+<li>Statement、PreparedStatement和CallableStatement都是接口(interface)。</li>
+<li>Statement继承自Wrapper、PreparedStatement继承自Statement、CallableStatement继承自PreparedStatement。</li>
+<li>Statement接口提供了执行语句和获取结果的基本方法；<br>
+PreparedStatement接口添加了处理 IN 参数的方法；<br>
+CallableStatement接口添加了处理 OUT 参数的方法。</li>
+<li>特性</li>
+</ol>
+<ul>
+<li>Statement
+<ul>
+<li>普通的不带参的查询SQL；</li>
+<li>支持批量更新,批量删除;</li>
+<li>Statement每次执行sql语句，数据库都要执行sql语句的编译;用于仅执行一次查询并返回结果的情形时，效率高于PreparedStatement。</li>
+</ul>
+</li>
+<li>PreparedStatement
+<ul>
+<li>可变参数的SQL,编译一次,执行多次,效率高;安全性好，有效防止Sql注入等问题</li>
+<li>支持批量更新,批量删除;</li>
+</ul>
+</li>
+<li>CallableStatement
+<ul>
+<li>继承自PreparedStatement,支持带参数的SQL操作;</li>
+<li>支持调用存储过程,提供了对输出和输入/输出参数(INOUT)的支持;</li>
+</ul>
+</li>
+</ul>
+<p>使用PreparedStatement有几个好处</p>
+<ol>
+<li>在执行可变参数的一条SQL时，PreparedStatement比Statement的效率高，因为DBMS预编译一条SQL当然会比多次编译一条SQL的效率要高。</li>
+<li>安全性好，有效防止Sql注入等问题。</li>
+<li>对于多次重复执行的语句，使用PreparedStament效率会更高一点，并且在这种情况下也比较适合使用batch；</li>
+<li>代码的可读性和可维护性。</li>
+</ol>
+<h4 id="execute">execute&hellip;</h4>
+<p>executeQuery：返回结果集(ResultSet)。<br>
+executeUpdate: 执行给定SQL语句,该语句可能为 INSERT、UPDATE 或 DELETE 语句，或者不返回任何内容的SQL语句（如 SQL DDL 语句）。<br>
+execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行该SQL语句是否返回了ResultSet。如果执行后第一个结果是ResultSet，则返回true，否则返回false。</p>
+<h2 id="事务">事务</h2>
+<p><!-- raw HTML omitted -->事务的四大特性及隔离级别<!-- raw HTML omitted --></p>
+<h2 id="数据库连接池">数据库连接池</h2>
+<p>DBCP（hibernate3不再支持）</p>
+<p>C3P0</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/java/">java</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java笔记之NIO</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/">
+        
+        
+            <div class="article-image">
+                <img src="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_250x150_fill_q75_box_smart1.jpg" width="250" height="150" 
+                        loading="lazy" data-key="" data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java笔记之基础篇</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java笔记之名词简介</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

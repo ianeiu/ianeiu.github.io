@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 吴炜棉</title>
+    <link>https://ianeiu.github.io/post/</link>
+    <description>Recent content in Posts on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java笔记之NIO</title>
+      <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/</guid>
+      <description>Java 提供了哪些 IO 方式？ NIO 如何实现多路复用？ Java IO 方式有很多种，基于不同的 IO 抽象模型和交互方式，可以进行简单区分。 首先，传统的 java.io 包，它基于流模型实现，提供了我们最熟知的一些 IO 功能，比如 File 抽象、输入输出流等。 交互方式是同步、阻塞的方式，也就是说，在读取输入流或者写入输出流时， 在读、写动作完成之前，线程会一直阻塞在那里，它们之间的调用是可靠的线性顺序。 java.io 包的好处是代码比较简单、直观，缺点则是 IO 效率和扩展性存在局限性，容易成为应用性能的瓶颈。
+很多时候，人们也把 java.net 下面提供的部分网络 API，比如 Socket、ServerSocket、 HttpURLConnection 也归类到同步阻塞 IO 类库，因为网络通信同样是 IO 行为。
+第二，在 Java 1.4 中引入了 NIO 框架（java.nio 包），提供了 Channel、Selector、Buffer 等新的抽象， 可以构建多路复用的、同步非阻塞 IO 程序，同时提供了更接近操作系统底层的高性能数据操作方式。
+第三，在 Java 7 中，NIO 有了进一步的改进，也就是 NIO 2，引入了异步非阻塞 IO 方式，也有很多人叫它 AIO（Asynchronous IO）。 异步 IO 操作基于事件和回调机制，可以简单理解为，应用操作直接返回，而不会阻塞在那里， 当后台处理完成，操作系统会通知相应线程进行后续工作。
+NIO是一种非阻塞式I/O；采用了双向通道进行数据传输，NIO基于Channel和Buffer(缓冲区)进⾏操作，数据总是从通道读取到缓冲区中，或者从缓冲区 写⼊入到通道中。Selector(选择区 [阻塞] )用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个线程可以监听多个数据通道。 利用单线程轮询事件的机制，有效避免大量客户端连接时，频繁线程切换带来的问题。
+IO、NIO IO 概览:</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之基础篇</title>
+      <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <description>Java基础笔记整理
+关键字  用于定义数据类型  class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】
+类型转换：
+byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double
+char→int
+int→long
+int→double
+float→double void   用于定义数据类型值  true false null   用于定义流程控制   if else switch case default【选择】
+【switch jdk5前：case byte\short\int\char。jdk5：case：enum。jdk7：case String】
+  while do for【循环】
+  break continue return【流程跳转】
+直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。
+public static void testForEach(List list) { for (Iterator iterator = list.iterator(); iterator.hasNext();) { Object t = iterator.</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之web篇</title>
+      <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/</guid>
+      <description>JavaWeb笔记整理
+XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换
+格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+XML两种文档约束类型： dtd （file_name.dtd）和schema（file_name.xsd 可被XML解析器解析）
+XML存储结构化信息，使用DOM或SAX（边读边解析）方式解析
+Properties存储平面信息，使用Properties类解析
+常见的XML解析器实现：JDOM、DOM4J（首选）、SAX
+XPath:XML路径语言，用来确定XML文档中某部分位置
+Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等
+JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
+继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
+Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之名词简介</title>
+      <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</guid>
+      <description>web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
+EJB容器 Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。
+ JDBC 用来访问数据库的API（规范）
+JNDI：（Java Naming &amp;amp; Directory Interface） JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。
+JMS：（Java Message Service） JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。
+JTA：（Java Transaction API） JAVA事务服务。提供各种分布式事务服务。应用程序只需调用其提供的接口即可。
+JAF：（Java Action FrameWork） JAVA安全认证框架。提供一些安全控制方面的框架。让开发者通过各种部署和自定义实现自己的个性安全控制策略。
+RMI/IIOP:（Remote Method Invocation /internet对象请求中介协议） 他们主要用于通过远程调用服务。例如，远程有一台计算机上运行一个程序，它提供股票分析服务，我们可以在本地计算机上实现对其直接调用。当然这是要通过一定的规范才能在异构的系统之间进行通信。RMI是JAVA特有的。
+JSP Jsp页面由HTML和前去其中的Java代码组成，用来实现动态视图
+JavaMail JavaMail利用JAF来初拉力MIME编码的邮件附件
+ MVC 标准主流现在的编程方式都是采用MVC综合设计模式，MVC本身不属于设计模式的一种，它描述的是一种结构，最终目的达到解耦（更改某一层代码不会影响我其他层代码）。
+视图层如jsp调用控制层，控制层action调用业务层service，业务层调用数据dao访问层。
+DAO层 DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，DAO层的设计首先是设计DAO的接口，然后在Spring的配置文件中定义此接口的实现类，然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。
+Service层 Service层主要负责业务模块的逻辑应用设计。同样是首先设计接口，再设计其实现的类，接着再Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。Service层的业务实现，具体要调用到已定义的DAO层的接口，封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。
+Controller层 Controller层负责具体的业务模块流程的控制，在此层里面要调用Serice层的接口来控制业务流程，控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。
+ VO 即value object值对象。主要体现在视图的对象，对于一个WEB页面将整个页面的属性封装成一个对象。然后用一个VO对象在控制层与视图层进行传输交换。
+DTO Data Transfer Object数据传输对象，经过处理后的PO，可能增加或者减少PO的属性，主要用于远程调用等需要大量传输对象的地方。
+POJO POJO（plain ordinary java object）即简单java对象，是一种概念或者接口，身份及作用随环境变化而变化。 它不包含业务逻辑或持久逻辑等，不具有任何特殊角色和不继承或不实现任何其它Java框架的类或接口。
+ SpringMVC Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。</description>
+    </item>
+    
+  </channel>
+</rss>

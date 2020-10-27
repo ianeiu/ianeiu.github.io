@@ -1,130 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on ianeiu</title>
+    <title>Categories on 吴炜棉</title>
     <link>https://ianeiu.github.io/categories/</link>
-    <description>Recent content in Categories on ianeiu</description>
+    <description>Recent content in Categories on 吴炜棉</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <copyright>WuWeiMian</copyright>
-    
-	<atom:link href="https://ianeiu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>IDE</title>
-      <link>https://ianeiu.github.io/category/ide/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/ide/</guid>
-      <description></description>
-    </item>
-    
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java</title>
-      <link>https://ianeiu.github.io/category/java/</link>
+      <link>https://ianeiu.github.io/categories/java/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/category/java/</guid>
+      <guid>https://ianeiu.github.io/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Maven</title>
-      <link>https://ianeiu.github.io/category/maven/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      <title>Test</title>
+      <link>https://ianeiu.github.io/categories/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://ianeiu.github.io/category/maven/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mybatis</title>
-      <link>https://ianeiu.github.io/category/mybatis/</link>
-      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/mybatis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
-      <link>https://ianeiu.github.io/category/mysql/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Network</title>
-      <link>https://ianeiu.github.io/category/network/</link>
-      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/network/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spring</title>
-      <link>https://ianeiu.github.io/category/spring/</link>
-      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Struts</title>
-      <link>https://ianeiu.github.io/category/struts/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/struts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>VCS</title>
-      <link>https://ianeiu.github.io/category/vcs/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/vcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>分布式架构</title>
-      <link>https://ianeiu.github.io/category/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/</link>
-      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>前端</title>
-      <link>https://ianeiu.github.io/category/%E5%89%8D%E7%AB%AF/</link>
-      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/%E5%89%8D%E7%AB%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>正则表达式</title>
-      <link>https://ianeiu.github.io/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
-      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>面试题</title>
-      <link>https://ianeiu.github.io/category/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ianeiu.github.io/category/%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <guid>https://ianeiu.github.io/categories/test/</guid>
       <description></description>
     </item>
     
