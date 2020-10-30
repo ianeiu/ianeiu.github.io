@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='常用注解    注解 描述     @Component 泛指组件，类似在xml中配置bean    @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。   @Repository 用于标注数据访问组件   @Service 用于标注业务层组件,默认bean的id为类名且首字母小写   @Controller 用于标注控制层组件   @RestController spring4.0之后，@controller和@responsebody的结合   @Scope 作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;quot;可以保证当有请求的时候都创建一个Action对象。   @Lazy(true) 延迟初始化   @RequestMapping 用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）   @ResponseBody 将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;quot;/login&amp;rdquo;) public void login(User user, HttpServletResponse response){ response.getWriter.write(JSONObject.fromObject(user).toString()); }   @PostConstruct 初始化注解,用于指定初始化方法（用在方法上）   @PreDestory 用于指定销毁方法（用在方法上）   @DependsOn 定义Bean初始化及销毁时的顺序   @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常   @Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用   @Resource 默认按名称装配,当找不到与名称匹配的bean才会按类型装配   @Async 异步方法调用   @RequestParam 接收参数,从request里面拿取值   @PathVariable 接收参数,从一个URI模板里面来填充   @PathParam 这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包   @QueryParam JAX-RS 提供的，和Spring的RequestParam作用一致   @RequestBody 一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)    属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property'><title>Spring常用注解</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Spring常用注解'>
+<meta property='og:description' content='常用注解    注解 描述     @Component 泛指组件，类似在xml中配置bean    @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。   @Repository 用于标注数据访问组件   @Service 用于标注业务层组件,默认bean的id为类名且首字母小写   @Controller 用于标注控制层组件   @RestController spring4.0之后，@controller和@responsebody的结合   @Scope 作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;quot;可以保证当有请求的时候都创建一个Action对象。   @Lazy(true) 延迟初始化   @RequestMapping 用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）   @ResponseBody 将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;quot;/login&amp;rdquo;) public void login(User user, HttpServletResponse response){ response.getWriter.write(JSONObject.fromObject(user).toString()); }   @PostConstruct 初始化注解,用于指定初始化方法（用在方法上）   @PreDestory 用于指定销毁方法（用在方法上）   @DependsOn 定义Bean初始化及销毁时的顺序   @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常   @Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用   @Resource 默认按名称装配,当找不到与名称匹配的bean才会按类型装配   @Async 异步方法调用   @RequestParam 接收参数,从request里面拿取值   @PathVariable 接收参数,从一个URI模板里面来填充   @PathParam 这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包   @QueryParam JAX-RS 提供的，和Spring的RequestParam作用一致   @RequestBody 一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)    属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property'>
+<meta property='og:url' content='https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Spring' /><meta property='article:tag' content='注解' /><meta property='article:published_time' content='2019-11-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-11-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Spring常用注解">
+<meta name="twitter:description" content="常用注解    注解 描述     @Component 泛指组件，类似在xml中配置bean    @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。   @Repository 用于标注数据访问组件   @Service 用于标注业务层组件,默认bean的id为类名且首字母小写   @Controller 用于标注控制层组件   @RestController spring4.0之后，@controller和@responsebody的结合   @Scope 作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;quot;可以保证当有请求的时候都创建一个Action对象。   @Lazy(true) 延迟初始化   @RequestMapping 用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）   @ResponseBody 将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;quot;/login&amp;rdquo;) public void login(User user, HttpServletResponse response){ response.getWriter.write(JSONObject.fromObject(user).toString()); }   @PostConstruct 初始化注解,用于指定初始化方法（用在方法上）   @PreDestory 用于指定销毁方法（用在方法上）   @DependsOn 定义Bean初始化及销毁时的顺序   @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常   @Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用   @Resource 默认按名称装配,当找不到与名称匹配的bean才会按类型装配   @Async 异步方法调用   @RequestParam 接收参数,从request里面拿取值   @PathVariable 接收参数,从一个URI模板里面来填充   @PathParam 这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包   @QueryParam JAX-RS 提供的，和Spring的RequestParam作用一致   @RequestBody 一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)    属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/spring/">Spring</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">Spring常用注解</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Nov 01, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="常用注解">常用注解</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">注解</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@Component</td>
+<td style="text-align:left">泛指组件，类似在xml中配置bean <!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td style="text-align:left">@Configuration</td>
+<td style="text-align:left">把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。</td>
+</tr>
+<tr>
+<td style="text-align:left">@Repository</td>
+<td style="text-align:left">用于标注数据访问组件</td>
+</tr>
+<tr>
+<td style="text-align:left">@Service</td>
+<td style="text-align:left">用于标注业务层组件,默认bean的id为类名且首字母小写</td>
+</tr>
+<tr>
+<td style="text-align:left">@Controller</td>
+<td style="text-align:left">用于标注控制层组件</td>
+</tr>
+<tr>
+<td style="text-align:left">@RestController</td>
+<td style="text-align:left">spring4.0之后，@controller和@responsebody的结合</td>
+</tr>
+<tr>
+<td style="text-align:left">@Scope</td>
+<td style="text-align:left">作用域 表示将Action的范围声明为原型，可以利用容器的scope=&ldquo;prototype&quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&ldquo;singleton&rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&ldquo;prototype&quot;可以保证当有请求的时候都创建一个Action对象。</td>
+</tr>
+<tr>
+<td style="text-align:left">@Lazy(true)</td>
+<td style="text-align:left">延迟初始化</td>
+</tr>
+<tr>
+<td style="text-align:left">@RequestMapping</td>
+<td style="text-align:left">用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）</td>
+</tr>
+<tr>
+<td style="text-align:left">@ResponseBody</td>
+<td style="text-align:left">将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&quot;/login&rdquo;)   public void login(User user, HttpServletResponse response){  response.getWriter.write(JSONObject.fromObject(user).toString());  }</td>
+</tr>
+<tr>
+<td style="text-align:left">@PostConstruct</td>
+<td style="text-align:left">初始化注解,用于指定初始化方法（用在方法上）</td>
+</tr>
+<tr>
+<td style="text-align:left">@PreDestory</td>
+<td style="text-align:left">用于指定销毁方法（用在方法上）</td>
+</tr>
+<tr>
+<td style="text-align:left">@DependsOn</td>
+<td style="text-align:left">定义Bean初始化及销毁时的顺序</td>
+</tr>
+<tr>
+<td style="text-align:left">@Primary</td>
+<td style="text-align:left">自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常</td>
+</tr>
+<tr>
+<td style="text-align:left">@Autowired</td>
+<td style="text-align:left">默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用</td>
+</tr>
+<tr>
+<td style="text-align:left">@Resource</td>
+<td style="text-align:left">默认按名称装配,当找不到与名称匹配的bean才会按类型装配</td>
+</tr>
+<tr>
+<td style="text-align:left">@Async</td>
+<td style="text-align:left">异步方法调用</td>
+</tr>
+<tr>
+<td style="text-align:left">@RequestParam</td>
+<td style="text-align:left">接收参数,从request里面拿取值</td>
+</tr>
+<tr>
+<td style="text-align:left">@PathVariable</td>
+<td style="text-align:left">接收参数,从一个URI模板里面来填充</td>
+</tr>
+<tr>
+<td style="text-align:left">@PathParam</td>
+<td style="text-align:left">这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包</td>
+</tr>
+<tr>
+<td style="text-align:left">@QueryParam</td>
+<td style="text-align:left">JAX-RS 提供的，和Spring的RequestParam作用一致</td>
+</tr>
+<tr>
+<td style="text-align:left">@RequestBody</td>
+<td style="text-align:left">一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="属性注入">属性注入</h2>
+<h3 id="autowired">@Autowired</h3>
+<p>自动装配，可消除代码里的getter/setter与bean属性中的property</p>
+<p>如果不使用注解自动注入，必须通过代码手动注入,如下：</p>
+<pre><code>...
+&lt;bean id=&quot;user&quot; class=&quot;xxx.User&quot; /&gt;
+    &lt;property name=&quot;student&quot; ref=&quot;student&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;student&quot; class=&quot;xxx.Student&quot; /&gt;
+...
+
+@Test
+public void test(){
+    //读取配置文件
+    ApplicationContext ctx=new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+    User user=(User) ctx.getBean(&quot;user&quot;);
+}
+</code></pre>
+<p>而使用注解@Autowired大大减少了代码量，提高可读性。<br>
+使用前配置文件要添加扫描器</p>
+<pre><code>...
+&lt;context:component-scan base-package=&quot;xxx.vo&quot; /&gt;
+&lt;bean id=&quot;user&quot; class=&quot;xxx.User&quot; /&gt;
+&lt;bean id=&quot;student&quot; class=&quot;xxx.Student&quot; /&gt;
+...
+
+class User{
+    @Autowired
+    private Student student;
+    ...
+}
+</code></pre>
+<p>注：当xml配置了user的属性时，Spring会按照xml优先的原则去User.java中寻找这两个属性的getter/setter，导致的结果就是初始化bean报错</p>
+<pre><code>&lt;context:component-scan base-package=&quot;xxx.vo&quot; /&gt;
+&lt;bean id=&quot;user&quot; class=&quot;xxx.User&quot;&gt;
+    &lt;property name=&quot;student&quot; ref=&quot;student&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;student&quot; class=&quot;xxx.Student&quot; /&gt;
+
+class User{
+    @Autowired
+    private Student student;
+    //无getter/setter
+}
+</code></pre>
+<p>注：当xml未配置了student的bean时会抛出找不到bean的异常，可将@Autowired注解的required设置为false，默认student为null</p>
+<pre><code>&lt;context:component-scan base-package=&quot;xxx.vo&quot; /&gt;
+&lt;bean id=&quot;user&quot; class=&quot;xxx.User&quot; /&gt;
+
+class User{
+    @Autowired(required=false)
+    private Student student;
+    //无getter/setter
+}
+</code></pre>
+<h3 id="qualifier">Qualifier</h3>
+<p>指定注入Bean的名称</p>
+<h3 id="resource">@Resource</h3>
+<p>@Resource注解与@Autowired注解作用相似</p>
+<pre><code>class User{
+    @Resource(name=&quot;student&quot;)
+    private Student student;
+	
+    //@Resource(type=&quot;Student.class&quot;)
+    //private Student student;
+    ...
+}
+</code></pre>
+<p>@Resource的装配顺序：
+(1)、@Resource后面没有任何内容，默认通过name属性去匹配bean，找不到再按type去匹配
+(2)、指定了name或者type则根据指定的类型去匹配bean，任何一个不匹配都将报错</p>
+<p>@Autowired和@Resource两个注解的区别：
+(1)、@Autowired默认按照byType方式进行bean匹配，@Resource默认按照byName方式进行bean匹配
+(2)、@Autowired是Spring的注解，@Resource是J2EE的注解</p>
+<h3 id="value">@Value</h3>
+<p>基本数值的填充 :@Value(&quot;&quot;)<br>
+常用于获取配置文件参数值 ${配置文件中参数名}</p>
+<blockquote>
+<p>直接new对象是无法获取参数值的，必须通过springIOC</p>
+</blockquote>
+<blockquote>
+<p>@Value注入static属性的两种方式</p>
+</blockquote>
+<pre><code>//1.通过执行set方法进行参数注入
+private static String userName;
+@Value(&quot;${git.userName}&quot;)
+public void setUserName(String userName) {
+    GitUtils.userName = userName;
+}
+
+//2.通过中间变量赋值
+private static String userName; 
+@Value(&quot;${git.userName}&quot;)
+private String userNameTmp;
+@PostConstruct
+public void init() {
+    userName = userNameTmp;
+}
+</code></pre><h2 id="接收参数">接收参数</h2>
+<h3 id="requestparam">@RequestParam</h3>
+<p>处理Content-Type为 application/x-www-form-urlencoded编码的内容</p>
+<p>http://localhost:8080/springmvc/hello/101?param1=10&amp;param2=20<br>
+根据上面的这个URL，你可以用这样的方式来进行获取</p>
+<pre><code>public String getDetails(
+    @RequestParam(value=&quot;param1&quot;, required=true) String param1,
+    @RequestParam(value=&quot;param2&quot;, required=false) String param2){
+    ...
+}
+</code></pre>
+<p>@RequestParam 支持下面四种参数
+defaultValue 如果本次请求没有携带这个参数，或者参数为空，那么就会启用默认值
+name 绑定本次参数的名称，要跟URL上面的一样
+required 这个参数是不是必须的
+value 跟name一样的作用，是name属性的一个别名</p>
+<h3 id="pathvariable">@PathVariable</h3>
+<p>这个注解能够识别URL里面的一个模板，我们看下面的一个URL
+http://localhost:8080/springmvc/hello/101?param1=10&amp;param2=20
+上面的一个url你可以这样写：</p>
+<pre><code>public String getDetails(
+    @RequestMapping(&quot;/hello/{id}&quot;)
+    public String getDetails(@PathVariable(value=&quot;id&quot;) String id,
+    @RequestParam(value=&quot;param1&quot;, required=true) String param1,
+    @RequestParam(value=&quot;param2&quot;, required=false) String param2){
+    ...
+}
+</code></pre>
+<h3 id="requestbody">@RequestBody</h3>
+<p>@RequestBody用于post请求，处理 application/json、application/xml等格式的数据</p>
+<h3 id="modelattribute">@ModelAttribute</h3>
+<p>@ModelAttribute注解类型将参数绑定到Model对象，处理 multipart/form-data 格式的数据</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/spring/">Spring</a>
+        
+            <a href="https://ianeiu.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring面试题</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E6%8B%A6%E6%88%AA%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring拦截器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SpringMVC的运行流程及九大组件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SpringBoot初体验</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

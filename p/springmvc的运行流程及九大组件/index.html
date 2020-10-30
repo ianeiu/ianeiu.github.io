@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='运行流程 
+ 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping处理器映射器。 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。 DispatcherServlet通过HandlerAdapter处理器适配器调用处理器 执行处理器/后端控制器Controller Controller执行完成返回ModelAndView HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet DispatcherServlet将ModelAndView传给视图解析器ViewReslover ViewReslover解析后返回具体View DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。 DispatcherServlet响应用户。  从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。
+九大组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
+HandlerAdapter 适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。
+有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。
+HandlerExceptionResolver 异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：
+@Component public class GlobalExceptionResolver implements HandlerExceptionResolver { ... /** * 针对请求处理异常 */ @Override public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) { boolean isHttpApi = isHttpApi(handler); HandleResult result = handleException(ex); if (isReturnReponseBody(handler) || isHttpApi) { if(isHttpApi){ result = apiHandleException(ex); } ModelAndView modelAndView = new ModelAndView(); //处理异常 response.'><title>SpringMVC的运行流程及九大组件</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='SpringMVC的运行流程及九大组件'>
+<meta property='og:description' content='运行流程 
+ 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping处理器映射器。 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。 DispatcherServlet通过HandlerAdapter处理器适配器调用处理器 执行处理器/后端控制器Controller Controller执行完成返回ModelAndView HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet DispatcherServlet将ModelAndView传给视图解析器ViewReslover ViewReslover解析后返回具体View DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。 DispatcherServlet响应用户。  从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。
+九大组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
+HandlerAdapter 适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。
+有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。
+HandlerExceptionResolver 异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：
+@Component public class GlobalExceptionResolver implements HandlerExceptionResolver { ... /** * 针对请求处理异常 */ @Override public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) { boolean isHttpApi = isHttpApi(handler); HandleResult result = handleException(ex); if (isReturnReponseBody(handler) || isHttpApi) { if(isHttpApi){ result = apiHandleException(ex); } ModelAndView modelAndView = new ModelAndView(); //处理异常 response.'>
+<meta property='og:url' content='https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Spring' /><meta property='article:published_time' content='2018-08-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-08-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="SpringMVC的运行流程及九大组件">
+<meta name="twitter:description" content="运行流程 
+ 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping处理器映射器。 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。 DispatcherServlet通过HandlerAdapter处理器适配器调用处理器 执行处理器/后端控制器Controller Controller执行完成返回ModelAndView HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet DispatcherServlet将ModelAndView传给视图解析器ViewReslover ViewReslover解析后返回具体View DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。 DispatcherServlet响应用户。  从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。
+九大组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
+HandlerAdapter 适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。
+有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。
+HandlerExceptionResolver 异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：
+@Component public class GlobalExceptionResolver implements HandlerExceptionResolver { ... /** * 针对请求处理异常 */ @Override public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) { boolean isHttpApi = isHttpApi(handler); HandleResult result = handleException(ex); if (isReturnReponseBody(handler) || isHttpApi) { if(isHttpApi){ result = apiHandleException(ex); } ModelAndView modelAndView = new ModelAndView(); //处理异常 response."></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/spring/">Spring</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/">SpringMVC的运行流程及九大组件</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Aug 30, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h1 id="运行流程">运行流程</h1>
+<p><figure>
+		<a href="/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png" data-size="641x274">
+			<img srcset="/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_480x0_resize_box_2.png 480w, /p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_1024x0_resize_box_2.png 1024w"
+				src="/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png" width="641" height="274" loading="lazy"
+				alt="&nbsp;">
+		</a>
+		
+	</figure></p>
+<ul>
+<li>用户发送请求至前置控制器DispatcherServlet</li>
+<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
+<li>处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</li>
+<li>DispatcherServlet通过HandlerAdapter处理器适配器调用处理器</li>
+<li>执行处理器/后端控制器Controller</li>
+<li>Controller执行完成返回ModelAndView</li>
+<li>HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet</li>
+<li>DispatcherServlet将ModelAndView传给视图解析器ViewReslover</li>
+<li>ViewReslover解析后返回具体View</li>
+<li>DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。</li>
+<li>DispatcherServlet响应用户。</li>
+</ul>
+<p>从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。</p>
+<h1 id="九大组件">九大组件</h1>
+<h3 id="handlermapping">HandlerMapping</h3>
+<p>处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet</p>
+<h3 id="handleradapter">HandlerAdapter</h3>
+<p>适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。</p>
+<p>有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。</p>
+<h3 id="handlerexceptionresolver">HandlerExceptionResolver</h3>
+<p>异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：</p>
+<pre><code>@Component
+public class GlobalExceptionResolver implements HandlerExceptionResolver {
+	...
+	/**
+	 * 针对请求处理异常
+	 */
+	@Override
+	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
+			Exception ex) {
+		boolean isHttpApi = isHttpApi(handler);
+		HandleResult result = handleException(ex);
+		if (isReturnReponseBody(handler) || isHttpApi) {
+			if(isHttpApi){
+				result =  apiHandleException(ex);
+			}
+			
+			ModelAndView modelAndView = new ModelAndView();
+			//处理异常
+			response.setContentType(&quot;application/json;charset=UTF-8&quot;);
+			byte[] bytes = JSON.toJSONBytes(Result.fail(result.getCode(), result.getMessage()), SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
+			try {
+				response.getOutputStream().write(bytes);
+				response.getOutputStream().flush();
+			} catch (IOException e) {
+				log.error(&quot;打印错误信息出错!&quot;, e);
+			}
+			modelAndView.clear();
+			return modelAndView;
+		}else {
+			Map&lt;String, String&gt; model = Maps.newHashMap();
+			model.put(&quot;code&quot;, result.getCode());
+			model.put(&quot;message&quot;, result.getMessage());
+			return new ModelAndView(&quot;500&quot;, model);
+		}
+	}
+	...
+}
+</code></pre><h3 id="viewresolver">ViewResolver</h3>
+<p>视图解析器：当Controller将请求处理结果放入到ModelAndView中以后，DispatcherServlet会根据ModelAndView选择合适的视图进行渲染。ViewResolver接口有众多实现类，根据viewName创建合适类型的View实现。配置如下：</p>
+<pre><code>&lt;bean class=&quot;org.Springframework.web.servlet.view.InternalResourceViewResolve&quot;&gt;
+	&lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot; /&gt;
+	&lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt;
+&lt;/bean&gt;
+</code></pre><h3 id="requesttoviewnametranslator">RequestToViewNameTranslator</h3>
+<p>当Controller处理器方法没有返回一个View对象或逻辑视图名称，并且在该方法中没有直接往response的输出流里面写数据的时候，Spring就会采用约定好的方式提供一个逻辑视图名称。可通过实现接口org.Springframework.web.servlet.RequestToViewNameTranslator接口的getViewName方法来实现。</p>
+<h3 id="localeresolver">LocaleResolver</h3>
+<p>国际化配置</p>
+<ul>
+<li>Spring的国际化配置三种方式
+<ul>
+<li>基于URL参数的配置：通过URL参数来控制国际化
+<ol>
+<li>页面： <code>&lt;a href=&quot;myTest.jsp?locale=zh_CN&quot;&gt;简体中文&lt;/a&gt;</code></li>
+<li>配置文件：<code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.AcceptHeaderLocaleResolver&quot;/&gt;</code></li>
+</ol>
+</li>
+<li>基于session的配置：通过检验用户会话中预置的属性来解析区域，最常用的是根据用户本次会话过程中的语言设定决定语言种类，如果该会话不存在，它会根据accept-language HTTP头部确定默认区域。配置<!-- raw HTML omitted --><code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.SessionLocaleResolver&quot;/&gt;</code></li>
+<li>基于Cookie的国际化配置：用于通过浏览器的cookie设置取得Locale对象，这种策略在应用程序不支持会话或者状态必须保存在客户端时有用。<!-- raw HTML omitted --><code>&lt;bean id=&quot;localeResolver&quot; class=&quot;org.Springframework.web.servlet.i18n.CookieLocaleResolver&quot;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="themeresolver">ThemeResolver</h3>
+<p>解析主题。一个主题就是一组静态资源（比如样式表、图片等），它们可以影响应用程序的视觉效果。</p>
+<ul>
+<li>SpringMVC中跟主题相关的类
+<ul>
+<li>ThemeResolver:主题解析器</li>
+<li>ThemeSource:主题资源</li>
+<li>Theme:主题接口</li>
+<li>ThemeChangeInterceptor:根据用户请求来改变主题(需要在handlerMapping中配置拦截器<!-- raw HTML omitted --><code>&lt;property name=&quot;interceptors&quot;&gt;&lt;list&gt;&lt;ref local=&quot;themeChangeInterceptor&quot; /&gt;&lt;/list&gt;&lt;/property&gt;</code>)</li>
+</ul>
+</li>
+<li>ThemeResolver子类
+<ul>
+<li>AbstractThemeResolver:SessionThemeResolver和FixedThemeResolver继承的抽象类</li>
+<li>SessionThemeResolver:用户的主题保存在HTTP session中</li>
+<li>CookieThemeResolver:用于实现用户所选的主题，以cookie的形式存放在客户端的机器上</li>
+<li>FixedThemeResolver:用于选择一个固定的主题</li>
+</ul>
+</li>
+</ul>
+<h3 id="multipartresolver">MultipartResolver</h3>
+<p>MultipartResolver 用于处理文件上传，当收到请求时 DispatcherServlet 的 checkMultipart() 方法会调用 MultipartResolver 的 isMultipart() 方法判断请求中是否包含文件。如果请求数据中包含文件，则调用 MultipartResolver 的 resolveMultipart() 方法对请求的数据进行解析，然后将文件数据解析成 MultipartFile 并封装在 MultipartHttpServletRequest (继承了 HttpServletRequest) 对象中，最后传递给 Controller.</p>
+<ul>
+<li>MultipartResolver子类
+<ul>
+<li>CommonsMultipartResolver：使用 commons Fileupload来处理 multipart请求，所以在使用时，必须要引入相应的jar包。而像SpringBoot是不支持CommonsMultipartResolver</li>
+<li>StandardServletMultipartResolver：基于Servlet3.0来处理multipart请求的，所以不需要引用其他jar包，从Tomcat7.0.x的版本开始就支持 Servlet 3.0了</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/spring/">Spring</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring面试题</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring常用注解</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E6%8B%A6%E6%88%AA%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring拦截器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SpringBoot初体验</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

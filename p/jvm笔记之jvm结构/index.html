@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
+线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
+虚拟机栈 每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。
+本地方法区 本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。
+全局共享的区域 方法区 方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。
+由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。
+运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
+堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
+理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
+JVM
+JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
+JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
+堆内部结构 堆内部结构
+  新生代
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。'><title>JVM笔记之JVM结构</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='JVM笔记之JVM结构'>
+<meta property='og:description' content='JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
+线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
+虚拟机栈 每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。
+本地方法区 本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。
+全局共享的区域 方法区 方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。
+由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。
+运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
+堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
+理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
+JVM
+JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
+JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
+堆内部结构 堆内部结构
+  新生代
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。'>
+<meta property='og:url' content='https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JVM' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2018-09-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-09-11T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="JVM笔记之JVM结构">
+<meta name="twitter:description" content="JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
+线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
+虚拟机栈 每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。
+本地方法区 本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。
+全局共享的区域 方法区 方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。
+由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。
+运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
+堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
+理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
+JVM
+JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
+JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
+堆内部结构 堆内部结构
+  新生代
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/java/">Java</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/">JVM笔记之JVM结构</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Sep 11, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="jvm运行时数据区">JVM运行时数据区</h2>
+<p>运行时数据区（分布在操作系统堆中，由程序员管理）</p>
+<ul>
+<li>方法区</li>
+<li>虚拟机栈（Java栈）</li>
+<li>堆（Java堆）</li>
+<li>本地方法栈/区</li>
+<li>程序计数器</li>
+</ul>
+<p><figure>
+		<a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg" data-size="473x474">
+			<img srcset="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_480x0_resize_q75_box.jpg 480w, /p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_1024x0_resize_q75_box.jpg 1024w"
+				src="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg" width="473" height="474" loading="lazy"
+				alt="JVM结构">
+		</a>
+		
+		<figcaption>JVM结构</figcaption>
+		
+	</figure></p>
+<p>虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。</p>
+<h2 id="线程独享的区域">线程独享的区域</h2>
+<h4 id="程序计数器">程序计数器</h4>
+<p>程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。<br>
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。</p>
+<h4 id="虚拟机栈">虚拟机栈</h4>
+<p>每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 <br>
+栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。</p>
+<h4 id="本地方法区">本地方法区</h4>
+<p>本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。</p>
+<h2 id="全局共享的区域">全局共享的区域</h2>
+<h4 id="方法区">方法区</h4>
+<p>方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。</p>
+<p>由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。</p>
+<p><strong>运行时常量池</strong> ：方法区的一部分<!-- raw HTML omitted -->（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	<!-- raw HTML omitted -->，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。</p>
+<h4 id="堆">堆</h4>
+<p>JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定</p>
+<p>理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。</p>
+<p><figure>
+		<a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png" data-size="841x566">
+			<img srcset="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_480x0_resize_box_2.png 480w, /p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_1024x0_resize_box_2.png 1024w"
+				src="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png" width="841" height="566" loading="lazy"
+				alt="JVM">
+		</a>
+		
+		<figcaption>JVM</figcaption>
+		
+	</figure></p>
+<p>JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。</p>
+<p>JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。</p>
+<h2 id="堆内部结构">堆内部结构</h2>
+<p><figure>
+		<a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png" data-size="970x302">
+			<img srcset="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_480x0_resize_box_2.png 480w, /p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_1024x0_resize_box_2.png 1024w"
+				src="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png" width="970" height="302" loading="lazy"
+				alt="堆内部结构">
+		</a>
+		
+		<figcaption>堆内部结构</figcaption>
+		
+	</figure></p>
+<ol>
+<li>
+<p>新生代</p>
+<p>新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。</p>
+<p>JVM 会随意选取一个 Survivor 区域作为“to”，然后会在 GC 过程中进行区域间拷贝，也就是将 Eden 中存活下来的对象和 from 区域的对象，拷贝到这个“to”区域。这种设计主要是为了防止内存的碎片化，并进一步清理无用对象。</p>
+</li>
+<li>
+<p>老年代</p>
+<p>放置长生命周期的对象，通常都是从 Survivor 区域拷贝过来的对象。当然，也有特殊情况，我们知道普通的对象会被分配在 TLAB 上；如果对象较大，JVM 会试图直接分配在 Eden 其他位置上；如果对象太大，完全无法在新生代找到足够长的连续空闲空间，JVM 就会直接分配到老年代。</p>
+</li>
+<li>
+<p>永久代</p>
+<p>这部分就是早期 Hotspot JVM 的方法区实现方式了，储存 Java 类元数据、常量池、Intern 字符串缓存，在 JDK 8 之后就不存在永久代这块儿了。</p>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/jvm/">JVM</a>
+        
+            <a href="https://ianeiu.github.io/tags/java/">java</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JVM笔记之调优及参数</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JVM笔记之JVM类加载机制</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java笔记之NIO</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java面试之并发</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java面试题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

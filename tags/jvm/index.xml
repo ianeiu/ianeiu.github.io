@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JVM on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/jvm/</link>
+    <description>Recent content in JVM on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JVM笔记之调优及参数</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</guid>
+      <description>调优 调优时机  内存（⽼年代）持续上涨达到设置的最大内存值； Full GC 次数频繁； GC 停顿时间过长（超过1秒）； 应用出现OutOfMemory 等内存异常； 应⽤中使用本地缓存占用大量内存空间； 系统吞吐量量与响应性能不高或下降。  调优原则  多数的Java应用不需要在服务器上进行JVM优化，JVM优化是到最后不得已才采用的⼿段； 多数导致GC问题的Java应用，往往是代码问题，分析GC情况优化代码； 在应用上线之前，先考虑将机器的JVM参数设置到最优（最适合）； 减少创建对象的数量； 减少使用全局变量和大对象  调优目标 GC低停顿、低频率； 低内存占用；⾼吞吐量
+调优步骤  分析GC日志及dump⽂文件，判断是否需要优化，确定瓶颈问题点； 确定jvm调优量化目标； 确定jvm调优参数（根据历史jvm参数来调整）； 调优一台服务器，对比观察调优前后的差异； 不断的分析和调整，直到找到合适的jvm参数配置； 找到最合适的参数，将这些参数应用到所有服务器，并进行后续跟踪。  参数 堆参数设置   -Xms 设置Java程序启动时初始化JVM堆内存大小。
+  -Xmx 设置Java程序能获得最大JVM堆内存大小。
+  -XX:+PrintGC 使用这个参数，虚拟机启动后，只要遇到GC就会打印日志。
+  -XX:+PrintGCDetails 可以查看详细信息，包括各个区的情况
+  -XX:+PrintHeapAtGC 打印 GC 前后的详细堆栈信息
+  -XX:+PrintFlagsInitial打印JVM初始化参数。
+  -XX:+PrintFlagsFinal　标记人为修改过的参数。
+  -XX:+PrintCommandLineFlags 查看默认垃圾回收器。
+  新生代参数设置   -XX:NewSize=5m 设置新生代最小空间大小</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM类加载机制</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
+      <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。
+类从被加载到虚拟内存中开始，到卸载内存为止，它的整个生命周期包括了：加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)七个阶段。
+其中，验证，准备和解析三个部分统称为连接(Linking)。
+ 类加载的过程 类加载的全过程，加载，验证，准备，解析和初始化这五个阶段。
+加载 在加载阶段，虚拟机需要完成以下三件事情：
+ 通过一个类的全限定名来获取定义此类的二进制字节流 将这个字节流所代表的静态存储结构转换为方法区的运行时数据结构 在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区这些数据的访问入口  Java 将字节码数据从不同的数据源读取到 JVM 中，并映射为 JVM 认可的数据结构（Class 对象），这里的数据源可能是各种各样的形态，如 jar 文件、class 文件，甚至是网络数据源等
+验证 这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。不同的虚拟机对类验证的实现可能有所不同，但大致上都会完成下面四个阶段的检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证。
+ 文件格式验证 验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。 元数据验证 对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。 字节码验证 整个验证过程中最复杂的一个阶段，主要工作是数据流和控制流的分析。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析。这阶段的任务是保证被校验类的方法在运行时不会做出危害虚拟机安全的行为。 符号引用验证 发生在虚拟机将符号引用直接转化为直接引用的时候，这个转化动作将在连接的第三个阶段－解析阶段产生。符号引用验证可以看作是对类自身以外（常量池中的各种符号引用）的信息进行匹配性的校验。  准备 正式为类变量分配内存并设置类变量初始值的阶段（创建类或接口中的静态变量，并初始化静态变量的初始值），这些内存都将在方法区进行分配。
+解析 解析阶段是虚拟机将常量池的符号引用转换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法四类符号引用进行。
+初始化 前面的类加载过程中，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由Java虚拟机主导和控制。
+到了初始化阶段，才真正开始执行类中定义的Java程序代码（或者说是字节码）。 在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者说初始化阶段是执行类构造器()方法的过程。
+真正去执行类初始化的代码逻辑，包括静态字段赋值的动作，以及执行类定义中的静态初始化块内的逻辑，编译器在编译阶段就会把这部分逻辑整理好，父类型的初始化逻辑优先于当前类型的逻辑。
+ 准备阶段 常量和不同静态变量有什么区别 public class CLPreparation { public static int a = 100; public static final int INT_CONSTANT = 1000; public static final Integer INTEGER_CONSTANT = Integer.</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM结构</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
+线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
+虚拟机栈 每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。
+本地方法区 本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。
+全局共享的区域 方法区 方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。
+由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。
+运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
+堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
+理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
+JVM
+JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
+JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
+堆内部结构 堆内部结构
+  新生代
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。</description>
+    </item>
+    
+  </channel>
+</rss>

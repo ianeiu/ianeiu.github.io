@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='简介 项目构建和管理自动化工具
+  坐标(可由groupId、artifactId、version组成)。
+  构件通过坐标作为其唯一标识。
+  仓库：
+  远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2
+  镜像仓库：/conf/setting文件:
+&amp;lt;mirror&amp;gt; &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt; &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt; &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt; &amp;lt;/mirror&amp;gt;    本地仓库：修改本地仓库的位置 &amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;
+    指定jdk1.7
+&amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt; &amp;lt;activation&amp;gt; &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt; &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt; &amp;lt;/activation&amp;gt;	&amp;lt;properties&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;/profile&amp;gt; ``
+  常用构建命令 mvn compile 编译 mvn test 测试 mvn package 打包 mvn clean 删除target mvn install 安装jar包到本地仓库 自动创建目录骨架  archetype:generate 按照提示进行 archetype:generate -DgroupId=组织名, 公司网址的反写&#43;项目名'><title>Maven笔记</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Maven笔记'>
+<meta property='og:description' content='简介 项目构建和管理自动化工具
+  坐标(可由groupId、artifactId、version组成)。
+  构件通过坐标作为其唯一标识。
+  仓库：
+  远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2
+  镜像仓库：/conf/setting文件:
+&amp;lt;mirror&amp;gt; &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt; &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt; &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt; &amp;lt;/mirror&amp;gt;    本地仓库：修改本地仓库的位置 &amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;
+    指定jdk1.7
+&amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt; &amp;lt;activation&amp;gt; &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt; &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt; &amp;lt;/activation&amp;gt;	&amp;lt;properties&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;/profile&amp;gt; ``
+  常用构建命令 mvn compile 编译 mvn test 测试 mvn package 打包 mvn clean 删除target mvn install 安装jar包到本地仓库 自动创建目录骨架  archetype:generate 按照提示进行 archetype:generate -DgroupId=组织名, 公司网址的反写&#43;项目名'>
+<meta property='og:url' content='https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='maven' /><meta property='article:published_time' content='2019-07-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Maven笔记">
+<meta name="twitter:description" content="简介 项目构建和管理自动化工具
+  坐标(可由groupId、artifactId、version组成)。
+  构件通过坐标作为其唯一标识。
+  仓库：
+  远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2
+  镜像仓库：/conf/setting文件:
+&amp;lt;mirror&amp;gt; &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt; &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt; &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt; &amp;lt;/mirror&amp;gt;    本地仓库：修改本地仓库的位置 &amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;
+    指定jdk1.7
+&amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt; &amp;lt;activation&amp;gt; &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt; &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt; &amp;lt;/activation&amp;gt;	&amp;lt;properties&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;/profile&amp;gt; ``
+  常用构建命令 mvn compile 编译 mvn test 测试 mvn package 打包 mvn clean 删除target mvn install 安装jar包到本地仓库 自动创建目录骨架  archetype:generate 按照提示进行 archetype:generate -DgroupId=组织名, 公司网址的反写&#43;项目名"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/tool/">tool</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/">Maven笔记</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jul 15, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="简介">简介</h2>
+<p>项目构建和管理自动化工具</p>
+<ol>
+<li>
+<p>坐标(可由groupId、artifactId、version组成)。</p>
+</li>
+<li>
+<p>构件通过坐标作为其唯一标识。</p>
+</li>
+<li>
+<p>仓库：</p>
+<ul>
+<li>
+<p>远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2</p>
+</li>
+<li>
+<p>镜像仓库：/conf/setting文件:</p>
+<pre><code>&lt;mirror&gt;
+    &lt;id&gt;maven.net.cn&lt;/id&gt;
+    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+    &lt;name&gt;central mirror in china&lt;/name&gt;
+    &lt;url&gt;http://maven.net.cn/content/groups/public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre><pre><code>
+</code></pre></li>
+<li>
+<p>本地仓库：修改本地仓库的位置 <code>&lt;localRepository&gt;D:/Maven/repository&lt;/localRepository&gt;</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>指定jdk1.7</p>
+<pre><code>&lt;profile&gt;
+    &lt;id&gt;jdk-1.7&lt;/id&gt;
+    &lt;activation&gt;
+        &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;jdk&gt;1.7&lt;/jdk&gt;
+    &lt;/activation&gt;	
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;1.7&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;1.7&lt;/maven.compiler.target&gt;
+        &lt;maven.compiler.compilerVersion&gt;1.7&lt;/maven.compiler.compilerVersion&gt;
+    &lt;/properties&gt;
+&lt;/profile&gt;
+</code></pre><p>``</p>
+</li>
+</ol>
+<h2 id="常用构建命令">常用构建命令</h2>
+<pre><code>mvn compile 编译
+mvn test 测试
+mvn package 打包
+mvn clean 删除target
+mvn install 安装jar包到本地仓库
+</code></pre><h2 id="自动创建目录骨架">自动创建目录骨架</h2>
+<ol>
+<li>archetype:generate 按照提示进行</li>
+<li>archetype:generate -DgroupId=组织名, 公司网址的反写+项目名<br>
+-DartifactId=项目名-模块名<br>
+-Dversion=版本号<br>
+-Dpackage=代码所存在的包</li>
+</ol>
+<h2 id="完整的项目构建过程">完整的项目构建过程</h2>
+<p>清理、编译、测试、打包、集成测试、验证、部署</p>
+<h2 id="maven生命周期">maven生命周期</h2>
+<pre><code>clean：清理项目
+	- pre-clean ：执行清理前的工作
+	- clean：清理上一次构建生成的所有文件
+	- post-clean：执行清理后的文件
+default：构建项目
+	- compile test package install
+site：生成项目站点
+	- pre-site 在生成项目站点之前要完成的工作
+	- site 生成项目的站点文档
+	- post-site在生成项目站点后要完成的工作
+	- site-deploy发布生成的站点到服务器上
+</code></pre><h2 id="pom结构">pom结构</h2>
+<pre><code>project (根元素，包含约束信息)
+	modelVersion  指定了当前pom版本
+	groupId    反写的公司网址+项目名
+	artifactId  项目名+模块名
+	version     版本号  第一个0表示大版本号，第二个0表示大版本号，第三个0表示大版本号 0.0.1snapshot快照 alpha內部測試 beta公测 Release稳定 GA正式发布
+	packaging   打包方式 默认是jar
+
+	name       项目的描述名
+	url       项目的地址
+	description  项目描述
+	developers   开发人员信息
+	licenses    许可证信息
+	
+	dependencies 
+		-dependency ｛依赖冲突 1.短路优先（优先依赖最近的模块）2.先声明先优先｝
+			-groupId
+			-artifactId
+			-version
+			-type	
+			-scope    依赖范围 [默认compile、provided、runtime、test、system、import]
+			-optional 设置依赖是否可选
+			-exclusions
+				-exclusion
+					-groupId
+					-artifactId
+
+	dependencyManagement   依赖管理  不会被运行(子模块来引用)
+		-dependencies
+			-dependency
+			
+	build
+		-plugins  插件列表（指出坐标）
+			-plugin
+				-groupId
+				-artifactId
+				-version
+				
+	parent    对父模块的继承
+		-groupId	[org..]
+		-artifactId [jetty\tomcat..]
+		-version [...]
+		-executions
+			-execution	在打包成功后使用 jetty\tomcat：run来运行jetty服务
+				-phase [package]
+				-goals [run]
+					-goal
+	modules   定义多个模块  一起进行编译
+		-module [聚合的项目、模块]
+		
+
+
+</code></pre><h2 id="问题记录">问题记录</h2>
+<h4 id="could-not-calculate-build-plan">Could not calculate build plan</h4>
+<ol>
+<li>将C:\User.m2\repository\org\apache\maven\plugins\maven-deploy-plugin目录下的文件夹删除;</li>
+<li>右击项目Maven-&gt;Update Project-&gt;Update Dependencies</li>
+</ol>
+<h4 id="missing-artifact">Missing artifact</h4>
+<ol>
+<li>看看本地仓库是否有这个jar的目录，目录里是否有该jar的一个后缀为lastUpdated的文件;</li>
+<li>如果有就把这个文件删掉，再update一下dependency就行了。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/maven/">maven</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/redis%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">redis笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Eclipse笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">IDEA笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git笔记</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的class为 &amp;quot;ddiiyy&amp;quot; $(&amp;quot;#nm_p&amp;quot;).addClass(&amp;quot;another&amp;quot;); // 追加样式 $(&amp;quot;p&amp;quot;).removeClass(&amp;quot;ddiiyy another&amp;quot;); //溢出样式 $(&amp;quot;p&amp;quot;).toggleClass(&amp;quot;ddiiyy&amp;quot;); //如果存在（不存在）就删除（添加）名为ddiiyy的class $(&amp;quot;p&amp;quot;).hasClass(&amp;quot;another&amp;quot;); //是否含有某个class。是返true，否返false $(&amp;quot;p&amp;quot;).is(&amp;quot;.another&amp;quot;); //is(&amp;quot;.&amp;quot;&#43;class);//JQuery实现，增强代码可读性   readonly和disabled 表单中readOnly和disabled的区别：
+readonly只针对input(text/ password)和textarea有效，而disabled对于所有的表单元素都有效，包括select,radio, checkbox, button等。
+但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit或button却是可以使用的）。
+ 隐藏和显示(操作display属性) $(&amp;quot;#id&amp;quot;).show();//表示display:block, $(&amp;quot;#id&amp;quot;).hide();//表示display:none; $(&amp;quot;#id&amp;quot;).toggle();//切换元素的可见状态。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。 $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;none&#39;); $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;block&#39;); 或 $(&amp;quot;#id&amp;quot;)[0].style.display = &#39;none&#39;;   操作disabled属性 js操作：
+function disableElement(element,val){ document.getElementById(element).disabled=val;d }  jQuery进行操作：
+//两种方法设置disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,true); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;disabled&amp;quot;); //三种方法移除disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,false); $(&#39;#areaSelect&#39;).removeAttr(&amp;quot;disabled&amp;quot;); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;&amp;quot;);  获取s:textfield，并设置其disabled属性：
+functiondisableTextfieldofAccountDiv(element,val) { $(element).'><title>常用代码片段</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='常用代码片段'>
+<meta property='og:description' content='操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的class为 &amp;quot;ddiiyy&amp;quot; $(&amp;quot;#nm_p&amp;quot;).addClass(&amp;quot;another&amp;quot;); // 追加样式 $(&amp;quot;p&amp;quot;).removeClass(&amp;quot;ddiiyy another&amp;quot;); //溢出样式 $(&amp;quot;p&amp;quot;).toggleClass(&amp;quot;ddiiyy&amp;quot;); //如果存在（不存在）就删除（添加）名为ddiiyy的class $(&amp;quot;p&amp;quot;).hasClass(&amp;quot;another&amp;quot;); //是否含有某个class。是返true，否返false $(&amp;quot;p&amp;quot;).is(&amp;quot;.another&amp;quot;); //is(&amp;quot;.&amp;quot;&#43;class);//JQuery实现，增强代码可读性   readonly和disabled 表单中readOnly和disabled的区别：
+readonly只针对input(text/ password)和textarea有效，而disabled对于所有的表单元素都有效，包括select,radio, checkbox, button等。
+但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit或button却是可以使用的）。
+ 隐藏和显示(操作display属性) $(&amp;quot;#id&amp;quot;).show();//表示display:block, $(&amp;quot;#id&amp;quot;).hide();//表示display:none; $(&amp;quot;#id&amp;quot;).toggle();//切换元素的可见状态。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。 $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;none&#39;); $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;block&#39;); 或 $(&amp;quot;#id&amp;quot;)[0].style.display = &#39;none&#39;;   操作disabled属性 js操作：
+function disableElement(element,val){ document.getElementById(element).disabled=val;d }  jQuery进行操作：
+//两种方法设置disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,true); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;disabled&amp;quot;); //三种方法移除disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,false); $(&#39;#areaSelect&#39;).removeAttr(&amp;quot;disabled&amp;quot;); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;&amp;quot;);  获取s:textfield，并设置其disabled属性：
+functiondisableTextfieldofAccountDiv(element,val) { $(element).'>
+<meta property='og:url' content='https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='js' /><meta property='article:tag' content='jquery' /><meta property='article:tag' content='css' /><meta property='article:published_time' content='2019-02-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-02-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="常用代码片段">
+<meta name="twitter:description" content="操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的class为 &amp;quot;ddiiyy&amp;quot; $(&amp;quot;#nm_p&amp;quot;).addClass(&amp;quot;another&amp;quot;); // 追加样式 $(&amp;quot;p&amp;quot;).removeClass(&amp;quot;ddiiyy another&amp;quot;); //溢出样式 $(&amp;quot;p&amp;quot;).toggleClass(&amp;quot;ddiiyy&amp;quot;); //如果存在（不存在）就删除（添加）名为ddiiyy的class $(&amp;quot;p&amp;quot;).hasClass(&amp;quot;another&amp;quot;); //是否含有某个class。是返true，否返false $(&amp;quot;p&amp;quot;).is(&amp;quot;.another&amp;quot;); //is(&amp;quot;.&amp;quot;&#43;class);//JQuery实现，增强代码可读性   readonly和disabled 表单中readOnly和disabled的区别：
+readonly只针对input(text/ password)和textarea有效，而disabled对于所有的表单元素都有效，包括select,radio, checkbox, button等。
+但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit或button却是可以使用的）。
+ 隐藏和显示(操作display属性) $(&amp;quot;#id&amp;quot;).show();//表示display:block, $(&amp;quot;#id&amp;quot;).hide();//表示display:none; $(&amp;quot;#id&amp;quot;).toggle();//切换元素的可见状态。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。 $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;none&#39;); $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;block&#39;); 或 $(&amp;quot;#id&amp;quot;)[0].style.display = &#39;none&#39;;   操作disabled属性 js操作：
+function disableElement(element,val){ document.getElementById(element).disabled=val;d }  jQuery进行操作：
+//两种方法设置disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,true); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;disabled&amp;quot;); //三种方法移除disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,false); $(&#39;#areaSelect&#39;).removeAttr(&amp;quot;disabled&amp;quot;); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;&amp;quot;);  获取s:textfield，并设置其disabled属性：
+functiondisableTextfieldofAccountDiv(element,val) { $(element)."></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">常用代码片段</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Feb 22, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="操作元素的样式">操作元素的样式</h3>
+<pre><code>$(&quot;#msg&quot;).css(&quot;background&quot;); //返回元素的背景颜色
+$(&quot;#msg&quot;).css(&quot;background&quot;,&quot;#ccc&quot;) //设定元素背景为灰色
+$(&quot;#msg&quot;).height(300); $(&quot;#msg&quot;).width(&quot;200&quot;); //设定宽高
+$(&quot;#msg&quot;).css({ color: &quot;red&quot;, background: &quot;blue&quot; });//以名值对的形式设定样式
+
+$(&quot;p&quot;).attr(&quot;class&quot;, &quot;ddiiyy&quot;); //设置p元素的class为 &quot;ddiiyy&quot; 
+$(&quot;#nm_p&quot;).addClass(&quot;another&quot;); // 追加样式 
+$(&quot;p&quot;).removeClass(&quot;ddiiyy another&quot;); //溢出样式
+$(&quot;p&quot;).toggleClass(&quot;ddiiyy&quot;); //如果存在（不存在）就删除（添加）名为ddiiyy的class
+$(&quot;p&quot;).hasClass(&quot;another&quot;); //是否含有某个class。是返true，否返false
+$(&quot;p&quot;).is(&quot;.another&quot;); //is(&quot;.&quot;+class);//JQuery实现，增强代码可读性
+</code></pre>
+<hr>
+<h3 id="readonly和disabled">readonly和disabled</h3>
+<p>表单中readOnly和disabled的区别：<br>
+readonly只针对input(text/ password)和textarea有效，而disabled对于所有的表单元素都有效，包括select,radio, checkbox, button等。<br>
+但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit或button却是可以使用的）。</p>
+<hr>
+<h3 id="隐藏和显示操作display属性">隐藏和显示(操作display属性)</h3>
+<pre><code>$(&quot;#id&quot;).show();//表示display:block, 
+$(&quot;#id&quot;).hide();//表示display:none; 
+$(&quot;#id&quot;).toggle();//切换元素的可见状态。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。
+$(&quot;#id&quot;).css('display','none'); 
+$(&quot;#id&quot;).css('display','block'); 
+或 
+$(&quot;#id&quot;)[0].style.display = 'none';
+</code></pre>
+<hr>
+<h3 id="操作disabled属性">操作disabled属性</h3>
+<p>js操作：</p>
+<pre><code>function disableElement(element,val){
+    document.getElementById(element).disabled=val;d
+}
+</code></pre>
+<p>jQuery进行操作：</p>
+<pre><code>//两种方法设置disabled属性
+$('#areaSelect').attr(&quot;disabled&quot;,true);
+$('#areaSelect').attr(&quot;disabled&quot;,&quot;disabled&quot;);
+//三种方法移除disabled属性
+$('#areaSelect').attr(&quot;disabled&quot;,false);
+$('#areaSelect').removeAttr(&quot;disabled&quot;);
+$('#areaSelect').attr(&quot;disabled&quot;,&quot;&quot;);
+</code></pre>
+<p>获取s:textfield，并设置其disabled属性：</p>
+<pre><code>functiondisableTextfieldofAccountDiv(element,val) {
+    $(element).find(&quot;:textfield&quot;).attr('disabled',val);
+}
+</code></pre>
+<hr>
+<h3 id="禁用abutton点击">禁用a，button点击</h3>
+<p>1.jquery禁用a标签方法1</p>
+<pre><code>$(document).ready(function () {
+    $(&quot;a&quot;).each(function () {
+        var textValue = $(this).html();
+        if (textValue == &quot;XX概况&quot; || textValue == &quot;服务导航&quot;) {
+            $(this).css(&quot;cursor&quot;, &quot;default&quot;);
+            $(this).attr('href', '#');     //修改&lt;a&gt;的 href属性值为 #  这样状态栏不会显示链接地址 
+            $(this).click(function (event) {
+                event.preventDefault();   // 如果&lt;a&gt;定义了 target=&quot;_blank“ 需要这句来阻止打开新页面
+            });
+        }
+    });
+});
+</code></pre>
+<p>2.jquery禁用a标签方法2</p>
+<pre><code>$('a.tooltip').live('click', function(event) {
+  alert(&quot;抱歉,已停用！&quot;); 
+  event.preventDefault();  
+});
+</code></pre>
+<p>3.jquery禁用a标签方法3</p>
+<pre><code>$(function(){
+    $('.disableCss').removeAttr('href');//去掉a标签中的href属性
+    $('.disableCss').removeAttr('onclick');//去掉a标签中的onclick事件
+});
+</code></pre>
+<p>4.jquery控制按钮的禁用与启用</p>
+<pre><code>$('#button').attr('disabled',&quot;true&quot;);//添加disabled属性
+$('#button').removeAttr(&quot;disabled&quot;); //移除disabled属性
+</code></pre>
+<p>5.css3</p>
+<pre><code>&lt;a style=&quot;pointer-events: none;&quot; onclick=&quot;alert('ok');&quot;&gt;无法点击&lt;/a&gt;
+</code></pre>
+<hr>
+<h3 id="操作checked属性回显">操作checked属性\回显</h3>
+<pre><code>&lt;input id=&quot;cb1&quot; type=&quot;checkbox&quot; checked /&gt;
+&lt;input id=&quot;cb2&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;
+</code></pre>
+<p>1.jquery判断checked的三种方法：</p>
+<pre><code>.attr('checked')   //看版本1.6+返回:&quot;checked&quot;或&quot;undefined&quot; ;1.5-返回:true或false
+.prop('checked') //16+:true/false
+.is(':checked')    //所有版本:true/false
+</code></pre>
+<p>2.jquery赋值checked的几种写法:</p>
+<pre><code>//所有的jquery版本都可以这样赋值
+$(&quot;#cb1&quot;).attr(&quot;checked&quot;,&quot;checked&quot;);
+$(&quot;#cb1&quot;).attr(&quot;checked&quot;,true);
+
+//jquery1.6+:prop的4种赋值
+$(&quot;#cb1&quot;).prop(&quot;checked&quot;,true);    //很简单就不说了哦
+$(&quot;#cb1&quot;).prop({checked:true});    //map键值对
+$(&quot;#cb1&quot;).prop(&quot;checked&quot;,function(){  return true;   }); //函数返回true或false
+$(&quot;#cb1&quot;).prop(&quot;checked&quot;,&quot;checked&quot;);
+</code></pre>
+<p>3.check回显的一个demo：</p>
+<pre><code>if(list){
+    if(type==1){
+        var checkBoxAll = $(&quot;input[name='outsideFileName']&quot;);
+        for(var i=0;i&lt;list.length;i++){
+            $.each(checkBoxAll,function(j,checkbox){
+                //获取复选框的value属性
+                var checkValue=$(checkbox).val();
+                if(list[i].filePath==checkValue){
+                    $(checkbox).attr(&quot;checked&quot;,true);
+                }
+            })
+        }
+    }
+}
+</code></pre>
+<hr>
+<h3 id="checkbox全选反选">checkbox（全选反选..）</h3>
+<p>demo：</p>
+<pre><code>注：jquery1.9.0+无法正常显示
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt; 
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt; 
+&lt;head&gt; 
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt; 
+&lt;title&gt;jQuery 对checkbox的操作&lt;/title&gt; 
+&lt;/HEAD&gt; 
+&lt;body style=&quot;text-align:center;margin: 0 auto;font-size: 12px;&quot; mce_style=&quot;text-align:center;margin: 0 auto;font-size: 12px;&quot;&gt; 
+&lt;div style=&quot;border: 1px solid #999; width: 500px; padding: 15px; background: #eee; margin-top: 150px;&quot;&gt; 
+&lt;form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt; 
+&lt;input type=&quot;button&quot; id=&quot;btn1&quot; value=&quot;全选&quot;&gt; 
+&lt;input type=&quot;button&quot; id=&quot;btn2&quot; value=&quot;取消全选&quot;&gt; 
+&lt;input type=&quot;button&quot; id=&quot;btn3&quot; value=&quot;选中所有奇数&quot;&gt; 
+&lt;input type=&quot;button&quot; id=&quot;btn4&quot; value=&quot;反选&quot;&gt; 
+&lt;input type=&quot;button&quot; id=&quot;btn5&quot; value=&quot;获得选中的所有值&quot;&gt; 
+&lt;br /&gt;&lt;br /&gt; 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox1&quot;&gt; 
+checkbox1 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox2&quot;&gt; 
+checkbox2 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox3&quot;&gt; 
+checkbox3 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox4&quot;&gt; 
+checkbox4 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox5&quot;&gt; 
+checkbox5 
+&lt;input type=&quot;checkbox&quot; name=&quot;checkbox&quot; value=&quot;checkbox6&quot;&gt; 
+checkbox6 
+&lt;/form&gt; 
+&lt;/div&gt; 
+&lt;/body&gt; 
+&lt;/HTML&gt; 
+
+&lt;script  type=&quot;text/javascript&quot; src=&quot;http://libs.baidu.com/jquery/1.8.0/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; 
+&lt;!-- 
+$(&quot;document&quot;).ready(function(){ 
+$(&quot;#btn1&quot;).click(function(){ 
+$(&quot;[name='checkbox']&quot;).attr(&quot;checked&quot;,'true');//全选 
+}) 
+$(&quot;#btn2&quot;).click(function(){ 
+$(&quot;[name='checkbox']&quot;).removeAttr(&quot;checked&quot;);//取消全选 
+}) 
+$(&quot;#btn3&quot;).click(function(){ 
+$(&quot;[name='checkbox']:even&quot;).attr(&quot;checked&quot;,'true');//选中所有奇数 
+}) 
+$(&quot;#btn4&quot;).click(function(){ 
+$(&quot;[name='checkbox']&quot;).each(function(){//反选 
+if($(this).attr(&quot;checked&quot;)){ 
+$(this).removeAttr(&quot;checked&quot;); 
+} 
+else{ 
+$(this).attr(&quot;checked&quot;,'true'); 
+} 
+}) 
+}) 
+$(&quot;#btn5&quot;).click(function(){//输出选中的值 
+var str=&quot;&quot;; 
+$(&quot;[name='checkbox'][checked]&quot;).each(function(){ 
+str+=$(this).val()+&quot;/r/n&quot;; 
+//alert($(this).val()); 
+}) 
+alert(str); 
+}) 
+}) 
+--&gt; 
+&lt;/script&gt; 
+</code></pre>
+<p>2.获取checkbox选中的值</p>
+<pre><code>var chk_value =[]; 
+$('input[name=&quot;test&quot;]:checked').each(function(){ 
+    chk_value.push($(this).val()); 
+});
+</code></pre>
+<p>3.点击全选 非全选</p>
+<pre><code>$('input[name=&quot;pCheckBox&quot;]').click(function(){  
+    //alert(this.checked);  
+    if($(this).is(':checked')){  
+        $('input[name=&quot;eventIds&quot;]').each(function(){  
+            //此处如果用attr，会出现第三次失效的情况  
+            $(this).prop(&quot;checked&quot;,true);  
+        });  
+    }else{  
+         $('input[name=&quot;eventIds&quot;]').each(function(){  
+            $(this).removeAttr(&quot;checked&quot;,false);  
+        });  
+        //$(this).removeAttr(&quot;checked&quot;);  
+    }  
+});  
+</code></pre>
+<hr>
+<h3 id="radio">radio</h3>
+<p>1.获取选中值</p>
+<pre><code>$('input:radio :checked').val()；
+$(&quot;input[type='radio']:checked&quot;).val();
+$(&quot;input[name='rd']:checked&quot;).val();
+</code></pre>
+<p>2.设置第一个Radio为选中值</p>
+<pre><code>$('input:radio :first').attr('checked', 'checked');
+$('input:radio :first').attr('checked', 'true');
+</code></pre>
+<p>3.设置最后一个Radio为选中值</p>
+<pre><code>$('input:radio :last').attr('checked', 'checked');
+$('input:radio :last').attr('checked', 'true');
+</code></pre>
+<p>4.根据索引值设置任意一个radio为选中值</p>
+<pre><code>$('input:radio').eq(索引值).attr('checked', 'true');//索引值=0,1,2....
+$('input:radio').slice(1,2).attr('checked', 'true');
+</code></pre>
+<p>5.根据Value值设置Radio为选中值</p>
+<pre><code>$(&quot;input:radio[value='rd2']&quot;).attr('checked','true');
+$(&quot;input[value='rd2']&quot;).attr('checked','true');
+</code></pre>
+<hr>
+<h3 id="select">select</h3>
+<pre><code>&lt;select id=&quot;s&quot;&gt;
+    &lt;option value=&quot;1&quot;&gt;嘻嘻&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;呵呵&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p>1.获取select中option被选中的文本值</p>
+<pre><code>误：$(&quot;#s&quot;).text();  //获取所有option的文本值
+$(&quot;#s option:selected&quot;).text();  //获取选中的option的文本值
+$(&quot;#s&quot;).find(&quot;option:selected&quot;).text(); //获取选中的option的文本值
+</code></pre>
+<p>2.获取select中option被选中的value值</p>
+<pre><code>$(&quot;#s&quot;).val();
+$(&quot;#s option:selected&quot;).val();
+</code></pre>
+<p>3.js获取select选中的值</p>
+<pre><code>var sel=document.getElementById(&quot;s&quot;); 
+var index = sel.selectedIndex; // 选中索引
+albumid= sel.options[index].value;//要的值
+</code></pre>
+<hr>
+<h3 id="textarea">textarea</h3>
+<pre><code>&lt;textarea name=&quot;content&quot; id=&quot;content&quot; rows=&quot;8&quot; cols=&quot;5&quot;&gt;这是textarea内容&lt;/textarea&gt;
+</code></pre>
+<p>1.获取textarea文本值（用name和id）</p>
+<pre><code>$(&quot;textarea[name='content']&quot;).val()      $(&quot;#content&quot;).val()    
+$(&quot;textarea[name='content']&quot;).text()      $(&quot;#content&quot;).text()    
+</code></pre>
+<p>2.赋值textarea文本值（只能用id）</p>
+<pre><code>$(&quot;#content&quot;).val(&quot;这是要写入的textarea文本内容&quot;)
+$(&quot;#content&quot;).text(&quot;这是要写入的textarea文本内容&quot;)
+</code></pre>
+<p>val和text的区别是：val()可以体现换行符，而text()不能。</p>
+<p>3.禁止文本域textarea可拖拽的方法：</p>
+<pre><code>textarea{ resize:none;}
+</code></pre>
+<p>4.让textarea没有黄框且不能拖拽：</p>
+<pre><code>textarea{outline:none;resize:none;}
+</code></pre>
+<hr>
+<h3 id="confirm二次确认">confirm，二次确认</h3>
+<pre><code>if(confirm(&quot;确定要删除该记录吗？&quot;)){
+    doSomething();
+}
+</code></pre>
+<hr>
+<h3 id="重置表单reset">重置表单reset</h3>
+<p>使用jquery方法重置form表单</p>
+<pre><code>误：$('#formName').reset();//得到的是数组。
+正：$('#formName')[0].reset();//得到的是jQuery对象。
+</code></pre>
+<p>注：这种方式虽然可以重置表单，但是不能重置隐藏字段。隐藏字段要单独处理。<br>
+小知识：$('#formName').get(0)得到的是DOM对象。</p>
+<hr>
+<h3 id="jquery-获取元素个数">jquery 获取元素个数</h3>
+<pre><code>$('#div1').children().length;
+$('#div1').children('span').length;//获取id=div1下的span元素个数
+</code></pre>
+<hr>
+<h3 id="定位">定位</h3>
+<pre><code>&lt;div id =''localid&quot;&gt; xixi&lt;/div&gt;
+window.location.href='#localid';
+</code></pre>
+<hr>
+<h3 id="修改标题title">修改标题title</h3>
+<pre><code>document.title=&quot;批量业务单&quot;; 
+</code></pre>
+<hr>
+<h3 id="jq的事件处理功能">JQ的事件处理功能</h3>
+<p>1.hover</p>
+<pre><code>//当鼠标放在表格的某行上时将class置为over，离开时置为out。
+$(&quot;tr&quot;).hover(
+function(){
+     $(this).addClass(&quot;over&quot;);
+}, 
+function(){ 
+    $(this).addClass(&quot;out&quot;); 
+});
+</code></pre>
+<blockquote>
+<p>demo鼠标移入出现悬浮框</p>
+</blockquote>
+<pre><code>&lt;td class='linkTd'&gt;
+    &lt;div style='position:relative;'&gt;
+        @link&lt;span class='linkHover'&gt;@detailLink&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/td&gt;
+
+.linkHover{         
+    position: absolute;  
+    top: 20px;  
+    width: 320px;
+    max-height: 250px;           /* 设置最大高度，当高度达到此值时出现滚动条 */  
+    z-index: 10;  
+    background-color: #E0E5E5;   
+    overflow: auto;              /* 自动添加滚动条 */  
+    box-shadow:0px 0px 10px #000;   /* 外阴影 */  
+    display:none;
+}
+
+$('.linkTd').hover(  
+    function(){   
+        $(this).find('.linkHover').show();
+    } ,  
+    function(){  
+        $(this).find('.linkHover').hide();
+    }   
+);
+</code></pre>
+<blockquote>
+<p>进化</p>
+</blockquote>
+<pre><code>```
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title class=&quot;lang&quot; langKey=&quot;xxxx&quot;&gt;index&lt;/title&gt;
+            &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf8&quot; /&gt;
+            &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;
+            &lt;style&gt;
+            .linkHover{         
+                position: absolute;  
+                top: 20px;  
+                width: 320px;
+                max-height: 250px;           /* 设置最大高度，当高度达到此值时出现滚动条 */  
+                z-index: 10;  
+                background-color: #E0E5E5;   
+                overflow: auto;              /* 自动添加滚动条 */  
+                box-shadow:0px 0px 10px #000;   /* 外阴影 */  
+                display:none;
+            }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class='linkTd'&gt;
+                123123
+            &lt;/div&gt;
+        &lt;/body&gt;
+        &lt;script&gt;
+            $(function () {
+                var tip =&quot;&lt;div style='position:relative;'&gt; &lt;span class='linkHover'&gt;1111&lt;/span&gt; &lt;/div&gt;&quot;;
+                    $('.linkTd').append(tip);
+            })
+            $('.linkTd').hover( 
+                function(){   
+                    $(this).find('.linkHover').show();
+                } ,  
+                function(){  
+                    $(this).find('.linkHover').hide();
+                }   
+            );
+        &lt;/script
+    &lt;/html&gt;
+```
+</code></pre>
+<p>2.ready<br>
+在文档加载后激活函数：</p>
+<pre><code>$(document).ready(function(){
+  $(&quot;.btn1&quot;).click(function(){
+    $(&quot;p&quot;).slideToggle();
+  });
+});
+</code></pre>
+<p>语法 1  <!-- raw HTML omitted -->$(document).ready(function)<!-- raw HTML omitted --><br>
+语法 2  <!-- raw HTML omitted -->$().ready(function)<!-- raw HTML omitted --><br>
+语法 3  <!-- raw HTML omitted -->$(function)<!-- raw HTML omitted --></p>
+<p>3.toggle<br>
+toggle()和slidetoggle()方法提供了状态切换功能。<br>
+toggle()方法包括了hide()和show()方法。 slideToggle()方法包括了slideDown()和slideUp()方法。</p>
+<pre><code>//每次点击时轮换添加和删除名为selected的class。
+$(&quot;p&quot;).toggle(function(){ 
+     $(this).addClass(&quot;selected&quot;); 
+},function(){ 
+     $(this).removeClass(&quot;selected&quot;); 
+});
+</code></pre>
+<p>4.trigger<br>
+在每一个匹配的元素上触发某类事件,如模拟点击，回车登录</p>
+<pre><code>//模拟点击
+$(&quot;#b&quot;).click(function(){$(&quot;#a&quot;).trigger(&quot;click&quot;)})
+$(&quot;#a&quot;).trigger(&quot;click&quot;);//执行#a的click事件
+
+//回车点击
+$(document).keyup(function(event){
+  if(event.keyCode ==13){
+    $(&quot;#btn_login&quot;).trigger(&quot;click&quot;);
+  }
+});
+</code></pre>
+<p>form表单增加<code>&lt;input type=&quot;text&quot; style=&quot;display:none&quot;/&gt;</code>可以防止回车提交自动提交表单</p>
+<p>推荐：keyup，防止笔记本键盘不小心触摸到了
+有些文档中有写成这样：</p>
+<pre><code>$(window).keydown（function(){
+...
+}）
+</code></pre>
+<p>XP系统IE6下是不成功的。</p>
+<p>5.bind(eventtype,fn)，unbind(eventtype)<br>
+事件的绑定与反绑定</p>
+<pre><code>$(&quot;p&quot;).bind(&quot;click&quot;, function(){alert($(this).text());}); //为每个p元素添加单击事件 
+$(&quot;p&quot;).unbind(); //删除所有p元素上的所有事件 
+$(&quot;p&quot;).unbind(&quot;click&quot;) //删除所有p元素上的单击事件
+</code></pre>
+<hr>
+<h3 id="jq集合遍历">JQ集合遍历</h3>
+<pre><code>//为索引分别为0，1，2的p元素分别设定不同的字体颜色。
+$(&quot;p&quot;).each(function(i){this.style.color=['#f00','#0f0','#00f'][i]})
+//实现表格的隔行换色效果
+$(&quot;tr&quot;).each(function(i){this.style.backgroundColor=['#ccc','#fff'][i%2]})
+//为每个p元素增加了click事件，单击某个p元素则弹出其内容
+$(&quot;p&quot;).click(function(){alert($(this).html())})
+</code></pre>
+<p>demo遍历table的tr获取td的值：</p>
+<pre><code>&lt;tbody id=&quot;history_income_list&quot;&gt;
+    &lt;tr&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;a class=&quot;&quot; onclick=&quot;history_income_del(this);&quot; href=&quot;###&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;a class=&quot;&quot; href=&quot;###&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;input-s input-w input-hs&quot;&gt;&lt;/td&gt;
+        &lt;td align=&quot;center&quot;&gt;&lt;a class=&quot;&quot; href=&quot;###&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+</code></pre>
+<p>for循环遍历</p>
+<pre><code>var trList = $(&quot;#history_income_list&quot;).children(&quot;tr&quot;)
+for (var i=0;i&lt;trList.length;i++) {
+    var tdArr = trList.eq(i).find(&quot;td&quot;);
+    var history_income_type = tdArr.eq(0).find(&quot;input&quot;).val();//收入类别
+    var history_income_money = tdArr.eq(1).find(&quot;input&quot;).val();//收入金额
+    var history_income_remark = tdArr.eq(2).find(&quot;input&quot;).val();//  备注
+    ...
+}
+</code></pre>
+<p>JQ遍历</p>
+<pre><code>$(&quot;#history_income_list&quot;).find(&quot;tr&quot;).each(function(){
+    var tdArr = $(this).children();
+    var history_income_type = tdArr.eq(0).find(&quot;input&quot;).val();//收入类别
+    var history_income_money = tdArr.eq(1).find(&quot;input&quot;).val();//收入金额
+    var history_income_remark = tdArr.eq(2).find(&quot;input&quot;).val();//  备注
+    ...
+});
+</code></pre>
+<p>Map集合遍历</p>
+<pre><code>//{&quot;code&quot;:&quot;1&quot;,&quot;desc&quot;:&quot;操作成功&quot;,&quot;data&quot;:{&quot;shfwxt&quot;:&quot;售后服务系统&quot;,&quot;cs_win&quot;:&quot;测试_win&quot;,&quot;qdglxt&quot;:&quot;渠道管理系统&quot;}}
+success: function(result) {
+    if(result.code == '1'){
+        var data = result.data;
+        var html = &quot;&lt;option selected='selected' value=''&gt;请选择权限代码&lt;/option&gt;&quot;;
+        $.each(data, function (key, value) {
+            html += &quot;&lt;option value= '&quot; + key + &quot;'&gt;&quot; + value +&quot;(&quot; + key+&quot;)&lt;/option&gt;&quot;;
+        });
+        $(&quot;#permissionCode&quot;).html('').append(html);
+        layui.use('form', function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
+    }else{
+        _msgShowToFunc(result.desc);
+    }
+}
+</code></pre>
+<hr>
+<h3 id="jquery-">jquery $.</h3>
+<h4 id="extend">$.extend</h4>
+<pre><code>//为jquery扩展了min,max两个方法
+$.extend({ 
+    min: function(a, b){return a &lt; b?a:b; },
+    max: function(a, b){return a &gt; b?a:b; }
+});
+</code></pre>
+<p>使用扩展的方法（通过“$.方法名”调用）：</p>
+<pre><code>alert(&quot;a=10,b=20,max=&quot;+$.max(10,20)+&quot;,min=&quot;+$.min(10,20));
+</code></pre>
+<h4 id="each">$.each</h4>
+<p>$.each(obj, fn)：通用的迭代函数。可用于代替循环。 如</p>
+<pre><code>$.each( [0,1,2], function(i, n){ alert( &quot;Item #&quot; + i + &quot;: &quot; + n ); });
+//等价 
+var tempArr=[0,1,2]; 
+for(var i=0;i&lt;tempArr.length;i++){ alert(&quot;Item #&quot;+i+&quot;: &quot;+tempArr[i]); }
+</code></pre>
+<p>也可以处理json数据，如</p>
+<pre><code>$.each( { name: &quot;John&quot;, lang: &quot;JS&quot; }, function(i, n){ alert( &quot;Name: &quot; + i + &quot;, Value: &quot; + n ); });
+</code></pre>
+<h4 id="map">$.map</h4>
+<p>$.map(array, fn)：数组映射。把一个数组中的项目(处理转换后)保存到到另一个新数组中，并返回生成的新数组。 如：</p>
+<pre><code>var tempArr=$.map( [0,1,2], function(i){ return i + 4; });//[4,5,6] 
+var tempArr=$.map( [0,1,2], function(i){ return i &gt; 0 ? i + 1 : null; });//[2,3] 
+</code></pre>
+<h4 id="merge">$.merge</h4>
+<p>$.merge(arr1,arr2):合并两个数组并删除其中重复的项目。 如：</p>
+<pre><code>$.merge( [0,1,2], [2,3,4] ) //返回[0,1,2,3,4]
+</code></pre>
+<h4 id="trim">$.trim</h4>
+<p>$.trim(str)：删除字符串两端的空白字符。 如：</p>
+<pre><code>$.trim(&quot; hello, how are you? &quot;); //返回&quot;hello,how are you? &quot;
+</code></pre>
+<hr>
+<h3 id="js-获取数组长度">JS 获取数组长度</h3>
+<pre><code>var myarray = [1,2,3];
+myarray.length // 初始的长度是3
+myarray.length = 2; // 删除最后一个元素
+myarray.length = 20 // 添加18个元素到数组中
+</code></pre>
+<hr>
+<h3 id="js-判断-undefined">JS 判断 undefined</h3>
+<pre><code>if(typeof(value)==&quot;undefined&quot;){ 
+    alert(&quot;undefined&quot;); 
+} 
+</code></pre>
+<hr>
+<h3 id="js--join将数组转字符串">JS  join将数组转字符串</h3>
+<pre><code>&lt;input class=&quot;chcekInp&quot; type=&quot;checkbox&quot; name=&quot;nextDeal&quot; value=&quot;zs&quot;/&gt;张三
+&lt;input class=&quot;chcekInp&quot; type=&quot;checkbox&quot; name=&quot;nextDeal&quot; value=&quot;ls&quot;/&gt;李四
+&lt;input class=&quot;chcekInp&quot; type=&quot;checkbox&quot; name=&quot;nextDeal&quot; value=&quot;we&quot;/&gt;王二
+&lt;input class=&quot;chcekInp&quot; type=&quot;checkbox&quot; name=&quot;nextDeal&quot; value=&quot;sw&quot;/&gt;三五
+&lt;input class=&quot;chcekInp&quot; type=&quot;checkbox&quot; name=&quot;nextDeal&quot; value=&quot;sl&quot;/&gt;四六
+
+var chk_value =[]; 
+$('input[name=&quot;nextDeal&quot;]:checked').each(function(){ 
+    chk_value.push($(this).val()); 
+});
+var userNames = chk_value.join(&quot;,&quot;);
+</code></pre>
+<hr>
+<h3 id="js-遮罩功能">JS 遮罩功能</h3>
+<p>HTML</p>
+<pre><code>&lt;!--弹窗背景--&gt;
+&lt;div class=&quot;flexBg&quot; style=&quot;display: none;&quot;&gt;&lt;/div&gt;
+&lt;!--loading--&gt;
+&lt;div class=&quot;loading&quot; style=&quot;display: none;&quot;&gt;
+    &lt;i&gt;&lt;/i&gt;
+    &lt;p&gt;加载中...&lt;/p&gt;
+    &lt;%-- &lt;img src=&quot;${baseURL}/images/loading.gif&quot;&gt;&lt;/img&gt; --%&gt;
+&lt;/div&gt;
+</code></pre>
+<p>CSS</p>
+<pre><code>.flexBg {
+    background: url(../images/flexBg.png);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+}
+.loading {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+    z-index: 999;
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+}
+</code></pre>
+<p>JS</p>
+<pre><code>function sZZ(){
+    $('.flexBg').show();
+    $('.loading').show();
+}
+function hZZ(){
+    $('.flexBg').hide();
+    $('.loading').hide();
+}
+</code></pre>
+<p>IMG</p>
+<p><figure>
+		<a href="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png" data-size="342x265">
+			<img srcset="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_480x0_resize_box_2.png 480w, /p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_1024x0_resize_box_2.png 1024w"
+				src="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png" width="342" height="265" loading="lazy"
+				alt="&nbsp;">
+		</a>
+		
+	</figure><br>
+<figure>
+		<a href="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif" data-size="128x128">
+			<img srcset="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_480x0_resize_box.gif 480w, /p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_1024x0_resize_box.gif 1024w"
+				src="/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif" width="128" height="128" loading="lazy"
+				alt="&nbsp;">
+		</a>
+		
+	</figure></p>
+<hr>
+<h3 id="js中的encodeuridecodeuridecodeuricomponent解决传值中文乱码">js中的encodeURI、decodeURI、decodeURIComponent,解决传值中文乱码</h3>
+<p>一、基本概念<br>
+encodeURI和decodeURI是成对来使用的，因为浏览器的地址栏有中文字符的话，可以会出现不可预期的错误，所以可以encodeURI把非英文字符转化为英文编码，decodeURI可以用来把字符还原回来。<br>
+encodeURI方法不会对下列字符进行编码：&quot;:&quot;、&quot;/&quot;、&quot;;&quot; 和 &ldquo;?&quot;，encodeURIComponent方法可以对这些字符进行编码。</p>
+<p>decodeURI()方法相当于java.net.URLDecoder.decode(URIString, &ldquo;UTF-8&rdquo;);<br>
+encodeURI()方法相当于java.net.URLEncoder.encode(URIString, &ldquo;UTF-8&rdquo;);<br>
+二、例子</p>
+<pre><code>window.location.href = encodeURI(encodeURI(jumpURL));
+//http://127.0.0.1:8081/zsyx/jsp/component/demandwork/functiontest/functiontest.jsp?id=NEW20183123134021852&amp;slink=%25E9%259C%2580%25E6%25B1%2582%25E5%25A4%2584%25E7%2590%2586
+
+var slink = decodeURI(decodeURI('${param.slink}'));
+</code></pre>
+<hr>
+<h3 id="js判断文件是否存在">JS判断文件是否存在</h3>
+<p>方法1：判断图片是否存在</p>
+<pre><code>function isHasImg(pathImg){  
+    var ImgObj=new Image();  
+    ImgObj.src= pathImg;  
+    if(ImgObj.fileSize &gt; 0 || (ImgObj.width &gt; 0 &amp;&amp; ImgObj.height &gt; 0))  
+    {  
+    return true;  
+    } else {  
+    return false;  
+    }  
+}  
+</code></pre>
+<p>方法2：AJAX验证图片或文件链接是否存在</p>
+<pre><code>function validateImage(url) {      
+var xmlHttp ;  
+if (window.ActiveXObject)  
+{  
+xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);  
+}  
+else if (window.XMLHttpRequest)  
+{  
+xmlHttp = new XMLHttpRequest();  
+}   
+xmlHttp.open(&quot;Get&quot;,url,false);  
+xmlHttp.send();  
+if(xmlHttp.status==404)  
+return false;  
+else  
+return true;  
+}  
+</code></pre>
+<p>方法3：用onerror替换不存在的图片</p>
+<pre><code>&lt;img src=&quot;images/img1.jpg&quot; height=&quot;300&quot; width=&quot;800&quot; onerror=&quot;images/defaultImg.jpg&quot;&gt;  
+</code></pre>
+<hr>
+<h3 id="解决自定义方法或其他类库与jquery的冲突">解决自定义方法或其他类库与jQuery的冲突</h3>
+<pre><code>//使用jquery中的jQuery.noConflict();方法即可把变量$的控制权让渡给第一个实现它的那个库或之前自定义的$方法。之后应用Jquery的时候只要将所有的$换成jQuery即可
+jQuery.noConflict(); 
+// 开始使用jQuery 
+jQuery(&quot;div p&quot;).hide(); 
+// 使用其他库的 $() 
+$(&quot;content&quot;).style.display = 'none';
+</code></pre>
+<hr>
+<h3 id="获取iframe中文档内容">获取iframe中文档内容</h3>
+<pre><code>function getIframeContent(){  //获取iframe中文档内容
+    var doc;
+    if (document.all){ // IE 
+        doc = document.frames[&quot;ueditor_0&quot;].document; 
+    }else{ // 标准
+        doc = document.getElementById(&quot;ueditor_0&quot;).contentDocument; 
+    }
+    return doc.body.innerHTML;
+} 
+</code></pre>
+<hr>
+<h3 id="子窗体调父窗体方法">子窗体调父窗体方法</h3>
+<p>父窗体</p>
+<pre><code>function selectProduct(commitBrand){	window.open(&quot;${baseURL}/jsp/component/selectlist/SelectProductList.jsp?ecs=ecs&amp;productName=productName&amp;brandId=brandId&amp;brandName=brandName&amp;specification=specification&quot;,&quot;选择产品&quot;,
+        &quot;width=1366,height=768,top=0,left=0,scrollbars=YES,resizable=yes&quot;);
+}
+function setProductValue(ecs,productName,brandId,brandNameDesc,guige,guigeDesc,color,colorDesc,productXinghao,productXinghaoDesc,haveImei,fundCost){
+        $(&quot;#ecs&quot;).attr(&quot;value&quot;,ecs);
+        $(&quot;#productName&quot;).attr(&quot;value&quot;,productName);
+        $(&quot;#brandId&quot;).attr(&quot;value&quot;,brandId);
+}
+</code></pre>
+<p>子窗体 SelectProductList.jsp</p>
+<pre><code>window.opener.setProductValue(content.ecs,content.productName,content.zhongduanPinpai,content.zhongduanPinpaiDesc,content.guige,content.guigeDesc,content.color,content.colorDesc,content.productXinghao,content.productXinghaoDesc,content.haveImei,content.fundCost);
+window.close();
+</code></pre>
+<hr>
+<h3 id="jq-ajax请求demo">JQ AJAX请求demo</h3>
+<pre><code>$(function() {
+    $('#send').click(function() {
+        $.ajax({
+            type: &quot;GET&quot;, //GET或POST,
+            async:true, //默认设置为true，所有请求均为异步请求。
+            url: &quot;http://www.idaima.com/xxxxx.php&quot;,
+            data: {
+                username: $(&quot;#username&quot;).val(),
+                content: $(&quot;#content&quot;).val()
+            },
+            dataType: &quot;json&quot;, //xml、html、script、jsonp、text
+            beforeSend:function(){},
+            complete:function(){},
+            success: function(data) {
+                alert(data)
+            },
+            error:function(){},
+        });
+    });
+});
+
+
+$.get(baseURL+'/childorderdeal/childorderdealActAction!getWorkSati.action', { orderId: &quot;NEW2018425164215552&quot; }, function(data){
+             if(data.code==&quot;0&quot;){
+                 $('input:[value=&quot;'+data.data.code+'&quot;]').attr('checked','true');
+             }
+        },'json');
+</code></pre>
+<hr>
+<h3 id="jq-设置ajax同步">JQ 设置AJAX同步</h3>
+<p>由于$.post() 和 $.get() 默认是 异步请求，如果需要同步请求，则可以进行如下使用：<br>
+在$.post()前把ajax设置为同步：$.ajaxSettings.async = false;<br>
+在$.post()后把ajax改回为异步：$.ajaxSettings.async = true;<br>
+如：</p>
+<pre><code>$.ajaxSettings.async = false;  
+$.post(&quot;/finance/getLastTimeCard&quot;, data, function(result) {  
+    // 请求处理  
+},&quot;json&quot;);  
+$.ajaxSettings.async = true;  
+</code></pre>
+<hr>
+<h3 id="页面刷新篇">页面刷新篇</h3>
+<p>1.刷新<br>
+reload 方法，该方法强迫浏览器刷新当前页面。<br>
+语法：location.reload([bForceGet]) <br>
+参数： bForceGet， 可选参数， 默认为 false，从客户端缓存里取当前页。true, 则以 GET 方式，从服务端取最新的页面, 相当于客户端点击 F5(&ldquo;刷新&rdquo;)</p>
+<p>replace 方法，该方法通过指定URL替换当前缓存在历史里（客户端）的项目，因此当使用replace方法之后，你不能通过“前进”和“后退”来访问已经被替换的URL。<br>
+语法： location.replace(URL)</p>
+<p>在实际应用的时候，重新刷新页面的时候，我们通常使用： <!-- raw HTML omitted -->location.reload()<!-- raw HTML omitted --> 或者是 <!-- raw HTML omitted -->history.go(0) <!-- raw HTML omitted -->来做。<br>
+因为这种做法就像是客户端点F5刷新页面，所以页面的method=&ldquo;post&quot;的时候，会出现&quot;网页过期&quot;的提示。那是因为Session的安全保护机制。<br>
+这里，location.replace() 就可以完成此任务。被replace的页面每次都在服务端重新生成。<br>
+你可以这么写： <!-- raw HTML omitted -->location.replace(location.href)<!-- raw HTML omitted -->;</p>
+<p>2.返回并刷新页面</p>
+<pre><code>location.replace(document.referrer); //document.referre为r前一个页面的URL
+</code></pre>
+<p>不要用 history.go(-1)，或 history.back();来返回并刷新页面，这两种方法不会刷新页面。</p>
+<h4 id="javascript刷新页面的几种方法">Javascript刷新页面的几种方法</h4>
+<p>1    history.go(0)<br>
+2    location.reload()<br>
+3    location=location<br>
+4    location.assign(location)<br>
+5    document.execCommand(&lsquo;Refresh&rsquo;)<br>
+6    window.navigate(location)<br>
+7    location.replace(location)<br>
+8    document.URL=location.href</p>
+<h4 id="自动刷新页面的方法">自动刷新页面的方法</h4>
+<p>1.页面自动刷新：把如下代码加入<!-- raw HTML omitted -->区域中,20秒刷新一次页面.</p>
+<pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;20&quot;&gt;
+</code></pre>
+<p>2.页面自动跳转：把如下代码加入<!-- raw HTML omitted -->区域中,20秒后跳转到https://ianeiu.github.io/页面</p>
+<pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;20;url=https://ianeiu.github.io/&quot;&gt;
+</code></pre>
+<p>3.页面自动刷新js版</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt; 
+    function myrefresh(){  window.location.reload(); }
+    setTimeout('myrefresh()',1000); //指定1秒刷新一次
+&lt;/script&gt;
+</code></pre>
+<h4 id="窗口刷新">窗口刷新</h4>
+<p>1.JS刷新框架的脚本语句</p>
+<pre><code>//如何刷新包含该框架的页面用   
+&lt;script language=JavaScript&gt;
+   parent.location.reload();
+&lt;/script&gt;  
+</code></pre>
+<p>2.子窗口刷新父窗口</p>
+<pre><code>&lt;script language=JavaScript&gt;
+    self.opener.location.reload();
+&lt;/script&gt;
+//或　&lt;a href=&quot;javascript:opener.location.reload()&quot;&gt;刷新&lt;/a&gt;
+</code></pre>
+<p>3.如何刷新另一个框架的页面用</p>
+<pre><code>&lt;script language=JavaScript&gt;
+   parent.另一FrameID.location.reload();
+&lt;/script&gt;
+</code></pre>
+<p>4.如果想关闭窗口时刷新或者想开窗时刷新的话，在<!-- raw HTML omitted -->中调用以下语句即可。</p>
+<pre><code>&lt;body onload=&quot;opener.location.reload()&quot;&gt; 开窗时刷新
+&lt;body onUnload=&quot;opener.location.reload()&quot;&gt; 关闭时刷新
+&lt;script language=&quot;javascript&quot;&gt;
+    window.opener.document.location.reload()
+&lt;/script&gt;
+</code></pre>
+<hr>
+<h3 id="jquery对象与dom对象">jQuery对象与dom对象</h3>
+<p>通过jquery的$()引用元素包括通过id、class、元素名以及元素的层级关系及dom或者xpath条件等方法，且返回的对象为jquery对象（集合对象），不能直接调用dom定义的方法。<br>
+转换<br>
+普通的dom对象一般可以通过$()转换成jquery对象。</p>
+<pre><code>$(document.getElementById(&quot;msg&quot;))
+</code></pre>
+<p>由于jquery对象本身是一个集合。所以如果jquery对象要转换为dom对象则必须取出其中的某一项，一般可通过索引取出。</p>
+<pre><code>$(&quot;#msg&quot;)[0]，
+$(&quot;div&quot;).eq(1)[0]，
+$(&quot;div&quot;).get()[1]，
+$(&quot;td&quot;)[5]
+
+$(&quot;#msg&quot;).html();
+$(&quot;#msg&quot;)[0].innerHTML;
+$(&quot;#msg&quot;).eq(0)[0].innerHTML;
+$(&quot;#msg&quot;).get(0).innerHTML;
+</code></pre>
+<p>获取jQuery集合的某一项(获取第三个div元素的内容)</p>
+<pre><code>$(&quot;div&quot;).eq(2).html(); //调用jquery对象的方法
+$(&quot;div&quot;).get(2).innerHTML; //调用dom的方法属性
+</code></pre>
+<hr>
+<h3 id="form表单-注意点">form表单 注意点</h3>
+<ol>
+<li>查询页面，有绑定回车事件提交表单的，要在form中加上onsubmit=&ldquo;return false;&quot;。不然会出现回车查询时页面直接显示JSON数据了。</li>
+<li>直接在form标签中加入属性accept-charset=&lsquo;UTF-8&rsquo;,防止中文乱码。</li>
+</ol>
+<hr>
+<h3 id="js-截取字符串">js 截取字符串</h3>
+<h4 id="去除字符串最后一位进化版">去除字符串最后一位(进化版)</h4>
+<pre><code>&lt;SCRIPT type=&quot;text/javascript&quot;&gt;
+	function delfh(str){
+		str=str.replace(&quot;,,&quot;,&quot;,&quot;);
+		if(str.substring(str.length-1,str.length)==&quot;,&quot;){
+			str2=str.substring(0,str.length-1);
+			delfh(str2);
+		}else{
+			str2=str;
+		}
+		return str2;
+	}
+ 
+	var s2=&quot;1,,,2,,,,3,,,,4,54,454,,,,,,,,,,,,,,,,&quot;;
+	var s=&quot;415929,415930,415931,415932,415933,415934,415935,415936,415937,415938,415939,415940,415941,415942,415943,415944,415945,415946,415947,415948,1,2,3&quot;;
+	alert(delfh(s2));
+&lt;/script&gt;
+</code></pre><hr>
+<h3 id="元素上下居中">元素上下居中</h3>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+.parent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 上下 */
+	align-items: center; /* 水平 */
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;parent&quot; style=&quot;height: 1000px; border: 1px solid #000&quot;&gt;
+    &lt;div class=&quot;child&quot; style=&quot;height: 500px; width: 100px; border: 1px solid #00f&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><hr>
+<h3 id="检查ie">检查IE</h3>
+<pre><code> /* 注意：不能使用较新的jquery */
+    /* $.browser.msie在1.9以后的jquery中不存在了 */
+    /* 2.0 版本中，将不再支持 IE 6/7/8 */
+    $(function() {
+    	 checkOne();
+    	 checkTwo();
+    });
+    
+    function checkOne(){
+    	 var userAgent = window.navigator.userAgent.toLowerCase();
+    	  
+         $.browser.msie10 = $.browser.msie &amp;&amp; /msie 10\.0/i.test(userAgent);
+         $.browser.msie9 = $.browser.msie &amp;&amp; /msie 9\.0/i.test(userAgent); 
+         $.browser.msie8 = $.browser.msie &amp;&amp; /msie 8\.0/i.test(userAgent);
+         $.browser.msie7 = $.browser.msie &amp;&amp; /msie 7\.0/i.test(userAgent);
+         $.browser.msie6 = !$.browser.msie8 &amp;&amp; !$.browser.msie7 &amp;&amp; $.browser.msie &amp;&amp; /msie 6\.0/i.test(userAgent);
+   
+         $(&quot;.info&quot;).html(
+             &quot;&lt;h3&gt;userAgent:&lt;/h3&gt;&quot; + userAgent + &quot;&lt;br /&gt;&quot; +
+             &quot;&lt;h3&gt;Is IE 10?&lt;/h3&gt;&quot; + $.browser.msie10 +
+             &quot;&lt;h3&gt;Is IE 9?&lt;/h3&gt;&quot; + $.browser.msie9 +
+             &quot;&lt;h3&gt;Is IE 8?&lt;/h3&gt;&quot; + $.browser.msie8 +
+             &quot;&lt;h3&gt;Is IE 7?&lt;/h3&gt;&quot; + $.browser.msie7 +
+             &quot;&lt;h3&gt;Is IE 6?&lt;/h3&gt;&quot; + $.browser.msie6
+         );
+ 		if($.browser.msie8){
+ 			alert('IE8真让人头疼！！');
+ 		}
+    }
+    
+    //new 
+    function checkTwo(){
+    	$.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase());
+    	$.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+    	$.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+    	$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase()); //判断是否是IE
+    	
+   	 	if(/msie/.test(navigator.userAgent.toLowerCase())){
+   	    	console.log('IE5-10');
+   	 	}
+    	
+		if ('undefined' == typeof (document.body.style.maxHeight)) {
+			console.log('IE6');
+		}
+		
+		if (!$.support.leadingWhitespace) {
+			console.log('IE5-8');
+		}
+    }
+</code></pre><hr>
+<h3 id="文件上传限制">文件上传限制</h3>
+<pre><code>&lt;div&gt;
+    &lt;h3&gt;限制文件类型上传及多文件上传&lt;/h3&gt;
+    &lt;input id=&quot;moreFile&quot; type=&quot;file&quot; accept=&quot;.doc,.docx,.xls,.xlsx&quot;
+        multiple /&gt; &lt;input type=&quot;button&quot; onclick=&quot;checkFile()&quot; value=&quot;提交&quot; /&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h3&gt;限制文件类型上传-显示限制&lt;/h3&gt;
+    &lt;br /&gt;浏览时只显示指定文件类型 xls、xlsx、csv &lt;input id=&quot;fileSelect&quot; type=&quot;file&quot;
+        accept=&quot;.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel&quot; /&gt;
+
+    &lt;br /&gt;
+    &lt;br /&gt;For CSV files (.csv), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;.csv&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For Excel Files 2003-2007 (.xls), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;application/vnd.ms-excel&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For Excel Files 2010 (.xlsx), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot; /&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;For Text Files (.txt) use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;text/plain&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For Image Files (.png/.jpg/etc), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;image/*&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For HTML Files (.htm,.html), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;text/html&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For Video Files (.avi, .mpg, .mpeg, .mp4), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;video/*&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For Audio Files (.mp3, .wav, etc), use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;audio/*&quot; /&gt; &lt;br /&gt;
+    &lt;br /&gt;For PDF Files, use: &lt;br /&gt;
+    &lt;input type=&quot;file&quot; accept=&quot;.pdf&quot; /&gt;
+&lt;/div&gt;
+</code></pre><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+	function checkFile(){
+		var fileAccept = $(&quot;#moreFile&quot;).val().split(&quot;.&quot;)[1];//获取上传文件的后缀  
+		if( fileAccept!=&quot;doc&quot; &amp;&amp; fileAccept!=&quot;docx&quot;&amp;&amp; fileAccept!=&quot;xls&quot;&amp;&amp; fileAccept!=&quot;xlsx&quot; ){  
+		    alert(&quot;只能上传.doc,.docx,.xls,.xlsx的文件！&quot;);  
+		}  
+		
+		//获取多文件上传的所有文件名  
+		var filePaths = $(&quot;#moreFile&quot;)[0].files;//或者这样写 document.getElementById(&quot;id&quot;).files;  
+		for( var i=0;i&lt;filePaths.length; i++ ){  
+		    alert(filePaths[i].name);  
+		}
+	}
+&lt;/script&gt;
+</code></pre><hr>
+<h3 id="输入框input校验">输入框input校验</h3>
+<pre><code>&lt;br /&gt;JS判断只能是数字和小数点 1.文本框只能输入数字代码(小数点也不能输入)
+&lt;br /&gt;
+&lt;input onkeyup=&quot;this.value=this.value.replace(/\D/g,'')&quot; onafterpaste=&quot;this.value=this.value.replace(/\D/g,'')&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;2.只能输入数字,能输小数点.
+&lt;br /&gt;
+&lt;input onkeyup=&quot;if(isNaN(value))execCommand('undo')&quot; onafterpaste=&quot;if(isNaN(value))execCommand('undo')&quot;&gt;
+&lt;br /&gt;
+&lt;input name=txt1 onchange=&quot;if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;3.数字和小数点方法二
+&lt;br /&gt;
+&lt;input type=text t_value=&quot;&quot; o_value=&quot;&quot;
+    onkeypress=&quot;if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value&quot;
+    onkeyup=&quot;if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value&quot;
+    onblur=&quot;if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;4.只能输入字母和汉字
+&lt;br /&gt;
+&lt;input onkeyup=&quot;value=value.replace(/[\d]/g,'')&quot; maxlength=10 name=&quot;Numbers&quot;
+    onbeforepaste=&quot;clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;5.只能输入英文字母和数字,不能输入中文
+&lt;br /&gt;
+&lt;input onkeyup=&quot;value=value.replace(/[^\w\.\/]/ig,'')&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;6.只能输入数字和英文
+&lt;font color=&quot;Red&quot;&gt;chun&lt;/font&gt;
+&lt;br /&gt;
+&lt;input onKeyUp=&quot;value=value.replace(/[^\d|chun]/g,'')&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;7.小数点后只能有最多两位(数字,中文都可输入),不能输入字母和运算符号:
+&lt;br /&gt;
+&lt;input onKeyPress=&quot;if((event.keyCode&lt;48 || event.keyCode&gt;57) &amp;&amp; event.keyCode!=46 || /\.\d\d$/.test(value))event.returnValue=false&quot;&gt;
+&lt;br /&gt;
+&lt;br /&gt;8.小数点后只能有最多两位(数字,字母,中文都可输入),可以输入运算符号:
+&lt;br /&gt;
+&lt;input onkeyup=&quot;this.value=this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3')&quot;&gt;
+</code></pre><hr>
+<h3 id="contenteditable-进行文本输入编辑">contenteditable 进行文本输入编辑</h3>
+<pre><code>&lt;p contenteditable=&quot;true&quot;&gt;这是一段可编辑的段落。请试着编辑该文本。&lt;/p&gt;
+</code></pre><hr>
+<h3 id="table-模版">table 模版</h3>
+<pre><code>&lt;table class=&quot;tableCommon&quot; width=&quot;30%&quot; border=&quot;1&quot; cellspacing=&quot;5&quot; cellpadding=&quot;10&quot;&gt;
+    &lt;thead style=&quot;display: block;&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;1&lt;/th&gt;
+            &lt;th&gt;2&lt;/th&gt;
+            &lt;th&gt;3&lt;/th&gt;
+            &lt;th&gt;4&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody style=&quot;display: block; height: 50px; overflow-y: scroll;&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10&lt;/td&gt;
+            &lt;td&gt;20&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+            &lt;td&gt;40&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10&lt;/td&gt;
+            &lt;td&gt;20&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+            &lt;td&gt;40&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre><hr>
+<h3 id="append追加元素用法例子">append追加元素用法例子</h3>
+<pre><code>&lt;ul class=&quot;selectUserList&quot;&gt;&lt;/ul&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(function(){
+		for(var i = 0;i&lt;10;i++){
+			addUser({id: i, userName: i+'a', name: i+'b',mobile: i*10});
+		}
+	})
+	function addUser(data) {
+	    var _li = $(&quot;&lt;li&gt;&lt;/li&gt;&quot;);//li
+	    var _em = $(&quot;&lt;em&gt;&lt;/em&gt;&quot;);//li-em
+	    var _a = $('&lt;a class=&quot;closebtn&quot; href=&quot;javascript:void(0);&quot; onclick=&quot;closeBtnFunc(this)&quot;&gt;&lt;/a&gt;');//li-a
+	    var _hiden_username = $('&lt;input type=&quot;hidden&quot; class=&quot;_hidenUsername&quot;/&gt;');//li-input name:_hidenUsername
+	    var _hiden_tel = $('&lt;input type=&quot;hidden&quot; class=&quot;_hidenMobile&quot;/&gt;');//li-input name:_hiden_tel
+	    
+	    _hiden_username.val(data.userName);
+	    _hiden_tel.val(data.mobile);
+	    _em.text(data.userName + &quot;(&quot; + data.mobile + &quot;)&quot;);
+	    
+	    _li.append(_em);
+	    _li.append(_a);
+	    _li.append(_hiden_username);
+	    _li.append(_hiden_tel);
+	    $(&quot;.selectUserList&quot;).append(_li);
+	}
+&lt;/script&gt;
+</code></pre><hr>
+<h3 id="a标签-调用方法的正确姿势">a标签 调用方法的正确姿势</h3>
+<p><code>&lt;a href=&quot;javascript:xixi();&quot;&gt;a1&lt;/a&gt;</code><br>
+这是我们平台上常用的方法，但是这种方法在传递this等参数的时候很容易出问题，<br>
+而且javascript:协议作为a的href属性的时候不仅会导致不必要的触发window.onbeforeunload事件，<br>
+在IE里面更会使gif动画图片停止播放。<br>
+W3C标准不推荐在href里面执行javascript语句</p>
+<p><code>&lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;xixi()&quot;&gt;a2&lt;/a&gt;</code><br>
+这种方法是很多网站最常用的方法，也是最周全的方法，onclick方法负责执行js函数，<br>
+而void是一个操作符，void(0)返回undefined，地址不发生跳转。<br>
+而且这种方法不会像第一种方法一样直接将js方法暴露在浏览器的状态栏。</p>
+<p><code>&lt;a href=&quot;javascript:;&quot; onclick=&quot;xixi()&quot;&gt;a3&lt;/a&gt;</code><br>
+这种方法跟跟2种类似，区别只是执行了一条空的js代码。</p>
+<p><code>&lt;a href=&quot;#&quot; onclick=&quot;xixi()&quot;&gt;a4&lt;/a&gt;</code><br>
+这种方法也是网上很常见的代码，#是标签内置的一个方法，代表top的作用。<br>
+所以用这种方法点击后网页后返回到页面的最顶端。</p>
+<p><code>&lt;a href=&quot;#&quot; onclick=&quot;xixi();return false&quot;&gt;a5&lt;/a&gt;</code><br>
+这种方法点击执行了js函数后return false，页面不发生跳转，执行后还是在页面的当前位置。</p>
+<p>综合上述，在a中调用js函数最适当的方法推荐使用：</p>
+<pre><code>&lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;xixi()&quot;&gt;a2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;javascript:;&quot; onclick=&quot;xixi()&quot;&gt;a3&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;#&quot; onclick=&quot;xixi();return false&quot;&gt;a5&lt;/a&gt;
+</code></pre><hr>
+<h3 id="video-h5播放视频不主动弹出">video h5播放视频不主动弹出</h3>
+<p>x5-playsinline=&ldquo;true&rdquo; playsinline=&ldquo;true&rdquo; webkit-playsinline=&ldquo;true&rdquo;</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/js/">js</a>
+        
+            <a href="https://ianeiu.github.io/tags/jquery/">jquery</a>
+        
+            <a href="https://ianeiu.github.io/tags/css/">css</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">兼容IE的代码片段</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

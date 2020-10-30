@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true }  运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简单 ,可看Integer源码valueOf(int i)方法
+public static Integer valueOf(int i) { if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high) return IntegerCache.cache[i &#43; (-IntegerCache.low)]; return new Integer(i); } Integer 的缓存范围虽然默认是 -128 到 127，但是在特别的应用场景，比如我们明确知道应用会频繁使用更大的数值，这时候应该怎么办呢？
+缓存上限值实际是可以根据需要调整的，JVM 提供了参数设置：
+-XX:AutoBoxCacheMax=N
+接下来，简单的扩展几个Integer的关系运算符==的比较。
+@Test public void testIntegerDD(){ Integer a = 1000,b=1000; Integer c = 100,d=100; Integer e = new Integer(100); Integer f = new Integer(100); int g = 1000; Integer h = new Integer(1000);	//1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来 System.'><title>Java面试之基础题（Integer、String、内部类与final）</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java面试之基础题（Integer、String、内部类与final）'>
+<meta property='og:description' content='Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true }  运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简单 ,可看Integer源码valueOf(int i)方法
+public static Integer valueOf(int i) { if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high) return IntegerCache.cache[i &#43; (-IntegerCache.low)]; return new Integer(i); } Integer 的缓存范围虽然默认是 -128 到 127，但是在特别的应用场景，比如我们明确知道应用会频繁使用更大的数值，这时候应该怎么办呢？
+缓存上限值实际是可以根据需要调整的，JVM 提供了参数设置：
+-XX:AutoBoxCacheMax=N
+接下来，简单的扩展几个Integer的关系运算符==的比较。
+@Test public void testIntegerDD(){ Integer a = 1000,b=1000; Integer c = 100,d=100; Integer e = new Integer(100); Integer f = new Integer(100); int g = 1000; Integer h = new Integer(1000);	//1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来 System.'>
+<meta property='og:url' content='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2018-11-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-11-18T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Java面试之基础题（Integer、String、内部类与final）">
+<meta name="twitter:description" content="Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true }  运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简单 ,可看Integer源码valueOf(int i)方法
+public static Integer valueOf(int i) { if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high) return IntegerCache.cache[i &#43; (-IntegerCache.low)]; return new Integer(i); } Integer 的缓存范围虽然默认是 -128 到 127，但是在特别的应用场景，比如我们明确知道应用会频繁使用更大的数值，这时候应该怎么办呢？
+缓存上限值实际是可以根据需要调整的，JVM 提供了参数设置：
+-XX:AutoBoxCacheMax=N
+接下来，简单的扩展几个Integer的关系运算符==的比较。
+@Test public void testIntegerDD(){ Integer a = 1000,b=1000; Integer c = 100,d=100; Integer e = new Integer(100); Integer f = new Integer(100); int g = 1000; Integer h = new Integer(1000);	//1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来 System."></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/java/">Java</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/">Java面试之基础题（Integer、String、内部类与final）</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Nov 18, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="integer">Integer</h2>
+<pre><code>Integer a = 1000,b=1000;
+Integer c = 100,d=100;    
+@Test
+public void testIntegerDD(){
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+}
+</code></pre>
+<p>运行代码，我们会得到 false  true。这道题笔试用经常出现，原理也很简单
+,可看Integer源码valueOf(int i)方法</p>
+<pre><code>public static Integer valueOf(int i) {
+	if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+	return IntegerCache.cache[i + (-IntegerCache.low)];
+	return new Integer(i);
+}
+</code></pre><p>Integer 的缓存范围虽然默认是 -128 到 127，但是在特别的应用场景，比如我们明确知道应用会频繁使用更大的数值，这时候应该怎么办呢？<br>
+缓存上限值实际是可以根据需要调整的，JVM 提供了参数设置：<br>
+<code>-XX:AutoBoxCacheMax=N</code></p>
+<p>接下来，简单的扩展几个Integer的关系运算符==的比较。</p>
+<pre><code>@Test
+public void testIntegerDD(){
+	
+    Integer a = 1000,b=1000;
+    Integer c = 100,d=100;   
+    Integer e = new Integer(100);
+    Integer f = new Integer(100);
+    int g = 1000;
+    Integer h = new Integer(1000);	
+
+
+    //1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来
+    System.out.println(a==b);//false  
+    System.out.println(c==d);//true
+	
+    //这里并不是用的缓存，而是new创建的对象存放在堆内存中，俩个变量指向不同引用，所以结果是false
+    System.out.println(e==f);//false
+    //当int和Integer进行==比较的时候，Java会把Integer进行自动拆箱为int类型的值
+    System.out.println(g==h);//true
+	
+    //进行自动装箱操作
+    System.out.println(c==e);//false
+    System.out.println(a==h);//false
+}
+</code></pre>
+<h2 id="string">String</h2>
+<blockquote>
+<p>==如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等；如果作用于引用类型的变量，则比较的是所指向的对象的地址。</p>
+</blockquote>
+<pre><code>@Test
+public void testStringDD() {
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;hello&quot;;
+    String s3 = new String(&quot;hello&quot;);
+	
+    System.out.println(s1==s2); // true
+    System.out.println(s1==s3); // false
+}
+</code></pre>
+<p>文章解释：<br>
+一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配，而堆内存中则存放new出来的对象和数组。然而除此之外还有一块区域叫做常量池。<br>
+像我们通常想String s1 = &ldquo;hello&rdquo;; 这样申明的字符串对象，其值就是存储在常量池中。<br>
+当我们创建String s1 =&ldquo;hello&quot;这样一个对象之后，&ldquo;hello&quot;就存储到了常量池（也可叫做字符串池）中，当我们创建引用String s2  = &ldquo;hello&rdquo; 的时候，Java底层会优先在常量池中查找是否存在&quot;hello&rdquo;，如果存在则让s2指向这个值，不会重新创建，如果常量池中没有则创建并添加的池中。这就是为什么答案是true 和false的原因。</p>
+<p>接下来，还是简单的扩展几个String的关系运算符==的比较。</p>
+<pre><code>@Test
+public void testStringDD() {
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;hello&quot;;
+    String s3 = new String(&quot;hello&quot;);
+	
+    //都存储在常量池中,指向同一常量
+    System.out.println(s1==s2); // true
+    //存储在常量池中,存储在堆内存中
+    System.out.println(s1==s3); // false
+	
+    String s4 = &quot;helloo&quot;;
+    /**
+     * 会重新在常量池创建常量（String不可变属性）
+     */
+    String s5 = s1+&quot;o&quot;;
+    //字符串拼接有变量参与，底层调用StringBuffer处理，相当于在堆内存中开辟了新空间
+    System.out.println(s4 == s5); // false
+    //常量相加，先在常量池找，找到即用
+    System.out.println(s4 == &quot;hello&quot;+&quot;o&quot;);//true
+
+    //hello
+    String s6 = s4.substring(0, s4.length() - 1);
+    //substring返回的也是new出来的String对象
+    System.out.println(s1 == s6); // false
+    //地址值不一样
+    System.out.println(s3 == s6); // false
+}
+</code></pre>
+<p>扩展：equals方法。equals方法不能作用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址；诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。</p>
+<h2 id="内部类与final">内部类与final</h2>
+<pre><code>public void mRun(final String name){
+    new Runnable() {
+        public void run() {
+            try {
+              Thread.sleep(1000);
+           } catch (InterruptedException e) {
+             // TODO Auto-generated catch block
+            e.printStackTrace();
+           }  
+           System.out.println(name);
+        }
+    }.start();
+}
+</code></pre>
+<p>文章解释：<br>
+这种代码相信大家写过很多，当内部类访问局部变量的时候，需要在局部变量前加final修饰符，不然编译器就会报错。通常我们也是这么干的。</p>
+<p>为什么要加final修饰符？<br>
+首先内部类的生命周期是成员级别的，而局部变量的生命周期实在方法体之类。也就是说会出现这样一种情况，当mRun方法执行，new 的线程运行，新线程里面会睡一秒。<br>
+主线程会继续执行，mRun执行完毕，name属性生命周期结束。1秒之后，Syetem.out.printh(name)执行。然而此时name已经寿终正寝，不在内存中了。</p>
+<p>Java就是为了杜绝这种错误，严格要求内部类中方位局部变量，必须使用final关键字修饰。<br>
+局部变量被final修饰之后，此时会在内存中保有一份局部变得的复制品，当内部类访问的时候其实访问的是这个复制品。这就好像是把局部变量的生命周期变长了。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/java/">java</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java笔记之NIO</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JVM笔记之调优及参数</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java面试之并发</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java面试题</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java开发之命名规范</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

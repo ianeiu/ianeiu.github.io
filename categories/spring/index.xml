@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on 吴炜棉</title>
+    <link>https://ianeiu.github.io/categories/spring/</link>
+    <description>Recent content in Spring on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring面试题</title>
+      <link>https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>Spring装配Bean的过程  实例化; 设置属性值; 如果实现了BeanNameAware接口,调用setBeanName设置Bean的ID或者Name; 如果实现BeanFactoryAware接口,调用setBeanFactory 设置BeanFactory; 如果实现ApplicationContextAware,调用setApplicationContext设置ApplicationContext 调用BeanPostProcessor的预先初始化方法; 调用InitializingBean的afterPropertiesSet()方法; 调用定制init-method方法； 调用BeanPostProcessor的后初始化方法;  springboot的启动过程  通过 SpringFactoriesLoader加载 META-INF/spring.factories文件，获取并创建 SpringApplicationRunListener对象 然后由 SpringApplicationRunListener来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener来发出 contextPrepared消息，告知SpringBoot 应用使用的ApplicationContext已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener来发出 contextLoaded 消息，告知SpringBoot 应用使用的 ApplicationContext已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener来发出 running 消息，告知程序已运行行起来了  
+spring事件的实现原理，写出常用的几个事件  事件机制：Spring中的事件机制是一个观察者模式的实现.观察者模式就是一个目标对象管理所有相依于它的观察者对象,并且在它本身的状态改变时主动发出通知.Spring的事件由ApplicationContext发布。 spring默认存在的事件：  ContextStartedEvent：ApplicationContext启动后触发的事件 ContextStoppedEvent：ApplicationContext停止后触发的事件 ContextRefreshedEvent：ApplicationContext初始化或刷新完成后触发的事件 ContextClosedEvent：ApplicationContext关闭后触发的事件    spring中的设计模式  简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建还是传入参数前创建这个要根据具体情况来定。 单例模式：Spring下默认的bean均为singleton。 代理模式：为其他对象提供⼀种代理以控制对这个对象的访问。从结构上来看和Decorator模式类似，但Proxy是控制，更更像是一种对功能的限制，而Decorator是增加职责。 spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。 观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更更新。spring中Observer模式常用的地方是listener的实现。如ApplicationListener。 模板模式：类似 JdbcTemplate 等则是应用了模板模式。  </description>
+    </item>
+    
+    <item>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解    注解 描述     @Component 泛指组件，类似在xml中配置bean    @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。   @Repository 用于标注数据访问组件   @Service 用于标注业务层组件,默认bean的id为类名且首字母小写   @Controller 用于标注控制层组件   @RestController spring4.0之后，@controller和@responsebody的结合   @Scope 作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;quot;可以保证当有请求的时候都创建一个Action对象。   @Lazy(true) 延迟初始化   @RequestMapping 用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）   @ResponseBody 将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;quot;/login&amp;rdquo;) public void login(User user, HttpServletResponse response){ response.getWriter.write(JSONObject.fromObject(user).toString()); }   @PostConstruct 初始化注解,用于指定初始化方法（用在方法上）   @PreDestory 用于指定销毁方法（用在方法上）   @DependsOn 定义Bean初始化及销毁时的顺序   @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常   @Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用   @Resource 默认按名称装配,当找不到与名称匹配的bean才会按类型装配   @Async 异步方法调用   @RequestParam 接收参数,从request里面拿取值   @PathVariable 接收参数,从一个URI模板里面来填充   @PathParam 这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包   @QueryParam JAX-RS 提供的，和Spring的RequestParam作用一致   @RequestBody 一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)    属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot初体验</title>
+      <link>https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <description>如非说明，皆是使用1.5
+ 本文只进行简单的代码提示，具体内容可自行百度
+CXF @Beanpublic ServletRegistrationBean CXFServlet() {ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);cxfBean.setLoadOnStartup(1);return cxfBean;}@Configurationpublic class CXFConfig {@Autowiredprivate Bus bus;@Autowiredprivate SSOService sSOService;@Beanpublic Endpoint endpointSSO() {EndpointImpl endpoint = new EndpointImpl(bus, sSOService);endpoint.publish(&amp;quot;/sso&amp;quot;);return endpoint;}} 错误页面配置 /*** 跳转至错误页面* add 2018.07.11* @author wm* @param code* @return*/@RequestMapping(&amp;quot;/error/{code}&amp;quot;)public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){return code;} 新增拦截器：</description>
+    </item>
+    
+    <item>
+      <title>Spring拦截器</title>
+      <link>https://ianeiu.github.io/p/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/spring%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <description>前言 接到一个需求，将已开发完成的系统接入权限系统。其中需要在多处请求返回的ModelAndView中添加权限代码集合，方便显示层做菜单按钮的显示控制。所以当时想法是新建一个拦截器对这几个请求做统一处理（放入权限代码集合），类似之前项目的错误页面拦截器。
+拦截器简介 Spring 框架实现拦截器功能主要有两种方法，第一种是实现HandlerInterceptor接口，第二种是实现WebRequestInterceptor接口。
+HandlerInterceptor接口通过实现HandlerInterceptor接口，重写方法preHandle()、postHandle()和afterCompletion()拦截请求。Spring 框架中还提供了另外一个接口和一个抽象类，实现了对HandlerInterceptor接口的功能扩展，分别为：AsyncHandlerInterceptor和HandlerInterceptorAdapter。
+对于AsyncHandlerInterceptor接口，其在继承HandlerInterceptor接口的同时，又声明了一个新的方法afterConcurrentHandlingStarted()；
+而HandlerInterceptorAdapter抽象类，在其继承AsyncHandlerInterceptor接口的同时，又复写了preHandle方法。
+ preHandle(HttpServletRequest request, HttpServletResponse response, Object handle)方法，该方法在请求处理之前进行调用。SpringMVC 中的 Interceptor 是链式调用的，在一个应用中或者说是在一个请求中可以同时存在多个 Interceptor 。每个 Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是 Interceptor 中的 preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求做一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值 Boolean 类型的，当它返回为 false 时，表示请求结束，后续的 Interceptor 和 Controller 都不会再执行；当返回值为 true 时，就会继续调用下一个 Interceptor 的 preHandle 方法，如果已经是最后一个 Interceptor 的时候，就会是调用当前请求的 Controller 中的方法。 postHandle(HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView)方法，通过 preHandle 方法的解释咱们知道这个方法包括后面要说到的 afterCompletion 方法都只能在当前所属的 Interceptor 的 preHandle 方法的返回值为 true 的时候，才能被调用。postHandle 方法在当前请求进行处理之后，也就是在 Controller 中的方法调用之后执行，但是它会在 DispatcherServlet 进行视图返回渲染之前被调用，所以咱们可以在这个方法中对 Controller 处理之后的 ModelAndView 对象进行操作。postHandle 方法被调用的方向跟 preHandle 是相反的，也就是说，先声明的 Interceptor 的 postHandle 方法反而会后执行。这和 Struts2 里面的 Interceptor 的执行过程有点类型，Struts2 里面的 Interceptor 的执行过程也是链式的，只是在 Struts2 里面需要手动调用 ActionInvocation 的 invoke 方法来触发对下一个 Interceptor 或者是 action 的调用，然后每一个 Interceptor 中在 invoke 方法调用之前的内容都是按照声明顺序执行的，而 invoke 方法之后的内容就是反向的。 afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex)方法，也是需要当前对应的 Interceptor 的 preHandle 方法的返回值为 true 时才会执行。因此，该方法将在整个请求结束之后，也就是在 DispatcherServlet 渲染了对应的视图之后执行，这个方法的主要作用是用于进行资源清理的工作。  WebRequestInterceptor接口在WebRequestInterceptor接口中也定义了 3 个方法，方法名同HandlerInterceptor接口相同，3 个方法都传递了同一个参数 WebRequest。WebRequest 是 Spring 中定义的一个接口，它里面的方法定义跟 HttpServletRequest 类似，在WebRequestInterceptor中对 WebRequest 进行的所有操作都将同步到 HttpServletRequest 中，然后在当前请求中依次传递。</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC的运行流程及九大组件</title>
+      <link>https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
+      <description>运行流程 
+ 用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping处理器映射器。 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。 DispatcherServlet通过HandlerAdapter处理器适配器调用处理器 执行处理器/后端控制器Controller Controller执行完成返回ModelAndView HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet DispatcherServlet将ModelAndView传给视图解析器ViewReslover ViewReslover解析后返回具体View DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。 DispatcherServlet响应用户。  从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。
+九大组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
+HandlerAdapter 适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。
+有篇文章总结的很好：Handler是用来干活的工具；HandlerMapping用于根据需要干的活找到相应的工具；HandlerAdapter是使用工具干活的人。
+HandlerExceptionResolver 异常处理:自定义异常处理类继承此类或其子类，实现resolveException方法。如下：
+@Component public class GlobalExceptionResolver implements HandlerExceptionResolver { ... /** * 针对请求处理异常 */ @Override public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) { boolean isHttpApi = isHttpApi(handler); HandleResult result = handleException(ex); if (isReturnReponseBody(handler) || isHttpApi) { if(isHttpApi){ result = apiHandleException(ex); } ModelAndView modelAndView = new ModelAndView(); //处理异常 response.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参数传递符号   #{}
+  ${}
+select * from tbl_employee where id=${id} and last_name=#{userName} Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=?
+  区别：
+#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。
+大多情况下，取参数的值都应该使用#{}。
+${}:取出的值直接拼装在sql语句中；会有安全问题；
+原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分
+select * from ${year}_salary where xxx; select * from tb_sys_user order by ${f_name} ${order}  #{}更丰富的用法 规定参数的一些规则： javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；
+jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）； JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;
+由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：
+ #{email,jdbcType=OTHER} jdbcTypeForNull=NULL   参数传递 单个参数 #{参数名/任意名}：取出参数值。
+&amp;lt;!-- TbSysUser getUserById(String id); --&amp;gt; &amp;lt;!'><title>Mybatis之参数篇</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%8F%82%E6%95%B0%E7%AF%87/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Mybatis之参数篇'>
+<meta property='og:description' content='参数传递符号   #{}
+  ${}
+select * from tbl_employee where id=${id} and last_name=#{userName} Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=?
+  区别：
+#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。
+大多情况下，取参数的值都应该使用#{}。
+${}:取出的值直接拼装在sql语句中；会有安全问题；
+原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分
+select * from ${year}_salary where xxx; select * from tb_sys_user order by ${f_name} ${order}  #{}更丰富的用法 规定参数的一些规则： javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；
+jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）； JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;
+由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：
+ #{email,jdbcType=OTHER} jdbcTypeForNull=NULL   参数传递 单个参数 #{参数名/任意名}：取出参数值。
+&amp;lt;!-- TbSysUser getUserById(String id); --&amp;gt; &amp;lt;!'>
+<meta property='og:url' content='https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%8F%82%E6%95%B0%E7%AF%87/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Mybatis' /><meta property='article:published_time' content='2018-09-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-09-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Mybatis之参数篇">
+<meta name="twitter:description" content="参数传递符号   #{}
+  ${}
+select * from tbl_employee where id=${id} and last_name=#{userName} Preparing: select * from tbl_employee where id=&amp;lsquo;admin&amp;rsquo; and last_name=?
+  区别：
+#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。
+大多情况下，取参数的值都应该使用#{}。
+${}:取出的值直接拼装在sql语句中；会有安全问题；
+原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分
+select * from ${year}_salary where xxx; select * from tb_sys_user order by ${f_name} ${order}  #{}更丰富的用法 规定参数的一些规则： javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；
+jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）； JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;
+由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：
+ #{email,jdbcType=OTHER} jdbcTypeForNull=NULL   参数传递 单个参数 #{参数名/任意名}：取出参数值。
+&amp;lt;!-- TbSysUser getUserById(String id); --&amp;gt; &amp;lt;!"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/mybatis/">Mybatis</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%8F%82%E6%95%B0%E7%AF%87/">Mybatis之参数篇</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Sep 13, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="参数传递符号">参数传递符号</h3>
+<ul>
+<li>
+<p>#{}</p>
+</li>
+<li>
+<p>${}</p>
+<p>select * from tbl_employee where id=${id} and last_name=#{userName}
+Preparing: select * from tbl_employee where id=&lsquo;admin&rsquo; and last_name=?</p>
+</li>
+</ul>
+<p>区别：<br>
+#{}:是以预编译的形式，将参数设置到sql语句中。通过PreparedStatement可防止sql注入。<br>
+大多情况下，取参数的值都应该使用#{}。</p>
+<p>${}:取出的值直接拼装在sql语句中；会有安全问题；<br>
+原生jdbc不支持占位符的地方我们就可以使用${}进行取值，比如分表、排序；按照年份分表拆分</p>
+<pre><code>select * from ${year}_salary where xxx;
+select * from tb_sys_user order by ${f_name} ${order}
+</code></pre>
+<h3 id="更丰富的用法">#{}更丰富的用法</h3>
+<p>规定参数的一些规则：
+javaType、 jdbcType、 mode（存储过程）、 numericScale、resultMap、 typeHandler、 jdbcTypeName、 expression（未来准备支持的功能）；</p>
+<p>jdbcType通常需要在某种特定的条件下被设置：在我们数据为null的时候，有些数据库可能不能识别mybatis对null的默认处理。比如Oracle（报错）；
+JdbcType OTHER：无效的类型；因为mybatis对所有的null都映射的是原生Jdbc的OTHER类型，oracle不能正确处理;</p>
+<p>由于全局配置中：jdbcTypeForNull=OTHER；oracle不支持；有以下两种办法解决：</p>
+<ol>
+<li>#{email,jdbcType=OTHER}</li>
+<li>jdbcTypeForNull=NULL <!-- raw HTML omitted --></li>
+</ol>
+<h3 id="参数传递">参数传递</h3>
+<h4 id="单个参数">单个参数</h4>
+<p>#{参数名/任意名}：取出参数值。</p>
+<pre><code>&lt;!-- TbSysUser getUserById(String id); --&gt;
+&lt;!-- parameterType=&quot;java.lang.String&quot; 可不加 --&gt;
+&lt;select id=&quot;getUserById&quot; resultType=&quot;com.wm.demo.mybatis.model.TbSysUser&quot;&gt;
+    select * from tb_sys_user where user_id = #{id}
+&lt;/select&gt;
+</code></pre>
+<h4 id="多个参数">多个参数</h4>
+<p>mybatis会做特殊处理。多个参数会被封装成一个map。<br>
+key：param1&hellip;paramN,或者参数的索引也可以<br>
+value：传入的参数值<br>
+#{}就是从map中获取指定的key的值。</p>
+<pre><code>&lt;!-- TbSysUser getUserByIdAndName(String id, String userName); --&gt;
+&lt;select id=&quot;getUserByIdAndName&quot; resultType=&quot;com.wm.demo.mybatis.model.TbSysUser&quot;&gt;
+    select * from tb_sys_user where user_id = #{0} and user_name like #{1}
+&lt;/select&gt;
+</code></pre>
+<h4 id="map封装多个参数">Map封装多个参数</h4>
+<p>#{key}：取出map中对应的值</p>
+<pre><code>&lt;!-- TbSysUser getUserByMap(Map&lt;String, Object&gt; map); --&gt;
+&lt;select id=&quot;getUserByMap&quot; resultType=&quot;com.wm.demo.mybatis.model.TbSysUser&quot;&gt;
+    select * from tb_sys_user where user_id = #{userId} and user_name like #{userName}
+&lt;/select&gt;
+</code></pre>
+<h4 id="pojo作为参数">POJO作为参数</h4>
+<p>#{属性名}：取出传入的pojo的属性值</p>
+<pre><code>&lt;!-- boolean updateUser(TbSysUser user); --&gt;
+&lt;update id=&quot;updateUser&quot;&gt;
+    update tb_sys_user 
+    set password=#{password},status=#{status}
+    where user_id=#{userId}
+&lt;/update&gt;
+</code></pre>
+<h4 id="to作为参数">TO作为参数</h4>
+<p>如果多个参数不是业务模型中的数据，但是经常要使用，推荐来编写一个TO（Transfer Object）数据传输对象</p>
+<pre><code>Page{
+    int index;
+    int size;
+}
+</code></pre>
+<h4 id="注解方式">注解方式</h4>
+<pre><code>&lt;!-- TbSysUser getUserAnnoationByIdAndName(@Param(&quot;id&quot;) String id, @Param(&quot;userName&quot;) String userName); --&gt;
+&lt;select id=&quot;getUserAnnoationByIdAndName&quot; resultType=&quot;com.wm.demo.mybatis.model.TbSysUser&quot;&gt;
+    select * from tb_sys_user where user_id = #{id} and user_name like #{userName}
+&lt;/select&gt;
+</code></pre>
+<h4 id="list封装数据集合涉及动态sql">List封装数据集合（涉及动态SQL）</h4>
+<pre><code>&lt;!-- List&lt;TbSysUser&gt; getUsersByConditionForeach(@Param(&quot;ids&quot;)List&lt;String&gt; ids); --&gt;
+&lt;select id=&quot;getUsersByConditionForeach&quot; resultType=&quot;com.wm.demo.mybatis.model.TbSysUser&quot;&gt;
+    select * from tb_sys_user
+    &lt;!--
+        collection：指定要遍历的集合：
+            list类型的参数会特殊处理封装在map中，map的key就叫list
+        item：将当前遍历出的元素赋值给指定的变量
+        separator:每个元素之间的分隔符
+        open：遍历出所有结果拼接一个开始的字符
+        close:遍历出所有结果拼接一个结束的字符
+        index:索引。遍历list的时候是index就是索引，item就是当前值
+                      遍历map的时候index表示的就是map的key，item就是map的值
+ 		
+        #{变量名}就能取出变量的值也就是当前遍历出的元素
+      --&gt;
+    &lt;foreach collection=&quot;ids&quot; item=&quot;user_id&quot; separator=&quot;,&quot; open=&quot;where user_id in(&quot; close=&quot;)&quot;&gt;
+        #{user_id}
+    &lt;/foreach&gt;
+&lt;/select&gt;
+</code></pre>
+<h4 id="复杂情况">复杂情况</h4>
+<pre><code>public TbSysUser getUser(@Param(&quot;id&quot;)Integer id,String userName);
+取值：id==&gt;#{id/param1}   userName==&gt;#{param2}
+
+public TbSysUser getUser(Integer id,@Param(&quot;u&quot;)TbSysUser user);
+取值：id==&gt;#{param1}    userName===&gt;#{param2.userName/u.userName}
+</code></pre>
+<p>如果是Collection（List、Set）类型或者是数组，也会特殊处理。也是把传入的list或者数组封装在map中。<br>
+key：Collection（collection）,如果是List还可以使用这个key(list) 数组(array)</p>
+<pre><code>List&lt;TbSysUser&gt; getUsersByConditionForeach(@Param(&quot;ids&quot;)List&lt;String&gt; ids);
+取值：取出第一个id的值：   #{list[0]}
+</code></pre>
+<h3 id="处理参数源码">处理参数源码</h3>
+<p>总结：参数多时会封装map，为了不混乱，我们可以使用@Param来指定封装时使用的key；#{key}就可以取出map中的值；</p>
+<pre><code>TbSysUser getUserAnnoationByIdAndName(@Param(&quot;id&quot;) String id, @Param(&quot;userName&quot;) String userName);
+</code></pre>
+<p>ParamNameResolver解析参数封装map的；
+//1、names：{0=id, 1=userName}；构造器的时候就确定好了</p>
+<p>确定流程：</p>
+<ol>
+<li>获取每个标了param注解的参数的@Param的值：id，userName赋值给name;</li>
+<li>每次解析一个参数给map中保存信息：（key：参数索引，value：name的值）</li>
+</ol>
+<p>name的值：</p>
+<ol>
+<li>标注了param注解：注解的值</li>
+<li>没有标注：</li>
+<li>全局配置：useActualParamName（jdk1.8）：name=参数名</li>
+<li>name=map.size()；相当于当前元素的索引</li>
+</ol>
+<p>测试数据：args[ &lsquo;admin&rsquo;，&ldquo;测试%&quot;]</p>
+<pre><code>public Object getNamedParams(Object[] args) {
+    final int paramCount = names.size();
+    //1、参数为null直接返回
+    if (args == null || paramCount == 0) {
+      return null;
+	 
+    //2、如果只有一个元素，并且没有Param注解；args[0]：单个参数直接返回
+    } else if (!hasParamAnnotation &amp;&amp; paramCount == 1) {
+      return args[names.firstKey()];
+	  
+    //3、多个元素或者有Param标注
+    } else {
+      final Map&lt;String, Object&gt; param = new ParamMap&lt;Object&gt;();
+      int i = 0;
+	  
+      //4、遍历names集合；{0=id, 1=userName}
+      for (Map.Entry&lt;Integer, String&gt; entry : names.entrySet()) {
+	  
+        //names集合的value作为key;  names集合的key又作为取值的参考args[0]
+        //eg:{id=args[0]:admin,lastName=args[1]:测试%}
+        param.put(entry.getValue(), args[entry.getKey()]);
+		
+		
+        // add generic param names (param1, param2, ...)param
+        //额外的将每一个参数也保存到map中，使用新的key：param1...paramN
+        //效果：有Param注解可以#{指定的key}，或者#{param1}
+        final String genericParamName = GENERIC_NAME_PREFIX + String.valueOf(i + 1);
+        // ensure not to overwrite parameter named with @Param
+        if (!names.containsValue(genericParamName)) {
+          param.put(genericParamName, args[entry.getKey()]);
+        }
+        i++;
+      }
+      return param;
+    }
+  }
+}
+</code></pre>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/mybatis/">Mybatis</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mybatis之面试篇</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8Bxml%E7%AF%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mybatis之XML篇</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%BC%80%E5%8F%91%E5%BC%82%E5%B8%B8%E7%AF%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mybatis之开发异常篇</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

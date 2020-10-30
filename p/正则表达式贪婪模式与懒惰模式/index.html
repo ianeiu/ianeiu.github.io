@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='知识点：正则表达式中表示字符串重复个数的元字符，如 ?,&#43;,*,{} 默认贪婪模式匹配最大长度匹配字符串。 在元字符后加个?即可切换为懒惰模式
+前言 之前做过一个短信模版的配置功能，需要用到正则判断完成预览方法，踩了个小坑。
+&amp;lt;!-- 部分代码 --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//libs.baidu.com/jquery/1.10.2/jquery.min.js&amp;quot;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; $(document).ready(function () { createContentPreview() }); function createContentPreview(){ //遍历获取所有input标签值 var vals=[]; $(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){ var val=$(this).val(); vals.push(val); }) // 含有&amp;lt;input type=&amp;quot;..&amp;quot; /&amp;gt;标签 var html=$(&amp;quot;#tExaDiv&amp;quot;).html(); //遍历替换 var reg=/&amp;lt;input[^]*?&amp;gt;/; for(var i=0;i&amp;lt;vals.length;i&#43;&#43;){ html=html.replace(reg,vals[i]); } //渲染 $(&amp;quot;#contentPreview&amp;quot;).html(html); } &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;tExaDiv&amp;quot;&amp;gt; 如果我是&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;dj&amp;quot;/&amp;gt;,你会&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;爱&amp;quot;/&amp;gt;我吗？ &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;contentPreview&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; contentPreview内容：如果我是dj,你会爱我吗？
+如果未加?，则是贪婪模式。contentPreview显示错误内容：如果我是dj我吗？
+懒惰模式 对字符串进行最小长度匹配
+字符串：&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;'><title>正则表达式——贪婪模式与懒惰模式</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='正则表达式——贪婪模式与懒惰模式'>
+<meta property='og:description' content='知识点：正则表达式中表示字符串重复个数的元字符，如 ?,&#43;,*,{} 默认贪婪模式匹配最大长度匹配字符串。 在元字符后加个?即可切换为懒惰模式
+前言 之前做过一个短信模版的配置功能，需要用到正则判断完成预览方法，踩了个小坑。
+&amp;lt;!-- 部分代码 --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//libs.baidu.com/jquery/1.10.2/jquery.min.js&amp;quot;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; $(document).ready(function () { createContentPreview() }); function createContentPreview(){ //遍历获取所有input标签值 var vals=[]; $(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){ var val=$(this).val(); vals.push(val); }) // 含有&amp;lt;input type=&amp;quot;..&amp;quot; /&amp;gt;标签 var html=$(&amp;quot;#tExaDiv&amp;quot;).html(); //遍历替换 var reg=/&amp;lt;input[^]*?&amp;gt;/; for(var i=0;i&amp;lt;vals.length;i&#43;&#43;){ html=html.replace(reg,vals[i]); } //渲染 $(&amp;quot;#contentPreview&amp;quot;).html(html); } &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;tExaDiv&amp;quot;&amp;gt; 如果我是&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;dj&amp;quot;/&amp;gt;,你会&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;爱&amp;quot;/&amp;gt;我吗？ &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;contentPreview&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; contentPreview内容：如果我是dj,你会爱我吗？
+如果未加?，则是贪婪模式。contentPreview显示错误内容：如果我是dj我吗？
+懒惰模式 对字符串进行最小长度匹配
+字符串：&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;'>
+<meta property='og:url' content='https://ianeiu.github.io/p/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='正则' /><meta property='article:published_time' content='2020-03-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-03-20T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="正则表达式——贪婪模式与懒惰模式">
+<meta name="twitter:description" content="知识点：正则表达式中表示字符串重复个数的元字符，如 ?,&#43;,*,{} 默认贪婪模式匹配最大长度匹配字符串。 在元字符后加个?即可切换为懒惰模式
+前言 之前做过一个短信模版的配置功能，需要用到正则判断完成预览方法，踩了个小坑。
+&amp;lt;!-- 部分代码 --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//libs.baidu.com/jquery/1.10.2/jquery.min.js&amp;quot;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; $(document).ready(function () { createContentPreview() }); function createContentPreview(){ //遍历获取所有input标签值 var vals=[]; $(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){ var val=$(this).val(); vals.push(val); }) // 含有&amp;lt;input type=&amp;quot;..&amp;quot; /&amp;gt;标签 var html=$(&amp;quot;#tExaDiv&amp;quot;).html(); //遍历替换 var reg=/&amp;lt;input[^]*?&amp;gt;/; for(var i=0;i&amp;lt;vals.length;i&#43;&#43;){ html=html.replace(reg,vals[i]); } //渲染 $(&amp;quot;#contentPreview&amp;quot;).html(html); } &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;tExaDiv&amp;quot;&amp;gt; 如果我是&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;dj&amp;quot;/&amp;gt;,你会&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;爱&amp;quot;/&amp;gt;我吗？ &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;contentPreview&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; contentPreview内容：如果我是dj,你会爱我吗？
+如果未加?，则是贪婪模式。contentPreview显示错误内容：如果我是dj我吗？
+懒惰模式 对字符串进行最小长度匹配
+字符串：&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/%E6%AD%A3%E5%88%99/">正则</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F/">正则表达式——贪婪模式与懒惰模式</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 20, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p><strong>知识点：正则表达式中表示字符串重复个数的元字符，如 <code>?,+,*,{}</code>  默认贪婪模式匹配最大长度匹配字符串。
+在元字符后加个<code>?</code>即可切换为懒惰模式</strong></p>
+<h2 id="前言">前言</h2>
+<p>之前做过一个短信模版的配置功能，需要用到正则判断完成预览方法，踩了个小坑。</p>
+<pre><code>&lt;!-- 部分代码 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;script src=&quot;//libs.baidu.com/jquery/1.10.2/jquery.min.js&quot;&gt;
+&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+	createContentPreview()
+});
+
+
+function createContentPreview(){
+        //遍历获取所有input标签值
+	var vals=[];
+	$(&quot;#tExaDiv&quot;).find(&quot;input&quot;).each(function(){
+		var val=$(this).val();
+		vals.push(val);
+	})
+	
+        // 含有&lt;input type=&quot;..&quot; /&gt;标签
+	var html=$(&quot;#tExaDiv&quot;).html();
+
+        //遍历替换
+	var reg=/&lt;input[^]*?&gt;/;
+	for(var i=0;i&lt;vals.length;i++){
+		html=html.replace(reg,vals[i]);
+	}
+
+        //渲染
+	$(&quot;#contentPreview&quot;).html(html);
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div id=&quot;tExaDiv&quot;&gt;
+	如果我是&lt;input =&quot;text&quot; value=&quot;dj&quot;/&gt;,你会&lt;input =&quot;text&quot; value=&quot;爱&quot;/&gt;我吗？
+&lt;/div&gt;
+
+&lt;div id=&quot;contentPreview&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>contentPreview内容：如果我是dj,你会爱我吗？<br>
+如果未加?，则是贪婪模式。contentPreview显示错误内容：如果我是dj我吗？</p>
+<h2 id="懒惰模式">懒惰模式</h2>
+<p>对字符串进行最小长度匹配</p>
+<p>字符串：<code>&lt;span&gt;321&lt;/span&gt;&lt;span&gt;12&lt;/span&gt;</code><br>
+正则表达式：<code>&lt;span&gt;.*?&lt;/span&gt;</code><br>
+匹配结果：</p>
+<pre><code>共找到 2 处匹配：  
+	&lt;span&gt;321&lt;/span&gt; 
+	&lt;span&gt;12&lt;/span&gt; 
+</code></pre><h2 id="贪婪模式">贪婪模式</h2>
+<p>对字符串进行最大长度匹配</p>
+<p>字符串：<code>&lt;span&gt;321&lt;/span&gt;&lt;span&gt;12&lt;/span&gt; </code><br>
+正则表达式：<code>&lt;span&gt;.*&lt;/span&gt;</code><br>
+匹配结果：</p>
+<pre><code>共找到 1 处匹配：
+&lt;span&gt;321&lt;/span&gt;&lt;span&gt;12&lt;/span&gt;
+</code></pre><h2 id="常见元字符及其含义">常见元字符及其含义</h2>
+<pre><code>符号               含义
+————————————————————————————————————————————————————
+.                  匹配除换行符之外的任意字符
+^                  匹配字符的开始位置
+$                  匹配字符的结束位置
+*                  匹配0次，1次或多次前面的原子
+?                  匹配0次或1次前面的原子
++                  匹配1次或多次前面的原子
+{n}                前面的原子恰好出现n次
+{n,}               前面的原子至少出现n次
+{n,m}              前面的原子至少出现n次，至多出现m次
+|                  模式选择符
+()                 模式单元符   
+</code></pre>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/%E6%AD%A3%E5%88%99/">正则</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

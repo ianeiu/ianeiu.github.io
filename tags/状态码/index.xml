@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>状态码 on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+    <description>Recent content in 状态码 on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 23 Aug 2018 16:01:23 +0800</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/%E7%8A%B6%E6%80%81%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常见状态码简介</title>
+      <link>https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Thu, 23 Aug 2018 16:01:23 +0800</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/</guid>
+      <description>部分状态码简介 200  200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。  30X  301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 305—使用代理。被请求的资源必须通过指定的代理才能被访问 304—请求资源没有改变 307—临时跳转。被请求的资源在临时从不同的URL响应请求  4XX  400—错误请求 402—需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付 403—禁止访问。服务器已经理解请求，但是拒绝执行它 404—找不到对象。请求失败，资源不存在 406—不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体 408—请求超时 409—冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成 410—遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址 413—响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值 414—客户端访问的URI太长，超出了服务器允许限制 417—期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足 418—我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现 420—方法失效 422—不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应  500  500—服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理  </description>
+    </item>
+    
+  </channel>
+</rss>

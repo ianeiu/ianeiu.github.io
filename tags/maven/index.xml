@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maven on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/maven/</link>
+    <description>Recent content in maven on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maven笔记</title>
+      <link>https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/</guid>
+      <description>简介 项目构建和管理自动化工具
+  坐标(可由groupId、artifactId、version组成)。
+  构件通过坐标作为其唯一标识。
+  仓库：
+  远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2
+  镜像仓库：/conf/setting文件:
+&amp;lt;mirror&amp;gt; &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt; &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt; &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt; &amp;lt;/mirror&amp;gt;    本地仓库：修改本地仓库的位置 &amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;
+    指定jdk1.7
+&amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt; &amp;lt;activation&amp;gt; &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt; &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt; &amp;lt;/activation&amp;gt;	&amp;lt;properties&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;/profile&amp;gt; ``
+  常用构建命令 mvn compile 编译 mvn test 测试 mvn package 打包 mvn clean 删除target mvn install 安装jar包到本地仓库 自动创建目录骨架  archetype:generate 按照提示进行 archetype:generate -DgroupId=组织名, 公司网址的反写+项目名</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ie on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/ie/</link>
+    <description>Recent content in ie on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 23 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/ie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>兼容IE的代码片段</title>
+      <link>https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
+      <description>JS  方法/函数：减少使用JS原生方法  indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“a”, divarr)==-1  AJAX：  上传文件：IE下ajaxSubmit将file对象传递到控制层，建议使用ajaxFileUpload。
+有些方法调用获取数据是直接读缓存的，这时候加个属性 cache:false 即可。  DOM：  复选框赋值兼容问题：
+for(var k =0; k&amp;lt;number.length; k++){
+//$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;][value=&#39;&amp;quot;+number[k]+&amp;quot;&#39;]&amp;quot;).attr(&amp;ldquo;checked&amp;rdquo;, true);
+//解决ie8的复选框赋值兼容问题。eq的是索引
+$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;]&amp;quot;).eq(number[k]).attr(&amp;ldquo;checked&amp;rdquo;, true);
+};  CSS  IE支持rgba半透明的方法： 低版本IE下不支持rgba()的表示方法， 如：background:rgba(0,0,0,0.5);
+使用代码,filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);即可实现
+7F其实就是alpha*255换成16进制 。常用的rgba和IE下filter数值的转换：
+rgba透明值：0.1　0.2　0.3　0.4　0.5　0.6　0.7　0.8　0.9
+IE下filter值：19　33　4c　66　7f　99　b2　c8　e5
+HTML  隐藏元素： &amp;lt;div class=&amp;quot;bBox&amp;quot; id=&amp;quot;orderOperDiv&amp;quot; style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;!-- 兼容IE，不使用hidden --&amp;gt;  按钮value显示null &amp;lt;!-- &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;上传&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0);&amp;quot; /&amp;gt; --&amp;gt; &amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0)&amp;quot;&amp;gt;上传&amp;lt;/a&amp;gt;  插件  Webuploader IE浏览器兼容问题（点击无反应） webuploader 加载后会默认先使用H5，在浏览器不支持H5,再采用flash,方式上传。</description>
+    </item>
+    
+  </channel>
+</rss>

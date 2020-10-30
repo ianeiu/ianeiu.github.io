@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/css/</link>
+    <description>Recent content in css on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 22 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常用代码片段</title>
+      <link>https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
+      <description>操作元素的样式 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;); //返回元素的背景颜色 $(&amp;quot;#msg&amp;quot;).css(&amp;quot;background&amp;quot;,&amp;quot;#ccc&amp;quot;) //设定元素背景为灰色 $(&amp;quot;#msg&amp;quot;).height(300); $(&amp;quot;#msg&amp;quot;).width(&amp;quot;200&amp;quot;); //设定宽高 $(&amp;quot;#msg&amp;quot;).css({ color: &amp;quot;red&amp;quot;, background: &amp;quot;blue&amp;quot; });//以名值对的形式设定样式 $(&amp;quot;p&amp;quot;).attr(&amp;quot;class&amp;quot;, &amp;quot;ddiiyy&amp;quot;); //设置p元素的class为 &amp;quot;ddiiyy&amp;quot; $(&amp;quot;#nm_p&amp;quot;).addClass(&amp;quot;another&amp;quot;); // 追加样式 $(&amp;quot;p&amp;quot;).removeClass(&amp;quot;ddiiyy another&amp;quot;); //溢出样式 $(&amp;quot;p&amp;quot;).toggleClass(&amp;quot;ddiiyy&amp;quot;); //如果存在（不存在）就删除（添加）名为ddiiyy的class $(&amp;quot;p&amp;quot;).hasClass(&amp;quot;another&amp;quot;); //是否含有某个class。是返true，否返false $(&amp;quot;p&amp;quot;).is(&amp;quot;.another&amp;quot;); //is(&amp;quot;.&amp;quot;+class);//JQuery实现，增强代码可读性   readonly和disabled 表单中readOnly和disabled的区别：
+readonly只针对input(text/ password)和textarea有效，而disabled对于所有的表单元素都有效，包括select,radio, checkbox, button等。
+但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去（这种情况出现在我们将某个表单中的textarea元素设置为disabled或readonly，但是submit或button却是可以使用的）。
+ 隐藏和显示(操作display属性) $(&amp;quot;#id&amp;quot;).show();//表示display:block, $(&amp;quot;#id&amp;quot;).hide();//表示display:none; $(&amp;quot;#id&amp;quot;).toggle();//切换元素的可见状态。如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。 $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;none&#39;); $(&amp;quot;#id&amp;quot;).css(&#39;display&#39;,&#39;block&#39;); 或 $(&amp;quot;#id&amp;quot;)[0].style.display = &#39;none&#39;;   操作disabled属性 js操作：
+function disableElement(element,val){ document.getElementById(element).disabled=val;d }  jQuery进行操作：
+//两种方法设置disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,true); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;disabled&amp;quot;); //三种方法移除disabled属性 $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,false); $(&#39;#areaSelect&#39;).removeAttr(&amp;quot;disabled&amp;quot;); $(&#39;#areaSelect&#39;).attr(&amp;quot;disabled&amp;quot;,&amp;quot;&amp;quot;);  获取s:textfield，并设置其disabled属性：
+functiondisableTextfieldofAccountDiv(element,val) { $(element).</description>
+    </item>
+    
+  </channel>
+</rss>

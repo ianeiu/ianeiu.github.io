@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>注解 on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/%E6%B3%A8%E8%A7%A3/</link>
+    <description>Recent content in 注解 on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/%E6%B3%A8%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring常用注解</title>
+      <link>https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>常用注解    注解 描述     @Component 泛指组件，类似在xml中配置bean    @Configuration 把类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。   @Repository 用于标注数据访问组件   @Service 用于标注业务层组件,默认bean的id为类名且首字母小写   @Controller 用于标注控制层组件   @RestController spring4.0之后，@controller和@responsebody的结合   @Scope 作用域 表示将Action的范围声明为原型，可以利用容器的scope=&amp;ldquo;prototype&amp;quot;来保证每一个请求有一个单独的Action来处理，避免struts中Action的线程安全问题。spring默认scope是单例模式(scope=&amp;ldquo;singleton&amp;rdquo;)，这样只会创建一个Action对象，每次访问都是同一Action对象，数据不安全，struts2是要求每次次访问都对应不同的Action，scope=&amp;ldquo;prototype&amp;quot;可以保证当有请求的时候都创建一个Action对象。   @Lazy(true) 延迟初始化   @RequestMapping 用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。value：指定请求的实际地址；method：指定请求的method类型，GET、POST、PUT、DELETE等（Spring4.3中引进了｛@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping｝，来帮助简化常用的HTTP方法的映射）   @ResponseBody 将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。使用此注解之后不会再走视图处理器，而是直接将数据写入到输入流中，效果等同于通过response对象输出指定格式的数据 效果等同于如下代码：@RequestMapping(&amp;quot;/login&amp;rdquo;) public void login(User user, HttpServletResponse response){ response.getWriter.write(JSONObject.fromObject(user).toString()); }   @PostConstruct 初始化注解,用于指定初始化方法（用在方法上）   @PreDestory 用于指定销毁方法（用在方法上）   @DependsOn 定义Bean初始化及销毁时的顺序   @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常   @Autowired 默认按类型装配，如果我们想使用按名称装配，可以结合@Qualifier注解一起使用   @Resource 默认按名称装配,当找不到与名称匹配的bean才会按类型装配   @Async 异步方法调用   @RequestParam 接收参数,从request里面拿取值   @PathVariable 接收参数,从一个URI模板里面来填充   @PathParam 这个注解是和spring的pathVariable是一样的，也是基于模板的，但是这个是jboss包下面的一个实现，上面的是spring的一个实现，都要导包   @QueryParam JAX-RS 提供的，和Spring的RequestParam作用一致   @RequestBody 一般是post请求的时候才会使用这个请求(处理application/json、application/xml等格式的数据)    属性注入 @Autowired 自动装配，可消除代码里的getter/setter与bean属性中的property</description>
+    </item>
+    
+  </channel>
+</rss>

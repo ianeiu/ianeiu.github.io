@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tool on 吴炜棉</title>
+    <link>https://ianeiu.github.io/categories/tool/</link>
+    <description>Recent content in tool on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>redis笔记</title>
+      <link>https://ianeiu.github.io/p/redis%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/redis%E7%AC%94%E8%AE%B0/</guid>
+      <description>redis Redis本质上是一个Key-Value类型的内存数据库，支持保存多种数据结构，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。
+因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。
+Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。
+配置  daemonize：是否以后台进程运行，默认为no。Windows下不支持修改 。Linux平台下可以改为yes，这样就不用为了启动Redis而单独保留一个shell窗口。 pidfile：如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid。Windows下不支持修改。 bind：绑定主机IP，默认值为127.0.0.1（注释） protected-mode：以保护模式运行，默认yes port： 监听端口，默认为6379 timeout： 超时时间，默认为300（秒） loglevel： 日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning logfile： 日志记录方式，默认值为stdout databases： 可用数据库数，默认值为16，默认数据库为0 save ： 指出在多长时间内，有多少次更新操作，就将数据同步到数据文件。这个可以多个条件配合，比如默认配置文件中的设置，就设置了三个条件。  save 900 1 900秒（15分钟）内至少有1个key被改变 save 300 10 300秒（5分钟）内至少有10个key被改变 save 60 10000 60秒内至少有10000个key被改变   rdbcompression： 存储至本地数据库时是否压缩数据，默认为yes dbfilename： 本地数据库文件名，默认值为dump.rdb dir： 本地数据库存放路径，默认值为 ./ slaveof： 当本机为从服务时，设置主服务的IP及端口（注释） masterauth： 当本机为从服务时，设置主服务的连接密码（注释） requirepass 连接密码（注释） maxclients： 最大客户端连接数，默认不限制（注释） maxmemory ： 设置最大内存，达到最大内存设置后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理后，任到达最大内存设置，将无法再进行写入操作。（注释） appendonly： 是否在每次更新操作后进行日志记录，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认值为no appendfilename： 更新日志文件名，默认值为appendonly.aof（注释） appendfsync： 更新日志条件，共有3个可选值。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次（默认值）。 vm-enabled： 是否使用虚拟内存，默认值为no vm-swap-file： 虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享 vm-max-memory： 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0。  命令  info replication 查看信息，本机角色（master、slave）、ip、端口、状态  哨兵配置 # 这个是Redis6379配置内容，其他文件同理新增然后改一下端口即可，26380 26381 #当前Sentinel服务运行的端口 port 26381 bind 127.</description>
+    </item>
+    
+    <item>
+      <title>Eclipse笔记</title>
+      <link>https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键 使用频率极高的快捷键    DESC KEY     代码提示 alt+/   自动生成object方法 alt + shift + s，然后根据提示继续   复制当前行 ctrl +alt + ↓   查找文本 ctrl + k ,ctrl + shfit + k   如何跳转到文件中的特定行 ctrl + l   调出搜索文本的视图 ctrl + f   进行全局搜索和局部搜索 ctrl + h    文件    DESC KEY     创建各种类型的文件 ctrl + n   关闭当前文件 ctrl + w   关闭所有文件 ctrl + shift + w   打开文件所在目录 alt + shift + w，选择system explorer    类    DESC KEY     显示出当前打开的所有文件 ctrl + e   文件切换 ctrl + pg、up ,ctrl + pg、dn   视图切换 ctrl + f7	跳转到代码编辑器视图 f12   经典的quick access ctrl + 3 搜maven、server   eclipse的面包屑功能 alt + shift + b （右键面包屑有关闭按钮）    文本    DESC KEY     删除当前行 ctrl + d   查看字符串出现的地方 ctrl + shift + u   显示html和xml元素的所有属性 ctrl + shift + ,   大小写转换 变小写ctrl + shift + y,变大写ctrl +shift + x   重构-修改名字 alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量   重构-抽取类方法 选中代码，然后使用alt + shift + m,就会弹出抽取视图    Eclipse-插件  Team  Subclipse   Theme  Eclipse Color Theme Darkest Dark Theme with DevStyle   反编译  Enhanced Class Decompiler   UML  AmaterasUML_1.</description>
+    </item>
+    
+    <item>
+      <title>IDEA笔记</title>
+      <link>https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键设置  默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。 首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。 我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。 在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。 Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。 在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。 添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！  常用快捷键 辅助    DESC KEY     查找Intellij的命令 Ctrl+Shift+A   运行 Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止   调整项目窗口宽度 alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度    查询    DESC KEY     跳转文件指定行 ctrl + l   搜索文本 ctrl + f   全局搜索和局部搜索 ctrl + h   结合ctrl + f 快捷上下查找文本 ctrl + k ,ctrl + shift + k   查找接口实现类 ctrl + alt +B ，ctrl + T   查询 shift + shift   方位名查询 ctrl + shift + alt + n   目录查询 ctrl + shift + alt + n，输入/    编辑    DESC KEY     自动处理 alt+Enter   代码联系 ctrl + alt + space   自动生成方法 alt+insert，然后根据提示继续   删除当前行 ctrl + d、x   复制当前行 ctrl +alt + ↓   选中单词 ctrl + shift + ←、→   大小写转换 ctrl + shift + u、y   收尾补充（;{}等） ctrl + shift + 回车   驼峰下划线命名切换 ctrl + alt + c   重构-修改类、方法、参数名字 alt + shift + r   重构-抽取类方法 选中代码，然后使用alt + shift + m,就会弹出抽取视图   重构-可选择 Ctrl+Shift+Alt+T   代码生成 Template/Postfix +Tab    文件    DESC KEY     关闭所有文件 ctrl + shift + w   显示最近打开的文件 ctrl + e   显示最近修改的文件 ctrl + shift + e   文件切换 ctrl + pg、up   bookmarks ctrl + shift + F11   bookmarks查看 shift + F11    视图    DESC KEY     视图切换 ctrl + Tab   显示类结构 ctrl + o   显示文件位置 Alt+F1   项目切换 ctrl + alt + [ 、]   选择窗口 alt + 窗口代码（1、2、3 .</description>
+    </item>
+    
+    <item>
+      <title>Maven笔记</title>
+      <link>https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/</guid>
+      <description>简介 项目构建和管理自动化工具
+  坐标(可由groupId、artifactId、version组成)。
+  构件通过坐标作为其唯一标识。
+  仓库：
+  远程仓库：maven-model-builder-3.3.3.jar\org\apache\maven\model,超级pom.xml文件，全球中央仓库地址：https://repo.maven.apache.org/maven2
+  镜像仓库：/conf/setting文件:
+&amp;lt;mirror&amp;gt; &amp;lt;id&amp;gt;maven.net.cn&amp;lt;/id&amp;gt; &amp;lt;mirrorOf&amp;gt;central&amp;lt;/mirrorOf&amp;gt; &amp;lt;name&amp;gt;central mirror in china&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;http://maven.net.cn/content/groups/public&amp;lt;/url&amp;gt; &amp;lt;/mirror&amp;gt;    本地仓库：修改本地仓库的位置 &amp;lt;localRepository&amp;gt;D:/Maven/repository&amp;lt;/localRepository&amp;gt;
+    指定jdk1.7
+&amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;jdk-1.7&amp;lt;/id&amp;gt; &amp;lt;activation&amp;gt; &amp;lt;activeByDefault&amp;gt;true&amp;lt;/activeByDefault&amp;gt; &amp;lt;jdk&amp;gt;1.7&amp;lt;/jdk&amp;gt; &amp;lt;/activation&amp;gt;	&amp;lt;properties&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;maven.compiler.compilerVersion&amp;gt;1.7&amp;lt;/maven.compiler.compilerVersion&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;/profile&amp;gt; ``
+  常用构建命令 mvn compile 编译 mvn test 测试 mvn package 打包 mvn clean 删除target mvn install 安装jar包到本地仓库 自动创建目录骨架  archetype:generate 按照提示进行 archetype:generate -DgroupId=组织名, 公司网址的反写+项目名</description>
+    </item>
+    
+    <item>
+      <title>Git笔记</title>
+      <link>https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/</guid>
+      <description>Git使用教程 Git使用教程
+几条常用命令记录  git status 查看本地分支文件信息，确保更新时不产生冲突 git checkout –- [file name] 若文件有修改，可以还原到最初状态; 若文件需要更新到服务器上，应该先merge到服务器，再更新到本地 git branch 查看当前分支情况 git checkout remote branch 若分支为本地分支，则需切换到服务器的远程分支 git pull 拉取代码 git checkout branchA 切换到分支branchA git branch branchB 创建分支branchB  git 工具本地用户名修改  获取当前的用户名 git config user.name 修改用户名 git config --global user.name &amp;quot;用户名&amp;quot;  reset 与 revert  如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用 reset 如果我们想恢复之前的某一版本（该版本不是merge类型），但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用 revert  推荐文章 Git恢复之前版本的两种方法reset、revert（图文详解）
+恢复修改的文件 情况1：
+修改了文件，没有做过任何git操作，直接 git checkout -- test.txt 就OK了。
+情况2：
+修改了文件，只进行了git add，执行 git reset HEAD 回退到当前版本, 然后git checkout -- test.</description>
+    </item>
+    
+  </channel>
+</rss>

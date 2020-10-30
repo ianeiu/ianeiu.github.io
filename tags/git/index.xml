@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/git/</link>
+    <description>Recent content in git on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 01 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git笔记</title>
+      <link>https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/</guid>
+      <description>Git使用教程 Git使用教程
+几条常用命令记录  git status 查看本地分支文件信息，确保更新时不产生冲突 git checkout –- [file name] 若文件有修改，可以还原到最初状态; 若文件需要更新到服务器上，应该先merge到服务器，再更新到本地 git branch 查看当前分支情况 git checkout remote branch 若分支为本地分支，则需切换到服务器的远程分支 git pull 拉取代码 git checkout branchA 切换到分支branchA git branch branchB 创建分支branchB  git 工具本地用户名修改  获取当前的用户名 git config user.name 修改用户名 git config --global user.name &amp;quot;用户名&amp;quot;  reset 与 revert  如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用 reset 如果我们想恢复之前的某一版本（该版本不是merge类型），但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用 revert  推荐文章 Git恢复之前版本的两种方法reset、revert（图文详解）
+恢复修改的文件 情况1：
+修改了文件，没有做过任何git操作，直接 git checkout -- test.txt 就OK了。
+情况2：
+修改了文件，只进行了git add，执行 git reset HEAD 回退到当前版本, 然后git checkout -- test.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='部分状态码简介 200  200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。  30X  301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 305—使用代理。被请求的资源必须通过指定的代理才能被访问 304—请求资源没有改变 307—临时跳转。被请求的资源在临时从不同的URL响应请求  4XX  400—错误请求 402—需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付 403—禁止访问。服务器已经理解请求，但是拒绝执行它 404—找不到对象。请求失败，资源不存在 406—不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体 408—请求超时 409—冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成 410—遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址 413—响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值 414—客户端访问的URI太长，超出了服务器允许限制 417—期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足 418—我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现 420—方法失效 422—不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应  500  500—服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理  '><title>常见状态码简介</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='常见状态码简介'>
+<meta property='og:description' content='部分状态码简介 200  200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。  30X  301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 305—使用代理。被请求的资源必须通过指定的代理才能被访问 304—请求资源没有改变 307—临时跳转。被请求的资源在临时从不同的URL响应请求  4XX  400—错误请求 402—需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付 403—禁止访问。服务器已经理解请求，但是拒绝执行它 404—找不到对象。请求失败，资源不存在 406—不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体 408—请求超时 409—冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成 410—遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址 413—响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值 414—客户端访问的URI太长，超出了服务器允许限制 417—期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足 418—我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现 420—方法失效 422—不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应  500  500—服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理  '>
+<meta property='og:url' content='https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='状态码' /><meta property='article:published_time' content='2018-08-23T16:01:23&#43;08:00'/><meta property='article:modified_time' content='2018-08-23T16:01:23&#43;08:00'/>
+<meta name="twitter:title" content="常见状态码简介">
+<meta name="twitter:description" content="部分状态码简介 200  200—请求成功 202—常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。  30X  301—永久移动。被请求的资源已被永久移动位置 302—请求的资源现在临时从不同的 URI 响应请求（请求重定向） 305—使用代理。被请求的资源必须通过指定的代理才能被访问 304—请求资源没有改变 307—临时跳转。被请求的资源在临时从不同的URL响应请求  4XX  400—错误请求 402—需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付 403—禁止访问。服务器已经理解请求，但是拒绝执行它 404—找不到对象。请求失败，资源不存在 406—不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体 408—请求超时 409—冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成 410—遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址 413—响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值 414—客户端访问的URI太长，超出了服务器允许限制 417—期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足 418—我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现 420—方法失效 422—不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应  500  500—服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理  "></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/network/">network</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/">常见状态码简介</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Aug 23, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="部分状态码简介">部分状态码简介</h2>
+<h1 id="200">200</h1>
+<ul>
+<li><!-- raw HTML omitted -->200<!-- raw HTML omitted -->—<code>请求成功</code></li>
+<li>202—<code>常用于异步请求。客户端发送请求到服务器，服务器立即返回一个202 Accepted表示已经成功接收到客户端的请求。后面怎么处理由服务器自己决定，一般服务器会给客户端预留一个可以查询处理状态的接口，客户端可以选择轮训该接口来知道请求的处理进度和结果。</code></li>
+</ul>
+<h1 id="30x">30X</h1>
+<ul>
+<li>301—<code>永久移动。被请求的资源已被永久移动位置</code></li>
+<li><!-- raw HTML omitted -->302<!-- raw HTML omitted -->—<code>请求的资源现在临时从不同的 URI 响应请求（请求重定向）</code></li>
+<li>305—<code>使用代理。被请求的资源必须通过指定的代理才能被访问</code></li>
+<li>304—<code>请求资源没有改变</code></li>
+<li>307—<code>临时跳转。被请求的资源在临时从不同的URL响应请求</code></li>
+</ul>
+<h1 id="4xx">4XX</h1>
+<ul>
+<li>400—<code>错误请求</code></li>
+<li>402—<code>需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付</code></li>
+<li>403—<code>禁止访问。服务器已经理解请求，但是拒绝执行它</code></li>
+<li><!-- raw HTML omitted -->404<!-- raw HTML omitted -->—<code>找不到对象。请求失败，资源不存在</code></li>
+<li>406—<code>不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体</code></li>
+<li>408—<code>请求超时</code></li>
+<li>409—<code>冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成</code></li>
+<li>410—<code>遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址</code></li>
+<li>413—<code>响应实体太大(客户端上传图片太大等情况)。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值</code></li>
+<li>414—<code>客户端访问的URI太长，超出了服务器允许限制</code></li>
+<li>417—<code>期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足</code></li>
+<li>418—<code>我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现</code></li>
+<li>420—<code>方法失效</code></li>
+<li>422—<code>不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应</code></li>
+</ul>
+<h1 id="500">500</h1>
+<ul>
+<li><!-- raw HTML omitted -->500<!-- raw HTML omitted -->—<code>服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理</code></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/%E7%8A%B6%E6%80%81%E7%A0%81/">状态码</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">TCP与UDP笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">计算机网络基础汇总</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/http%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Http笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/webservice%E7%AE%80%E4%BB%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WebService简介</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

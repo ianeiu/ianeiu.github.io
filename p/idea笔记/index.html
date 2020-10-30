@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='快捷键设置  默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们想主动 使用代码提示时，默认的快捷键是CTRL&#43;空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。 首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。 我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。 在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT&#43;/）。 Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。 在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT&#43;/ 把它作为代码提示的快捷键。 添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT&#43;空格的快捷键就可以了！  常用快捷键 辅助    DESC KEY     查找Intellij的命令 Ctrl&#43;Shift&#43;A   运行 Alt&#43;Shift&#43;F10运行程序，Shift&#43;F9启动调试，Ctrl&#43;F2停止   调整项目窗口宽度 alt&#43;1定位到project视图，使用ctrl&#43;shift&#43;左右箭头来调整项目窗口宽度    查询    DESC KEY     跳转文件指定行 ctrl &#43; l   搜索文本 ctrl &#43; f   全局搜索和局部搜索 ctrl &#43; h   结合ctrl &#43; f 快捷上下查找文本 ctrl &#43; k ,ctrl &#43; shift &#43; k   查找接口实现类 ctrl &#43; alt &#43;B ，ctrl &#43; T   查询 shift &#43; shift   方位名查询 ctrl &#43; shift &#43; alt &#43; n   目录查询 ctrl &#43; shift &#43; alt &#43; n，输入/    编辑    DESC KEY     自动处理 alt&#43;Enter   代码联系 ctrl &#43; alt &#43; space   自动生成方法 alt&#43;insert，然后根据提示继续   删除当前行 ctrl &#43; d、x   复制当前行 ctrl &#43;alt &#43; ↓   选中单词 ctrl &#43; shift &#43; ←、→   大小写转换 ctrl &#43; shift &#43; u、y   收尾补充（;{}等） ctrl &#43; shift &#43; 回车   驼峰下划线命名切换 ctrl &#43; alt &#43; c   重构-修改类、方法、参数名字 alt &#43; shift &#43; r   重构-抽取类方法 选中代码，然后使用alt &#43; shift &#43; m,就会弹出抽取视图   重构-可选择 Ctrl&#43;Shift&#43;Alt&#43;T   代码生成 Template/Postfix &#43;Tab    文件    DESC KEY     关闭所有文件 ctrl &#43; shift &#43; w   显示最近打开的文件 ctrl &#43; e   显示最近修改的文件 ctrl &#43; shift &#43; e   文件切换 ctrl &#43; pg、up   bookmarks ctrl &#43; shift &#43; F11   bookmarks查看 shift &#43; F11    视图    DESC KEY     视图切换 ctrl &#43; Tab   显示类结构 ctrl &#43; o   显示文件位置 Alt&#43;F1   项目切换 ctrl &#43; alt &#43; [ 、]   选择窗口 alt &#43; 窗口代码（1、2、3 .'><title>IDEA笔记</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='IDEA笔记'>
+<meta property='og:description' content='快捷键设置  默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们想主动 使用代码提示时，默认的快捷键是CTRL&#43;空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。 首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。 我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。 在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT&#43;/）。 Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。 在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT&#43;/ 把它作为代码提示的快捷键。 添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT&#43;空格的快捷键就可以了！  常用快捷键 辅助    DESC KEY     查找Intellij的命令 Ctrl&#43;Shift&#43;A   运行 Alt&#43;Shift&#43;F10运行程序，Shift&#43;F9启动调试，Ctrl&#43;F2停止   调整项目窗口宽度 alt&#43;1定位到project视图，使用ctrl&#43;shift&#43;左右箭头来调整项目窗口宽度    查询    DESC KEY     跳转文件指定行 ctrl &#43; l   搜索文本 ctrl &#43; f   全局搜索和局部搜索 ctrl &#43; h   结合ctrl &#43; f 快捷上下查找文本 ctrl &#43; k ,ctrl &#43; shift &#43; k   查找接口实现类 ctrl &#43; alt &#43;B ，ctrl &#43; T   查询 shift &#43; shift   方位名查询 ctrl &#43; shift &#43; alt &#43; n   目录查询 ctrl &#43; shift &#43; alt &#43; n，输入/    编辑    DESC KEY     自动处理 alt&#43;Enter   代码联系 ctrl &#43; alt &#43; space   自动生成方法 alt&#43;insert，然后根据提示继续   删除当前行 ctrl &#43; d、x   复制当前行 ctrl &#43;alt &#43; ↓   选中单词 ctrl &#43; shift &#43; ←、→   大小写转换 ctrl &#43; shift &#43; u、y   收尾补充（;{}等） ctrl &#43; shift &#43; 回车   驼峰下划线命名切换 ctrl &#43; alt &#43; c   重构-修改类、方法、参数名字 alt &#43; shift &#43; r   重构-抽取类方法 选中代码，然后使用alt &#43; shift &#43; m,就会弹出抽取视图   重构-可选择 Ctrl&#43;Shift&#43;Alt&#43;T   代码生成 Template/Postfix &#43;Tab    文件    DESC KEY     关闭所有文件 ctrl &#43; shift &#43; w   显示最近打开的文件 ctrl &#43; e   显示最近修改的文件 ctrl &#43; shift &#43; e   文件切换 ctrl &#43; pg、up   bookmarks ctrl &#43; shift &#43; F11   bookmarks查看 shift &#43; F11    视图    DESC KEY     视图切换 ctrl &#43; Tab   显示类结构 ctrl &#43; o   显示文件位置 Alt&#43;F1   项目切换 ctrl &#43; alt &#43; [ 、]   选择窗口 alt &#43; 窗口代码（1、2、3 .'>
+<meta property='og:url' content='https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='IDE' /><meta property='article:published_time' content='2019-07-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="IDEA笔记">
+<meta name="twitter:description" content="快捷键设置  默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们想主动 使用代码提示时，默认的快捷键是CTRL&#43;空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。 首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。 我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。 在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT&#43;/）。 Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。 在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT&#43;/ 把它作为代码提示的快捷键。 添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT&#43;空格的快捷键就可以了！  常用快捷键 辅助    DESC KEY     查找Intellij的命令 Ctrl&#43;Shift&#43;A   运行 Alt&#43;Shift&#43;F10运行程序，Shift&#43;F9启动调试，Ctrl&#43;F2停止   调整项目窗口宽度 alt&#43;1定位到project视图，使用ctrl&#43;shift&#43;左右箭头来调整项目窗口宽度    查询    DESC KEY     跳转文件指定行 ctrl &#43; l   搜索文本 ctrl &#43; f   全局搜索和局部搜索 ctrl &#43; h   结合ctrl &#43; f 快捷上下查找文本 ctrl &#43; k ,ctrl &#43; shift &#43; k   查找接口实现类 ctrl &#43; alt &#43;B ，ctrl &#43; T   查询 shift &#43; shift   方位名查询 ctrl &#43; shift &#43; alt &#43; n   目录查询 ctrl &#43; shift &#43; alt &#43; n，输入/    编辑    DESC KEY     自动处理 alt&#43;Enter   代码联系 ctrl &#43; alt &#43; space   自动生成方法 alt&#43;insert，然后根据提示继续   删除当前行 ctrl &#43; d、x   复制当前行 ctrl &#43;alt &#43; ↓   选中单词 ctrl &#43; shift &#43; ←、→   大小写转换 ctrl &#43; shift &#43; u、y   收尾补充（;{}等） ctrl &#43; shift &#43; 回车   驼峰下划线命名切换 ctrl &#43; alt &#43; c   重构-修改类、方法、参数名字 alt &#43; shift &#43; r   重构-抽取类方法 选中代码，然后使用alt &#43; shift &#43; m,就会弹出抽取视图   重构-可选择 Ctrl&#43;Shift&#43;Alt&#43;T   代码生成 Template/Postfix &#43;Tab    文件    DESC KEY     关闭所有文件 ctrl &#43; shift &#43; w   显示最近打开的文件 ctrl &#43; e   显示最近修改的文件 ctrl &#43; shift &#43; e   文件切换 ctrl &#43; pg、up   bookmarks ctrl &#43; shift &#43; F11   bookmarks查看 shift &#43; F11    视图    DESC KEY     视图切换 ctrl &#43; Tab   显示类结构 ctrl &#43; o   显示文件位置 Alt&#43;F1   项目切换 ctrl &#43; alt &#43; [ 、]   选择窗口 alt &#43; 窗口代码（1、2、3 ."></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/tool/">tool</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/">IDEA笔记</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jul 15, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="快捷键设置">快捷键设置</h2>
+<ol>
+<li>默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。</li>
+<li>如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。
+首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。</li>
+<li>我们在左侧菜单选择KeyMap，Main Menu-&gt;Code-&gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。</li>
+<li>在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。</li>
+<li>Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。</li>
+<li>在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。</li>
+<li>添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！</li>
+</ol>
+<h2 id="常用快捷键">常用快捷键</h2>
+<h4 id="辅助">辅助</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">DESC</th>
+<th style="text-align:left">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">查找Intellij的命令</td>
+<td style="text-align:left">Ctrl+Shift+A</td>
+</tr>
+<tr>
+<td style="text-align:left">运行</td>
+<td style="text-align:left">Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止</td>
+</tr>
+<tr>
+<td style="text-align:left">调整项目窗口宽度</td>
+<td style="text-align:left">alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度</td>
+</tr>
+</tbody>
+</table>
+<h4 id="查询">查询</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">DESC</th>
+<th style="text-align:left">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">跳转文件指定行</td>
+<td style="text-align:left">ctrl + l</td>
+</tr>
+<tr>
+<td style="text-align:left">搜索文本</td>
+<td style="text-align:left">ctrl + f</td>
+</tr>
+<tr>
+<td style="text-align:left">全局搜索和局部搜索</td>
+<td style="text-align:left">ctrl + h</td>
+</tr>
+<tr>
+<td style="text-align:left">结合ctrl + f 快捷上下查找文本</td>
+<td style="text-align:left">ctrl + k ,ctrl + shift + k</td>
+</tr>
+<tr>
+<td style="text-align:left">查找接口实现类</td>
+<td style="text-align:left">ctrl + alt +B ，ctrl + T</td>
+</tr>
+<tr>
+<td style="text-align:left">查询</td>
+<td style="text-align:left">shift + shift</td>
+</tr>
+<tr>
+<td style="text-align:left">方位名查询</td>
+<td style="text-align:left">ctrl + shift + alt + n</td>
+</tr>
+<tr>
+<td style="text-align:left">目录查询</td>
+<td style="text-align:left">ctrl + shift + alt + n，输入/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="编辑">编辑</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">DESC</th>
+<th style="text-align:left">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">自动处理</td>
+<td style="text-align:left">alt+Enter</td>
+</tr>
+<tr>
+<td style="text-align:left">代码联系</td>
+<td style="text-align:left">ctrl + alt + space</td>
+</tr>
+<tr>
+<td style="text-align:left">自动生成方法</td>
+<td style="text-align:left">alt+insert，然后根据提示继续</td>
+</tr>
+<tr>
+<td style="text-align:left">删除当前行</td>
+<td style="text-align:left">ctrl + d、x</td>
+</tr>
+<tr>
+<td style="text-align:left">复制当前行</td>
+<td style="text-align:left">ctrl +alt + ↓</td>
+</tr>
+<tr>
+<td style="text-align:left">选中单词</td>
+<td style="text-align:left">ctrl + shift + ←、→</td>
+</tr>
+<tr>
+<td style="text-align:left">大小写转换</td>
+<td style="text-align:left">ctrl + shift + u、y</td>
+</tr>
+<tr>
+<td style="text-align:left">收尾补充（;{}等）</td>
+<td style="text-align:left">ctrl + shift + 回车</td>
+</tr>
+<tr>
+<td style="text-align:left">驼峰下划线命名切换</td>
+<td style="text-align:left">ctrl + alt + c</td>
+</tr>
+<tr>
+<td style="text-align:left">重构-修改类、方法、参数名字</td>
+<td style="text-align:left">alt + shift + r</td>
+</tr>
+<tr>
+<td style="text-align:left">重构-抽取类方法</td>
+<td style="text-align:left">选中代码，然后使用alt + shift + m,就会弹出抽取视图</td>
+</tr>
+<tr>
+<td style="text-align:left">重构-可选择</td>
+<td style="text-align:left">Ctrl+Shift+Alt+T</td>
+</tr>
+<tr>
+<td style="text-align:left">代码生成</td>
+<td style="text-align:left">Template/Postfix +Tab</td>
+</tr>
+</tbody>
+</table>
+<h4 id="文件">文件</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">DESC</th>
+<th style="text-align:left">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">关闭所有文件</td>
+<td style="text-align:left">ctrl + shift + w</td>
+</tr>
+<tr>
+<td style="text-align:left">显示最近打开的文件</td>
+<td style="text-align:left">ctrl + e</td>
+</tr>
+<tr>
+<td style="text-align:left">显示最近修改的文件</td>
+<td style="text-align:left">ctrl + shift + e</td>
+</tr>
+<tr>
+<td style="text-align:left">文件切换</td>
+<td style="text-align:left">ctrl + pg、up</td>
+</tr>
+<tr>
+<td style="text-align:left">bookmarks</td>
+<td style="text-align:left">ctrl + shift + F11</td>
+</tr>
+<tr>
+<td style="text-align:left">bookmarks查看</td>
+<td style="text-align:left">shift + F11</td>
+</tr>
+</tbody>
+</table>
+<h4 id="视图">视图</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">DESC</th>
+<th style="text-align:left">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">视图切换</td>
+<td style="text-align:left">ctrl + Tab</td>
+</tr>
+<tr>
+<td style="text-align:left">显示类结构</td>
+<td style="text-align:left">ctrl + o</td>
+</tr>
+<tr>
+<td style="text-align:left">显示文件位置</td>
+<td style="text-align:left">Alt+F1</td>
+</tr>
+<tr>
+<td style="text-align:left">项目切换</td>
+<td style="text-align:left">ctrl + alt + [ 、]</td>
+</tr>
+<tr>
+<td style="text-align:left">选择窗口</td>
+<td style="text-align:left">alt + 窗口代码（1、2、3 ..）</td>
+</tr>
+<tr>
+<td style="text-align:left">水平分组</td>
+<td style="text-align:left">右键文件tab，选择split vertically</td>
+</tr>
+<tr>
+<td style="text-align:left">垂直分组</td>
+<td style="text-align:left">右键文件tab，选择split horizontally</td>
+</tr>
+<tr>
+<td style="text-align:left">收藏至bookmark</td>
+<td style="text-align:left">ctrl+shift+F11</td>
+</tr>
+<tr>
+<td style="text-align:left">打开  bookmark</td>
+<td style="text-align:left">shift+F11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="view">View</h2>
+<h4 id="演出模式">演出模式</h4>
+<p>选择Enter Presentation Mode ，将IDEA弄到最大，让你只关注一个类里面的代码，进行毫无干扰的coding；<br>
+配合CTRL+E等快捷键定位文件；<br>
+选择Exit Presentation Mode 即可退出。</p>
+<h4 id="去掉面包屑上方导航栏">去掉面包屑（上方导航栏）</h4>
+<p>使用alt+v，然后取消Navigation bar勾选即可。</p>
+<h2 id="inject-language">Inject language</h2>
+<p>选中&quot;&quot;，使用alt+enter快捷键弹出inject language视图，并选中Inject language or reference；<br>
+直接按下回车键，在inject language列表选择显示语言（JSON等）；<br>
+再次使用alt+enter，选中Edit JSON Fragment并回车，就可以看到编辑JSON文件的视图了；<br>
+使用alt+enter，选中Un-inject language/reference 回车即可取消。</p>
+<h2 id="常用的exprjava">常用的expr（Java）</h2>
+<ul>
+<li>.sout</li>
+<li>.notnull</li>
+<li>.try</li>
+</ul>
+<h2 id="常用的setting">常用的Setting</h2>
+<h4 id="auto-import">Auto Import</h4>
+<p>add unambiguous imports on the fly 编写时自动导入<br>
+optimize imports on the fly 编写时自动优化去除没用到的包</p>
+<h4 id="appearance">Appearance</h4>
+<p>show memory indicator 右下角显示内存使用情况，点击可回收内存<br>
+show line number 显示选中代码行数</p>
+<h4 id="editor-tabs">editor tabs</h4>
+<p>取消勾选 show tabs in single row 多行显示tab，配合tab limit</p>
+<h4 id="general">General</h4>
+<p>change font size(Zoom) with ctrl+Mouse Wheel 滚轮调整字体大小</p>
+<h4 id="不使用import-">不使用import *</h4>
+<p>Settings -&gt; Editor -&gt; Code Style -&gt; Java -&gt; Imports  两个count to use import with &lsquo;*&rsquo; 设置成999。</p>
+<h2 id="tools">Tools</h2>
+<h4 id="idea-rest-client">IDEA REST Client</h4>
+<p><!-- raw HTML omitted -->学会IDEA REST Client后就可以丢掉postman了<!-- raw HTML omitted --></p>
+<h2 id="常用插件">常用插件</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">插件名称</th>
+<th style="text-align:left">插件介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Alibaba Java Coding Guidelines</td>
+<td style="text-align:left">阿里巴巴代码规范检查插件</td>
+</tr>
+<tr>
+<td style="text-align:left">FindBugs-IDEA （QAPlug + QAPlug FindBugs）</td>
+<td style="text-align:left">潜在 Bug 检查</td>
+</tr>
+<tr>
+<td style="text-align:left">SonarLint</td>
+<td style="text-align:left">Sonar代码检查</td>
+</tr>
+<tr>
+<td style="text-align:left">Translation</td>
+<td style="text-align:left">一款非常好用的翻译插件</td>
+</tr>
+<tr>
+<td style="text-align:left">CodeGlance</td>
+<td style="text-align:left">代码编辑区迷你缩放</td>
+</tr>
+<tr>
+<td style="text-align:left">Rainbow Brackets</td>
+<td style="text-align:left">对成对括号进行着色的插件</td>
+</tr>
+<tr>
+<td style="text-align:left">CamelCase</td>
+<td style="text-align:left">字段命名切换</td>
+</tr>
+<tr>
+<td style="text-align:left">Grep Console</td>
+<td style="text-align:left">自定义设置不用日志用不同的颜色进行标识</td>
+</tr>
+<tr>
+<td style="text-align:left">RestfulToolkit</td>
+<td style="text-align:left">取代postman，自动定位项目接口</td>
+</tr>
+<tr>
+<td style="text-align:left">MybatisX</td>
+<td style="text-align:left">Mapper接口和XML之间的跳转和自动生成模版的功能</td>
+</tr>
+<tr>
+<td style="text-align:left">GsonFormat</td>
+<td style="text-align:left">快速生成一个和该Json数据对应的Java对象</td>
+</tr>
+<tr>
+<td style="text-align:left">Statistic</td>
+<td style="text-align:left">代码统计插件</td>
+</tr>
+<tr>
+<td style="text-align:left">Maven Helper</td>
+<td style="text-align:left">Maven 辅助插件</td>
+</tr>
+<tr>
+<td style="text-align:left">Properties to YAML Converter</td>
+<td style="text-align:left">Properties 转 YAML 格式插件</td>
+</tr>
+<tr>
+<td style="text-align:left">IDEA Mind Map</td>
+<td style="text-align:left">画思维导图</td>
+</tr>
+<tr>
+<td style="text-align:left">Git Commit Template</td>
+<td style="text-align:left">格式化提交信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="问题记录">问题记录</h2>
+<h4 id="idea-修复-弹窗license-activation报this-license-big3clik6f-has-been-cancelled">IDEA 修复 弹窗License activation报this license BIG3CLIK6F has been cancelled</h4>
+<p>修改系统配置 ：<br>
+Linux在/etc/hosts中添加 0.0.0.0 account.jetbrains.com<br>
+windows在C:\Windows\System32\drivers\etc\hosts，将“0.0.0.0 account.jetbrains.com”添加到hosts文件中</p>
+<h4 id="tomcat启动项目-错误">tomcat启动项目 错误</h4>
+<p>Error running &lsquo;Tomcat&rsquo;: Unable to open debugger port (127.0.0.1:53904): java.net.SocketExceptio<br>
+socket阻塞导致端口占用。
+解决步骤：</p>
+<ol>
+<li>使用 <code>netstat -ano | find &quot;8081&quot;</code>  查看进程</li>
+<li>使用 <code>taskkill -f -pid 8152</code> 关闭进程</li>
+</ol>
+<h4 id="使用-lombok-后编译不通过">使用 Lombok 后编译不通过</h4>
+<p>在 Intellij 中 Settings &gt; Build, Execution, Deployment &gt; Compiler &gt; Annotation Processor 选项打钩</p>
+<h2 id="开发记录">开发记录</h2>
+<h4 id="idea将项目部署到tomcatwebapps目录下">idea将项目部署到tomcat/webapps目录下</h4>
+<p>Project Structure -&gt; Modules -&gt; Inherit project compile output path<br>
+Artifacts 选择 Output directory D:\xxxx\tomcat\apache-tomcat-7.0.81\webapps\serverName</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/ide/">IDE</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Eclipse笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/redis%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">redis笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/maven%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Maven笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/git%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git笔记</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

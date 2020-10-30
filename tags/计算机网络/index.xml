@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机网络 on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+    <description>Recent content in 计算机网络 on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计算机网络基础汇总</title>
+      <link>https://ianeiu.github.io/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/</guid>
+      <description>计算机网络体系分类： 计算机网络整个体系有两个大的分类：一个是国际组织制定的OSI七层模型，一种是实际使用中的TCP/IP四层模型。
+   OSI七层模型 TCP/IP四层模型     应用层    表示层 应用层   会话层    传输层 传输层   网络层 网络层   数据链路层 物理接入层   物理层     物理层： 物理层主要是实现主机和网络之间的物理连接，规定一些与传输媒体接口有关的一些特性。
+通信方式：   **单工通信：**只能由A主机向B主机发送消息，通信是单向的。
+  **半双工通信：**同一时间只能是由A主机向B主机或者是B主机向A主机发送信息，不能同时发送消息。
+  全双工通信： A主机和B主机可以实现在同一时间内既接收消息，又发送消息，极大的提升了通信效率。
+  常见引导型传输媒体： 双绞线： 分为屏蔽双绞线（STP）和非屏蔽双绞线（UTP），屏蔽双绞线就是在非屏蔽双绞线外边又加了一层屏蔽层
+tips：为什么双绞线要两根线绞起来，两个线绞起来可以有效的减少相互之间的电磁干扰。
+同轴电缆： 由内导体铜制芯线，绝缘层，网状编织的外导体屏蔽层，以及塑料保护外层组成。有良好的抗干扰性，被广泛用于较高速率的传输。
+光缆： 由非常透明的石英玻璃拉成细丝，主要由纤芯和包层构成双层通讯柱。可以分为单模光纤和多模光纤。
+信道复用技术：   **频分复用：**根据传输的波的频率的不同，将不同频段的波用于不同的通信。
+  时分复用：将时间分割为时间段，规定在某个时间段内发送什么样的信息，根据时间段来进行信息类别的区分。也称为同步时分复用</description>
+    </item>
+    
+  </channel>
+</rss>

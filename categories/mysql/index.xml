@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on 吴炜棉</title>
+    <link>https://ianeiu.github.io/categories/mysql/</link>
+    <description>Recent content in mysql on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql面试题</title>
+      <link>https://ianeiu.github.io/p/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>MySQL InnoDB、Mysaim的特点  InnoDB  支持事务处理、外键、行锁 不保存表的具体行数，扫描表来计算多少行 对于AUTO_INCREMENT类型的字段，必须包含只有该字段的索引 DELETE表时，是一行一行的删除 把数据和索引存放在表空间里面 跨平台直接拷贝使用 表格很难被压缩   Mysaim （适合读多写少的场景）  不支持事务、外键 保存表具体行数 AUTO_INCREMENT可以与其他字段一起建联合索引 DELETE表时先drop表，然后重建 表将存放三个文件。frm文件存在表格定义，myds数据文件，myi存在索引 跨平台很难卡片被 表格可压缩    Mysql主备同步的基本原理  master将该表记录到二进制日志 binary log中 salve将master的binary log events 拷贝到它的中继日志relay log salve重做中继日志中的事件，改变数据  如何优化数据库性能（索引、分库分表、批置操作、分页算法、升级硬盘SSD、业务优化、主从部署）  选择合适的数据库引擎，合理使用索引 分页获取数据，按需取字段 优化业务代码，减少数据库IO 分库分表 部署主从数据库 升级硬件  SQL什么情况下不会使用索引（不包含，不等于，函数）  select * 可能导致不走索引 空值会导致不走索引 索引列有函数运算 隐式转换可能导致不走索引 表的数据库小或者需要选择大部分数据，不走索引 != 或者 &amp;lt;&amp;gt; like &amp;lsquo;%ex&amp;rsquo; not in 、 not exist  一般在什么字段上建索引（过滤数据最多的字段）  表的主键、外键 数据量超过300的表 经常与其他表进行连接的表的连接字段 经常出现在where语句上的字段 应该建在选择性高的字段、小字段  mysql调优  explain select 语句 当只要一条数据时使用limit 1 为查询字段建索引 避免select * 字段尽量使用not null 垂直分割 拆分大的delete和insert，这俩会锁表 分库分表分区  </description>
+    </item>
+    
+  </channel>
+</rss>

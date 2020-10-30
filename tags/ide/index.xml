@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IDE on 吴炜棉</title>
+    <link>https://ianeiu.github.io/tags/ide/</link>
+    <description>Recent content in IDE on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/tags/ide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eclipse笔记</title>
+      <link>https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/eclipse%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键 使用频率极高的快捷键    DESC KEY     代码提示 alt+/   自动生成object方法 alt + shift + s，然后根据提示继续   复制当前行 ctrl +alt + ↓   查找文本 ctrl + k ,ctrl + shfit + k   如何跳转到文件中的特定行 ctrl + l   调出搜索文本的视图 ctrl + f   进行全局搜索和局部搜索 ctrl + h    文件    DESC KEY     创建各种类型的文件 ctrl + n   关闭当前文件 ctrl + w   关闭所有文件 ctrl + shift + w   打开文件所在目录 alt + shift + w，选择system explorer    类    DESC KEY     显示出当前打开的所有文件 ctrl + e   文件切换 ctrl + pg、up ,ctrl + pg、dn   视图切换 ctrl + f7	跳转到代码编辑器视图 f12   经典的quick access ctrl + 3 搜maven、server   eclipse的面包屑功能 alt + shift + b （右键面包屑有关闭按钮）    文本    DESC KEY     删除当前行 ctrl + d   查看字符串出现的地方 ctrl + shift + u   显示html和xml元素的所有属性 ctrl + shift + ,   大小写转换 变小写ctrl + shift + y,变大写ctrl +shift + x   重构-修改名字 alt + shift + r 统一修改方法的参数名字、或者类变量、方法变量   重构-抽取类方法 选中代码，然后使用alt + shift + m,就会弹出抽取视图    Eclipse-插件  Team  Subclipse   Theme  Eclipse Color Theme Darkest Dark Theme with DevStyle   反编译  Enhanced Class Decompiler   UML  AmaterasUML_1.</description>
+    </item>
+    
+    <item>
+      <title>IDEA笔记</title>
+      <link>https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/idea%E7%AC%94%E8%AE%B0/</guid>
+      <description>快捷键设置  默认情况下，我们输入代码时IDEA会自动弹出代码提示框，这时候是不用按快捷键的，直接使用方向键选择我们需要的条目就可以了。 如果我们想主动 使用代码提示时，默认的快捷键是CTRL+空格，但是中文系统这个快捷键为切换输入法，我们应该调整一下这个快捷键的功能。 首先我们点击左上角的File（文件）——》Setting（设置），打开全局设置。 我们在左侧菜单选择KeyMap，Main Menu-&amp;gt;Code-&amp;gt;Complation，找到Basic和Cyclic Expand Word两个快捷键设置。 在Cyclic Expand Word上点击右键，移除原本的快捷键（AIT+/）。 Basic就是代码提示功能的选项了，我们在这条项目上点击右键，选择第一项，增加快捷键。 在这个界面，我们按下的键就会成为快捷键，此时我们按下AIT+/ 把它作为代码提示的快捷键。 添加完之后代码提示有了两个快捷键了，我们再次点击右键，删除原来的AIT+空格的快捷键就可以了！  常用快捷键 辅助    DESC KEY     查找Intellij的命令 Ctrl+Shift+A   运行 Alt+Shift+F10运行程序，Shift+F9启动调试，Ctrl+F2停止   调整项目窗口宽度 alt+1定位到project视图，使用ctrl+shift+左右箭头来调整项目窗口宽度    查询    DESC KEY     跳转文件指定行 ctrl + l   搜索文本 ctrl + f   全局搜索和局部搜索 ctrl + h   结合ctrl + f 快捷上下查找文本 ctrl + k ,ctrl + shift + k   查找接口实现类 ctrl + alt +B ，ctrl + T   查询 shift + shift   方位名查询 ctrl + shift + alt + n   目录查询 ctrl + shift + alt + n，输入/    编辑    DESC KEY     自动处理 alt+Enter   代码联系 ctrl + alt + space   自动生成方法 alt+insert，然后根据提示继续   删除当前行 ctrl + d、x   复制当前行 ctrl +alt + ↓   选中单词 ctrl + shift + ←、→   大小写转换 ctrl + shift + u、y   收尾补充（;{}等） ctrl + shift + 回车   驼峰下划线命名切换 ctrl + alt + c   重构-修改类、方法、参数名字 alt + shift + r   重构-抽取类方法 选中代码，然后使用alt + shift + m,就会弹出抽取视图   重构-可选择 Ctrl+Shift+Alt+T   代码生成 Template/Postfix +Tab    文件    DESC KEY     关闭所有文件 ctrl + shift + w   显示最近打开的文件 ctrl + e   显示最近修改的文件 ctrl + shift + e   文件切换 ctrl + pg、up   bookmarks ctrl + shift + F11   bookmarks查看 shift + F11    视图    DESC KEY     视图切换 ctrl + Tab   显示类结构 ctrl + o   显示文件位置 Alt+F1   项目切换 ctrl + alt + [ 、]   选择窗口 alt + 窗口代码（1、2、3 .</description>
+    </item>
+    
+  </channel>
+</rss>

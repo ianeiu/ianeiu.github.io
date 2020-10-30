@@ -22,6 +22,98 @@ IO、NIO IO 概览:</description>
     </item>
     
     <item>
+      <title>JVM笔记之调优及参数</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/</guid>
+      <description>调优 调优时机  内存（⽼年代）持续上涨达到设置的最大内存值； Full GC 次数频繁； GC 停顿时间过长（超过1秒）； 应用出现OutOfMemory 等内存异常； 应⽤中使用本地缓存占用大量内存空间； 系统吞吐量量与响应性能不高或下降。  调优原则  多数的Java应用不需要在服务器上进行JVM优化，JVM优化是到最后不得已才采用的⼿段； 多数导致GC问题的Java应用，往往是代码问题，分析GC情况优化代码； 在应用上线之前，先考虑将机器的JVM参数设置到最优（最适合）； 减少创建对象的数量； 减少使用全局变量和大对象  调优目标 GC低停顿、低频率； 低内存占用；⾼吞吐量
+调优步骤  分析GC日志及dump⽂文件，判断是否需要优化，确定瓶颈问题点； 确定jvm调优量化目标； 确定jvm调优参数（根据历史jvm参数来调整）； 调优一台服务器，对比观察调优前后的差异； 不断的分析和调整，直到找到合适的jvm参数配置； 找到最合适的参数，将这些参数应用到所有服务器，并进行后续跟踪。  参数 堆参数设置   -Xms 设置Java程序启动时初始化JVM堆内存大小。
+  -Xmx 设置Java程序能获得最大JVM堆内存大小。
+  -XX:+PrintGC 使用这个参数，虚拟机启动后，只要遇到GC就会打印日志。
+  -XX:+PrintGCDetails 可以查看详细信息，包括各个区的情况
+  -XX:+PrintHeapAtGC 打印 GC 前后的详细堆栈信息
+  -XX:+PrintFlagsInitial打印JVM初始化参数。
+  -XX:+PrintFlagsFinal　标记人为修改过的参数。
+  -XX:+PrintCommandLineFlags 查看默认垃圾回收器。
+  新生代参数设置   -XX:NewSize=5m 设置新生代最小空间大小</description>
+    </item>
+    
+    <item>
+      <title>Java面试之并发</title>
+      <link>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/</guid>
+      <description>什么是乐观锁和悲观锁？ 1、悲观锁
+Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对共享状态的访问，可以确保无论哪个线程持有共享变量的锁，都采用独占的方式来访问这些变量。独占锁其实就是一种悲观锁，所以可以说synchronized是悲观锁。
+2、乐观锁
+乐观锁（Optimstic Locking）其实是一种思想。相对悲观锁而言，乐观锁假定认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式地对数据的冲突与否进行检测，如果发现冲突了，则返回错误信息。
+什么是AQS AbstractQueuedSynchronizer，是一个用于构建锁和同步容器的框架。事实上concurrent包内许多类都是基于AQS构建，例如ReentrantLock、Semaphore、CountDownLatch、ReentrantReadWriteLock、FutureTask等。
+AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称作 哨兵节点或这哑节点，它不与任何线程关联。其他节点与等待线程关联，每个节点维护一个等待状态waitStatus。
+同步容器与并发容器  同步容器  同步容器主要代表用Vector和Hashtable，及Collections.synchronizedXXX等 锁粒度为整体对象 迭代器是及时失败的，迭代过程修改会抛出ConcurrentModificationException   并发容器  主要代表有ConcurrentHashMap、CopyOnWriteArrayList、ConcurrentSkipListMap、ConcurrentSkipListSet 锁粒度是分散的、细粒度，即读写使用不同锁 迭代器具有弱一致性，能够迭代时修改。    synchronized 底层如何实现？什么是锁的升级、降级？ synchronized 代码块是由 monitorenter/monitorexit 指令实现的，Monitor 对象是同步的基本实现单元。
+在 Java 6 之前，Monitor 的实现完全是依靠操作系统内部的互斥锁，因为需要进行用户态到内核态的切换，所以同步操作是一个无差别的重量级操作。
+现代的（Oracle）JDK 中，JVM 对此进行了大刀阔斧地改进，提供了三种不同的 Monitor 实现， 也就是常说的三种不同的锁：偏斜锁（Biased Locking）、轻量级锁和重量级锁，大大改进了其性能。
+所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机制， 当 JVM 检测到不同的竞争状况时，会自动切换到适合的锁实现，这种切换就是锁的升级、降级。
+当没有竞争出现时，默认会使用偏斜锁。 JVM 会利用 CAS 操作（compare and swap），在对象头上的 Mark Word 部分设置线程 ID，以表示这个对象偏向于当前线程，所以并不涉及真正的互斥锁。 这样做的假设是基于在很多应用场景中，大部分对象生命周期中最多会被一个线程锁定，使用偏斜锁可以降低无竞争开销。
+如果有另外的线程试图锁定某个已经被偏斜过的对象，JVM 就需要撤销（revoke）偏斜锁，并切换到轻量级锁实现。 轻量级锁依赖 CAS 操作 Mark Word 来试图获取锁，如果重试成功，就使用普通的轻量级锁；否则，进一步升级为重量级锁。</description>
+    </item>
+    
+    <item>
+      <title>Java面试题</title>
+      <link>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 15 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>Java平台理解及Java是解释执行吗？ 首先Java是一种面向对象的语言，本身具有两个特性：一个是跨平台能力（一次编写，到处运行），屏蔽了操作系统和硬件的细节； 第二个就是垃圾自动回收机制（GC）。
+我们日常接触到的jre（Java runtime environment）和jdk（Java development kit）， jre是Java运行时环境，包含了JVM和java类库； jdk则是Java开发工具，里面提供了许多开发工具如；编译器(javac)、诊断和监控(jconsole)工具等。
+java生态：spring，spark，elasticsearch，maven
+不完全正确，Java是通过对源文件进行编译成字节码文件（.class），然后jvm（Java虚拟机）对字节码文件逐条进行解释运行。 但是往往有一部分热点代码（hot spot）会占有大部分时间解释，所以Java中会有jit（Just-In-Time）。即时编译器将该部分直接编译成机器代码直接运行，大大提高效率。 这部分热点代码就是编译执行了而不是解释执行。
+在运行时，JVM 会通过类加载器（Class-Loader）加载字节码，解释或者编译执行。 主流 Java 版本中，如 JDK 8 实际是解释和编译混合的一种模式，即所谓的混合模式（-Xmixed）。 通常运行在 server 模式的 JVM，会进行上万次调用以收集足够的信息进行高效的编译，client 模式这个门限是 1500 次。 Oracle Hotspot JVM 内置了两个不同的 JIT compiler， C1 对应前面说的 client 模式，适用于对于启动速度敏感的应用，比如普通 Java 桌面应用； C2 对应 server 模式，它的优化是为长时间运行的服务器端应用设计的，默认是采用所谓的分层编译（TieredCompilation）。
+除了我们日常最常见的 Java 使用模式，其实还有一种新的编译方式， 即所谓的 AOT（Aheadof-Time Compilation），直接将字节码编译成机器代码， 这样就避免了 JIT 预热等各方面的开销， 比如 Oracle JDK 9 就引入了实验性的 AOT 特性，并且增加了新的 jaotc 工具。
+java创建对象的方式  使用new关键字创建对象 使用Class类的newInstance方法(反射机制) 使用Constructor类的newInstance方法(反射机制) 使用Clone方法创建对象 使用(反)序列化机制创建对象  Exception和Error有什么区别 Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。</description>
+    </item>
+    
+    <item>
+      <title>Java开发之命名规范</title>
+      <link>https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文： 编码5分钟，命名2小时？史上最全的Java命名规范参考！
+一、Java中的命名规范    类型(名) 约束 例     项目 全部小写 多个单词用中划线分隔‘-’	spring-cloud   包 全部小写 com.alibaba.fastjson   类 单词首字母大写 Feature,FieldDeserializer   变量 首字母小写多个单词组成时，除首个单词其他单词首字母都要大写 password, userName   常量 全部大写，多个单词，用&#39;_&amp;lsquo;分隔 CACHEEXPIREDTIME   方法 同变量 read(), getById(Long id)    二、包命名    前缀 例 含义     indi或onem indi.发起者名.项目名.模块名.…… 个体项目个人发起，但非自己独自完成可公开或私有项目，copyright主要属于发起者。   pers pers.个人名.项目名.模块名.…… 个人项目指个人发起，独自完成，可分享的项目,copyright主要属于个人   priv priv.</description>
+    </item>
+    
+    <item>
+      <title>JVM之volatile关键字</title>
+      <link>https://ianeiu.github.io/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>引入 Java内存模型简称JMM（Java Memory Model），是Java虚拟机所定义的一种抽象规范， 用来屏蔽不同硬件和操作系统的内存访问差异，让java程序在各种平台下都能达到一致的内存访问效果。
+  主内存（Main Memory）
+主内存可以简单理解为计算机当中的内存，但又不完全等同。
+主内存被所有的线程所共享，对于一个共享变量（比如静态变量，或是堆内存中的实例）来说，主内存当中存储了它的“本尊”。
+  工作内存（Working Memory）
+工作内存可以简单理解为计算机当中的CPU高速缓存，但又不完全等同。
+每一个线程拥有自己的工作内存，对于一个共享变量来说，工作内存当中存储了它的“副本”。
+线程对共享变量的所有操作都必须在工作内存进行，不能直接读写主内存中的变量。
+不同线程之间也无法访问彼此的工作内存，变量值的传递只能通过主内存来进行。
+  对于一个静态变量
+static int s = 0；  线程A执行如下代码：
+s = 3；  通过一系列内存读写的操作指令，线程A把静态变量 s=0 从主内存读到工作内存，再把 s=3 的更新结果同步到主内存当中。
+从单线程的角度来看，这个过程没有任何问题。这时候我们引入线程B，执行如下代码：
+System.out.println(&amp;quot;s=&amp;quot; + s);  有可能输出 0 或 3
+可以使用synchronized同步锁（影响性能）或者使用volatile关键字修饰（轻量）
+volatile的实现原理 volatile可以实现内存的可见性和防止指令重排序。
+通过内存屏障技术实现的。
+为了实现volatile的内存语义，编译器在生成字节码时，会在指令序列中插入内存屏障指令，内存屏障效果有：
+ 禁止volatile 修饰变量指令的重排序 写入数据强制刷新到主存 读取数据强制从主存读取  使用原则：
+ 对变量的写操作不依赖于当前值。例如 i++ 这种就不适用。 该变量没有包含在具有其他变量的不变式中。  volatile的使用场景不是很多，使用时需要仔细考虑下是否适用volatile，注意满足上面的二个原则。
+volatile 之 可见性 volatile关键字具有许多特性，其中最重要的特性就是保证了用volatile修饰的变量对所有线程的可见性[当一个线程修改了变量的值，新的值会立刻同步到主内存当中。而其他线程读取这个变量的时候，也会从主内存中拉取最新的变量值]。</description>
+    </item>
+    
+    <item>
       <title>Java笔记之基础篇</title>
       <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
@@ -63,6 +155,68 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
     </item>
     
     <item>
+      <title>Java面试之基础题（Integer、String、内部类与final）</title>
+      <link>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%A2%98integerstring%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8Efinal/</guid>
+      <description>Integer Integer a = 1000,b=1000; Integer c = 100,d=100; @Test public void testIntegerDD(){ System.out.println(a==b);//false System.out.println(c==d);//true }  运行代码，我们会得到 false true。这道题笔试用经常出现，原理也很简单 ,可看Integer源码valueOf(int i)方法
+public static Integer valueOf(int i) { if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high) return IntegerCache.cache[i + (-IntegerCache.low)]; return new Integer(i); } Integer 的缓存范围虽然默认是 -128 到 127，但是在特别的应用场景，比如我们明确知道应用会频繁使用更大的数值，这时候应该怎么办呢？
+缓存上限值实际是可以根据需要调整的，JVM 提供了参数设置：
+-XX:AutoBoxCacheMax=N
+接下来，简单的扩展几个Integer的关系运算符==的比较。
+@Test public void testIntegerDD(){ Integer a = 1000,b=1000; Integer c = 100,d=100; Integer e = new Integer(100); Integer f = new Integer(100); int g = 1000; Integer h = new Integer(1000);	//1、进行自动装箱操作；2、Integer中把-128-127 缓存了下来 System.</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM类加载机制</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</guid>
+      <description>虚拟机类加载机制 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换（准备）、解析和初始化，最终形成可以被Java虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。
+类从被加载到虚拟内存中开始，到卸载内存为止，它的整个生命周期包括了：加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)七个阶段。
+其中，验证，准备和解析三个部分统称为连接(Linking)。
+ 类加载的过程 类加载的全过程，加载，验证，准备，解析和初始化这五个阶段。
+加载 在加载阶段，虚拟机需要完成以下三件事情：
+ 通过一个类的全限定名来获取定义此类的二进制字节流 将这个字节流所代表的静态存储结构转换为方法区的运行时数据结构 在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区这些数据的访问入口  Java 将字节码数据从不同的数据源读取到 JVM 中，并映射为 JVM 认可的数据结构（Class 对象），这里的数据源可能是各种各样的形态，如 jar 文件、class 文件，甚至是网络数据源等
+验证 这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。不同的虚拟机对类验证的实现可能有所不同，但大致上都会完成下面四个阶段的检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证。
+ 文件格式验证 验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。 元数据验证 对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求。 字节码验证 整个验证过程中最复杂的一个阶段，主要工作是数据流和控制流的分析。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析。这阶段的任务是保证被校验类的方法在运行时不会做出危害虚拟机安全的行为。 符号引用验证 发生在虚拟机将符号引用直接转化为直接引用的时候，这个转化动作将在连接的第三个阶段－解析阶段产生。符号引用验证可以看作是对类自身以外（常量池中的各种符号引用）的信息进行匹配性的校验。  准备 正式为类变量分配内存并设置类变量初始值的阶段（创建类或接口中的静态变量，并初始化静态变量的初始值），这些内存都将在方法区进行分配。
+解析 解析阶段是虚拟机将常量池的符号引用转换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法四类符号引用进行。
+初始化 前面的类加载过程中，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由Java虚拟机主导和控制。
+到了初始化阶段，才真正开始执行类中定义的Java程序代码（或者说是字节码）。 在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者说初始化阶段是执行类构造器()方法的过程。
+真正去执行类初始化的代码逻辑，包括静态字段赋值的动作，以及执行类定义中的静态初始化块内的逻辑，编译器在编译阶段就会把这部分逻辑整理好，父类型的初始化逻辑优先于当前类型的逻辑。
+ 准备阶段 常量和不同静态变量有什么区别 public class CLPreparation { public static int a = 100; public static final int INT_CONSTANT = 1000; public static final Integer INTEGER_CONSTANT = Integer.</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之引用、GC及OOM</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%BC%95%E7%94%A8gc%E5%8F%8Aoom/</guid>
+      <description>强引用、软引用、弱引用和虚引用 强引用（Strong Reference）只有这个引用被释放之后，对象才会被释放掉。只要引用存在，垃圾回收器永远不会回收。
+我们平常典型编码Object obj = new Object()中的obj就是强引用。通过关键字new创建的对象所关联的引用就是强引用。
+当JVM内存空间不足，JVM宁愿抛出OutOfMemoryError运行时错误（OOM），使程序异常终止，也不会靠随意回收具有强引用的“存活”对象来解决内存不足的问题。
+对于一个普通的对象，如果没有其他的引用关系，只要超过了引用的作用域或者显式地将相应（强）引用赋值为 null，就是可以被垃圾收集的了， 具体回收时机还是要看垃圾收集策略。
+软引用（Soft Reference）内存溢出之前通过代码回收的引用。 通常用来实现内存敏感的缓存（图片缓存框架中，“内存缓存”中的图片是以这种引用来保存）。
+软引用主要用户实现类似缓存的功能，在内存足够的情况下直接通过软引用取值，无需从繁忙的真实来源查询数据，提升速度； 当内存不足时，JVM 会确保在抛出 OutOfMemoryError 之前，清理软引用指向的对象，自动删除这部分缓存数据，从真正的来源查询这些数据。
+弱引用（Weak Reference）第二次垃圾回收时回收的引用，短时间内通过弱引用取对应的数据，可以取到，当执行过第二次垃圾回收时，将返回null。 同样可用于内存敏感的缓存（在静态内部类中，经常会使用虚引用。例如，一个类发送网络请求，承担callback的静态内部类，则常以虚引用的方式来保存外部类(宿主类)的引用，当外部类需要被JVM回收时，不会因为网络请求没有及时回来，导致外部类不能被回收，引起内存泄漏） 弱引用主要用于监控对象是否已经被垃圾回收器标记为即将回收的垃圾，可以通过弱引用的isEnQueued方法返回对象是否被垃圾回收器标记。
+虚引用（Phantom Reference) 又称幽灵引用或幻影引用，虚引用既不会影响对象的生命周期，也无法通过虚引用来获取对象实例的任何属性或函数。
+可用来跟踪对象被垃圾回收器回收的活动，当一个虚引用关联的对象被垃圾收集器回收之前会收到一条系统通知。
+当一个对象的finalize方法已经被调用了之后，这个对象的幽灵引用会被加入到队列中。通过检查该队列里面的内容就知道一个对象是不是已经准备要被回收了。
+虚引用和软引用弱引用都不同,它会在内存没有清理的时候被加入引用队列.虚引用的建立必须要传入引用队列,其他可以没有
+Java内存回收机制 不论哪种语言的内存分配方式，都需要返回所分配内存的真实地址，也就是返回一个指针到内存块的首地址。
+Java中对象是采用new或者反射的方法创建的，这些对象的创建都是在堆（Heap）中分配的，所有对象的回收都是由Java虚拟机通过垃圾回收机制完成的。GC为了能够正确释放对象，会监控每个对象的运行状况，对他们的申请、引用、被引用、赋值等状况进行监控，Java会使用有向图的方法进行管理内存，实时监控对象是否可以达到，如果不可到达，则就将其回收，这样也可以消除引用循环的问题。
+在Java语言中，判断一个内存空间是否符合垃圾收集标准有两个：一个是给对象赋予了空值null，另一个是给对象赋予了新值，这样重新分配了内存空间。
+GC算法分类  引用计数法(没有被java采⽤用) 标记清除法（通过根节点标记所有从根节点开始的可达对象，清除没标记过的对象，标记和清除两个过程效率不高，产生内存碎⽚） 标记压缩法（压缩：将所有存活对象压缩到内存的一端，清除边界外所有的空间） 复制回收算法 分代回收法（根据对象存活周期的不同将内存划分几块，一般是新生代和老年代，新⽣代基本采用复制算法，老年代采⽤用标记清除算法。  MinorGC &amp;amp; FullGC  Minor GC通常发生在新生代的Eden区，一般采用复制回收算法（对象生存期短，发生GC的频率较高，回收速度比较快）。 Full GC/Major GC 发生在老年代，所采用的是标记清除算法。  内存泄漏 内存泄漏是指无用对象（不再使用的对象）持续占有内存或无用对象的内存得不到及时释放，从而造成内存空间的浪费称为内存泄漏。内存泄露有时不严重且不易察觉，这样开发者就不知道存在内存泄露，但有时也会很严重，会提示Out of memory。
+Java内存泄漏的根本原因是什么呢？长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄漏，尽管短生命周期对象已经不再需要，但是因为长生命周期持有它的引用而导致不能被回收，这就是Java中内存泄漏的发生场景。具体主要有如下几大类：
+1、静态集合类引起内存泄漏
+像HashMap、Vector等的使用最容易出现内存泄露，这些静态变量的生命周期和应用程序一致，他们所引用的所有的对象Object也不能被释放，因为他们也将一直被Vector等引用着。
+static Vector v = new Vector(10); for (int i = 1; i&amp;lt;100; i++){ Object o = new Object(); v.</description>
+    </item>
+    
+    <item>
       <title>Java笔记之名词简介</title>
       <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
@@ -87,6 +241,88 @@ Controller层 Controller层负责具体的业务模块流程的控制，在此�
 DTO Data Transfer Object数据传输对象，经过处理后的PO，可能增加或者减少PO的属性，主要用于远程调用等需要大量传输对象的地方。
 POJO POJO（plain ordinary java object）即简单java对象，是一种概念或者接口，身份及作用随环境变化而变化。 它不包含业务逻辑或持久逻辑等，不具有任何特殊角色和不继承或不实现任何其它Java框架的类或接口。
  SpringMVC Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。</description>
+    </item>
+    
+    <item>
+      <title>Java开发之常量定义</title>
+      <link>https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89/</guid>
+      <description>原文： 如何在Java中定义常量(Constant)
+Java中定义常量的四种方法 /** * Method One * 采用接口(Interface)的中变量默认为static final的特性。 */ interface ConstantInterface { String SUNDAY = &amp;#34;SUNDAY&amp;#34;; String MONDAY = &amp;#34;MONDAY&amp;#34;; String TUESDAY = &amp;#34;TUESDAY&amp;#34;; String WEDNESDAY = &amp;#34;WEDNESDAY&amp;#34;; String THURSDAY = &amp;#34;THURSDAY&amp;#34;; String FRIDAY = &amp;#34;FRIDAY&amp;#34;; String SATURDAY = &amp;#34;SATURDAY&amp;#34;; } /** * Method Two * 采用了Java 5.0中引入的Enum类型 (推荐使用) */ enum ConstantEnum { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY } /** * Method Three * 采用了在普通类中使用static final修饰变量的方法 */ class ConstantClassField { public static final String SUNDAY = &amp;#34;SUNDAY&amp;#34;; public static final String MONDAY = &amp;#34;MONDAY&amp;#34;; public static final String TUESDAY = &amp;#34;TUESDAY&amp;#34;; public static final String WEDNESDAY = &amp;#34;WEDNESDAY&amp;#34;; public static final String THURSDAY = &amp;#34;THURSDAY&amp;#34;; public static final String FRIDAY = &amp;#34;FRIDAY&amp;#34;; public static final String SATURDAY = &amp;#34;SATURDAY&amp;#34;; } /** * Method Four * 类似方法三，但是通过函数来获取常量 * http://www.</description>
+    </item>
+    
+    <item>
+      <title>Java面试之初中级题集</title>
+      <link>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/</guid>
+      <description>数组在内存中如何分配  简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的数组，每个数组成员仍是一个引用（指针），引用到堆上的空间（因为类的实例的内存分配在堆上）  String的substring()方法内部是如何实现 substring方法通过原字符串创建了一个新的对象。
+当为字符串分配内存时，char数组value[]存储字符，offset=0，count=字符串长度。
+在Java6里，由substring(start,end)调用构造函数String(int,in,char[])时，实际上是改变offset和count的位置达到取得子字符串的目的，而子字符串里的value[]数组，因为引用是强引用，仍然指向原字符串。
+由于String是不可变的(immutable)，基于这种共享同一个字符数组的设计有以下好处： 调用substring()时无需复制数组，可重用value[]数组；且substring()的运行是常数时间，非线性，性能得到提高；而劣势，便是可能会产生内存泄露。
+假设原字符串s有1GB，且我们需要的是s.substring(1,10)这样一段小的字符串，但由于substring()里的value[]数组仍然指向1GB的原字符串，导致原字符串无法在GC中释放，从而产生了内存泄露。
+在Java7里，String的substring()方法实现已经改变，由原来的共享数组变成了传统的拷贝，原字符串的字符数组已经不再被引用，杜绝了内存泄露的同时也将运行时间由常数变成了线性，这个改变也使得substring()创建字符串的操作更加耗时，以前的开销是O(1)，现在最坏情况是O(n)。
+什么是不可修改对象(Immutable Object) 可修改对象是那些一旦被创建就不能修改的对象。对这种对象的任何改动的后果都是会创建一个新的对象，而不是在原对象本身做修改。
+大多数这样的类通常都是final类型的，因为这样可以避免自己被继承继而被覆盖方法。例如Java中的String类。
+也可以通过将类的成员设置成private非final的来获得同样的效果。同时类不能通过方法暴露成员，特别是可修改类型的成员。
+当类的方法接收客户类传入的可修改对象的话，应该使用一个复制的对象来防止客户代码来修改这个传入的可修改类。比如，传入java.util.Date对象的话，应该使用clone()方法来获得一个副本。
+当通过类方法返回一个可修改对象时，需要返回的是类对象的副本，防止客户代码通过此引用修改了成员对象的属性。
+什么时候需要重写hashCode()和equals()方法 当你需要根据业务逻辑来进行相等性判断、而不是根据对象相等性来判断的时候你就需要重写这两个函数了。
+例如，两个Employee对象相等的依据是它们拥有相同的emp_id，尽管它们有可能是两个不同的对象，并且分别在不同的地方被创建。同时，如果你准备把它们当作HashMap中的key来使用的话，你也必须重写这两个方法。现在，作为Java中equals-hashcode的一个约定，当你重写equals的时候必须也重写hashcode，否则你会打破诸如Set, Map等集合赖以正常工作的约定。
+当你向HashMap插入一个key的时候，首先，这个对象的hashCode()方法会被调用，调用结果用来计算将要存储的位置(bucket)。
+因为某个位置上可能以链表的方式已经包含了多个Map.Entry对象，所以HashMap会使用equals()方法来将此对象与所有这些Map.Entry所包含的key进行对比，以确定此key对象是否已经存在。
+mybatis如何处理结果集 MyBatis的结果集是通过反射来实现的。并不是通过get/set方法。在实体类中无论是否定义get/set()方法，都是可以接收到的。
+cookie和session的区别，分布式环境怎么保存用户状态 1、cookie数据存放在客户的浏览器上，session数据放在服务器上。
+2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。
+3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。
+4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
+分布式环境下的session（举例两种）：
+服务器session复制
+原理：任何一个服务器上的session发生改变（增删改），该节点会把这个 session的所有内容序列化，然后广播给所有其它节点，不管其他服务器需不需要session，以此来保证Session同步。
+优点：可容错，各个服务器间session能够实时响应。
+缺点：会对网络负荷造成一定压力，如果session量大的话可能会造成网络堵塞，拖慢服务器性能。
+session共享机制
+使用分布式缓存方案比如memcached、redis，但是要求Memcached或Redis必须是集群。
+写一段栈溢出、堆溢出的代码 public class Test { //不断创建对象可以导致堆溢出public void testHeap(){ for(;;){ ArrayList list = new ArrayList (2000); } } //递归调用可以导致栈溢出int num=1; public void testStack(){ num++; this.testStack(); } public static void main(String[] args){ Test t = new Test (); t.</description>
+    </item>
+    
+    <item>
+      <title>JVM笔记之JVM结构</title>
+      <link>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
+      <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
+线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
+如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
+虚拟机栈 每个线程包含一个栈区，栈中只保存基础数据类型的对象和自定义对象的引用。每个栈中的数据(原始类型和对象引用)都是私有的。数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会自动消失。 栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。
+本地方法区 本地方法区存储着native方法的调用状态，一般会随着线程创建而针对每一个线程分配。
+全局共享的区域 方法区 方法区是可供各个线程共享的内存区域，用于存储已被虚拟机加载的类信息，常量，静态变量等。当开发人员在程序中通过Class对象中的getName、isInterface等方法来获取信息时，这些数据都来源于方法区域。
+由于早期的 Hotspot JVM 实现，很多人习惯于将方法区称为永久代（Permanent Generation）。
+运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
+堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
+理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
+JVM
+JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
+JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
+堆内部结构 堆内部结构
+  新生代
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。</description>
+    </item>
+    
+    <item>
+      <title>Java笔记之常见的RuntimeException</title>
+      <link>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84runtimeexception/</guid>
+      <description>RuntimeException 运行时异常，是所有Java虚拟机正常操作期间可以被抛出的异常的父类。
+ NumberFormatException - 数字格式异常 NullPointerException - 空指针引用异常 ClassCastException - 类型强制转换异常。 IllegalArgumentException - 传递非法参数异常。 ArithmeticException - 算术运算异常 ArrayStoreException - 向数组中存放与声明类型不兼容对象异常 IndexOutOfBoundsException - 下标越界异常 NegativeArraySizeException - 创建一个大小为负数的数组错误异常 UnsupportedOperationException - 不支持的方法异常。指明请求的方法不被支持情况的异常 EnumConstantNotPresentException - 枚举常量不存在异常。当应用试图通过名称和枚举类型访问一个枚举对象，但该枚举对象并不包含常量时，抛出该异常。 IllegalMonitorStateException - 违法的监控状态异常。当某个线程试图等待一个自己并不拥有的对象（O）的监控器或者通知其他线程等待该对象（O）的监控器时，抛出该异常。 IllegalStateException - 违法的状态异常。当在Java环境和应用尚未处于某个方法的合法调用状态，而调用了该方法时，抛出该异常。 NegativeArraySizeException - 数组大小为负值异常。当使用负数大小值创建数组时抛出该异常。 SecurityException 安全异常。由安全管理器抛出，用于指示违反安全情况的异常。 TypeNotPresentException - 类型不存在异常。当应用试图以某个类型名称的字符串表达方式访问该类型，但是根据给定的名称又找不到该类型是抛出该异常。该异常与ClassNotFoundException的区别在于该异常是unchecked（不被检查）异常，而ClassNotFoundException是checked（被检查）异常。  </description>
     </item>
     
   </channel>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>正则 on 吴炜棉</title>
+    <link>https://ianeiu.github.io/categories/%E6%AD%A3%E5%88%99/</link>
+    <description>Recent content in 正则 on 吴炜棉</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ianeiu.github.io/categories/%E6%AD%A3%E5%88%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>正则表达式——贪婪模式与懒惰模式</title>
+      <link>https://ianeiu.github.io/p/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ianeiu.github.io/p/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%87%92%E6%83%B0%E6%A8%A1%E5%BC%8F/</guid>
+      <description>知识点：正则表达式中表示字符串重复个数的元字符，如 ?,+,*,{} 默认贪婪模式匹配最大长度匹配字符串。 在元字符后加个?即可切换为懒惰模式
+前言 之前做过一个短信模版的配置功能，需要用到正则判断完成预览方法，踩了个小坑。
+&amp;lt;!-- 部分代码 --&amp;gt; &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//libs.baidu.com/jquery/1.10.2/jquery.min.js&amp;quot;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; $(document).ready(function () { createContentPreview() }); function createContentPreview(){ //遍历获取所有input标签值 var vals=[]; $(&amp;quot;#tExaDiv&amp;quot;).find(&amp;quot;input&amp;quot;).each(function(){ var val=$(this).val(); vals.push(val); }) // 含有&amp;lt;input type=&amp;quot;..&amp;quot; /&amp;gt;标签 var html=$(&amp;quot;#tExaDiv&amp;quot;).html(); //遍历替换 var reg=/&amp;lt;input[^]*?&amp;gt;/; for(var i=0;i&amp;lt;vals.length;i++){ html=html.replace(reg,vals[i]); } //渲染 $(&amp;quot;#contentPreview&amp;quot;).html(html); } &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;tExaDiv&amp;quot;&amp;gt; 如果我是&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;dj&amp;quot;/&amp;gt;,你会&amp;lt;input =&amp;quot;text&amp;quot; value=&amp;quot;爱&amp;quot;/&amp;gt;我吗？ &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;contentPreview&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; contentPreview内容：如果我是dj,你会爱我吗？
+如果未加?，则是贪婪模式。contentPreview显示错误内容：如果我是dj我吗？
+懒惰模式 对字符串进行最小长度匹配
+字符串：&amp;lt;span&amp;gt;321&amp;lt;/span&amp;gt;&amp;lt;span&amp;gt;12&amp;lt;/span&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如非说明，皆是使用1.5
+ 本文只进行简单的代码提示，具体内容可自行百度
+CXF @Beanpublic ServletRegistrationBean CXFServlet() {ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);cxfBean.setLoadOnStartup(1);return cxfBean;}@Configurationpublic class CXFConfig {@Autowiredprivate Bus bus;@Autowiredprivate SSOService sSOService;@Beanpublic Endpoint endpointSSO() {EndpointImpl endpoint = new EndpointImpl(bus, sSOService);endpoint.publish(&amp;quot;/sso&amp;quot;);return endpoint;}} 错误页面配置 /*** 跳转至错误页面* add 2018.07.11* @author wm* @param code* @return*/@RequestMapping(&amp;quot;/error/{code}&amp;quot;)public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){return code;} 新增拦截器：'><title>SpringBoot初体验</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='SpringBoot初体验'>
+<meta property='og:description' content='如非说明，皆是使用1.5
+ 本文只进行简单的代码提示，具体内容可自行百度
+CXF @Beanpublic ServletRegistrationBean CXFServlet() {ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);cxfBean.setLoadOnStartup(1);return cxfBean;}@Configurationpublic class CXFConfig {@Autowiredprivate Bus bus;@Autowiredprivate SSOService sSOService;@Beanpublic Endpoint endpointSSO() {EndpointImpl endpoint = new EndpointImpl(bus, sSOService);endpoint.publish(&amp;quot;/sso&amp;quot;);return endpoint;}} 错误页面配置 /*** 跳转至错误页面* add 2018.07.11* @author wm* @param code* @return*/@RequestMapping(&amp;quot;/error/{code}&amp;quot;)public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){return code;} 新增拦截器：'>
+<meta property='og:url' content='https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SpringBoot' /><meta property='article:published_time' content='2018-11-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-11-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="SpringBoot初体验">
+<meta name="twitter:description" content="如非说明，皆是使用1.5
+ 本文只进行简单的代码提示，具体内容可自行百度
+CXF @Beanpublic ServletRegistrationBean CXFServlet() {ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &amp;quot;/webservice/*&amp;quot;);cxfBean.setName(&amp;quot;CXFServlet&amp;quot;);cxfBean.setLoadOnStartup(1);return cxfBean;}@Configurationpublic class CXFConfig {@Autowiredprivate Bus bus;@Autowiredprivate SSOService sSOService;@Beanpublic Endpoint endpointSSO() {EndpointImpl endpoint = new EndpointImpl(bus, sSOService);endpoint.publish(&amp;quot;/sso&amp;quot;);return endpoint;}} 错误页面配置 /*** 跳转至错误页面* add 2018.07.11* @author wm* @param code* @return*/@RequestMapping(&amp;quot;/error/{code}&amp;quot;)public String goToErrorPage(@PathVariable(value=&amp;quot;code&amp;quot;) String code){return code;} 新增拦截器："></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/spring/">Spring</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/springboot%E5%88%9D%E4%BD%93%E9%AA%8C/">SpringBoot初体验</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Nov 01, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <blockquote>
+<p>如非说明，皆是使用1.5</p>
+</blockquote>
+<p>本文只进行简单的代码提示，具体内容可自行百度</p>
+<h3 id="cxf">CXF</h3>
+<pre><code>@Bean
+public ServletRegistrationBean CXFServlet() {
+    ServletRegistrationBean cxfBean = new ServletRegistrationBean(new CXFServlet(), &quot;/webservice/*&quot;);
+    cxfBean.setName(&quot;CXFServlet&quot;);
+    cxfBean.setLoadOnStartup(1);
+    return cxfBean;
+}
+
+@Configuration
+public class CXFConfig {
+    @Autowired
+    private Bus bus;
+    @Autowired
+    private SSOService sSOService;
+	
+    @Bean
+    public Endpoint endpointSSO() {
+        EndpointImpl endpoint = new EndpointImpl(bus, sSOService);
+        endpoint.publish(&quot;/sso&quot;);
+        return endpoint;
+    }
+	
+}
+</code></pre>
+<h3 id="错误页面配置">错误页面配置</h3>
+<pre><code>/**
+ * 跳转至错误页面
+ * add 2018.07.11
+ * @author wm
+ * @param code
+ * @return
+ */
+@RequestMapping(&quot;/error/{code}&quot;)
+public String goToErrorPage(@PathVariable(value=&quot;code&quot;) String code){
+    return code;
+}
+</code></pre>
+<p>新增拦截器：</p>
+<pre><code>/**
+ * 错误页面拦截器
+ * 替代EmbeddedServletContainerCustomizer在war中不起作用的方法
+ * @author wm
+ */
+@Component
+public class ErrorPageInterceptor extends HandlerInterceptorAdapter {
+    private List&lt;Integer&gt; errorCodeList = Arrays.asList(404,500);
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
+        Exception {
+       if (errorCodeList.contains(response.getStatus())) {
+            response.sendRedirect(request.getContextPath()+&quot;/error/&quot; + response.getStatus());
+            return false;
+        }
+        return super.preHandle(request, response, handler);
+    }
+}
+</code></pre>
+<p>新增拦截配置:</p>
+<pre><code>@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(errorPageInterceptor);//.addPathPatterns(&quot;/action/**&quot;, &quot;/mine/**&quot;);默认所有
+    super.addInterceptors(registry);
+}
+</code></pre>
+<h3 id="兼容jsp">兼容JSP</h3>
+<p>pom新增：</p>
+<pre><code>&lt;dependencies&gt;
+    ...
+    &lt;!--jsp支持 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+        &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+        &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!-- 配置jsp-jstl的支持 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet.jsp.jstl&lt;/groupId&gt;
+        &lt;artifactId&gt;jstl-api&lt;/artifactId&gt;
+        &lt;version&gt;1.2&lt;/version&gt;
+    &lt;/dependency&gt;
+    ...
+&lt;/dependencies&gt;
+
+&lt;build&gt; 
+    ...
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+            &lt;!-- 处理jar包启动无法访问jsp的问题 --&gt;
+            &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt; 
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+<p>新增配置类（处理jar包启动无法访问jsp的问题）：</p>
+<pre><code>import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.catalina.Context;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
+import org.apache.catalina.LifecycleListener;
+import org.apache.catalina.WebResourceRoot.ResourceSetType;
+import org.springframework.util.ResourceUtils;
+
+/**
+ * Add main class fat jar/exploded directory into tomcat ResourceSet.
+ *
+ * @author hengyunabc 2017-07-29
+ *
+ */
+public class StaticResourceConfigurer implements LifecycleListener {
+
+    private final Context context;
+
+    public StaticResourceConfigurer(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void lifecycleEvent(LifecycleEvent event) {
+        if (event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
+            URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+
+            if (ResourceUtils.isFileURL(location)) {
+                // when run as exploded directory
+                String rootFile = location.getFile();
+                if (rootFile.endsWith(&quot;/BOOT-INF/classes/&quot;)) {
+                    rootFile = rootFile.substring(0, rootFile.length() - &quot;/BOOT-INF/classes/&quot;.length() + 1);
+                }
+                if (!new File(rootFile, &quot;META-INF&quot; + File.separator + &quot;resources&quot;).isDirectory()) {
+                    return;
+                }
+
+                try {
+                    location = new File(rootFile).toURI().toURL();
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&quot;Can not add tomcat resources&quot;, e);
+                }
+            }
+
+            String locationStr = location.toString();
+            if (locationStr.endsWith(&quot;/BOOT-INF/classes!/&quot;)) {
+                // when run as fat jar
+                locationStr = locationStr.substring(0, locationStr.length() - &quot;/BOOT-INF/classes!/&quot;.length() + 1);
+                try {
+                    location = new URL(locationStr);
+                } catch (MalformedURLException e) {
+                    throw new IllegalStateException(&quot;Can not add tomcat resources&quot;, e);
+                }
+            }
+            this.context.getResources().createWebResourceSet(ResourceSetType.RESOURCE_JAR, &quot;/&quot;, location,
+                    &quot;/META-INF/resources&quot;);
+
+        }
+    }
+}
+
+import org.apache.catalina.Context;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import cn.com.do1.component.config.assembly.StaticResourceConfigurer;
+
+/**
+ * 处理jar包启动无法访问jsp的问题
+ * &lt;p&gt;Title: TomcatConfig&lt;/p&gt;  
+ * &lt;p&gt;Description: &lt;/p&gt;  
+ * @author wm  
+ * @date 2018年7月24日
+ */
+@Configuration
+@ConditionalOnProperty(name = &quot;tomcat.staticResourceCustomizer.enabled&quot;, matchIfMissing = true)
+public class TomcatConfig {
+    @Bean
+    public EmbeddedServletContainerCustomizer staticResourceCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                    ((TomcatEmbeddedServletContainerFactory) container)
+                            .addContextCustomizers(new TomcatContextCustomizer() {
+                                @Override
+                                public void customize(Context context) {
+                                    context.addLifecycleListener(new StaticResourceConfigurer(context));
+                                }
+                            });
+                }
+            }
+
+        };
+    }
+}
+</code></pre>
+<h3 id="静态资源">静态资源</h3>
+<p>方式一：<br>
+pom新增配置：</p>
+<pre><code>&lt;resources&gt;
+    &lt;resource&gt;
+        &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+        &lt;!--注意此次必须要放在此目录下才能被访问到--&gt;
+        &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+        &lt;filtering&gt;true&lt;/filtering&gt;
+        &lt;includes&gt;
+            &lt;include&gt;**/**&lt;/include&gt;
+        &lt;/includes&gt;
+    &lt;/resource&gt;
+&lt;/resources&gt;
+</code></pre>
+<p>新增配置：</p>
+<pre><code>@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&quot;/js/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/js/&quot;);
+    registry.addResourceHandler(&quot;/css/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/css/&quot;);
+    registry.addResourceHandler(&quot;/images/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/images/&quot;);
+    registry.addResourceHandler(&quot;/common/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/common/&quot;);
+    registry.addResourceHandler(&quot;/register/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/register/&quot;);
+    registry.addResourceHandler(&quot;/plugin/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/WEB-INF/plugin/&quot;);
+    super.addResourceHandlers(registry);
+}
+</code></pre>
+<p>方式二（推荐）：<br>
+将静态资源文件放到resouce/static目录下</p>
+<pre><code>@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler(&quot;/js/**&quot;).addResourceLocations(&quot;classpath:/static/js/&quot;);
+    registry.addResourceHandler(&quot;/css/**&quot;).addResourceLocations(&quot;classpath:/static/css/&quot;);
+    registry.addResourceHandler(&quot;/images/**&quot;).addResourceLocations(&quot;classpath:/static/images/&quot;);
+    registry.addResourceHandler(&quot;/register/**&quot;).addResourceLocations(&quot;classpath:/static/register/&quot;);
+    registry.addResourceHandler(&quot;/plugin/**&quot;).addResourceLocations(&quot;classpath:/static/plugin/&quot;);
+    super.addResourceHandlers(registry);
+ }
+</code></pre>
+<h3 id="文件上传">文件上传</h3>
+<p>现象：上传文件返回异常java.lang.ClassCastException:   org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile cannot be cast to org.springframework.web.multipart.commons.CommonsMultipartFile<br>
+原因：FileUtil中multipartToFile的代码片段  CommonsMultipartFile cf = (CommonsMultipartFile)multfile  与springboot自带的org.springframework.web.multipart.MultipartFile冲突</p>
+<pre><code>import org.springframework.web.multipart.commons.CommonsMultipartResolver;//这是旧项目引入的  
+import org.springframework.web.multipart.MultipartFile;//这是springboot整合的  
+</code></pre>
+<p>解决：采用输入流方式获取File对象，具体代码自行百度</p>
+<p>配置文件新增：</p>
+<pre><code>#upload
+spring.http.multipart.enabled=true
+spring.http.multipart.file-size-threshold=0  #0-ALLFILE
+spring.http.multipart.location=D:/fsrzfw/temp
+spring.http.multipart.max-file-size=10Mb
+spring.http.multipart.max-request-size=10Mb
+</code></pre>
+<p>新增配置</p>
+<pre><code>/**
+ * 配置上传文件大小的配置
+ * @return
+ */
+@Bean
+public MultipartConfigElement multipartConfigElement() {
+   MultipartConfigFactory factory = new MultipartConfigFactory();
+   //  单个数据大小
+   factory.setMaxFileSize(&quot;102400KB&quot;);
+   /// 总上传数据大小
+   factory.setMaxRequestSize(&quot;102400KB&quot;);
+   return factory.createMultipartConfig();
+}
+
+/**
+ * MultipartFile 转换成File
+ * update by wm 2018.07.12
+ * @param multfile 原文件类型
+ * @return File
+ * @throws IOException
+ */
+public static File multipartToFile(MultipartFile multfile) throws IOException {
+    //Springboot自带上传不支持CommonsMultipartFile
+    //CommonsMultipartFile cf = (CommonsMultipartFile)multfile;
+    //这个myfile是MultipartFile的
+    //DiskFileItem fi = (DiskFileItem) cf.getFileItem();
+    //return fi.getStoreLocation();
+
+    File f = null;
+    if (&quot;&quot;.equals(multfile) || multfile.getSize() &lt;= 0) {
+        multfile = null;
+    } else {
+        InputStream ins = multfile.getInputStream();
+        f = new File(multfile.getOriginalFilename());
+        StreamUtil.streamSaveAsFile(ins, f);
+    }
+    return f;
+}
+</code></pre>
+<h3 id="打jar包运行">打JAR包运行</h3>
+<p>pom新增配置：</p>
+<pre><code>&lt;build&gt;
+    &lt;finalName&gt;fsrzfw&lt;/finalName&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;mainClass&gt;cn.com.do1.component.Application&lt;/mainClass&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;repackage&lt;/goal&gt;
+                    &lt;/goals&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+            &lt;dependencies&gt;
+                &lt;!-- spring热部署 --&gt;
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+                    &lt;artifactId&gt;springloaded&lt;/artifactId&gt;
+                    &lt;version&gt;1.2.6.RELEASE&lt;/version&gt;
+                &lt;/dependency&gt;
+            &lt;/dependencies&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;nonFilteredFileExtensions&gt;
+                    &lt;nonFilteredFileExtension&gt;ttf&lt;/nonFilteredFileExtension&gt;
+                    &lt;nonFilteredFileExtension&gt;woff&lt;/nonFilteredFileExtension&gt;
+                    &lt;nonFilteredFileExtension&gt;woff2&lt;/nonFilteredFileExtension&gt;
+                &lt;/nonFilteredFileExtensions&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/java&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/resource&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/webapp&lt;/directory&gt;
+            &lt;!-- 处理jar包启动无法访问jsp的问题 --&gt;
+            &lt;targetPath&gt;META-INF/resources&lt;/targetPath&gt;
+            &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt; 
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+<h3 id="shiro-自定义-filter-匹配异常无限拦截重定向">Shiro 自定义 filter 匹配异常，无限拦截重定向</h3>
+<p>参考：<em><a class="link" href="http://www.hillfly.com/2017/179.html"  target="_blank" rel="noopener"
+    >Shiro 自定义 filter 匹配异常</a></em><br>
+原因：自定义Filter注册为了 Bean交给 Spring托管,它会被自动注册到  FilterChain中。请求先经过自定义Filter，导致请求被其先消费掉了，而ShiroFilter成了摆设。 <br>
+解决：FUN1、利用 FilterRegistrationBean 注册自定义 Filter （建议使用）</p>
+<pre><code>ex：
+    @Bean
+    public CasFilter casFilter(){
+        CasFilter cf = new CasFilter();
+        cf.setSuccessUrl(successUrl);
+        cf.setFailureUrl(failureUrl);
+        return cf;
+    }
+	
+    /**
+     * 注册casFilter
+     * @param casFilter
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean registCasFilter(CasFilter casFilter) {
+        FilterRegistrationBean cas = new FilterRegistrationBean();
+        cas.setFilter(casFilter);
+        cas.setEnabled(false);	//该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理  x
+        return cas;
+    }
+	
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @param casFilter
+     * @param logoutFilter
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager,
+            CasFilter casFilter,LogoutFilter logoutFilter) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&lt;String,Filter&gt; filters = new HashMap&lt;&gt;();
+        filters.put(&quot;casFilter&quot;,casFilter);
+        filters.put(&quot;logoutFilter&quot;, logoutFilter);
+        shiroFilterFactoryBean.setFilters(filters);		//添加casFilter到shiroFilter
+        ...
+    }
+</code></pre>
+<p>FUN2、将 CasFilter注册为了 Bean交给 Spring托管,它会被自动注册到 FilterChain中，那我们如果不把它注册为 Bean就可以避免这个问题了。</p>
+<pre><code>    ex:
+    /**
+     * 注册shiroFilter
+     * @param securityManager
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        ...
+        Map&lt;String,Filter&gt; filters = new HashMap&lt;&gt;();
+        filters.put(&quot;casFilter&quot;,new CasFilter());
+        filters.put(&quot;logoutFilter&quot;, new LogoutFilter());
+        shiroFilterFactoryBean.setFilters(filters);		//添加casFilter到shiroFilter
+        ...
+    }
+</code></pre>
+<h3 id="日志">日志</h3>
+<p>现象：启动报错Caused by: java.lang.NoClassDefFoundError: ch/qos/logback/classic/turbo/TurboFilter<br>
+原因:springboot1.3.x和1.3.x以下版本才支持log4j的日志配置，1.3.x以上版本只支持log4j2和logback的日志配置<br>
+解决：使用log4j2或logback</p>
+<h3 id="jar包运行获取某个包下的class对象集合">jar包运行获取某个包下的class对象集合</h3>
+<p>现象：项目mvn install后jar包，启动报错，未获取到某个包下的class对象集合<br>
+原因：springboot项目打包后获取包资源所在路径与启动main不一样<br>
+ex：//jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl<br>
+解决：逐一分割路径获取类对象</p>
+<pre><code>/**
+ * 获得包下面的所有的class
+ * @author FengHuayuan
+ * @date 2018年4月21日 下午12:25:20.
+ * @param pack
+ * @return
+ */
+public static List&lt;Class&lt;?&gt;&gt; getClassesFromPackage(String pack) {
+    List&lt;Class&lt;?&gt;&gt; clazzs = new ArrayList&lt;Class&lt;?&gt;&gt;();
+    // 是否循环搜索子包
+    boolean recursive = true;
+    // 包名字
+    String packageName = pack;
+    // 包名对应的路径名称
+    String packageDirName = packageName.replace('.', '/');
+    Enumeration&lt;URL&gt; dirs;
+    try {
+        dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            String protocol = url.getProtocol();
+            if (&quot;file&quot;.equals(protocol)) {
+                log.debug(&quot;*****【File类型】的扫描！&quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &quot;UTF-8&quot;);
+                findClassInPackageByFile(packageName, filePath, recursive, clazzs);
+            } else if (&quot;jar&quot;.equals(protocol)) {
+                log.debug(&quot;*****【Jar类型】的扫描！&quot;);
+                String filePath = URLDecoder.decode(url.getFile(), &quot;UTF-8&quot;);
+                getClasssFromJarFile(filePath, clazzs);//wm add
+            }
+        }
+
+    } catch (Exception e) {
+        log.error(e.getMessage(),e);
+    }
+    return clazzs;
+}
+
+/** 
+ * 从jar文件中读取指定目录下面的所有的class文件 
+ * springboot打jar包专用
+ * @author wm
+ * @param jarPaht   jar文件存放的位置 
+ * @param filePaht    指定的文件目录 
+ * @param clazzs 所有的的class的对象 
+ */  
+public static void getClasssFromJarFile(String jarPath,List&lt;Class&lt;?&gt;&gt; clazzs) {  
+
+    log.info(&quot;getClasssFromJarFile - jarPath:&quot;+jarPath);//wm
+    //jarPaht:file:/E:/IDEABuilder/fs/tyrz-springboot/tyrz-front/target/fsrzfw.jar!/BOOT-INF/classes!/cn/com/do1/component/identitySource/service/impl
+    String[] jarPaths = jarPath.split(&quot;!&quot;);
+    String jarPaht=jarPaths[0].substring(6);//去掉file:/
+    String startDir = (jarPaths[1]+jarPaths[2]).substring(1);//去掉/
+	
+    JarFile jarFile = null;  
+    try {  
+        jarFile = new JarFile(jarPaht);  
+    } catch (IOException e1) {  
+        e1.printStackTrace();  
+    }  
+  
+    List&lt;JarEntry&gt; jarEntryList = new ArrayList&lt;JarEntry&gt;();  
+  
+    Enumeration&lt;JarEntry&gt; ee = jarFile.entries();  
+    while (ee.hasMoreElements()) {  
+        JarEntry entry = (JarEntry) ee.nextElement();  
+        if (entry.getName().startsWith(startDir) &amp;&amp; entry.getName().endsWith(&quot;.class&quot;)) {  
+            log.info(&quot;getClasssFromJarFile - entry:&quot;+entry.getName());//wm
+            jarEntryList.add(entry);  
+        }  
+    }  
+    for (JarEntry entry : jarEntryList) {  
+        String className = entry.getName().replace('/', '.');  
+        //   BOOT-INF/classes/cn/com/do1/component/identitySource/service/impl/XXX.class
+        className = className.substring(17, className.length() - 6);//去掉  BOOT-INF/classes/     .class
+        try {  
+            clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));  
+        } catch (ClassNotFoundException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+  
+}
+</code></pre>
+<h3 id="诡异的异常">诡异的异常</h3>
+<p>启动项目报错ClassNotFoundException: javax.ws.rs.core.Response$StatusType<br>
+解决：pom引入jsr311-api（g:javax.ws.rs）(a:jsr311-api)（v:1.1.1）</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/springboot/">SpringBoot</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring面试题</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring常用注解</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/spring%E6%8B%A6%E6%88%AA%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring拦截器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SpringMVC的运行流程及九大组件</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>

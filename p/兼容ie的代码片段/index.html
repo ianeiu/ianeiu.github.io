@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JS  方法/函数：减少使用JS原生方法  indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“a”, divarr)==-1  AJAX：  上传文件：IE下ajaxSubmit将file对象传递到控制层，建议使用ajaxFileUpload。
+有些方法调用获取数据是直接读缓存的，这时候加个属性 cache:false 即可。  DOM：  复选框赋值兼容问题：
+for(var k =0; k&amp;lt;number.length; k&#43;&#43;){
+//$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;][value=&#39;&amp;quot;&#43;number[k]&#43;&amp;quot;&#39;]&amp;quot;).attr(&amp;ldquo;checked&amp;rdquo;, true);
+//解决ie8的复选框赋值兼容问题。eq的是索引
+$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;]&amp;quot;).eq(number[k]).attr(&amp;ldquo;checked&amp;rdquo;, true);
+};  CSS  IE支持rgba半透明的方法： 低版本IE下不支持rgba()的表示方法， 如：background:rgba(0,0,0,0.5);
+使用代码,filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);即可实现
+7F其实就是alpha*255换成16进制 。常用的rgba和IE下filter数值的转换：
+rgba透明值：0.1　0.2　0.3　0.4　0.5　0.6　0.7　0.8　0.9
+IE下filter值：19　33　4c　66　7f　99　b2　c8　e5
+HTML  隐藏元素： &amp;lt;div class=&amp;quot;bBox&amp;quot; id=&amp;quot;orderOperDiv&amp;quot; style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;!-- 兼容IE，不使用hidden --&amp;gt;  按钮value显示null &amp;lt;!-- &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;上传&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0);&amp;quot; /&amp;gt; --&amp;gt; &amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0)&amp;quot;&amp;gt;上传&amp;lt;/a&amp;gt;  插件  Webuploader IE浏览器兼容问题（点击无反应） webuploader 加载后会默认先使用H5，在浏览器不支持H5,再采用flash,方式上传。'><title>兼容IE的代码片段</title>
+    
+    <link rel='canonical' href='https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='兼容IE的代码片段'>
+<meta property='og:description' content='JS  方法/函数：减少使用JS原生方法  indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“a”, divarr)==-1  AJAX：  上传文件：IE下ajaxSubmit将file对象传递到控制层，建议使用ajaxFileUpload。
+有些方法调用获取数据是直接读缓存的，这时候加个属性 cache:false 即可。  DOM：  复选框赋值兼容问题：
+for(var k =0; k&amp;lt;number.length; k&#43;&#43;){
+//$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;][value=&#39;&amp;quot;&#43;number[k]&#43;&amp;quot;&#39;]&amp;quot;).attr(&amp;ldquo;checked&amp;rdquo;, true);
+//解决ie8的复选框赋值兼容问题。eq的是索引
+$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;]&amp;quot;).eq(number[k]).attr(&amp;ldquo;checked&amp;rdquo;, true);
+};  CSS  IE支持rgba半透明的方法： 低版本IE下不支持rgba()的表示方法， 如：background:rgba(0,0,0,0.5);
+使用代码,filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);即可实现
+7F其实就是alpha*255换成16进制 。常用的rgba和IE下filter数值的转换：
+rgba透明值：0.1　0.2　0.3　0.4　0.5　0.6　0.7　0.8　0.9
+IE下filter值：19　33　4c　66　7f　99　b2　c8　e5
+HTML  隐藏元素： &amp;lt;div class=&amp;quot;bBox&amp;quot; id=&amp;quot;orderOperDiv&amp;quot; style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;!-- 兼容IE，不使用hidden --&amp;gt;  按钮value显示null &amp;lt;!-- &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;上传&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0);&amp;quot; /&amp;gt; --&amp;gt; &amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0)&amp;quot;&amp;gt;上传&amp;lt;/a&amp;gt;  插件  Webuploader IE浏览器兼容问题（点击无反应） webuploader 加载后会默认先使用H5，在浏览器不支持H5,再采用flash,方式上传。'>
+<meta property='og:url' content='https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/'>
+<meta property='og:site_name' content='吴炜棉'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ie' /><meta property='article:published_time' content='2018-08-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-08-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="兼容IE的代码片段">
+<meta name="twitter:description" content="JS  方法/函数：减少使用JS原生方法  indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“a”, divarr)==-1  AJAX：  上传文件：IE下ajaxSubmit将file对象传递到控制层，建议使用ajaxFileUpload。
+有些方法调用获取数据是直接读缓存的，这时候加个属性 cache:false 即可。  DOM：  复选框赋值兼容问题：
+for(var k =0; k&amp;lt;number.length; k&#43;&#43;){
+//$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;][value=&#39;&amp;quot;&#43;number[k]&#43;&amp;quot;&#39;]&amp;quot;).attr(&amp;ldquo;checked&amp;rdquo;, true);
+//解决ie8的复选框赋值兼容问题。eq的是索引
+$(&amp;quot;:checkbox[name=&amp;lsquo;tCheckTwo&amp;rsquo;]&amp;quot;).eq(number[k]).attr(&amp;ldquo;checked&amp;rdquo;, true);
+};  CSS  IE支持rgba半透明的方法： 低版本IE下不支持rgba()的表示方法， 如：background:rgba(0,0,0,0.5);
+使用代码,filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);即可实现
+7F其实就是alpha*255换成16进制 。常用的rgba和IE下filter数值的转换：
+rgba透明值：0.1　0.2　0.3　0.4　0.5　0.6　0.7　0.8　0.9
+IE下filter值：19　33　4c　66　7f　99　b2　c8　e5
+HTML  隐藏元素： &amp;lt;div class=&amp;quot;bBox&amp;quot; id=&amp;quot;orderOperDiv&amp;quot; style=&amp;quot;display: none;&amp;quot;&amp;gt;&amp;lt;!-- 兼容IE，不使用hidden --&amp;gt;  按钮value显示null &amp;lt;!-- &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;上传&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0);&amp;quot; /&amp;gt; --&amp;gt; &amp;lt;a href=&amp;quot;javascript:void(0);&amp;quot; class=&amp;quot;sBtn&amp;quot; onclick=&amp;quot;uploadDataFile(1,0)&amp;quot;&amp;gt;上传&amp;lt;/a&amp;gt;  插件  Webuploader IE浏览器兼容问题（点击无反应） webuploader 加载后会默认先使用H5，在浏览器不支持H5,再采用flash,方式上传。"></head><body class="">
+        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+
+                
+                    
+                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
+                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                <span class="emoji">🍉</span>
+            </figure>
+        
+        <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
+        <h2 class="site-description">得之我幸</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://ianeiu.github.io/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+    </ol>
+</aside>
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://ianeiu.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+                <a href="https://ianeiu.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">兼容IE的代码片段</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Aug 23, 2018</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h1 id="js">JS</h1>
+<hr>
+<h5 id="方法函数减少使用js原生方法">方法/函数：减少使用JS原生方法</h5>
+<ul>
+<li>indexOf。可用jquery里的$.inArray替代indexOf。 具体使用：$.inArray(“a”, divarr)==-1</li>
+</ul>
+<h5 id="ajax">AJAX：</h5>
+<ul>
+<li>上传文件：IE下ajaxSubmit将file对象传递到控制层，建议使用ajaxFileUpload。<br>
+有些方法调用获取数据是直接读缓存的，这时候加个属性 cache:false 即可。</li>
+</ul>
+<h5 id="dom">DOM：</h5>
+<ul>
+<li>复选框赋值兼容问题：<br>
+for(var k =0; k&lt;number.length; k++){<br>
+//$(&quot;:checkbox[name=&lsquo;tCheckTwo&rsquo;][value='&quot;+number[k]+&quot;']&quot;).attr(&ldquo;checked&rdquo;, true);<br>
+//解决ie8的复选框赋值兼容问题。eq的是索引<br>
+$(&quot;:checkbox[name=&lsquo;tCheckTwo&rsquo;]&quot;).eq(number[k]).attr(&ldquo;checked&rdquo;, true);<br>
+};</li>
+</ul>
+<h1 id="css">CSS</h1>
+<hr>
+<h5 id="ie支持rgba半透明的方法">IE支持rgba半透明的方法：</h5>
+<p>低版本IE下不支持rgba()的表示方法， 如：background:rgba(0,0,0,0.5);<br>
+使用代码,filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);即可实现<br>
+7F其实就是alpha*255换成16进制 。常用的rgba和IE下filter数值的转换：<br>
+rgba透明值：0.1　　0.2　　0.3　　0.4　　0.5　　0.6　　0.7　　0.8　　0.9<br>
+IE下filter值：19　　 33　　 4c　　 66　　  7f　　 99　　 b2　　 c8　　  e5</p>
+<h1 id="html">HTML</h1>
+<hr>
+<h5 id="隐藏元素">隐藏元素：</h5>
+<pre><code>&lt;div class=&quot;bBox&quot; id=&quot;orderOperDiv&quot; style=&quot;display: none;&quot;&gt;&lt;!-- 兼容IE，不使用hidden --&gt;
+</code></pre>
+<h5 id="按钮value显示null">按钮value显示null</h5>
+<pre><code>&lt;!-- &lt;input type=&quot;button&quot; value=&quot;上传&quot; class=&quot;sBtn&quot; onclick=&quot;uploadDataFile(1,0);&quot; /&gt; --&gt;
+&lt;a href=&quot;javascript:void(0);&quot; class=&quot;sBtn&quot;  onclick=&quot;uploadDataFile(1,0)&quot;&gt;上传&lt;/a&gt;
+</code></pre>
+<h1 id="插件">插件</h1>
+<hr>
+<h5 id="webuploader-ie浏览器兼容问题点击无反应">Webuploader IE浏览器兼容问题（点击无反应）</h5>
+<p>webuploader 加载后会默认先使用H5，在浏览器不支持H5,再采用flash,方式上传。<br>
+所以  初始化webuploader,一定要添加 swf:xxx/Uploader.swf ,保证路径正确<br>
+可能是 swf 路径不对，检查 dist 里面的 uploader.swf  文件。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https://ianeiu.github.io/tags/ie/">ie</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">常用代码片段</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
+        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
+
+    </body>
+</html>
