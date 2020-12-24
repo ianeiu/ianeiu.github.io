@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='WebService简介 webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术）。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='WebService简介 webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术）。
 WebService平台技术 XML&#43;XSD WebService采用HTTP协议传输数据，采用XML格式封装数据（即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么）。
 XML是WebService平台中表示数据的格式。除了易于建立和易于分析外，XML主要的优点在于它既是平台无关的，又是厂商无关的。
 SOAP SOAP是&amp;quot;简单对象访问协议&amp;quot;，是一种简单的、基于HTTP和XML的协议, 用于在WEB上交换结构化的数据。
@@ -18,8 +18,8 @@ CXF CXF是Apache旗下一个重磅的SOA简易框架，它实现了ESB（企业�
 Axis2与CXF比较  通用结构WS-Policy等，数据并对XMLBeans等，Axis2与CXF后面的几个版本基本都支持了，差别不大。 CXF可以很好支持Spring。Axis2不能 Axis2支持多语言-除了Java,他还支持C/C&#43;&#43;版本。  从开发者的角度，两个框架的特性相当的不同。
 Axis2的开发方式类似一个小型的应用服务器，Axis2的开发包要以WAR的形式部署到Servlet容器中，比如Tomcat，通过这些容器可以对工作中的Web Service进行很好的监控和管理。Axis2的Web administrion模块可以让我们动态的配置Axis2.一个新的服务可以上载，激活，使之失效，修改web服务的参数。管理UI也可以管理一个或者多个处于运行状态的服务。这种界面化管理方式的一个弊端是所有在运行时修改的参数没有办法保存，因为在重启动之后，你所做的修改就会全部失效。Axis2允许自己作为独立的应用来发布Web Service，并提供了大量的功能和一个很好的模型，这个模型可以通过它本身的架构（modular architecture）不断添加新的功能。有些开发人员认为这种方式对于他们的需求太过于繁琐。这些开发人员会更喜欢CXF。
 CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability）。大多数配置都可以API来完成，替代了比较繁琐的XML配置文件， Spring的集成性经常的被提及，CXF支持Spring2.'><title>WebService简介</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/webservice%E7%AE%80%E4%BB%8B/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/webservice%E7%AE%80%E4%BB%8B/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='WebService简介'>
 <meta property='og:description' content='WebService简介 webService（又名XML Web Service）是一种跨语言跨操作系统的远程调用技术（是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术）。
@@ -59,8 +59,31 @@ XFire XFire是一个高性能的WebService框架，它的响应时间是Axis1.3�
 CXF CXF是Apache旗下一个重磅的SOA简易框架，它实现了ESB（企业服务总线），支持可集成spring。CXF是XFire和Celtix项目的结合产品，是XFire经过改造后形成的，就像目前的Struts2来自WebWork一样。可以看出XFire的命运会和WebWork的命运一样，最终会淡出人们的视线。CXF不但是一个优秀的Web Services / SOAP / WSDL 引擎，也是一个不错的ESB总线，为SOA的实施提供了一种选择方案，当然他不是最好的，它仅仅实现了SOA架构的一部分。
 Axis2与CXF比较  通用结构WS-Policy等，数据并对XMLBeans等，Axis2与CXF后面的几个版本基本都支持了，差别不大。 CXF可以很好支持Spring。Axis2不能 Axis2支持多语言-除了Java,他还支持C/C&#43;&#43;版本。  从开发者的角度，两个框架的特性相当的不同。
 Axis2的开发方式类似一个小型的应用服务器，Axis2的开发包要以WAR的形式部署到Servlet容器中，比如Tomcat，通过这些容器可以对工作中的Web Service进行很好的监控和管理。Axis2的Web administrion模块可以让我们动态的配置Axis2.一个新的服务可以上载，激活，使之失效，修改web服务的参数。管理UI也可以管理一个或者多个处于运行状态的服务。这种界面化管理方式的一个弊端是所有在运行时修改的参数没有办法保存，因为在重启动之后，你所做的修改就会全部失效。Axis2允许自己作为独立的应用来发布Web Service，并提供了大量的功能和一个很好的模型，这个模型可以通过它本身的架构（modular architecture）不断添加新的功能。有些开发人员认为这种方式对于他们的需求太过于繁琐。这些开发人员会更喜欢CXF。
-CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability）。大多数配置都可以API来完成，替代了比较繁琐的XML配置文件， Spring的集成性经常的被提及，CXF支持Spring2."></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability）。大多数配置都可以API来完成，替代了比较繁琐的XML配置文件， Spring的集成性经常的被提及，CXF支持Spring2.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -72,14 +95,18 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -92,7 +119,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -111,7 +138,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -129,7 +156,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -145,8 +172,49 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -168,15 +236,15 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/network/">network</a>
-            
+            <a href="/categories/network/" >
+                network
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/webservice%E7%AE%80%E4%BB%8B/">WebService简介</a>
+        <a href="/p/webservice%E7%AE%80%E4%BB%8B/">WebService简介</a>
     </h2>
 
     <footer class="article-time">
@@ -256,13 +324,13 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/axis/">axis</a>
+            <a href="/tags/axis/">axis</a>
         
-            <a href="https://ianeiu.github.io/tags/axis2/">axis2</a>
+            <a href="/tags/axis2/">axis2</a>
         
-            <a href="https://ianeiu.github.io/tags/xfire/">xfire</a>
+            <a href="/tags/xfire/">xfire</a>
         
-            <a href="https://ianeiu.github.io/tags/cxf/">cxf</a>
+            <a href="/tags/cxf/">cxf</a>
         
     </section>
 
@@ -293,7 +361,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/">
+    <a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/">
         
         
 
@@ -305,7 +373,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/">
+    <a href="/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/">
         
         
 
@@ -317,7 +385,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/http%E7%AC%94%E8%AE%B0/">
+    <a href="/p/http%E7%AC%94%E8%AE%B0/">
         
         
 
@@ -329,7 +397,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/">
+    <a href="/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/">
         
         
 
@@ -344,10 +412,30 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -363,14 +451,18 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -432,6 +524,12 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -447,8 +545,6 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

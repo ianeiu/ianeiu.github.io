@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
 EJB容器 Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。
  JDBC 用来访问数据库的API（规范）
 JNDI：（Java Naming &amp;amp; Directory Interface） JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。
@@ -20,8 +20,8 @@ Controller层 Controller层负责具体的业务模块流程的控制，在此�
 DTO Data Transfer Object数据传输对象，经过处理后的PO，可能增加或者减少PO的属性，主要用于远程调用等需要大量传输对象的地方。
 POJO POJO（plain ordinary java object）即简单java对象，是一种概念或者接口，身份及作用随环境变化而变化。 它不包含业务逻辑或持久逻辑等，不具有任何特殊角色和不继承或不实现任何其它Java框架的类或接口。
  SpringMVC Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。'><title>Java笔记之名词简介</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java笔记之名词简介'>
 <meta property='og:description' content='web容器 给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
@@ -65,8 +65,31 @@ Controller层 Controller层负责具体的业务模块流程的控制，在此�
  VO 即value object值对象。主要体现在视图的对象，对于一个WEB页面将整个页面的属性封装成一个对象。然后用一个VO对象在控制层与视图层进行传输交换。
 DTO Data Transfer Object数据传输对象，经过处理后的PO，可能增加或者减少PO的属性，主要用于远程调用等需要大量传输对象的地方。
 POJO POJO（plain ordinary java object）即简单java对象，是一种概念或者接口，身份及作用随环境变化而变化。 它不包含业务逻辑或持久逻辑等，不具有任何特殊角色和不继承或不实现任何其它Java框架的类或接口。
- SpringMVC Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+ SpringMVC Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -78,14 +101,18 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -98,7 +125,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -117,7 +144,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -135,7 +162,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -151,8 +178,49 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -174,15 +242,15 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/">Java笔记之名词简介</a>
+        <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%90%8D%E8%AF%8D%E7%AE%80%E4%BB%8B/">Java笔记之名词简介</a>
     </h2>
 
     <footer class="article-time">
@@ -294,7 +362,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -325,7 +393,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -337,7 +405,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -349,7 +417,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -361,7 +429,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -373,7 +441,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -388,10 +456,30 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -407,14 +495,18 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -476,6 +568,12 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -491,8 +589,6 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

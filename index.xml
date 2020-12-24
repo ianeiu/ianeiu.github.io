@@ -99,11 +99,13 @@
 &lt;li&gt;Action执行完毕，根据struts.xml中的配置找到对应的返回结果result，并跳转到相应页面。&lt;/li&gt;
 &lt;li&gt;返回HTTP响应到客户端浏览器。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png&#34; data-size=&#34;680x710&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B_hu622a93dbdf3bb333382e70a1e40e2768_310431_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B_hu622a93dbdf3bb333382e70a1e40e2768_310431_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png&#34; width=&#34;680&#34; height=&#34;710&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 95; flex-basis: 229px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png&#34; data-size=&#34;680x710&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B_hu622a93dbdf3bb333382e70a1e40e2768_310431_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/struts%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B_hu622a93dbdf3bb333382e70a1e40e2768_310431_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;680&#34;
+				height=&#34;710&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -142,11 +144,13 @@
 &lt;li&gt;完成最终的程序的启动&lt;/li&gt;
 &lt;li&gt;由 SpringApplicationRunListener来发出 running 消息，告知程序已运行行起来了&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;960x961&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B_hu44590242c4e1126b79f4195e0ff5f72c_172239_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B_hu44590242c4e1126b79f4195e0ff5f72c_172239_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.png&#34; width=&#34;960&#34; height=&#34;961&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 99; flex-basis: 239px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;960x961&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B_hu44590242c4e1126b79f4195e0ff5f72c_172239_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B_hu44590242c4e1126b79f4195e0ff5f72c_172239_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;960&#34;
+				height=&#34;961&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -216,10 +220,12 @@ java.io 包的好处是代码比较简单、直观，缺点则是 IO 效率和�
 &lt;li&gt;事件驱动机制：事件到的时候触发，而不是同步的去监视事件。&lt;/li&gt;
 &lt;li&gt;线程通讯：线程之间通过 wait，notify 等方式通讯。保证每次上下文切换都是有意义的。减少无谓的线程切换。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio.png&#34; data-size=&#34;689x251&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio_huff8d1d00c71cc7eb26399567c9b43855_162553_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio_huff8d1d00c71cc7eb26399567c9b43855_162553_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio.png&#34; width=&#34;689&#34; height=&#34;251&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 274; flex-basis: 658px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio.png&#34; data-size=&#34;689x251&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio_huff8d1d00c71cc7eb26399567c9b43855_162553_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/nio_huff8d1d00c71cc7eb26399567c9b43855_162553_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;689&#34;
+				height=&#34;251&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;NIO&#34;&gt;
 		&lt;/a&gt;
 		
@@ -640,11 +646,13 @@ final void setArray (Object[]a){
 &lt;li&gt;与弱一致性对应的，就是我介绍过的同步容器常见的行为“fast-fail”，也就是检测到容器在遍历过程中发生了修改，则抛出 ConcurrentModificationException，不再继续遍历。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;哪些队列是有界的哪些是无界的&#34;&gt;哪些队列是有界的，哪些是无界的？&lt;/h2&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png&#34; data-size=&#34;901x359&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png&#34; width=&#34;901&#34; height=&#34;359&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 250; flex-basis: 602px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png&#34; data-size=&#34;901x359&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;901&#34;
+				height=&#34;359&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -725,11 +733,13 @@ private final Condition notFull = putLock.newCondition();
 &lt;li&gt;newScheduledThreadPool(int corePoolSize)，同样是 ScheduledExecutorService，区别在于它会保持 corePoolSize 个工作线程。&lt;/li&gt;
 &lt;li&gt;newWorkStealingPool(int parallelism)，这是一个经常被人忽略的线程池，Java 8 才加入这个创建方法，其内部会构建ForkJoinPool，利用Work-Stealing算法，并行地处理任务，不保证处理顺序。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png&#34; data-size=&#34;1085x630&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png&#34; width=&#34;1085&#34; height=&#34;630&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 172; flex-basis: 413px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png&#34; data-size=&#34;1085x630&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1085&#34;
+				height=&#34;630&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -751,11 +761,13 @@ private final Condition notFull = putLock.newCondition();
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;threadpoolexecutor&#34;&gt;ThreadPoolExecutor&lt;/h2&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png&#34; data-size=&#34;1134x468&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png&#34; width=&#34;1134&#34; height=&#34;468&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 242; flex-basis: 581px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png&#34; data-size=&#34;1134x468&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1134&#34;
+				height=&#34;468&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -4037,19 +4049,23 @@ function hZZ(){
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;IMG&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png&#34; data-size=&#34;342x265&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png&#34; width=&#34;342&#34; height=&#34;265&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 129; flex-basis: 309px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png&#34; data-size=&#34;342x265&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/flexBg_hu55beb7d244ae006d6812867a459c4d45_119_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;342&#34;
+				height=&#34;265&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;br&gt;
-&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif&#34; data-size=&#34;128x128&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_480x0_resize_box.gif 480w, https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_1024x0_resize_box.gif 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif&#34; width=&#34;128&#34; height=&#34;128&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;figure style=&#34;flex-grow: 100; flex-basis: 240px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif&#34; data-size=&#34;128x128&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading.gif&#34;
+				srcset=&#34;https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_480x0_resize_box.gif 480w, https://ianeiu.github.io/p/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/loading_hu45a832759e9abc2132bd929882f39581_3897_1024x0_resize_box.gif 1024w&#34;
+				width=&#34;128&#34;
+				height=&#34;128&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -5912,10 +5928,12 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
 &lt;blockquote&gt;
 &lt;p&gt;确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;696x444&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; width=&#34;696&#34; height=&#34;444&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 156; flex-basis: 376px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;696x444&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;696&#34;
+				height=&#34;444&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;Tcp建立连接的过程&#34;&gt;
 		&lt;/a&gt;
 		
@@ -5929,10 +5947,12 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
 &lt;li&gt;B向A提出停止连接请求，FIN = 1&lt;/li&gt;
 &lt;li&gt;A收到，ACK = 1&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;741x363&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; width=&#34;741&#34; height=&#34;363&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 204; flex-basis: 489px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34; data-size=&#34;741x363&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;741&#34;
+				height=&#34;363&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;Tcp断开连接的过程&#34;&gt;
 		&lt;/a&gt;
 		
@@ -7818,11 +7838,13 @@ function some_callback(data) {
 &lt;li&gt;当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。&lt;/li&gt;
 &lt;li&gt;当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png&#34; data-size=&#34;929x735&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png&#34; width=&#34;929&#34; height=&#34;735&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 126; flex-basis: 303px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png&#34; data-size=&#34;929x735&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;929&#34;
+				height=&#34;735&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;
@@ -8442,10 +8464,12 @@ key：Collection（collection）,如果是List还可以使用这个key(list) 数
 &lt;li&gt;本地方法栈/区&lt;/li&gt;
 &lt;li&gt;程序计数器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg&#34; data-size=&#34;473x474&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_480x0_resize_q75_box.jpg 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_1024x0_resize_q75_box.jpg 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg&#34; width=&#34;473&#34; height=&#34;474&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 99; flex-basis: 239px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg&#34; data-size=&#34;473x474&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84.jpg&#34;
+				srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_480x0_resize_q75_box.jpg 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM%E7%BB%93%E6%9E%84_hu2e55354234b01ccc46138ee3e1dda078_27827_1024x0_resize_q75_box.jpg 1024w&#34;
+				width=&#34;473&#34;
+				height=&#34;474&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;JVM结构&#34;&gt;
 		&lt;/a&gt;
 		
@@ -8470,10 +8494,12 @@ key：Collection（collection）,如果是List还可以使用这个key(list) 数
 &lt;h4 id=&#34;堆&#34;&gt;堆&lt;/h4&gt;
 &lt;p&gt;JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定&lt;/p&gt;
 &lt;p&gt;理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png&#34; data-size=&#34;841x566&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png&#34; width=&#34;841&#34; height=&#34;566&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 148; flex-basis: 356px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png&#34; data-size=&#34;841x566&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/JVM_huf42431e4d3f849fd5ce15bbefe0a07a3_53400_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;841&#34;
+				height=&#34;566&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;JVM&#34;&gt;
 		&lt;/a&gt;
 		
@@ -8483,10 +8509,12 @@ key：Collection（collection）,如果是List还可以使用这个key(list) 数
 &lt;p&gt;JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。&lt;/p&gt;
 &lt;p&gt;JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。&lt;/p&gt;
 &lt;h2 id=&#34;堆内部结构&#34;&gt;堆内部结构&lt;/h2&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png&#34; data-size=&#34;970x302&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png&#34; width=&#34;970&#34; height=&#34;302&#34; loading=&#34;lazy&#34;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 321; flex-basis: 770px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png&#34; data-size=&#34;970x302&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/HeapInner_hu738fb74c2abf465018e53ea09ad814c8_36750_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;970&#34;
+				height=&#34;302&#34;
+				loading=&#34;lazy&#34;
 				alt=&#34;堆内部结构&#34;&gt;
 		&lt;/a&gt;
 		
@@ -8580,11 +8608,13 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
         
         <guid>https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
         <description>&lt;h1 id=&#34;运行流程&#34;&gt;运行流程&lt;/h1&gt;
-&lt;p&gt;&lt;figure&gt;
-		&lt;a href=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png&#34; data-size=&#34;641x274&#34;&gt;
-			&lt;img srcset=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_1024x0_resize_box_2.png 1024w&#34;
-				src=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png&#34; width=&#34;641&#34; height=&#34;274&#34; loading=&#34;lazy&#34;
-				alt=&#34;&amp;nbsp;&#34;&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 233; flex-basis: 561px&#34;&gt;
+		&lt;a href=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png&#34; data-size=&#34;641x274&#34;&gt;&lt;img src=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png&#34;
+				srcset=&#34;https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_480x0_resize_box_2.png 480w, https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/SpringMVC%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B_hub7ac2502c531e108ef59893811657530_29061_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;641&#34;
+				height=&#34;274&#34;
+				loading=&#34;lazy&#34;
+				&gt;
 		&lt;/a&gt;
 		
 	&lt;/figure&gt;&lt;/p&gt;

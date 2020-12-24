@@ -22,7 +22,7 @@ TCP与UDP的区别 1、基于连接与无连接;
 5、TCP保证数据正确性，UDP可能丢包;
 6、TCP保证数据顺序，UDP不保证。
 三次握手的过程  客户端发送：SYN = 1, SEQ = X, 端口号 服务器回复：SYN = 1, ACK = X + 1, SEQ = Y 客户端发送：ACK = Y + 1, SEQ = X + 1   确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。
- Tcp建立连接的过程</description>
+ Tcp建立连接的过程</description>
     </item>
     
   </channel>

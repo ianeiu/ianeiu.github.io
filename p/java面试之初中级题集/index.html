@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数组在内存中如何分配  简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的数组，每个数组成员仍是一个引用（指针），引用到堆上的空间（因为类的实例的内存分配在堆上）  String的substring()方法内部是如何实现 substring方法通过原字符串创建了一个新的对象。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数组在内存中如何分配  简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的数组，每个数组成员仍是一个引用（指针），引用到堆上的空间（因为类的实例的内存分配在堆上）  String的substring()方法内部是如何实现 substring方法通过原字符串创建了一个新的对象。
 当为字符串分配内存时，char数组value[]存储字符，offset=0，count=字符串长度。
 在Java6里，由substring(start,end)调用构造函数String(int,in,char[])时，实际上是改变offset和count的位置达到取得子字符串的目的，而子字符串里的value[]数组，因为引用是强引用，仍然指向原字符串。
 由于String是不可变的(immutable)，基于这种共享同一个字符数组的设计有以下好处： 调用substring()时无需复制数组，可重用value[]数组；且substring()的运行是常数时间，非线性，性能得到提高；而劣势，便是可能会产生内存泄露。
@@ -29,8 +29,8 @@ cookie和session的区别，分布式环境怎么保存用户状态 1、cookie�
 session共享机制
 使用分布式缓存方案比如memcached、redis，但是要求Memcached或Redis必须是集群。
 写一段栈溢出、堆溢出的代码 public class Test { //不断创建对象可以导致堆溢出public void testHeap(){ for(;;){ ArrayList list = new ArrayList (2000); } } //递归调用可以导致栈溢出int num=1; public void testStack(){ num&#43;&#43;; this.testStack(); } public static void main(String[] args){ Test t = new Test (); t.'><title>Java面试之初中级题集</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java面试之初中级题集'>
 <meta property='og:description' content='数组在内存中如何分配  简单的值类型的数组，每个数组成员是一个引用（指针），引用到栈上的空间（因为值类型变量的内存分配在栈上） 引用类型，类类型的数组，每个数组成员仍是一个引用（指针），引用到堆上的空间（因为类的实例的内存分配在堆上）  String的substring()方法内部是如何实现 substring方法通过原字符串创建了一个新的对象。
@@ -92,8 +92,31 @@ cookie和session的区别，分布式环境怎么保存用户状态 1、cookie�
 缺点：会对网络负荷造成一定压力，如果session量大的话可能会造成网络堵塞，拖慢服务器性能。
 session共享机制
 使用分布式缓存方案比如memcached、redis，但是要求Memcached或Redis必须是集群。
-写一段栈溢出、堆溢出的代码 public class Test { //不断创建对象可以导致堆溢出public void testHeap(){ for(;;){ ArrayList list = new ArrayList (2000); } } //递归调用可以导致栈溢出int num=1; public void testStack(){ num&#43;&#43;; this.testStack(); } public static void main(String[] args){ Test t = new Test (); t."></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+写一段栈溢出、堆溢出的代码 public class Test { //不断创建对象可以导致堆溢出public void testHeap(){ for(;;){ ArrayList list = new ArrayList (2000); } } //递归调用可以导致栈溢出int num=1; public void testStack(){ num&#43;&#43;; this.testStack(); } public static void main(String[] args){ Test t = new Test (); t.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -105,14 +128,18 @@ session共享机制
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -125,7 +152,7 @@ session共享机制
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -144,7 +171,7 @@ session共享机制
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -162,7 +189,7 @@ session共享机制
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -178,8 +205,49 @@ session共享机制
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -201,15 +269,15 @@ session共享机制
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/">Java面试之初中级题集</a>
+        <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%88%9D%E4%B8%AD%E7%BA%A7%E9%A2%98%E9%9B%86/">Java面试之初中级题集</a>
     </h2>
 
     <footer class="article-time">
@@ -303,7 +371,7 @@ session共享机制
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -334,7 +402,7 @@ session共享机制
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -346,7 +414,7 @@ session共享机制
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -358,7 +426,7 @@ session共享机制
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -370,7 +438,7 @@ session共享机制
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -382,7 +450,7 @@ session共享机制
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -397,10 +465,30 @@ session共享机制
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -416,14 +504,18 @@ session共享机制
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -485,6 +577,12 @@ session共享机制
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -500,8 +598,6 @@ session共享机制
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

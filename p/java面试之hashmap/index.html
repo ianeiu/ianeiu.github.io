@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
 public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3.'><title>Java面试之HashMap</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java面试之HashMap'>
-<meta property='og:description' content='HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
+<meta property='og:description' content='HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
 public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3.'>
 <meta property='og:url' content='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/'>
 <meta property='og:site_name' content='吴炜棉'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HashMap' /><meta property='article:published_time' content='2018-09-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-09-13T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Java面试之HashMap">
-<meta name="twitter:description" content="HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
-public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3."></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+<meta name="twitter:description" content="HashMap（数组&#43;链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
+public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -27,14 +50,18 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -47,7 +74,7 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -66,7 +93,7 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -84,7 +111,7 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -100,8 +127,49 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -123,15 +191,15 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/">Java面试之HashMap</a>
+        <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/">Java面试之HashMap</a>
     </h2>
 
     <footer class="article-time">
@@ -154,11 +222,13 @@ public V put(K key, V value) { return putVal(hash(key), key, value, false, true)
 <li>当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。</li>
 <li>当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。</li>
 </ol>
-<p><figure>
-		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png" data-size="929x735">
-			<img srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_1024x0_resize_box_2.png 1024w"
-				src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png" width="929" height="735" loading="lazy"
-				alt="&nbsp;">
+<p><figure style="flex-grow: 126; flex-basis: 303px">
+		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png" data-size="929x735"><img src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95.png"
+				srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/HashMap%E4%B9%8Bput%E6%96%B9%E6%B3%95_hu8b8321e01761ab5d0950dba8bd066dc5_262910_1024x0_resize_box_2.png 1024w"
+				width="929"
+				height="735"
+				loading="lazy"
+				>
 		</a>
 		
 	</figure></p>
@@ -408,7 +478,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/hashmap/">HashMap</a>
+            <a href="/tags/hashmap/">HashMap</a>
         
     </section>
 
@@ -439,7 +509,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -451,7 +521,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -463,7 +533,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -475,7 +545,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -487,7 +557,7 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -502,10 +572,30 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -521,14 +611,18 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -590,6 +684,12 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -605,8 +705,6 @@ ConcurrentHashMap进行的不是整体的扩容，而是单独对 Segment进行�
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

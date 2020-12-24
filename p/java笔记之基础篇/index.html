@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Java基础笔记整理
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Java基础笔记整理
 关键字  用于定义数据类型  class interface 【引用数据类型：类、接口、数组】 boolean(1) char(2) byte(1) short(2) int(4) long(8) float(4) double(8) 【8个内置数据类型】
 类型转换：
 byte→short→int→→(可能丢失精度)float→→(可能丢失精度)long→→(可能丢失精度)double
@@ -14,8 +14,8 @@ float→double void   用于定义数据类型值  true false null   用于定�
   break continue return【流程跳转】
 直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。
 public static void testForEach(List list) { for (Iterator iterator = list.iterator(); iterator.hasNext();) { Object t = iterator.'><title>Java笔记之基础篇</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java笔记之基础篇'>
 <meta property='og:description' content='Java基础笔记整理
@@ -48,8 +48,31 @@ float→double void   用于定义数据类型值  true false null   用于定�
   break continue return【流程跳转】
 直接for循环效率最高，其次是迭代器和 ForEach操作。作为语法糖，ForEach底层是使用迭代器实现，反编译后testForEach方法如下，可以看到，只比迭代器遍历多了生成中间变量这一步，因为性能也略微下降了一些。
 public static void testForEach(List list) { for (Iterator iterator = list.iterator(); iterator.hasNext();) { Object t = iterator."><meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash.jpg' /></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+    <meta name="twitter:image" content='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash.jpg' />
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -61,14 +84,18 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -81,7 +108,7 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -100,7 +127,7 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -118,7 +145,7 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -134,8 +161,49 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -153,10 +221,15 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <img srcset="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_1024x0_resize_q75_box.jpg 1024w, /p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_2000x0_resize_q75_box.jpg 2000w"
-                    src="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_2000x0_resize_q75_box.jpg" width="1500" height="1000" loading="lazy"
-                    alt="Featured image of post Java笔记之基础篇" />
-            
+            <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/">
+                <img src="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_800x0_resize_q75_box.jpg"
+                        srcset="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_800x0_resize_q75_box.jpg 800w, /p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Java笔记之基础篇" />
+                
+            </a>
         </div>
     
 
@@ -164,20 +237,15 @@ public static void testForEach(List list) { for (Iterator iterator = list.iterat
     
     <header class="article-category">
         
-            <a href="https://ianeiu.github.io/categories/java/" 
-                    class="color-tag"
-                    data-image="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/matt-le-SJSpo9hQf7s-unsplash_hu958d513eeefe5556a31d065479ecc5ac_14205_20x20_fill_q75_box_smart1.jpg" 
-                    data-key="" 
-                    data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
-                    Java
-                </a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/">Java笔记之基础篇</a>
+        <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/">Java笔记之基础篇</a>
     </h2>
 
     <footer class="article-time">
@@ -1055,7 +1123,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -1086,7 +1154,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -1098,7 +1166,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -1110,7 +1178,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -1122,7 +1190,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -1134,7 +1202,7 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -1149,10 +1217,30 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -1168,14 +1256,18 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -1237,6 +1329,12 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -1252,8 +1350,6 @@ wait()是Object 类的方法，对象调用wait()方法导致本线程放弃对�
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

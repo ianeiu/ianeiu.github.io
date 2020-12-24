@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-	<meta name="generator" content="Hugo 0.76.5" />
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='得之我幸'><title>吴炜棉</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/'>
+<html lang="zh-CN">
+    <head>
+	<meta name="generator" content="Hugo 0.76.5" /><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='得之我幸'><title>吴炜棉</title>
+
+<link rel='canonical' href='https://ianeiu.github.io/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='吴炜棉'>
 <meta property='og:description' content='得之我幸'>
@@ -12,8 +12,31 @@
 <meta property='og:site_name' content='吴炜棉'>
 <meta property='og:type' content='website'><meta property='og:updated_time' content=' 2020-10-27T00:00:00&#43;00:00 '/>
 <meta name="twitter:title" content="吴炜棉">
-<meta name="twitter:description" content="得之我幸"><link rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended ">
+<meta name="twitter:description" content="得之我幸"><link rel="alternate" type="application/rss&#43;xml" href="https://ianeiu.github.io/index.xml">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended ">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -25,14 +48,18 @@
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -45,7 +72,7 @@
         
 
         <li  class='current' >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -64,7 +91,7 @@
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -82,7 +109,7 @@
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -98,8 +125,49 @@
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     
     
@@ -110,21 +178,21 @@
         
             
 <article class="">
-    
+    <header class="article-header">
 
     <div class="article-details">
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" >
+                前端
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">兼容IE的代码片段</a>
+        <a href="/p/%E5%85%BC%E5%AE%B9ie%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">兼容IE的代码片段</a>
     </h2>
 
     <footer class="article-time">
@@ -138,6 +206,7 @@
 
         <time class="article-time--published">Aug 23, 2018</time>
     </footer></div>
+</header>
 </article>
         
     </section>
@@ -188,18 +257,39 @@
     </nav>
 
 <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-
             </main>
     
     
     <aside class="sidebar right-sidebar sticky">
+        
+            <form action="/search" class="search-form widget" >
+    <p>
+        <label>Search</label>
+        <input name="keyword" required placeholder="Type something..." />
+    
+        <button title="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+        </button>
+    </p>
+</form>
         
             <section class="widget archives">
     <div class="widget-icon">
@@ -262,43 +352,43 @@
 
     <div class="tagCloud-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/" class="font_size_16">
+            <a href="/tags/java/" class="font_size_16">
                 java
             </a>
         
-            <a href="https://ianeiu.github.io/tags/mybatis/" class="font_size_4">
+            <a href="/tags/mybatis/" class="font_size_4">
                 Mybatis
             </a>
         
-            <a href="https://ianeiu.github.io/tags/spring/" class="font_size_4">
+            <a href="/tags/spring/" class="font_size_4">
                 Spring
             </a>
         
-            <a href="https://ianeiu.github.io/tags/jvm/" class="font_size_3">
+            <a href="/tags/jvm/" class="font_size_3">
                 JVM
             </a>
         
-            <a href="https://ianeiu.github.io/tags/ide/" class="font_size_2">
+            <a href="/tags/ide/" class="font_size_2">
                 IDE
             </a>
         
-            <a href="https://ianeiu.github.io/tags/axis/" class="font_size_1">
+            <a href="/tags/axis/" class="font_size_1">
                 axis
             </a>
         
-            <a href="https://ianeiu.github.io/tags/axis2/" class="font_size_1">
+            <a href="/tags/axis2/" class="font_size_1">
                 axis2
             </a>
         
-            <a href="https://ianeiu.github.io/tags/css/" class="font_size_1">
+            <a href="/tags/css/" class="font_size_1">
                 css
             </a>
         
-            <a href="https://ianeiu.github.io/tags/cxf/" class="font_size_1">
+            <a href="/tags/cxf/" class="font_size_1">
                 cxf
             </a>
         
-            <a href="https://ianeiu.github.io/tags/gc/" class="font_size_1">
+            <a href="/tags/gc/" class="font_size_1">
                 gc
             </a>
         
@@ -322,8 +412,6 @@
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

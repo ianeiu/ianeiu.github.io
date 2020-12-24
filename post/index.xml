@@ -31,7 +31,7 @@
       <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/p/spring%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>Spring装配Bean的过程  实例化; 设置属性值; 如果实现了BeanNameAware接口,调用setBeanName设置Bean的ID或者Name; 如果实现BeanFactoryAware接口,调用setBeanFactory 设置BeanFactory; 如果实现ApplicationContextAware,调用setApplicationContext设置ApplicationContext 调用BeanPostProcessor的预先初始化方法; 调用InitializingBean的afterPropertiesSet()方法; 调用定制init-method方法； 调用BeanPostProcessor的后初始化方法;  springboot的启动过程  通过 SpringFactoriesLoader加载 META-INF/spring.factories文件，获取并创建 SpringApplicationRunListener对象 然后由 SpringApplicationRunListener来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener来发出 contextPrepared消息，告知SpringBoot 应用使用的ApplicationContext已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener来发出 contextLoaded 消息，告知SpringBoot 应用使用的 ApplicationContext已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener来发出 running 消息，告知程序已运行行起来了  
+      <description>Spring装配Bean的过程  实例化; 设置属性值; 如果实现了BeanNameAware接口,调用setBeanName设置Bean的ID或者Name; 如果实现BeanFactoryAware接口,调用setBeanFactory 设置BeanFactory; 如果实现ApplicationContextAware,调用setApplicationContext设置ApplicationContext 调用BeanPostProcessor的预先初始化方法; 调用InitializingBean的afterPropertiesSet()方法; 调用定制init-method方法； 调用BeanPostProcessor的后初始化方法;  springboot的启动过程  通过 SpringFactoriesLoader加载 META-INF/spring.factories文件，获取并创建 SpringApplicationRunListener对象 然后由 SpringApplicationRunListener来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener来发出 contextPrepared消息，告知SpringBoot 应用使用的ApplicationContext已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener来发出 contextLoaded 消息，告知SpringBoot 应用使用的 ApplicationContext已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener来发出 running 消息，告知程序已运行行起来了  
 spring事件的实现原理，写出常用的几个事件  事件机制：Spring中的事件机制是一个观察者模式的实现.观察者模式就是一个目标对象管理所有相依于它的观察者对象,并且在它本身的状态改变时主动发出通知.Spring的事件由ApplicationContext发布。 spring默认存在的事件：  ContextStartedEvent：ApplicationContext启动后触发的事件 ContextStoppedEvent：ApplicationContext停止后触发的事件 ContextRefreshedEvent：ApplicationContext初始化或刷新完成后触发的事件 ContextClosedEvent：ApplicationContext关闭后触发的事件    spring中的设计模式  简单工厂：spring中的BeanFactory就是简单工厂模式的体现，根据传⼊入一个唯一的标识来获得bean对象，但是否是在传⼊参数后创建还是传入参数前创建这个要根据具体情况来定。 单例模式：Spring下默认的bean均为singleton。 代理模式：为其他对象提供⼀种代理以控制对这个对象的访问。从结构上来看和Decorator模式类似，但Proxy是控制，更更像是一种对功能的限制，而Decorator是增加职责。 spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。 观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更更新。spring中Observer模式常用的地方是listener的实现。如ApplicationListener。 模板模式：类似 JdbcTemplate 等则是应用了模板模式。  </description>
     </item>
     
@@ -332,7 +332,7 @@ TCP与UDP的区别 1、基于连接与无连接;
 5、TCP保证数据正确性，UDP可能丢包;
 6、TCP保证数据顺序，UDP不保证。
 三次握手的过程  客户端发送：SYN = 1, SEQ = X, 端口号 服务器回复：SYN = 1, ACK = X + 1, SEQ = Y 客户端发送：ACK = Y + 1, SEQ = X + 1   确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。
- Tcp建立连接的过程</description>
+ Tcp建立连接的过程</description>
     </item>
     
     <item>
@@ -484,7 +484,7 @@ POJO POJO（plain ordinary java object）即简单java对象，是一种概念�
       <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</guid>
-      <description>HashMap（数组+链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
+      <description>HashMap（数组+链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
 public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3.</description>
     </item>
     
@@ -573,7 +573,7 @@ session共享机制
       
       <guid>https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8Bjvm%E7%BB%93%E6%9E%84/</guid>
       <description>JVM运行时数据区 运行时数据区（分布在操作系统堆中，由程序员管理）
- 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
+ 方法区 虚拟机栈（Java栈） 堆（Java堆） 本地方法栈/区 程序计数器  JVM结构
 虽然这几个区域都是属于运行时数据区，但是这几个区域的创建时机是不一致的，有的是随虚拟机启动而创建的，随虚拟机销毁而销毁；有的是随线程创建而创建，随线程销毁而销毁。
 线程独享的区域 程序计数器 程序计数器是来指示当前线程正在执行的JVM指令，因此程序计数器是线程独有的。一个JVM支持多个线程，每一个线程都要自己的程序计数器。
 如果线程正在执行的方法是Java方法，则程序计数器保存的是当前线程正在执行的JVM指令，如果正在执行的方法是Native方法，则保存为空（undefined)。
@@ -584,12 +584,13 @@ session共享机制
 运行时常量池 ：方法区的一部分（Java jdk1.7中的常量池是移到了堆中，同时在jdk1.8中移除整个永久代，取而代之的是一个叫元空间（Metaspace）的区域）	，存放着类中固定的常量信息、方法、和field的引用信息。JVM在加载类的时候会为每一个Class分配一个独立的常量池。
 堆 JVM只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，存储着所有类实例即类对象和数组对象。对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定
 理所当然，堆也是垃圾收集器重点照顾的区域，所以堆内空间还会被不同的垃圾收集器进行进一步的细分，最有名的就是新生代、老年代的划分。
-JVM
+JVM
 JVM 本身是个本地程序，还需要其他的内存去完成各种基本任务，比如，JIT Compiler 在运行时对热点方法进行编译，就会将编译后的方法储存在 Code Cache 里面；GC 等功能需要运行在本地线程之中，类似部分都需要占用内存空间。
 JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合前面一点的结论：对象实例都是分配在堆上。
-堆内部结构 堆内部结构
+堆内部结构 堆内部结构
   新生代
-新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。</description>
+新生代是大部分对象创建和销毁的区域，在通常的 Java 应用中，绝大部分对象生命周期都是很短暂的。其内部又分为 Eden 区域，作为对象初始分配的区域；两个 Survivor，有时候也叫from、to 区域，被用来放置从 Minor GC 中保留下来的对象。
+JVM 会随意选取一个 Survivor 区域作为“to”，然后会在 GC 过程中进行区域间拷贝，也就是将 Eden 中存活下来的对象和 from 区域的对象，拷贝到这个“to”区域。这种设计主要是为了防止内存的碎片化，并进一步清理无用对象。</description>
     </item>
     
     <item>
@@ -623,7 +624,7 @@ CXF更注重开发人员的工效（ergonomics）和嵌入能力（embeddability
       <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/p/springmvc%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B9%9D%E5%A4%A7%E7%BB%84%E4%BB%B6/</guid>
-      <description>运行流程 
+      <description>运行流程 
  用户发送请求至前置控制器DispatcherServlet DispatcherServlet收到请求调用HandlerMapping处理器映射器。 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。 DispatcherServlet通过HandlerAdapter处理器适配器调用处理器 执行处理器/后端控制器Controller Controller执行完成返回ModelAndView HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet DispatcherServlet将ModelAndView传给视图解析器ViewReslover ViewReslover解析后返回具体View DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。 DispatcherServlet响应用户。  从上面可以看出，DispatcherServlet有接收请求，响应结果，转发等作用。有了DispatcherServlet之后，可以减少组件之间的耦合度。
 九大组件 HandlerMapping 处理器映射器:根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
 HandlerAdapter 适配器。因为SpringMVC中的Handler可以是任意的形式,但是Servlet需要的处理方法的结构却是固定的，都是以request和response为参数的方法。HandlerAdapter的作用就是让固定的Servlet处理方法调用Handler（Controller）来进行处理。

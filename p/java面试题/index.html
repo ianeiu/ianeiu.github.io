@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Java平台理解及Java是解释执行吗？ 首先Java是一种面向对象的语言，本身具有两个特性：一个是跨平台能力（一次编写，到处运行），屏蔽了操作系统和硬件的细节； 第二个就是垃圾自动回收机制（GC）。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Java平台理解及Java是解释执行吗？ 首先Java是一种面向对象的语言，本身具有两个特性：一个是跨平台能力（一次编写，到处运行），屏蔽了操作系统和硬件的细节； 第二个就是垃圾自动回收机制（GC）。
 我们日常接触到的jre（Java runtime environment）和jdk（Java development kit）， jre是Java运行时环境，包含了JVM和java类库； jdk则是Java开发工具，里面提供了许多开发工具如；编译器(javac)、诊断和监控(jconsole)工具等。
 java生态：spring，spark，elasticsearch，maven
 不完全正确，Java是通过对源文件进行编译成字节码文件（.class），然后jvm（Java虚拟机）对字节码文件逐条进行解释运行。 但是往往有一部分热点代码（hot spot）会占有大部分时间解释，所以Java中会有jit（Just-In-Time）。即时编译器将该部分直接编译成机器代码直接运行，大大提高效率。 这部分热点代码就是编译执行了而不是解释执行。
 在运行时，JVM 会通过类加载器（Class-Loader）加载字节码，解释或者编译执行。 主流 Java 版本中，如 JDK 8 实际是解释和编译混合的一种模式，即所谓的混合模式（-Xmixed）。 通常运行在 server 模式的 JVM，会进行上万次调用以收集足够的信息进行高效的编译，client 模式这个门限是 1500 次。 Oracle Hotspot JVM 内置了两个不同的 JIT compiler， C1 对应前面说的 client 模式，适用于对于启动速度敏感的应用，比如普通 Java 桌面应用； C2 对应 server 模式，它的优化是为长时间运行的服务器端应用设计的，默认是采用所谓的分层编译（TieredCompilation）。
 除了我们日常最常见的 Java 使用模式，其实还有一种新的编译方式， 即所谓的 AOT（Aheadof-Time Compilation），直接将字节码编译成机器代码， 这样就避免了 JIT 预热等各方面的开销， 比如 Oracle JDK 9 就引入了实验性的 AOT 特性，并且增加了新的 jaotc 工具。
 java创建对象的方式  使用new关键字创建对象 使用Class类的newInstance方法(反射机制) 使用Constructor类的newInstance方法(反射机制) 使用Clone方法创建对象 使用(反)序列化机制创建对象  Exception和Error有什么区别 Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。'><title>Java面试题</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java面试题'>
 <meta property='og:description' content='Java平台理解及Java是解释执行吗？ 首先Java是一种面向对象的语言，本身具有两个特性：一个是跨平台能力（一次编写，到处运行），屏蔽了操作系统和硬件的细节； 第二个就是垃圾自动回收机制（GC）。
@@ -29,8 +29,31 @@ java生态：spring，spark，elasticsearch，maven
 不完全正确，Java是通过对源文件进行编译成字节码文件（.class），然后jvm（Java虚拟机）对字节码文件逐条进行解释运行。 但是往往有一部分热点代码（hot spot）会占有大部分时间解释，所以Java中会有jit（Just-In-Time）。即时编译器将该部分直接编译成机器代码直接运行，大大提高效率。 这部分热点代码就是编译执行了而不是解释执行。
 在运行时，JVM 会通过类加载器（Class-Loader）加载字节码，解释或者编译执行。 主流 Java 版本中，如 JDK 8 实际是解释和编译混合的一种模式，即所谓的混合模式（-Xmixed）。 通常运行在 server 模式的 JVM，会进行上万次调用以收集足够的信息进行高效的编译，client 模式这个门限是 1500 次。 Oracle Hotspot JVM 内置了两个不同的 JIT compiler， C1 对应前面说的 client 模式，适用于对于启动速度敏感的应用，比如普通 Java 桌面应用； C2 对应 server 模式，它的优化是为长时间运行的服务器端应用设计的，默认是采用所谓的分层编译（TieredCompilation）。
 除了我们日常最常见的 Java 使用模式，其实还有一种新的编译方式， 即所谓的 AOT（Aheadof-Time Compilation），直接将字节码编译成机器代码， 这样就避免了 JIT 预热等各方面的开销， 比如 Oracle JDK 9 就引入了实验性的 AOT 特性，并且增加了新的 jaotc 工具。
-java创建对象的方式  使用new关键字创建对象 使用Class类的newInstance方法(反射机制) 使用Constructor类的newInstance方法(反射机制) 使用Clone方法创建对象 使用(反)序列化机制创建对象  Exception和Error有什么区别 Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+java创建对象的方式  使用new关键字创建对象 使用Class类的newInstance方法(反射机制) 使用Constructor类的newInstance方法(反射机制) 使用Clone方法创建对象 使用(反)序列化机制创建对象  Exception和Error有什么区别 Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出（throw）或者捕获（catch），它是异常处理机制的基本组成类型。">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -42,14 +65,18 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -62,7 +89,7 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -81,7 +108,7 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -99,7 +126,7 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -115,8 +142,49 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -138,15 +206,15 @@ java创建对象的方式  使用new关键字创建对象 使用Class类的newIn
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">Java面试题</a>
+        <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">Java面试题</a>
     </h2>
 
     <footer class="article-time">
@@ -406,7 +474,7 @@ cw.visitEnd(); // 结束类字节码生成
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -437,7 +505,7 @@ cw.visitEnd(); // 结束类字节码生成
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -449,7 +517,7 @@ cw.visitEnd(); // 结束类字节码生成
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -461,7 +529,7 @@ cw.visitEnd(); // 结束类字节码生成
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -473,7 +541,7 @@ cw.visitEnd(); // 结束类字节码生成
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -485,7 +553,7 @@ cw.visitEnd(); // 结束类字节码生成
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <a href="/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/">
         
         
 
@@ -500,10 +568,30 @@ cw.visitEnd(); // 结束类字节码生成
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -519,14 +607,18 @@ cw.visitEnd(); // 结束类字节码生成
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -588,6 +680,12 @@ cw.visitEnd(); // 结束类字节码生成
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -603,8 +701,6 @@ cw.visitEnd(); // 结束类字节码生成
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='tcp/ip协议 TCP/IP协议族是一个四层协议系统，自底而上分别是数据链路层、网络层、传输层和应用层。每一层完成不同的功能，且通过若干协议来实现，上层协议使用下层协议提供的服务。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='tcp/ip协议 TCP/IP协议族是一个四层协议系统，自底而上分别是数据链路层、网络层、传输层和应用层。每一层完成不同的功能，且通过若干协议来实现，上层协议使用下层协议提供的服务。
  数据链路层负责帧数据的传递; 网络层责数据怎样传递过去; 传输层负责传输数据的控制（准确性、安全性）; 应用层负责数据的展示和获取。  物理层： 为数据端设备提供传送数据的通路，数据通路可以是一个物理媒体，也可以是多个物理媒体连接而成。
 TCP协议  Transmission Control Protocol，传输控制协议 面向连接的协议 需要三次握手建立连接 需要四次挥手断开连接 TCP报头最小长度：20字节  TCP与UDP 面向报文的传输方式是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。 面向字节流的话，虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。如果应用程序一次只发送一个字节，TCP也可以等待积累有足够多的字节后再构成报文段发送出去。
 TCP与UDP的区别 1、基于连接与无连接;
@@ -10,9 +10,9 @@ TCP与UDP的区别 1、基于连接与无连接;
 5、TCP保证数据正确性，UDP可能丢包;
 6、TCP保证数据顺序，UDP不保证。
 三次握手的过程  客户端发送：SYN = 1, SEQ = X, 端口号 服务器回复：SYN = 1, ACK = X &#43; 1, SEQ = Y 客户端发送：ACK = Y &#43; 1, SEQ = X &#43; 1   确认应答信号ACK = 收到的SEQ &#43; 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。
- Tcp建立连接的过程'><title>TCP与UDP笔记</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/'>
+ Tcp建立连接的过程'><title>TCP与UDP笔记</title>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='TCP与UDP笔记'>
 <meta property='og:description' content='tcp/ip协议 TCP/IP协议族是一个四层协议系统，自底而上分别是数据链路层、网络层、传输层和应用层。每一层完成不同的功能，且通过若干协议来实现，上层协议使用下层协议提供的服务。
@@ -24,7 +24,7 @@ TCP与UDP的区别 1、基于连接与无连接;
 5、TCP保证数据正确性，UDP可能丢包;
 6、TCP保证数据顺序，UDP不保证。
 三次握手的过程  客户端发送：SYN = 1, SEQ = X, 端口号 服务器回复：SYN = 1, ACK = X &#43; 1, SEQ = Y 客户端发送：ACK = Y &#43; 1, SEQ = X &#43; 1   确认应答信号ACK = 收到的SEQ &#43; 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。
- Tcp建立连接的过程'>
+ Tcp建立连接的过程'>
 <meta property='og:url' content='https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='吴炜棉'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='TCP' /><meta property='article:tag' content='UDP' /><meta property='article:published_time' content='2018-12-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-12-19T00:00:00&#43;00:00'/>
@@ -38,8 +38,31 @@ TCP与UDP的区别 1、基于连接与无连接;
 5、TCP保证数据正确性，UDP可能丢包;
 6、TCP保证数据顺序，UDP不保证。
 三次握手的过程  客户端发送：SYN = 1, SEQ = X, 端口号 服务器回复：SYN = 1, ACK = X &#43; 1, SEQ = Y 客户端发送：ACK = Y &#43; 1, SEQ = X &#43; 1   确认应答信号ACK = 收到的SEQ &#43; 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。
- Tcp建立连接的过程"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+ Tcp建立连接的过程">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -51,14 +74,18 @@ TCP与UDP的区别 1、基于连接与无连接;
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -71,7 +98,7 @@ TCP与UDP的区别 1、基于连接与无连接;
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -90,7 +117,7 @@ TCP与UDP的区别 1、基于连接与无连接;
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -108,7 +135,7 @@ TCP与UDP的区别 1、基于连接与无连接;
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -124,8 +151,49 @@ TCP与UDP的区别 1、基于连接与无连接;
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -147,15 +215,15 @@ TCP与UDP的区别 1、基于连接与无连接;
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/network/">network</a>
-            
+            <a href="/categories/network/" >
+                network
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/">TCP与UDP笔记</a>
+        <a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/">TCP与UDP笔记</a>
     </h2>
 
     <footer class="article-time">
@@ -208,10 +276,12 @@ TCP与UDP的区别 1、基于连接与无连接;
 <blockquote>
 <p>确认应答信号ACK = 收到的SEQ + 1。连接建立中，同步信号SYN始终为1。连接建立后，同步信号SYN=0。</p>
 </blockquote>
-<p><figure>
-		<a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" data-size="696x444">
-			<img srcset="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_480x0_resize_box_2.png 480w, /p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_1024x0_resize_box_2.png 1024w"
-				src="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" width="696" height="444" loading="lazy"
+<p><figure style="flex-grow: 156; flex-basis: 376px">
+		<a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" data-size="696x444"><img src="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png"
+				srcset="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_480x0_resize_box_2.png 480w, /p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hud7960ab7730bead344e303715fec81b3_129972_1024x0_resize_box_2.png 1024w"
+				width="696"
+				height="444"
+				loading="lazy"
 				alt="Tcp建立连接的过程">
 		</a>
 		
@@ -225,10 +295,12 @@ TCP与UDP的区别 1、基于连接与无连接;
 <li>B向A提出停止连接请求，FIN = 1</li>
 <li>A收到，ACK = 1</li>
 </ol>
-<p><figure>
-		<a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" data-size="741x363">
-			<img srcset="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_480x0_resize_box_2.png 480w, /p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_1024x0_resize_box_2.png 1024w"
-				src="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" width="741" height="363" loading="lazy"
+<p><figure style="flex-grow: 204; flex-basis: 489px">
+		<a href="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png" data-size="741x363"><img src="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B.png"
+				srcset="/p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_480x0_resize_box_2.png 480w, /p/tcp%E4%B8%8Eudp%E7%AC%94%E8%AE%B0/Tcp%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B_hua3a1cad0f9424442d8b857ec4ef9460d_88615_1024x0_resize_box_2.png 1024w"
+				width="741"
+				height="363"
+				loading="lazy"
 				alt="Tcp断开连接的过程">
 		</a>
 		
@@ -396,9 +468,9 @@ TFTP</p>
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/tcp/">TCP</a>
+            <a href="/tags/tcp/">TCP</a>
         
-            <a href="https://ianeiu.github.io/tags/udp/">UDP</a>
+            <a href="/tags/udp/">UDP</a>
         
     </section>
 
@@ -429,7 +501,7 @@ TFTP</p>
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/">
+    <a href="/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB/">
         
         
 
@@ -441,7 +513,7 @@ TFTP</p>
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/http%E7%AC%94%E8%AE%B0/">
+    <a href="/p/http%E7%AC%94%E8%AE%B0/">
         
         
 
@@ -453,7 +525,7 @@ TFTP</p>
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/webservice%E7%AE%80%E4%BB%8B/">
+    <a href="/p/webservice%E7%AE%80%E4%BB%8B/">
         
         
 
@@ -465,7 +537,7 @@ TFTP</p>
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/">
+    <a href="/p/%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E7%AE%80%E4%BB%8B/">
         
         
 
@@ -480,10 +552,30 @@ TFTP</p>
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -499,14 +591,18 @@ TFTP</p>
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -568,6 +664,12 @@ TFTP</p>
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -583,8 +685,6 @@ TFTP</p>
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

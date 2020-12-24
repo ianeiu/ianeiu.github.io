@@ -13,7 +13,7 @@
       <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8Bhashmap/</guid>
-      <description>HashMap（数组+链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
+      <description>HashMap（数组+链表）  HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。 当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。 当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。  
 public V put(K key, V value) { return putVal(hash(key), key, value, false, true); } final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) { Node&amp;lt;K,V&amp;gt;[] tab; Node&amp;lt;K,V&amp;gt; p; int n, i; //1. 如果当前table为空，新建默认大小的table if ((tab = table) == null || (n = tab.length) == 0) n = (tab = resize()).length; //2. 获取当前key对应的节点 if ((p = tab[i = (n - 1) &amp;amp; hash]) == null) //3.</description>
     </item>
     

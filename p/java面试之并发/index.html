@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='什么是乐观锁和悲观锁？ 1、悲观锁
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='什么是乐观锁和悲观锁？ 1、悲观锁
 Java在JDK1.5之前都是靠synchronized关键字保证同步的，这种通过使用一致的锁定协议来协调对共享状态的访问，可以确保无论哪个线程持有共享变量的锁，都采用独占的方式来访问这些变量。独占锁其实就是一种悲观锁，所以可以说synchronized是悲观锁。
 2、乐观锁
 乐观锁（Optimstic Locking）其实是一种思想。相对悲观锁而言，乐观锁假定认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式地对数据的冲突与否进行检测，如果发现冲突了，则返回错误信息。
@@ -13,8 +13,8 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
 所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机制， 当 JVM 检测到不同的竞争状况时，会自动切换到适合的锁实现，这种切换就是锁的升级、降级。
 当没有竞争出现时，默认会使用偏斜锁。 JVM 会利用 CAS 操作（compare and swap），在对象头上的 Mark Word 部分设置线程 ID，以表示这个对象偏向于当前线程，所以并不涉及真正的互斥锁。 这样做的假设是基于在很多应用场景中，大部分对象生命周期中最多会被一个线程锁定，使用偏斜锁可以降低无竞争开销。
 如果有另外的线程试图锁定某个已经被偏斜过的对象，JVM 就需要撤销（revoke）偏斜锁，并切换到轻量级锁实现。 轻量级锁依赖 CAS 操作 Mark Word 来试图获取锁，如果重试成功，就使用普通的轻量级锁；否则，进一步升级为重量级锁。'><title>Java面试之并发</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java面试之并发'>
 <meta property='og:description' content='什么是乐观锁和悲观锁？ 1、悲观锁
@@ -44,8 +44,31 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
 现代的（Oracle）JDK 中，JVM 对此进行了大刀阔斧地改进，提供了三种不同的 Monitor 实现， 也就是常说的三种不同的锁：偏斜锁（Biased Locking）、轻量级锁和重量级锁，大大改进了其性能。
 所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机制， 当 JVM 检测到不同的竞争状况时，会自动切换到适合的锁实现，这种切换就是锁的升级、降级。
 当没有竞争出现时，默认会使用偏斜锁。 JVM 会利用 CAS 操作（compare and swap），在对象头上的 Mark Word 部分设置线程 ID，以表示这个对象偏向于当前线程，所以并不涉及真正的互斥锁。 这样做的假设是基于在很多应用场景中，大部分对象生命周期中最多会被一个线程锁定，使用偏斜锁可以降低无竞争开销。
-如果有另外的线程试图锁定某个已经被偏斜过的对象，JVM 就需要撤销（revoke）偏斜锁，并切换到轻量级锁实现。 轻量级锁依赖 CAS 操作 Mark Word 来试图获取锁，如果重试成功，就使用普通的轻量级锁；否则，进一步升级为重量级锁。"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+如果有另外的线程试图锁定某个已经被偏斜过的对象，JVM 就需要撤销（revoke）偏斜锁，并切换到轻量级锁实现。 轻量级锁依赖 CAS 操作 Mark Word 来试图获取锁，如果重试成功，就使用普通的轻量级锁；否则，进一步升级为重量级锁。">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -57,14 +80,18 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -77,7 +104,7 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -96,7 +123,7 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -114,7 +141,7 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -130,8 +157,49 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -153,15 +221,15 @@ AQS使用一个FIFO的队列表示排队等待锁的线程，队列头节点称�
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">Java面试之并发</a>
+        <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">Java面试之并发</a>
     </h2>
 
     <footer class="article-time">
@@ -373,11 +441,13 @@ final void setArray (Object[]a){
 <li>与弱一致性对应的，就是我介绍过的同步容器常见的行为“fast-fail”，也就是检测到容器在遍历过程中发生了修改，则抛出 ConcurrentModificationException，不再继续遍历。</li>
 </ul>
 <h2 id="哪些队列是有界的哪些是无界的">哪些队列是有界的，哪些是无界的？</h2>
-<p><figure>
-		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png" data-size="901x359">
-			<img srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_1024x0_resize_box_2.png 1024w"
-				src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png" width="901" height="359" loading="lazy"
-				alt="&nbsp;">
+<p><figure style="flex-grow: 250; flex-basis: 602px">
+		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png" data-size="901x359"><img src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue.png"
+				srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Queue_hu23ab40b4f6d1bf3358004b991a37e2e0_49974_1024x0_resize_box_2.png 1024w"
+				width="901"
+				height="359"
+				loading="lazy"
+				>
 		</a>
 		
 	</figure></p>
@@ -458,11 +528,13 @@ private final Condition notFull = putLock.newCondition();
 <li>newScheduledThreadPool(int corePoolSize)，同样是 ScheduledExecutorService，区别在于它会保持 corePoolSize 个工作线程。</li>
 <li>newWorkStealingPool(int parallelism)，这是一个经常被人忽略的线程池，Java 8 才加入这个创建方法，其内部会构建ForkJoinPool，利用Work-Stealing算法，并行地处理任务，不保证处理顺序。</li>
 </ul>
-<p><figure>
-		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png" data-size="1085x630">
-			<img srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_1024x0_resize_box_2.png 1024w"
-				src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png" width="1085" height="630" loading="lazy"
-				alt="&nbsp;">
+<p><figure style="flex-grow: 172; flex-basis: 413px">
+		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png" data-size="1085x630"><img src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor.png"
+				srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/Executor_hu2355051128c0c140b2646d5910e7b461_63411_1024x0_resize_box_2.png 1024w"
+				width="1085"
+				height="630"
+				loading="lazy"
+				>
 		</a>
 		
 	</figure></p>
@@ -484,11 +556,13 @@ private final Condition notFull = putLock.newCondition();
 </li>
 </ul>
 <h2 id="threadpoolexecutor">ThreadPoolExecutor</h2>
-<p><figure>
-		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png" data-size="1134x468">
-			<img srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_1024x0_resize_box_2.png 1024w"
-				src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png" width="1134" height="468" loading="lazy"
-				alt="&nbsp;">
+<p><figure style="flex-grow: 242; flex-basis: 581px">
+		<a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png" data-size="1134x468"><img src="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor.png"
+				srcset="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_480x0_resize_box_2.png 480w, /p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/ThreadPoolExecutor_hu49dfa4654d3ab09a8df8d3a18fc47e93_102891_1024x0_resize_box_2.png 1024w"
+				width="1134"
+				height="468"
+				loading="lazy"
+				>
 		</a>
 		
 	</figure></p>
@@ -566,9 +640,9 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/%E5%B9%B6%E5%8F%91/">并发</a>
+            <a href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -599,7 +673,7 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -611,7 +685,7 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -623,7 +697,7 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -635,7 +709,7 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -647,7 +721,7 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <a href="/p/jvm%E4%B9%8Bvolatile%E5%85%B3%E9%94%AE%E5%AD%97/">
         
         
 
@@ -662,10 +736,30 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -681,14 +775,18 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -750,6 +848,12 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -765,8 +869,6 @@ atomic 包提供的LongAdder，在高度竞争环境下，可能就是比 Atomic
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='#{}和${}的区别？ ${}是Properties文件中的变量占位符，它可以用于标签属性值和sql内部，属于静态文本替换。
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='#{}和${}的区别？ ${}是Properties文件中的变量占位符，它可以用于标签属性值和sql内部，属于静态文本替换。
 #{}是sql的参数占位符，Mybatis会将sql中的#{}替换为?号，在sql执行前会使用PreparedStatement的参数设置方法，按序给sql的?号占位符设置参数值
 最佳实践中，通常一个Xml映射文件，都会写一个Dao接口与之对应，请问，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？ Dao接口的全限定名，就是映射文件中的namespace的值；接口的方法名，就是映射文件中MappedStatement的id值；接口方法内的参数，就是传递给sql的参数。
 Mapper接口是没有实现类的，当调用接口方法时，全限定名&#43;方法名作为key值，可唯一定位一个MappedStatement。
@@ -17,8 +17,8 @@ ReuseExecutor：执行update或select，以sql作为key查找Statement对象，�
 BatchExecutor：执行update（没有select，JDBC批处理不支持select），将所有sql都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个Statement对象，每个Statement对象都是addBatch()完毕后，等待逐一执行executeBatch()批处理。与JDBC批处理相同。
 作用范围：Executor的这些特点，都严格限制在SqlSession生命周期范围内。
 Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可以映射枚举类，Mybatis可以映射任何对象到表的一列上。映射方式为自定义一个TypeHandler，实现TypeHandler的setParameter()和getResult()接口方法。'><title>Mybatis之面试篇</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Mybatis之面试篇'>
 <meta property='og:description' content='#{}和${}的区别？ ${}是Properties文件中的变量占位符，它可以用于标签属性值和sql内部，属于静态文本替换。
@@ -56,8 +56,31 @@ SimpleExecutor：每执行一次update或select，就开启一个Statement对象
 ReuseExecutor：执行update或select，以sql作为key查找Statement对象，存在就使用，不存在就创建，用完后，不关闭Statement对象，而是放置于Map内，供下一次使用。简言之，就是重复使用Statement对象。
 BatchExecutor：执行update（没有select，JDBC批处理不支持select），将所有sql都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个Statement对象，每个Statement对象都是addBatch()完毕后，等待逐一执行executeBatch()批处理。与JDBC批处理相同。
 作用范围：Executor的这些特点，都严格限制在SqlSession生命周期范围内。
-Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可以映射枚举类，Mybatis可以映射任何对象到表的一列上。映射方式为自定义一个TypeHandler，实现TypeHandler的setParameter()和getResult()接口方法。"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可以映射枚举类，Mybatis可以映射任何对象到表的一列上。映射方式为自定义一个TypeHandler，实现TypeHandler的setParameter()和getResult()接口方法。">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -69,14 +92,18 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -89,7 +116,7 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -108,7 +135,7 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -126,7 +153,7 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -142,8 +169,49 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -165,15 +233,15 @@ Mybatis是否可以映射Enum枚举类 Mybatis可以映射枚举类，不单可�
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/mybatis/">Mybatis</a>
-            
+            <a href="/categories/mybatis/" >
+                Mybatis
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/">Mybatis之面试篇</a>
+        <a href="/p/mybatis%E4%B9%8B%E9%9D%A2%E8%AF%95%E7%AF%87/">Mybatis之面试篇</a>
     </h2>
 
     <footer class="article-time">
@@ -230,7 +298,7 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/mybatis/">Mybatis</a>
+            <a href="/tags/mybatis/">Mybatis</a>
         
     </section>
 
@@ -261,7 +329,7 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8Bxml%E7%AF%87/">
+    <a href="/p/mybatis%E4%B9%8Bxml%E7%AF%87/">
         
         
 
@@ -273,7 +341,7 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%8F%82%E6%95%B0%E7%AF%87/">
+    <a href="/p/mybatis%E4%B9%8B%E5%8F%82%E6%95%B0%E7%AF%87/">
         
         
 
@@ -285,7 +353,7 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/mybatis%E4%B9%8B%E5%BC%80%E5%8F%91%E5%BC%82%E5%B8%B8%E7%AF%87/">
+    <a href="/p/mybatis%E4%B9%8B%E5%BC%80%E5%8F%91%E5%BC%82%E5%B8%B8%E7%AF%87/">
         
         
 
@@ -300,10 +368,30 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -319,14 +407,18 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -388,6 +480,12 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -403,8 +501,6 @@ Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行�
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>

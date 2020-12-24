@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JavaWeb笔记整理
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JavaWeb笔记整理
 XML XML(EXtensible Markup Language):可扩展标记型语言，主要是为了存储数据（程序配置文件）、数据交换
 格式：&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
 XML两种文档约束类型： dtd （file_name.dtd）和schema（file_name.xsd 可被XML解析器解析）
@@ -13,8 +13,8 @@ Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、Web
 JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
 继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
 Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。'><title>Java笔记之web篇</title>
-    
-    <link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/'>
+
+<link rel='canonical' href='https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Java笔记之web篇'>
 <meta property='og:description' content='JavaWeb笔记整理
@@ -44,8 +44,31 @@ XPath:XML路径语言，用来确定XML文档中某部分位置
 Web服务器 Tomcat（Apache）、JBOSS（Redhat）、WebLogic（Oracle）、WebSphere（IBM）等等
 JavaWeb三大组件  Servlet Filter Listener  Servlet Servlet是多线程、单实例。
 继承关系：MyServlet &amp;ndash;extends&amp;ndash;&amp;gt; HttpServlet &amp;ndash;extends&amp;ndash;&amp;gt; QenericServlet &amp;ndash;implements&amp;ndash;&amp;gt; Servlet、ServletConfig
-Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。"></head><body class="">
-        <div class="container flex on-phone--column align-items--flex-start extended article-page with-toolbar">
+Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在服务器启动时创建Servlet。创建后，调用init()方法； 提供服务：当服务器每次接收到请求时，会调用service()方法处理请求； 销毁：当服务器关闭时，服务器会去销毁Servlet。销毁前会调用destroy()方法。  在web.xml中配置 ... &amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.ianeiu.web.MyServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 通过ServletConfig获取 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;key&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;value&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 值越小，优先级越大 --&amp;gt; &amp;lt;load-on-startup&amp;gt;2&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;myServlet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattren&amp;gt;/my/*&amp;lt;/url-pattren&amp;gt; &amp;lt;/servlet-mapping&amp;gt; ... 访问路径可以使用通配符 * /* /myName/* *.doHttpServlet 实现了service(..,..),重写service(HttpServletRequest ..,HttpServletResponse &amp;hellip;),子类只需调用doGet() doPost()。">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -57,14 +80,18 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
         
             <figure class="site-avatar">
                 
-
-                
                     
-                    <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x300_resize_box_2.png" width="300"
-                        height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                    
+                        
+                        <img src="/img/favicon_hu9c25eba29d1b5f1ed1a07b121643ba3c_344027_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
 
-                <span class="emoji">🍉</span>
+                
+                    <span class="emoji">🍉</span>
+                
             </figure>
         
         <h1 class="site-name"><a href="https://ianeiu.github.io">吴炜棉</a></h1>
@@ -77,7 +104,7 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
         
 
         <li >
-            <a href='https://ianeiu.github.io/'>
+            <a href='/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -96,7 +123,7 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
         
 
         <li >
-            <a href='https://ianeiu.github.io/about'>
+            <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -114,7 +141,7 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
         
 
         <li >
-            <a href='https://ianeiu.github.io/archives'>
+            <a href='/archives'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -130,8 +157,49 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
             </a>
         </li>
         
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
     </ol>
 </aside>
+
             <main class="main full-width">
     <div id="article-toolbar">
         <a href="https://ianeiu.github.io" class="back-home">
@@ -153,15 +221,15 @@ Servlet生命周期  初始化：服务器在Servlet第一次被访问时或在�
     
     <header class="article-category">
         
-            
-                <a href="https://ianeiu.github.io/categories/java/">Java</a>
-            
+            <a href="/categories/java/" >
+                Java
+            </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/">Java笔记之web篇</a>
+        <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bweb%E7%AF%87/">Java笔记之web篇</a>
     </h2>
 
     <footer class="article-time">
@@ -660,7 +728,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
     
     <section class="article-tags">
         
-            <a href="https://ianeiu.github.io/tags/java/">java</a>
+            <a href="/tags/java/">java</a>
         
     </section>
 
@@ -691,7 +759,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
+    <a href="/p/java%E7%AC%94%E8%AE%B0%E4%B9%8Bnio/">
         
         
 
@@ -703,7 +771,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
+    <a href="/p/jvm%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%B0%83%E4%BC%98%E5%8F%8A%E5%8F%82%E6%95%B0/">
         
         
 
@@ -715,7 +783,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E4%B9%8B%E5%B9%B6%E5%8F%91/">
         
         
 
@@ -727,7 +795,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <a href="/p/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
         
         
 
@@ -739,7 +807,7 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
                 
                     
 <article class="">
-    <a href="https://ianeiu.github.io/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+    <a href="/p/java%E5%BC%80%E5%8F%91%E4%B9%8B%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
         
         
 
@@ -754,10 +822,30 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
     
 </aside>
 
+
     
         
     <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <style>
@@ -773,14 +861,18 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
     
 
     <footer class="site-footer">
-    <section class="copyright">&copy; 2020 吴炜棉</section>
+    <section class="copyright">
+        &copy; 
+        
+        2020 吴炜棉
+    </section>
+    
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="1.0.5">Stack</a></b> designed by
-        <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
     <div class="pswp__bg"></div>
@@ -842,6 +934,12 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
             </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
@@ -857,8 +955,6 @@ execute: 可用于执行任何SQL语句，返回一个boolean值，表明执行�
         document.head.appendChild(customFont);
     }());
 </script>
-<link rel="stylesheet" href="/css/highlight/light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="/css/highlight/dark.min.css" media="(prefers-color-scheme: dark)">
 
     </body>
 </html>
